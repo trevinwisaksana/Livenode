@@ -64,7 +64,7 @@ final class GameViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first ?? UITouch()
-        let location = touch.location(in: self.view)
+        let location = touch.location(in: view)
         
         nodeSelected = gameView.hitTest(location, options: nil).first?.node
         
@@ -84,7 +84,7 @@ final class GameViewController: UIViewController {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first ?? UITouch()
-        let location = touch.location(in: self.view)
+        let location = touch.location(in: view)
         
         guard let nodeSelected = gameView.hitTest(location, options: nil).first?.node else {
             return
@@ -119,7 +119,15 @@ final class GameViewController: UIViewController {
     
     @objc
     func didLongPress(sender: UILongPressGestureRecognizer) {
-        showPopover(sender: sender)
+        let location = sender.location(in: view)
+        
+        guard let nodeSelected = gameView.hitTest(location, options: nil).first?.node else {
+            return
+        }
+        
+        if nodeSelected.name == "testNode" {
+            showPopover(sender, for: nodeSelected)
+        }
     }
     
     
@@ -147,9 +155,12 @@ extension GameViewController: UIPopoverPresentationControllerDelegate {
     
     //---- UIPopover ----//
     
-    func showPopover(sender: UILongPressGestureRecognizer) {
+    func showPopover(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopoverMenu")
+        let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopoverMenu") as! PopoverMenuViewController
+        
+        // set the selected node
+        popController.viewModel.selectedNode = node
         
         // set the presentation style
         popController.modalPresentationStyle = .popover

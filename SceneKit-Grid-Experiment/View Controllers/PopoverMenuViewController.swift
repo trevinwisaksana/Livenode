@@ -10,6 +10,12 @@ import UIKit
 
 class PopoverMenuViewController: UIViewController {
     
+    //---- Properties ----//
+    
+    let viewModel = PopoverMenuViewModel()
+    
+    //---- VC Lifecycle ----//
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +66,7 @@ extension PopoverMenuViewController: PopoverMenuDelegate {
     }
     
     func delete() {
+        viewModel.removeNode()
         dismiss(animated: true, completion: nil)
     }
     

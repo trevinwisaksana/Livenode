@@ -16,6 +16,9 @@
 		DD51FEFE208818ED00A0D857 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* GameViewController.swift */; };
 		DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */; };
 		DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* PopoverMenuCell.swift */; };
+		DD638DBB20AC2CF800395557 /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DBA20AC2CF800395557 /* NodeManager.swift */; };
+		DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC120AC2E0200395557 /* GameViewModel.swift */; };
+		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,9 @@
 		DD51FEFD208818ED00A0D857 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB820ABD44200395557 /* PopoverMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuCell.swift; sourceTree = "<group>"; };
+		DD638DBA20AC2CF800395557 /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
+		DD638DC120AC2E0200395557 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,17 +88,68 @@
 			isa = PBXGroup;
 			children = (
 				DD20F66720672FBD005E838C /* AppDelegate.swift */,
-				DD51FEFD208818ED00A0D857 /* GameViewController.swift */,
-				DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */,
-				DD638DB820ABD44200395557 /* PopoverMenuCell.swift */,
-				DD20F68920672FE6005E838C /* Grid.swift */,
-				DD20F68B20673184005E838C /* GridScene.swift */,
+				DD638DBC20AC2D3800395557 /* View Controllers */,
+				DD638DC320AC2E0800395557 /* View Models */,
+				DD638DC020AC2DA200395557 /* Managers */,
+				DD638DBD20AC2D4200395557 /* Views */,
+				DD638DBF20AC2D9C00395557 /* Models */,
+				DD638DBE20AC2D4800395557 /* Scenes */,
 				DD20F66D20672FBD005E838C /* Main.storyboard */,
 				DD20F67020672FBD005E838C /* Assets.xcassets */,
 				DD20F67220672FBD005E838C /* LaunchScreen.storyboard */,
 				DD20F67520672FBD005E838C /* Info.plist */,
 			);
 			path = "SceneKit-Grid-Experiment";
+			sourceTree = "<group>";
+		};
+		DD638DBC20AC2D3800395557 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD51FEFD208818ED00A0D857 /* GameViewController.swift */,
+				DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DD638DBD20AC2D4200395557 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DD638DB820ABD44200395557 /* PopoverMenuCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DD638DBE20AC2D4800395557 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				DD20F68B20673184005E838C /* GridScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DD638DBF20AC2D9C00395557 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DD20F68920672FE6005E838C /* Grid.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DD638DC020AC2DA200395557 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DD638DBA20AC2CF800395557 /* NodeManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		DD638DC320AC2E0800395557 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				DD638DC120AC2E0200395557 /* GameViewModel.swift */,
+				DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,11 +256,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */,
+				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* GameViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
+				DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */,
 				DD20F68A20672FE6005E838C /* Grid.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
+				DD638DBB20AC2CF800395557 /* NodeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
