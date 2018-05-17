@@ -83,13 +83,14 @@ final class GameViewController: UIViewController {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: view)
         
         guard let nodeSelected = gameView.hitTest(location, options: nil).first?.node else {
             return
         }
-        
+
         if didSelectTargetNode {
             gameView.allowsCameraControl = false
             
@@ -101,7 +102,10 @@ final class GameViewController: UIViewController {
                 nodeZPos = 0
             }
             
-            gameScene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
+            if gameScene.testNode.isMovable {
+                gameScene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
+            }
+            
         }
 
     }

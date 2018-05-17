@@ -62,6 +62,7 @@ extension PopoverMenuViewController: UICollectionViewDelegateFlowLayout, UIColle
 extension PopoverMenuViewController: PopoverMenuDelegate {
     
     func move() {
+        viewModel.makeNodeMovable()
         dismiss(animated: true, completion: nil)
     }
     

@@ -19,6 +19,7 @@
 		DD638DBB20AC2CF800395557 /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DBA20AC2CF800395557 /* NodeManager.swift */; };
 		DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC120AC2E0200395557 /* GameViewModel.swift */; };
 		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
+		DD638DC720AC5E0300395557 /* SCNode+Movable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNode+Movable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		DD638DBA20AC2CF800395557 /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
 		DD638DC120AC2E0200395557 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
+		DD638DC620AC5E0300395557 /* SCNode+Movable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNode+Movable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				DD638DBD20AC2D4200395557 /* Views */,
 				DD638DBF20AC2D9C00395557 /* Models */,
 				DD638DBE20AC2D4800395557 /* Scenes */,
+				DD638DC820AC64E800395557 /* Extensions */,
 				DD20F66D20672FBD005E838C /* Main.storyboard */,
 				DD20F67020672FBD005E838C /* Assets.xcassets */,
 				DD20F67220672FBD005E838C /* LaunchScreen.storyboard */,
@@ -150,6 +153,14 @@
 				DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		DD638DC820AC64E800395557 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DD638DC620AC5E0300395557 /* SCNode+Movable.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			files = (
 				DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */,
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
+				DD638DC720AC5E0300395557 /* SCNode+Movable.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* GameViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,

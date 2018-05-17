@@ -22,7 +22,11 @@ class PopoverMenuViewModel {
     }
     
     func makeNodeMovable() {
+        guard let selectedNode = selectedNode else {
+            return
+        }
         
+        selectedNode.isMovable = true
     }
     
 }
