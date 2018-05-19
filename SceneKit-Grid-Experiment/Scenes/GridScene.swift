@@ -65,6 +65,19 @@ class GridScene: SCNScene {
         let zRotation = SCNMatrix4MakeRotation(Float.pi / 4, 0, 0, -1)
         cameraNode.transform = SCNMatrix4Mult(cameraNode.transform, zRotation)
         
+//        let transformConstraint = SCNTransformConstraint(inWorldSpace: true) { (node, matrix) -> SCNMatrix4 in
+//            var newMatrix = node.transform
+//            let currentNode = node as SCNNode
+//            
+//            if currentNode.presentation.position.z > 0.0 {
+//                newMatrix.m43 = 0.0
+//            }
+//            
+//            return newMatrix
+//        }
+//        
+//        cameraNode.constraints = [transformConstraint]
+        
         rootNode.addChildNode(cameraNode)
     }
     

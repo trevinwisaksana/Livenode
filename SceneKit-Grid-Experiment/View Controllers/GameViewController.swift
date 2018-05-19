@@ -142,7 +142,7 @@ final class GameViewController: UIViewController {
     }
     
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

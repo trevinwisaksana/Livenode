@@ -14,6 +14,7 @@
 		DD20F68A20672FE6005E838C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F68920672FE6005E838C /* Grid.swift */; };
 		DD20F68C20673184005E838C /* GridScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F68B20673184005E838C /* GridScene.swift */; };
 		DD51FEFE208818ED00A0D857 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* GameViewController.swift */; };
+		DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */; };
 		DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */; };
 		DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* PopoverMenuCell.swift */; };
 		DD638DBB20AC2CF800395557 /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DBA20AC2CF800395557 /* NodeManager.swift */; };
@@ -43,6 +44,7 @@
 		DD20F68920672FE6005E838C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		DD20F68B20673184005E838C /* GridScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridScene.swift; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB820ABD44200395557 /* PopoverMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuCell.swift; sourceTree = "<group>"; };
 		DD638DBA20AC2CF800395557 /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				DD51FEFD208818ED00A0D857 /* GameViewController.swift */,
 				DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */,
+				DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNode+Movable.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* GameViewController.swift in Sources */,
+				DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
 				DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */,
