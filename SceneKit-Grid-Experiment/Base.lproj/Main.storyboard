@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yO5-ae-VGz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yO5-ae-VGz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,9 +23,15 @@
                     </sceneKitView>
                     <navigationItem key="navigationItem" id="RV3-xX-pe6">
                         <rightBarButtonItems>
-                            <barButtonItem image="utilitiesButtonIcon" style="plain" id="1PM-ZJ-7SU"/>
-                            <barButtonItem image="addButtonIcon" style="plain" id="D3k-a9-Rkk"/>
-                            <barButtonItem image="modelsButtonIcon" style="plain" id="ekL-k8-byU"/>
+                            <barButtonItem image="utilitiesButtonIcon" style="plain" id="1PM-ZJ-7SU">
+                                <color key="tintColor" red="0.41633486749999998" green="0.32971501349999999" blue="0.89039069410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
+                            <barButtonItem image="addButtonIcon" style="plain" id="D3k-a9-Rkk">
+                                <color key="tintColor" red="0.41633486749999998" green="0.32971501349999999" blue="0.89039069410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
+                            <barButtonItem image="modelsButtonIcon" style="plain" id="ekL-k8-byU">
+                                <color key="tintColor" red="0.41633486749999998" green="0.32971501349999999" blue="0.89039069410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
@@ -63,14 +70,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1y-JB-2Ls">
-                                            <rect key="frame" x="18" y="15" width="119" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1y-JB-2Ls">
+                                            <rect key="frame" x="18" y="14" width="85" height="22"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="u1y-JB-2Ls" secondAttribute="bottom" constant="6" id="BWH-vi-zhs"/>
+                                        <constraint firstItem="u1y-JB-2Ls" firstAttribute="leading" secondItem="qag-SE-ea3" secondAttribute="leadingMargin" constant="10" id="U0A-Lp-n6d"/>
+                                        <constraint firstItem="u1y-JB-2Ls" firstAttribute="top" secondItem="qag-SE-ea3" secondAttribute="topMargin" constant="6" id="xiQ-lP-fqc"/>
+                                    </constraints>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
@@ -85,7 +96,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="DxQ-tL-Ftr">
                         <barButtonItem key="backBarButtonItem" title=" " id="foJ-tl-VNk"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="TSS-Ue-y7G">
+                        <barButtonItem key="rightBarButtonItem" image="addButtonIcon" style="plain" id="TSS-Ue-y7G">
+                            <color key="tintColor" red="0.41633486749999998" green="0.32971501349999999" blue="0.89039069410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="BV1-FR-VrT" kind="show" id="Ihu-pL-Ox1"/>
                             </connections>
@@ -181,6 +193,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eu7-sg-hCM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.41633486749999998" green="0.32971501349999999" blue="0.89039069410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

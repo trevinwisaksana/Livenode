@@ -54,7 +54,7 @@ final class GameViewController: UIViewController {
         gameView.allowsCameraControl = true
         
         // show statistics such as fps and timing information
-        gameView.showsStatistics = true
+        gameView.showsStatistics = false
         
         // configure the view
         gameView.backgroundColor = .white

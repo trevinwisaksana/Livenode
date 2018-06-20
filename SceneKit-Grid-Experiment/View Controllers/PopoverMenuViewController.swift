@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopoverMenuViewController: UIViewController {
+final class PopoverMenuViewController: UIViewController {
     
     //---- Properties ----//
     
