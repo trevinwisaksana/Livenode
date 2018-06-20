@@ -11,7 +11,7 @@ import SceneKit
 
 final class GameViewController: UIViewController {
     
-    //---- Properties ----//
+    // MARK: - Properties
     
     var gameView: SCNView!
     var gameScene: GridScene!
@@ -29,7 +29,7 @@ final class GameViewController: UIViewController {
         }
     }
     
-    //---- VC Lifecycle ----//
+    // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ final class GameViewController: UIViewController {
         prepareLongPressGestureRecognizer()
     }
     
-    //---- Setup ----//
+    // MARK: - Setup
     
     func setupGameView() {
         // create a new scene
@@ -60,7 +60,16 @@ final class GameViewController: UIViewController {
         gameView.backgroundColor = .white
     }
     
-    //---- Touches ----//
+    // MARK: - IBAction
+    
+    @IBAction func didTapObjectInsertionButton(_ sender: UIBarButtonItem) {
+        
+        
+        
+    }
+    
+    
+    // MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first ?? UITouch()
@@ -135,7 +144,7 @@ final class GameViewController: UIViewController {
     }
     
     
-    //–––– Device Configuration ––––//
+    // MARK: - Device Configuration
     
     override var shouldAutorotate: Bool {
         return true
@@ -157,7 +166,7 @@ final class GameViewController: UIViewController {
 
 extension GameViewController: UIPopoverPresentationControllerDelegate {
     
-    //---- UIPopover ----//
+    // MARK: - UIPopover
     
     func showPopover(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover

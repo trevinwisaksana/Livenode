@@ -28,6 +28,9 @@
                             </barButtonItem>
                             <barButtonItem image="addButtonIcon" style="plain" id="D3k-a9-Rkk">
                                 <color key="tintColor" red="0.41633486749999998" green="0.32971501349999999" blue="0.89039069410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="didTapObjectInsertionButton:" destination="BV1-FR-VrT" id="www-KG-Wc9"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem image="modelsButtonIcon" style="plain" id="ekL-k8-byU">
                                 <color key="tintColor" red="0.41633486749999998" green="0.32971501349999999" blue="0.89039069410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
