@@ -13,6 +13,10 @@
 		DD20F67420672FBD005E838C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67220672FBD005E838C /* LaunchScreen.storyboard */; };
 		DD20F68A20672FE6005E838C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F68920672FE6005E838C /* Grid.swift */; };
 		DD20F68C20673184005E838C /* GridScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F68B20673184005E838C /* GridScene.swift */; };
+		DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */; };
+		DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E820DE12AA00EA00ED /* Constants.swift */; };
+		DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */; };
+		DD2A55EE20DE3BD200EA00ED /* UICollectionView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55ED20DE3BD100EA00ED /* UICollectionView+Utility.swift */; };
 		DD51FEFE208818ED00A0D857 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* GameViewController.swift */; };
 		DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */; };
 		DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */; };
@@ -43,6 +47,10 @@
 		DD20F67A20672FBD005E838C /* SceneKit-Grid-ExperimentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SceneKit-Grid-ExperimentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD20F68920672FE6005E838C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		DD20F68B20673184005E838C /* GridScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridScene.swift; sourceTree = "<group>"; };
+		DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewController.swift; sourceTree = "<group>"; };
+		DD2A55E820DE12AA00EA00ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogCell.swift; sourceTree = "<group>"; };
+		DD2A55ED20DE3BD100EA00ED /* UICollectionView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Utility.swift"; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewController.swift; sourceTree = "<group>"; };
@@ -99,12 +107,20 @@
 				DD638DBF20AC2D9C00395557 /* Models */,
 				DD638DBE20AC2D4800395557 /* Scenes */,
 				DD638DC820AC64E800395557 /* Extensions */,
-				DD20F66D20672FBD005E838C /* Main.storyboard */,
+				DD2A55EA20DE12B000EA00ED /* Helpers */,
+				DDA37E7D20DD343D005A340C /* Storyboard */,
 				DD20F67020672FBD005E838C /* Assets.xcassets */,
-				DD20F67220672FBD005E838C /* LaunchScreen.storyboard */,
 				DD20F67520672FBD005E838C /* Info.plist */,
 			);
 			path = "SceneKit-Grid-Experiment";
+			sourceTree = "<group>";
+		};
+		DD2A55EA20DE12B000EA00ED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DD2A55E820DE12AA00EA00ED /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		DD638DBC20AC2D3800395557 /* View Controllers */ = {
@@ -113,6 +129,7 @@
 				DD51FEFD208818ED00A0D857 /* GameViewController.swift */,
 				DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */,
 				DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */,
+				DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -121,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				DD638DB820ABD44200395557 /* PopoverMenuCell.swift */,
+				DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,9 +179,19 @@
 		DD638DC820AC64E800395557 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DD2A55ED20DE3BD100EA00ED /* UICollectionView+Utility.swift */,
 				DD638DC620AC5E0300395557 /* SCNode+Movable.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DDA37E7D20DD343D005A340C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				DD20F67220672FBD005E838C /* LaunchScreen.storyboard */,
+				DD20F66D20672FBD005E838C /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +304,13 @@
 				DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
+				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
+				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
 				DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */,
+				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DD20F68A20672FE6005E838C /* Grid.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
+				DD2A55EE20DE3BD200EA00ED /* UICollectionView+Utility.swift in Sources */,
 				DD638DBB20AC2CF800395557 /* NodeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
