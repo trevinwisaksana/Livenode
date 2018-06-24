@@ -62,7 +62,7 @@ final class GameViewController: UIViewController {
     
     // MARK: - IBAction
     
-    @IBAction func didTapObjectInsertionButton(_ sender: UIButton) {
+    @IBAction func didTapAddObjectButton(_ sender: UIBarButtonItem) {
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
         
@@ -72,9 +72,7 @@ final class GameViewController: UIViewController {
         // set up the popover presentation controller
         popController.popoverPresentationController?.permittedArrowDirections = .up
         popController.popoverPresentationController?.delegate = self
-        
-        popController.popoverPresentationController?.sourceRect = sender.bounds
-        popController.popoverPresentationController?.sourceView = sender
+        popController.popoverPresentationController?.barButtonItem = sender
         
         // present the popover
         present(popController, animated: true, completion: nil)

@@ -23,30 +23,13 @@
                     </sceneKitView>
                     <navigationItem key="navigationItem" id="RV3-xX-pe6">
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" id="nLA-As-cUg">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bsl-4U-dbo">
-                                    <rect key="frame" x="329" y="11" width="30" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="utilitiesButtonIcon"/>
-                                </button>
+                            <barButtonItem title="utilitiesBarButton" image="utilitiesButtonIcon" id="7DY-lP-VtX"/>
+                            <barButtonItem title="objectCatalogBarButton" image="addButtonIcon" id="W5q-D3-ES6">
+                                <connections>
+                                    <action selector="didTapAddObjectButton:" destination="BV1-FR-VrT" id="hxw-wO-UUy"/>
+                                </connections>
                             </barButtonItem>
-                            <barButtonItem title="ObjectCatalogBarButton" style="plain" id="GNL-Fc-oCE">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p7O-fG-0a4">
-                                    <rect key="frame" x="291" y="9" width="30" height="26"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="addButtonIcon"/>
-                                    <connections>
-                                        <action selector="didTapObjectInsertionButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="SbB-TG-OAL"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem title="ModelsBarButton" style="plain" id="75e-E2-dh5">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="68Q-cl-RWd">
-                                    <rect key="frame" x="205" y="8" width="78" height="28"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="modelsButtonIcon"/>
-                                </button>
-                            </barButtonItem>
+                            <barButtonItem title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf"/>
                         </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
@@ -266,6 +249,9 @@
                                             <constraint firstItem="i2X-4c-4Fp" firstAttribute="top" secondItem="XEI-aY-7Sq" secondAttribute="top" id="eFd-0e-DkK"/>
                                             <constraint firstAttribute="trailing" secondItem="br1-FF-GZO" secondAttribute="trailing" id="nbr-js-ZeF"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="objectSceneView" destination="br1-FF-GZO" id="FOn-Mi-4vk"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -293,7 +279,7 @@
     </scenes>
     <resources>
         <image name="addButtonIcon" width="25" height="26"/>
-        <image name="modelsButtonIcon" width="24" height="28"/>
+        <image name="modelsButtonIcon" width="28" height="28"/>
         <image name="utilitiesButtonIcon" width="30" height="8"/>
     </resources>
 </document>

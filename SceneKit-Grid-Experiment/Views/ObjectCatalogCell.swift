@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SceneKit
 
 final class ObjectCatalogCell: UICollectionViewCell {
     
-    
+    @IBOutlet weak var objectSceneView: SCNView!
     
 }
