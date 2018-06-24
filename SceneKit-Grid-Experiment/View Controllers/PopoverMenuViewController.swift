@@ -12,7 +12,7 @@ final class PopoverMenuViewController: UIViewController {
     
     //---- Properties ----//
     
-    let viewModel = PopoverMenuViewModel()
+    var viewModel = PopoverMenuViewModel()
     
     //---- VC Lifecycle ----//
     
