@@ -62,3 +62,17 @@ extension ObjectCatalogViewController: UICollectionViewDelegate {
     }
     
 }
+
+// MARK: - Collection View Delegate Flow Layout
+
+extension ObjectCatalogViewController: UICollectionViewDelegateFlowLayout {
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        
+//        let width = view.frame.width / 3.5
+//        let height = view.frame.height
+//        
+//        return CGSize(width: width, height: height)
+//    }
+    
+}
