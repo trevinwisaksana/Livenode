@@ -174,9 +174,9 @@ final class GameViewController: UIViewController {
     
 }
 
+// MARK: - UIPopover
+
 extension GameViewController: UIPopoverPresentationControllerDelegate {
-    
-    // MARK: - UIPopover
     
     func showPopover(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover
