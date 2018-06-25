@@ -81,6 +81,15 @@ class GridScene: SCNScene {
         rootNode.addChildNode(cameraNode)
     }
     
+    func insertNode() {
+        let testBox = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        testNode = SCNNode(geometry: testBox)
+        testNode.position = SCNVector3(0, 0, 5)
+        testNode.name = "testNode"
+        
+        rootNode.addChildNode(testNode)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-class PopoverMenuViewModel {
+struct PopoverMenuViewModel {
     
     var selectedNode: SCNNode?
     

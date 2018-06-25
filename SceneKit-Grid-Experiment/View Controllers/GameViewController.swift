@@ -11,7 +11,7 @@ import SceneKit
 
 final class GameViewController: UIViewController {
     
-    //---- Properties ----//
+    // MARK: - Properties
     
     var gameView: SCNView!
     var gameScene: GridScene!
@@ -29,7 +29,7 @@ final class GameViewController: UIViewController {
         }
     }
     
-    //---- VC Lifecycle ----//
+    // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ final class GameViewController: UIViewController {
         prepareLongPressGestureRecognizer()
     }
     
-    //---- Setup ----//
+    // MARK: - Setup
     
     func setupGameView() {
         // create a new scene
@@ -60,7 +60,29 @@ final class GameViewController: UIViewController {
         gameView.backgroundColor = .white
     }
     
-    //---- Touches ----//
+    // MARK: - IBAction
+    
+    @IBAction func didTapAddObjectButton(_ sender: UIBarButtonItem) {
+        // get a reference to the view controller for the popover
+        let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
+        
+        // set the presentation style
+        popController.modalPresentationStyle = .popover
+        
+        // set up the popover presentation controller
+        popController.popoverPresentationController?.permittedArrowDirections = .up
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.barButtonItem = sender
+        
+        // set delegate
+        popController.delegate = self
+        
+        // present the popover
+        present(popController, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first ?? UITouch()
@@ -135,7 +157,7 @@ final class GameViewController: UIViewController {
     }
     
     
-    //–––– Device Configuration ––––//
+    // MARK: - Device Configuration
     
     override var shouldAutorotate: Bool {
         return true
@@ -155,9 +177,9 @@ final class GameViewController: UIViewController {
     
 }
 
+// MARK: - UIPopover
+
 extension GameViewController: UIPopoverPresentationControllerDelegate {
-    
-    //---- UIPopover ----//
     
     func showPopover(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover
@@ -194,6 +216,19 @@ extension GameViewController: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+}
+
+// MARK: - Object Insertion Delegate
+
+extension GameViewController: ObjectInsertionDelegate {
+    
+    func insert3D(model: Model) {
+        switch model {
+        case .cube:
+            gameScene.insertNode()
+        }
     }
     
 }
