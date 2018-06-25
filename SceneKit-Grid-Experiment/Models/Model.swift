@@ -1,5 +1,5 @@
 //
-//  Object.swift
+//  Model.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 24/06/2018.
@@ -8,8 +8,6 @@
 
 import SceneKit
 
-struct Object {
-    
-    var node: SCNNode?
-    
+enum Model {
+    case cube
 }

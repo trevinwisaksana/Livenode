@@ -25,7 +25,7 @@
 		DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC120AC2E0200395557 /* GameViewModel.swift */; };
 		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
 		DD638DC720AC5E0300395557 /* SCNode+Movable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNode+Movable.swift */; };
-		DDEF325C20DF70CF00FEE793 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF325B20DF70CF00FEE793 /* Object.swift */; };
+		DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF325B20DF70CF00FEE793 /* Model.swift */; };
 		DDEF325E20DF776100FEE793 /* Cube.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Cube.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
 /* End PBXBuildFile section */
@@ -62,7 +62,7 @@
 		DD638DC120AC2E0200395557 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNode+Movable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNode+Movable.swift"; sourceTree = "<group>"; };
-		DDEF325B20DF70CF00FEE793 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		DDEF325B20DF70CF00FEE793 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DDEF325D20DF776100FEE793 /* Cube.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Cube.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				DD20F68920672FE6005E838C /* Grid.swift */,
-				DDEF325B20DF70CF00FEE793 /* Object.swift */,
+				DDEF325B20DF70CF00FEE793 /* Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 				DD20F68A20672FE6005E838C /* Grid.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionView+Utility.swift in Sources */,
-				DDEF325C20DF70CF00FEE793 /* Object.swift in Sources */,
+				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
 				DD638DBB20AC2CF800395557 /* NodeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

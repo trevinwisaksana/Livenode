@@ -74,6 +74,9 @@ final class GameViewController: UIViewController {
         popController.popoverPresentationController?.delegate = self
         popController.popoverPresentationController?.barButtonItem = sender
         
+        // set delegate
+        popController.delegate = self
+        
         // present the popover
         present(popController, animated: true, completion: nil)
     }
@@ -213,6 +216,19 @@ extension GameViewController: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+}
+
+// MARK: - Object Insertion Delegate
+
+extension GameViewController: ObjectInsertionDelegate {
+    
+    func insert3D(model: Model) {
+        switch model {
+        case .cube:
+            gameScene.insertNode()
+        }
     }
     
 }

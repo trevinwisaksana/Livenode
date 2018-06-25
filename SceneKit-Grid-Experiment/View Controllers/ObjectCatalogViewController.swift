@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 protocol ObjectInsertionDelegate: class {
-    func insert3D(model: Object)
+    func insert3D(model: Model)
 }
 
 final class ObjectCatalogViewController: UIViewController {
@@ -57,8 +57,7 @@ extension ObjectCatalogViewController: UICollectionViewDelegate {
         // TESTING
         
         // TODO: Insert node object to the grid
-//        delegate?.insert3D(model: <#T##Object#>)
-        
+        delegate?.insert3D(model: .cube)
     }
     
 }
@@ -67,12 +66,12 @@ extension ObjectCatalogViewController: UICollectionViewDelegate {
 
 extension ObjectCatalogViewController: UICollectionViewDelegateFlowLayout {
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//        let width = view.frame.width / 3.5
-//        let height = view.frame.height
-//        
-//        return CGSize(width: width, height: height)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width = view.frame.width / 3.5
+        let height = view.frame.height
+
+        return CGSize(width: width, height: height)
+    }
     
 }
