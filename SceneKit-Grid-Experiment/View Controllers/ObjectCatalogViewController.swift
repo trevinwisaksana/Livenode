@@ -53,10 +53,7 @@ extension ObjectCatalogViewController: UICollectionViewDataSource {
 extension ObjectCatalogViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         // TESTING
-        
-        // TODO: Insert node object to the grid
         delegate?.insert3D(model: .cube)
     }
     

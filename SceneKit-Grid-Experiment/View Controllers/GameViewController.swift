@@ -105,7 +105,6 @@ final class GameViewController: UIViewController {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: view)
         
@@ -129,13 +128,15 @@ final class GameViewController: UIViewController {
             }
             
         }
-
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         didFinishDraggingNode = true
         
         gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.white
+        
+        // TODO: Create a Done button to finish moving
+//        gameScene.testNode.isMovable = false
     }
     
     func prepareLongPressGestureRecognizer() {
