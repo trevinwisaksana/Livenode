@@ -211,8 +211,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yDa-ZU-Lq1">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yDa-ZU-Lq1">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k7x-rJ-tsq">
                                     <size key="itemSize" width="100" height="100"/>
@@ -261,12 +262,6 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="yDa-ZU-Lq1" firstAttribute="top" secondItem="dar-us-7ua" secondAttribute="top" id="Jy5-Vh-7jt"/>
-                            <constraint firstItem="yDa-ZU-Lq1" firstAttribute="trailing" secondItem="dar-us-7ua" secondAttribute="trailing" id="bel-P7-bbJ"/>
-                            <constraint firstItem="yDa-ZU-Lq1" firstAttribute="bottom" secondItem="dar-us-7ua" secondAttribute="bottom" id="p5P-ve-Djn"/>
-                            <constraint firstItem="yDa-ZU-Lq1" firstAttribute="leading" secondItem="dar-us-7ua" secondAttribute="leading" id="zih-Z1-8rh"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dar-us-7ua"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="55"/>
