@@ -13,17 +13,17 @@ final class GameViewController: UIViewController {
     
     // MARK: - Properties
     
-    var gameView: SCNView!
-    var gameScene: GridScene!
-    var cameraNode: SCNNode!
+    private var gameView: SCNView!
+    private var gameScene: GridScene!
+    private var cameraNode: SCNNode!
     
-    var nodeSelected: SCNNode?
-    var lastNodeSelected: SCNNode?
-    var lastNodePosition: SCNVector3?
+    private var nodeSelected: SCNNode?
+    private var lastNodeSelected: SCNNode?
+    private var lastNodePosition: SCNVector3?
     
-    var didSelectTargetNode = false
+    private var didSelectTargetNode = false
     
-    var didFinishDraggingNode = false {
+    private var didFinishDraggingNode = false {
         didSet {
             gameView.allowsCameraControl = true
         }
@@ -40,7 +40,7 @@ final class GameViewController: UIViewController {
     
     // MARK: - Setup
     
-    func setupGameView() {
+    private func setupGameView() {
         // create a new scene
         gameScene = GridScene()
         
@@ -92,7 +92,7 @@ final class GameViewController: UIViewController {
         
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
-            nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.gray
+            nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         } else {
             didSelectTargetNode = false
         }
@@ -133,7 +133,7 @@ final class GameViewController: UIViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         didFinishDraggingNode = true
         
-        gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.white
+        gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         
         // TODO: Create a Done button to finish moving
 //        gameScene.testNode.isMovable = false
@@ -145,7 +145,7 @@ final class GameViewController: UIViewController {
     }
     
     @objc
-    func didLongPress(sender: UILongPressGestureRecognizer) {
+    private func didLongPress(sender: UILongPressGestureRecognizer) {
         let location = sender.location(in: view)
         
         guard let nodeSelected = gameView.hitTest(location, options: nil).first?.node else {
@@ -193,11 +193,11 @@ extension GameViewController: UIPopoverPresentationControllerDelegate {
         popController.modalPresentationStyle = .popover
         
         // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = .up
+        popController.popoverPresentationController?.permittedArrowDirections = .down
         popController.popoverPresentationController?.delegate = self
         
         let touchLocation = sender.location(in: view)
-        let yOffset = -view.frame.height * 0.05
+        let yOffset = view.frame.height * 0.05
         let sourceRect = CGRect(x: 0, y: yOffset, width: 1, height: 80)
         
         let touchView = UIView(frame: sourceRect)

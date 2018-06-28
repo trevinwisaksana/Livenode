@@ -28,6 +28,7 @@
 		DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF325B20DF70CF00FEE793 /* Model.swift */; };
 		DDEF325E20DF776100FEE793 /* Cube.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Cube.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
+		DDEF326320E4DCE500FEE793 /* SceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326220E4DCE500FEE793 /* SceneCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		DDEF325B20DF70CF00FEE793 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DDEF325D20DF776100FEE793 /* Cube.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Cube.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
+		DDEF326220E4DCE500FEE793 /* SceneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				DD638DB820ABD44200395557 /* PopoverMenuCell.swift */,
 				DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */,
+				DDEF326220E4DCE500FEE793 /* SceneCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				DD51FEFE208818ED00A0D857 /* GameViewController.swift in Sources */,
 				DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
+				DDEF326320E4DCE500FEE793 /* SceneCell.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
