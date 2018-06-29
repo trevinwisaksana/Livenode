@@ -27,16 +27,14 @@ final class ObjectAttributeViewController: UIViewController {
 
 extension ObjectAttributeViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell: ObjectAttributeCell = collectionView.dequeueReusableCell(for: indexPath)
+        cell.delegate = self
+        return cell
     }
     
 }
@@ -47,6 +45,16 @@ extension ObjectAttributeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+    }
+    
+}
+
+// MARK: - Object Attribute Delegate
+
+extension ObjectAttributeViewController: ObjectAttributeDelegate {
+    
+    func changeColor() {
+        viewModel.nodeSelected?.change(color: .green)
     }
     
 }
