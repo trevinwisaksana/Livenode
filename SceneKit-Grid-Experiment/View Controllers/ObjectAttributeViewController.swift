@@ -23,6 +23,8 @@ final class ObjectAttributeViewController: UIViewController {
     
 }
 
+// MARK: - Collection View Data Source
+
 extension ObjectAttributeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -38,6 +40,8 @@ extension ObjectAttributeViewController: UICollectionViewDataSource {
     }
     
 }
+
+// MARK: - Collection View Delegate
 
 extension ObjectAttributeViewController: UICollectionViewDelegate {
     
