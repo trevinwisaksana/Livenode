@@ -29,13 +29,16 @@
                                     <action selector="didTapAddObjectButton:" destination="BV1-FR-VrT" id="hxw-wO-UUy"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf">
+                            <barButtonItem enabled="NO" title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf">
                                 <connections>
                                     <action selector="didTapObjectAttributeButton:" destination="BV1-FR-VrT" id="Ybc-kW-skZ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="objectAttributeButton" destination="9FB-t9-yMf" id="yhc-1o-UcY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>

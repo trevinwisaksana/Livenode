@@ -17,7 +17,16 @@ final class GameViewController: UIViewController {
     private var gameScene: GridScene!
     private var cameraNode: SCNNode!
     
-    private var nodeSelected: SCNNode?
+    private var nodeSelected: SCNNode? {
+        didSet {
+            if nodeSelected == nil {
+                objectAttributeButton.isEnabled = false
+            } else {
+                objectAttributeButton.isEnabled = true
+            }
+        }
+    }
+    
     private var lastNodeSelected: SCNNode?
     private var lastNodePosition: SCNVector3?
     
@@ -28,6 +37,11 @@ final class GameViewController: UIViewController {
             gameView.allowsCameraControl = true
         }
     }
+    
+    // MARK: - IBOutlet
+    
+    @IBOutlet weak var objectAttributeButton: UIBarButtonItem!
+    
     
     // MARK: - VC Lifecycle
     
