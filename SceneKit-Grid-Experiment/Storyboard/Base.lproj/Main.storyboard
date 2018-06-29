@@ -29,7 +29,11 @@
                                     <action selector="didTapAddObjectButton:" destination="BV1-FR-VrT" id="hxw-wO-UUy"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf"/>
+                            <barButtonItem title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf">
+                                <connections>
+                                    <action selector="didTapObjectAttributeButton:" destination="BV1-FR-VrT" id="Ybc-kW-skZ"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
@@ -190,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fr8-T5-ZeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1868.8" y="-115.64039408866995"/>
+            <point key="canvasLocation" x="1885" y="-292"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fZy-OT-c2I">
@@ -278,16 +282,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRL-py-0im" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1868.8" y="132.23388305847078"/>
+            <point key="canvasLocation" x="1885" y="-44"/>
         </scene>
         <!--Object Attribute View Controller-->
         <scene sceneID="Y1W-vd-nUF">
             <objects>
-                <viewController storyboardIdentifier="ObjectAtrributeController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="t8W-iU-39E" customClass="ObjectAttributeViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ObjectAttributeController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="t8W-iU-39E" customClass="ObjectAttributeViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1GH-du-9Gp">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="is2-Fp-hTb">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zgb-9O-ePh">
+                                    <size key="itemSize" width="300" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="upl-WU-72w">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="t8W-iU-39E" id="k3i-rA-Tjm"/>
+                                    <outlet property="delegate" destination="t8W-iU-39E" id="Rzr-hB-BG0"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="is2-Fp-hTb" secondAttribute="bottom" id="S0a-g0-jby"/>
+                            <constraint firstItem="is2-Fp-hTb" firstAttribute="top" secondItem="1GH-du-9Gp" secondAttribute="top" id="d6y-E5-s3t"/>
+                            <constraint firstItem="is2-Fp-hTb" firstAttribute="trailing" secondItem="Yvy-qG-y7J" secondAttribute="trailing" id="pYS-d1-GnD"/>
+                            <constraint firstItem="is2-Fp-hTb" firstAttribute="leading" secondItem="Yvy-qG-y7J" secondAttribute="leading" id="zPK-63-1mi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Yvy-qG-y7J"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="55"/>
@@ -295,7 +331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6p-ft-0Rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1869" y="443"/>
+            <point key="canvasLocation" x="1884.8" y="266.74876847290642"/>
         </scene>
     </scenes>
     <resources>

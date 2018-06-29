@@ -13,6 +13,7 @@ struct Constants {
     struct Controller {
         static let objectCatalog = "ObjectCatalogController"
         static let popoverMenu = "PopoverMenuController"
+        static let objectAttribute = "ObjectAttributeController"
     }
     
     

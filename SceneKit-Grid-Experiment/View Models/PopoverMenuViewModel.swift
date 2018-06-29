@@ -11,22 +11,22 @@ import SceneKit
 
 struct PopoverMenuViewModel {
     
-    var selectedNode: SCNNode?
+    var nodeSelected: SCNNode?
     
     func removeNode() {
-        guard let selectedNode = selectedNode else {
+        guard let nodeSelected = nodeSelected else {
             return
         }
         
-        selectedNode.removeFromParentNode()
+        nodeSelected.removeFromParentNode()
     }
     
     func makeNodeMovable() {
-        guard let selectedNode = selectedNode else {
+        guard let nodeSelected = nodeSelected else {
             return
         }
         
-        selectedNode.isMovable = true
+        nodeSelected.isMovable = true
     }
     
 }

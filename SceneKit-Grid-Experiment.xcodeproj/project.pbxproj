@@ -30,6 +30,7 @@
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
 		DDEF326320E4DCE500FEE793 /* SceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326220E4DCE500FEE793 /* SceneCell.swift */; };
 		DDEF326520E6160C00FEE793 /* ObjectAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326420E6160C00FEE793 /* ObjectAttributeViewController.swift */; };
+		DDEF326720E618AF00FEE793 /* ObjectAttributeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
 		DDEF326220E4DCE500FEE793 /* SceneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCell.swift; sourceTree = "<group>"; };
 		DDEF326420E6160C00FEE793 /* ObjectAttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAttributeViewController.swift; sourceTree = "<group>"; };
+		DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAttributeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			children = (
 				DD638DC120AC2E0200395557 /* GameViewModel.swift */,
 				DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */,
+				DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */,
+				DDEF326720E618AF00FEE793 /* ObjectAttributeViewModel.swift in Sources */,
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNode+Movable.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* GameViewController.swift in Sources */,
