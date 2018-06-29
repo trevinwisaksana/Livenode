@@ -12,7 +12,7 @@ final class ObjectAttributeViewController: UIViewController {
     
     // MARK: - Properties
     
-    var viewModel = PopoverMenuViewModel()
+    var viewModel = ObjectAttributeViewModel()
     
     // MARK: - VC Lifecycle
     
