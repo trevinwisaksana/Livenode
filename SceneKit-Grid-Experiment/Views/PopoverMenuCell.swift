@@ -15,7 +15,7 @@ protocol PopoverMenuDelegate: class {
     func paste()
 }
 
-class PopoverMenuCell: UICollectionViewCell {
+final class PopoverMenuCell: UICollectionViewCell {
     
     //---- Properties ----//
     
