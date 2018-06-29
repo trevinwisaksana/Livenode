@@ -121,8 +121,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="55"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QiX-gs-lOs">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QiX-gs-lOs">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="55"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7q6-MD-scq">
                                     <size key="itemSize" width="100" height="56"/>
@@ -132,7 +132,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PopoverMenuCell" id="vPW-zT-abd" customClass="PopoverMenuCell" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-11" width="100" height="56"/>
+                                        <rect key="frame" x="0.0" y="-0.66666666666666663" width="100" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="56"/>
@@ -178,10 +178,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QiX-gs-lOs" firstAttribute="trailing" secondItem="hZn-vP-fLl" secondAttribute="trailing" id="IIL-M8-2lv"/>
-                            <constraint firstItem="QiX-gs-lOs" firstAttribute="leading" secondItem="hZn-vP-fLl" secondAttribute="leading" id="OC7-Jm-iCw"/>
-                            <constraint firstItem="QiX-gs-lOs" firstAttribute="bottom" secondItem="hZn-vP-fLl" secondAttribute="bottom" id="ZQZ-mH-vPf"/>
-                            <constraint firstItem="QiX-gs-lOs" firstAttribute="top" secondItem="hZn-vP-fLl" secondAttribute="top" id="p0f-hX-PLg"/>
+                            <constraint firstItem="QiX-gs-lOs" firstAttribute="top" secondItem="qi3-AX-Fg4" secondAttribute="top" id="84x-M0-ZuJ"/>
+                            <constraint firstItem="QiX-gs-lOs" firstAttribute="trailing" secondItem="hZn-vP-fLl" secondAttribute="trailing" id="UM0-Jc-dgv"/>
+                            <constraint firstAttribute="bottom" secondItem="QiX-gs-lOs" secondAttribute="bottom" id="grx-JZ-feq"/>
+                            <constraint firstItem="QiX-gs-lOs" firstAttribute="leading" secondItem="hZn-vP-fLl" secondAttribute="leading" id="tzz-K7-wwZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hZn-vP-fLl"/>
                     </view>
@@ -190,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fr8-T5-ZeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1869" y="-115"/>
+            <point key="canvasLocation" x="1868.8" y="-115.64039408866995"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fZy-OT-c2I">
@@ -279,6 +279,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRL-py-0im" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1868.8" y="132.23388305847078"/>
+        </scene>
+        <!--Object Attribute View Controller-->
+        <scene sceneID="Y1W-vd-nUF">
+            <objects>
+                <viewController storyboardIdentifier="ObjectAtrributeController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="t8W-iU-39E" customClass="ObjectAttributeViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1GH-du-9Gp">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Yvy-qG-y7J"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="55"/>
+                    <size key="freeformSize" width="300" height="300"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6p-ft-0Rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1869" y="443"/>
         </scene>
     </scenes>
     <resources>
