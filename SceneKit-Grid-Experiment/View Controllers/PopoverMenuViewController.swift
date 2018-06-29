@@ -8,13 +8,21 @@
 
 import UIKit
 
+protocol MenuActionDelegate: class {
+    func delete()
+    func move()
+    func copy()
+    func paste()
+}
+
 final class PopoverMenuViewController: UIViewController {
     
-    //---- Properties ----//
+    // MARK: - Properties
     
     var viewModel = PopoverMenuViewModel()
+    weak var menuAction: MenuActionDelegate?
     
-    //---- VC Lifecycle ----//
+    // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,19 +71,26 @@ extension PopoverMenuViewController: PopoverMenuDelegate {
     
     func move() {
         viewModel.makeNodeMovable()
-        dismiss(animated: true, completion: nil)
+        menuAction?.move()
+        
+        dismiss(animated: true, completion: {
+            // TODO: Is done 
+        })
     }
     
     func delete() {
         viewModel.removeNode()
+        
         dismiss(animated: true, completion: nil)
     }
     
     func paste() {
+        
         dismiss(animated: true, completion: nil)
     }
     
     func copy() {
+        
         dismiss(animated: true, completion: nil)
     }
     

@@ -196,6 +196,9 @@ extension GameViewController: UIPopoverPresentationControllerDelegate {
         popController.popoverPresentationController?.permittedArrowDirections = .down
         popController.popoverPresentationController?.delegate = self
         
+        // set menu action delegate
+        popController.menuAction = self
+        
         let touchLocation = sender.location(in: view)
         let yOffset = view.frame.height * 0.05
         let sourceRect = CGRect(x: 0, y: yOffset, width: 1, height: 80)
@@ -233,3 +236,26 @@ extension GameViewController: ObjectInsertionDelegate {
     }
     
 }
+
+// MARK: - Move Object Delegate
+
+extension GameViewController: MenuActionDelegate {
+    
+    func move() {
+        gameScene.showGrid()
+    }
+    
+    func delete() {
+        
+    }
+    
+    func copy() {
+        
+    }
+    
+    func paste() {
+        
+    }
+    
+}
+
