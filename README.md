@@ -1,7 +1,7 @@
 # SceneKit Experiment
-This micro-project is a series of quick experiments designed to add-up to build the Livenote app. It experiments on how to construct a grid view for a 3D modeling environment in which user-interface works well in moving 3D models to construct a scene. 
+This micro-project is a series of quick experiments designed to add-up to build the Livenote app. It experiments on how to construct a grid view for a 3D modeling environment in which the user-interface enable users to construct a 3D scene. 
 
-Incase you're wondering what the Livenote app is, it's the Augmented Reality (AR) version of Keynote or PowerPoint. The goal is to create a "pocket projector" using AR in which users can share ideas with others through a more immerisve experience.
+Incase you're wondering what the Livenote app is, it is the Augmented Reality (AR) version of Keynote or PowerPoint. The goal is to create a "pocket projector" using AR in which users can share ideas with others through a more immerisve experience.
 
 <p align="center">
   <img src="https://github.com/trevinwisaksana/SceneKit-Grid-Experiment/blob/master/Screenshots/1.png" width="300" height="604">
