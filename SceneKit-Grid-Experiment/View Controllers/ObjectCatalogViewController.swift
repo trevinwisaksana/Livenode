@@ -51,6 +51,7 @@ extension ObjectCatalogViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TESTING
         delegate?.insert3D(model: .cube)
+        dismiss(animated: true, completion: nil)
     }
     
 }

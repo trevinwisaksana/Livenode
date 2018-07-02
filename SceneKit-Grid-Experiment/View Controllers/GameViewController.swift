@@ -133,7 +133,7 @@ final class GameViewController: UIViewController {
             nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         } else {
             didSelectTargetNode = false
-            lastNodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+//            lastNodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         }
         
         if lastNodeSelected != nodeSelected {
@@ -269,7 +269,9 @@ extension GameViewController: ObjectInsertionDelegate {
     func insert3D(model: Model) {
         switch model {
         case .cube:
+            // TODO: Allow the object to be moved after inserted
             gameScene.insertNode()
+            gameScene.showGrid()
         }
     }
     

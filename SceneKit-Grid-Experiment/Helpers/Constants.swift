@@ -16,5 +16,16 @@ struct Constants {
         static let objectAttribute = "ObjectAttributeController"
     }
     
+}
+
+enum Action: String {
+    case move
+    case copy
+    case delete
+    case paste
+    case cut
     
+    var capitalized: String {
+        return rawValue.capitalized
+    }
 }
