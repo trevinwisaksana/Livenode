@@ -3,5 +3,5 @@ This micro-project is a series of quick experiments designed to add-up to build 
 
 Incase you're wondering what the Livenote app is, it's the Augmented Reality (AR) version of Keynote or PowerPoint. The goal is to create a pocket projector in which users can share ideas with others by allowing them to present in 3D scenes.
 
-![](https://github.com/trevinwisaksana/AdBox-Test-Project/blob/master/Screenshots/Favorites.png)
-![](https://github.com/trevinwisaksana/AdBox-Test-Project/blob/master/Screenshots/Home.png)
+![](https://github.com/trevinwisaksana/SceneKit-Grid-Experiment/blob/master/Screenshots/2.png)
+![](https://github.com/trevinwisaksana/SceneKit-Grid-Experiment/blob/master/Screenshots/1.png)
