@@ -47,13 +47,13 @@ extension PopoverMenuViewController: UICollectionViewDelegateFlowLayout, UIColle
         
         switch row {
         case 0:
-            cell.buttonOutlet.setTitle("Move", for: .normal)
+            cell.buttonOutlet.setTitle(Action.move.capitalized, for: .normal)
         case 1:
-            cell.buttonOutlet.setTitle("Delete", for: .normal)
+            cell.buttonOutlet.setTitle(Action.delete.capitalized, for: .normal)
         case 2:
-            cell.buttonOutlet.setTitle("Copy", for: .normal)
+            cell.buttonOutlet.setTitle(Action.copy.capitalized, for: .normal)
         case 3:
-            cell.buttonOutlet.setTitle("Paste", for: .normal)
+            cell.buttonOutlet.setTitle(Action.paste.capitalized, for: .normal)
         default:
             break
         }
@@ -73,9 +73,7 @@ extension PopoverMenuViewController: PopoverMenuDelegate {
         viewModel.makeNodeMovable()
         menuAction?.move()
         
-        dismiss(animated: true, completion: {
-            // TODO: Is done 
-        })
+        dismiss(animated: true, completion: nil)
     }
     
     func delete() {

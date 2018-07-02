@@ -29,6 +29,11 @@
 		DDEF325E20DF776100FEE793 /* Cube.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Cube.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
 		DDEF326320E4DCE500FEE793 /* SceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326220E4DCE500FEE793 /* SceneCell.swift */; };
+		DDEF326520E6160C00FEE793 /* ObjectAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326420E6160C00FEE793 /* ObjectAttributeViewController.swift */; };
+		DDEF326720E618AF00FEE793 /* ObjectAttributeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */; };
+		DDEF326920E6205D00FEE793 /* ObjectAttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326820E6205D00FEE793 /* ObjectAttributeCell.swift */; };
+		DDEF326B20E625F000FEE793 /* SCNNode+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326A20E625F000FEE793 /* SCNNode+Color.swift */; };
+		DDEF326D20E75C6400FEE793 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326C20E75C6400FEE793 /* DoneView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +72,11 @@
 		DDEF325D20DF776100FEE793 /* Cube.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Cube.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
 		DDEF326220E4DCE500FEE793 /* SceneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCell.swift; sourceTree = "<group>"; };
+		DDEF326420E6160C00FEE793 /* ObjectAttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAttributeViewController.swift; sourceTree = "<group>"; };
+		DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAttributeViewModel.swift; sourceTree = "<group>"; };
+		DDEF326820E6205D00FEE793 /* ObjectAttributeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAttributeCell.swift; sourceTree = "<group>"; };
+		DDEF326A20E625F000FEE793 /* SCNNode+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Color.swift"; sourceTree = "<group>"; };
+		DDEF326C20E75C6400FEE793 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +148,7 @@
 				DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */,
 				DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */,
 				DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */,
+				DDEF326420E6160C00FEE793 /* ObjectAttributeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -148,6 +159,8 @@
 				DD638DB820ABD44200395557 /* PopoverMenuCell.swift */,
 				DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */,
 				DDEF326220E4DCE500FEE793 /* SceneCell.swift */,
+				DDEF326820E6205D00FEE793 /* ObjectAttributeCell.swift */,
+				DDEF326C20E75C6400FEE793 /* DoneView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +197,7 @@
 			children = (
 				DD638DC120AC2E0200395557 /* GameViewModel.swift */,
 				DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */,
+				DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -193,6 +207,7 @@
 			children = (
 				DD2A55ED20DE3BD100EA00ED /* UICollectionView+Utility.swift */,
 				DD638DC620AC5E0300395557 /* SCNode+Movable.swift */,
+				DDEF326A20E625F000FEE793 /* SCNNode+Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -312,17 +327,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */,
+				DDEF326720E618AF00FEE793 /* ObjectAttributeViewModel.swift in Sources */,
+				DDEF326D20E75C6400FEE793 /* DoneView.swift in Sources */,
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNode+Movable.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* GameViewController.swift in Sources */,
 				DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
+				DDEF326920E6205D00FEE793 /* ObjectAttributeCell.swift in Sources */,
 				DDEF326320E4DCE500FEE793 /* SceneCell.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
+				DDEF326520E6160C00FEE793 /* ObjectAttributeViewController.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
 				DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
+				DDEF326B20E625F000FEE793 /* SCNNode+Color.swift in Sources */,
 				DD20F68A20672FE6005E838C /* Grid.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionView+Utility.swift in Sources */,

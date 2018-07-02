@@ -17,7 +17,16 @@ final class GameViewController: UIViewController {
     private var gameScene: GridScene!
     private var cameraNode: SCNNode!
     
-    private var nodeSelected: SCNNode?
+    private var nodeSelected: SCNNode? {
+        didSet {
+            if nodeSelected == nil {
+                objectAttributeButton.isEnabled = false
+            } else {
+                objectAttributeButton.isEnabled = true
+            }
+        }
+    }
+    
     private var lastNodeSelected: SCNNode?
     private var lastNodePosition: SCNVector3?
     
@@ -28,6 +37,11 @@ final class GameViewController: UIViewController {
             gameView.allowsCameraControl = true
         }
     }
+    
+    // MARK: - IBOutlet
+    
+    @IBOutlet weak var objectAttributeButton: UIBarButtonItem!
+    
     
     // MARK: - VC Lifecycle
     
@@ -60,25 +74,49 @@ final class GameViewController: UIViewController {
         gameView.backgroundColor = .white
     }
     
-    // MARK: - IBAction
+    // MARK: - IBActions
     
     @IBAction func didTapAddObjectButton(_ sender: UIBarButtonItem) {
         // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
+        let objectCatalogController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
         
         // set the presentation style
-        popController.modalPresentationStyle = .popover
+        objectCatalogController.modalPresentationStyle = .popover
         
         // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = .up
-        popController.popoverPresentationController?.delegate = self
-        popController.popoverPresentationController?.barButtonItem = sender
+        objectCatalogController.popoverPresentationController?.permittedArrowDirections = .up
+        objectCatalogController.popoverPresentationController?.delegate = self
+        objectCatalogController.popoverPresentationController?.barButtonItem = sender
         
         // set delegate
-        popController.delegate = self
+        objectCatalogController.delegate = self
         
         // present the popover
-        present(popController, animated: true, completion: nil)
+        present(objectCatalogController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func didTapObjectAttributeButton(_ sender: UIBarButtonItem) {
+        // get a reference to the view controller for the popover
+        let objectAttributeController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectAttribute) as! ObjectAttributeViewController
+        
+        // set the selected node
+        guard let nodeSelected = nodeSelected else {
+            return
+        }
+        
+        objectAttributeController.viewModel.nodeSelected = nodeSelected
+        
+        // set the presentation style
+        objectAttributeController.modalPresentationStyle = .popover
+        
+        // set up the popover presentation controller
+        objectAttributeController.popoverPresentationController?.permittedArrowDirections = .up
+        objectAttributeController.popoverPresentationController?.delegate = self
+        objectAttributeController.popoverPresentationController?.barButtonItem = sender
+        
+        // present the popover
+        present(objectAttributeController, animated: true, completion: nil)
     }
     
     
@@ -95,6 +133,7 @@ final class GameViewController: UIViewController {
             nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         } else {
             didSelectTargetNode = false
+//            lastNodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         }
         
         if lastNodeSelected != nodeSelected {
@@ -126,14 +165,13 @@ final class GameViewController: UIViewController {
             if gameScene.testNode.isMovable {
                 gameScene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
             }
-            
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        didFinishDraggingNode = true
-        
-        gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+//        didFinishDraggingNode = true
+//
+//        gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         
         // TODO: Create a Done button to finish moving
 //        gameScene.testNode.isMovable = false
@@ -153,7 +191,7 @@ final class GameViewController: UIViewController {
         }
         
         if nodeSelected.name == "testNode" {
-            showPopover(sender, for: nodeSelected)
+            showPopoverMenu(sender, for: nodeSelected)
         }
     }
     
@@ -182,12 +220,12 @@ final class GameViewController: UIViewController {
 
 extension GameViewController: UIPopoverPresentationControllerDelegate {
     
-    func showPopover(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
+    func showPopoverMenu(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover
         let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopoverMenu") as! PopoverMenuViewController
         
         // set the selected node
-        popController.viewModel.selectedNode = node
+        popController.viewModel.nodeSelected = node
         
         // set the presentation style
         popController.modalPresentationStyle = .popover
@@ -231,7 +269,9 @@ extension GameViewController: ObjectInsertionDelegate {
     func insert3D(model: Model) {
         switch model {
         case .cube:
+            // TODO: Allow the object to be moved after inserted
             gameScene.insertNode()
+            gameScene.showGrid()
         }
     }
     

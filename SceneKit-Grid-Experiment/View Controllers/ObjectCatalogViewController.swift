@@ -33,10 +33,6 @@ final class ObjectCatalogViewController: UIViewController {
 
 extension ObjectCatalogViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
@@ -55,6 +51,7 @@ extension ObjectCatalogViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TESTING
         delegate?.insert3D(model: .cube)
+        dismiss(animated: true, completion: nil)
     }
     
 }

@@ -13,7 +13,19 @@ struct Constants {
     struct Controller {
         static let objectCatalog = "ObjectCatalogController"
         static let popoverMenu = "PopoverMenuController"
+        static let objectAttribute = "ObjectAttributeController"
     }
     
+}
+
+enum Action: String {
+    case move
+    case copy
+    case delete
+    case paste
+    case cut
     
+    var capitalized: String {
+        return rawValue.capitalized
+    }
 }
