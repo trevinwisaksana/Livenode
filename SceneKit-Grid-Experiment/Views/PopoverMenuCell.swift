@@ -28,21 +28,19 @@ final class PopoverMenuCell: UICollectionViewCell {
     //---- IBActions ----//
     
     @IBAction func didPressButton(_ sender: UIButton) {
-        
         // TODO: Every button press should dismiss the popover
         switch sender.titleLabel?.text {
-        case "Delete":
+        case Action.delete.capitalized:
             delegate?.delete()
-        case "Move":
+        case Action.move.capitalized:
             delegate?.move()
-        case "Copy":
+        case Action.copy.capitalized:
             delegate?.copy()
-        case "Paste":
+        case Action.paste.capitalized:
             delegate?.paste()
         default:
             break
         }
-        
     }
     
 }
