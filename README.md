@@ -8,6 +8,6 @@ Incase you're wondering what the Livenote app is, it is the Augmented Reality (A
 </p>
 
 <p align="center">
-  <body> This is the current state of the SceneKit Experiment. I am able to test a Keynote-inspired user interface on the iPhone. </body>
+  <body> This is the current state of the SceneKit Experiment. I am able to test a Keynote-inspired user interface on the iPad. </body>
 </p>
 
