@@ -70,8 +70,8 @@ final class GameViewController: UIViewController {
         // show statistics such as fps and timing information
         gameView.showsStatistics = false
         
-        // configure the view
-        gameView.backgroundColor = .white
+        // default lighting
+        gameView.autoenablesDefaultLighting = true
     }
     
     // MARK: - IBActions
@@ -128,12 +128,17 @@ final class GameViewController: UIViewController {
         
         nodeSelected = gameView.hitTest(location, options: nil).first?.node
         
+        if nodeSelected?.name == "Floor" {
+            nodeSelected = nil
+            return
+        }
+        
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
             nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         } else {
             didSelectTargetNode = false
-//            lastNodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+            gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         }
         
         if lastNodeSelected != nodeSelected {

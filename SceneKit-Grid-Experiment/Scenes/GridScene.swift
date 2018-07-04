@@ -24,16 +24,9 @@ final class GridScene: SCNScene {
     override public init() {
         super.init()
         
-        let gradient: CAGradientLayer = CAGradientLayer()
-        
-        gradient.colors = [UIColor.blue.cgColor, UIColor.red.cgColor]
-        gradient.locations = [0.0 , 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-        
         background.contents = UIColor.gray
         
-        initCamera()
+//        initCamera()
     
         let testBox = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         testNode = SCNNode(geometry: testBox)
@@ -43,31 +36,15 @@ final class GridScene: SCNScene {
         
         rootNode.addChildNode(testNode)
         
-        // TODO: Rotate the SCNFloor and add a grid texture
+        // TODO: Add a grid texture to the SCNFloor
         let floor = SCNFloor()
         floor.reflectivity = 0
         
         floorNode = SCNNode(geometry: floor)
-    
+        floorNode.name = "Floor"
         floorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.gray
         
         rootNode.addChildNode(floorNode)
-        
-        // TODO: Fix the lighting issues
-        let lightNode = SCNNode()
-        lightNode.light = SCNLight()
-        lightNode.light?.type = .directional
-        lightNode.position = SCNVector3(0, 0, 0)
-//        rootNode.addChildNode(lightNode)
-        
-        cameraNode.addChildNode(lightNode)
-        
-        // create and add an ambient light to the scene
-        let ambientLightNode = SCNNode()
-        ambientLightNode.light = SCNLight()
-        ambientLightNode.light?.type = .ambient
-        ambientLightNode.light?.color = UIColor.darkGray
-        rootNode.addChildNode(ambientLightNode)
     }
     
     func initCamera() {
