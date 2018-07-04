@@ -169,7 +169,7 @@ final class GameViewController: UIViewController {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        didFinishDraggingNode = true
+        didFinishDraggingNode = true
 //
 //        gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         
