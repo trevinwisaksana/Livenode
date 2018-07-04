@@ -130,6 +130,7 @@ final class GameViewController: UIViewController {
         
         if nodeSelected?.name == "Floor" {
             nodeSelected = nil
+            gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
             return
         }
         
@@ -157,7 +158,7 @@ final class GameViewController: UIViewController {
         }
 
         if didSelectTargetNode {
-            gameView.allowsCameraControl = false
+//            gameView.allowsCameraControl = false
             
             let nodeXPos = nodeSelected.position.x
             let nodeYPos = nodeSelected.position.y
