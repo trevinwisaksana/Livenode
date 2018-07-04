@@ -54,13 +54,13 @@ final class GridScene: SCNScene {
         rootNode.addChildNode(floorNode)
         
         // TODO: Fix the lighting issues
-//        let lightNode = SCNNode()
-//        lightNode.light = SCNLight()
-//        lightNode.light?.type = .spot
-//        lightNode.position = SCNVector3(0, 0, 0)
+        let lightNode = SCNNode()
+        lightNode.light = SCNLight()
+        lightNode.light?.type = .directional
+        lightNode.position = SCNVector3(0, 0, 0)
 //        rootNode.addChildNode(lightNode)
         
-//        cameraNode.addChildNode(lightNode)
+        cameraNode.addChildNode(lightNode)
         
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
