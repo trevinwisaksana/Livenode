@@ -27,7 +27,7 @@ final class PopoverMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSize(width: 300, height: 45)
+        preferredContentSize = CGSize(width: 290, height: 45)
     }
     
 }

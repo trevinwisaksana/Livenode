@@ -24,7 +24,7 @@ final class ObjectCatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSize(width: 300, height: 100)
+        preferredContentSize = CGSize(width: 300, height: 300)
     }
     
 }
@@ -34,11 +34,22 @@ final class ObjectCatalogViewController: UIViewController {
 extension ObjectCatalogViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell: ObjectCatalogCell = collectionView.dequeueReusableCell(for: indexPath)
+        
+        switch indexPath.row {
+        case 0:
+            cell.configure(with: .box)
+        case 1:
+            cell.configure(with: .pyramid)
+        default:
+            break
+        }
+        
         return cell
     }
     
@@ -49,8 +60,15 @@ extension ObjectCatalogViewController: UICollectionViewDataSource {
 extension ObjectCatalogViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TESTING
-        delegate?.insert3D(model: .cube)
+        switch indexPath.row {
+        case 0:
+            delegate?.insert3D(model: .box)
+        case 1:
+            delegate?.insert3D(model: .pyramid)
+        default:
+            break
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -62,10 +80,9 @@ extension ObjectCatalogViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width = view.frame.width
-        let height = view.frame.height
+        let width = view.frame.width / 2
 
-        return CGSize(width: width, height: height)
+        return CGSize(width: width, height: width)
     }
     
 }

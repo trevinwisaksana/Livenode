@@ -8,6 +8,11 @@
 
 import SceneKit
 
-enum Model {
-    case cube
+enum Model: String {
+    case box
+    case pyramid
+    
+    var filename: String {
+        return self.rawValue.capitalized + ".scn"
+    }
 }

@@ -13,8 +13,8 @@ final class ObjectCatalogCell: UICollectionViewCell {
     
     @IBOutlet weak var objectSceneView: SCNView!
     
-    func configure(with object: Model) {
-        
+    func configure(with model: Model) {
+        objectSceneView.scene = SCNScene(named: model.filename)
     }
     
 }

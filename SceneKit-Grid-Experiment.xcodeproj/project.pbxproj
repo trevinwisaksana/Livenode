@@ -11,7 +11,6 @@
 		DD20F66F20672FBD005E838C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD20F66D20672FBD005E838C /* Main.storyboard */; };
 		DD20F67120672FBD005E838C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67020672FBD005E838C /* Assets.xcassets */; };
 		DD20F67420672FBD005E838C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67220672FBD005E838C /* LaunchScreen.storyboard */; };
-		DD20F68A20672FE6005E838C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F68920672FE6005E838C /* Grid.swift */; };
 		DD20F68C20673184005E838C /* GridScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F68B20673184005E838C /* GridScene.swift */; };
 		DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */; };
 		DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E820DE12AA00EA00ED /* Constants.swift */; };
@@ -26,7 +25,7 @@
 		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
 		DD638DC720AC5E0300395557 /* SCNode+Movable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNode+Movable.swift */; };
 		DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF325B20DF70CF00FEE793 /* Model.swift */; };
-		DDEF325E20DF776100FEE793 /* Cube.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Cube.scn */; };
+		DDEF325E20DF776100FEE793 /* Box.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Box.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
 		DDEF326320E4DCE500FEE793 /* SceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326220E4DCE500FEE793 /* SceneCell.swift */; };
 		DDEF326520E6160C00FEE793 /* ObjectAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326420E6160C00FEE793 /* ObjectAttributeViewController.swift */; };
@@ -54,7 +53,6 @@
 		DD20F67320672FBD005E838C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD20F67520672FBD005E838C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD20F67A20672FBD005E838C /* SceneKit-Grid-ExperimentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SceneKit-Grid-ExperimentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD20F68920672FE6005E838C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		DD20F68B20673184005E838C /* GridScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridScene.swift; sourceTree = "<group>"; };
 		DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewController.swift; sourceTree = "<group>"; };
 		DD2A55E820DE12AA00EA00ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -69,7 +67,7 @@
 		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNode+Movable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNode+Movable.swift"; sourceTree = "<group>"; };
 		DDEF325B20DF70CF00FEE793 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		DDEF325D20DF776100FEE793 /* Cube.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Cube.scn; sourceTree = "<group>"; };
+		DDEF325D20DF776100FEE793 /* Box.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Box.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
 		DDEF326220E4DCE500FEE793 /* SceneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCell.swift; sourceTree = "<group>"; };
 		DDEF326420E6160C00FEE793 /* ObjectAttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAttributeViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				DD20F68B20673184005E838C /* GridScene.swift */,
-				DDEF325D20DF776100FEE793 /* Cube.scn */,
+				DDEF325D20DF776100FEE793 /* Box.scn */,
 				DDEF326020DF797F00FEE793 /* Pyramid.scn */,
 			);
 			path = Scenes;
@@ -178,7 +176,6 @@
 		DD638DBF20AC2D9C00395557 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DD20F68920672FE6005E838C /* Grid.swift */,
 				DDEF325B20DF70CF00FEE793 /* Model.swift */,
 			);
 			path = Models;
@@ -306,7 +303,7 @@
 			files = (
 				DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */,
 				DD20F67420672FBD005E838C /* LaunchScreen.storyboard in Resources */,
-				DDEF325E20DF776100FEE793 /* Cube.scn in Resources */,
+				DDEF325E20DF776100FEE793 /* Box.scn in Resources */,
 				DD20F67120672FBD005E838C /* Assets.xcassets in Resources */,
 				DD20F66F20672FBD005E838C /* Main.storyboard in Resources */,
 			);
@@ -343,7 +340,6 @@
 				DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DDEF326B20E625F000FEE793 /* SCNNode+Color.swift in Sources */,
-				DD20F68A20672FE6005E838C /* Grid.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionView+Utility.swift in Sources */,
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,

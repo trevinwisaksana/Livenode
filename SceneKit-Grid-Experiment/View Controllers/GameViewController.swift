@@ -274,11 +274,14 @@ extension GameViewController: ObjectInsertionDelegate {
     
     func insert3D(model: Model) {
         switch model {
-        case .cube:
+        case .box:
             // TODO: Allow the object to be moved after inserted
-            gameScene.insertNode()
-            gameScene.showGrid()
+            gameScene.insertBox()
+        case .pyramid:
+            gameScene.insertPyramid()
         }
+        
+        gameScene.showGrid()
     }
     
 }

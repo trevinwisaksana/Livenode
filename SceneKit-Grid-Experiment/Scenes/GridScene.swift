@@ -73,15 +73,33 @@ final class GridScene: SCNScene {
 //        rootNode.addChildNode(cameraNode)
     }
     
-    func insertNode() {
-        let testBox = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-        testNode = SCNNode(geometry: testBox)
-        testNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        testNode.position = SCNVector3(0, 0, 5)
-        testNode.name = "testNode"
+    // MARK: - Insertion
+    
+    func insertBox() {
+        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        let boxNode = SCNNode(geometry: box)
+        boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+        boxNode.position = SCNVector3(0, 0, 5)
         
-//        rootNode.addChildNode(testNode)
+        // TODO: Change the name
+        boxNode.name = "testNode"
+        
+        rootNode.addChildNode(boxNode)
     }
+    
+    func insertPyramid() {
+        let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
+        let pyramidNode = SCNNode(geometry: pyramid)
+        pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+        pyramidNode.position = SCNVector3(0, 0, 5)
+        
+        // TODO: Change the name
+        pyramidNode.name = "testNode"
+        
+        rootNode.addChildNode(pyramidNode)
+    }
+    
+    // MARK: - Grid
     
     func showGrid() {
         let width: CGFloat = 0.95
