@@ -289,10 +289,10 @@
                                 </connections>
                             </collectionView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yu1-ot-ESg">
-                                <rect key="frame" x="90" y="12" width="120" height="29"/>
+                                <rect key="frame" x="50" y="12" width="200" height="29"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Basic"/>
+                                    <segment title="Ornaments"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -301,8 +301,8 @@
                             <constraint firstItem="yDa-ZU-Lq1" firstAttribute="trailing" secondItem="dar-us-7ua" secondAttribute="trailing" id="2nH-My-Jva"/>
                             <constraint firstItem="yDa-ZU-Lq1" firstAttribute="leading" secondItem="dar-us-7ua" secondAttribute="leading" id="DVc-K5-RoQ"/>
                             <constraint firstItem="yDa-ZU-Lq1" firstAttribute="top" secondItem="yu1-ot-ESg" secondAttribute="bottom" constant="15" id="KMd-Ga-znd"/>
-                            <constraint firstItem="yu1-ot-ESg" firstAttribute="leading" secondItem="dar-us-7ua" secondAttribute="leading" constant="90" id="OSL-FY-dJs"/>
-                            <constraint firstItem="dar-us-7ua" firstAttribute="trailing" secondItem="yu1-ot-ESg" secondAttribute="trailing" constant="90" id="QlX-p6-jlT"/>
+                            <constraint firstItem="yu1-ot-ESg" firstAttribute="leading" secondItem="dar-us-7ua" secondAttribute="leading" constant="50" id="OSL-FY-dJs"/>
+                            <constraint firstItem="dar-us-7ua" firstAttribute="trailing" secondItem="yu1-ot-ESg" secondAttribute="trailing" constant="50" id="QlX-p6-jlT"/>
                             <constraint firstItem="yu1-ot-ESg" firstAttribute="top" secondItem="7RT-BA-e1x" secondAttribute="top" constant="12" id="cQO-QO-Oe4"/>
                             <constraint firstItem="yDa-ZU-Lq1" firstAttribute="bottom" secondItem="dar-us-7ua" secondAttribute="bottom" id="nZj-rh-KNe"/>
                         </constraints>
