@@ -33,6 +33,7 @@
 		DDEF326920E6205D00FEE793 /* ObjectAttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326820E6205D00FEE793 /* ObjectAttributeCell.swift */; };
 		DDEF326B20E625F000FEE793 /* SCNNode+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326A20E625F000FEE793 /* SCNNode+Color.swift */; };
 		DDEF326D20E75C6400FEE793 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326C20E75C6400FEE793 /* DoneView.swift */; };
+		DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		DDEF326820E6205D00FEE793 /* ObjectAttributeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAttributeCell.swift; sourceTree = "<group>"; };
 		DDEF326A20E625F000FEE793 /* SCNNode+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Color.swift"; sourceTree = "<group>"; };
 		DDEF326C20E75C6400FEE793 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
+		DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,11 +156,9 @@
 		DD638DBD20AC2D4200395557 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DD638DB820ABD44200395557 /* PopoverMenuCell.swift */,
-				DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */,
-				DDEF326220E4DCE500FEE793 /* SceneCell.swift */,
-				DDEF326820E6205D00FEE793 /* ObjectAttributeCell.swift */,
+				DDFC63E320F1FE5900109EC5 /* Cells */,
 				DDEF326C20E75C6400FEE793 /* DoneView.swift */,
+				DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +216,17 @@
 				DD20F66D20672FBD005E838C /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		DDFC63E320F1FE5900109EC5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DD638DB820ABD44200395557 /* PopoverMenuCell.swift */,
+				DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */,
+				DDEF326220E4DCE500FEE793 /* SceneCell.swift */,
+				DDEF326820E6205D00FEE793 /* ObjectAttributeCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +352,7 @@
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DDEF326B20E625F000FEE793 /* SCNNode+Color.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
+				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionView+Utility.swift in Sources */,
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
 				DD638DBB20AC2CF800395557 /* NodeManager.swift in Sources */,
