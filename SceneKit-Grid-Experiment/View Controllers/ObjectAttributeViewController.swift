@@ -18,7 +18,8 @@ final class ObjectAttributeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        preferredContentSize = CGSize(width: 300, height: 400)
     }
     
 }
@@ -28,13 +29,23 @@ final class ObjectAttributeViewController: UIViewController {
 extension ObjectAttributeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: ObjectAttributeCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.delegate = self
-        return cell
+        
+        switch indexPath.row {
+        case 0:
+            let cell: ColorPickerCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 1:
+            let cell: ObjectAttributeCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.delegate = self
+            return cell
+        default:
+            fatalError("Index path out of range.")
+        }
+        
     }
     
 }

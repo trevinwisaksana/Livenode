@@ -320,11 +320,11 @@
             <objects>
                 <viewController storyboardIdentifier="ObjectAttributeController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="t8W-iU-39E" customClass="ObjectAttributeViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1GH-du-9Gp">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="is2-Fp-hTb">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="is2-Fp-hTb">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zgb-9O-ePh">
                                     <size key="itemSize" width="300" height="50"/>
@@ -354,26 +354,26 @@
                                             <constraint firstItem="tU9-83-tj0" firstAttribute="centerX" secondItem="upl-WU-72w" secondAttribute="centerX" id="mm3-OS-7Wq"/>
                                         </constraints>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorPickercell" id="eUF-5Y-z0m">
-                                        <rect key="frame" x="0.0" y="60" width="300" height="168"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorPickerCell" id="eUF-5Y-z0m" customClass="ColorPickerCell" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="168"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMz-BJ-OQE" customClass="HSBColorPicker" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
-                                                    <rect key="frame" x="66" y="0.0" width="168" height="168"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="mMz-BJ-OQE" firstAttribute="leading" secondItem="eUF-5Y-z0m" secondAttribute="leading" constant="66" id="Py8-aZ-1cw"/>
-                                            <constraint firstItem="mMz-BJ-OQE" firstAttribute="top" secondItem="eUF-5Y-z0m" secondAttribute="top" id="cEF-L5-4ux"/>
-                                            <constraint firstAttribute="bottom" secondItem="mMz-BJ-OQE" secondAttribute="bottom" id="nHK-sY-WHV"/>
-                                            <constraint firstAttribute="trailing" secondItem="mMz-BJ-OQE" secondAttribute="trailing" constant="66" id="qbX-Ne-7aD"/>
+                                            <constraint firstItem="mMz-BJ-OQE" firstAttribute="leading" secondItem="eUF-5Y-z0m" secondAttribute="leading" id="Lgq-Wh-Md1"/>
+                                            <constraint firstAttribute="bottom" secondItem="mMz-BJ-OQE" secondAttribute="bottom" id="TkI-9M-3sB"/>
+                                            <constraint firstItem="mMz-BJ-OQE" firstAttribute="top" secondItem="eUF-5Y-z0m" secondAttribute="top" id="ZYP-A3-Ip5"/>
+                                            <constraint firstAttribute="trailing" secondItem="mMz-BJ-OQE" secondAttribute="trailing" id="Zb2-bh-Ued"/>
                                         </constraints>
-                                        <size key="customSize" width="300" height="168"/>
+                                        <size key="customSize" width="300" height="300"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -392,7 +392,7 @@
                         <viewLayoutGuide key="safeArea" id="Yvy-qG-y7J"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="55"/>
-                    <size key="freeformSize" width="300" height="300"/>
+                    <size key="freeformSize" width="300" height="400"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6p-ft-0Rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

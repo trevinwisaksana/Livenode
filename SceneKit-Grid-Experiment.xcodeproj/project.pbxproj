@@ -34,6 +34,7 @@
 		DDEF326B20E625F000FEE793 /* SCNNode+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326A20E625F000FEE793 /* SCNNode+Color.swift */; };
 		DDEF326D20E75C6400FEE793 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326C20E75C6400FEE793 /* DoneView.swift */; };
 		DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */; };
+		DDFC63E720F7520800109EC5 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E620F7520800109EC5 /* ColorPickerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		DDEF326A20E625F000FEE793 /* SCNNode+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Color.swift"; sourceTree = "<group>"; };
 		DDEF326C20E75C6400FEE793 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		DDFC63E620F7520800109EC5 /* ColorPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */,
 				DDEF326220E4DCE500FEE793 /* SceneCell.swift */,
 				DDEF326820E6205D00FEE793 /* ObjectAttributeCell.swift */,
+				DDFC63E620F7520800109EC5 /* ColorPickerCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionView+Utility.swift in Sources */,
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
+				DDFC63E720F7520800109EC5 /* ColorPickerCell.swift in Sources */,
 				DD638DBB20AC2CF800395557 /* NodeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
