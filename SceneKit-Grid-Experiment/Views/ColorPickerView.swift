@@ -19,7 +19,7 @@ class HSBColorPicker: UIView {
     let saturationExponentTop:Float = 2.0
     let saturationExponentBottom:Float = 1.3
     
-    @IBInspectable var elementSize: CGFloat = 10 {
+    @IBInspectable var elementSize: CGFloat = 20 {
         didSet {
             setNeedsDisplay()
         }

@@ -38,10 +38,12 @@ extension ObjectAttributeViewController: UICollectionViewDataSource {
         case 0:
             let cell: ColorPickerCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
+            
         case 1:
             let cell: ObjectAttributeCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.delegate = self
             return cell
+            
         default:
             fatalError("Index path out of range.")
         }
@@ -55,6 +57,25 @@ extension ObjectAttributeViewController: UICollectionViewDataSource {
 extension ObjectAttributeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
+}
+
+// MARK: - Collection View Flow Layout
+
+extension ObjectAttributeViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        switch indexPath.row {
+        case 0:
+            return CGSize(width: 300, height: 300)
+        case 1:
+            return CGSize(width: 300, height: 50)
+        default:
+            fatalError("Index path out of range.")
+        }
         
     }
     
