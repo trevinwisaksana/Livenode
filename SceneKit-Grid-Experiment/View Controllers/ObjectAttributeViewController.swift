@@ -29,7 +29,7 @@ final class ObjectAttributeViewController: UIViewController {
 extension ObjectAttributeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -37,11 +37,7 @@ extension ObjectAttributeViewController: UICollectionViewDataSource {
         switch indexPath.row {
         case 0:
             let cell: ColorPickerCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
-            
-        case 1:
-            let cell: ObjectAttributeCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.delegate = self
+            cell.colorPickerView.delegate = self
             return cell
             
         default:
@@ -81,12 +77,12 @@ extension ObjectAttributeViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-// MARK: - Object Attribute Delegate
+// MARK: - HSBColorPicker Delegate
 
-extension ObjectAttributeViewController: ObjectAttributeDelegate {
+extension ObjectAttributeViewController: HSBColorPickerDelegate {
     
-    func changeColor() {
-        viewModel.nodeSelected?.change(color: .green)
+    func HSBColorColorPickerTouched(sender: HSBColorPicker, color: UIColor, point: CGPoint, state: UIGestureRecognizerState) {
+        viewModel.nodeSelected?.change(color: color)
     }
     
 }

@@ -333,29 +333,8 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ObjectAttributeCell" id="upl-WU-72w" customClass="ObjectAttributeCell" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tU9-83-tj0">
-                                                    <rect key="frame" x="104" y="10" width="92" height="30"/>
-                                                    <state key="normal" title="Change color"/>
-                                                    <connections>
-                                                        <action selector="didTapChangeColorButtonWithSender:" destination="upl-WU-72w" eventType="touchUpInside" id="6mN-92-0h2"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="tU9-83-tj0" firstAttribute="centerY" secondItem="upl-WU-72w" secondAttribute="centerY" id="MB2-Aw-hS3"/>
-                                            <constraint firstItem="tU9-83-tj0" firstAttribute="centerX" secondItem="upl-WU-72w" secondAttribute="centerX" id="mm3-OS-7Wq"/>
-                                        </constraints>
-                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorPickerCell" id="eUF-5Y-z0m" customClass="ColorPickerCell" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60" width="300" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -374,6 +353,9 @@
                                             <constraint firstAttribute="trailing" secondItem="mMz-BJ-OQE" secondAttribute="trailing" id="Zb2-bh-Ued"/>
                                         </constraints>
                                         <size key="customSize" width="300" height="300"/>
+                                        <connections>
+                                            <outlet property="colorPickerView" destination="mMz-BJ-OQE" id="ZC0-3J-986"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

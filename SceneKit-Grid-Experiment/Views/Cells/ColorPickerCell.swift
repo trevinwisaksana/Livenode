@@ -10,6 +10,6 @@ import UIKit
 
 final class ColorPickerCell: UICollectionViewCell {
     
-    
+    @IBOutlet weak var colorPickerView: HSBColorPicker!
     
 }
