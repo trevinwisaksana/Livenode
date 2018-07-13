@@ -34,6 +34,7 @@
 		DDEF326D20E75C6400FEE793 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326C20E75C6400FEE793 /* DoneView.swift */; };
 		DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */; };
 		DDFC63E720F7520800109EC5 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E620F7520800109EC5 /* ColorPickerCell.swift */; };
+		DDFC63E920F87E2300109EC5 /* RecentsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E820F87E2300109EC5 /* RecentsCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		DDEF326C20E75C6400FEE793 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DDFC63E620F7520800109EC5 /* ColorPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCell.swift; sourceTree = "<group>"; };
+		DDFC63E820F87E2300109EC5 /* RecentsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				DDFC63E320F1FE5900109EC5 /* Cells */,
 				DDEF326C20E75C6400FEE793 /* DoneView.swift */,
 				DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */,
+				DDFC63E820F87E2300109EC5 /* RecentsCollectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				DDEF326520E6160C00FEE793 /* ObjectAttributeViewController.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
+				DDFC63E920F87E2300109EC5 /* RecentsCollectionReusableView.swift in Sources */,
 				DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DDEF326B20E625F000FEE793 /* SCNNode+Color.swift in Sources */,
