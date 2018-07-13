@@ -1,5 +1,5 @@
 //
-//  GameViewController.swift
+//  SceneViewController.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 19/04/2018.
@@ -9,13 +9,12 @@
 import UIKit
 import SceneKit
 
-final class GameViewController: UIViewController {
+final class SceneViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var gameView: SCNView!
-    private var gameScene: GridScene!
-    private var cameraNode: SCNNode!
+    private var sceneView: SCNView!
+    private var mainScene: GridScene!
     
     private var nodeSelected: SCNNode? {
         didSet {
@@ -34,7 +33,7 @@ final class GameViewController: UIViewController {
     
     private var didFinishDraggingNode = false {
         didSet {
-            gameView.allowsCameraControl = true
+            sceneView.allowsCameraControl = true
         }
     }
     
@@ -56,22 +55,22 @@ final class GameViewController: UIViewController {
     
     private func setupGameView() {
         // create a new scene
-        gameScene = GridScene()
+        mainScene = GridScene()
         
         // retrieve the SCNView
-        gameView = self.view as! SCNView
+        sceneView = self.view as! SCNView
         
         // set the scene to the view
-        gameView.scene = gameScene
+        sceneView.scene = mainScene
         
         // allow camera control
-        gameView.allowsCameraControl = true
+        sceneView.allowsCameraControl = true
         
         // show statistics such as fps and timing information
-        gameView.showsStatistics = false
+        sceneView.showsStatistics = false
         
         // default lighting
-        gameView.autoenablesDefaultLighting = true
+        sceneView.autoenablesDefaultLighting = true
     }
     
     // MARK: - IBActions
@@ -126,11 +125,11 @@ final class GameViewController: UIViewController {
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: view)
         
-        nodeSelected = gameView.hitTest(location, options: nil).first?.node
+        nodeSelected = sceneView.hitTest(location, options: nil).first?.node
         
         if nodeSelected?.name == "Floor" {
             nodeSelected = nil
-            gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
             return
         }
         
@@ -139,7 +138,7 @@ final class GameViewController: UIViewController {
             nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         } else {
             didSelectTargetNode = false
-            gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         }
         
         if lastNodeSelected != nodeSelected {
@@ -147,13 +146,18 @@ final class GameViewController: UIViewController {
         }
         
         lastNodeSelected = nodeSelected
+        
+        // TESTING
+        if let newNode = mainScene.rootNode.childNode(withName: "testNode", recursively: true) {
+            sceneView.pointOfView?.pivot = newNode.pivot
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: view)
         
-        guard let nodeSelected = gameView.hitTest(location, options: nil).first?.node else {
+        guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node else {
             return
         }
 
@@ -168,8 +172,8 @@ final class GameViewController: UIViewController {
                 nodeZPos = 0
             }
             
-            if gameScene.testNode.isMovable {
-                gameScene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
+            if mainScene.testNode.isMovable {
+                mainScene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
             }
         }
     }
@@ -192,7 +196,7 @@ final class GameViewController: UIViewController {
     private func didLongPress(sender: UILongPressGestureRecognizer) {
         let location = sender.location(in: view)
         
-        guard let nodeSelected = gameView.hitTest(location, options: nil).first?.node else {
+        guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node else {
             return
         }
         
@@ -224,7 +228,7 @@ final class GameViewController: UIViewController {
 
 // MARK: - UIPopover
 
-extension GameViewController: UIPopoverPresentationControllerDelegate {
+extension SceneViewController: UIPopoverPresentationControllerDelegate {
     
     func showPopoverMenu(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover
@@ -270,28 +274,28 @@ extension GameViewController: UIPopoverPresentationControllerDelegate {
 
 // MARK: - Object Insertion Delegate
 
-extension GameViewController: ObjectInsertionDelegate {
+extension SceneViewController: ObjectInsertionDelegate {
     
     func insert3D(model: Model) {
         switch model {
         case .box:
             // TODO: Allow the object to be moved after inserted
-            gameScene.insertBox()
+            mainScene.insertBox()
         case .pyramid:
-            gameScene.insertPyramid()
+            mainScene.insertPyramid()
         }
         
-        gameScene.showGrid()
+        mainScene.showGrid()
     }
     
 }
 
 // MARK: - Move Object Delegate
 
-extension GameViewController: MenuActionDelegate {
+extension SceneViewController: MenuActionDelegate {
     
     func move() {
-        gameScene.showGrid()
+        mainScene.showGrid()
     }
     
     func delete() {
