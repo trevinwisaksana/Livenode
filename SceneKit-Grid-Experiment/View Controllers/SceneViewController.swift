@@ -129,16 +129,20 @@ final class SceneViewController: UIViewController {
         
         if nodeSelected?.name == "Floor" {
             nodeSelected = nil
-            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+//            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+            mainScene.unhighlightNode(nodeSelected)
+            
             return
         }
         
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
-            nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
+//            nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
+//            nodeSelected?.geometry?.firstMaterial?.emission.borderColor = UIColor.orange
+            mainScene.highlightNode(nodeSelected)
         } else {
             didSelectTargetNode = false
-            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+//            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         }
         
         if lastNodeSelected != nodeSelected {
@@ -280,6 +284,7 @@ extension SceneViewController: ObjectInsertionDelegate {
         switch model {
         case .box:
             // TODO: Allow the object to be moved after inserted
+            // TODO: Move the camera to the position of the new node
             mainScene.insertBox()
         case .pyramid:
             mainScene.insertPyramid()
