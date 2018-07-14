@@ -35,6 +35,8 @@
 		DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */; };
 		DDFC63E720F7520800109EC5 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E620F7520800109EC5 /* ColorPickerCell.swift */; };
 		DDFC63E920F87E2300109EC5 /* RecentsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E820F87E2300109EC5 /* RecentsCollectionReusableView.swift */; };
+		DDFC63EB20F9CD9A00109EC5 /* SceneAttributeInspectorCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFC63EA20F9CD9A00109EC5 /* SceneAttributeInspectorCollectionView.xib */; };
+		DDFC63ED20F9CDCC00109EC5 /* SceneAttributeInspectorCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63EC20F9CDCC00109EC5 /* SceneAttributeInspectorCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DDFC63E620F7520800109EC5 /* ColorPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCell.swift; sourceTree = "<group>"; };
 		DDFC63E820F87E2300109EC5 /* RecentsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCollectionReusableView.swift; sourceTree = "<group>"; };
+		DDFC63EA20F9CD9A00109EC5 /* SceneAttributeInspectorCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneAttributeInspectorCollectionView.xib; sourceTree = "<group>"; };
+		DDFC63EC20F9CDCC00109EC5 /* SceneAttributeInspectorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneAttributeInspectorCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,8 @@
 		DD638DBD20AC2D4200395557 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DDFC63EA20F9CD9A00109EC5 /* SceneAttributeInspectorCollectionView.xib */,
+				DDFC63EC20F9CDCC00109EC5 /* SceneAttributeInspectorCollectionView.swift */,
 				DDFC63E320F1FE5900109EC5 /* Cells */,
 				DDEF326C20E75C6400FEE793 /* DoneView.swift */,
 				DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */,
@@ -317,6 +323,7 @@
 			files = (
 				DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */,
 				DD20F67420672FBD005E838C /* LaunchScreen.storyboard in Resources */,
+				DDFC63EB20F9CD9A00109EC5 /* SceneAttributeInspectorCollectionView.xib in Resources */,
 				DDEF325E20DF776100FEE793 /* Box.scn in Resources */,
 				DD20F67120672FBD005E838C /* Assets.xcassets in Resources */,
 				DD20F66F20672FBD005E838C /* Main.storyboard in Resources */,
@@ -343,6 +350,7 @@
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNode+Movable.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */,
+				DDFC63ED20F9CDCC00109EC5 /* SceneAttributeInspectorCollectionView.swift in Sources */,
 				DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DDEF326320E4DCE500FEE793 /* SceneCell.swift in Sources */,
