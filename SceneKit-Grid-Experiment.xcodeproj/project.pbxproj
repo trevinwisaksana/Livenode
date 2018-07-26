@@ -28,6 +28,7 @@
 		DD6CC4282109B396009284C6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4272109B396009284C6 /* Color.swift */; };
 		DD6CC42C2109B4C5009284C6 /* UIView+FillSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC42B2109B4C4009284C6 /* UIView+FillSuperview.swift */; };
 		DD6CC4312109B54F009284C6 /* UIEdgeInsets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4302109B54E009284C6 /* UIEdgeInsets+Helpers.swift */; };
+		DD6CC4332109B94D009284C6 /* UITableView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4322109B94D009284C6 /* UITableView+Utility.swift */; };
 		DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF325B20DF70CF00FEE793 /* Model.swift */; };
 		DDEF325E20DF776100FEE793 /* Box.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Box.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
@@ -77,6 +78,7 @@
 		DD6CC4272109B396009284C6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DD6CC42B2109B4C4009284C6 /* UIView+FillSuperview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FillSuperview.swift"; sourceTree = "<group>"; };
 		DD6CC4302109B54E009284C6 /* UIEdgeInsets+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Helpers.swift"; sourceTree = "<group>"; };
+		DD6CC4322109B94D009284C6 /* UITableView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Utility.swift"; sourceTree = "<group>"; };
 		DDEF325B20DF70CF00FEE793 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DDEF325D20DF776100FEE793 /* Box.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Box.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				DD6CC42B2109B4C4009284C6 /* UIView+FillSuperview.swift */,
 				DD6CC4302109B54E009284C6 /* UIEdgeInsets+Helpers.swift */,
 				DD2A55ED20DE3BD100EA00ED /* UICollectionView+Utility.swift */,
+				DD6CC4322109B94D009284C6 /* UITableView+Utility.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				DD6CC42C2109B4C5009284C6 /* UIView+FillSuperview.swift in Sources */,
 				DDFC63E920F87E2300109EC5 /* RecentsCollectionReusableView.swift in Sources */,
 				DD638DC220AC2E0200395557 /* GameViewModel.swift in Sources */,
+				DD6CC4332109B94D009284C6 /* UITableView+Utility.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DD6CC4282109B396009284C6 /* Color.swift in Sources */,
 				DDEF326B20E625F000FEE793 /* SCNNode+Color.swift in Sources */,

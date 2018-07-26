@@ -8,6 +8,6 @@
 
 import UIKit
 
-final class SceneInspectorViewCell: UICollectionViewCell {
+final class SceneInspectorViewCell: UITableViewCell {
     
 }

@@ -20,30 +20,18 @@ public class SceneInspectorView: UIView {
     
     // MARK: - Internal properties
     
-    private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
-        return UICollectionViewFlowLayout()
-    }()
-    
     // Have the collection view be private so nobody messes with it.
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .milk
-        return collectionView
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .milk
+        return tableView
     }()
     
     private weak var delegate: SceneInspectorViewDelegate?
     private weak var dataSource: SceneInspectorViewDataSource?
-    
-    // MARK: - External properties
-    
-    public var headerView: UIView? {
-        willSet {
-            headerView?.removeFromSuperview()
-        }
-    }
     
     // MARK: - Setup
     
@@ -67,47 +55,40 @@ public class SceneInspectorView: UIView {
     }
     
     private func setup() {
-        collectionView.register(SceneInspectorViewCell.self)
-        addSubview(collectionView)
-        collectionView.fillInSuperview()
-    }
-    
-    public func invalidateLayout() {
-        collectionView.collectionViewLayout.invalidateLayout()
+        tableView.register(SceneInspectorViewCell.self)
+        addSubview(tableView)
+        tableView.fillInSuperview()
     }
     
     // MARK: - Public
     
     public func reloadData() {
-        collectionView.reloadData()
+        tableView.reloadData()
     }
     
-    public func scrollToTop(animated: Bool = true) {
-        collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
-    }
 }
 
 // MARK: - UICollectionViewDelegate
 
-extension SceneInspectorView: UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+extension SceneInspectorView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.sceneInspectorView(self, didSelectItemAtIndex: indexPath.row)
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension SceneInspectorView: UICollectionViewDataSource {
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+extension SceneInspectorView: UITableViewDataSource {
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.numberOfItems(inAdsGridView: self) ?? 0
     }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: SceneInspectorViewCell = collectionView.dequeueReusableCell(for: indexPath)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: SceneInspectorViewCell = tableView.dequeueReusableCell()
         
         // Show a pretty color while we load the image
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
@@ -115,13 +96,8 @@ extension SceneInspectorView: UICollectionViewDataSource {
         
         cell.dataSource = self
         
-        if let model = dataSource?.adsGridView(self, modelAtIndex: indexPath.row) {
-            cell.model = model
-        }
-        
         return cell
     }
-
 }
 
 // MARK: - SceneInspectorViewCellDataSource
