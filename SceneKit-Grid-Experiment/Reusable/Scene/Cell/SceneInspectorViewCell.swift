@@ -1,5 +1,5 @@
 //
-//  SceneCell.swift
+//  SceneInspectorViewCell.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 28/06/2018.
@@ -8,8 +8,6 @@
 
 import UIKit
 
-final class SceneCell: UICollectionViewCell {
-    
-    
+final class SceneInspectorViewCell: UICollectionViewCell {
     
 }
