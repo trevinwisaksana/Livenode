@@ -128,19 +128,19 @@ final class SceneViewController: UIViewController {
         
         nodeSelected = sceneView.hitTest(location, options: nil).first?.node
         
-        if nodeSelected?.name == "Floor" {
+        if nodeSelected?.name == "Floor" || nodeSelected == nil {
             nodeSelected = nil
-//            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-            mainScene.unhighlightNode(nodeSelected)
+            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+//            mainScene.unhighlightNode(nodeSelected)
             
             return
         }
         
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
-//            nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
-//            nodeSelected?.geometry?.firstMaterial?.emission.borderColor = UIColor.orange
-            mainScene.highlightNode(nodeSelected)
+            nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
+            nodeSelected?.geometry?.firstMaterial?.emission.borderColor = UIColor.orange
+//            mainScene.highlightNode(nodeSelected)
         } else {
             didSelectTargetNode = false
 //            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue

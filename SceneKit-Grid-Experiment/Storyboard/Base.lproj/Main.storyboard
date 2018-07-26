@@ -29,7 +29,7 @@
                                     <action selector="didTapAddObjectButton:" destination="BV1-FR-VrT" id="hxw-wO-UUy"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf">
+                            <barButtonItem title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf">
                                 <connections>
                                     <action selector="didTapObjectAttributeButton:" destination="BV1-FR-VrT" id="Ybc-kW-skZ"/>
                                 </connections>
