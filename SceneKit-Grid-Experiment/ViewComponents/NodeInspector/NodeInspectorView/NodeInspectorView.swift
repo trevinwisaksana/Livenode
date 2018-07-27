@@ -28,7 +28,8 @@ public class NodeInspectorView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .milk
+        tableView.backgroundColor = .aluminium
+        tableView.separatorStyle = .none
         return tableView
     }()
     

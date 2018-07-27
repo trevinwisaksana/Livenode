@@ -18,7 +18,6 @@ final class AttributesInspectorViewController<View: UIView>: UIViewController {
     lazy var mainView: View = {
         let mainView = View(frame: view.frame)
         mainView.translatesAutoresizingMaskIntoConstraints = false
-        mainView.backgroundColor = .milk
         return mainView
     }()
 
@@ -36,8 +35,6 @@ final class AttributesInspectorViewController<View: UIView>: UIViewController {
     
     private func setup() {
         view.addSubview(mainView)
-        view.backgroundColor = .milk
-        
         mainView.fillInSuperview()
     }
     
