@@ -24,6 +24,9 @@
 		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
 		DD638DC720AC5E0300395557 /* SCNode+Movable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNode+Movable.swift */; };
 		DD6C16F0210B217A002CB031 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16EF210B217A002CB031 /* ViewComponents.swift */; };
+		DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16F1210B233C002CB031 /* NodeInspectorPresentableView.swift */; };
+		DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16F4210B2423002CB031 /* NodeColorCell.swift */; };
+		DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16F7210B32D5002CB031 /* NodeInspectorViewModel.swift */; };
 		DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4222109B0D2009284C6 /* SceneInspectorViewModel.swift */; };
 		DD6CC4282109B396009284C6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4272109B396009284C6 /* Color.swift */; };
 		DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC42B2109B4C4009284C6 /* UIViewExtensions.swift */; };
@@ -78,6 +81,9 @@
 		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNode+Movable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNode+Movable.swift"; sourceTree = "<group>"; };
 		DD6C16EF210B217A002CB031 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
+		DD6C16F1210B233C002CB031 /* NodeInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorPresentableView.swift; sourceTree = "<group>"; };
+		DD6C16F4210B2423002CB031 /* NodeColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeColorCell.swift; sourceTree = "<group>"; };
+		DD6C16F7210B32D5002CB031 /* NodeInspectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorViewModel.swift; sourceTree = "<group>"; };
 		DD6CC4222109B0D2009284C6 /* SceneInspectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorViewModel.swift; sourceTree = "<group>"; };
 		DD6CC4272109B396009284C6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DD6CC42B2109B4C4009284C6 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -235,6 +241,30 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		DD6C16F3210B2343002CB031 /* Presentable */ = {
+			isa = PBXGroup;
+			children = (
+				DD6C16F1210B233C002CB031 /* NodeInspectorPresentableView.swift */,
+			);
+			path = Presentable;
+			sourceTree = "<group>";
+		};
+		DD6C16F6210B2426002CB031 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DD6C16F4210B2423002CB031 /* NodeColorCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DD6C16F9210B32DA002CB031 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD6C16F7210B32D5002CB031 /* NodeInspectorViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DD6CC41D2109A685009284C6 /* SceneInspectorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,7 +356,10 @@
 		DD9C6AEF210AC087001E4982 /* NodeInspector */ = {
 			isa = PBXGroup;
 			children = (
+				DD6C16F3210B2343002CB031 /* Presentable */,
 				DD9C6AF0210AC0FB001E4982 /* NodeInspectorView */,
+				DD6C16F6210B2426002CB031 /* Cell */,
+				DD6C16F9210B32DA002CB031 /* Model */,
 			);
 			path = NodeInspector;
 			sourceTree = "<group>";
@@ -490,7 +523,9 @@
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
+				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
 				DD6CC44E2109C6AE009284C6 /* SceneBackgroundColorCell.swift in Sources */,
+				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
 				DD6CC450210A111A009284C6 /* SCNSceneExtensions.swift in Sources */,
 				DD6C16F0210B217A002CB031 /* ViewComponents.swift in Sources */,
@@ -509,6 +544,7 @@
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
 				DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */,
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
+				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,
 				DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */,
 				DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */,
 				DD9C6AF2210AC1BB001E4982 /* SceneDocumentCell.swift in Sources */,

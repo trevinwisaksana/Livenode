@@ -22,7 +22,7 @@ enum Presenter {
             controller.title = "Scene Attributes"
             return controller
         case .nodeInspectorView:
-            controller = AttributesInspectorViewController<NodeInspectorView>()
+            controller = AttributesInspectorViewController<NodeInspectorPresentableView>()
             controller.title = "Node Attributes"
             return controller
         }

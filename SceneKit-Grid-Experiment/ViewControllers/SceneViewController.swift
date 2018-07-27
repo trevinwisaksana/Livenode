@@ -74,34 +74,37 @@ final class SceneViewController: UIViewController {
         sceneView.autoenablesDefaultLighting = true
     }
     
-    // MARK: - IBActions
+    // MARK: - Touches
     
     @IBAction func didTapAddObjectButton(_ sender: UIBarButtonItem) {
-        // get a reference to the view controller for the popover
+        presentObjectCatalogController(using: sender)
+    }
+    
+    private func presentObjectCatalogController(using sender: UIBarButtonItem) {
         let objectCatalogController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
         
-        // set the presentation style
         objectCatalogController.modalPresentationStyle = .popover
         
-        // set up the popover presentation controller
         objectCatalogController.popoverPresentationController?.permittedArrowDirections = .up
         objectCatalogController.popoverPresentationController?.delegate = self
         objectCatalogController.popoverPresentationController?.barButtonItem = sender
         
-        // set delegate
         objectCatalogController.delegate = self
         
-        // present the popover
         present(objectCatalogController, animated: true, completion: nil)
     }
     
     @IBAction func didTapObjectAttributeButton(_ sender: UIBarButtonItem) {
+        presentInspectorViews(using: sender)
+    }
+    
+    private func presentInspectorViews(using sender: UIBarButtonItem) {
         let navigationController = UINavigationController()
         let viewController: UIViewController
         
         if let _ = nodeSelected {
             // TODO: Change Color Picker View to Node Inspector View
-            viewController = Presenter.inject(.colorPickerView)
+            viewController = Presenter.inject(.nodeInspectorView)
         } else {
             viewController = Presenter.inject(.sceneInspectorView)
         }
@@ -135,7 +138,6 @@ final class SceneViewController: UIViewController {
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
             nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
-            nodeSelected?.geometry?.firstMaterial?.emission.borderColor = UIColor.orange
         } else {
             didSelectTargetNode = false
 //            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
