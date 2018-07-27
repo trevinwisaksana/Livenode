@@ -13,7 +13,7 @@ public protocol SceneInspectorViewDelegate: NSObjectProtocol {
 }
 
 public protocol SceneInspectorViewDataSource: NSObjectProtocol {
-    func numberOfItems(inAdsGridView sceneInspectorView: SceneInspectorView) -> Int
+    func numberOfItems(inSceneInspectorView sceneInspectorView: SceneInspectorView) -> Int
 }
 
 public class SceneInspectorView: UIView {
@@ -55,7 +55,7 @@ public class SceneInspectorView: UIView {
     }
     
     private func setup() {
-        tableView.register(SceneInspectorViewCell.self)
+        tableView.register(SceneBackgroundColorCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -68,7 +68,7 @@ public class SceneInspectorView: UIView {
     
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - UITableViewDelegate
 
 extension SceneInspectorView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -76,7 +76,7 @@ extension SceneInspectorView: UITableViewDelegate {
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UITableViewDataSource
 
 extension SceneInspectorView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,28 +84,38 @@ extension SceneInspectorView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inAdsGridView: self) ?? 0
+        return dataSource?.numberOfItems(inSceneInspectorView: self) ?? 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: SceneInspectorViewCell = tableView.dequeueReusableCell()
-        
-        // Show a pretty color while we load the image
-        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
-        let color = colors[indexPath.row % 4]
-        
-        cell.dataSource = self
-        
-        return cell
+        return setupCell(atSection: indexPath.section)
+    }
+    
+    private func setupCell(atSection section: Int) -> UITableViewCell {
+        switch section {
+        case 1:
+            let cell: SceneBackgroundColorCell = tableView.dequeueReusableCell()
+            cell.delegate = self
+            
+            return cell
+        default:
+            fatalError("Index out of range.")
+        }
+    }
+}
+
+// MARK: - SceneInspectorViewDataSource
+
+extension SceneInspectorView: SceneInspectorViewDataSource {
+    public func numberOfItems(inSceneInspectorView sceneInspectorView: SceneInspectorView) -> Int {
+        return 1
     }
 }
 
 // MARK: - SceneInspectorViewCellDataSource
 
-extension SceneInspectorView: SceneInspectorViewDataSource {
-    
-    public func numberOfItems(inAdsGridView sceneInspectorView: SceneInspectorView) -> Int {
-        return 3
+extension SceneInspectorView: SceneBackgroundColorDelegate {
+    public func sceneBackgroundColorCell(_ sceneBackgroundColorCell: SceneBackgroundColorCell, changeBackgroundColorForModel model: SceneInspectorViewModel) {
+        
     }
-    
 }

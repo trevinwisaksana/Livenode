@@ -4,6 +4,8 @@
 
 import UIKit
 
+// MARK: - Fill in Superview
+
 public extension UIView {
     /// Layouts the current view to fit it's superview.
     ///
@@ -30,5 +32,30 @@ public extension UIView {
         }
 
         return constraints
+    }
+}
+
+// MARK: - Anchors
+
+public extension UIView {
+    public convenience init(withAutoLayout autoLayout: Bool) {
+        self.init()
+        translatesAutoresizingMaskIntoConstraints = !autoLayout
+    }
+    
+    public var compatibleTopAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.topAnchor
+        } else {
+            return topAnchor
+        }
+    }
+    
+    public var compatibleBottomAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.bottomAnchor
+        } else {
+            return bottomAnchor
+        }
     }
 }

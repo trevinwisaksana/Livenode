@@ -1,5 +1,5 @@
 //
-//  ColorPickerCell.swift
+//  ColorPickerViewCell.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 12/07/2018.
@@ -8,8 +8,6 @@
 
 import UIKit
 
-final class ColorPickerCell: UICollectionViewCell {
-    
-    @IBOutlet weak var colorPickerView: HSBColorPicker!
-    
+final class ColorPickerViewCell: UICollectionViewCell {
+    @IBOutlet weak var colorPickerView: ColorPickerView!
 }

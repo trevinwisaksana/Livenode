@@ -98,25 +98,25 @@ final class SceneViewController: UIViewController {
     
     @IBAction func didTapObjectAttributeButton(_ sender: UIBarButtonItem) {
         // get a reference to the view controller for the popover
-        let objectAttributeController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectAttribute) as! ObjectAttributeViewController
+        let attributesInspector = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectAttribute) as! AttributesInspectorViewController
         
         // set the selected node
         guard let nodeSelected = nodeSelected else {
             return
         }
         
-        objectAttributeController.viewModel.nodeSelected = nodeSelected
+//        attributesInspector.viewModel.nodeSelected = nodeSelected
         
         // set the presentation style
-        objectAttributeController.modalPresentationStyle = .popover
+        attributesInspector.modalPresentationStyle = .popover
         
         // set up the popover presentation controller
-        objectAttributeController.popoverPresentationController?.permittedArrowDirections = .up
-        objectAttributeController.popoverPresentationController?.delegate = self
-        objectAttributeController.popoverPresentationController?.barButtonItem = sender
+        attributesInspector.popoverPresentationController?.permittedArrowDirections = .up
+        attributesInspector.popoverPresentationController?.delegate = self
+        attributesInspector.popoverPresentationController?.barButtonItem = sender
         
         // present the popover
-        present(objectAttributeController, animated: true, completion: nil)
+        present(attributesInspector, animated: true, completion: nil)
     }
     
     

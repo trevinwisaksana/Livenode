@@ -8,18 +8,29 @@
 
 import UIKit
 
-internal protocol HSBColorPickerDelegate: class {
-    func HSBColorColorPickerTouched(sender:HSBColorPicker, color: UIColor, point: CGPoint, state:UIGestureRecognizerState)
+internal protocol ColorPickerViewDelegate: class {
+    func didTapColorPicker(sender: ColorPickerView, color: UIColor, point: CGPoint, state: UIGestureRecognizerState)
 }
 
-@IBDesignable
-class HSBColorPicker: UIView {
+public class ColorPickerView: UIView {
     
-    weak internal var delegate: HSBColorPickerDelegate?
-    let saturationExponentTop:Float = 2.0
-    let saturationExponentBottom:Float = 1.3
+    // MARK: - Internal properties
     
-    @IBInspectable var elementSize: CGFloat = 20 {
+    // Have the collection view be private so nobody messes with it.
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .milk
+        return tableView
+    }()
+    
+    weak internal var delegate: ColorPickerViewDelegate?
+    let saturationExponentTop: Float = 2.0
+    let saturationExponentBottom: Float = 1.3
+    
+    var elementSize: CGFloat = 20 {
         didSet {
             setNeedsDisplay()
         }
@@ -38,13 +49,12 @@ class HSBColorPicker: UIView {
         initialize()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()
     }
     
-    override func draw(_ rect: CGRect) {
-        
+    override public func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {
             fatalError("Cannot retrieve the current graphics context")
         }
@@ -76,9 +86,9 @@ class HSBColorPicker: UIView {
     }
     
     func getPointForColor(color:UIColor) -> CGPoint {
-        var hue:CGFloat=0;
-        var saturation:CGFloat=0;
-        var brightness:CGFloat=0;
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: nil);
         
         var yPos:CGFloat = 0
@@ -88,7 +98,7 @@ class HSBColorPicker: UIView {
             let percentageY = powf(Float(saturation), 1.0 / saturationExponentTop)
             yPos = CGFloat(percentageY) * halfHeight
         } else {
-            //use brightness to get Y
+            // Use brightness to get Y
             yPos = halfHeight + halfHeight * (1.0 - brightness)
         }
         
@@ -103,8 +113,43 @@ class HSBColorPicker: UIView {
             let point = gestureRecognizer.location(in: self)
             let color = getColorAt(point: point)
             
-            delegate?.HSBColorColorPickerTouched(sender: self, color: color, point: point, state:gestureRecognizer.state)
+            delegate?.didTapColorPicker(sender: self, color: color, point: point, state: gestureRecognizer.state)
         }
         
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ColorPickerView: UITableViewDelegate {
+    
+    
+    
+}
+
+// MARK: - UITableViewDataSource
+
+extension ColorPickerView: UITableViewDataSource {
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return setupCell(atSection: indexPath.section)
+    }
+    
+    private func setupCell(atSection section: Int) -> UITableViewCell {
+        switch section {
+        case 1:
+            let cell: SceneBackgroundColorCell = tableView.dequeueReusableCell()
+            
+            return cell
+        default:
+            fatalError("Index out of range.")
+        }
     }
 }
