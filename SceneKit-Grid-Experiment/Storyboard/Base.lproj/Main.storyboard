@@ -76,7 +76,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SceneCell" id="dkk-k8-Fpv" customClass="SceneCell" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SceneDocumentCell" id="dkk-k8-Fpv" customClass="SceneDocumentCell" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -316,10 +316,10 @@
             </objects>
             <point key="canvasLocation" x="1607" y="-76"/>
         </scene>
-        <!--Object Attribute View Controller-->
+        <!--Attributes Inspector View Controller-->
         <scene sceneID="Y1W-vd-nUF">
             <objects>
-                <viewController storyboardIdentifier="ObjectAttributeController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="t8W-iU-39E" customClass="ObjectAttributeViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ObjectAttributeController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="t8W-iU-39E" customClass="AttributesInspectorViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1GH-du-9Gp">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

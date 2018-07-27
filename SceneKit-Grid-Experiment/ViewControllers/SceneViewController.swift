@@ -97,26 +97,22 @@ final class SceneViewController: UIViewController {
     
     
     @IBAction func didTapObjectAttributeButton(_ sender: UIBarButtonItem) {
-        // get a reference to the view controller for the popover
-        let attributesInspector = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectAttribute) as! AttributesInspectorViewController
+        let viewController: UIViewController
         
-        // set the selected node
-        guard let nodeSelected = nodeSelected else {
-            return
+        if let _ = nodeSelected {
+            // TODO: Change Color Picker View to Node Inspector VIew
+            viewController = Presenter.inject(.colorPickerView)
+        } else {
+            viewController = Presenter.inject(.sceneInspectorView)
         }
         
-//        attributesInspector.viewModel.nodeSelected = nodeSelected
+        viewController.modalPresentationStyle = .popover
         
-        // set the presentation style
-        attributesInspector.modalPresentationStyle = .popover
+        viewController.popoverPresentationController?.permittedArrowDirections = .up
+        viewController.popoverPresentationController?.delegate = self
+        viewController.popoverPresentationController?.barButtonItem = sender
         
-        // set up the popover presentation controller
-        attributesInspector.popoverPresentationController?.permittedArrowDirections = .up
-        attributesInspector.popoverPresentationController?.delegate = self
-        attributesInspector.popoverPresentationController?.barButtonItem = sender
-        
-        // present the popover
-        present(attributesInspector, animated: true, completion: nil)
+        present(viewController, animated: true, completion: nil)
     }
     
     
@@ -131,7 +127,6 @@ final class SceneViewController: UIViewController {
         if nodeSelected?.name == "Floor" || nodeSelected == nil {
             nodeSelected = nil
             mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-//            mainScene.unhighlightNode(nodeSelected)
             
             return
         }
@@ -140,7 +135,6 @@ final class SceneViewController: UIViewController {
             didSelectTargetNode = true
             nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
             nodeSelected?.geometry?.firstMaterial?.emission.borderColor = UIColor.orange
-//            mainScene.highlightNode(nodeSelected)
         } else {
             didSelectTargetNode = false
 //            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue

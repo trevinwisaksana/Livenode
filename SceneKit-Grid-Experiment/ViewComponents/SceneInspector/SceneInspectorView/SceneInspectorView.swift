@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol SceneInspectorViewDelegate: NSObjectProtocol {
-    func sceneInspectorView(_ sceneInspectorView: SceneInspectorView, didSelectItemAtIndex index: Int)
+    func sceneInspectorView(_ sceneInspectorView: SceneInspectorView, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
 public protocol SceneInspectorViewDataSource: NSObjectProtocol {
@@ -55,9 +55,11 @@ public class SceneInspectorView: UIView {
     }
     
     private func setup() {
-        tableView.register(SceneBackgroundColorCell.self)
+        tableView.register(cell: SceneBackgroundColorCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
+        
+        
     }
     
     // MARK: - Public
@@ -72,7 +74,7 @@ public class SceneInspectorView: UIView {
 
 extension SceneInspectorView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.sceneInspectorView(self, didSelectItemAtIndex: indexPath.row)
+        delegate?.sceneInspectorView(self, didSelectItemAtIndexPath: indexPath)
     }
 }
 
@@ -80,7 +82,7 @@ extension SceneInspectorView: UITableViewDelegate {
 
 extension SceneInspectorView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,7 +95,7 @@ extension SceneInspectorView: UITableViewDataSource {
     
     private func setupCell(atSection section: Int) -> UITableViewCell {
         switch section {
-        case 1:
+        case 0:
             let cell: SceneBackgroundColorCell = tableView.dequeueReusableCell()
             cell.delegate = self
             
@@ -101,14 +103,6 @@ extension SceneInspectorView: UITableViewDataSource {
         default:
             fatalError("Index out of range.")
         }
-    }
-}
-
-// MARK: - SceneInspectorViewDataSource
-
-extension SceneInspectorView: SceneInspectorViewDataSource {
-    public func numberOfItems(inSceneInspectorView sceneInspectorView: SceneInspectorView) -> Int {
-        return 1
     }
 }
 

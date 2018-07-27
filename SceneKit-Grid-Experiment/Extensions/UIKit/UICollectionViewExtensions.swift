@@ -51,8 +51,8 @@ extension UICollectionView {
     
     func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
         
-        guard let cell = dequeueReusableCell(withReuseIdentifier: T.cellIdentifier, for: indexPath) as? T else {
-            fatalError("Error dequeuing cell for identifier \(T.cellIdentifier)")
+        guard let cell = dequeueReusableCell(withReuseIdentifier: T.identifier, for: indexPath) as? T else {
+            fatalError("Error dequeuing cell for identifier \(T.identifier)")
         }
         
         return cell
@@ -71,7 +71,7 @@ extension UICollectionView {
         let bundle = Bundle(for: T.self)
         let nib = UINib(nibName: T.nibName, bundle: bundle)
         
-        register(nib, forCellWithReuseIdentifier: T.cellIdentifier)
+        register(nib, forCellWithReuseIdentifier: T.identifier)
     }
     
 }

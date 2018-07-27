@@ -58,18 +58,16 @@ public class SceneBackgroundColorCell: UITableViewCell {
     
     private func setup() {
         addSubview(titleLabel)
+        addSubview(colorView)
         
         backgroundColor = .white
         
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: SceneBackgroundColorCell.titleLeftMargin),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: SceneBackgroundColorCell.titleHeight),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SceneBackgroundColorCell.titleBottomMargin),
             
-            colorView.rightAnchor.constraint(equalTo: rightAnchor, constant: SceneBackgroundColorCell.titleLeftMargin),
-            colorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: SceneBackgroundColorCell.colorViewRightMargin),
+            colorView.rightAnchor.constraint(equalTo: rightAnchor, constant: SceneBackgroundColorCell.colorViewRightMargin),
             colorView.heightAnchor.constraint(equalToConstant: SceneBackgroundColorCell.colorViewHeight),
             colorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SceneBackgroundColorCell.colorViewBottomMargin),
         ])

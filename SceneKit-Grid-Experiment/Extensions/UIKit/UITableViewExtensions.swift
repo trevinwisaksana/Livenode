@@ -33,11 +33,15 @@ extension UITableView {
         return cell
     }
     
-    func register<T: UITableViewCell>(_: T.Type) {
+    func register<T: UITableViewCell>(nib: T.Type) {
         let bundle = Bundle(for: T.self)
         let nib = UINib(nibName: T.nibName, bundle: bundle)
         
         register(nib, forCellReuseIdentifier: T.cellIdentifier)
+    }
+    
+    func register<T: UITableViewCell>(cell: T.Type) {
+        register(cell, forCellReuseIdentifier: cell.cellIdentifier)
     }
     
 }

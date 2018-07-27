@@ -14,14 +14,31 @@ final class AttributesInspectorViewController<View: UIView>: UIViewController {
     
     private let popoverWidth: Int = 300
     private let popoverHeight: Int = 400
-
     
+    lazy var mainView: View = {
+        let mainView = View(frame: view.frame)
+        mainView.translatesAutoresizingMaskIntoConstraints = false
+        mainView.backgroundColor = .milk
+        return mainView
+    }()
+
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setup()
+        
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
+    }
+    
+    // MARK: - Setup
+    
+    private func setup() {
+        view.addSubview(mainView)
+        view.backgroundColor = .milk
+        
+        mainView.fillInSuperview()
     }
     
 }

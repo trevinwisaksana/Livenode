@@ -33,9 +33,8 @@ extension MenuViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell: SceneInspectorViewCell = collectionView.dequeueReusableCell(for: indexPath)
-//        return cell
-        return UICollectionViewCell()
+        let cell: SceneDocumentCell = collectionView.dequeueReusableCell(for: indexPath)
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

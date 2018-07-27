@@ -16,16 +16,6 @@ public class ColorPickerView: UIView {
     
     // MARK: - Internal properties
     
-    // Have the collection view be private so nobody messes with it.
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .milk
-        return tableView
-    }()
-    
     weak internal var delegate: ColorPickerViewDelegate?
     let saturationExponentTop: Float = 2.0
     let saturationExponentBottom: Float = 1.3
@@ -116,40 +106,5 @@ public class ColorPickerView: UIView {
             delegate?.didTapColorPicker(sender: self, color: color, point: point, state: gestureRecognizer.state)
         }
         
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension ColorPickerView: UITableViewDelegate {
-    
-    
-    
-}
-
-// MARK: - UITableViewDataSource
-
-extension ColorPickerView: UITableViewDataSource {
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return setupCell(atSection: indexPath.section)
-    }
-    
-    private func setupCell(atSection section: Int) -> UITableViewCell {
-        switch section {
-        case 1:
-            let cell: SceneBackgroundColorCell = tableView.dequeueReusableCell()
-            
-            return cell
-        default:
-            fatalError("Index out of range.")
-        }
     }
 }
