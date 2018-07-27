@@ -95,26 +95,27 @@ final class SceneViewController: UIViewController {
         present(objectCatalogController, animated: true, completion: nil)
     }
     
-    
     @IBAction func didTapObjectAttributeButton(_ sender: UIBarButtonItem) {
+        let navigationController = UINavigationController()
         let viewController: UIViewController
         
         if let _ = nodeSelected {
-            // TODO: Change Color Picker View to Node Inspector VIew
+            // TODO: Change Color Picker View to Node Inspector View
             viewController = Presenter.inject(.colorPickerView)
         } else {
             viewController = Presenter.inject(.sceneInspectorView)
         }
         
-        viewController.modalPresentationStyle = .popover
+        navigationController.viewControllers = [viewController]
         
-        viewController.popoverPresentationController?.permittedArrowDirections = .up
-        viewController.popoverPresentationController?.delegate = self
-        viewController.popoverPresentationController?.barButtonItem = sender
+        navigationController.modalPresentationStyle = .popover
         
-        present(viewController, animated: true, completion: nil)
+        navigationController.popoverPresentationController?.permittedArrowDirections = .up
+        navigationController.popoverPresentationController?.delegate = self
+        navigationController.popoverPresentationController?.barButtonItem = sender
+        
+        present(navigationController, animated: true, completion: nil)
     }
-    
     
     // MARK: - Touches
     

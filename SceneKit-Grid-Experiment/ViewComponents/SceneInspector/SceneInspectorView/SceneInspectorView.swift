@@ -20,6 +20,8 @@ public class SceneInspectorView: UIView {
     
     // MARK: - Internal properties
     
+    private static let cellHeight: CGFloat = 60.0
+    
     // Have the collection view be private so nobody messes with it.
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -58,8 +60,6 @@ public class SceneInspectorView: UIView {
         tableView.register(cell: SceneBackgroundColorCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
-        
-        
     }
     
     // MARK: - Public
@@ -103,6 +103,10 @@ extension SceneInspectorView: UITableViewDataSource {
         default:
             fatalError("Index out of range.")
         }
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return SceneInspectorView.cellHeight
     }
 }
 

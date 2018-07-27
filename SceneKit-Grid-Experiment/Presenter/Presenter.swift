@@ -10,27 +10,21 @@ import UIKit
 
 enum Presenter {
     static func inject(_ component: ViewComponents) -> UIViewController {
+        let controller: UIViewController
+        
         switch component {
         case .colorPickerView:
-            return AttributesInspectorViewController<ColorPickerView>()
+            controller = AttributesInspectorViewController<ColorPickerView>()
+            controller.title = "Color Palette"
+            return controller
         case .sceneInspectorView:
-            return AttributesInspectorViewController<SceneInspectorPresentableView>()
+            controller = AttributesInspectorViewController<SceneInspectorPresentableView>()
+            controller.title = "Scene Attributes"
+            return controller
         case .nodeInspectorView:
-            return AttributesInspectorViewController<NodeInspectorView>()
+            controller = AttributesInspectorViewController<NodeInspectorView>()
+            controller.title = "Node Attributes"
+            return controller
         }
-    }
-}
-
-enum ViewComponents: String {
-    case colorPickerView
-    case sceneInspectorView
-    case nodeInspectorView
-    
-    static var all: [ViewComponents] {
-        return [
-            .colorPickerView,
-            .sceneInspectorView,
-            .nodeInspectorView
-        ]
     }
 }

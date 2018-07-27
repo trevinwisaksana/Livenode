@@ -19,22 +19,24 @@ public class SceneBackgroundColorCell: UITableViewCell {
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
     private static let titleBottomMargin: CGFloat = 3.0
-    private static let titleLeftMargin: CGFloat = 5.0
+    private static let titleLeftMargin: CGFloat = 15.0
     
-    private static let colorViewHeight: CGFloat = 20.0
-    private static let colorViewTopMargin: CGFloat = 3.0
-    private static let colorViewBottomMargin: CGFloat = 3.0
-    private static let colorViewRightMargin: CGFloat = 5.0
+    private static let colorViewWidth: CGFloat = 60.0
+    private static let colorViewTopMargin: CGFloat = 15.0
+    private static let colorViewBottomMargin: CGFloat = 15.0
+    private static let colorViewRightMargin: CGFloat = 15.0
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Background Color"
         label.backgroundColor = .clear
         return label
     }()
     
     private lazy var colorView: UIView = {
         let view = UIView()
+        view.backgroundColor = .green
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -60,15 +62,16 @@ public class SceneBackgroundColorCell: UITableViewCell {
         addSubview(titleLabel)
         addSubview(colorView)
         
-        backgroundColor = .white
+        backgroundColor = .milk
         
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: SceneBackgroundColorCell.titleLeftMargin),
-            titleLabel.heightAnchor.constraint(equalToConstant: SceneBackgroundColorCell.titleHeight),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: SceneBackgroundColorCell.titleTopMargin),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SceneBackgroundColorCell.titleBottomMargin),
             
-            colorView.rightAnchor.constraint(equalTo: rightAnchor, constant: SceneBackgroundColorCell.colorViewRightMargin),
-            colorView.heightAnchor.constraint(equalToConstant: SceneBackgroundColorCell.colorViewHeight),
+            colorView.rightAnchor.constraint(equalTo: rightAnchor, constant: -SceneBackgroundColorCell.colorViewRightMargin),
+            colorView.widthAnchor.constraint(equalToConstant: SceneBackgroundColorCell.colorViewWidth),
+            colorView.topAnchor.constraint(equalTo: topAnchor, constant: SceneBackgroundColorCell.colorViewTopMargin),
             colorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SceneBackgroundColorCell.colorViewBottomMargin),
         ])
     }
