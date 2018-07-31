@@ -4,6 +4,24 @@
 
 import UIKit
 
+// MARK: - ParentViewController
+
+extension UIView {
+    /// Returns the parent view controller of a UIView
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        
+        return nil
+    }
+}
+
 // MARK: - Fill in Superview
 
 public extension UIView {

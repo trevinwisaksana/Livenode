@@ -103,7 +103,6 @@ final class SceneViewController: UIViewController {
         let viewController: UIViewController
         
         if let _ = nodeSelected {
-            // TODO: Change Color Picker View to Node Inspector View
             viewController = Presenter.inject(.nodeInspectorView)
         } else {
             viewController = Presenter.inject(.sceneInspectorView)
@@ -137,6 +136,7 @@ final class SceneViewController: UIViewController {
         
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
+            State.nodeSelected = nodeSelected
             nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         } else {
             didSelectTargetNode = false

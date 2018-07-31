@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SceneKit
 
 public class NodeDataSource: NSObject {
-    // TODO: Add View Model
+    let node: SCNNode? = State.nodeSelected
 }
 
 public class NodeInspectorPresentableView: UIView {
@@ -37,13 +38,13 @@ public class NodeInspectorPresentableView: UIView {
 
 extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
     public func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didSelectItemAtIndexPath indexPath: IndexPath) {
-        
+        transition(using: indexPath)
     }
     
-    private func transition(fromSection section: Int) {
+    private func transition(using indexPath: IndexPath) {
         let viewController: UIViewController
         
-        switch section {
+        switch indexPath.section {
         case 0:
             break
         default:
@@ -55,7 +56,7 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
 // MARK: - NodeInspectorViewDataSource
 
 extension NodeInspectorPresentableView: NodeInspectorViewDataSource {
-    public func numberOfItems(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> Int {
-        return 1
+    public func viewModel(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> NodeInspectorViewModel {
+        return NodeInspector(node: dataSource.node)
     }
 }

@@ -79,10 +79,10 @@ public class NodeColorCell: UITableViewCell {
     // MARK: - Dependency injection
     
     /// The model contains data used to populate the view.
-    public var model: SceneInspectorViewModel? {
+    public var model: NodeInspectorViewModel? {
         didSet {
             if let model = model {
-                colorView.backgroundColor = model.scene?.backgroundColor
+                colorView.backgroundColor = model.node?.color
             }
         }
     }

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SceneKit
 
 public protocol SceneInspectorViewDelegate: NSObjectProtocol {
     func sceneInspectorView(_ sceneInspectorView: SceneInspectorView, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
 public protocol SceneInspectorViewDataSource: NSObjectProtocol {
-    func numberOfItems(inSceneInspectorView sceneInspectorView: SceneInspectorView) -> Int
+    func sceneInspectorView(_ sceneInspectorView: SceneInspectorView, sceneBackgroundColor for: SCNScene) -> UIColor
 }
 
 public class SceneInspectorView: UIView {
@@ -22,7 +23,6 @@ public class SceneInspectorView: UIView {
     
     private static let cellHeight: CGFloat = 60.0
     
-    // Have the collection view be private so nobody messes with it.
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +87,7 @@ extension SceneInspectorView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inSceneInspectorView: self) ?? 0
+        return 1
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

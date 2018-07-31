@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SceneKit
 
 public class SceneDataSource: NSObject {
-    // TODO: Add View Model
+    
 }
 
 public class SceneInspectorPresentableView: UIView {
@@ -37,25 +38,34 @@ public class SceneInspectorPresentableView: UIView {
 
 extension SceneInspectorPresentableView: SceneInspectorViewDelegate {
     public func sceneInspectorView(_ sceneInspectorView: SceneInspectorView, didSelectItemAtIndexPath indexPath: IndexPath) {
-        transition(fromSection: indexPath.section)
+        transition(using: indexPath)
     }
     
-    private func transition(fromSection section: Int) {
-        let viewController: UIViewController
-        
-        switch section {
+    private func transition(using indexPath: IndexPath) {
+
+        guard let parentController = self.parentViewController?.parent else {
+            return
+        }
+
+        switch indexPath.row {
         case 0:
-            break
+            let viewController = Presenter.inject(.colorPickerView)
+            viewController.modalPresentationStyle = .popover
+            parentController.present(viewController, animated: true, completion: nil)
         default:
             break
         }
     }
+    
+    private func present() {
+        
+    }
 }
 
-// MARK: - Scene Inspector Data Source
+// MARK: - SceneInspectorViewDataSource
 
 extension SceneInspectorPresentableView: SceneInspectorViewDataSource {
-    public func numberOfItems(inSceneInspectorView sceneInspectorView: SceneInspectorView) -> Int {
-        return 1
+    public func sceneInspectorView(_ sceneInspectorView: SceneInspectorView, sceneBackgroundColor for: SCNScene) -> UIColor {
+        return .green
     }
 }

@@ -6,9 +6,12 @@
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
-import Foundation
 import SceneKit
 
 public protocol SceneInspectorViewModel {
     var scene: SCNScene? { get }
+}
+
+public struct SceneInspector: SceneInspectorViewModel {
+    public var scene: SCNScene?
 }

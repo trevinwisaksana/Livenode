@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SceneKit
 
 public protocol NodeInspectorViewDelegate: NSObjectProtocol {
     func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
 public protocol NodeInspectorViewDataSource: NSObjectProtocol {
-    func numberOfItems(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> Int
+    func viewModel(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> NodeInspectorViewModel
 }
 
 public class NodeInspectorView: UIView {
@@ -22,7 +23,6 @@ public class NodeInspectorView: UIView {
     
     private static let cellHeight: CGFloat = 60.0
     
-    // Have the collection view be private so nobody messes with it.
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +87,7 @@ extension NodeInspectorView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inNodeInspectorView: self) ?? 0
+        return 1
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,6 +100,10 @@ extension NodeInspectorView: UITableViewDataSource {
             let cell: NodeColorCell = tableView.dequeueReusableCell()
             cell.delegate = self
             
+            if let model = dataSource?.viewModel(inNodeInspectorView: self) {
+                cell.model = model
+            }
+            
             return cell
         default:
             fatalError("Index out of range.")
@@ -111,7 +115,7 @@ extension NodeInspectorView: UITableViewDataSource {
     }
 }
 
-// MARK: - NodeInspectorViewCellDataSource
+// MARK: - NodeAttributesDelegate
 
 extension NodeInspectorView: NodeAttributesDelegate {
     public func nodeColorCell(_ nodeColorCell: NodeColorCell, changeBackgroundColorForModel model: SceneInspectorViewModel) {

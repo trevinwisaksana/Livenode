@@ -9,12 +9,12 @@
 import UIKit
 
 enum Presenter {
-    static func inject(_ component: ViewComponents) -> UIViewController {
+    static func inject(_ component: ViewComponent) -> UIViewController {
         let controller: UIViewController
         
         switch component {
         case .colorPickerView:
-            controller = AttributesInspectorViewController<ColorPickerView>()
+            controller = ColorPickerViewController<ColorPickerView>()
             controller.title = "Color Palette"
             return controller
         case .sceneInspectorView:
