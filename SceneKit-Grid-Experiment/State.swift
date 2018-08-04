@@ -18,7 +18,7 @@ struct State {
             return node
         }
         set {
-            if let node = newValue {
+            if let node = Node(node: newValue) {
                 UserDefaults.standard.set(node, forKey: nodeSelectedKey)
             } else {
                 UserDefaults.standard.removeObject(forKey: nodeSelectedKey)

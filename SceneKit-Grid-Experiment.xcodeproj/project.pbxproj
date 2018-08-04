@@ -26,13 +26,14 @@
 		DD68C21A2110688A0061100F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C2192110688A0061100F /* State.swift */; };
 		DD68C21F2110735C0061100F /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C21E2110735C0061100F /* Node.swift */; };
 		DD68C221211076690061100F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C220211076690061100F /* Scene.swift */; };
+		DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C224211581E10061100F /* SCNGeometryExtensions.swift */; };
+		DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C2262115879F0061100F /* UIColorExtensions.swift */; };
 		DD6C16F0210B217A002CB031 /* ViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16EF210B217A002CB031 /* ViewComponent.swift */; };
 		DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16F1210B233C002CB031 /* NodeInspectorPresentableView.swift */; };
 		DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16F4210B2423002CB031 /* NodeColorCell.swift */; };
 		DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16F7210B32D5002CB031 /* NodeInspectorViewModel.swift */; };
 		DD6C16FD210C16EF002CB031 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */; };
 		DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4222109B0D2009284C6 /* SceneInspectorViewModel.swift */; };
-		DD6CC4282109B396009284C6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4272109B396009284C6 /* Color.swift */; };
 		DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC42B2109B4C4009284C6 /* UIViewExtensions.swift */; };
 		DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4302109B54E009284C6 /* UIEdgeInsetsExtensions.swift */; };
 		DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */; };
@@ -86,13 +87,14 @@
 		DD68C2192110688A0061100F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		DD68C21E2110735C0061100F /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		DD68C220211076690061100F /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		DD68C224211581E10061100F /* SCNGeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGeometryExtensions.swift; sourceTree = "<group>"; };
+		DD68C2262115879F0061100F /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		DD6C16EF210B217A002CB031 /* ViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponent.swift; sourceTree = "<group>"; };
 		DD6C16F1210B233C002CB031 /* NodeInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorPresentableView.swift; sourceTree = "<group>"; };
 		DD6C16F4210B2423002CB031 /* NodeColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeColorCell.swift; sourceTree = "<group>"; };
 		DD6C16F7210B32D5002CB031 /* NodeInspectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorViewModel.swift; sourceTree = "<group>"; };
 		DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		DD6CC4222109B0D2009284C6 /* SceneInspectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorViewModel.swift; sourceTree = "<group>"; };
-		DD6CC4272109B396009284C6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DD6CC42B2109B4C4009284C6 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		DD6CC4302109B54E009284C6 /* UIEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
@@ -154,7 +156,6 @@
 				DD20F66720672FBD005E838C /* AppDelegate.swift */,
 				DD68C2192110688A0061100F /* State.swift */,
 				DD68C21D211073530061100F /* Components */,
-				DD6CC4292109B39F009284C6 /* DNA */,
 				DD638DBC20AC2D3800395557 /* ViewControllers */,
 				DD638DC320AC2E0800395557 /* ViewModels */,
 				DD638DC020AC2DA200395557 /* Presenter */,
@@ -342,22 +343,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		DD6CC4292109B39F009284C6 /* DNA */ = {
-			isa = PBXGroup;
-			children = (
-				DD6CC42A2109B3A5009284C6 /* Color */,
-			);
-			path = DNA;
-			sourceTree = "<group>";
-		};
-		DD6CC42A2109B3A5009284C6 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				DD6CC4272109B396009284C6 /* Color.swift */,
-			);
-			path = Color;
-			sourceTree = "<group>";
-		};
 		DD6CC42E2109B4E2009284C6 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +350,7 @@
 				DD6CC4302109B54E009284C6 /* UIEdgeInsetsExtensions.swift */,
 				DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */,
 				DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */,
+				DD68C2262115879F0061100F /* UIColorExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -374,6 +360,7 @@
 			children = (
 				DD6CC44F210A111A009284C6 /* SCNSceneExtensions.swift */,
 				DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */,
+				DD68C224211581E10061100F /* SCNGeometryExtensions.swift */,
 			);
 			path = SceneKit;
 			sourceTree = "<group>";
@@ -567,6 +554,7 @@
 				DD6C16FD210C16EF002CB031 /* ColorPickerViewController.swift in Sources */,
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
 				DD6CC44E2109C6AE009284C6 /* SceneBackgroundColorCell.swift in Sources */,
+				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
 				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
 				DD6CC450210A111A009284C6 /* SCNSceneExtensions.swift in Sources */,
@@ -580,12 +568,12 @@
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
-				DD6CC4282109B396009284C6 /* Color.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
 				DD68C21A2110688A0061100F /* State.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */,
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
+				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
 				DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */,
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,
