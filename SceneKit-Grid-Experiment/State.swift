@@ -30,12 +30,12 @@ struct State {
     
     static var currentScene: SCNScene? {
         get {
-            guard let scene = UserDefaults.standard.object(forKey: currentSceneKey) as! SCNScene else { return nil }
+            guard let scene = UserDefaults.standard.object(forKey: currentSceneKey) as? SCNScene else { return nil }
             return scene
         }
         set {
             if let scene = newValue {
-                UserDefaults.standard.set(node, forKey: currentSceneKey)
+                UserDefaults.standard.set(scene, forKey: currentSceneKey)
             } else {
                 UserDefaults.standard.removeObject(forKey: currentSceneKey)
             }
