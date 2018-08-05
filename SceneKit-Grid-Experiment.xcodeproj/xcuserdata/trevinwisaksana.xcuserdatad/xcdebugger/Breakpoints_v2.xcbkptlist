@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SceneKit-Grid-Experiment/Scenes/GridScene.swift"
-            timestampString = "555058249.380439"
+            filePath = "SceneKit-Grid-Experiment/Components/Node.swift"
+            timestampString = "555161884.037357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "init()"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "init(coder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SceneKit-Grid-Experiment/Scenes/GridScene.swift"
-            timestampString = "555058249.380563"
+            filePath = "SceneKit-Grid-Experiment/Components/Node.swift"
+            timestampString = "555161884.0374531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "init()"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "encode(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

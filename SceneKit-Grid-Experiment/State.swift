@@ -18,8 +18,10 @@ struct State {
             return node
         }
         set {
+            
             if let node = Node(node: newValue) {
-                UserDefaults.standard.set(node, forKey: nodeSelectedKey)
+                let data = NSKeyedArchiver.archivedData(withRootObject: node)
+                UserDefaults.standard.set(data, forKey: nodeSelectedKey)
             } else {
                 UserDefaults.standard.removeObject(forKey: nodeSelectedKey)
             }

@@ -20,4 +20,11 @@ extension UIColor {
     convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
+    
+    var hex: UInt {
+        let red = UInt(ciColor.red * 255 + 0.5)
+        let green = UInt(ciColor.green * 255 + 0.5)
+        let blue = UInt(ciColor.blue * 255 + 0.5)
+        return (red << 16) | (green << 8) | blue
+    }
 }
