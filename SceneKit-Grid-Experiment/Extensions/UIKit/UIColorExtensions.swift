@@ -21,10 +21,30 @@ extension UIColor {
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
     
-    var hex: UInt {
-        let red = UInt(ciColor.red * 255 + 0.5)
-        let green = UInt(ciColor.green * 255 + 0.5)
-        let blue = UInt(ciColor.blue * 255 + 0.5)
-        return (red << 16) | (green << 8) | blue
+    /// Parses the current color to a dictionary with red, green, blue and alpha as keys.
+    public func parseColor() -> [String : Float] {
+        guard let components = self.cgColor.components else {
+            fatalError("Node has no identifiable color.")
+        }
+        
+        let red = Float(components[0])
+        let green = Float(components[1])
+        let blue = Float(components[2])
+        let alpha = Float(components[3])
+        
+        return ["red": red, "green": green, "blue": blue, "alpha": alpha]
+    }
+    
+    /// Parses a dictionary which contains red, green, blue and alpha as keys and a Float of its respective values.
+    public func parse(hex: [String : Float]) -> UIColor {
+        guard let red = hex["red"],
+            let green = hex["green"],
+            let blue = hex["blue"],
+            let alpha = hex["alpha"]
+            else {
+                return .white
+        }
+        
+        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
     }
 }

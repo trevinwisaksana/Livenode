@@ -29,7 +29,7 @@ final class GridScene: SCNScene {
         let testBox = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         
         testNode = SCNNode(geometry: testBox)
-        testNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+        testNode.geometry?.firstMaterial?.diffuse.contents = UIColor.green
         testNode.position = SCNVector3(0, 0.5, 0)
         testNode.name = "testNode"
         

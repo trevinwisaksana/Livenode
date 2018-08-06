@@ -14,7 +14,11 @@ final class SceneViewController: UIViewController {
     // MARK: - Properties
     
     private var sceneView: SCNView!
-    private var mainScene: GridScene!
+    private var mainScene: GridScene! {
+        didSet {
+            State.currentScene = Scene(scene: mainScene)
+        }
+    }
     
     private var nodeSelected: SCNNode? {
         didSet {

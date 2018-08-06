@@ -23,12 +23,8 @@ public class Node: NSObject, NSCoding {
     private static let shapeKey = "shapeKey"
     
     var position: SCNVector3 = SCNVector3Zero
-    var color: UIColor? = .blue
+    var color: UIColor?
     var shape: Shape?
-    
-    // Location of object
-    // Object color
-    // Object shape
     
     // MARK: - Initializer
     
@@ -43,8 +39,6 @@ public class Node: NSObject, NSCoding {
         self.color = node.geometry?.firstMaterial?.diffuse.contents as? UIColor
         self.shape = determine(geometry: node.geometry)
     }
-    
-    
     
     // MARK: - Shape
     
@@ -97,38 +91,11 @@ public class Node: NSObject, NSCoding {
         return vector
     }
     
-    // MARK: - Color
-    
-    private func encodeColor() -> [String : Float] {
-        guard let components = color?.cgColor.components else {
-            fatalError("Node has no identifiable color.")
-        }
-        
-        let red = Float(components[0])
-        let green = Float(components[1])
-        let blue = Float(components[2])
-        let alpha = Float(components[3])
-        
-        return ["red": red, "green": green, "blue": blue, "alpha": alpha]
-    }
-    
-    private func decode(hex: [String : Float]) -> UIColor {
-        guard let red = hex["red"],
-              let green = hex["green"],
-              let blue = hex["blue"],
-              let alpha = hex["alpha"]
-        else {
-            return .white
-        }
-        
-        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
-    }
-    
     // MARK: - Encoder
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(encodePosition(), forKey: Node.positionKey)
-        aCoder.encode(encodeColor(), forKey: Node.colorKey)
+        aCoder.encode(color?.parseColor(), forKey: Node.colorKey)
         aCoder.encode(encodeShape(), forKey: Node.shapeKey)
     }
     
@@ -139,7 +106,7 @@ public class Node: NSObject, NSCoding {
         self.position = decode(position: position)
         
         let hex = aDecoder.decodePropertyList(forKey: Node.colorKey) as! [String : Float]
-        self.color = decode(hex: hex)
+        self.color = color?.parse(hex: hex)
         
         let shape = aDecoder.decodeObject(forKey: Node.shapeKey) as! String
         self.shape = decode(shape: shape)
