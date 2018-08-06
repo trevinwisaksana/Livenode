@@ -14,7 +14,7 @@ enum Shape: String {
     case sphere
 }
 
-class Node: NSObject, NSCoding {
+public class Node: NSObject, NSCoding {
     
     // MARK: - Internal Properties
     
@@ -43,6 +43,8 @@ class Node: NSObject, NSCoding {
         self.color = node.geometry?.firstMaterial?.diffuse.contents as? UIColor
         self.shape = determine(geometry: node.geometry)
     }
+    
+    
     
     // MARK: - Shape
     
@@ -124,13 +126,13 @@ class Node: NSObject, NSCoding {
     
     // MARK: - Encoder
     
-    func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         aCoder.encode(encodePosition(), forKey: Node.positionKey)
         aCoder.encode(encodeColor(), forKey: Node.colorKey)
         aCoder.encode(encodeShape(), forKey: Node.shapeKey)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init()
         
         let position = aDecoder.decodePropertyList(forKey: Node.positionKey) as! [String : Float]

@@ -12,14 +12,18 @@ struct State {
     private static let nodeSelectedKey = "nodeSelectedKey"
     private static let currentSceneKey = "currentSceneKey"
     
-    static var nodeSelected: SCNNode? {
+    static var nodeSelected: Node? {
         get {
-            guard let node = UserDefaults.standard.object(forKey: nodeSelectedKey) as? SCNNode else { return nil }
+            guard let encodedNode = UserDefaults.standard.data(forKey: nodeSelectedKey) else {
+                fatalError("Failed to retrieve node data.")
+            }
+            
+            let node = NSKeyedUnarchiver.unarchiveObject(with: encodedNode) as? Node
+            
             return node
         }
         set {
-            
-            if let node = Node(node: newValue) {
+            if let node = newValue {
                 let data = NSKeyedArchiver.archivedData(withRootObject: node)
                 UserDefaults.standard.set(data, forKey: nodeSelectedKey)
             } else {

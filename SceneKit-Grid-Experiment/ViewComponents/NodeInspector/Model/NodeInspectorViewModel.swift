@@ -9,9 +9,9 @@
 import SceneKit
 
 public protocol NodeInspectorViewModel {
-    var node: SCNNode? { get }
+    var node: Node? { get }
 }
 
 public struct NodeInspector: NodeInspectorViewModel {
-    public var node: SCNNode?
+    public var node: Node?
 }

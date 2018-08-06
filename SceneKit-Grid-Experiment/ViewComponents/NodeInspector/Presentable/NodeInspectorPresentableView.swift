@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 public class NodeDataSource: NSObject {
-    let node: SCNNode? = State.nodeSelected
+    let node: Node? = State.nodeSelected
 }
 
 public class NodeInspectorPresentableView: UIView {

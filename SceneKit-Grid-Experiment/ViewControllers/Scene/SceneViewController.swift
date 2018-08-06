@@ -136,7 +136,7 @@ final class SceneViewController: UIViewController {
         
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
-            State.nodeSelected = nodeSelected
+            State.nodeSelected = Node(node: nodeSelected)
             nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         } else {
             didSelectTargetNode = false

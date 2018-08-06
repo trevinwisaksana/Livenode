@@ -118,7 +118,5 @@ extension NodeInspectorView: UITableViewDataSource {
 // MARK: - NodeAttributesDelegate
 
 extension NodeInspectorView: NodeAttributesDelegate {
-    public func nodeColorCell(_ nodeColorCell: NodeColorCell, changeBackgroundColorForModel model: SceneInspectorViewModel) {
-        
-    }
+    public func nodeColorCell(_ nodeColorCell: NodeColorCell, changeBackgroundColorForModel model: SceneInspectorViewModel) {}
 }
