@@ -95,18 +95,18 @@ public class Node: NSObject, NSCoding {
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(encodePosition(), forKey: Node.positionKey)
-        aCoder.encode(color?.parseColor(), forKey: Node.colorKey)
+        aCoder.encode(color?.toRGBA(), forKey: Node.colorKey)
         aCoder.encode(encodeShape(), forKey: Node.shapeKey)
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init()
         
-        let position = aDecoder.decodePropertyList(forKey: Node.positionKey) as! [String : Float]
+        let position = aDecoder.decodeObject(forKey: Node.positionKey) as! [String : Float]
         self.position = decode(position: position)
         
-        let hex = aDecoder.decodePropertyList(forKey: Node.colorKey) as! [String : Float]
-        self.color = color?.parse(hex: hex)
+        let hex = aDecoder.decodeObject(forKey: Node.colorKey) as! [String : Float]
+        self.color = UIColor.parse(hex: hex)
         
         let shape = aDecoder.decodeObject(forKey: Node.shapeKey) as! String
         self.shape = decode(shape: shape)

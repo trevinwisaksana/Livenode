@@ -22,27 +22,31 @@ extension UIColor {
     }
     
     /// Parses the current color to a dictionary with red, green, blue and alpha as keys.
-    public func parseColor() -> [String : Float] {
+    public func toRGBA() -> [String : Float] {
         guard let components = self.cgColor.components else {
             fatalError("Node has no identifiable color.")
         }
         
-        let red = components[0]
-        let green = components[1]
-        let blue = (components.count > 2 ? components[2] : green) // Crashes without this fix
-        let alpha = self.cgColor.alpha
+        let rgba = components.map { (value) in
+           return Float(value)
+        }
         
-        return ["red": Float(red), "green": Float(green), "blue": Float(blue), "alpha": Float(alpha)]
+        let red = rgba[0]
+        let green = rgba[1]
+        let blue = (rgba.count > 2 ? rgba[2] : green)
+        let alpha = Float(self.cgColor.alpha)
+        
+        return ["red": red, "green": green, "blue": blue, "alpha": alpha]
     }
     
     /// Parses a dictionary which contains red, green, blue and alpha as keys and a Float of its respective values.
-    public func parse(hex: [String : Float]) -> UIColor {
+    static func parse(hex: [String : Float]) -> UIColor {
         guard let red = hex["red"],
               let green = hex["green"],
               let blue = hex["blue"],
               let alpha = hex["alpha"]
         else {
-            return .white
+            fatalError("Failed to decode color.")
         }
         
         return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))

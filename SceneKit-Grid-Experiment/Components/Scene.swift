@@ -28,15 +28,19 @@ public class Scene: NSObject, NSCoding {
         self.backgroundColor = scene.backgroundColor
     }
     
+    // MARK: - Encoder
+    
     public func encode(with aCoder: NSCoder) {
-        aCoder.encode(backgroundColor?.parseColor(), forKey: Scene.backgroundColorKey)
+        aCoder.encode(backgroundColor?.toRGBA(), forKey: Scene.backgroundColorKey)
     }
+    
+    // MARK: - Decoder
     
     required public init?(coder aDecoder: NSCoder) {
         super.init()
         
-        let hex = aDecoder.decodePropertyList(forKey: Scene.backgroundColorKey) as! [String : Float]
-        self.backgroundColor = backgroundColor?.parse(hex: hex)
+        let hex = aDecoder.decodeObject(forKey: Scene.backgroundColorKey) as! [String : Float]
+        self.backgroundColor = UIColor.parse(hex: hex)
     }
     
 }
