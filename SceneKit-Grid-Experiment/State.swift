@@ -18,14 +18,14 @@ struct State {
                 fatalError("Failed to retrieve node data.")
             }
             
-            UserDefaults.standard.removeObject(forKey: nodeSelectedKey)
-            
             let node = NSKeyedUnarchiver.unarchiveObject(with: encodedNode) as? Node
             
             return node
         }
         set {
             if let node = newValue {
+                UserDefaults.standard.removeObject(forKey: nodeSelectedKey)
+                
                 let data = NSKeyedArchiver.archivedData(withRootObject: node)
                 UserDefaults.standard.set(data, forKey: nodeSelectedKey)
             }
@@ -44,6 +44,8 @@ struct State {
         }
         set {
             if let scene = newValue {
+                UserDefaults.standard.removeObject(forKey: currentSceneKey)
+                
                 let data = NSKeyedArchiver.archivedData(withRootObject: scene)
                 UserDefaults.standard.set(data, forKey: currentSceneKey)
             }
