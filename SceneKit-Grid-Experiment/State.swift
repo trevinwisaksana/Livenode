@@ -18,7 +18,7 @@ struct State {
                 fatalError("Failed to retrieve node data.")
             }
             
-            UserDefaults.standard.removeObject(forKey: currentSceneKey)
+            UserDefaults.standard.removeObject(forKey: nodeSelectedKey)
             
             let node = NSKeyedUnarchiver.unarchiveObject(with: encodedNode) as? Node
             
@@ -37,8 +37,6 @@ struct State {
             guard let encodedScene = UserDefaults.standard.data(forKey: currentSceneKey) else {
                 fatalError("Failed to retrieve scene data.")
             }
-            
-            UserDefaults.standard.removeObject(forKey: currentSceneKey)
             
             let scene = NSKeyedUnarchiver.unarchiveObject(with: encodedScene) as? Scene
             
