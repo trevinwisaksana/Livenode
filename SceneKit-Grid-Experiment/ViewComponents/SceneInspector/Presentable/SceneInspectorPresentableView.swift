@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 public class SceneDataSource: NSObject {
-    
+    let scene: Scene? = State.currentScene
 }
 
 public class SceneInspectorPresentableView: UIView {
@@ -65,7 +65,7 @@ extension SceneInspectorPresentableView: SceneInspectorViewDelegate {
 // MARK: - SceneInspectorViewDataSource
 
 extension SceneInspectorPresentableView: SceneInspectorViewDataSource {
-    public func sceneInspectorView(_ sceneInspectorView: SceneInspectorView, sceneBackgroundColor for: SCNScene) -> UIColor {
-        return .green
+    public func viewModel(inSceneInspectorView sceneInspectorView: SceneInspectorView) -> SceneInspectorViewModel {
+        return SceneInspector(scene: dataSource.scene)
     }
 }

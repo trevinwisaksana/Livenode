@@ -14,7 +14,7 @@ public protocol SceneInspectorViewDelegate: NSObjectProtocol {
 }
 
 public protocol SceneInspectorViewDataSource: NSObjectProtocol {
-    func sceneInspectorView(_ sceneInspectorView: SceneInspectorView, sceneBackgroundColor for: SCNScene) -> UIColor
+    func viewModel(inSceneInspectorView sceneInspectorView: SceneInspectorView) -> SceneInspectorViewModel
 }
 
 public class SceneInspectorView: UIView {
@@ -99,6 +99,10 @@ extension SceneInspectorView: UITableViewDataSource {
         case 0:
             let cell: SceneBackgroundColorCell = tableView.dequeueReusableCell()
             cell.delegate = self
+            
+            if let model = dataSource?.viewModel(inSceneInspectorView: self) {
+                cell.model = model
+            }
             
             return cell
         default:

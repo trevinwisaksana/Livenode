@@ -14,11 +14,11 @@ struct State {
     
     static var nodeSelected: Node? {
         get {
-            UserDefaults.standard.removeObject(forKey: nodeSelectedKey)
-            
             guard let encodedNode = UserDefaults.standard.data(forKey: nodeSelectedKey) else {
                 fatalError("Failed to retrieve node data.")
             }
+            
+            UserDefaults.standard.removeObject(forKey: nodeSelectedKey)
             
             let node = NSKeyedUnarchiver.unarchiveObject(with: encodedNode) as? Node
             
@@ -34,17 +34,21 @@ struct State {
     
     static var currentScene: Scene? {
         get {
-            guard let scene = UserDefaults.standard.object(forKey: currentSceneKey) as? Scene else { return nil }
+            guard let encodedScene = UserDefaults.standard.data(forKey: currentSceneKey) else {
+                fatalError("Failed to retrieve scene data.")
+            }
+            
+            UserDefaults.standard.removeObject(forKey: currentSceneKey)
+            
+            let scene = NSKeyedUnarchiver.unarchiveObject(with: encodedScene) as? Scene
+            
             return scene
         }
         set {
             if let scene = newValue {
-                UserDefaults.standard.set(scene, forKey: currentSceneKey)
-            } else {
-                UserDefaults.standard.removeObject(forKey: currentSceneKey)
+                let data = NSKeyedArchiver.archivedData(withRootObject: scene)
+                UserDefaults.standard.set(data, forKey: currentSceneKey)
             }
-            
-            UserDefaults.standard.synchronize()
         }
     }
 }

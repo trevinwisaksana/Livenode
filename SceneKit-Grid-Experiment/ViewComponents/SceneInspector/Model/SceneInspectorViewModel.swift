@@ -9,9 +9,9 @@
 import SceneKit
 
 public protocol SceneInspectorViewModel {
-    var scene: SCNScene? { get }
+    var scene: Scene? { get }
 }
 
 public struct SceneInspector: SceneInspectorViewModel {
-    public var scene: SCNScene?
+    public var scene: Scene?
 }

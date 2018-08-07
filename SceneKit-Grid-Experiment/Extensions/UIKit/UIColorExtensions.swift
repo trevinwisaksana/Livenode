@@ -27,22 +27,22 @@ extension UIColor {
             fatalError("Node has no identifiable color.")
         }
         
-        let red = Float(components[0])
-        let green = Float(components[1])
-        let blue = Float(components[2])
-        let alpha = Float(components[3])
+        let red = components[0]
+        let green = components[1]
+        let blue = (components.count > 2 ? components[2] : green) // Crashes without this fix
+        let alpha = self.cgColor.alpha
         
-        return ["red": red, "green": green, "blue": blue, "alpha": alpha]
+        return ["red": Float(red), "green": Float(green), "blue": Float(blue), "alpha": Float(alpha)]
     }
     
     /// Parses a dictionary which contains red, green, blue and alpha as keys and a Float of its respective values.
     public func parse(hex: [String : Float]) -> UIColor {
         guard let red = hex["red"],
-            let green = hex["green"],
-            let blue = hex["blue"],
-            let alpha = hex["alpha"]
-            else {
-                return .white
+              let green = hex["green"],
+              let blue = hex["blue"],
+              let alpha = hex["alpha"]
+        else {
+            return .white
         }
         
         return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
