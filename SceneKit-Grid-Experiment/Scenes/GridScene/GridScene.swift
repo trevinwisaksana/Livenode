@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-final class GridScene: SCNScene, SceneAttributesProtocol {
+final class GridScene: SCNScene, SceneAttributesViewModel {
     
     // MARK: - Internal Properties
     
