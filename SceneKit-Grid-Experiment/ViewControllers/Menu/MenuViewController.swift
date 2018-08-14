@@ -10,10 +10,10 @@ import UIKit
 
 final class MenuViewController: UIViewController {
     
-    //---- Properties ----///
+    // MARK: - Internal Properties
     
     
-    //---- VC Lifecycle ----//
+    // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +21,11 @@ final class MenuViewController: UIViewController {
         
     }
     
-    //---- IBAction ----//
-    
-    
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension MenuViewController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
@@ -41,13 +39,12 @@ extension MenuViewController: UICollectionViewDataSource {
         let reusableView: RecentsCollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
         return reusableView
     }
-    
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension MenuViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
-    
 }

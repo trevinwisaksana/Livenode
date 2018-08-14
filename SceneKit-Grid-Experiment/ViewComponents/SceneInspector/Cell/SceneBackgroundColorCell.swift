@@ -36,7 +36,8 @@ public class SceneBackgroundColorCell: UITableViewCell {
     
     private lazy var colorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .green
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.lightGray.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

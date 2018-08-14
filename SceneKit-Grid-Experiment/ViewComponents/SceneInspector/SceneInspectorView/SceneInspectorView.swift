@@ -59,6 +59,7 @@ public class SceneInspectorView: UIView {
     
     private func setup() {
         tableView.register(cell: SceneBackgroundColorCell.self)
+        tableView.register(cell: SceneFloorColorCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -87,15 +88,15 @@ extension SceneInspectorView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return setupCell(atSection: indexPath.section)
+        return setupCell(with: indexPath)
     }
     
-    private func setupCell(atSection section: Int) -> UITableViewCell {
-        switch section {
+    private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
         case 0:
             let cell: SceneBackgroundColorCell = tableView.dequeueReusableCell()
             cell.delegate = self
@@ -105,6 +106,17 @@ extension SceneInspectorView: UITableViewDataSource {
             }
             
             return cell
+            
+        case 1:
+            let cell: SceneFloorColorCell = tableView.dequeueReusableCell()
+            cell.delegate = self
+            
+            if let model = dataSource?.viewModel(inSceneInspectorView: self) {
+                cell.model = model
+            }
+            
+            return cell
+            
         default:
             fatalError("Index out of range.")
         }

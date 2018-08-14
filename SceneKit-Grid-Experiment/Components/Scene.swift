@@ -7,18 +7,27 @@
 //
 
 import SceneKit
+import UIKit
+
+public protocol SceneAttributesProtocol {
+    var floorNode: SCNNode { get set }
+    var backgroundColor: UIColor { get }
+    var floorColor: UIColor? { get }
+}
 
 public class Scene: NSObject, NSCoding {
     
     // MARK: - Internal Properties
     
-    private static let backgroundColorKey = "colorKey"
+    private static let backgroundColorKey = "backgroundColorKey"
+    private static let floorColorKey = "floorColorKey"
     
     var backgroundColor: UIColor?
+    var floorColor: UIColor?
     
     // MARK: - Initialzer
     
-    init?(scene: SCNScene?) {
+    init?(scene: SceneAttributesProtocol?) {
         super.init()
         
         guard let scene = scene else {
@@ -26,12 +35,14 @@ public class Scene: NSObject, NSCoding {
         }
         
         self.backgroundColor = scene.backgroundColor
+        self.floorColor = scene.floorColor
     }
     
     // MARK: - Encoder
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(backgroundColor?.toRGBA(), forKey: Scene.backgroundColorKey)
+        aCoder.encode(floorColor?.toRGBA(), forKey: Scene.floorColorKey)
     }
     
     // MARK: - Decoder
@@ -39,8 +50,10 @@ public class Scene: NSObject, NSCoding {
     required public init?(coder aDecoder: NSCoder) {
         super.init()
         
-        let hex = aDecoder.decodeObject(forKey: Scene.backgroundColorKey) as! [String : Float]
-        self.backgroundColor = UIColor.parse(hex: hex)
+        let backgroundColorHex = aDecoder.decodeObject(forKey: Scene.backgroundColorKey) as! [String : Float]
+        self.backgroundColor = UIColor.parse(hex: backgroundColorHex)
+        
+        let floorColorHex = aDecoder.decodeObject(forKey: Scene.floorColorKey) as! [String : Float]
+        self.floorColor = UIColor.parse(hex: floorColorHex)
     }
-    
 }

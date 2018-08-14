@@ -17,6 +17,7 @@ public class ColorPickerView: UIView {
     // MARK: - Internal properties
     
     weak internal var delegate: ColorPickerViewDelegate?
+    
     let saturationExponentTop: Float = 2.0
     let saturationExponentBottom: Float = 1.3
     

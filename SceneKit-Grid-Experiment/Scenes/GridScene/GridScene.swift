@@ -6,20 +6,24 @@
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SceneKit
 
-final class GridScene: SCNScene {
+final class GridScene: SCNScene, SceneAttributesProtocol {
     
-    //–––– Properties ––––//
+    // MARK: - Internal Properties
     
     let gridWidth = 20
     
     var cameraNode = SCNNode()
-    var testNode: SCNNode!
-    var floorNode: SCNNode!
+    var testNode: SCNNode = SCNNode()
+    var floorNode: SCNNode = SCNNode()
     
-    //–––– Initializer ––––//
+    var floorColor: UIColor? {
+        return floorNode.color
+    }
+    
+    // MARK: - Initializer
     
     override public init() {
         super.init()
@@ -28,7 +32,7 @@ final class GridScene: SCNScene {
     
         let testBox = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         
-        testNode = SCNNode(geometry: testBox)
+        testNode.geometry = testBox
         testNode.geometry?.firstMaterial?.diffuse.contents = UIColor.green
         testNode.position = SCNVector3(0, 0.5, 0)
         testNode.name = "testNode"
@@ -36,14 +40,13 @@ final class GridScene: SCNScene {
         rootNode.addChildNode(testNode)
         
         // TODO: Add a grid texture to the SCNFloor
-        let floor = SCNFloor()
-        floor.reflectivity = 0
         
-        floorNode = SCNNode(geometry: floor)
-        floorNode.name = "Floor"
-        floorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.gray
-        
+        let floorGeometry = SCNFloor()
+        floorNode.geometry = floorGeometry
+        floorNode.name = "FloorNode"
+        floorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         rootNode.addChildNode(floorNode)
+
     }
     
     required init?(coder aDecoder: NSCoder) {

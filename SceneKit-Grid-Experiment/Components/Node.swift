@@ -99,6 +99,8 @@ public class Node: NSObject, NSCoding {
         aCoder.encode(encodeShape(), forKey: Node.shapeKey)
     }
     
+    // MARK: - Decoder
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init()
         

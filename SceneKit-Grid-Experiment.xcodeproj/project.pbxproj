@@ -28,6 +28,7 @@
 		DD68C221211076690061100F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C220211076690061100F /* Scene.swift */; };
 		DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C224211581E10061100F /* SCNGeometryExtensions.swift */; };
 		DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C2262115879F0061100F /* UIColorExtensions.swift */; };
+		DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C22A211989F30061100F /* SceneFloorColorCell.swift */; };
 		DD6C16F0210B217A002CB031 /* ViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16EF210B217A002CB031 /* ViewComponent.swift */; };
 		DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16F1210B233C002CB031 /* NodeInspectorPresentableView.swift */; };
 		DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C16F4210B2423002CB031 /* NodeColorCell.swift */; };
@@ -89,6 +90,7 @@
 		DD68C220211076690061100F /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		DD68C224211581E10061100F /* SCNGeometryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGeometryExtensions.swift; sourceTree = "<group>"; };
 		DD68C2262115879F0061100F /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		DD68C22A211989F30061100F /* SceneFloorColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFloorColorCell.swift; sourceTree = "<group>"; };
 		DD6C16EF210B217A002CB031 /* ViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponent.swift; sourceTree = "<group>"; };
 		DD6C16F1210B233C002CB031 /* NodeInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorPresentableView.swift; sourceTree = "<group>"; };
 		DD6C16F4210B2423002CB031 /* NodeColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeColorCell.swift; sourceTree = "<group>"; };
@@ -209,7 +211,7 @@
 		DD638DBE20AC2D4800395557 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				DD20F68B20673184005E838C /* GridScene.swift */,
+				DD68C22C2122B9C00061100F /* GridScene */,
 				DDEF325D20DF776100FEE793 /* Box.scn */,
 				DDEF326020DF797F00FEE793 /* Pyramid.scn */,
 			);
@@ -258,6 +260,14 @@
 				DD68C220211076690061100F /* Scene.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		DD68C22C2122B9C00061100F /* GridScene */ = {
+			isa = PBXGroup;
+			children = (
+				DD20F68B20673184005E838C /* GridScene.swift */,
+			);
+			path = GridScene;
 			sourceTree = "<group>";
 		};
 		DD6C16F3210B2343002CB031 /* Presentable */ = {
@@ -331,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				DD6CC44D2109C6AE009284C6 /* SceneBackgroundColorCell.swift */,
+				DD68C22A211989F30061100F /* SceneFloorColorCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -568,6 +579,7 @@
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
+				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
 				DD68C21A2110688A0061100F /* State.swift in Sources */,

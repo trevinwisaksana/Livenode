@@ -18,3 +18,14 @@ extension SCNScene {
     
 }
 
+// TODO: Change this to make the floorNode property editable
+//extension SCNScene: SceneProtocol {
+//
+//    var floorNode: SCNNode? {
+//        get {
+//            return floorNode
+//        }
+//    }
+//
+//}
+

@@ -133,7 +133,7 @@ final class SceneViewController: UIViewController {
         
         if nodeSelected?.name == "Floor" || nodeSelected == nil {
             nodeSelected = nil
-            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+            mainScene.testNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
             
             return
         }

@@ -42,7 +42,6 @@ extension SceneInspectorPresentableView: SceneInspectorViewDelegate {
     }
     
     private func transition(using indexPath: IndexPath) {
-
         guard let parentController = self.parentViewController?.parent else {
             return
         }

@@ -39,7 +39,7 @@ extension UIColor {
         return ["red": red, "green": green, "blue": blue, "alpha": alpha]
     }
     
-    /// Parses a dictionary which contains red, green, blue and alpha as keys and a Float of its respective values.
+    /// Parses a dictionary which contains red, green, blue and alpha as keys and Floats as its respective values.
     static func parse(hex: [String : Float]) -> UIColor {
         guard let red = hex["red"],
               let green = hex["green"],
