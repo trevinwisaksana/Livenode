@@ -27,12 +27,8 @@ public class Scene: NSObject, NSCoding {
     
     // MARK: - Initialzer
     
-    init?(scene: SceneAttributesProtocol?) {
+    init?(scene: SceneAttributesProtocol) {
         super.init()
-        
-        guard let scene = scene else {
-            return nil
-        }
         
         self.backgroundColor = scene.backgroundColor
         self.floorColor = scene.floorColor
