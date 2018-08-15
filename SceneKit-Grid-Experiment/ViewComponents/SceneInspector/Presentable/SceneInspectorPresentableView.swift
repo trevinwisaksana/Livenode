@@ -42,22 +42,21 @@ extension SceneInspectorPresentableView: SceneInspectorViewDelegate {
     }
     
     private func transition(using indexPath: IndexPath) {
-        guard let parentController = self.parentViewController?.parent else {
+        guard let navigationController = parentViewController?.parent as? UINavigationController else {
             return
         }
-
+        
         switch indexPath.row {
         case 0:
-            let viewController = Presenter.inject(.colorPickerView)
-            viewController.modalPresentationStyle = .popover
-            parentController.present(viewController, animated: true, completion: nil)
+            let colorPicker = Presenter.inject(.colorPickerView)
+            navigationController.pushViewController(colorPicker, animated: true)
+        case 1:
+            // TODO: Change color of the floor
+            let colorPicker = Presenter.inject(.colorPickerView)
+            navigationController.pushViewController(colorPicker, animated: true)
         default:
             break
         }
-    }
-    
-    private func present() {
-        
     }
 }
 

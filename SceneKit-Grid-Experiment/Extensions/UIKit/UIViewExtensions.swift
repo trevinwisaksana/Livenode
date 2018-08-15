@@ -7,7 +7,7 @@ import UIKit
 // MARK: - ParentViewController
 
 extension UIView {
-    /// Returns the parent view controller of a UIView
+    // TODO: Find an alternative approach to access the parent view controller
     var parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         

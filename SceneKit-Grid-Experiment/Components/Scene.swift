@@ -9,7 +9,7 @@
 import SceneKit
 import UIKit
 
-public protocol SceneAttributesViewModel {
+public protocol SceneViewModel {
     var floorNode: SCNNode { get set }
     var backgroundColor: UIColor { get }
     var floorColor: UIColor? { get }
@@ -27,10 +27,9 @@ public class Scene: NSObject, NSCoding {
     
     // MARK: - Initialzer
     
-    init?(scene: SceneAttributesViewModel) {
+    init?(scene: SceneViewModel) {
         super.init()
 
-        
         self.backgroundColor = scene.backgroundColor
         self.floorColor = scene.floorColor
     }

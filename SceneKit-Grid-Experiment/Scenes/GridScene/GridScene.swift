@@ -9,13 +9,13 @@
 import UIKit
 import SceneKit
 
-final class GridScene: SCNScene, SceneAttributesViewModel {
+final class GridScene: SCNScene, SceneViewModel {
     
     // MARK: - Internal Properties
     
-    let gridWidth = 20
+    private static let gridWidth: Int = 20
     
-    var cameraNode = SCNNode()
+    var cameraNode: SCNNode = SCNNode()
     var testNode: SCNNode = SCNNode()
     var floorNode: SCNNode = SCNNode()
     
@@ -46,7 +46,6 @@ final class GridScene: SCNScene, SceneAttributesViewModel {
         floorNode.name = "FloorNode"
         floorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         rootNode.addChildNode(floorNode)
-
     }
     
     required init?(coder aDecoder: NSCoder) {
