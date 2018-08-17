@@ -77,6 +77,7 @@ public class SceneInspectorView: UIView {
 extension SceneInspectorView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.sceneInspectorView(self, didSelectItemAtIndexPath: indexPath)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 

@@ -76,6 +76,7 @@ public class NodeInspectorView: UIView {
 extension NodeInspectorView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.nodeInspectorView(self, didSelectItemAtIndexPath: indexPath)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 
