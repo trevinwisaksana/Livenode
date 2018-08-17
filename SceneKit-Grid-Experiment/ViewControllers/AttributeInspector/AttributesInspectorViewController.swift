@@ -27,8 +27,12 @@ final class AttributesInspectorViewController<View: UIView>: UIViewController {
         super.viewDidLoad()
         
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     // MARK: - Setup
@@ -36,6 +40,8 @@ final class AttributesInspectorViewController<View: UIView>: UIViewController {
     private func setup() {
         view.addSubview(mainView)
         mainView.fillInSuperview()
+
+        preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     
 }

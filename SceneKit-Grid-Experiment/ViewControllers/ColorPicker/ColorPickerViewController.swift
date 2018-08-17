@@ -27,8 +27,6 @@ final class ColorPickerViewController<View: UIView>: UIViewController {
         super.viewDidLoad()
         
         setup()
-        
-        preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     
     // MARK: - Setup
@@ -36,6 +34,9 @@ final class ColorPickerViewController<View: UIView>: UIViewController {
     private func setup() {
         view.addSubview(mainView)
         mainView.fillInSuperview()
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     
 }
