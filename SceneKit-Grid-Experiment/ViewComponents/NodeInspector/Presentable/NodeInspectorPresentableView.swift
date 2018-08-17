@@ -42,11 +42,14 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
     }
     
     private func transition(using indexPath: IndexPath) {
-        let viewController: UIViewController
+        guard let navigationController = parentViewController?.parent as? UINavigationController else {
+            return
+        }
         
-        switch indexPath.section {
+        switch indexPath.row {
         case 0:
-            break
+            let colorPicker = Presenter.inject(.colorPickerView)
+            navigationController.pushViewController(colorPicker, animated: true)
         default:
             break
         }
