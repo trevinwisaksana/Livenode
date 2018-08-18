@@ -14,9 +14,14 @@ public class SceneDataSource: NSObject {
 }
 
 public class SceneInspectorPresentableView: UIView {
+    
+    // MARK: - Internal Properties
+    
     lazy var dataSource: SceneDataSource = {
         return SceneDataSource()
     }()
+    
+    // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,7 +56,6 @@ extension SceneInspectorPresentableView: SceneInspectorViewDelegate {
             let colorPicker = Presenter.inject(.colorPickerView)
             navigationController.pushViewController(colorPicker, animated: true)
         case 1:
-            // TODO: Change color of the floor
             let colorPicker = Presenter.inject(.colorPickerView)
             navigationController.pushViewController(colorPicker, animated: true)
         default:
