@@ -22,8 +22,8 @@ public class Scene: NSObject, NSCoding {
     private static let backgroundColorKey = "backgroundColorKey"
     private static let floorColorKey = "floorColorKey"
     
-    var backgroundColor: UIColor?
-    var floorColor: UIColor?
+    public var backgroundColor: UIColor?
+    public var floorColor: UIColor?
     
     // MARK: - Initialzer
     

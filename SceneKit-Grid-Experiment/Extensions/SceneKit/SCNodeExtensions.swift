@@ -37,7 +37,7 @@ extension SCNNode {
             return self.geometry?.firstMaterial!.diffuse.contents as! UIColor
         }
         set {
-            self.geometry?.firstMaterial!.diffuse.contents = color
+            self.geometry?.firstMaterial!.diffuse.contents = newValue
         }
     }
     

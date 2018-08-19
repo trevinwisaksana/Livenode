@@ -8,18 +8,20 @@
 
 import UIKit
 
-internal protocol ColorPickerViewDelegate: class {
-    func didTapColorPicker(sender: ColorPickerView, color: UIColor, point: CGPoint, state: UIGestureRecognizerState)
+public protocol ColorPickerViewDelegate: class {
+    func didTapColor(sender: ColorPickerView, color: UIColor, point: CGPoint, state: UIGestureRecognizerState)
+}
+
+public protocol ColorPickerViewDataSource: class {
+    func viewModel(InColorPickerView colorPickerView: ColorPickerView) -> ColorPickerViewModel
 }
 
 public class ColorPickerView: UIView {
     
     // MARK: - Internal properties
     
-    weak internal var delegate: ColorPickerViewDelegate?
-    
-    let saturationExponentTop: Float = 2.0
-    let saturationExponentBottom: Float = 1.3
+    private static let saturationExponentTop: Float = 2.0
+    private static let saturationExponentBottom: Float = 1.3
     
     var elementSize: CGFloat = 20 {
         didSet {
@@ -27,23 +29,36 @@ public class ColorPickerView: UIView {
         }
     }
     
-    private func initialize() {
+    private weak var delegate: ColorPickerViewDelegate?
+    private weak var dataSource: ColorPickerViewDataSource?
+    
+    // MARK: - Setup
+    
+    public init(delegate: ColorPickerViewDelegate, dataSource: ColorPickerViewDataSource) {
+        super.init(frame: .zero)
+        
+        self.delegate = delegate
+        self.dataSource = dataSource
+        
+        setup()
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    private func setup() {
         self.clipsToBounds = true
         let touchGesture = UILongPressGestureRecognizer(target: self, action: #selector(didSelectColor(_:)))
         touchGesture.minimumPressDuration = 0
         touchGesture.allowableMovement = CGFloat.greatestFiniteMagnitude
         self.addGestureRecognizer(touchGesture)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        initialize()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initialize()
     }
     
     override public func draw(_ rect: CGRect) {
@@ -54,7 +69,7 @@ public class ColorPickerView: UIView {
         for y in stride(from: (0 as CGFloat), to: rect.height, by: elementSize) {
             
             var saturation = y < rect.height / 2.0 ? CGFloat(2 * y) / rect.height : 2.0 * CGFloat(rect.height - y) / rect.height
-            saturation = CGFloat(powf(Float(saturation), y < rect.height / 2.0 ? saturationExponentTop : saturationExponentBottom))
+            saturation = CGFloat(powf(Float(saturation), y < rect.height / 2.0 ? ColorPickerView.saturationExponentTop : ColorPickerView.saturationExponentBottom))
             let brightness = y < rect.height / 2.0 ? CGFloat(1.0) : 2.0 * CGFloat(rect.height - y) / rect.height
             
             for x in stride(from: (0 as CGFloat), to: rect.height, by: elementSize) {
@@ -66,18 +81,20 @@ public class ColorPickerView: UIView {
         }
     }
     
-    func getColorAt(point: CGPoint) -> UIColor {
+    // MARK: - Color
+    
+    private func getColorAt(point: CGPoint) -> UIColor {
         let roundedPoint = CGPoint(x:elementSize * CGFloat(Int(point.x / elementSize)),
                                    y:elementSize * CGFloat(Int(point.y / elementSize)))
         var saturation = roundedPoint.y < self.bounds.height / 2.0 ? CGFloat(2 * roundedPoint.y) / self.bounds.height
             : 2.0 * CGFloat(self.bounds.height - roundedPoint.y) / self.bounds.height
-        saturation = CGFloat(powf(Float(saturation), roundedPoint.y < self.bounds.height / 2.0 ? saturationExponentTop : saturationExponentBottom))
+        saturation = CGFloat(powf(Float(saturation), roundedPoint.y < self.bounds.height / 2.0 ? ColorPickerView.saturationExponentTop : ColorPickerView.saturationExponentBottom))
         let brightness = roundedPoint.y < self.bounds.height / 2.0 ? CGFloat(1.0) : 2.0 * CGFloat(self.bounds.height - roundedPoint.y) / self.bounds.height
         let hue = roundedPoint.x / self.bounds.width
         return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
     }
     
-    func getPointForColor(color:UIColor) -> CGPoint {
+    private func getPointForColor(color:UIColor) -> CGPoint {
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
@@ -87,7 +104,7 @@ public class ColorPickerView: UIView {
         let halfHeight = (self.bounds.height / 2)
         
         if (brightness >= 0.99) {
-            let percentageY = powf(Float(saturation), 1.0 / saturationExponentTop)
+            let percentageY = powf(Float(saturation), 1.0 / ColorPickerView.saturationExponentTop)
             yPos = CGFloat(percentageY) * halfHeight
         } else {
             // Use brightness to get Y
@@ -99,13 +116,15 @@ public class ColorPickerView: UIView {
         return CGPoint(x: xPos, y: yPos)
     }
     
+    // MARK: - Gesture Recognizer
+    
     @objc
     func didSelectColor(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             let point = gestureRecognizer.location(in: self)
             let color = getColorAt(point: point)
             
-            delegate?.didTapColorPicker(sender: self, color: color, point: point, state: gestureRecognizer.state)
+            delegate?.didTapColor(sender: self, color: color, point: point, state: gestureRecognizer.state)
         }
         
     }

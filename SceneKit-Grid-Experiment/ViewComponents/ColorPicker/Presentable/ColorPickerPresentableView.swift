@@ -20,6 +20,37 @@ public class ColorPickerPresentableView: UIView {
         return ColorPickerDataSource()
     }()
     
+    // MARK: - Initializer
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setup()
+    }
     
+    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    
+    private func setup() {
+        let view = ColorPickerView(delegate: self, dataSource: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        view.fillInSuperview()
+    }
+    
+}
+
+// MARK: - ColorPickerViewDelegatevar scene: Scene? { get }
+
+extension ColorPickerPresentableView: ColorPickerViewDelegate {
+    public func didTapColor(sender: ColorPickerView, color: UIColor, point: CGPoint, state: UIGestureRecognizerState) {
+        
+    }
+}
+
+// MARK: - ColorPickerViewDataSource
+
+extension ColorPickerPresentableView: ColorPickerViewDataSource {
+    public func viewModel(InColorPickerView colorPickerView: ColorPickerView) -> ColorPickerViewModel {
+        return ColorPicker(node: dataSource.node)
+    }
 }
