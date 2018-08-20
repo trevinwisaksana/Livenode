@@ -20,16 +20,7 @@ final class SceneViewController: UIViewController {
         }
     }
     
-    private var nodeSelected: SCNNode? {
-        didSet {
-            if nodeSelected == nil {
-                // TODO: Display the scene menu when no node is selected
-            } else {
-                
-            }
-        }
-    }
-    
+    private var nodeSelected: SCNNode?
     private var lastNodeSelected: SCNNode?
     private var lastNodePosition: SCNVector3?
     
