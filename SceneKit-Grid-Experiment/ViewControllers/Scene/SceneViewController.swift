@@ -23,10 +23,9 @@ final class SceneViewController: UIViewController {
     private var nodeSelected: SCNNode? {
         didSet {
             if nodeSelected == nil {
-//                objectAttributeButton.isEnabled = false
                 // TODO: Display the scene menu when no node is selected
             } else {
-//                objectAttributeButton.isEnabled = true
+                
             }
         }
     }
