@@ -44,6 +44,7 @@ final class SceneViewController: UIViewController {
         
         setupGameView()
         setupLongPressGestureRecognizer()
+        setupNavigationBar()
     }
     
     // MARK: - Setup
@@ -66,6 +67,10 @@ final class SceneViewController: UIViewController {
         
         // default lighting
         sceneView.autoenablesDefaultLighting = true
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.barTintColor = .milk
     }
     
     // MARK: - Touches
