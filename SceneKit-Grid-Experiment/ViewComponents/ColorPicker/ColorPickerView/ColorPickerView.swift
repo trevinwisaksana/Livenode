@@ -126,6 +126,5 @@ public class ColorPickerView: UIView {
             
             delegate?.didTapColor(sender: self, color: color, point: point, state: gestureRecognizer.state)
         }
-        
     }
 }

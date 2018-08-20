@@ -53,7 +53,7 @@ final class SceneViewController: UIViewController {
         super.viewDidLoad()
         
         setupGameView()
-        prepareLongPressGestureRecognizer()
+        setupLongPressGestureRecognizer()
     }
     
     // MARK: - Setup
@@ -84,6 +84,10 @@ final class SceneViewController: UIViewController {
         presentObjectCatalogController(using: sender)
     }
     
+    @IBAction func didTapObjectAttributeButton(_ sender: UIBarButtonItem) {
+        presentInspectorViews(using: sender)
+    }
+    
     private func presentObjectCatalogController(using sender: UIBarButtonItem) {
         let objectCatalogController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
         
@@ -96,10 +100,6 @@ final class SceneViewController: UIViewController {
         objectCatalogController.delegate = self
         
         present(objectCatalogController, animated: true, completion: nil)
-    }
-    
-    @IBAction func didTapObjectAttributeButton(_ sender: UIBarButtonItem) {
-        presentInspectorViews(using: sender)
     }
     
     private func presentInspectorViews(using sender: UIBarButtonItem) {
@@ -123,9 +123,9 @@ final class SceneViewController: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
     
-    // MARK: - Touches
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: view)
         
@@ -160,6 +160,8 @@ final class SceneViewController: UIViewController {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: view)
         
@@ -193,7 +195,7 @@ final class SceneViewController: UIViewController {
 //        gameScene.testNode.isMovable = false
     }
     
-    func prepareLongPressGestureRecognizer() {
+    private func setupLongPressGestureRecognizer() {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(sender:)))
         view.addGestureRecognizer(longPressGesture)
     }
