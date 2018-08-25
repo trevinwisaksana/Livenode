@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol ColorPickerViewDelegate: class {
-    func didTapColor(sender: ColorPickerView, color: UIColor, point: CGPoint, state: UIGestureRecognizerState)
+    func didTap(color: UIColor, point: CGPoint, state: UIGestureRecognizerState)
 }
 
 public protocol ColorPickerViewDataSource: class {
@@ -124,7 +124,7 @@ public class ColorPickerView: UIView {
             let point = gestureRecognizer.location(in: self)
             let color = getColorAt(point: point)
             
-            delegate?.didTapColor(sender: self, color: color, point: point, state: gestureRecognizer.state)
+            delegate?.didTap(color: color, point: point, state: gestureRecognizer.state)
         }
     }
 }

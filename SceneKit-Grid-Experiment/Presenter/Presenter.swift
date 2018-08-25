@@ -14,7 +14,7 @@ enum Presenter {
         
         switch component {
         case .colorPickerView:
-            controller = ColorPickerViewController<ColorPickerView>()
+            controller = ColorPickerViewController<ColorPickerPresentableView>()
             return controller
         case .sceneInspectorView:
             controller = AttributesInspectorViewController<SceneInspectorPresentableView>()
