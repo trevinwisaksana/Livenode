@@ -29,7 +29,7 @@
                                     <action selector="didTapAddObjectButton:" destination="BV1-FR-VrT" id="hxw-wO-UUy"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf">
+                            <barButtonItem title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf">
                                 <connections>
                                     <action selector="didTapObjectAttributeButton:" destination="BV1-FR-VrT" id="Ybc-kW-skZ"/>
                                 </connections>
@@ -76,7 +76,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SceneCell" id="dkk-k8-Fpv" customClass="SceneCell" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SceneDocumentCell" id="dkk-k8-Fpv" customClass="SceneDocumentCell" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -316,62 +316,14 @@
             </objects>
             <point key="canvasLocation" x="1607" y="-76"/>
         </scene>
-        <!--Object Attribute View Controller-->
+        <!--Attributes Inspector View Controller-->
         <scene sceneID="Y1W-vd-nUF">
             <objects>
-                <viewController storyboardIdentifier="ObjectAttributeController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="t8W-iU-39E" customClass="ObjectAttributeViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ObjectAttributeController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="t8W-iU-39E" customClass="AttributesInspectorViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1GH-du-9Gp">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="is2-Fp-hTb">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zgb-9O-ePh">
-                                    <size key="itemSize" width="300" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorPickerCell" id="eUF-5Y-z0m" customClass="ColorPickerCell" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMz-BJ-OQE" customClass="HSBColorPicker" customModule="SceneKit_Grid_Experiment" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="mMz-BJ-OQE" firstAttribute="leading" secondItem="eUF-5Y-z0m" secondAttribute="leading" id="Lgq-Wh-Md1"/>
-                                            <constraint firstAttribute="bottom" secondItem="mMz-BJ-OQE" secondAttribute="bottom" id="TkI-9M-3sB"/>
-                                            <constraint firstItem="mMz-BJ-OQE" firstAttribute="top" secondItem="eUF-5Y-z0m" secondAttribute="top" id="ZYP-A3-Ip5"/>
-                                            <constraint firstAttribute="trailing" secondItem="mMz-BJ-OQE" secondAttribute="trailing" id="Zb2-bh-Ued"/>
-                                        </constraints>
-                                        <size key="customSize" width="300" height="300"/>
-                                        <connections>
-                                            <outlet property="colorPickerView" destination="mMz-BJ-OQE" id="ZC0-3J-986"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="t8W-iU-39E" id="k3i-rA-Tjm"/>
-                                    <outlet property="delegate" destination="t8W-iU-39E" id="Rzr-hB-BG0"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="is2-Fp-hTb" secondAttribute="bottom" id="S0a-g0-jby"/>
-                            <constraint firstItem="is2-Fp-hTb" firstAttribute="top" secondItem="1GH-du-9Gp" secondAttribute="top" id="d6y-E5-s3t"/>
-                            <constraint firstItem="is2-Fp-hTb" firstAttribute="trailing" secondItem="Yvy-qG-y7J" secondAttribute="trailing" id="pYS-d1-GnD"/>
-                            <constraint firstItem="is2-Fp-hTb" firstAttribute="leading" secondItem="Yvy-qG-y7J" secondAttribute="leading" id="zPK-63-1mi"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Yvy-qG-y7J"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="55"/>
@@ -379,7 +331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6p-ft-0Rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607" y="273"/>
+            <point key="canvasLocation" x="1608" y="277"/>
         </scene>
     </scenes>
     <resources>
