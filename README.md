@@ -5,6 +5,7 @@ Incase you're wondering what the Livenote app is, it is the Augmented Reality (A
 
 ## Timeline
 • August – September: Complete scene and node attributes inspector, refine camera controls and movement
+
 • October – November: Refine 3D modeling environment, add node merging capabilities
 
 <p align="center">
