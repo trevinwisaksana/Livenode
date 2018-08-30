@@ -45,6 +45,7 @@ final class SceneViewController: UIViewController {
         setupGameView()
         setupLongPressGestureRecognizer()
         setupNavigationBar()
+        setupNodeSelectedListener()
     }
     
     // MARK: - Setup
@@ -71,6 +72,19 @@ final class SceneViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.barTintColor = .milk
+    }
+    
+    private func setupNodeSelectedListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Constants.NotificationCenter.nodeColorModifiedKey, object: nil)
+    }
+    
+    // MARK: - Node Selected
+    
+    @objc
+    private func didModifyNodeColor(_ notification: Notification) {
+        if let color = notification.object as? UIColor {
+            mainScene.testNode.color = color
+        }
     }
     
     // MARK: - Touches

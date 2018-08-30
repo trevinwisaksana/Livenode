@@ -8,15 +8,15 @@
 
 import UIKit
 
-final class ColorPickerViewController<View: UIView>: UIViewController {
+final class ColorPickerViewController<View: ColorPickerPresentableView>: UIViewController {
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = 300
     private let popoverHeight: Int = 400
     
-    lazy var mainView: View = {
-        let mainView = View(frame: view.frame)
+    lazy var mainView: ColorPickerPresentableView = {
+        let mainView = ColorPickerPresentableView(frame: view.frame)
         mainView.translatesAutoresizingMaskIntoConstraints = false
         return mainView
     }()

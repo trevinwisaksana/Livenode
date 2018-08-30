@@ -16,6 +16,10 @@ struct Constants {
         static let objectAttribute = "ObjectAttributeController"
     }
     
+    struct NotificationCenter {
+        static let nodeColorModifiedKey = Notification.Name("NSNotification.NodeColorModified")
+    }
+    
 }
 
 enum Action: String {

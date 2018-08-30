@@ -23,6 +23,7 @@ struct State {
             return node
         }
         set {
+            // Only set when nodeSelected has its value replaced
             if let node = newValue {
                 UserDefaults.standard.removeObject(forKey: nodeSelectedKey)
                 

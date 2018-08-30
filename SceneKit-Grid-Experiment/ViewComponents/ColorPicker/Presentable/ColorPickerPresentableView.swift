@@ -42,8 +42,8 @@ public class ColorPickerPresentableView: UIView {
 // MARK: - ColorPickerViewDelegatevar scene: Scene? { get }
 
 extension ColorPickerPresentableView: ColorPickerViewDelegate {
-    public func didTap(color: UIColor, point: CGPoint, state: UIGestureRecognizerState) {
-        // TODO: Change the color of the node
+    public func didTap(color: UIColor) {
+        NotificationCenter.default.post(name: Constants.NotificationCenter.nodeColorModifiedKey, object: color)
     }
 }
 

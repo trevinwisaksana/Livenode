@@ -23,7 +23,7 @@ public class Node: NSObject, NSCoding {
     private static let shapeKey = "shapeKey"
     
     var position: SCNVector3 = SCNVector3Zero
-    var color: UIColor?
+    var color: UIColor = .white
     var shape: Shape?
     
     // MARK: - Initializer
@@ -36,7 +36,7 @@ public class Node: NSObject, NSCoding {
         }
         
         self.position = node.position
-        self.color = node.geometry?.firstMaterial?.diffuse.contents as? UIColor
+        self.color = node.geometry?.firstMaterial?.diffuse.contents as! UIColor
         self.shape = determine(geometry: node.geometry)
     }
     
@@ -95,7 +95,7 @@ public class Node: NSObject, NSCoding {
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(encodePosition(), forKey: Node.positionKey)
-        aCoder.encode(color?.toRGBA(), forKey: Node.colorKey)
+        aCoder.encode(color.toRGBA(), forKey: Node.colorKey)
         aCoder.encode(encodeShape(), forKey: Node.shapeKey)
     }
     
