@@ -97,18 +97,8 @@ final class SceneViewController: UIViewController {
         presentInspectorViews(using: sender)
     }
     
-    private func presentObjectCatalogController(using sender: UIBarButtonItem) {
-        let objectCatalogController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
+    @IBAction func didTapUtilitiesButton(_ sender: UIBarButtonItem) {
         
-        objectCatalogController.modalPresentationStyle = .popover
-        
-        objectCatalogController.popoverPresentationController?.permittedArrowDirections = .up
-        objectCatalogController.popoverPresentationController?.delegate = self
-        objectCatalogController.popoverPresentationController?.barButtonItem = sender
-        
-        objectCatalogController.delegate = self
-        
-        present(objectCatalogController, animated: true, completion: nil)
     }
     
     private func presentInspectorViews(using sender: UIBarButtonItem) {
@@ -130,6 +120,20 @@ final class SceneViewController: UIViewController {
         navigationController.popoverPresentationController?.barButtonItem = sender
         
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    private func presentObjectCatalogController(using sender: UIBarButtonItem) {
+        let objectCatalogController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
+        
+        objectCatalogController.modalPresentationStyle = .popover
+        
+        objectCatalogController.popoverPresentationController?.permittedArrowDirections = .up
+        objectCatalogController.popoverPresentationController?.delegate = self
+        objectCatalogController.popoverPresentationController?.barButtonItem = sender
+        
+        objectCatalogController.delegate = self
+        
+        present(objectCatalogController, animated: true, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
