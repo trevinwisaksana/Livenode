@@ -87,7 +87,7 @@ final class SceneViewController: UIViewController {
         }
     }
     
-    // MARK: - Touches
+    // MARK: - IBActions
     
     @IBAction func didTapAddObjectButton(_ sender: UIBarButtonItem) {
         presentObjectCatalogController(using: sender)
@@ -98,7 +98,7 @@ final class SceneViewController: UIViewController {
     }
     
     @IBAction func didTapUtilitiesButton(_ sender: UIBarButtonItem) {
-        
+        presentUtilitiesController(using: sender)
     }
     
     private func presentInspectorViews(using sender: UIBarButtonItem) {
@@ -135,6 +135,21 @@ final class SceneViewController: UIViewController {
         
         present(objectCatalogController, animated: true, completion: nil)
     }
+    
+    private func presentUtilitiesController(using sender: UIBarButtonItem) {
+        let utilitiesController = UtilitiesViewController(nibName: nil, bundle: nil)
+        
+        utilitiesController.modalPresentationStyle = .popover
+        
+        utilitiesController.popoverPresentationController?.permittedArrowDirections = .up
+        utilitiesController.popoverPresentationController?.delegate = self
+        utilitiesController.popoverPresentationController?.barButtonItem = sender
+        
+        present(utilitiesController, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
