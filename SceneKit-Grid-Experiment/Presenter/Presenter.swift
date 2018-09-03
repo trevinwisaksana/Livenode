@@ -23,8 +23,7 @@ enum Presenter {
             controller = AttributesInspectorViewController<NodeInspectorPresentableView>()
             return controller
         case .utilitiesView:
-            // TODO: Change the view
-            controller = UtilitiesViewController<NodeInspectorView>()
+            controller = UtilitiesViewController<UtilitiesPresentableView>()
             return controller
         }
     }

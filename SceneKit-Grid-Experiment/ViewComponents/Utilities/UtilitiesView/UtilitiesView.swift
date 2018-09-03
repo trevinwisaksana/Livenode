@@ -57,7 +57,7 @@ public class UtilitiesView: UIView {
     }
     
     private func setup() {
-        tableView.register(cell: SceneBackgroundColorCell.self)
+        tableView.register(cell: UtilitiesShareCell.self)
         tableView.register(cell: SceneFloorColorCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
@@ -88,7 +88,7 @@ extension UtilitiesView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,12 +98,7 @@ extension UtilitiesView: UITableViewDataSource {
     private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell: SceneBackgroundColorCell = tableView.dequeueReusableCell()
-            
-            return cell
-            
-        case 1:
-            let cell: SceneFloorColorCell = tableView.dequeueReusableCell()
+            let cell: UtilitiesShareCell = tableView.dequeueReusableCell()
             
             return cell
             

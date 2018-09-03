@@ -137,7 +137,7 @@ final class SceneViewController: UIViewController {
     }
     
     private func presentUtilitiesController(using sender: UIBarButtonItem) {
-        let utilitiesController = UtilitiesViewController(nibName: nil, bundle: nil)
+        let utilitiesController = Presenter.inject(.utilitiesView)
         
         utilitiesController.modalPresentationStyle = .popover
         

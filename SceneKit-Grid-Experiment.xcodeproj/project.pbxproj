@@ -39,7 +39,6 @@
 		DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC42B2109B4C4009284C6 /* UIViewExtensions.swift */; };
 		DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4302109B54E009284C6 /* UIEdgeInsetsExtensions.swift */; };
 		DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */; };
-		DD6CC44E2109C6AE009284C6 /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC44D2109C6AE009284C6 /* SceneBackgroundColorCell.swift */; };
 		DD6CC450210A111A009284C6 /* SCNSceneExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC44F210A111A009284C6 /* SCNSceneExtensions.swift */; };
 		DD6CC452210AB626009284C6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC451210AB626009284C6 /* Presenter.swift */; };
 		DD8E125F21381BA700D4F4DE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E125E21381BA700D4F4DE /* Style.swift */; };
@@ -47,10 +46,12 @@
 		DD8E1264213CDC0400D4F4DE /* UtilitiesPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1263213CDC0400D4F4DE /* UtilitiesPresentableView.swift */; };
 		DD8E1268213CDC6E00D4F4DE /* UtilitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1267213CDC6E00D4F4DE /* UtilitiesView.swift */; };
 		DD8E126B213CDD6B00D4F4DE /* UtilitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126A213CDD6B00D4F4DE /* UtilitiesViewModel.swift */; };
+		DD8E126E213CE11000D4F4DE /* UtilitiesShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126D213CE11000D4F4DE /* UtilitiesShareCell.swift */; };
 		DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */; };
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
 		DD9C6AF2210AC1BB001E4982 /* SceneDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */; };
 		DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */; };
+		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
 		DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF325B20DF70CF00FEE793 /* Model.swift */; };
 		DDEF325E20DF776100FEE793 /* Box.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Box.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
@@ -107,7 +108,6 @@
 		DD6CC42B2109B4C4009284C6 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		DD6CC4302109B54E009284C6 /* UIEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
-		DD6CC44D2109C6AE009284C6 /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DD6CC44F210A111A009284C6 /* SCNSceneExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNSceneExtensions.swift; sourceTree = "<group>"; };
 		DD6CC451210AB626009284C6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		DD8E125E21381BA700D4F4DE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
@@ -115,10 +115,12 @@
 		DD8E1263213CDC0400D4F4DE /* UtilitiesPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesPresentableView.swift; sourceTree = "<group>"; };
 		DD8E1267213CDC6E00D4F4DE /* UtilitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesView.swift; sourceTree = "<group>"; };
 		DD8E126A213CDD6B00D4F4DE /* UtilitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewModel.swift; sourceTree = "<group>"; };
+		DD8E126D213CE11000D4F4DE /* UtilitiesShareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesShareCell.swift; sourceTree = "<group>"; };
 		DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
 		DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocumentCell.swift; sourceTree = "<group>"; };
 		DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorPresentableView.swift; sourceTree = "<group>"; };
+		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DDEF325B20DF70CF00FEE793 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DDEF325D20DF776100FEE793 /* Box.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Box.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
@@ -378,7 +380,7 @@
 		DD6CC4212109AB2A009284C6 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				DD6CC44D2109C6AE009284C6 /* SceneBackgroundColorCell.swift */,
+				DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */,
 				DD68C22A211989F30061100F /* SceneFloorColorCell.swift */,
 			);
 			path = Cell;
@@ -436,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				DD8E1266213CDC1D00D4F4DE /* Presentable */,
+				DD8E126F213CE11300D4F4DE /* Cells */,
 				DD8E1269213CDC7F00D4F4DE /* UtilitiesView */,
 				DD8E126C213CDD6E00D4F4DE /* Model */,
 			);
@@ -464,6 +467,14 @@
 				DD8E126A213CDD6B00D4F4DE /* UtilitiesViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DD8E126F213CE11300D4F4DE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DD8E126D213CE11000D4F4DE /* UtilitiesShareCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		DD9C6AEF210AC087001E4982 /* NodeInspector */ = {
@@ -627,6 +638,7 @@
 			files = (
 				DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */,
 				DDEF326720E618AF00FEE793 /* ObjectAttributeViewModel.swift in Sources */,
+				DD8E126E213CE11000D4F4DE /* UtilitiesShareCell.swift in Sources */,
 				DDEF326D20E75C6400FEE793 /* DoneView.swift in Sources */,
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
@@ -638,9 +650,9 @@
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
+				DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */,
 				DD6C16FD210C16EF002CB031 /* ColorPickerViewController.swift in Sources */,
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
-				DD6CC44E2109C6AE009284C6 /* SceneBackgroundColorCell.swift in Sources */,
 				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
 				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
 				DD68C2322127BA1F0061100F /* ColorPickerPresentableView.swift in Sources */,

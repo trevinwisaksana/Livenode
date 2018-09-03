@@ -61,8 +61,6 @@ public class SceneBackgroundColorCell: UITableViewCell {
     }
     
     private func setup() {
-        
-        
         addSubview(titleLabel)
         addSubview(colorView)
         
