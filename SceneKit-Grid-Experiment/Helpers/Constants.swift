@@ -14,6 +14,7 @@ struct Constants {
         static let objectCatalog = "ObjectCatalogController"
         static let popoverMenu = "PopoverMenuController"
         static let objectAttribute = "ObjectAttributeController"
+        static let utilities = "UtilitiesController"
     }
     
     struct NotificationCenter {

@@ -42,6 +42,11 @@
 		DD6CC44E2109C6AE009284C6 /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC44D2109C6AE009284C6 /* SceneBackgroundColorCell.swift */; };
 		DD6CC450210A111A009284C6 /* SCNSceneExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC44F210A111A009284C6 /* SCNSceneExtensions.swift */; };
 		DD6CC452210AB626009284C6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC451210AB626009284C6 /* Presenter.swift */; };
+		DD8E125F21381BA700D4F4DE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E125E21381BA700D4F4DE /* Style.swift */; };
+		DD8E1261213BE88500D4F4DE /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1260213BE88500D4F4DE /* UtilitiesViewController.swift */; };
+		DD8E1264213CDC0400D4F4DE /* UtilitiesPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1263213CDC0400D4F4DE /* UtilitiesPresentableView.swift */; };
+		DD8E1268213CDC6E00D4F4DE /* UtilitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1267213CDC6E00D4F4DE /* UtilitiesView.swift */; };
+		DD8E126B213CDD6B00D4F4DE /* UtilitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126A213CDD6B00D4F4DE /* UtilitiesViewModel.swift */; };
 		DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */; };
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
 		DD9C6AF2210AC1BB001E4982 /* SceneDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */; };
@@ -105,6 +110,11 @@
 		DD6CC44D2109C6AE009284C6 /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DD6CC44F210A111A009284C6 /* SCNSceneExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNSceneExtensions.swift; sourceTree = "<group>"; };
 		DD6CC451210AB626009284C6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		DD8E125E21381BA700D4F4DE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		DD8E1260213BE88500D4F4DE /* UtilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewController.swift; sourceTree = "<group>"; };
+		DD8E1263213CDC0400D4F4DE /* UtilitiesPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesPresentableView.swift; sourceTree = "<group>"; };
+		DD8E1267213CDC6E00D4F4DE /* UtilitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesView.swift; sourceTree = "<group>"; };
+		DD8E126A213CDD6B00D4F4DE /* UtilitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewModel.swift; sourceTree = "<group>"; };
 		DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
 		DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocumentCell.swift; sourceTree = "<group>"; };
@@ -179,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				DD2A55E820DE12AA00EA00ED /* Constants.swift */,
+				DD8E125E21381BA700D4F4DE /* Style.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -190,6 +201,7 @@
 				DD6C16FA210C159C002CB031 /* Scene */,
 				DD9C6AF6210B0A43001E4982 /* AttributeInspector */,
 				DD6C16FE210C16F3002CB031 /* ColorPicker */,
+				DD8E1262213BE92B00D4F4DE /* Utilities */,
 				DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */,
 				DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */,
 			);
@@ -203,6 +215,7 @@
 				DD9C6AEF210AC087001E4982 /* NodeInspector */,
 				DD6CC44A2109C3CD009284C6 /* ColorPicker */,
 				DD6CC4202109A7CF009284C6 /* SceneInspector */,
+				DD8E1265213CDC0C00D4F4DE /* Utilities */,
 				DDFC63E320F1FE5900109EC5 /* Cells */,
 				DDEF326C20E75C6400FEE793 /* DoneView.swift */,
 				DDFC63E820F87E2300109EC5 /* RecentsCollectionReusableView.swift */,
@@ -411,6 +424,48 @@
 			path = ColorPicker;
 			sourceTree = "<group>";
 		};
+		DD8E1262213BE92B00D4F4DE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DD8E1260213BE88500D4F4DE /* UtilitiesViewController.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DD8E1265213CDC0C00D4F4DE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DD8E1266213CDC1D00D4F4DE /* Presentable */,
+				DD8E1269213CDC7F00D4F4DE /* UtilitiesView */,
+				DD8E126C213CDD6E00D4F4DE /* Model */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DD8E1266213CDC1D00D4F4DE /* Presentable */ = {
+			isa = PBXGroup;
+			children = (
+				DD8E1263213CDC0400D4F4DE /* UtilitiesPresentableView.swift */,
+			);
+			path = Presentable;
+			sourceTree = "<group>";
+		};
+		DD8E1269213CDC7F00D4F4DE /* UtilitiesView */ = {
+			isa = PBXGroup;
+			children = (
+				DD8E1267213CDC6E00D4F4DE /* UtilitiesView.swift */,
+			);
+			path = UtilitiesView;
+			sourceTree = "<group>";
+		};
+		DD8E126C213CDD6E00D4F4DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD8E126A213CDD6B00D4F4DE /* UtilitiesViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DD9C6AEF210AC087001E4982 /* NodeInspector */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +632,7 @@
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */,
 				DD68C235212905910061100F /* ColorPickerViewModel.swift in Sources */,
+				DD8E1261213BE88500D4F4DE /* UtilitiesViewController.swift in Sources */,
 				DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */,
 				DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
@@ -589,6 +645,7 @@
 				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
 				DD68C2322127BA1F0061100F /* ColorPickerPresentableView.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
+				DD8E126B213CDD6B00D4F4DE /* UtilitiesViewModel.swift in Sources */,
 				DD6CC450210A111A009284C6 /* SCNSceneExtensions.swift in Sources */,
 				DD68C221211076690061100F /* Scene.swift in Sources */,
 				DD68C21F2110735C0061100F /* Node.swift in Sources */,
@@ -602,6 +659,7 @@
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
+				DD8E125F21381BA700D4F4DE /* Style.swift in Sources */,
 				DD68C21A2110688A0061100F /* State.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */,
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
@@ -611,7 +669,9 @@
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,
 				DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */,
 				DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */,
+				DD8E1264213CDC0400D4F4DE /* UtilitiesPresentableView.swift in Sources */,
 				DD9C6AF2210AC1BB001E4982 /* SceneDocumentCell.swift in Sources */,
+				DD8E1268213CDC6E00D4F4DE /* UtilitiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

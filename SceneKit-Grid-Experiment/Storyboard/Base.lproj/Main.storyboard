@@ -23,7 +23,11 @@
                     </sceneKitView>
                     <navigationItem key="navigationItem" id="RV3-xX-pe6">
                         <rightBarButtonItems>
-                            <barButtonItem title="utilitiesBarButton" image="utilitiesButtonIcon" id="7DY-lP-VtX"/>
+                            <barButtonItem title="utilitiesBarButton" image="utilitiesButtonIcon" id="7DY-lP-VtX">
+                                <connections>
+                                    <action selector="didTapUtilitiesButton:" destination="BV1-FR-VrT" id="DSx-kQ-z2q"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="objectCatalogBarButton" image="addButtonIcon" id="W5q-D3-ES6">
                                 <connections>
                                     <action selector="didTapAddObjectButton:" destination="BV1-FR-VrT" id="hxw-wO-UUy"/>

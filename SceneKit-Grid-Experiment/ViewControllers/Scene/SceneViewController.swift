@@ -87,7 +87,7 @@ final class SceneViewController: UIViewController {
         }
     }
     
-    // MARK: - Touches
+    // MARK: - IBActions
     
     @IBAction func didTapAddObjectButton(_ sender: UIBarButtonItem) {
         presentObjectCatalogController(using: sender)
@@ -97,18 +97,8 @@ final class SceneViewController: UIViewController {
         presentInspectorViews(using: sender)
     }
     
-    private func presentObjectCatalogController(using sender: UIBarButtonItem) {
-        let objectCatalogController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
-        
-        objectCatalogController.modalPresentationStyle = .popover
-        
-        objectCatalogController.popoverPresentationController?.permittedArrowDirections = .up
-        objectCatalogController.popoverPresentationController?.delegate = self
-        objectCatalogController.popoverPresentationController?.barButtonItem = sender
-        
-        objectCatalogController.delegate = self
-        
-        present(objectCatalogController, animated: true, completion: nil)
+    @IBAction func didTapUtilitiesButton(_ sender: UIBarButtonItem) {
+        presentUtilitiesController(using: sender)
     }
     
     private func presentInspectorViews(using sender: UIBarButtonItem) {
@@ -131,6 +121,35 @@ final class SceneViewController: UIViewController {
         
         present(navigationController, animated: true, completion: nil)
     }
+    
+    private func presentObjectCatalogController(using sender: UIBarButtonItem) {
+        let objectCatalogController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
+        
+        objectCatalogController.modalPresentationStyle = .popover
+        
+        objectCatalogController.popoverPresentationController?.permittedArrowDirections = .up
+        objectCatalogController.popoverPresentationController?.delegate = self
+        objectCatalogController.popoverPresentationController?.barButtonItem = sender
+        
+        objectCatalogController.delegate = self
+        
+        present(objectCatalogController, animated: true, completion: nil)
+    }
+    
+    private func presentUtilitiesController(using sender: UIBarButtonItem) {
+        let utilitiesController = UtilitiesViewController(nibName: nil, bundle: nil)
+        
+        utilitiesController.modalPresentationStyle = .popover
+        
+        utilitiesController.popoverPresentationController?.permittedArrowDirections = .up
+        utilitiesController.popoverPresentationController?.delegate = self
+        utilitiesController.popoverPresentationController?.barButtonItem = sender
+        
+        present(utilitiesController, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

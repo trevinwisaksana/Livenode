@@ -12,12 +12,14 @@ enum ViewComponent {
     case colorPickerView
     case sceneInspectorView
     case nodeInspectorView
+    case utilitiesView
     
     var all: [ViewComponent] {
         return [
             .colorPickerView,
             .sceneInspectorView,
-            .nodeInspectorView
+            .nodeInspectorView,
+            .utilitiesView
         ]
     }
 }

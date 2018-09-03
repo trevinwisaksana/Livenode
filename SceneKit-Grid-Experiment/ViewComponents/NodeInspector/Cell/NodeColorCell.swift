@@ -38,6 +38,7 @@ public class NodeColorCell: UITableViewCell {
         let view = UIView()
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.cornerRadius = Style.containerCornerRadius
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
