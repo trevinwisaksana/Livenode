@@ -169,7 +169,13 @@ final class SceneViewController: UIViewController {
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
             State.nodeSelected = Node(node: nodeSelected)
-            nodeSelected?.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
+            
+            let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+            let nodeHighlight = SCNNode(geometry: box)
+            nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "box_wireframe")
+            nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
+            nodeSelected?.addChildNode(nodeHighlight)
+            
         } else {
             didSelectTargetNode = false
 //            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
