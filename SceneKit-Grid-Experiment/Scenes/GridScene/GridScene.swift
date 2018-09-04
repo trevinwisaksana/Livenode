@@ -43,7 +43,7 @@ final class GridScene: SCNScene, SceneViewModel {
         
         let floorGeometry = SCNFloor()
         floorNode.geometry = floorGeometry
-        floorNode.name = "FloorNode"
+        floorNode.name = "Floor"
         floorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         rootNode.addChildNode(floorNode)
     }

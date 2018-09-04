@@ -160,7 +160,6 @@ final class SceneViewController: UIViewController {
         nodeSelected = sceneView.hitTest(location, options: nil).first?.node
         
         if nodeSelected?.name == "Floor" || nodeSelected == nil {
-            mainScene.testNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
             unhighlight(lastNodeSelected)
             
             return
@@ -173,7 +172,6 @@ final class SceneViewController: UIViewController {
             
         } else {
             didSelectTargetNode = false
-//            mainScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         }
         
         if lastNodeSelected != nodeSelected {
