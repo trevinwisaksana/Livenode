@@ -160,8 +160,8 @@ final class SceneViewController: UIViewController {
         nodeSelected = sceneView.hitTest(location, options: nil).first?.node
         
         if nodeSelected?.name == "Floor" || nodeSelected == nil {
-            nodeSelected = nil
             mainScene.testNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+            unhighlight(lastNodeSelected)
             
             return
         }
@@ -188,6 +188,7 @@ final class SceneViewController: UIViewController {
             return
         }
         
+        // TODO: Make the dimensions the same with the node selected
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         
         let nodeHighlight = SCNNode(geometry: box)
@@ -196,6 +197,15 @@ final class SceneViewController: UIViewController {
         nodeHighlight.name = "nodeHighlight"
         
         nodeSelected.addChildNode(nodeHighlight)
+    }
+    
+    private func unhighlight(_ lastNodeSelected: SCNNode?) {
+        guard let node = lastNodeSelected else {
+            return
+        }
+        
+        let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
+        nodeHighlight?.removeFromParentNode()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
