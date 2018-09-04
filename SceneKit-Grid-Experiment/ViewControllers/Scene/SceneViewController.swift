@@ -181,6 +181,9 @@ final class SceneViewController: UIViewController {
         lastNodeSelected = nodeSelected
     }
     
+    //
+    
+    // TODO: Find solution that doesn't only work with boxes
     private func highlight(_ nodeSelected: SCNNode?) {
         guard let nodeSelected = nodeSelected else {
             return
@@ -205,6 +208,8 @@ final class SceneViewController: UIViewController {
         let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
         nodeHighlight?.removeFromParentNode()
     }
+    
+    //
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
