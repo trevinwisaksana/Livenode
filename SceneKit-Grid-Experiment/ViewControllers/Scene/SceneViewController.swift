@@ -169,12 +169,7 @@ final class SceneViewController: UIViewController {
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
             State.nodeSelected = Node(node: nodeSelected)
-            
-            let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-            let nodeHighlight = SCNNode(geometry: box)
-            nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "box_wireframe")
-            nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
-            nodeSelected?.addChildNode(nodeHighlight)
+            highlight(nodeSelected)
             
         } else {
             didSelectTargetNode = false
@@ -186,11 +181,21 @@ final class SceneViewController: UIViewController {
         }
         
         lastNodeSelected = nodeSelected
-        
-        // TESTING
-        if let newNode = mainScene.rootNode.childNode(withName: "testNode", recursively: true) {
-            sceneView.pointOfView?.pivot = newNode.pivot
+    }
+    
+    private func highlight(_ nodeSelected: SCNNode?) {
+        guard let nodeSelected = nodeSelected else {
+            return
         }
+        
+        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        
+        let nodeHighlight = SCNNode(geometry: box)
+        nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "box_wireframe")
+        nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
+        nodeHighlight.name = "nodeHighlight"
+        
+        nodeSelected.addChildNode(nodeHighlight)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
