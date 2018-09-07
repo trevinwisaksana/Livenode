@@ -22,6 +22,8 @@
 		DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* PopoverMenuCell.swift */; };
 		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
 		DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */; };
+		DD64A26F213E819000ADAC77 /* FileCatalogPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A26E213E819000ADAC77 /* FileCatalogPresentableView.swift */; };
+		DD64A273213E81D500ADAC77 /* FileCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A272213E81D500ADAC77 /* FileCatalogView.swift */; };
 		DD68C21A2110688A0061100F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C2192110688A0061100F /* State.swift */; };
 		DD68C21F2110735C0061100F /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C21E2110735C0061100F /* Node.swift */; };
 		DD68C221211076690061100F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C220211076690061100F /* Scene.swift */; };
@@ -91,6 +93,8 @@
 		DD638DB820ABD44200395557 /* PopoverMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuCell.swift; sourceTree = "<group>"; };
 		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNodeExtensions.swift; sourceTree = "<group>"; };
+		DD64A26E213E819000ADAC77 /* FileCatalogPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCatalogPresentableView.swift; sourceTree = "<group>"; };
+		DD64A272213E81D500ADAC77 /* FileCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCatalogView.swift; sourceTree = "<group>"; };
 		DD68C2192110688A0061100F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		DD68C21E2110735C0061100F /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		DD68C220211076690061100F /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				DD6C16EF210B217A002CB031 /* ViewComponent.swift */,
+				DD64A270213E819600ADAC77 /* FileCatalog */,
 				DD9C6AEF210AC087001E4982 /* NodeInspector */,
 				DD6CC44A2109C3CD009284C6 /* ColorPicker */,
 				DD6CC4202109A7CF009284C6 /* SceneInspector */,
@@ -267,6 +272,31 @@
 				DD6CC42F2109B4E7009284C6 /* SceneKit */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DD64A270213E819600ADAC77 /* FileCatalog */ = {
+			isa = PBXGroup;
+			children = (
+				DD64A271213E81BE00ADAC77 /* Presentable */,
+				DD64A274213E81D700ADAC77 /* FileCatalogView */,
+			);
+			path = FileCatalog;
+			sourceTree = "<group>";
+		};
+		DD64A271213E81BE00ADAC77 /* Presentable */ = {
+			isa = PBXGroup;
+			children = (
+				DD64A26E213E819000ADAC77 /* FileCatalogPresentableView.swift */,
+			);
+			path = Presentable;
+			sourceTree = "<group>";
+		};
+		DD64A274213E81D700ADAC77 /* FileCatalogView */ = {
+			isa = PBXGroup;
+			children = (
+				DD64A272213E81D500ADAC77 /* FileCatalogView.swift */,
+			);
+			path = FileCatalogView;
 			sourceTree = "<group>";
 		};
 		DD68C21D211073530061100F /* Components */ = {
@@ -676,6 +706,7 @@
 				DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */,
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
 				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
+				DD64A273213E81D500ADAC77 /* FileCatalogView.swift in Sources */,
 				DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */,
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,
@@ -684,6 +715,7 @@
 				DD8E1264213CDC0400D4F4DE /* UtilitiesPresentableView.swift in Sources */,
 				DD9C6AF2210AC1BB001E4982 /* SceneDocumentCell.swift in Sources */,
 				DD8E1268213CDC6E00D4F4DE /* UtilitiesView.swift in Sources */,
+				DD64A26F213E819000ADAC77 /* FileCatalogPresentableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

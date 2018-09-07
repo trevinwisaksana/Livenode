@@ -19,10 +19,33 @@ final class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        createFile()
+        
         // TESTING
+        let fileManager = FileManager.default
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        do {
+            let fileURLs = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
+            print("Count: \(fileURLs.count)")
+        } catch {
+            print("Error while enumerating files \(documentsURL.path): \(error.localizedDescription)")
+        }
         
-        
-        
+    }
+    
+    // TESTING
+    func createFile() {
+        let fileManager = FileManager.default
+        do {
+            let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
+            let fileURL = documentDirectory.appendingPathComponent("Test")
+            let image = #imageLiteral(resourceName: "box_wireframe")
+            if let imageData = UIImageJPEGRepresentation(image, 0.5) {
+                try imageData.write(to: fileURL)
+            }
+        } catch {
+            print(error)
+        }
     }
     
 }
