@@ -1,5 +1,5 @@
 //
-//  MenuViewController.swift
+//  FileMenuViewController.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 19/05/2018.
@@ -8,20 +8,44 @@
 
 import UIKit
 
-final class MenuViewController: UIViewController {
+final class FileMenuViewController<View: UIView, NavigationItem: UINavigationItem>: UIViewController {
     
     // MARK: - Internal Properties
     
+    lazy var mainView: View = {
+        let mainView = View(frame: view.frame)
+        mainView.translatesAutoresizingMaskIntoConstraints = false
+        return mainView
+    }()
     
+    lazy var mainNavigationItem: NavigationItem = {
+        let navigationItem = NavigationItem()
+        return navigationItem
+    }()
     
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createFile()
+        setup()
         
-        // TESTING
+    }
+    
+    // MARK: - Setup
+    
+    private func setup() {
+        view.addSubview(mainView)
+        mainView.fillInSuperview()
+    }
+    
+    override var navigationItem: UINavigationItem {
+        return mainNavigationItem
+    }
+    
+
+    // TESTING
+    func countFile() {
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
@@ -30,10 +54,8 @@ final class MenuViewController: UIViewController {
         } catch {
             print("Error while enumerating files \(documentsURL.path): \(error.localizedDescription)")
         }
-        
     }
     
-    // TESTING
     func createFile() {
         let fileManager = FileManager.default
         do {
@@ -48,30 +70,4 @@ final class MenuViewController: UIViewController {
         }
     }
     
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension MenuViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: SceneDocumentCell = collectionView.dequeueReusableCell(for: indexPath)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let reusableView: RecentsCollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
-        return reusableView
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension MenuViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
 }

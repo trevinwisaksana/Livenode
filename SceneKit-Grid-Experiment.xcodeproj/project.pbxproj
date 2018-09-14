@@ -17,13 +17,14 @@
 		DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */; };
 		DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */; };
 		DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneViewController.swift */; };
-		DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */; };
+		DD5D15FE20AFCC9600935E9E /* FileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5D15FD20AFCC9600935E9E /* FileMenuViewController.swift */; };
 		DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */; };
 		DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* PopoverMenuCell.swift */; };
 		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
 		DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */; };
-		DD64A26F213E819000ADAC77 /* FileCatalogPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A26E213E819000ADAC77 /* FileCatalogPresentableView.swift */; };
-		DD64A273213E81D500ADAC77 /* FileCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A272213E81D500ADAC77 /* FileCatalogView.swift */; };
+		DD64A26F213E819000ADAC77 /* FileMenuPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A26E213E819000ADAC77 /* FileMenuPresentableView.swift */; };
+		DD64A273213E81D500ADAC77 /* FileMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A272213E81D500ADAC77 /* FileMenuView.swift */; };
+		DD64A277214B614200ADAC77 /* FileMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A276214B614200ADAC77 /* FileMenuViewModel.swift */; };
 		DD68C21A2110688A0061100F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C2192110688A0061100F /* State.swift */; };
 		DD68C21F2110735C0061100F /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C21E2110735C0061100F /* Node.swift */; };
 		DD68C221211076690061100F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C220211076690061100F /* Scene.swift */; };
@@ -53,6 +54,7 @@
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
 		DD9C6AF2210AC1BB001E4982 /* SceneDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */; };
 		DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */; };
+		DDCB7F7C214B64550003B34A /* FileMenuNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F7B214B64550003B34A /* FileMenuNavigationItem.swift */; };
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
 		DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF325B20DF70CF00FEE793 /* Model.swift */; };
 		DDEF325E20DF776100FEE793 /* Box.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Box.scn */; };
@@ -88,13 +90,14 @@
 		DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogCell.swift; sourceTree = "<group>"; };
 		DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
-		DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		DD5D15FD20AFCC9600935E9E /* FileMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB820ABD44200395557 /* PopoverMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuCell.swift; sourceTree = "<group>"; };
 		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNodeExtensions.swift; sourceTree = "<group>"; };
-		DD64A26E213E819000ADAC77 /* FileCatalogPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCatalogPresentableView.swift; sourceTree = "<group>"; };
-		DD64A272213E81D500ADAC77 /* FileCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCatalogView.swift; sourceTree = "<group>"; };
+		DD64A26E213E819000ADAC77 /* FileMenuPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuPresentableView.swift; sourceTree = "<group>"; };
+		DD64A272213E81D500ADAC77 /* FileMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuView.swift; sourceTree = "<group>"; };
+		DD64A276214B614200ADAC77 /* FileMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuViewModel.swift; sourceTree = "<group>"; };
 		DD68C2192110688A0061100F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		DD68C21E2110735C0061100F /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		DD68C220211076690061100F /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
 		DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocumentCell.swift; sourceTree = "<group>"; };
 		DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorPresentableView.swift; sourceTree = "<group>"; };
+		DDCB7F7B214B64550003B34A /* FileMenuNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuNavigationItem.swift; sourceTree = "<group>"; };
 		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DDEF325B20DF70CF00FEE793 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DDEF325D20DF776100FEE793 /* Box.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Box.scn; sourceTree = "<group>"; };
@@ -203,7 +207,7 @@
 		DD638DBC20AC2D3800395557 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DD6C16FB210C15A1002CB031 /* Menu */,
+				DD6C16FB210C15A1002CB031 /* FileMenu */,
 				DD6C16FA210C159C002CB031 /* Scene */,
 				DD9C6AF6210B0A43001E4982 /* AttributeInspector */,
 				DD6C16FE210C16F3002CB031 /* ColorPicker */,
@@ -218,7 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				DD6C16EF210B217A002CB031 /* ViewComponent.swift */,
-				DD64A270213E819600ADAC77 /* FileCatalog */,
+				DD64A270213E819600ADAC77 /* FileMenu */,
 				DD9C6AEF210AC087001E4982 /* NodeInspector */,
 				DD6CC44A2109C3CD009284C6 /* ColorPicker */,
 				DD6CC4202109A7CF009284C6 /* SceneInspector */,
@@ -274,29 +278,48 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DD64A270213E819600ADAC77 /* FileCatalog */ = {
+		DD64A270213E819600ADAC77 /* FileMenu */ = {
 			isa = PBXGroup;
 			children = (
 				DD64A271213E81BE00ADAC77 /* Presentable */,
-				DD64A274213E81D700ADAC77 /* FileCatalogView */,
+				DD64A274213E81D700ADAC77 /* FileMenuView */,
+				DD64A275214A6B9400ADAC77 /* Cell */,
+				DD64A278214B614500ADAC77 /* Model */,
 			);
-			path = FileCatalog;
+			path = FileMenu;
 			sourceTree = "<group>";
 		};
 		DD64A271213E81BE00ADAC77 /* Presentable */ = {
 			isa = PBXGroup;
 			children = (
-				DD64A26E213E819000ADAC77 /* FileCatalogPresentableView.swift */,
+				DD64A26E213E819000ADAC77 /* FileMenuPresentableView.swift */,
 			);
 			path = Presentable;
 			sourceTree = "<group>";
 		};
-		DD64A274213E81D700ADAC77 /* FileCatalogView */ = {
+		DD64A274213E81D700ADAC77 /* FileMenuView */ = {
 			isa = PBXGroup;
 			children = (
-				DD64A272213E81D500ADAC77 /* FileCatalogView.swift */,
+				DD64A272213E81D500ADAC77 /* FileMenuView.swift */,
+				DDCB7F7B214B64550003B34A /* FileMenuNavigationItem.swift */,
 			);
-			path = FileCatalogView;
+			path = FileMenuView;
+			sourceTree = "<group>";
+		};
+		DD64A275214A6B9400ADAC77 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DD64A278214B614500ADAC77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD64A276214B614200ADAC77 /* FileMenuViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DD68C21D211073530061100F /* Components */ = {
@@ -372,12 +395,12 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		DD6C16FB210C15A1002CB031 /* Menu */ = {
+		DD6C16FB210C15A1002CB031 /* FileMenu */ = {
 			isa = PBXGroup;
 			children = (
-				DD5D15FD20AFCC9600935E9E /* MenuViewController.swift */,
+				DD5D15FD20AFCC9600935E9E /* FileMenuViewController.swift */,
 			);
-			path = Menu;
+			path = FileMenu;
 			sourceTree = "<group>";
 		};
 		DD6C16FE210C16F3002CB031 /* ColorPicker */ = {
@@ -556,7 +579,6 @@
 			children = (
 				DD638DB820ABD44200395557 /* PopoverMenuCell.swift */,
 				DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */,
-				DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -676,7 +698,7 @@
 				DD68C235212905910061100F /* ColorPickerViewModel.swift in Sources */,
 				DD8E1261213BE88500D4F4DE /* UtilitiesViewController.swift in Sources */,
 				DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */,
-				DD5D15FE20AFCC9600935E9E /* MenuViewController.swift in Sources */,
+				DD5D15FE20AFCC9600935E9E /* FileMenuViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
@@ -695,18 +717,20 @@
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
 				DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */,
 				DDFC63E920F87E2300109EC5 /* RecentsCollectionReusableView.swift in Sources */,
+				DD64A277214B614200ADAC77 /* FileMenuViewModel.swift in Sources */,
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
+				DDCB7F7C214B64550003B34A /* FileMenuNavigationItem.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
 				DD8E125F21381BA700D4F4DE /* Style.swift in Sources */,
 				DD68C21A2110688A0061100F /* State.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */,
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
 				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
-				DD64A273213E81D500ADAC77 /* FileCatalogView.swift in Sources */,
+				DD64A273213E81D500ADAC77 /* FileMenuView.swift in Sources */,
 				DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */,
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,
@@ -715,7 +739,7 @@
 				DD8E1264213CDC0400D4F4DE /* UtilitiesPresentableView.swift in Sources */,
 				DD9C6AF2210AC1BB001E4982 /* SceneDocumentCell.swift in Sources */,
 				DD8E1268213CDC6E00D4F4DE /* UtilitiesView.swift in Sources */,
-				DD64A26F213E819000ADAC77 /* FileCatalogPresentableView.swift in Sources */,
+				DD64A26F213E819000ADAC77 /* FileMenuPresentableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

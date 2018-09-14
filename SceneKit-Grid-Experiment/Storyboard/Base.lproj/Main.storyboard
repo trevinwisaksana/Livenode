@@ -62,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="1046" y="33"/>
         </scene>
-        <!--Menu View Controller-->
+        <!--File Menu View Controller-->
         <scene sceneID="MZs-T5-Jqj">
             <objects>
-                <viewController id="9PI-ve-ysB" customClass="MenuViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9PI-ve-ysB" customClass="FileMenuViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HxZ-fB-MxX">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -319,23 +319,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRL-py-0im" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1607" y="-76"/>
-        </scene>
-        <!--Attributes Inspector View Controller-->
-        <scene sceneID="Y1W-vd-nUF">
-            <objects>
-                <viewController storyboardIdentifier="ObjectAttributeController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="t8W-iU-39E" customClass="AttributesInspectorViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1GH-du-9Gp">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="Yvy-qG-y7J"/>
-                    </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="55"/>
-                    <size key="freeformSize" width="300" height="400"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J6p-ft-0Rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1608" y="277"/>
         </scene>
     </scenes>
     <resources>
