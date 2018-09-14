@@ -28,10 +28,6 @@ final class FileMenuViewController<View: UIView>: UIViewController {
     
     // MARK: - Setup
     
-    override var navigationItem: UINavigationItem {
-        return FileMenuNavigationItem()
-    }
-    
     private func setup() {
         view.addSubview(mainView)
         mainView.fillInSuperview()

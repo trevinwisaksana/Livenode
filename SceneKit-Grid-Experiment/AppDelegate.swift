@@ -16,10 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let navigationController = UINavigationController()
-        
         let fileMenuViewController = Presenter.inject(.fileMenuView)
-        navigationController.setViewControllers([fileMenuViewController], animated: true)
+        let navigationController = RootNavigationController(rootViewController: fileMenuViewController)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController

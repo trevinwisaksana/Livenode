@@ -105,12 +105,26 @@ extension FileMenuView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: FileMenuView.cellWidth, height: FileMenuView.cellHeight)
     }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        // TODO: Use FileMenuViewLayoutConfiguration
+        return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension FileMenuView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+            transition(using: indexPath)
+    }
+    
+    private func transition(using indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            break
+        default:
+            break
+        }
     }
 }
