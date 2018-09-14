@@ -13,7 +13,7 @@ final class NewSceneCell: UICollectionViewCell {
     // MARK: - Internal Properties
     
     private static let titleLabelHeight: CGFloat = 20.0
-    private static let titleLabelBottomMargin: CGFloat = 5.0
+    private static let titleLabelTopMargin: CGFloat = 10.0
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -45,11 +45,11 @@ final class NewSceneCell: UICollectionViewCell {
         addSubview(createSceneImageView)
         
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: NewSceneCell.titleLabelBottomMargin),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: NewSceneCell.titleLabelHeight),
-            titleLabel.topAnchor.constraint(equalTo: createSceneImageView.bottomAnchor),
+            titleLabel.topAnchor.constraint(equalTo: createSceneImageView.bottomAnchor, constant: NewSceneCell.titleLabelTopMargin),
             
             createSceneImageView.leftAnchor.constraint(equalTo: leftAnchor),
             createSceneImageView.rightAnchor.constraint(equalTo: rightAnchor),
