@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FileMenuViewController<View: UIView, NavigationItem: UINavigationItem>: UIViewController {
+final class FileMenuViewController<View: UIView>: UIViewController {
     
     // MARK: - Internal Properties
     
@@ -18,32 +18,25 @@ final class FileMenuViewController<View: UIView, NavigationItem: UINavigationIte
         return mainView
     }()
     
-    lazy var mainNavigationItem: NavigationItem = {
-        let navigationItem = NavigationItem()
-        return navigationItem
-    }()
-    
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setup()
-        
     }
     
     // MARK: - Setup
+    
+    override var navigationItem: UINavigationItem {
+        return FileMenuNavigationItem()
+    }
     
     private func setup() {
         view.addSubview(mainView)
         mainView.fillInSuperview()
     }
     
-    override var navigationItem: UINavigationItem {
-        return mainNavigationItem
-    }
-    
-
     // TESTING
     func countFile() {
         let fileManager = FileManager.default

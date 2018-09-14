@@ -25,9 +25,8 @@ enum Presenter {
         case .utilitiesView:
             controller = UtilitiesViewController<UtilitiesPresentableView>()
             return controller
-        case .fileCatalogView:
-            // TODO: Inject presentable view
-            controller = FileMenuViewController<FileMenuPresentableView, FileMenuNavigationItem>()
+        case .fileMenuView:
+            controller = FileMenuViewController<FileMenuPresentableView>()
             return controller
         }
     }

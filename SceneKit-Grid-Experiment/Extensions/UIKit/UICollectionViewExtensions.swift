@@ -50,7 +50,6 @@ extension UICollectionReusableView: ReusableViewIdentifiable {
 extension UICollectionView {
     
     func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
-        
         guard let cell = dequeueReusableCell(withReuseIdentifier: T.identifier, for: indexPath) as? T else {
             fatalError("Error dequeuing cell for identifier \(T.identifier)")
         }
@@ -59,7 +58,6 @@ extension UICollectionView {
     }
     
     func dequeueReusableSupplementaryView<T: UICollectionReusableView>(ofKind kind: String, for indexPath: IndexPath) -> T {
-        
         guard let supplementaryView = dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: T.identifer, for: indexPath) as? T else {
             fatalError("Error dequeuing reusable view for identifier \(T.identifer)")
         }
@@ -67,11 +65,15 @@ extension UICollectionView {
         return supplementaryView
     }
     
-    func register<T: UICollectionViewCell>(_: T.Type) {
+    func register<T: UICollectionViewCell>(nib: T.Type) {
         let bundle = Bundle(for: T.self)
         let nib = UINib(nibName: T.nibName, bundle: bundle)
         
         register(nib, forCellWithReuseIdentifier: T.identifier)
+    }
+    
+    func register<T: UICollectionViewCell>(cell: T.Type) {
+        register(cell, forCellWithReuseIdentifier: T.cellIdentifier)
     }
     
 }

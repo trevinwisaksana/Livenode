@@ -20,14 +20,15 @@ public class FileMenuView: UIView {
     
     // MARK: - Internal properties
     
-    private static let cellHeight: CGFloat = 60.0
+    private static let cellHeight: CGFloat = 175.0
+    private static let cellWidth: CGFloat = 150.0
     
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .aluminium
+        collectionView.backgroundColor = .white
         return collectionView
     }()
     
@@ -56,7 +57,8 @@ public class FileMenuView: UIView {
     }
     
     private func setup() {
-        collectionView.register(SceneDocumentCell.self)
+        collectionView.register(cell: SceneDocumentCell.self)
+        collectionView.register(cell: NewSceneCell.self)
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }
@@ -71,13 +73,37 @@ extension FileMenuView: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: SceneDocumentCell = collectionView.dequeueReusableCell(for: indexPath)
-        return cell
+        return setupCell(for: indexPath)
+    }
+    
+    private func setupCell(for indexPath: IndexPath) -> UICollectionViewCell {
+        let row = indexPath.row
+        
+        switch row {
+        case 0:
+            let cell: NewSceneCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        default:
+            let cell: SceneDocumentCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let reusableView: RecentsCollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
         return reusableView
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        
+    }
+}
+
+// MARK: - UICollectionViewLayoutDelegate
+
+extension FileMenuView: UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: FileMenuView.cellWidth, height: FileMenuView.cellHeight)
     }
 }
 
