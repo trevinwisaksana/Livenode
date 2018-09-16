@@ -26,6 +26,7 @@ public class FileMenuView: UIView {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.alwaysBounceVertical = true
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
@@ -59,6 +60,7 @@ public class FileMenuView: UIView {
     private func setup() {
         collectionView.register(cell: SceneDocumentCell.self)
         collectionView.register(cell: NewSceneCell.self)
+        collectionView.register(reusableView: FileMenuHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }
@@ -90,12 +92,13 @@ extension FileMenuView: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let reusableView: RecentsCollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
+        let reusableView: FileMenuHeaderReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
         return reusableView
     }
     
-    public func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        // TODO: Use FileMenuViewLayoutConfiguration
+        return CGSize(width: collectionView.frame.width, height: 80)
     }
 }
 

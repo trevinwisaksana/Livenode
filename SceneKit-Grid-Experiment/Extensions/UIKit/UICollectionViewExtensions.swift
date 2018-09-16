@@ -76,4 +76,9 @@ extension UICollectionView {
         register(cell, forCellWithReuseIdentifier: T.cellIdentifier)
     }
     
+    func register<T: UICollectionReusableView>(reusableView: T.Type, forSupplementaryViewOfKind kind: String) {
+
+        register(reusableView, forSupplementaryViewOfKind: kind, withReuseIdentifier: T.identifer)
+    }
+    
 }
