@@ -116,15 +116,6 @@ extension FileMenuView: UICollectionViewDelegateFlowLayout {
 
 extension FileMenuView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            transition(using: indexPath)
-    }
-    
-    private func transition(using indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            break
-        default:
-            break
-        }
+            delegate?.fileMenuView(self, didSelectItemAtIndexPath: indexPath)
     }
 }

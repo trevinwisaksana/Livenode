@@ -14,7 +14,7 @@
         <!--Scene View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="SceneViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SceneViewController" id="BV1-FR-VrT" customClass="SceneViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
                     <sceneKitView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,17 +27,17 @@
                                     <action selector="didTapUtilitiesButton:" destination="BV1-FR-VrT" id="DSx-kQ-z2q"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="objectCatalogBarButton" image="addButtonIcon" id="W5q-D3-ES6">
+                            <barButtonItem title="objectCatalogBarButton" image="addButton" id="W5q-D3-ES6">
                                 <connections>
                                     <action selector="didTapAddObjectButton:" destination="BV1-FR-VrT" id="hxw-wO-UUy"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="modelsBarButton" image="modelsButtonIcon" id="9FB-t9-yMf">
+                            <barButtonItem title="modelsBarButton" image="modelsButton" id="9FB-t9-yMf">
                                 <connections>
                                     <action selector="didTapObjectAttributeButton:" destination="BV1-FR-VrT" id="Ybc-kW-skZ"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="playButtonIcon" id="86k-Kw-q18"/>
+                            <barButtonItem title="Item" image="playButton" id="86k-Kw-q18"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
@@ -226,9 +226,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addButtonIcon" width="25" height="26"/>
-        <image name="modelsButtonIcon" width="28" height="28"/>
-        <image name="playButtonIcon" width="25" height="26"/>
+        <image name="addButton" width="25" height="26"/>
+        <image name="modelsButton" width="28" height="28"/>
+        <image name="playButton" width="25" height="26"/>
         <image name="utilitiesButtonIcon" width="30" height="8"/>
     </resources>
 </document>

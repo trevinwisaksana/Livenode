@@ -41,8 +41,12 @@ extension FileMenuPresentableView: FileMenuViewDelegate {
         
         switch indexPath.row {
         case 0:
-            let colorPicker = Presenter.inject(.colorPickerView)
-            navigationController.pushViewController(colorPicker, animated: true)
+//            let colorPicker = Presenter.inject(.colorPickerView)
+//            navigationController.pushViewController(colorPicker, animated: true)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            let controller = storyboard.instantiateViewController(withIdentifier: "SceneViewController")
+            navigationController.pushViewController(controller, animated: true)
         default:
             break
         }
