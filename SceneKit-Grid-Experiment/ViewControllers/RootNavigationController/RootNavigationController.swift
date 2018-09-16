@@ -16,6 +16,7 @@ public class RootNavigationController: UINavigationController {
         super.init(rootViewController: rootViewController)
         
         navigationBar.barTintColor = .milk
+        navigationBar.tintColor = .lavender
     }
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
