@@ -13,7 +13,7 @@ final class NewSceneCell: UICollectionViewCell {
     // MARK: - Internal Properties
     
     private static let titleLabelHeight: CGFloat = 20.0
-    private static let titleLabelTopMargin: CGFloat = 10.0
+    private static let titleLabelTopMargin: CGFloat = 15.0
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -27,6 +27,15 @@ final class NewSceneCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.layer.masksToBounds = false
+        imageView.layer.shouldRasterize = true
+        
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOpacity = 0.2
+        imageView.layer.shadowOffset = CGSize.zero
+        imageView.layer.shadowRadius = 3
+        
         let createSceneImage = UIImage(named: .createScene)
         imageView.image = createSceneImage
         return imageView

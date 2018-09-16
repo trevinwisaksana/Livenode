@@ -20,8 +20,8 @@ public class FileMenuView: UIView {
     
     // MARK: - Internal properties
     
-    private static let cellHeight: CGFloat = 175.0
-    private static let cellWidth: CGFloat = 150.0
+    private static let cellHeight: CGFloat = 225.0
+    private static let cellWidth: CGFloat = 200.0
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -108,7 +108,7 @@ extension FileMenuView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         // TODO: Use FileMenuViewLayoutConfiguration
-        return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
+        return UIEdgeInsets(top: 30, left: 10, bottom: 30, right: 10)
     }
 }
 
