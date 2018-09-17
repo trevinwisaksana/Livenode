@@ -8,14 +8,14 @@
 
 import UIKit
 
-final class SceneDocumentCell: UICollectionViewCell {
+public class SceneDocumentCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

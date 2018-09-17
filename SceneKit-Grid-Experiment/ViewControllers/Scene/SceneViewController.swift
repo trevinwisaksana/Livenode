@@ -25,6 +25,7 @@ final class SceneViewController: UIViewController {
     private var lastNodePosition: SCNVector3?
     
     private var didSelectTargetNode = false
+    private var didHighlightNode = false
     
     private var didFinishDraggingNode = false {
         didSet {
@@ -173,22 +174,19 @@ final class SceneViewController: UIViewController {
             didSelectTargetNode = true
             State.nodeSelected = Node(node: nodeSelected)
             highlight(nodeSelected)
-            
         } else {
             didSelectTargetNode = false
-        }
-        
-        if lastNodeSelected != nodeSelected {
-            lastNodeSelected = nil
         }
         
         lastNodeSelected = nodeSelected
     }
     
-    //
-    
     // TODO: Find solution that doesn't only work with boxes
     private func highlight(_ nodeSelected: SCNNode?) {
+        if didHighlightNode {
+            return
+        }
+        
         guard let nodeSelected = nodeSelected else {
             return
         }
@@ -202,9 +200,13 @@ final class SceneViewController: UIViewController {
         nodeHighlight.name = "nodeHighlight"
         
         nodeSelected.addChildNode(nodeHighlight)
+        
+        didHighlightNode = true
     }
     
     private func unhighlight(_ lastNodeSelected: SCNNode?) {
+        didHighlightNode = false
+        
         guard let node = lastNodeSelected else {
             return
         }

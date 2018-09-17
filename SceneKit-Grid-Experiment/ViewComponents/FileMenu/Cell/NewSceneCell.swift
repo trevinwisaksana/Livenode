@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class NewSceneCell: UICollectionViewCell {
+public class NewSceneCell: UICollectionViewCell {
     
     // MARK: - Internal Properties
     
@@ -66,7 +66,7 @@ final class NewSceneCell: UICollectionViewCell {
         ])
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

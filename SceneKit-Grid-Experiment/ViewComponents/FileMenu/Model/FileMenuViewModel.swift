@@ -8,10 +8,6 @@
 
 import Foundation
 
-public protocol FileMenuViewModel {
-    
-}
+public protocol FileMenuViewModel {}
 
-public struct FileMenu: FileMenuViewModel {
-    
-}
+public struct FileMenu: FileMenuViewModel {}
