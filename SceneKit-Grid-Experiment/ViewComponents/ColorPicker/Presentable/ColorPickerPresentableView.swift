@@ -39,10 +39,11 @@ public class ColorPickerPresentableView: UIView {
     
 }
 
-// MARK: - ColorPickerViewDelegatevar scene: Scene? { get }
+// MARK: - ColorPickerViewDelegate
 
 extension ColorPickerPresentableView: ColorPickerViewDelegate {
     public func didTap(color: UIColor) {
+        // TODO: Fix bug where 
         NotificationCenter.default.post(name: Constants.NotificationCenter.nodeColorModifiedKey, object: color)
     }
 }

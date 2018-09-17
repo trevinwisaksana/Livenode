@@ -83,7 +83,12 @@ final class SceneViewController: UIViewController {
     @objc
     private func didModifyNodeColor(_ notification: Notification) {
         if let color = notification.object as? UIColor {
-            mainScene.testNode.color = color
+            guard let name = nodeSelected?.name else {
+                return
+            }
+            
+            let node = mainScene.rootNode.childNode(withName: name, recursively: true)
+            node?.color = color
         }
     }
     
@@ -161,7 +166,6 @@ final class SceneViewController: UIViewController {
         
         if nodeSelected?.name == "Floor" || nodeSelected == nil {
             unhighlight(lastNodeSelected)
-            
             return
         }
         
@@ -209,8 +213,6 @@ final class SceneViewController: UIViewController {
         nodeHighlight?.removeFromParentNode()
     }
     
-    //
-    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         
@@ -222,8 +224,6 @@ final class SceneViewController: UIViewController {
         }
 
         if didSelectTargetNode {
-//            gameView.allowsCameraControl = false
-            
             let nodeXPos = nodeSelected.position.x
             let nodeYPos = nodeSelected.position.y
             var nodeZPos = nodeSelected.position.z
@@ -240,11 +240,6 @@ final class SceneViewController: UIViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         didFinishDraggingNode = true
-//
-//        gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        
-        // TODO: Create a Done button to finish moving
-//        gameScene.testNode.isMovable = false
     }
     
     private func setupLongPressGestureRecognizer() {
