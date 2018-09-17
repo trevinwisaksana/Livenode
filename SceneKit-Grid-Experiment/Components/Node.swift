@@ -18,9 +18,9 @@ public class Node: NSObject, NSCoding {
     
     // MARK: - Internal Properties
     
-    private static let positionKey = "positionKey"
-    private static let colorKey = "colorKey"
-    private static let shapeKey = "shapeKey"
+    private static let positionKey: String = "positionKey"
+    private static let colorKey: String = "colorKey"
+    private static let shapeKey: String = "shapeKey"
     
     var position: SCNVector3 = SCNVector3Zero
     var color: UIColor = .white

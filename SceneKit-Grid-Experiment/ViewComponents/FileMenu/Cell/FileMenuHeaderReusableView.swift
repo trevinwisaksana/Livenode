@@ -12,8 +12,6 @@ public class FileMenuHeaderReusableView: UICollectionReusableView {
     
     // MARK: - Internal Properties
     
-    private static let titleLabelHeight: CGFloat = 20.0
-    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +34,6 @@ public class FileMenuHeaderReusableView: UICollectionReusableView {
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 30),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: FileMenuHeaderReusableView.titleLabelHeight),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
         ])
     }

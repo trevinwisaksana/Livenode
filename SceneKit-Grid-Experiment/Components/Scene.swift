@@ -19,8 +19,8 @@ public class Scene: NSObject, NSCoding {
     
     // MARK: - Internal Properties
     
-    private static let backgroundColorKey = "backgroundColorKey"
-    private static let floorColorKey = "floorColorKey"
+    private static let backgroundColorKey: String = "backgroundColorKey"
+    private static let floorColorKey: String = "floorColorKey"
     
     public var backgroundColor: UIColor?
     public var floorColor: UIColor?
