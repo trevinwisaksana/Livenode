@@ -17,14 +17,10 @@
 		DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */; };
 		DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */; };
 		DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneViewController.swift */; };
-		DD5D15FE20AFCC9600935E9E /* FileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5D15FD20AFCC9600935E9E /* FileMenuViewController.swift */; };
 		DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */; };
 		DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* PopoverMenuCell.swift */; };
 		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
 		DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */; };
-		DD64A26F213E819000ADAC77 /* FileMenuPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A26E213E819000ADAC77 /* FileMenuPresentableView.swift */; };
-		DD64A273213E81D500ADAC77 /* FileMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A272213E81D500ADAC77 /* FileMenuView.swift */; };
-		DD64A277214B614200ADAC77 /* FileMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A276214B614200ADAC77 /* FileMenuViewModel.swift */; };
 		DD68C21A2110688A0061100F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C2192110688A0061100F /* State.swift */; };
 		DD68C21F2110735C0061100F /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C21E2110735C0061100F /* Node.swift */; };
 		DD68C221211076690061100F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C220211076690061100F /* Scene.swift */; };
@@ -52,21 +48,16 @@
 		DD8E126E213CE11000D4F4DE /* UtilitiesShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126D213CE11000D4F4DE /* UtilitiesShareCell.swift */; };
 		DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */; };
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
-		DD9C6AF2210AC1BB001E4982 /* SceneDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */; };
 		DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */; };
-		DDCB7F7C214B64550003B34A /* FileMenuNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F7B214B64550003B34A /* FileMenuNavigationItem.swift */; };
+		DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */; };
 		DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F81214B92770003B34A /* UIImageExtensions.swift */; };
-		DDCB7F84214B984A0003B34A /* NewSceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F83214B984A0003B34A /* NewSceneCell.swift */; };
 		DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */; };
-		DDCB7F8B214BBA0D0003B34A /* FileMenuViewLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F8A214BBA0D0003B34A /* FileMenuViewLayoutConfiguration.swift */; };
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
 		DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF325B20DF70CF00FEE793 /* Model.swift */; };
 		DDEF325E20DF776100FEE793 /* Box.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Box.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
 		DDEF326720E618AF00FEE793 /* ObjectAttributeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */; };
-		DDEF326D20E75C6400FEE793 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326C20E75C6400FEE793 /* DoneView.swift */; };
 		DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */; };
-		DDFC63E920F87E2300109EC5 /* FileMenuHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E820F87E2300109EC5 /* FileMenuHeaderReusableView.swift */; };
 		DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,14 +85,10 @@
 		DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogCell.swift; sourceTree = "<group>"; };
 		DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
-		DD5D15FD20AFCC9600935E9E /* FileMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* PopoverMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB820ABD44200395557 /* PopoverMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuCell.swift; sourceTree = "<group>"; };
 		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNodeExtensions.swift; sourceTree = "<group>"; };
-		DD64A26E213E819000ADAC77 /* FileMenuPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuPresentableView.swift; sourceTree = "<group>"; };
-		DD64A272213E81D500ADAC77 /* FileMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuView.swift; sourceTree = "<group>"; };
-		DD64A276214B614200ADAC77 /* FileMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuViewModel.swift; sourceTree = "<group>"; };
 		DD68C2192110688A0061100F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		DD68C21E2110735C0061100F /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		DD68C220211076690061100F /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -129,21 +116,16 @@
 		DD8E126D213CE11000D4F4DE /* UtilitiesShareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesShareCell.swift; sourceTree = "<group>"; };
 		DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
-		DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocumentCell.swift; sourceTree = "<group>"; };
 		DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorPresentableView.swift; sourceTree = "<group>"; };
-		DDCB7F7B214B64550003B34A /* FileMenuNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuNavigationItem.swift; sourceTree = "<group>"; };
+		DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
 		DDCB7F81214B92770003B34A /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
-		DDCB7F83214B984A0003B34A /* NewSceneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSceneCell.swift; sourceTree = "<group>"; };
 		DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
-		DDCB7F8A214BBA0D0003B34A /* FileMenuViewLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMenuViewLayoutConfiguration.swift; sourceTree = "<group>"; };
 		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DDEF325B20DF70CF00FEE793 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DDEF325D20DF776100FEE793 /* Box.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Box.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
 		DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAttributeViewModel.swift; sourceTree = "<group>"; };
-		DDEF326C20E75C6400FEE793 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
-		DDFC63E820F87E2300109EC5 /* FileMenuHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuHeaderReusableView.swift; sourceTree = "<group>"; };
 		DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				DDCB7F89214BB5F80003B34A /* RootNavigationController */,
-				DD6C16FB210C15A1002CB031 /* FileMenu */,
+				DD6C16FB210C15A1002CB031 /* DocumentBrowser */,
 				DD6C16FA210C159C002CB031 /* Scene */,
 				DD9C6AF6210B0A43001E4982 /* AttributeInspector */,
 				DD6C16FE210C16F3002CB031 /* ColorPicker */,
@@ -231,13 +213,11 @@
 			isa = PBXGroup;
 			children = (
 				DD6C16EF210B217A002CB031 /* ViewComponent.swift */,
-				DD64A270213E819600ADAC77 /* FileMenu */,
 				DD9C6AEF210AC087001E4982 /* NodeInspector */,
 				DD6CC44A2109C3CD009284C6 /* ColorPicker */,
 				DD6CC4202109A7CF009284C6 /* SceneInspector */,
 				DD8E1265213CDC0C00D4F4DE /* Utilities */,
 				DDFC63E320F1FE5900109EC5 /* Cells */,
-				DDEF326C20E75C6400FEE793 /* DoneView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -284,53 +264,6 @@
 				DD6CC42F2109B4E7009284C6 /* SceneKit */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		DD64A270213E819600ADAC77 /* FileMenu */ = {
-			isa = PBXGroup;
-			children = (
-				DD64A271213E81BE00ADAC77 /* Presentable */,
-				DD64A274213E81D700ADAC77 /* FileMenuView */,
-				DD64A275214A6B9400ADAC77 /* Cell */,
-				DD64A278214B614500ADAC77 /* Model */,
-			);
-			path = FileMenu;
-			sourceTree = "<group>";
-		};
-		DD64A271213E81BE00ADAC77 /* Presentable */ = {
-			isa = PBXGroup;
-			children = (
-				DD64A26E213E819000ADAC77 /* FileMenuPresentableView.swift */,
-			);
-			path = Presentable;
-			sourceTree = "<group>";
-		};
-		DD64A274213E81D700ADAC77 /* FileMenuView */ = {
-			isa = PBXGroup;
-			children = (
-				DD64A272213E81D500ADAC77 /* FileMenuView.swift */,
-				DDCB7F7B214B64550003B34A /* FileMenuNavigationItem.swift */,
-				DDCB7F8A214BBA0D0003B34A /* FileMenuViewLayoutConfiguration.swift */,
-			);
-			path = FileMenuView;
-			sourceTree = "<group>";
-		};
-		DD64A275214A6B9400ADAC77 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				DDCB7F83214B984A0003B34A /* NewSceneCell.swift */,
-				DD9C6AF1210AC1BB001E4982 /* SceneDocumentCell.swift */,
-				DDFC63E820F87E2300109EC5 /* FileMenuHeaderReusableView.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		DD64A278214B614500ADAC77 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DD64A276214B614200ADAC77 /* FileMenuViewModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		DD68C21D211073530061100F /* Components */ = {
@@ -406,12 +339,12 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		DD6C16FB210C15A1002CB031 /* FileMenu */ = {
+		DD6C16FB210C15A1002CB031 /* DocumentBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				DD5D15FD20AFCC9600935E9E /* FileMenuViewController.swift */,
+				DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */,
 			);
-			path = FileMenu;
+			path = DocumentBrowser;
 			sourceTree = "<group>";
 		};
 		DD6C16FE210C16F3002CB031 /* ColorPicker */ = {
@@ -711,15 +644,12 @@
 				DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */,
 				DDEF326720E618AF00FEE793 /* ObjectAttributeViewModel.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesShareCell.swift in Sources */,
-				DDEF326D20E75C6400FEE793 /* DoneView.swift in Sources */,
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */,
 				DD68C235212905910061100F /* ColorPickerViewModel.swift in Sources */,
 				DD8E1261213BE88500D4F4DE /* UtilitiesViewController.swift in Sources */,
-				DDCB7F8B214BBA0D0003B34A /* FileMenuViewLayoutConfiguration.swift in Sources */,
 				DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */,
-				DD5D15FE20AFCC9600935E9E /* FileMenuViewController.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */,
 				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
@@ -728,6 +658,7 @@
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
 				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
 				DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */,
+				DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */,
 				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
 				DD68C2322127BA1F0061100F /* ColorPickerPresentableView.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
@@ -737,23 +668,18 @@
 				DD68C21F2110735C0061100F /* Node.swift in Sources */,
 				DD6C16F0210B217A002CB031 /* ViewComponent.swift in Sources */,
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
-				DDCB7F84214B984A0003B34A /* NewSceneCell.swift in Sources */,
 				DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */,
-				DDFC63E920F87E2300109EC5 /* FileMenuHeaderReusableView.swift in Sources */,
-				DD64A277214B614200ADAC77 /* FileMenuViewModel.swift in Sources */,
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
-				DDCB7F7C214B64550003B34A /* FileMenuNavigationItem.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
 				DD8E125F21381BA700D4F4DE /* Style.swift in Sources */,
 				DD68C21A2110688A0061100F /* State.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */,
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
 				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
-				DD64A273213E81D500ADAC77 /* FileMenuView.swift in Sources */,
 				DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */,
 				DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */,
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
@@ -761,9 +687,7 @@
 				DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */,
 				DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */,
 				DD8E1264213CDC0400D4F4DE /* UtilitiesPresentableView.swift in Sources */,
-				DD9C6AF2210AC1BB001E4982 /* SceneDocumentCell.swift in Sources */,
 				DD8E1268213CDC6E00D4F4DE /* UtilitiesView.swift in Sources */,
-				DD64A26F213E819000ADAC77 /* FileMenuPresentableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

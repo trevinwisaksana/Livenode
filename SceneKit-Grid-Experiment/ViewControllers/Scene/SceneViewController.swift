@@ -11,7 +11,7 @@ import SceneKit
 
 final class SceneViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - Internal Properties
     
     private var sceneView: SCNView!
     private var mainScene: GridScene! {
@@ -43,31 +43,25 @@ final class SceneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupGameView()
+        setup()
+    }
+    
+    // MARK: - Setup
+    
+    private func setup() {
+        setupScene()
         setupLongPressGestureRecognizer()
         setupNavigationBar()
         setupNodeSelectedListener()
     }
     
-    // MARK: - Setup
-    
-    private func setupGameView() {
-        // create a new scene
+    private func setupScene() {
         mainScene = GridScene()
         
-        // retrieve the SCNView
-        sceneView = self.view as! SCNView
-        
-        // set the scene to the view
+        sceneView = self.view as? SCNView
         sceneView.scene = mainScene
-        
-        // allow camera control
         sceneView.allowsCameraControl = true
-        
-        // show statistics such as fps and timing information
         sceneView.showsStatistics = false
-        
-        // default lighting
         sceneView.autoenablesDefaultLighting = true
     }
     
@@ -343,7 +337,7 @@ extension SceneViewController: ObjectInsertionDelegate {
             mainScene.insertPyramid()
         }
         
-        mainScene.showGrid()
+        mainScene.displayGrid()
     }
     
 }
@@ -353,7 +347,7 @@ extension SceneViewController: ObjectInsertionDelegate {
 extension SceneViewController: MenuActionDelegate {
     
     func move() {
-        mainScene.showGrid()
+        mainScene.displayGrid()
     }
     
     func delete() {

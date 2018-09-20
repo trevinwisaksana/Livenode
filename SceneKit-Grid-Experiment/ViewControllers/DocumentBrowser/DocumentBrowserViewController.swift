@@ -1,5 +1,5 @@
 //
-//  FileMenuViewController.swift
+//  DocumentBrowserViewController.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 19/05/2018.
@@ -8,19 +8,14 @@
 
 import UIKit
 
-final class FileMenuViewController<View: UIView>: UIViewController {
+public class DocumentBrowserViewController: UIDocumentBrowserViewController {
     
     // MARK: - Internal Properties
     
-    lazy var mainView: View = {
-        let mainView = View(frame: view.frame)
-        mainView.translatesAutoresizingMaskIntoConstraints = false
-        return mainView
-    }()
     
     // MARK: - VC Lifecycle
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         setup()
@@ -29,11 +24,13 @@ final class FileMenuViewController<View: UIView>: UIViewController {
     // MARK: - Setup
     
     private func setup() {
-        view.addSubview(mainView)
-        mainView.fillInSuperview()
+        browserUserInterfaceStyle = .white
+        
+        
     }
     
-    // TESTING
+    // MARK: - Testing
+    
     func countFile() {
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -59,4 +56,18 @@ final class FileMenuViewController<View: UIView>: UIViewController {
         }
     }
     
+}
+
+extension DocumentBrowserViewController: UIDocumentBrowserViewControllerDelegate {
+    private func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {
+    }
+    
+    private func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
+    }
+    
+    private func documentBrowser(_ controller: UIDocumentBrowserViewController, didImportDocumentAt sourceURL: URL, toDestinationURL destinationURL: URL) {
+    }
+    
+    private func documentBrowser(_ controller: UIDocumentBrowserViewController, failedToImportDocumentAt documentURL: URL, error: Error?) {
+    }
 }

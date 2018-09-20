@@ -11,7 +11,7 @@ import UIKit
 
 public protocol SceneViewModel {
     var floorNode: SCNNode { get set }
-    var backgroundColor: UIColor { get }
+    var backgroundColor: UIColor { get set }
     var floorColor: UIColor? { get }
 }
 

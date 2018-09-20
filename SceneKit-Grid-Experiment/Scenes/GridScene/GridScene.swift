@@ -9,27 +9,37 @@
 import UIKit
 import SceneKit
 
-final class GridScene: SCNScene, SceneViewModel {
+public class GridScene: SCNScene, SceneViewModel {
     
     // MARK: - Internal Properties
     
     private static let gridWidth: Int = 20
     
-    var cameraNode: SCNNode = SCNNode()
-    var testNode: SCNNode = SCNNode()
-    var floorNode: SCNNode = SCNNode()
+    public var cameraNode: SCNNode = SCNNode()
+    public var testNode: SCNNode = SCNNode()
+    public var floorNode: SCNNode = SCNNode()
     
-    var floorColor: UIColor? {
+    public var floorColor: UIColor? {
         return floorNode.color
     }
     
-    // MARK: - Initializer
+    // MARK: - Setup
     
     override public init() {
         super.init()
         
         background.contents = UIColor.gray
     
+        setup()
+    }
+    
+    private func setup() {
+        setupSCNBox()
+        setupCamera()
+        setupFloor()
+    }
+    
+    private func setupSCNBox() {
         let testBox = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         
         testNode.geometry = testBox
@@ -38,7 +48,9 @@ final class GridScene: SCNScene, SceneViewModel {
         testNode.name = "testNode"
         
         rootNode.addChildNode(testNode)
-        
+    }
+    
+    private func setupFloor() {
         // TODO: Add a grid texture to the SCNFloor
         
         let floorGeometry = SCNFloor()
@@ -48,39 +60,37 @@ final class GridScene: SCNScene, SceneViewModel {
         rootNode.addChildNode(floorNode)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    private func setupCamera() {
+        cameraNode.camera = SCNCamera()
+        
+        cameraNode.position = SCNVector3(x: 0, y: -30, z: 30)
+        
+        cameraNode.rotation = SCNVector4(x: 1, y: 0, z: 0, w: Float.pi / 3)
+
+        let zRotation = SCNMatrix4MakeRotation(Float.pi / 4, 0, 0, -1)
+        cameraNode.transform = SCNMatrix4Mult(cameraNode.transform, zRotation)
+        
+        let transformConstraint = SCNTransformConstraint(inWorldSpace: true) { (node, matrix) -> SCNMatrix4 in
+            var newMatrix = node.transform
+            let currentNode = node as SCNNode
+            
+            if currentNode.presentation.position.z > 0.0 {
+                newMatrix.m43 = 0.0
+            }
+            
+            return newMatrix
+        }
+        
+        cameraNode.constraints = [transformConstraint]
+        
+        rootNode.addChildNode(cameraNode)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    //
-    
-    func initCamera() {
-//        cameraNode.camera = SCNCamera()
-        
-//        cameraNode.position = SCNVector3(x: 0, y: -30, z: 30)
-        
-//        cameraNode.rotation = SCNVector4(x: 1, y: 0, z: 0, w: Float.pi / 3)
-//
-//        let zRotation = SCNMatrix4MakeRotation(Float.pi / 4, 0, 0, -1)
-//        cameraNode.transform = SCNMatrix4Mult(cameraNode.transform, zRotation)
-        
-//        let transformConstraint = SCNTransformConstraint(inWorldSpace: true) { (node, matrix) -> SCNMatrix4 in
-//            var newMatrix = node.transform
-//            let currentNode = node as SCNNode
-//            
-//            if currentNode.presentation.position.z > 0.0 {
-//                newMatrix.m43 = 0.0
-//            }
-//            
-//            return newMatrix
-//        }
-//        
-//        cameraNode.constraints = [transformConstraint]
-        
-//        rootNode.addChildNode(cameraNode)
-    }
-    
-    // MARK: - Insertion
+    // MARK: - Node Insertion
     
     func insertBox() {
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
@@ -108,7 +118,7 @@ final class GridScene: SCNScene, SceneViewModel {
     
     // MARK: - Grid
     
-    func showGrid() {
+    public func displayGrid() {
         let width: CGFloat = 0.95
         
         let offset: Int = 1

@@ -9,8 +9,8 @@
 import SceneKit
 
 struct State {
-    private static let nodeSelectedKey = "nodeSelectedKey"
-    private static let currentSceneKey = "currentSceneKey"
+    private static let nodeSelectedKey: String = "nodeSelectedKey"
+    private static let currentSceneKey: String = "currentSceneKey"
     
     static var nodeSelected: Node? {
         get {

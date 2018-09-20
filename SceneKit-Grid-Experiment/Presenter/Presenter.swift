@@ -26,7 +26,7 @@ enum Presenter {
             controller = UtilitiesViewController<UtilitiesPresentableView>()
             return controller
         case .fileMenuView:
-            controller = FileMenuViewController<FileMenuPresentableView>()
+            controller = DocumentBrowserViewController()
             return controller
         }
     }
