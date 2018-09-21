@@ -10,7 +10,5 @@ import Foundation
 import UIKit
 
 struct Style {
-    
     static let containerCornerRadius: CGFloat = 5.0
-    
 }

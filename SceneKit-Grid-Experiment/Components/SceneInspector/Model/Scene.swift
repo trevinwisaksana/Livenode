@@ -9,12 +9,6 @@
 import SceneKit
 import UIKit
 
-public protocol SceneViewModel {
-    var floorNode: SCNNode { get set }
-    var backgroundColor: UIColor { get set }
-    var floorColor: UIColor? { get }
-}
-
 public class Scene: NSObject, NSCoding {
     
     // MARK: - Internal Properties
@@ -22,30 +16,26 @@ public class Scene: NSObject, NSCoding {
     private static let backgroundColorKey: String = "backgroundColorKey"
     private static let floorColorKey: String = "floorColorKey"
     
-    public var backgroundColor: UIColor?
-    public var floorColor: UIColor?
+    public var backgroundColor: UIColor
+    public var floorColor: UIColor
     
     // MARK: - Initialzer
     
-    init?(scene: SceneViewModel) {
-        super.init()
-
+    init(scene: SceneViewModel) {
         self.backgroundColor = scene.backgroundColor
-        self.floorColor = scene.floorColor
+        self.floorColor = scene.floorColor ?? .clear
     }
     
     // MARK: - Encoder
     
     public func encode(with aCoder: NSCoder) {
-        aCoder.encode(backgroundColor?.toRGBA(), forKey: Scene.backgroundColorKey)
-        aCoder.encode(floorColor?.toRGBA(), forKey: Scene.floorColorKey)
+        aCoder.encode(backgroundColor.toRGBA(), forKey: Scene.backgroundColorKey)
+        aCoder.encode(floorColor.toRGBA(), forKey: Scene.floorColorKey)
     }
     
     // MARK: - Decoder
     
     required public init?(coder aDecoder: NSCoder) {
-        super.init()
-        
         let backgroundColorHex = aDecoder.decodeObject(forKey: Scene.backgroundColorKey) as! [String : Float]
         self.backgroundColor = UIColor.parse(hex: backgroundColorHex)
         

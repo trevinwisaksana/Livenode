@@ -1,18 +1,15 @@
 //
-//  NodeColorCell.swift
+//  SceneFloorColorCell.swift
 //  SceneKit-Grid-Experiment
 //
-//  Created by Trevin Wisaksana on 27/07/2018.
+//  Created by Trevin Wisaksana on 07/08/2018.
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
 import UIKit
 
-public protocol NodeAttributesDelegate {
-    func nodeColorCell(_ nodeColorCell: NodeColorCell, changeBackgroundColorForModel model: SceneInspectorViewModel)
-}
-
-public class NodeColorCell: UITableViewCell {
+// TODO: Reuse the SceneBackgroundColorCell because it is very similar
+public class SceneFloorColorCell: UITableViewCell {
     
     // MARK: - Internal properties
     
@@ -29,7 +26,7 @@ public class NodeColorCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Color"
+        label.text = "Floor Color"
         label.backgroundColor = .clear
         return label
     }()
@@ -46,11 +43,11 @@ public class NodeColorCell: UITableViewCell {
     // MARK: - External properties
     
     /// A delegate to modify the model
-    public var delegate: NodeAttributesDelegate?
+    public var delegate: SceneBackgroundColorDelegate?
     
     // MARK: - Setup
     
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
@@ -67,24 +64,24 @@ public class NodeColorCell: UITableViewCell {
         backgroundColor = .milk
         
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: NodeColorCell.titleLeftMargin),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: NodeColorCell.titleTopMargin),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -NodeColorCell.titleBottomMargin),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: SceneFloorColorCell.titleLeftMargin),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: SceneFloorColorCell.titleTopMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SceneFloorColorCell.titleBottomMargin),
             
-            colorView.rightAnchor.constraint(equalTo: rightAnchor, constant: -NodeColorCell.colorViewRightMargin),
-            colorView.widthAnchor.constraint(equalToConstant: NodeColorCell.colorViewWidth),
-            colorView.topAnchor.constraint(equalTo: topAnchor, constant: NodeColorCell.colorViewTopMargin),
-            colorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -NodeColorCell.colorViewBottomMargin),
-        ])
+            colorView.rightAnchor.constraint(equalTo: rightAnchor, constant: -SceneFloorColorCell.colorViewRightMargin),
+            colorView.widthAnchor.constraint(equalToConstant: SceneFloorColorCell.colorViewWidth),
+            colorView.topAnchor.constraint(equalTo: topAnchor, constant: SceneFloorColorCell.colorViewTopMargin),
+            colorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SceneFloorColorCell.colorViewBottomMargin),
+            ])
     }
     
     // MARK: - Dependency injection
     
     /// The model contains data used to populate the view.
-    public var model: NodeInspectorViewModel? {
+    public var model: SceneInspectorViewModel? {
         didSet {
             if let model = model {
-                colorView.backgroundColor = model.node?.color
+                colorView.backgroundColor = model.scene?.floorColor
             }
         }
     }

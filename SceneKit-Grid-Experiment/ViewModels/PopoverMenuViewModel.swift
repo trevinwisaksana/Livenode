@@ -10,7 +10,6 @@ import Foundation
 import SceneKit
 
 struct PopoverMenuViewModel {
-    
     var nodeSelected: SCNNode?
     
     func removeNode() {
@@ -28,5 +27,4 @@ struct PopoverMenuViewModel {
         
         nodeSelected.isMovable = true
     }
-    
 }

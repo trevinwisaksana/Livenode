@@ -50,26 +50,20 @@
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
 		DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */; };
 		DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */; };
+		DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24B82153CADA003C9CAF /* SceneDocument.swift */; };
+		DDBA24BD2153CC8C003C9CAF /* DocumentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */; };
+		DDBA24C22153D0D5003C9CAF /* SceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C12153D0D5003C9CAF /* SceneViewModel.swift */; };
+		DDBA24C42153D309003C9CAF /* DocumentBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C32153D309003C9CAF /* DocumentBrowserDelegate.swift */; };
+		DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */; };
 		DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F81214B92770003B34A /* UIImageExtensions.swift */; };
 		DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */; };
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
 		DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF325B20DF70CF00FEE793 /* Model.swift */; };
 		DDEF325E20DF776100FEE793 /* Box.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Box.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
-		DDEF326720E618AF00FEE793 /* ObjectAttributeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */; };
 		DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */; };
 		DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DD20F67B20672FBD005E838C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DD20F65C20672FBD005E838C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DD20F66320672FBD005E838C;
-			remoteInfo = "SceneKit-Grid-Experiment";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DD20F66420672FBD005E838C /* SceneKit-Grid-Experiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SceneKit-Grid-Experiment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +72,6 @@
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD20F67320672FBD005E838C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD20F67520672FBD005E838C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD20F67A20672FBD005E838C /* SceneKit-Grid-ExperimentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SceneKit-Grid-ExperimentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD20F68B20673184005E838C /* GridScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridScene.swift; sourceTree = "<group>"; };
 		DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewController.swift; sourceTree = "<group>"; };
 		DD2A55E820DE12AA00EA00ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -118,26 +111,23 @@
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
 		DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorPresentableView.swift; sourceTree = "<group>"; };
 		DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
+		DDBA24B82153CADA003C9CAF /* SceneDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocument.swift; sourceTree = "<group>"; };
+		DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentError.swift; sourceTree = "<group>"; };
+		DDBA24C12153D0D5003C9CAF /* SceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModel.swift; sourceTree = "<group>"; };
+		DDBA24C32153D309003C9CAF /* DocumentBrowserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserDelegate.swift; sourceTree = "<group>"; };
+		DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		DDCB7F81214B92770003B34A /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DDEF325B20DF70CF00FEE793 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DDEF325D20DF776100FEE793 /* Box.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Box.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
-		DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAttributeViewModel.swift; sourceTree = "<group>"; };
 		DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DD20F66120672FBD005E838C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DD20F67720672FBD005E838C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -159,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				DD20F66420672FBD005E838C /* SceneKit-Grid-Experiment.app */,
-				DD20F67A20672FBD005E838C /* SceneKit-Grid-ExperimentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,11 +158,10 @@
 			children = (
 				DD20F66720672FBD005E838C /* AppDelegate.swift */,
 				DD68C2192110688A0061100F /* State.swift */,
-				DD68C21D211073530061100F /* Components */,
 				DD638DBC20AC2D3800395557 /* ViewControllers */,
 				DD638DC320AC2E0800395557 /* ViewModels */,
 				DD638DC020AC2DA200395557 /* Presenter */,
-				DD638DBD20AC2D4200395557 /* ViewComponents */,
+				DD638DBD20AC2D4200395557 /* Components */,
 				DD638DBF20AC2D9C00395557 /* Models */,
 				DD638DBE20AC2D4800395557 /* Scenes */,
 				DD638DC820AC64E800395557 /* Extensions */,
@@ -190,6 +178,7 @@
 			children = (
 				DD2A55E820DE12AA00EA00ED /* Constants.swift */,
 				DD8E125E21381BA700D4F4DE /* Style.swift */,
+				DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -198,7 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				DDCB7F89214BB5F80003B34A /* RootNavigationController */,
-				DD6C16FB210C15A1002CB031 /* DocumentBrowser */,
+				DD6C16FB210C15A1002CB031 /* RootViewController */,
 				DD6C16FA210C159C002CB031 /* Scene */,
 				DD9C6AF6210B0A43001E4982 /* AttributeInspector */,
 				DD6C16FE210C16F3002CB031 /* ColorPicker */,
@@ -209,25 +198,25 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		DD638DBD20AC2D4200395557 /* ViewComponents */ = {
+		DD638DBD20AC2D4200395557 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				DD6C16EF210B217A002CB031 /* ViewComponent.swift */,
+				DDBA24BA2153CADF003C9CAF /* DocumentBrowser */,
 				DD9C6AEF210AC087001E4982 /* NodeInspector */,
-				DD6CC44A2109C3CD009284C6 /* ColorPicker */,
 				DD6CC4202109A7CF009284C6 /* SceneInspector */,
+				DD6CC44A2109C3CD009284C6 /* ColorPicker */,
 				DD8E1265213CDC0C00D4F4DE /* Utilities */,
 				DDFC63E320F1FE5900109EC5 /* Cells */,
 			);
-			path = ViewComponents;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		DD638DBE20AC2D4800395557 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				DD68C22C2122B9C00061100F /* GridScene */,
-				DDEF325D20DF776100FEE793 /* Box.scn */,
-				DDEF326020DF797F00FEE793 /* Pyramid.scn */,
+				DD68C22C2122B9C00061100F /* Grid */,
+				DDBA24B421535056003C9CAF /* Models */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -252,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */,
-				DDEF326620E618AF00FEE793 /* ObjectAttributeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -266,21 +254,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DD68C21D211073530061100F /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				DD68C21E2110735C0061100F /* Node.swift */,
-				DD68C220211076690061100F /* Scene.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		DD68C22C2122B9C00061100F /* GridScene */ = {
+		DD68C22C2122B9C00061100F /* Grid */ = {
 			isa = PBXGroup;
 			children = (
 				DD20F68B20673184005E838C /* GridScene.swift */,
 			);
-			path = GridScene;
+			path = Grid;
 			sourceTree = "<group>";
 		};
 		DD68C2302127B9DB0061100F /* ColorPickerView */ = {
@@ -326,6 +305,7 @@
 		DD6C16F9210B32DA002CB031 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DD68C21E2110735C0061100F /* Node.swift */,
 				DD6C16F7210B32D5002CB031 /* NodeInspectorViewModel.swift */,
 			);
 			path = Model;
@@ -339,12 +319,12 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		DD6C16FB210C15A1002CB031 /* DocumentBrowser */ = {
+		DD6C16FB210C15A1002CB031 /* RootViewController */ = {
 			isa = PBXGroup;
 			children = (
 				DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */,
 			);
-			path = DocumentBrowser;
+			path = RootViewController;
 			sourceTree = "<group>";
 		};
 		DD6C16FE210C16F3002CB031 /* ColorPicker */ = {
@@ -386,6 +366,8 @@
 		DD6CC4242109B0D5009284C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DD68C220211076690061100F /* Scene.swift */,
+				DDBA24C12153D0D5003C9CAF /* SceneViewModel.swift */,
 				DD6CC4222109B0D2009284C6 /* SceneInspectorViewModel.swift */,
 			);
 			path = Model;
@@ -400,6 +382,7 @@
 				DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */,
 				DD68C2262115879F0061100F /* UIColorExtensions.swift */,
 				DDCB7F81214B92770003B34A /* UIImageExtensions.swift */,
+				DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -519,6 +502,40 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		DDBA24B421535056003C9CAF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DDEF325D20DF776100FEE793 /* Box.scn */,
+				DDEF326020DF797F00FEE793 /* Pyramid.scn */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DDBA24BA2153CADF003C9CAF /* DocumentBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				DDBA24C52153D30C003C9CAF /* Delegate */,
+				DDBA24BB2153CAE7003C9CAF /* Model */,
+			);
+			path = DocumentBrowser;
+			sourceTree = "<group>";
+		};
+		DDBA24BB2153CAE7003C9CAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DDBA24B82153CADA003C9CAF /* SceneDocument.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DDBA24C52153D30C003C9CAF /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				DDBA24C32153D309003C9CAF /* DocumentBrowserDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		DDCB7F89214BB5F80003B34A /* RootNavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,24 +573,6 @@
 			productReference = DD20F66420672FBD005E838C /* SceneKit-Grid-Experiment.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DD20F67920672FBD005E838C /* SceneKit-Grid-ExperimentTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DD20F68620672FBD005E838C /* Build configuration list for PBXNativeTarget "SceneKit-Grid-ExperimentTests" */;
-			buildPhases = (
-				DD20F67620672FBD005E838C /* Sources */,
-				DD20F67720672FBD005E838C /* Frameworks */,
-				DD20F67820672FBD005E838C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DD20F67C20672FBD005E838C /* PBXTargetDependency */,
-			);
-			name = "SceneKit-Grid-ExperimentTests";
-			productName = "SceneKit-Grid-ExperimentTests";
-			productReference = DD20F67A20672FBD005E838C /* SceneKit-Grid-ExperimentTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -586,12 +585,8 @@
 				TargetAttributes = {
 					DD20F66320672FBD005E838C = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
-					};
-					DD20F67920672FBD005E838C = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = DD20F66320672FBD005E838C;
 					};
 				};
 			};
@@ -609,7 +604,6 @@
 			projectRoot = "";
 			targets = (
 				DD20F66320672FBD005E838C /* SceneKit-Grid-Experiment */,
-				DD20F67920672FBD005E838C /* SceneKit-Grid-ExperimentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -627,13 +621,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD20F67820672FBD005E838C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -641,11 +628,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDBA24C42153D309003C9CAF /* DocumentBrowserDelegate.swift in Sources */,
 				DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */,
-				DDEF326720E618AF00FEE793 /* ObjectAttributeViewModel.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesShareCell.swift in Sources */,
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
+				DDBA24BD2153CC8C003C9CAF /* DocumentError.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */,
 				DD68C235212905910061100F /* ColorPickerViewModel.swift in Sources */,
 				DD8E1261213BE88500D4F4DE /* UtilitiesViewController.swift in Sources */,
@@ -668,6 +656,7 @@
 				DD68C21F2110735C0061100F /* Node.swift in Sources */,
 				DD6C16F0210B217A002CB031 /* ViewComponent.swift in Sources */,
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
+				DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */,
 				DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */,
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
@@ -675,6 +664,7 @@
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* PopoverMenuViewController.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
+				DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */,
 				DD8E125F21381BA700D4F4DE /* Style.swift in Sources */,
 				DD68C21A2110688A0061100F /* State.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */,
@@ -685,28 +675,14 @@
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,
 				DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */,
+				DDBA24C22153D0D5003C9CAF /* SceneViewModel.swift in Sources */,
 				DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */,
 				DD8E1264213CDC0400D4F4DE /* UtilitiesPresentableView.swift in Sources */,
 				DD8E1268213CDC6E00D4F4DE /* UtilitiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD20F67620672FBD005E838C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DD20F67C20672FBD005E838C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DD20F66320672FBD005E838C /* SceneKit-Grid-Experiment */;
-			targetProxy = DD20F67B20672FBD005E838C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DD20F66D20672FBD005E838C /* Main.storyboard */ = {
@@ -849,7 +825,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trevinwisaksana.SceneKit-Grid-Experiment";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -864,42 +840,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trevinwisaksana.SceneKit-Grid-Experiment";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		DD20F68720672FBD005E838C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ME882KZTA;
-				INFOPLIST_FILE = "SceneKit-Grid-ExperimentTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.trevinwisaksana.SceneKit-Grid-ExperimentTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SceneKit-Grid-Experiment.app/SceneKit-Grid-Experiment";
-			};
-			name = Debug;
-		};
-		DD20F68820672FBD005E838C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ME882KZTA;
-				INFOPLIST_FILE = "SceneKit-Grid-ExperimentTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.trevinwisaksana.SceneKit-Grid-ExperimentTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SceneKit-Grid-Experiment.app/SceneKit-Grid-Experiment";
 			};
 			name = Release;
 		};
@@ -920,15 +862,6 @@
 			buildConfigurations = (
 				DD20F68420672FBD005E838C /* Debug */,
 				DD20F68520672FBD005E838C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DD20F68620672FBD005E838C /* Build configuration list for PBXNativeTarget "SceneKit-Grid-ExperimentTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DD20F68720672FBD005E838C /* Debug */,
-				DD20F68820672FBD005E838C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,6 +9,11 @@
 import UIKit
 import SceneKit
 
+protocol SceneViewControllerDelegate: class {
+    func sceneEditorDidFinishEditing(_ controller: SceneViewController, scene: Scene)
+    func sceneEditorDidUpdateContent(_ controller: SceneViewController, scene: Scene)
+}
+
 final class SceneViewController: UIViewController {
     
     // MARK: - Internal Properties

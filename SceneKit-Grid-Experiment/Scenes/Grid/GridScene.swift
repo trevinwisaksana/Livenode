@@ -52,7 +52,6 @@ public class GridScene: SCNScene, SceneViewModel {
     
     private func setupFloor() {
         // TODO: Add a grid texture to the SCNFloor
-        
         let floorGeometry = SCNFloor()
         floorNode.geometry = floorGeometry
         floorNode.name = "Floor"
