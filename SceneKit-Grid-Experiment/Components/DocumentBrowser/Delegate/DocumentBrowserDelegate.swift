@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
+class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
     
     // MARK: - Internal Properties
     
@@ -20,8 +20,7 @@ public class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerD
     
     // MARK: - Delegate Methods
     
-    private func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {
-        
+    func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {
         let cacheURL = createDocumentURL()
         let document = SceneDocument(fileURL: cacheURL)
         
@@ -42,18 +41,18 @@ public class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerD
         }
     }
     
-    private func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
+    func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
         guard let selectedURL = documentURLs.first else {
             return
         }
         presentationHandler?(selectedURL, nil)
     }
     
-    private func documentBrowser(_ controller: UIDocumentBrowserViewController, didImportDocumentAt sourceURL: URL, toDestinationURL destinationURL: URL) {
+    func documentBrowser(_ controller: UIDocumentBrowserViewController, didImportDocumentAt sourceURL: URL, toDestinationURL destinationURL: URL) {
         presentationHandler?(destinationURL, nil)
     }
     
-    private func documentBrowser(_ controller: UIDocumentBrowserViewController, failedToImportDocumentAt documentURL: URL, error: Error?) {
+    func documentBrowser(_ controller: UIDocumentBrowserViewController, failedToImportDocumentAt documentURL: URL, error: Error?) {
         presentationHandler?(documentURL, error)
     }
 }

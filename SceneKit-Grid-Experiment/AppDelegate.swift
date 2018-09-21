@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let fileMenuViewController = Presenter.inject(.fileMenuView)
-        let navigationController = RootNavigationController(rootViewController: fileMenuViewController)
+        let documentBrowserViewController = Presenter.inject(.documentBrowser)
+        let navigationController = RootNavigationController(rootViewController: documentBrowserViewController)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController

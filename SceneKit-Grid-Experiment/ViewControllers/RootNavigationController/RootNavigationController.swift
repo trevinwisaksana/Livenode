@@ -8,23 +8,23 @@
 
 import UIKit
 
-public class RootNavigationController: UINavigationController {
+final class RootNavigationController: UINavigationController {
     
     // MARK: - Setup
     
-    public override init(rootViewController: UIViewController) {
+    override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         
         navigationBar.barTintColor = .milk
         navigationBar.tintColor = .lavender
     }
     
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
