@@ -12,6 +12,10 @@ struct State {
     private static let nodeSelectedKey: String = "nodeSelectedKey"
     private static let currentSceneKey: String = "currentSceneKey"
     
+    static var currentDocument: SceneDocument?
+    static var isEditingDocument: Bool = false
+    
+    // TODO: Test removing the getter and setter
     static var nodeSelected: Node? {
         get {
             guard let encodedNode = UserDefaults.standard.data(forKey: nodeSelectedKey) else {

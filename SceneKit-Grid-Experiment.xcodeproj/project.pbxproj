@@ -187,7 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				DDCB7F89214BB5F80003B34A /* RootNavigationController */,
-				DD6C16FB210C15A1002CB031 /* RootViewController */,
+				DD6C16FB210C15A1002CB031 /* DocumentBrowserViewController */,
 				DD6C16FA210C159C002CB031 /* Scene */,
 				DD9C6AF6210B0A43001E4982 /* AttributeInspector */,
 				DD6C16FE210C16F3002CB031 /* ColorPicker */,
@@ -319,12 +319,12 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		DD6C16FB210C15A1002CB031 /* RootViewController */ = {
+		DD6C16FB210C15A1002CB031 /* DocumentBrowserViewController */ = {
 			isa = PBXGroup;
 			children = (
 				DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */,
 			);
-			path = RootViewController;
+			path = DocumentBrowserViewController;
 			sourceTree = "<group>";
 		};
 		DD6C16FE210C16F3002CB031 /* ColorPicker */ = {

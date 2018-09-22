@@ -21,10 +21,10 @@ class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate
     // MARK: - Delegate Methods
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {
-        let cacheURL = createDocumentURL()
-        let document = SceneDocument(fileURL: cacheURL)
+        let url = createDocumentURL()
+        let document = SceneDocument(fileURL: url)
         
-        document.save(to: cacheURL, for: .forCreating) { (isSavedSuccessfuly) in
+        document.save(to: url, for: .forCreating) { (isSavedSuccessfuly) in
             if !isSavedSuccessfuly {
                 importHandler(nil, .none)
                 return
@@ -36,16 +36,16 @@ class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate
                     return
                 }
                 
-                importHandler(cacheURL, .move)
+                importHandler(url, .move)
             }
         }
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
-        guard let selectedURL = documentURLs.first else {
-            return
-        }
-        presentationHandler?(selectedURL, nil)
+        // TODO: Remove the storyboard implementation
+        let storybard = UIStoryboard(name: "Main", bundle: .main)
+        let sceneViewController = storybard.instantiateViewController(withIdentifier: "SceneViewController")
+        controller.navigationController?.pushViewController(sceneViewController, animated: true)
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didImportDocumentAt sourceURL: URL, toDestinationURL destinationURL: URL) {
@@ -57,14 +57,48 @@ class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate
     }
 }
 
+// MARK: - Opening Document
+
+extension DocumentBrowserDelegate {
+    private func openDocument(with url: URL) {
+        if !isDocumentOpen(with: url) {
+            return
+        }
+    }
+    
+    private func isDocumentOpen(with url: URL) -> Bool {
+        if let document = State.currentDocument {
+            if document.fileURL == url && document.documentState != .closed  {
+                return true
+            }
+        }
+        
+        return false
+    }
+}
+
+
+// MARK: - Document Creation
+
 extension DocumentBrowserDelegate {
     private func createDefaultDocumentName() -> String {
         let newDocumentNumber = UserDefaults.standard.integer(forKey: DocumentBrowserDelegate.documentNumberKey)
-        return "Untitled \(newDocumentNumber)"
+        
+        if newDocumentNumber == 0 {
+            return "Blank"
+        } else {
+            return "Blank \(newDocumentNumber)"
+        }
     }
     
     private func incrementDocumentNameCount() {
-        let newDocumentNumber = UserDefaults.standard.integer(forKey: DocumentBrowserDelegate.documentNumberKey) + 1
+        // TODO: Decrement document name count when deleting document
+        var newDocumentNumber = UserDefaults.standard.integer(forKey: DocumentBrowserDelegate.documentNumberKey) + 1
+        
+        if newDocumentNumber == 1 {
+            newDocumentNumber += 1
+        }
+        
         UserDefaults.standard.set(newDocumentNumber, forKey: DocumentBrowserDelegate.documentNumberKey)
     }
     
@@ -77,4 +111,3 @@ extension DocumentBrowserDelegate {
         return documentURL
     }
 }
-

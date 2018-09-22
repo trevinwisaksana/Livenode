@@ -29,7 +29,6 @@ final class PopoverMenuViewController: UIViewController {
         
         preferredContentSize = CGSize(width: 290, height: 45)
     }
-    
 }
 
 extension PopoverMenuViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {

@@ -42,7 +42,6 @@ final class SceneViewController: UIViewController {
     
     @IBOutlet weak var objectAttributeButton: UIBarButtonItem!
     
-    
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
@@ -71,6 +70,7 @@ final class SceneViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
+        navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.barTintColor = .milk
     }
     
