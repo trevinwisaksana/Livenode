@@ -17,7 +17,6 @@ final class AttributesInspectorViewController<View: UIView>: UIViewController {
     
     lazy var mainView: View = {
         let mainView = View(frame: view.frame)
-        mainView.translatesAutoresizingMaskIntoConstraints = false
         return mainView
     }()
 
@@ -43,5 +42,4 @@ final class AttributesInspectorViewController<View: UIView>: UIViewController {
 
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
-    
 }

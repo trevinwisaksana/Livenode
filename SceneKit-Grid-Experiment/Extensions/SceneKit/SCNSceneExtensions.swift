@@ -10,9 +10,12 @@ import SceneKit
 
 extension SCNScene {
     
-    var backgroundColor: UIColor {
+    public var backgroundColor: UIColor {
         get {
-            return self.background.contents as! UIColor
+            return background.contents as! UIColor
+        }
+        set {
+            background.contents = newValue
         }
     }
     

@@ -9,11 +9,17 @@
 import UIKit
 import SceneKit
 
+protocol SceneViewControllerDelegate: class {
+    func sceneEditorDidFinishEditing(_ controller: SceneViewController, scene: Scene)
+    func sceneEditorDidUpdateContent(_ controller: SceneViewController, scene: Scene)
+}
+
 final class SceneViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - Internal Properties
     
-    private var sceneView: SCNView!
+    private var sceneView: SCNView = SCNView()
+    
     private var mainScene: GridScene! {
         didSet {
             State.currentScene = Scene(scene: mainScene)
@@ -25,6 +31,7 @@ final class SceneViewController: UIViewController {
     private var lastNodePosition: SCNVector3?
     
     private var didSelectTargetNode = false
+    private var didHighlightNode = false
     
     private var didFinishDraggingNode = false {
         didSet {
@@ -32,46 +39,55 @@ final class SceneViewController: UIViewController {
         }
     }
     
-    // MARK: - IBOutlet
-    
-    @IBOutlet weak var objectAttributeButton: UIBarButtonItem!
-    
-    
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupGameView()
+        setup()
+    }
+    
+    // MARK: - Setup
+    
+    private func setup() {
+        setupScene()
         setupLongPressGestureRecognizer()
         setupNavigationBar()
         setupNodeSelectedListener()
     }
     
-    // MARK: - Setup
-    
-    private func setupGameView() {
-        // create a new scene
+    private func setupScene() {
         mainScene = GridScene()
         
-        // retrieve the SCNView
-        sceneView = self.view as! SCNView
+        view.addSubview(sceneView)
+        sceneView.fillInSuperview()
         
-        // set the scene to the view
         sceneView.scene = mainScene
-        
-        // allow camera control
         sceneView.allowsCameraControl = true
-        
-        // show statistics such as fps and timing information
         sceneView.showsStatistics = false
-        
-        // default lighting
         sceneView.autoenablesDefaultLighting = true
     }
     
     private func setupNavigationBar() {
-        navigationController?.navigationBar.barTintColor = .milk
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        setupNavigationBarButtons()
+    }
+    
+    private func setupNavigationBarButtons() {
+        let utilitiesInspectorButtonImage = UIImage(named: .utilitiesInspectorButton)
+        let utilitiesInspectorBarButton = UIBarButtonItem(image: utilitiesInspectorButtonImage, style: .plain, target: self, action: #selector(didTapUtilitiesInspectorButton(_:)))
+        
+        let addObjectButtonImage = UIImage(named: .addObjectButton)
+        let addObjectBarButton = UIBarButtonItem(image: addObjectButtonImage, style: .plain, target: self, action: #selector(didTapAddObjectButton(_:)))
+        
+        let nodeInspectorButtonImage = UIImage(named: .nodeInspectorButton)
+        let nodeInspectorBarButton = UIBarButtonItem(image: nodeInspectorButtonImage, style: .plain, target: self, action: #selector(didTapNodeInspectorButton(_:)))
+        
+        let playButtonImage = UIImage(named: .playButton)
+        let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
+        
+        navigationItem.setRightBarButtonItems([utilitiesInspectorBarButton, addObjectBarButton, nodeInspectorBarButton, playBarButton], animated: true)
     }
     
     private func setupNodeSelectedListener() {
@@ -83,22 +99,35 @@ final class SceneViewController: UIViewController {
     @objc
     private func didModifyNodeColor(_ notification: Notification) {
         if let color = notification.object as? UIColor {
-            mainScene.testNode.color = color
+            guard let name = nodeSelected?.name else {
+                return
+            }
+            
+            let node = mainScene.rootNode.childNode(withName: name, recursively: true)
+            node?.color = color
         }
     }
     
     // MARK: - IBActions
     
-    @IBAction func didTapAddObjectButton(_ sender: UIBarButtonItem) {
+    @objc
+    private func didTapAddObjectButton(_ sender: UIBarButtonItem) {
         presentObjectCatalogController(using: sender)
     }
     
-    @IBAction func didTapObjectAttributeButton(_ sender: UIBarButtonItem) {
+    @objc
+    private func didTapNodeInspectorButton(_ sender: UIBarButtonItem) {
         presentInspectorViews(using: sender)
     }
     
-    @IBAction func didTapUtilitiesButton(_ sender: UIBarButtonItem) {
+    @objc
+    private func didTapUtilitiesInspectorButton(_ sender: UIBarButtonItem) {
         presentUtilitiesController(using: sender)
+    }
+    
+    @objc
+    private func didTapPlayButton(_ sender: UIBarButtonItem) {
+        
     }
     
     private func presentInspectorViews(using sender: UIBarButtonItem) {
@@ -161,7 +190,6 @@ final class SceneViewController: UIViewController {
         
         if nodeSelected?.name == "Floor" || nodeSelected == nil {
             unhighlight(lastNodeSelected)
-            
             return
         }
         
@@ -169,22 +197,19 @@ final class SceneViewController: UIViewController {
             didSelectTargetNode = true
             State.nodeSelected = Node(node: nodeSelected)
             highlight(nodeSelected)
-            
         } else {
             didSelectTargetNode = false
-        }
-        
-        if lastNodeSelected != nodeSelected {
-            lastNodeSelected = nil
         }
         
         lastNodeSelected = nodeSelected
     }
     
-    //
-    
     // TODO: Find solution that doesn't only work with boxes
     private func highlight(_ nodeSelected: SCNNode?) {
+        if didHighlightNode {
+            return
+        }
+        
         guard let nodeSelected = nodeSelected else {
             return
         }
@@ -198,9 +223,13 @@ final class SceneViewController: UIViewController {
         nodeHighlight.name = "nodeHighlight"
         
         nodeSelected.addChildNode(nodeHighlight)
+        
+        didHighlightNode = true
     }
     
     private func unhighlight(_ lastNodeSelected: SCNNode?) {
+        didHighlightNode = false
+        
         guard let node = lastNodeSelected else {
             return
         }
@@ -208,8 +237,6 @@ final class SceneViewController: UIViewController {
         let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
         nodeHighlight?.removeFromParentNode()
     }
-    
-    //
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
@@ -222,8 +249,6 @@ final class SceneViewController: UIViewController {
         }
 
         if didSelectTargetNode {
-//            gameView.allowsCameraControl = false
-            
             let nodeXPos = nodeSelected.position.x
             let nodeYPos = nodeSelected.position.y
             var nodeZPos = nodeSelected.position.z
@@ -240,11 +265,6 @@ final class SceneViewController: UIViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         didFinishDraggingNode = true
-//
-//        gameScene.testNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        
-        // TODO: Create a Done button to finish moving
-//        gameScene.testNode.isMovable = false
     }
     
     private func setupLongPressGestureRecognizer() {
@@ -292,7 +312,7 @@ extension SceneViewController: UIPopoverPresentationControllerDelegate {
     
     func showPopoverMenu(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopoverMenu") as! PopoverMenuViewController
+        let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopoverMenu") as! SceneActionsMenuViewController
         
         // set the selected node
         popController.viewModel.nodeSelected = node
@@ -346,7 +366,7 @@ extension SceneViewController: ObjectInsertionDelegate {
             mainScene.insertPyramid()
         }
         
-        mainScene.showGrid()
+        mainScene.displayGrid()
     }
     
 }
@@ -356,7 +376,7 @@ extension SceneViewController: ObjectInsertionDelegate {
 extension SceneViewController: MenuActionDelegate {
     
     func move() {
-        mainScene.showGrid()
+        mainScene.displayGrid()
     }
     
     func delete() {
@@ -372,4 +392,3 @@ extension SceneViewController: MenuActionDelegate {
     }
     
 }
-

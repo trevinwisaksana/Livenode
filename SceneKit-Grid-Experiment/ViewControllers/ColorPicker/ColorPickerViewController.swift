@@ -17,7 +17,6 @@ final class ColorPickerViewController<View: ColorPickerPresentableView>: UIViewC
     
     lazy var mainView: ColorPickerPresentableView = {
         let mainView = ColorPickerPresentableView(frame: view.frame)
-        mainView.translatesAutoresizingMaskIntoConstraints = false
         return mainView
     }()
     
