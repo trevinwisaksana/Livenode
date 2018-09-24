@@ -23,7 +23,7 @@ enum Presenter {
             controller = AttributesInspectorViewController<NodeInspectorPresentableView>()
             return controller
         case .utilitiesView:
-            controller = UtilitiesViewController<UtilitiesInspectorPresentableView>()
+            controller = UtilitiesInspectorViewController<UtilitiesInspectorPresentableView>()
             return controller
         case .documentBrowser:
             controller = DocumentBrowserViewController()

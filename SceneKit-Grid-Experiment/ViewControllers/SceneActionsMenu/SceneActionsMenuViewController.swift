@@ -15,7 +15,7 @@ protocol MenuActionDelegate: class {
     func paste()
 }
 
-final class PopoverMenuViewController: UIViewController {
+final class SceneActionsMenuViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -31,7 +31,7 @@ final class PopoverMenuViewController: UIViewController {
     }
 }
 
-extension PopoverMenuViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension SceneActionsMenuViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
@@ -66,7 +66,7 @@ extension PopoverMenuViewController: UICollectionViewDelegateFlowLayout, UIColle
     
 }
 
-extension PopoverMenuViewController: PopoverMenuDelegate {
+extension SceneActionsMenuViewController: PopoverMenuDelegate {
     
     func move() {
         viewModel.makeNodeMovable()

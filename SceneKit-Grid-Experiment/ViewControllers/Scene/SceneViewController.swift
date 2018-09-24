@@ -312,7 +312,7 @@ extension SceneViewController: UIPopoverPresentationControllerDelegate {
     
     func showPopoverMenu(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopoverMenu") as! PopoverMenuViewController
+        let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopoverMenu") as! SceneActionsMenuViewController
         
         // set the selected node
         popController.viewModel.nodeSelected = node

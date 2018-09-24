@@ -33,10 +33,10 @@
             </objects>
             <point key="canvasLocation" x="1046" y="33"/>
         </scene>
-        <!--Popover Menu View Controller-->
+        <!--Scene Actions Menu View Controller-->
         <scene sceneID="9zR-a7-1cP">
             <objects>
-                <viewController storyboardIdentifier="PopoverMenu" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="hKD-fm-k5z" customClass="PopoverMenuViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopoverMenu" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="hKD-fm-k5z" customClass="SceneActionsMenuViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qi3-AX-Fg4">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="55"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class UtilitiesViewController<View: UIView>: UIViewController {
+final class UtilitiesInspectorViewController<View: UIView>: UIViewController {
     
     // MARK: - Internal Properties
     
