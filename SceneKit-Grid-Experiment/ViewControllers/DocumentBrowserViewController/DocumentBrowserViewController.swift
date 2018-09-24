@@ -22,10 +22,15 @@ final class DocumentBrowserViewController: UIDocumentBrowserViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     // MARK: - Setup
     
     private func setup() {
-        navigationController?.navigationBar.isHidden = true
         view.tintColor = .lavender
         browserUserInterfaceStyle = .white
         

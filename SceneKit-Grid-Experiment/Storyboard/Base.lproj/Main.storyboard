@@ -21,28 +21,13 @@
                     </sceneKitView>
                     <navigationItem key="navigationItem" id="RV3-xX-pe6">
                         <rightBarButtonItems>
-                            <barButtonItem title="utilitiesBarButton" image="utilitiesButtonIcon" id="7DY-lP-VtX">
-                                <connections>
-                                    <action selector="didTapUtilitiesButton:" destination="BV1-FR-VrT" id="DSx-kQ-z2q"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="objectCatalogBarButton" image="addButton" id="W5q-D3-ES6">
-                                <connections>
-                                    <action selector="didTapAddObjectButton:" destination="BV1-FR-VrT" id="hxw-wO-UUy"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="modelsBarButton" image="modelsButton" id="9FB-t9-yMf">
-                                <connections>
-                                    <action selector="didTapObjectAttributeButton:" destination="BV1-FR-VrT" id="Ybc-kW-skZ"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem title="utilitiesBarButton" image="utilitiesButtonIcon" id="7DY-lP-VtX"/>
+                            <barButtonItem title="objectCatalogBarButton" image="addButton" id="W5q-D3-ES6"/>
+                            <barButtonItem title="modelsBarButton" image="modelAttributesButton" id="9FB-t9-yMf"/>
                             <barButtonItem title="Item" image="playButton" id="86k-Kw-q18"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <connections>
-                        <outlet property="objectAttributeButton" destination="9FB-t9-yMf" id="yhc-1o-UcY"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
@@ -214,7 +199,7 @@
     </scenes>
     <resources>
         <image name="addButton" width="25" height="26"/>
-        <image name="modelsButton" width="28" height="28"/>
+        <image name="modelAttributesButton" width="28" height="28"/>
         <image name="playButton" width="25" height="26"/>
         <image name="utilitiesButtonIcon" width="30" height="8"/>
     </resources>

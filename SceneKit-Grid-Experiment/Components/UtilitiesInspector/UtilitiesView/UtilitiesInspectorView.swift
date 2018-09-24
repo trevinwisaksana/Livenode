@@ -8,15 +8,15 @@
 
 import UIKit
 
-public protocol UtilitiesViewDelegate: class {
-    func utilitiesView(_ utilitiesView: UtilitiesView, didSelectItemAtIndexPath indexPath: IndexPath)
+public protocol UtilitiesInspectorViewDelegate: class {
+    func utilitiesView(_ utilitiesView: UtilitiesInspectorView, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
-public protocol UtilitiesViewDataSource: class {
-    func viewModel(InColorPickerView colorPickerView: UtilitiesView) -> UtilitiesViewModel
+public protocol UtilitiesInspectorViewDataSource: class {
+    func viewModel(InColorPickerView colorPickerView: UtilitiesInspectorView) -> UtilitiesInspectorViewModel
 }
 
-public class UtilitiesView: UIView {
+public class UtilitiesInspectorView: UIView {
     
     // MARK: - Internal properties
     
@@ -32,12 +32,12 @@ public class UtilitiesView: UIView {
         return tableView
     }()
     
-    private weak var delegate: UtilitiesViewDelegate?
-    private weak var dataSource: UtilitiesViewDataSource?
+    private weak var delegate: UtilitiesInspectorViewDelegate?
+    private weak var dataSource: UtilitiesInspectorViewDataSource?
     
     // MARK: - Setup
     
-    public init(delegate: UtilitiesViewDelegate, dataSource: UtilitiesViewDataSource) {
+    public init(delegate: UtilitiesInspectorViewDelegate, dataSource: UtilitiesInspectorViewDataSource) {
         super.init(frame: .zero)
         
         self.delegate = delegate
@@ -57,7 +57,7 @@ public class UtilitiesView: UIView {
     }
     
     private func setup() {
-        tableView.register(cell: UtilitiesShareCell.self)
+        tableView.register(cell: UtilitiesInspectorShareCell.self)
         tableView.register(cell: SceneFloorColorCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
@@ -73,7 +73,7 @@ public class UtilitiesView: UIView {
 
 // MARK: - UITableViewDelegate
 
-extension UtilitiesView: UITableViewDelegate {
+extension UtilitiesInspectorView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.utilitiesView(self, didSelectItemAtIndexPath: indexPath)
         tableView.deselectRow(at: indexPath, animated: false)
@@ -82,7 +82,7 @@ extension UtilitiesView: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 
-extension UtilitiesView: UITableViewDataSource {
+extension UtilitiesInspectorView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -98,7 +98,7 @@ extension UtilitiesView: UITableViewDataSource {
     private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell: UtilitiesShareCell = tableView.dequeueReusableCell()
+            let cell: UtilitiesInspectorShareCell = tableView.dequeueReusableCell()
             
             return cell
             
@@ -108,6 +108,6 @@ extension UtilitiesView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UtilitiesView.cellHeight
+        return UtilitiesInspectorView.cellHeight
     }
 }

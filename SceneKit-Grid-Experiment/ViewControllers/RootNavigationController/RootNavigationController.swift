@@ -15,7 +15,8 @@ final class RootNavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         
-        navigationBar.barTintColor = .milk
+        navigationBar.barTintColor = .white
+        navigationBar.isTranslucent = false
         navigationBar.tintColor = .lavender
     }
     

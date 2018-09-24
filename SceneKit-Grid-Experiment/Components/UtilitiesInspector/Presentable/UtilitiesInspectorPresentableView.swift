@@ -9,16 +9,16 @@
 import UIKit
 import SceneKit
 
-public class UtilitiesDataSource: NSObject {
+public class UtilitiesInspectorDataSource: NSObject {
     let scene: Scene? = State.currentScene
 }
 
-public class UtilitiesPresentableView: UIView {
+public class UtilitiesInspectorPresentableView: UIView {
     
     // MARK: - Internal Properties
     
-    lazy var dataSource: UtilitiesDataSource = {
-        return UtilitiesDataSource()
+    lazy var dataSource: UtilitiesInspectorDataSource = {
+        return UtilitiesInspectorDataSource()
     }()
     
     // MARK: - Initializer
@@ -32,7 +32,7 @@ public class UtilitiesPresentableView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
     
     private func setup() {
-        let view = UtilitiesView(delegate: self, dataSource: self)
+        let view = UtilitiesInspectorView(delegate: self, dataSource: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         view.fillInSuperview()
@@ -41,8 +41,8 @@ public class UtilitiesPresentableView: UIView {
 
 // MARK: - UtilitiesViewDelegate
 
-extension UtilitiesPresentableView: UtilitiesViewDelegate {
-    public func utilitiesView(_ utilitiesView: UtilitiesView, didSelectItemAtIndexPath indexPath: IndexPath) {
+extension UtilitiesInspectorPresentableView: UtilitiesInspectorViewDelegate {
+    public func utilitiesView(_ utilitiesView: UtilitiesInspectorView, didSelectItemAtIndexPath indexPath: IndexPath) {
         transition(using: indexPath)
     }
 
@@ -67,8 +67,8 @@ extension UtilitiesPresentableView: UtilitiesViewDelegate {
 // MARK: - UtilitiesViewDataSource
 
 // NOTE: Not sure if this is necessary
-extension UtilitiesPresentableView: UtilitiesViewDataSource {
-    public func viewModel(InColorPickerView colorPickerView: UtilitiesView) -> UtilitiesViewModel {
+extension UtilitiesInspectorPresentableView: UtilitiesInspectorViewDataSource {
+    public func viewModel(InColorPickerView colorPickerView: UtilitiesInspectorView) -> UtilitiesInspectorViewModel {
         return Utilities(scene: dataSource.scene)
     }
 }

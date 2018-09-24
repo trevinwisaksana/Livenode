@@ -9,10 +9,10 @@
 import UIKit
 
 public protocol UtilitiesShareCellDelegate {
-    func utilitiesShareCell(_ utilitiesShareCell: UtilitiesShareCell, changeBackgroundColorForModel model: SceneInspectorViewModel)
+    func utilitiesShareCell(_ utilitiesShareCell: UtilitiesInspectorShareCell, changeBackgroundColorForModel model: SceneInspectorViewModel)
 }
 
-public class UtilitiesShareCell: UITableViewCell {
+public class UtilitiesInspectorShareCell: UITableViewCell {
     
     // MARK: - Internal properties
     
@@ -52,16 +52,16 @@ public class UtilitiesShareCell: UITableViewCell {
         backgroundColor = .milk
         
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: UtilitiesShareCell.titleLeftMargin),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: UtilitiesShareCell.titleTopMargin),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UtilitiesShareCell.titleBottomMargin),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: UtilitiesInspectorShareCell.titleLeftMargin),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: UtilitiesInspectorShareCell.titleTopMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UtilitiesInspectorShareCell.titleBottomMargin),
             ])
     }
     
     // MARK: - Dependency injection
     
     /// The model contains data used to populate the view.
-    public var model: UtilitiesViewModel? {
+    public var model: UtilitiesInspectorViewModel? {
         didSet {
             if let model = model {
                 

@@ -42,10 +42,10 @@
 		DD6CC452210AB626009284C6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC451210AB626009284C6 /* Presenter.swift */; };
 		DD8E125F21381BA700D4F4DE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E125E21381BA700D4F4DE /* Style.swift */; };
 		DD8E1261213BE88500D4F4DE /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1260213BE88500D4F4DE /* UtilitiesViewController.swift */; };
-		DD8E1264213CDC0400D4F4DE /* UtilitiesPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1263213CDC0400D4F4DE /* UtilitiesPresentableView.swift */; };
-		DD8E1268213CDC6E00D4F4DE /* UtilitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1267213CDC6E00D4F4DE /* UtilitiesView.swift */; };
-		DD8E126B213CDD6B00D4F4DE /* UtilitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126A213CDD6B00D4F4DE /* UtilitiesViewModel.swift */; };
-		DD8E126E213CE11000D4F4DE /* UtilitiesShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126D213CE11000D4F4DE /* UtilitiesShareCell.swift */; };
+		DD8E1264213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1263213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift */; };
+		DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */; };
+		DD8E126B213CDD6B00D4F4DE /* UtilitiesInspectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126A213CDD6B00D4F4DE /* UtilitiesInspectorViewModel.swift */; };
+		DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */; };
 		DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */; };
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
 		DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */; };
@@ -55,6 +55,7 @@
 		DDBA24C22153D0D5003C9CAF /* SceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C12153D0D5003C9CAF /* SceneViewModel.swift */; };
 		DDBA24C42153D309003C9CAF /* DocumentBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C32153D309003C9CAF /* DocumentBrowserDelegate.swift */; };
 		DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */; };
+		DDBA24CC21579255003C9CAF /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24CB21579255003C9CAF /* SceneView.swift */; };
 		DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F81214B92770003B34A /* UIImageExtensions.swift */; };
 		DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */; };
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
@@ -103,10 +104,10 @@
 		DD6CC451210AB626009284C6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		DD8E125E21381BA700D4F4DE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		DD8E1260213BE88500D4F4DE /* UtilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewController.swift; sourceTree = "<group>"; };
-		DD8E1263213CDC0400D4F4DE /* UtilitiesPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesPresentableView.swift; sourceTree = "<group>"; };
-		DD8E1267213CDC6E00D4F4DE /* UtilitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesView.swift; sourceTree = "<group>"; };
-		DD8E126A213CDD6B00D4F4DE /* UtilitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewModel.swift; sourceTree = "<group>"; };
-		DD8E126D213CE11000D4F4DE /* UtilitiesShareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesShareCell.swift; sourceTree = "<group>"; };
+		DD8E1263213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorPresentableView.swift; sourceTree = "<group>"; };
+		DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorView.swift; sourceTree = "<group>"; };
+		DD8E126A213CDD6B00D4F4DE /* UtilitiesInspectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorViewModel.swift; sourceTree = "<group>"; };
+		DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorShareCell.swift; sourceTree = "<group>"; };
 		DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
 		DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorPresentableView.swift; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 		DDBA24C12153D0D5003C9CAF /* SceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModel.swift; sourceTree = "<group>"; };
 		DDBA24C32153D309003C9CAF /* DocumentBrowserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserDelegate.swift; sourceTree = "<group>"; };
 		DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
+		DDBA24CB21579255003C9CAF /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
 		DDCB7F81214B92770003B34A /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
@@ -202,11 +204,12 @@
 			isa = PBXGroup;
 			children = (
 				DD6C16EF210B217A002CB031 /* ViewComponent.swift */,
+				DDBA24CD2157925C003C9CAF /* SceneView */,
 				DDBA24BA2153CADF003C9CAF /* DocumentBrowser */,
 				DD9C6AEF210AC087001E4982 /* NodeInspector */,
 				DD6CC4202109A7CF009284C6 /* SceneInspector */,
+				DD8E1265213CDC0C00D4F4DE /* UtilitiesInspector */,
 				DD6CC44A2109C3CD009284C6 /* ColorPicker */,
-				DD8E1265213CDC0C00D4F4DE /* Utilities */,
 				DDFC63E320F1FE5900109EC5 /* Cells */,
 			);
 			path = Components;
@@ -415,7 +418,7 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		DD8E1265213CDC0C00D4F4DE /* Utilities */ = {
+		DD8E1265213CDC0C00D4F4DE /* UtilitiesInspector */ = {
 			isa = PBXGroup;
 			children = (
 				DD8E1266213CDC1D00D4F4DE /* Presentable */,
@@ -423,13 +426,13 @@
 				DD8E1269213CDC7F00D4F4DE /* UtilitiesView */,
 				DD8E126C213CDD6E00D4F4DE /* Model */,
 			);
-			path = Utilities;
+			path = UtilitiesInspector;
 			sourceTree = "<group>";
 		};
 		DD8E1266213CDC1D00D4F4DE /* Presentable */ = {
 			isa = PBXGroup;
 			children = (
-				DD8E1263213CDC0400D4F4DE /* UtilitiesPresentableView.swift */,
+				DD8E1263213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift */,
 			);
 			path = Presentable;
 			sourceTree = "<group>";
@@ -437,7 +440,7 @@
 		DD8E1269213CDC7F00D4F4DE /* UtilitiesView */ = {
 			isa = PBXGroup;
 			children = (
-				DD8E1267213CDC6E00D4F4DE /* UtilitiesView.swift */,
+				DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */,
 			);
 			path = UtilitiesView;
 			sourceTree = "<group>";
@@ -445,7 +448,7 @@
 		DD8E126C213CDD6E00D4F4DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DD8E126A213CDD6B00D4F4DE /* UtilitiesViewModel.swift */,
+				DD8E126A213CDD6B00D4F4DE /* UtilitiesInspectorViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -453,7 +456,7 @@
 		DD8E126F213CE11300D4F4DE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DD8E126D213CE11000D4F4DE /* UtilitiesShareCell.swift */,
+				DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -534,6 +537,14 @@
 				DDBA24C32153D309003C9CAF /* DocumentBrowserDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		DDBA24CD2157925C003C9CAF /* SceneView */ = {
+			isa = PBXGroup;
+			children = (
+				DDBA24CB21579255003C9CAF /* SceneView.swift */,
+			);
+			path = SceneView;
 			sourceTree = "<group>";
 		};
 		DDCB7F89214BB5F80003B34A /* RootNavigationController */ = {
@@ -630,7 +641,7 @@
 			files = (
 				DDBA24C42153D309003C9CAF /* DocumentBrowserDelegate.swift in Sources */,
 				DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */,
-				DD8E126E213CE11000D4F4DE /* UtilitiesShareCell.swift in Sources */,
+				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
 				DDBA24BD2153CC8C003C9CAF /* DocumentError.swift in Sources */,
@@ -650,7 +661,7 @@
 				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
 				DD68C2322127BA1F0061100F /* ColorPickerPresentableView.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
-				DD8E126B213CDD6B00D4F4DE /* UtilitiesViewModel.swift in Sources */,
+				DD8E126B213CDD6B00D4F4DE /* UtilitiesInspectorViewModel.swift in Sources */,
 				DD6CC450210A111A009284C6 /* SCNSceneExtensions.swift in Sources */,
 				DD68C221211076690061100F /* Scene.swift in Sources */,
 				DD68C21F2110735C0061100F /* Node.swift in Sources */,
@@ -671,14 +682,15 @@
 				DDEF325C20DF70CF00FEE793 /* Model.swift in Sources */,
 				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
 				DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */,
+				DDBA24CC21579255003C9CAF /* SceneView.swift in Sources */,
 				DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */,
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,
 				DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */,
 				DDBA24C22153D0D5003C9CAF /* SceneViewModel.swift in Sources */,
 				DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */,
-				DD8E1264213CDC0400D4F4DE /* UtilitiesPresentableView.swift in Sources */,
-				DD8E1268213CDC6E00D4F4DE /* UtilitiesView.swift in Sources */,
+				DD8E1264213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift in Sources */,
+				DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

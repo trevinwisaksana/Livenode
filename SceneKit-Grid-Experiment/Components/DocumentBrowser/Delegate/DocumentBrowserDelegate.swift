@@ -15,8 +15,8 @@ class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate
     private static let documentNumberKey = "documentNumberKey"
     
     // MARK: - Public Properties
+
     
-    public var presentationHandler: ((URL?, Error?) -> Void)?
     
     // MARK: - Delegate Methods
     
@@ -42,18 +42,16 @@ class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
-        // TODO: Remove the storyboard implementation
-        let storybard = UIStoryboard(name: "Main", bundle: .main)
-        let sceneViewController = storybard.instantiateViewController(withIdentifier: "SceneViewController")
-        controller.navigationController?.pushViewController(sceneViewController, animated: true)
+        // TODO: Scenes should be injectable to the view controller
+        controller.navigationController?.pushViewController(SceneViewController(), animated: true)
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didImportDocumentAt sourceURL: URL, toDestinationURL destinationURL: URL) {
-        presentationHandler?(destinationURL, nil)
+        
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, failedToImportDocumentAt documentURL: URL, error: Error?) {
-        presentationHandler?(documentURL, error)
+        
     }
 }
 

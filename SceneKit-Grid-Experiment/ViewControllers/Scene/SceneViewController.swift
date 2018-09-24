@@ -18,7 +18,7 @@ final class SceneViewController: UIViewController {
     
     // MARK: - Internal Properties
     
-    private var sceneView: SCNView!
+    private var sceneView: SCNView = SCNView()
     private var mainScene: GridScene! {
         didSet {
             State.currentScene = Scene(scene: mainScene)
@@ -37,10 +37,6 @@ final class SceneViewController: UIViewController {
             sceneView.allowsCameraControl = true
         }
     }
-    
-    // MARK: - IBOutlet
-    
-    @IBOutlet weak var objectAttributeButton: UIBarButtonItem!
     
     // MARK: - VC Lifecycle
     
@@ -62,7 +58,9 @@ final class SceneViewController: UIViewController {
     private func setupScene() {
         mainScene = GridScene()
         
-        sceneView = self.view as? SCNView
+        view.addSubview(sceneView)
+        sceneView.fillInSuperview()
+        
         sceneView.scene = mainScene
         sceneView.allowsCameraControl = true
         sceneView.showsStatistics = false
@@ -70,8 +68,25 @@ final class SceneViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.barTintColor = .milk
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        setupNavigationBarButtons()
+    }
+    
+    private func setupNavigationBarButtons() {
+        let utilitiesInspectorButtonImage = UIImage(named: .utilitiesInspectorButton)
+        let utilitiesInspectorBarButton = UIBarButtonItem(image: utilitiesInspectorButtonImage, style: .plain, target: self, action: #selector(didTapUtilitiesInspectorButton(_:)))
+        
+        let addObjectButtonImage = UIImage(named: .addObjectButton)
+        let addObjectBarButton = UIBarButtonItem(image: addObjectButtonImage, style: .plain, target: self, action: #selector(didTapAddObjectButton(_:)))
+        
+        let nodeInspectorButtonImage = UIImage(named: .nodeInspectorButton)
+        let nodeInspectorBarButton = UIBarButtonItem(image: nodeInspectorButtonImage, style: .plain, target: self, action: #selector(didTapNodeInspectorButton(_:)))
+        
+        let playButtonImage = UIImage(named: .playButton)
+        let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
+        
+        navigationItem.setRightBarButtonItems([utilitiesInspectorBarButton, addObjectBarButton, nodeInspectorBarButton, playBarButton], animated: true)
     }
     
     private func setupNodeSelectedListener() {
@@ -94,16 +109,24 @@ final class SceneViewController: UIViewController {
     
     // MARK: - IBActions
     
-    @IBAction func didTapAddObjectButton(_ sender: UIBarButtonItem) {
+    @objc
+    private func didTapAddObjectButton(_ sender: UIBarButtonItem) {
         presentObjectCatalogController(using: sender)
     }
     
-    @IBAction func didTapObjectAttributeButton(_ sender: UIBarButtonItem) {
+    @objc
+    private func didTapNodeInspectorButton(_ sender: UIBarButtonItem) {
         presentInspectorViews(using: sender)
     }
     
-    @IBAction func didTapUtilitiesButton(_ sender: UIBarButtonItem) {
+    @objc
+    private func didTapUtilitiesInspectorButton(_ sender: UIBarButtonItem) {
         presentUtilitiesController(using: sender)
+    }
+    
+    @objc
+    private func didTapPlayButton(_ sender: UIBarButtonItem) {
+        
     }
     
     private func presentInspectorViews(using sender: UIBarButtonItem) {

@@ -8,10 +8,10 @@
 
 import Foundation
 
-public protocol UtilitiesViewModel {
+public protocol UtilitiesInspectorViewModel {
     var scene: Scene? { get }
 }
 
-public struct Utilities: UtilitiesViewModel {
+public struct Utilities: UtilitiesInspectorViewModel {
     public var scene: Scene?
 }
