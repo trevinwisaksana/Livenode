@@ -194,14 +194,14 @@
 		DD638DBC20AC2D3800395557 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DDCB7F89214BB5F80003B34A /* RootNavigation */,
-				DD6C16FB210C15A1002CB031 /* DocumentBrowser */,
-				DD6C16FA210C159C002CB031 /* Scene */,
-				DD9C6AF6210B0A43001E4982 /* AttributeInspector */,
-				DD6C16FE210C16F3002CB031 /* ColorPicker */,
-				DD8E1262213BE92B00D4F4DE /* UtilitiesInspector */,
-				DDBA24D82158A1CB003C9CAF /* SceneActionsMenu */,
-				DDBA24D92158A1F5003C9CAF /* ObjectCatalog */,
+				DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */,
+				DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */,
+				DD51FEFD208818ED00A0D857 /* SceneViewController.swift */,
+				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
+				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
+				DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */,
+				DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */,
+				DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -321,30 +321,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		DD6C16FA210C159C002CB031 /* Scene */ = {
-			isa = PBXGroup;
-			children = (
-				DD51FEFD208818ED00A0D857 /* SceneViewController.swift */,
-			);
-			path = Scene;
-			sourceTree = "<group>";
-		};
-		DD6C16FB210C15A1002CB031 /* DocumentBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */,
-			);
-			path = DocumentBrowser;
-			sourceTree = "<group>";
-		};
-		DD6C16FE210C16F3002CB031 /* ColorPicker */ = {
-			isa = PBXGroup;
-			children = (
-				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
-			);
-			path = ColorPicker;
-			sourceTree = "<group>";
-		};
 		DD6CC41D2109A685009284C6 /* SceneInspectorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,14 +393,6 @@
 			path = ColorPicker;
 			sourceTree = "<group>";
 		};
-		DD8E1262213BE92B00D4F4DE /* UtilitiesInspector */ = {
-			isa = PBXGroup;
-			children = (
-				DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */,
-			);
-			path = UtilitiesInspector;
-			sourceTree = "<group>";
-		};
 		DD8E1265213CDC0C00D4F4DE /* UtilitiesInspector */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,14 +461,6 @@
 				DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */,
 			);
 			path = Presentable;
-			sourceTree = "<group>";
-		};
-		DD9C6AF6210B0A43001E4982 /* AttributeInspector */ = {
-			isa = PBXGroup;
-			children = (
-				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
-			);
-			path = AttributeInspector;
 			sourceTree = "<group>";
 		};
 		DDA37E7D20DD343D005A340C /* Storyboard */ = {
@@ -586,30 +546,6 @@
 				DDBA24D52158A1A2003C9CAF /* SceneActionsMenuViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		DDBA24D82158A1CB003C9CAF /* SceneActionsMenu */ = {
-			isa = PBXGroup;
-			children = (
-				DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */,
-			);
-			path = SceneActionsMenu;
-			sourceTree = "<group>";
-		};
-		DDBA24D92158A1F5003C9CAF /* ObjectCatalog */ = {
-			isa = PBXGroup;
-			children = (
-				DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */,
-			);
-			path = ObjectCatalog;
-			sourceTree = "<group>";
-		};
-		DDCB7F89214BB5F80003B34A /* RootNavigation */ = {
-			isa = PBXGroup;
-			children = (
-				DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */,
-			);
-			path = RootNavigation;
 			sourceTree = "<group>";
 		};
 		DDFC63E320F1FE5900109EC5 /* Cells */ = {
