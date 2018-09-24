@@ -19,6 +19,7 @@ final class SceneViewController: UIViewController {
     // MARK: - Internal Properties
     
     private var sceneView: SCNView = SCNView()
+    
     private var mainScene: GridScene! {
         didSet {
             State.currentScene = Scene(scene: mainScene)
@@ -391,4 +392,3 @@ extension SceneViewController: MenuActionDelegate {
     }
     
 }
-

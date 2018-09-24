@@ -14,6 +14,7 @@ enum Shape: String {
     case sphere
 }
 
+// TODO: Remove this to replace using NodeInspectorViewModel which includes the data
 public class Node: NSObject, NSCoding {
     
     // MARK: - Internal Properties
@@ -113,5 +114,4 @@ public class Node: NSObject, NSCoding {
         let shape = aDecoder.decodeObject(forKey: Node.shapeKey) as! String
         self.shape = decode(shape: shape)
     }
-    
 }

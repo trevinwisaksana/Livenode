@@ -9,33 +9,11 @@
 import SceneKit
 
 struct State {
-    private static let nodeSelectedKey: String = "nodeSelectedKey"
     private static let currentSceneKey: String = "currentSceneKey"
     
     static var currentDocument: SceneDocument?
     static var isEditingDocument: Bool = false
-    
-    // TODO: Test removing the getter and setter
-    static var nodeSelected: Node? {
-        get {
-            guard let encodedNode = UserDefaults.standard.data(forKey: nodeSelectedKey) else {
-                fatalError("Failed to retrieve node data.")
-            }
-            
-            let node = NSKeyedUnarchiver.unarchiveObject(with: encodedNode) as? Node
-            
-            return node
-        }
-        set {
-            // Only set when nodeSelected has its value replaced
-            if let node = newValue {
-                UserDefaults.standard.removeObject(forKey: nodeSelectedKey)
-                
-                let data = NSKeyedArchiver.archivedData(withRootObject: node)
-                UserDefaults.standard.set(data, forKey: nodeSelectedKey)
-            }
-        }
-    }
+    static var nodeSelected: Node?
     
     static var currentScene: Scene? {
         get {
