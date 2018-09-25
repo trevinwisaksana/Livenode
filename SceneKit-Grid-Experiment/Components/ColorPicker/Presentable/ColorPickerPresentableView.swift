@@ -32,7 +32,6 @@ public class ColorPickerPresentableView: UIView {
     
     private func setup() {
         let view = ColorPickerView(delegate: self, dataSource: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         view.fillInSuperview()
     }

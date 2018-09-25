@@ -27,8 +27,16 @@ final class SceneActionsMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setup()
+    }
+    
+    // MARK: - Setup
+    
+    private func setup() {
+        
         preferredContentSize = CGSize(width: 290, height: 45)
     }
+    
 }
 
 extension SceneActionsMenuViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -41,7 +49,7 @@ extension SceneActionsMenuViewController: UICollectionViewDelegateFlowLayout, UI
         
         let row = indexPath.row
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopoverMenuCell", for: indexPath) as! PopoverMenuCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopoverMenuCell", for: indexPath) as! SceneActionMenuCell
         cell.delegate = self
         
         switch row {
@@ -66,7 +74,7 @@ extension SceneActionsMenuViewController: UICollectionViewDelegateFlowLayout, UI
     
 }
 
-extension SceneActionsMenuViewController: PopoverMenuDelegate {
+extension SceneActionsMenuViewController: SceneActionsMenuDelegate {
     
     func move() {
         viewModel.makeNodeMovable()

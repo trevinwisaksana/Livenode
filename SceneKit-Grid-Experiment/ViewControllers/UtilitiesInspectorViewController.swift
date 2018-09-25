@@ -17,7 +17,6 @@ final class UtilitiesInspectorViewController<View: UIView>: UIViewController {
     
     lazy var mainView: View = {
         let mainView = View(frame: view.frame)
-        mainView.translatesAutoresizingMaskIntoConstraints = false
         return mainView
     }()
     

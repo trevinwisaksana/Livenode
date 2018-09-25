@@ -28,7 +28,6 @@ public class NodeInspectorPresentableView: UIView {
     
     private func setup() {
         let view = NodeInspectorView(delegate: self, dataSource: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         view.fillInSuperview()
     }

@@ -15,13 +15,13 @@ protocol SceneActionsMenuDelegate: class {
     func paste()
 }
 
-final class SceneActionMenuCell: UICollectionViewCell {
+public class SceneActionMenuCell: UICollectionViewCell {
     
-    //---- Properties ----//
+    // MARK: - Internal Properties
     
     weak var delegate: SceneActionsMenuDelegate?
     
-    //---- IBOutlets ----//
+    // MARK: - IBOutlets
     
     @IBOutlet weak var buttonOutlet: UIButton!
     
@@ -42,5 +42,4 @@ final class SceneActionMenuCell: UICollectionViewCell {
             break
         }
     }
-    
 }

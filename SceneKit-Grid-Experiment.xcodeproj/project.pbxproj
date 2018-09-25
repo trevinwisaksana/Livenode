@@ -18,7 +18,7 @@
 		DD38321D21598E5400809856 /* DefaultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD38321C21598E5300809856 /* DefaultScene.swift */; };
 		DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneViewController.swift */; };
 		DD638DB720AACA1700395557 /* SceneActionsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */; };
-		DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* PopoverMenuCell.swift */; };
+		DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */; };
 		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
 		DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */; };
 		DD68C21A2110688A0061100F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C2192110688A0061100F /* State.swift */; };
@@ -83,7 +83,7 @@
 		DD38321C21598E5300809856 /* DefaultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScene.swift; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionsMenuViewController.swift; sourceTree = "<group>"; };
-		DD638DB820ABD44200395557 /* PopoverMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuCell.swift; sourceTree = "<group>"; };
+		DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuCell.swift; sourceTree = "<group>"; };
 		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNodeExtensions.swift; sourceTree = "<group>"; };
 		DD68C2192110688A0061100F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
@@ -189,6 +189,14 @@
 				DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DD38321E215A194100809856 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		DD638DBC20AC2D3800395557 /* ViewControllers */ = {
@@ -520,6 +528,7 @@
 				DDBA24D12158A07C003C9CAF /* Presentable */,
 				DDBA24D42158A094003C9CAF /* SceneActionsMenuView */,
 				DDBA24D72158A1A7003C9CAF /* ViewModel */,
+				DD38321E215A194100809856 /* Cell */,
 			);
 			path = SceneActionsMenu;
 			sourceTree = "<group>";
@@ -551,7 +560,6 @@
 		DDFC63E320F1FE5900109EC5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DD638DB820ABD44200395557 /* PopoverMenuCell.swift */,
 				DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */,
 			);
 			path = Cells;
@@ -633,7 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDBA24C42153D309003C9CAF /* DocumentBrowserDelegate.swift in Sources */,
-				DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */,
+				DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */,
 				DDBA24CF2158A03B003C9CAF /* SceneActionsMenuPresentableView.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
 				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,

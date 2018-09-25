@@ -33,7 +33,6 @@ public class SceneInspectorPresentableView: UIView {
     
     private func setup() {
         let view = SceneInspectorView(delegate: self, dataSource: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         view.fillInSuperview()
     }

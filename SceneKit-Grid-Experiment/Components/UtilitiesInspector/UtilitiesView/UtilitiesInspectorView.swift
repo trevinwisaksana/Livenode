@@ -24,7 +24,6 @@ public class UtilitiesInspectorView: UIView {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .white

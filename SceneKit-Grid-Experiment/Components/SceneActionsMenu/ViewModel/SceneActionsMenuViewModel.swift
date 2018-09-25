@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SceneActionsMenuViewMode: class {
+public protocol SceneActionsMenuViewModel: class {
     
 }
 

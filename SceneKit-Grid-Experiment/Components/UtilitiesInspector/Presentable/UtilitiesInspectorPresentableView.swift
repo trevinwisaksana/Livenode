@@ -33,7 +33,6 @@ public class UtilitiesInspectorPresentableView: UIView {
     
     private func setup() {
         let view = UtilitiesInspectorView(delegate: self, dataSource: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         view.fillInSuperview()
     }
