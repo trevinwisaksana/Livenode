@@ -11,11 +11,11 @@
 		DD20F66F20672FBD005E838C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD20F66D20672FBD005E838C /* Main.storyboard */; };
 		DD20F67120672FBD005E838C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67020672FBD005E838C /* Assets.xcassets */; };
 		DD20F67420672FBD005E838C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67220672FBD005E838C /* LaunchScreen.storyboard */; };
-		DD20F68C20673184005E838C /* GridScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F68B20673184005E838C /* GridScene.swift */; };
 		DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */; };
 		DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E820DE12AA00EA00ED /* Constants.swift */; };
 		DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */; };
 		DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */; };
+		DD38321D21598E5400809856 /* DefaultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD38321C21598E5300809856 /* DefaultScene.swift */; };
 		DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneViewController.swift */; };
 		DD638DB720AACA1700395557 /* SceneActionsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */; };
 		DD638DB920ABD44200395557 /* PopoverMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* PopoverMenuCell.swift */; };
@@ -76,11 +76,11 @@
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD20F67320672FBD005E838C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD20F67520672FBD005E838C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD20F68B20673184005E838C /* GridScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridScene.swift; sourceTree = "<group>"; };
 		DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewController.swift; sourceTree = "<group>"; };
 		DD2A55E820DE12AA00EA00ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogCell.swift; sourceTree = "<group>"; };
 		DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
+		DD38321C21598E5300809856 /* DefaultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScene.swift; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionsMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB820ABD44200395557 /* PopoverMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuCell.swift; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		DD638DBE20AC2D4800395557 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				DD68C22C2122B9C00061100F /* Grid */,
+				DD68C22C2122B9C00061100F /* Default */,
 				DDBA24B421535056003C9CAF /* Models */,
 			);
 			path = Scenes;
@@ -264,12 +264,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DD68C22C2122B9C00061100F /* Grid */ = {
+		DD68C22C2122B9C00061100F /* Default */ = {
 			isa = PBXGroup;
 			children = (
-				DD20F68B20673184005E838C /* GridScene.swift */,
+				DD38321C21598E5300809856 /* DefaultScene.swift */,
 			);
-			path = Grid;
+			path = Default;
 			sourceTree = "<group>";
 		};
 		DD68C2302127B9DB0061100F /* ColorPickerView */ = {
@@ -646,7 +646,6 @@
 				DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */,
-				DD20F68C20673184005E838C /* GridScene.swift in Sources */,
 				DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */,
 				DD6C16FD210C16EF002CB031 /* ColorPickerViewController.swift in Sources */,
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
@@ -654,6 +653,7 @@
 				DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */,
 				DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */,
 				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
+				DD38321D21598E5400809856 /* DefaultScene.swift in Sources */,
 				DD68C2322127BA1F0061100F /* ColorPickerPresentableView.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
 				DD8E126B213CDD6B00D4F4DE /* UtilitiesInspectorViewModel.swift in Sources */,

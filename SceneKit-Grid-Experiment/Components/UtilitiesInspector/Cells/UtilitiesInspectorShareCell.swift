@@ -55,7 +55,7 @@ public class UtilitiesInspectorShareCell: UITableViewCell {
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: UtilitiesInspectorShareCell.titleLeftMargin),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: UtilitiesInspectorShareCell.titleTopMargin),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UtilitiesInspectorShareCell.titleBottomMargin),
-            ])
+        ])
     }
     
     // MARK: - Dependency injection

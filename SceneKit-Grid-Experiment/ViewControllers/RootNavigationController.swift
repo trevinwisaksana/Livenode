@@ -15,9 +15,14 @@ final class RootNavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         
-        navigationBar.barTintColor = .white
+        setup()
+    }
+    
+    private func setup() {
+        navigationBar.barTintColor = .dark
+        navigationBar.barStyle = .black
         navigationBar.isTranslucent = false
-        navigationBar.tintColor = .lavender
+        navigationBar.tintColor = .white
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {

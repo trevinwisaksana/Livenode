@@ -20,7 +20,7 @@ final class SceneViewController: UIViewController {
     
     private var sceneView: SCNView = SCNView()
     
-    private var mainScene: GridScene! {
+    private var mainScene: DefaultScene! {
         didSet {
             State.currentScene = Scene(scene: mainScene)
         }
@@ -57,7 +57,7 @@ final class SceneViewController: UIViewController {
     }
     
     private func setupScene() {
-        mainScene = GridScene()
+        mainScene = DefaultScene()
         
         view.addSubview(sceneView)
         sceneView.fillInSuperview()
@@ -108,7 +108,7 @@ final class SceneViewController: UIViewController {
         }
     }
     
-    // MARK: - IBActions
+    // MARK: - Actions
     
     @objc
     private func didTapAddObjectButton(_ sender: UIBarButtonItem) {
@@ -129,6 +129,8 @@ final class SceneViewController: UIViewController {
     private func didTapPlayButton(_ sender: UIBarButtonItem) {
         
     }
+    
+    // MARK: - Presenting
     
     private func presentInspectorViews(using sender: UIBarButtonItem) {
         let navigationController = UINavigationController()

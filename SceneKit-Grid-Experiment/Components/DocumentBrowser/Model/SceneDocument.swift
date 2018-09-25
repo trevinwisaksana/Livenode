@@ -13,7 +13,7 @@ final class SceneDocument: UIDocument {
     static let defaultSceneTemplate = ""
     static let filenameExtension = "scn"
     
-    var scene: Scene = Scene(scene: GridScene()) {
+    var scene: Scene = Scene(scene: DefaultScene()) {
         didSet {
             updateChangeCount(.done)
         }

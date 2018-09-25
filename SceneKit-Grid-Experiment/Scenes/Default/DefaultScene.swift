@@ -1,5 +1,5 @@
 //
-//  GridScene.swift
+//  DefaultScene.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 25/03/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-public class GridScene: SCNScene, SceneViewModel {
+public class DefaultScene: SCNScene, SceneViewModel {
     
     // MARK: - Internal Properties
     
@@ -118,9 +118,9 @@ public class GridScene: SCNScene, SceneViewModel {
     // MARK: - Grid
     
     public func displayGrid() {
-        let width: CGFloat = 0.95
-        
-        let offset: Int = 1
+//        let width: CGFloat = 0.95
+//
+//        let offset: Int = 1
         
         // TODO: Only run this on "Move" mode
 //        for xIndex in 0...gridWidth {

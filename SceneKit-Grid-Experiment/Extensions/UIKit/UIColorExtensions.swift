@@ -9,6 +9,9 @@
 import UIKit
 
 extension UIColor {
+    
+    // MARK: - Custom Colors
+    
     public class var milk: UIColor {
         return UIColor(r: 255, g: 255, b: 255)!
     }
@@ -21,9 +24,17 @@ extension UIColor {
         return UIColor(r: 106, g: 84, b: 227)!
     }
     
+    public class var dark: UIColor {
+        return UIColor(r: 29, g: 29, b: 29)!
+    }
+    
+    // MARK: - Convenience Initializer
+    
     convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
+    
+    // MARK: - Color Conversion
     
     /// Parses the current color to a dictionary with red, green, blue and alpha as keys.
     public func toRGBA() -> [String : Float] {

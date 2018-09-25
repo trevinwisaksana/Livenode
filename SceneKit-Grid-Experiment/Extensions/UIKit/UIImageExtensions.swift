@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - Convience Initializer
+
 extension UIImage {
     convenience init(named imageAsset: ImageAsset, in bundle: Bundle? = nil, compatibleWith traitCollection: UITraitCollection? = nil) {
         self.init(named: imageAsset.rawValue, in: bundle, compatibleWith: traitCollection)!
