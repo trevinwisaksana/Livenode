@@ -27,7 +27,7 @@ public class UtilitiesInspectorView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .aluminium
+        tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         return tableView
     }()
