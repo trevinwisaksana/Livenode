@@ -375,7 +375,7 @@ extension SceneViewController: ObjectInsertionDelegate {
 
 // MARK: - Move Object Delegate
 
-extension SceneViewController: MenuActionDelegate {
+extension SceneViewController: SceneActionsMenuDelegate {
     
     func move() {
         mainScene.displayGrid()

@@ -8,8 +8,10 @@
 
 import Foundation
 
-public protocol SceneActionsMenuViewModel: class {
+public protocol SceneActionsMenuViewModel {
     
 }
 
-
+public struct SceneActionsMenu: SceneActionsMenuViewModel {
+    
+}

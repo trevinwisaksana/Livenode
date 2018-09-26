@@ -68,7 +68,7 @@ extension UtilitiesInspectorPresentableView: UtilitiesInspectorViewDelegate {
 // NOTE: Not sure if this is necessary
 extension UtilitiesInspectorPresentableView: UtilitiesInspectorViewDataSource {
     public func viewModel(InColorPickerView colorPickerView: UtilitiesInspectorView) -> UtilitiesInspectorViewModel {
-        return Utilities(scene: dataSource.scene)
+        return UtilitiesInspector(scene: dataSource.scene)
     }
 }
 

@@ -12,6 +12,6 @@ public protocol UtilitiesInspectorViewModel {
     var scene: Scene? { get }
 }
 
-public struct Utilities: UtilitiesInspectorViewModel {
+public struct UtilitiesInspector: UtilitiesInspectorViewModel {
     public var scene: Scene?
 }

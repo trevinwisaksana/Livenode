@@ -1,34 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scene View Controller-->
-        <scene sceneID="tXr-a1-R10">
-            <objects>
-                <viewController storyboardIdentifier="SceneViewController" id="BV1-FR-VrT" customClass="SceneViewController" customModule="SceneKit_Grid_Experiment" customModuleProvider="target" sceneMemberID="viewController">
-                    <sceneKitView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="3se-qz-xqx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </sceneKitView>
-                    <navigationItem key="navigationItem" id="RV3-xX-pe6">
-                        <rightBarButtonItems>
-                            <barButtonItem title="utilitiesBarButton" image="utilitiesButtonIcon" id="7DY-lP-VtX"/>
-                            <barButtonItem title="objectCatalogBarButton" image="addButton" id="W5q-D3-ES6"/>
-                            <barButtonItem title="modelsBarButton" image="modelAttributesButton" id="9FB-t9-yMf"/>
-                            <barButtonItem title="Item" image="playButton" id="86k-Kw-q18"/>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1046" y="33"/>
-        </scene>
         <!--Scene Actions Menu View Controller-->
         <scene sceneID="9zR-a7-1cP">
             <objects>
@@ -193,10 +174,4 @@
             <point key="canvasLocation" x="1566" y="90"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="addButton" width="25" height="26"/>
-        <image name="modelAttributesButton" width="28" height="28"/>
-        <image name="playButton" width="25" height="26"/>
-        <image name="utilitiesButtonIcon" width="30" height="8"/>
-    </resources>
 </document>

@@ -9,7 +9,9 @@
 import UIKit
 import SceneKit
 
-final class ObjectCatalogCell: UICollectionViewCell {
+public class ObjectCatalogCell: UICollectionViewCell {
+    
+    // MARK: - Internal Properties
     
     @IBOutlet weak var objectSceneView: SCNView!
     

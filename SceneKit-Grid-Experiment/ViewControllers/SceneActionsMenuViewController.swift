@@ -8,19 +8,12 @@
 
 import UIKit
 
-protocol MenuActionDelegate: class {
-    func delete()
-    func move()
-    func copy()
-    func paste()
-}
-
 final class SceneActionsMenuViewController: UIViewController {
     
     // MARK: - Properties
     
     var viewModel = PopoverMenuViewModel()
-    weak var menuAction: MenuActionDelegate?
+    weak var menuAction: SceneActionsMenuDelegate?
     
     // MARK: - VC Lifecycle
     
@@ -75,7 +68,6 @@ extension SceneActionsMenuViewController: UICollectionViewDelegateFlowLayout, UI
 }
 
 extension SceneActionsMenuViewController: SceneActionsMenuDelegate {
-    
     func move() {
         viewModel.makeNodeMovable()
         menuAction?.move()
@@ -98,5 +90,4 @@ extension SceneActionsMenuViewController: SceneActionsMenuDelegate {
         
         dismiss(animated: true, completion: nil)
     }
-    
 }

@@ -105,7 +105,7 @@ extension SceneActionsMenuView: UICollectionViewDelegateFlowLayout, UICollection
     }
 }
 
-// MARK: - PopoverMenuDelegate
+// MARK: - SceneActionsMenuDelegate
 
 extension SceneActionsMenuView: SceneActionsMenuDelegate {
     func move() {
