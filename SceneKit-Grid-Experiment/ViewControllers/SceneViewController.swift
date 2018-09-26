@@ -283,7 +283,7 @@ final class SceneViewController: UIViewController {
         }
         
         if nodeSelected.name == "testNode" {
-            showPopoverMenu(sender, for: nodeSelected)
+            displaySceneActionsMenu(sender, for: nodeSelected)
         }
     }
     
@@ -312,22 +312,22 @@ final class SceneViewController: UIViewController {
 
 extension SceneViewController: UIPopoverPresentationControllerDelegate {
     
-    func showPopoverMenu(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
+    func displaySceneActionsMenu(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover
-        let popController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopoverMenu") as! SceneActionsMenuViewController
+        let controller = Presenter.inject(.sceneActionsMenu)
         
         // set the selected node
-        popController.viewModel.nodeSelected = node
+//        popController.viewModel.nodeSelected = node
         
         // set the presentation style
-        popController.modalPresentationStyle = .popover
+        controller.modalPresentationStyle = .popover
         
         // set up the popover presentation controller
-        popController.popoverPresentationController?.permittedArrowDirections = .down
-        popController.popoverPresentationController?.delegate = self
+        controller.popoverPresentationController?.permittedArrowDirections = .down
+        controller.popoverPresentationController?.delegate = self
         
         // set menu action delegate
-        popController.menuAction = self
+//        popController.menuAction = self
         
         let touchLocation = sender.location(in: view)
         let yOffset = view.frame.height * 0.05
@@ -339,11 +339,11 @@ extension SceneViewController: UIPopoverPresentationControllerDelegate {
         touchView.backgroundColor = .clear
         touchView.center = touchLocation
         
-        popController.popoverPresentationController?.sourceRect = sourceRect
-        popController.popoverPresentationController?.sourceView = touchView
+        controller.popoverPresentationController?.sourceRect = sourceRect
+        controller.popoverPresentationController?.sourceView = touchView
         
         // present the popover
-        present(popController, animated: true) {
+        present(controller, animated: true) {
             touchView.removeFromSuperview()
         }
     }

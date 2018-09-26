@@ -30,7 +30,7 @@ public class SceneActionsMenuPresentableView: UIView {
     
     public required init?(coder aDecoder: NSCoder) { fatalError() }
     
-    private func setup() {
+    private func setup() {        
         let view = SceneActionsMenuView(delegate: self, dataSource: self)
         addSubview(view)
         view.fillInSuperview()

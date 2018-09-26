@@ -1,5 +1,5 @@
 //
-//  PopoverMenuCell.swift
+//  SceneActionMenuCell.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 16/05/2018.
@@ -19,16 +19,53 @@ public class SceneActionMenuCell: UICollectionViewCell {
     
     // MARK: - Internal Properties
     
+    private lazy var actionButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Copy", for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.addTarget(self, action: #selector(didPressActionButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var borderView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+    
     weak var delegate: SceneActionsMenuDelegate?
     
-    // MARK: - IBOutlets
+    // MARK: - Setup
     
-    @IBOutlet weak var buttonOutlet: UIButton!
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setup()
+    }
     
-    //---- IBActions ----//
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
     
-    @IBAction func didPressButton(_ sender: UIButton) {
-        // TODO: Every button press should dismiss the popover
+    private func setup() {
+        addSubview(actionButton)
+        addSubview(borderView)
+        actionButton.fillInSuperview()
+        
+        backgroundColor = .clear
+        
+        NSLayoutConstraint.activate([
+            borderView.rightAnchor.constraint(equalTo: rightAnchor),
+            borderView.topAnchor.constraint(equalTo: topAnchor),
+            borderView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            borderView.widthAnchor.constraint(equalToConstant: 1),
+        ])
+    }
+    
+    @objc
+    private func didPressActionButton(_ sender: UIButton) {
         switch sender.titleLabel?.text {
         case Action.delete.capitalized:
             delegate?.delete()

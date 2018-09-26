@@ -14,6 +14,7 @@ enum ViewComponent {
     case nodeInspectorView
     case utilitiesView
     case documentBrowser
+    case sceneActionsMenu
     
     var all: [ViewComponent] {
         return [
@@ -21,7 +22,8 @@ enum ViewComponent {
             .sceneInspectorView,
             .nodeInspectorView,
             .utilitiesView,
-            .documentBrowser
+            .documentBrowser,
+            .sceneActionsMenu
         ]
     }
 }

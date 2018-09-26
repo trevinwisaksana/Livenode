@@ -28,6 +28,9 @@ enum Presenter {
         case .documentBrowser:
             controller = DocumentBrowserViewController()
             return controller
+        case .sceneActionsMenu:
+            controller = SceneActionsMenuViewController<SceneActionsMenuPresentableView>()
+            return controller
         }
     }
 }

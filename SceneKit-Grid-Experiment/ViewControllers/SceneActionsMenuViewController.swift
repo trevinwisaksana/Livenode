@@ -8,12 +8,17 @@
 
 import UIKit
 
-final class SceneActionsMenuViewController: UIViewController {
+final class SceneActionsMenuViewController<View: UIView>: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - Internal Properties
     
-    var viewModel = PopoverMenuViewModel()
-    weak var menuAction: SceneActionsMenuDelegate?
+    private let popoverWidth: Int = 290
+    private let popoverHeight: Int = 50
+    
+    lazy var mainView: View = {
+        let mainView = View(frame: view.frame)
+        return mainView
+    }()
     
     // MARK: - VC Lifecycle
     
@@ -26,57 +31,24 @@ final class SceneActionsMenuViewController: UIViewController {
     // MARK: - Setup
     
     private func setup() {
+        view.addSubview(mainView)
+        mainView.fillInSuperview()
         
-        preferredContentSize = CGSize(width: 290, height: 45)
+        popoverPresentationController?.backgroundColor = .black
+        preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
-    
-}
-
-extension SceneActionsMenuViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let row = indexPath.row
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopoverMenuCell", for: indexPath) as! SceneActionMenuCell
-        cell.delegate = self
-        
-        switch row {
-        case 0:
-            cell.buttonOutlet.setTitle(Action.move.capitalized, for: .normal)
-        case 1:
-            cell.buttonOutlet.setTitle(Action.delete.capitalized, for: .normal)
-        case 2:
-            cell.buttonOutlet.setTitle(Action.copy.capitalized, for: .normal)
-        case 3:
-            cell.buttonOutlet.setTitle(Action.paste.capitalized, for: .normal)
-        default:
-            break
-        }
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
 }
 
 extension SceneActionsMenuViewController: SceneActionsMenuDelegate {
     func move() {
-        viewModel.makeNodeMovable()
-        menuAction?.move()
+//        viewModel.makeNodeMovable()
+//        menuAction?.move()
         
         dismiss(animated: true, completion: nil)
     }
     
     func delete() {
-        viewModel.removeNode()
+//        viewModel.removeNode()
         
         dismiss(animated: true, completion: nil)
     }

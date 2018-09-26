@@ -20,14 +20,15 @@ public class SceneActionsMenuView: UIView {
     
     // MARK: - Internal properties
     
-    private static let cellHeight: CGFloat = 60.0
+    private static let cellWidth: CGFloat = 100.0
     
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.alwaysBounceVertical = true
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionViewFlowLayout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
+        collectionView.alwaysBounceHorizontal = true
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
         return collectionView
     }()
     
@@ -68,40 +69,28 @@ public class SceneActionsMenuView: UIView {
     }
 }
 
-// MARK: - UICollectionView
+// MARK: - UICollectionViewDataSource
 
-extension SceneActionsMenuView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension SceneActionsMenuView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return setupCell(at: indexPath)
+        let cell: SceneActionMenuCell = collectionView.dequeueReusableCell(for: indexPath)
+        return cell
     }
-    
-    private func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+}
+
+// MARK: - UICollectionView
+
+extension SceneActionsMenuView: UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
-    private func setupCell(at indexPath: IndexPath) -> UICollectionViewCell {
-        let row = indexPath.row
-        
-        let cell: SceneActionMenuCell = collectionView.dequeueReusableCell(for: indexPath)
-        
-        switch row {
-        case 0:
-            cell.buttonOutlet.setTitle(Action.move.capitalized, for: .normal)
-        case 1:
-            cell.buttonOutlet.setTitle(Action.delete.capitalized, for: .normal)
-        case 2:
-            cell.buttonOutlet.setTitle(Action.copy.capitalized, for: .normal)
-        case 3:
-            cell.buttonOutlet.setTitle(Action.paste.capitalized, for: .normal)
-        default:
-            break
-        }
-        
-        return cell
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: SceneActionsMenuView.cellWidth, height: frame.height)
     }
 }
 
