@@ -12,8 +12,8 @@ final class SceneActionsMenuViewController<View: UIView>: UIViewController {
     
     // MARK: - Internal Properties
     
-    private let popoverWidth: Int = 290
-    private let popoverHeight: Int = 50
+    private let popoverWidth: Int = 400
+    private let popoverHeight: Int = 35
     
     lazy var mainView: View = {
         let mainView = View(frame: view.frame)

@@ -20,7 +20,7 @@ public class SceneActionsMenuView: UIView {
     
     // MARK: - Internal properties
     
-    private static let cellWidth: CGFloat = 100.0
+    private static let cellWidth: CGFloat = 80.0
     
     private lazy var collectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -89,6 +89,7 @@ extension SceneActionsMenuView: UICollectionViewDelegateFlowLayout {
         return 0
     }
     
+    // TODO: Make the cell width auto adjust depending on the size of text
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: SceneActionsMenuView.cellWidth, height: frame.height)
     }

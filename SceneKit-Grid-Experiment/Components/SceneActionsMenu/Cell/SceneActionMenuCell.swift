@@ -22,6 +22,7 @@ public class SceneActionMenuCell: UICollectionViewCell {
     private lazy var actionButton: UIButton = {
         let button = UIButton()
         button.setTitle("Copy", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 13)
         button.titleLabel?.textAlignment = .center
         button.addTarget(self, action: #selector(didPressActionButton(_:)), for: .touchUpInside)
         return button

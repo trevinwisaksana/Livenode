@@ -15,7 +15,7 @@ protocol ObjectInsertionDelegate: class {
 
 final class ObjectCatalogViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - Internal Properties
     
     weak var delegate: ObjectInsertionDelegate?
     
@@ -26,7 +26,6 @@ final class ObjectCatalogViewController: UIViewController {
         
         preferredContentSize = CGSize(width: 300, height: 300)
     }
-    
 }
 
 // MARK: - Collection View Data Source

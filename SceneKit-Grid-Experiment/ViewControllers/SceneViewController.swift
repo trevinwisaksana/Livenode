@@ -58,13 +58,12 @@ final class SceneViewController: UIViewController {
     
     private func setupScene() {
         mainScene = DefaultScene()
-        
         view.addSubview(sceneView)
         sceneView.fillInSuperview()
         
         sceneView.scene = mainScene
         sceneView.allowsCameraControl = true
-        sceneView.showsStatistics = false
+        sceneView.showsStatistics = true
         sceneView.autoenablesDefaultLighting = true
     }
     
@@ -311,7 +310,6 @@ final class SceneViewController: UIViewController {
 // MARK: - UIPopover
 
 extension SceneViewController: UIPopoverPresentationControllerDelegate {
-    
     func displaySceneActionsMenu(_ sender: UILongPressGestureRecognizer, for node: SCNNode) {
         // get a reference to the view controller for the popover
         let controller = Presenter.inject(.sceneActionsMenu)
@@ -331,7 +329,7 @@ extension SceneViewController: UIPopoverPresentationControllerDelegate {
         
         let touchLocation = sender.location(in: view)
         let yOffset = view.frame.height * 0.05
-        let sourceRect = CGRect(x: 0, y: yOffset, width: 1, height: 80)
+        let sourceRect = CGRect(x: 0, y: yOffset, width: 1, height: 20)
         
         let touchView = UIView(frame: sourceRect)
         view.addSubview(touchView)
@@ -342,7 +340,6 @@ extension SceneViewController: UIPopoverPresentationControllerDelegate {
         controller.popoverPresentationController?.sourceRect = sourceRect
         controller.popoverPresentationController?.sourceView = touchView
         
-        // present the popover
         present(controller, animated: true) {
             touchView.removeFromSuperview()
         }
@@ -351,13 +348,11 @@ extension SceneViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
-    
 }
 
-// MARK: - Object Insertion Delegate
+// MARK: - ObjectInsertionDelegate
 
 extension SceneViewController: ObjectInsertionDelegate {
-    
     func insert3D(model: Model) {
         switch model {
         case .box:
@@ -370,7 +365,6 @@ extension SceneViewController: ObjectInsertionDelegate {
         
         mainScene.displayGrid()
     }
-    
 }
 
 // MARK: - Move Object Delegate

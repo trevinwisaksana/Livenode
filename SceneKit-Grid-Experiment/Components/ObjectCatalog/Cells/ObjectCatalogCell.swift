@@ -15,6 +15,11 @@ public class ObjectCatalogCell: UICollectionViewCell {
     
     @IBOutlet weak var objectSceneView: SCNView!
     
+    private lazy var objectScene: SCNView = {
+        let sceneView = SCNView(frame: .zero)
+        return sceneView
+    }()
+    
     func configure(with model: Model) {
         objectSceneView.scene = SCNScene(named: model.filename)
     }
