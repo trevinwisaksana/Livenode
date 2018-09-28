@@ -20,12 +20,11 @@ public class ObjectCatalogView: UIView  {
     
     // MARK: - Internal properties
     
-    private static let cellWidth: CGFloat = 100.0
+    private static let cellWidth: CGFloat = 180.0
     private static let segmentedIndexTopMargin: CGFloat = 10.0
     
     private lazy var collectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
-        collectionViewFlowLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +74,6 @@ public class ObjectCatalogView: UIView  {
         addSubview(segmentedControl)
         
         NSLayoutConstraint.activate([
-            // TODO: Put constant values into variables
             segmentedControl.centerXAnchor.constraint(equalTo: centerXAnchor),
             segmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: ObjectCatalogView.segmentedIndexTopMargin),
             
@@ -98,7 +96,7 @@ public class ObjectCatalogView: UIView  {
 
 extension ObjectCatalogView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 2
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -126,8 +124,6 @@ extension ObjectCatalogView: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 2.1
-        return CGSize(width: width, height: width)
+        return CGSize(width: ObjectCatalogView.cellWidth, height: ObjectCatalogView.cellWidth)
     }
 }
-
