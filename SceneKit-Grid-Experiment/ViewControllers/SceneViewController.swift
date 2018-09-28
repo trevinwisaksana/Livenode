@@ -153,7 +153,7 @@ final class SceneViewController: UIViewController {
     }
     
     private func presentObjectCatalogController(using sender: UIBarButtonItem) {
-        let objectCatalogController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: Constants.Controller.objectCatalog) as! ObjectCatalogViewController
+        let objectCatalogController = Presenter.inject(.objectCatalog)
         
         objectCatalogController.modalPresentationStyle = .popover
         
@@ -161,7 +161,7 @@ final class SceneViewController: UIViewController {
         objectCatalogController.popoverPresentationController?.delegate = self
         objectCatalogController.popoverPresentationController?.barButtonItem = sender
         
-        objectCatalogController.delegate = self
+//        objectCatalogController.delegate = self
         
         present(objectCatalogController, animated: true, completion: nil)
     }
@@ -347,22 +347,5 @@ extension SceneViewController: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
-    }
-}
-
-// MARK: - ObjectInsertionDelegate
-
-extension SceneViewController: ObjectInsertionDelegate {
-    func insert3D(model: Model) {
-        switch model {
-        case .box:
-            // TODO: Allow the object to be moved after inserted
-            // TODO: Move the camera to the position of the new node
-            mainScene.insertBox()
-        case .pyramid:
-            mainScene.insertPyramid()
-        }
-        
-        mainScene.displayGrid()
     }
 }

@@ -21,11 +21,14 @@ public class ObjectCatalogView: UIView  {
     // MARK: - Internal properties
     
     private static let cellWidth: CGFloat = 100.0
+    private static let segmentedIndexTopMargin: CGFloat = 10.0
     
     private lazy var collectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.alwaysBounceHorizontal = true
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -34,8 +37,10 @@ public class ObjectCatalogView: UIView  {
     
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(frame: .zero)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.insertSegment(withTitle: "Basic", at: 0, animated: true)
         segmentedControl.insertSegment(withTitle: "Ornaments", at: 1, animated: true)
+        segmentedControl.selectedSegmentIndex = 0
         return segmentedControl
     }()
     
@@ -70,9 +75,9 @@ public class ObjectCatalogView: UIView  {
         addSubview(segmentedControl)
         
         NSLayoutConstraint.activate([
-            segmentedControl.leftAnchor.constraint(equalTo: leftAnchor),
-            segmentedControl.topAnchor.constraint(equalTo: topAnchor),
-            segmentedControl.rightAnchor.constraint(equalTo: rightAnchor),
+            // TODO: Put constant values into variables
+            segmentedControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: ObjectCatalogView.segmentedIndexTopMargin),
             
             collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),

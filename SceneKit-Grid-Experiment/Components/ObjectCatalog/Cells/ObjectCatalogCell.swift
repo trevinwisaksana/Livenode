@@ -13,15 +13,28 @@ public class ObjectCatalogCell: UICollectionViewCell {
     
     // MARK: - Internal Properties
     
-    @IBOutlet weak var objectSceneView: SCNView!
-    
-    private lazy var objectScene: SCNView = {
+    private lazy var objectSceneView: SCNView = {
         let sceneView = SCNView(frame: .zero)
         return sceneView
     }()
     
-    func configure(with model: Model) {
-        objectSceneView.scene = SCNScene(named: model.filename)
+    // MARK: - Setup
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setup()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    private func setup() {
+        addSubview(objectSceneView)
+        objectSceneView.fillInSuperview()
+        objectSceneView.scene = SCNScene(named: "Box.scn")
     }
     
 }

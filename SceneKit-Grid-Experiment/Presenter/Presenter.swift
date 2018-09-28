@@ -31,6 +31,9 @@ enum Presenter {
         case .sceneActionsMenu:
             controller = SceneActionsMenuViewController<SceneActionsMenuPresentableView>()
             return controller
+        case .objectCatalog:
+            controller = ObjectCatalogViewController<ObjectCatalogPresentableView>()
+            return controller
         }
     }
 }
