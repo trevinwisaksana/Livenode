@@ -52,5 +52,3 @@ extension ObjectCatalogPresentableView: ObjectCatalogViewDataSource {
         return ObjectCatalog()
     }
 }
-
-

@@ -34,7 +34,9 @@ final class ColorPickerViewController<View: ColorPickerPresentableView>: UIViewC
         view.addSubview(mainView)
         mainView.fillInSuperview()
         
+        title = "Color"
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.shadowImage = UIImage()
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     

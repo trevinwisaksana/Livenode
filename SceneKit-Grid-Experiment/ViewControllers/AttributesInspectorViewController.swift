@@ -40,6 +40,7 @@ final class AttributesInspectorViewController<View: UIView>: UIViewController {
         view.addSubview(mainView)
         mainView.fillInSuperview()
 
+        title = ""
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
 }
