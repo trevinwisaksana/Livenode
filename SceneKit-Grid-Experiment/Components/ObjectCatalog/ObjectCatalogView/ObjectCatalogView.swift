@@ -20,7 +20,7 @@ public class ObjectCatalogView: UIView  {
     
     // MARK: - Internal properties
     
-    private static let cellWidth: CGFloat = 170.0
+    private static let cellWidth: CGFloat = 140.0
     private static let segmentedIndexTopMargin: CGFloat = 10.0
     
     private lazy var collectionView: UICollectionView = {

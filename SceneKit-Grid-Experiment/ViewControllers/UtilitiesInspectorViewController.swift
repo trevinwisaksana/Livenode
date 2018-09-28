@@ -12,7 +12,7 @@ final class UtilitiesInspectorViewController<View: UIView>: UIViewController {
     
     // MARK: - Internal Properties
     
-    private let popoverWidth: Int = 350
+    private let popoverWidth: Int = 320
     private let popoverHeight: Int = 300
     
     lazy var mainView: View = {
