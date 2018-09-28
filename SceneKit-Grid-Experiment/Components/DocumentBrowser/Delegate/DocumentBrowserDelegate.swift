@@ -14,10 +14,6 @@ class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate
     
     private static let documentNumberKey = "documentNumberKey"
     
-    // MARK: - Public Properties
-
-    
-    
     // MARK: - Delegate Methods
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {

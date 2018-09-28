@@ -98,19 +98,19 @@ extension SceneActionsMenuView: UICollectionViewDelegateFlowLayout {
 // MARK: - SceneActionsMenuDelegate
 
 extension SceneActionsMenuView: SceneActionsMenuDelegate {
-    func move() {
+    public func didSelectDelete() {
         
     }
     
-    func delete() {
-       
-    }
-    
-    func paste() {
+    public func didSelectMove() {
         
     }
     
-    func copy() {
+    public func didSelectCopy() {
+        
+    }
+    
+    public func didSelectPaste() {
         
     }
 }

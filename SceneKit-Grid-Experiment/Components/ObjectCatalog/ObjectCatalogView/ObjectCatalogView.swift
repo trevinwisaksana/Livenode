@@ -32,6 +32,13 @@ public class ObjectCatalogView: UIView  {
         return collectionView
     }()
     
+    private lazy var segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(frame: .zero)
+        segmentedControl.insertSegment(withTitle: "Basic", at: 0, animated: true)
+        segmentedControl.insertSegment(withTitle: "Ornaments", at: 1, animated: true)
+        return segmentedControl
+    }()
+    
     private weak var delegate: ObjectCatalogViewDelegate?
     private weak var dataSource: ObjectCatalogViewDataSource?
     
@@ -58,8 +65,20 @@ public class ObjectCatalogView: UIView  {
     
     private func setup() {
         collectionView.register(cell: ObjectCatalogCell.self)
+        
         addSubview(collectionView)
-        collectionView.fillInSuperview()
+        addSubview(segmentedControl)
+        
+        NSLayoutConstraint.activate([
+            segmentedControl.leftAnchor.constraint(equalTo: leftAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: topAnchor),
+            segmentedControl.rightAnchor.constraint(equalTo: rightAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            collectionView.leftAnchor.constraint(equalTo: leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: rightAnchor),
+        ])
     }
     
     // MARK: - Public

@@ -17,6 +17,9 @@ final class ObjectCatalogViewController: UIViewController {
     
     // MARK: - Internal Properties
     
+    private let popoverWidth: Int = 250
+    private let popoverHeight: Int = 300
+    
     weak var delegate: ObjectInsertionDelegate?
     
     // MARK: - VC Lifecycle
@@ -24,7 +27,7 @@ final class ObjectCatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSize(width: 300, height: 300)
+        preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
 }
 

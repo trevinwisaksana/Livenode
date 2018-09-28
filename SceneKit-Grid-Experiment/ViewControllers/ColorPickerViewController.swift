@@ -12,8 +12,8 @@ final class ColorPickerViewController<View: ColorPickerPresentableView>: UIViewC
     
     // MARK: - Internal Properties
     
-    private let popoverWidth: Int = 300
-    private let popoverHeight: Int = 400
+    private let popoverWidth: Int = 250
+    private let popoverHeight: Int = 300
     
     lazy var mainView: ColorPickerPresentableView = {
         let mainView = ColorPickerPresentableView(frame: view.frame)

@@ -38,28 +38,3 @@ final class SceneActionsMenuViewController<View: UIView>: UIViewController {
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
 }
-
-extension SceneActionsMenuViewController: SceneActionsMenuDelegate {
-    func move() {
-//        viewModel.makeNodeMovable()
-//        menuAction?.move()
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func delete() {
-//        viewModel.removeNode()
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func paste() {
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func copy() {
-        
-        dismiss(animated: true, completion: nil)
-    }
-}

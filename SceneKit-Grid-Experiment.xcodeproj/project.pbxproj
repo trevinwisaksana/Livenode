@@ -22,7 +22,6 @@
 		DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneViewController.swift */; };
 		DD638DB720AACA1700395557 /* SceneActionsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */; };
 		DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */; };
-		DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */; };
 		DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */; };
 		DD68C21A2110688A0061100F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C2192110688A0061100F /* State.swift */; };
 		DD68C21F2110735C0061100F /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68C21E2110735C0061100F /* Node.swift */; };
@@ -90,7 +89,6 @@
 		DD51FEFD208818ED00A0D857 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionsMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuCell.swift; sourceTree = "<group>"; };
-		DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewModel.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNodeExtensions.swift; sourceTree = "<group>"; };
 		DD68C2192110688A0061100F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		DD68C21E2110735C0061100F /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -208,8 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				DD4960B9215B4A4F00B6E016 /* Presentable */,
-				DDFC63E320F1FE5900109EC5 /* Cells */,
 				DD4960BC215B4A6E00B6E016 /* ObjectCatalogView */,
+				DDFC63E320F1FE5900109EC5 /* Cells */,
 				DD4960BF215B4A8300B6E016 /* Model */,
 			);
 			path = ObjectCatalog;
@@ -585,7 +583,6 @@
 			isa = PBXGroup;
 			children = (
 				DDBA24D52158A1A2003C9CAF /* SceneActionsMenuViewModel.swift */,
-				DD638DC420AC2E1800395557 /* PopoverMenuViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -677,7 +674,6 @@
 				DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */,
 				DDBA24CF2158A03B003C9CAF /* SceneActionsMenuPresentableView.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
-				DD638DC520AC2E1800395557 /* PopoverMenuViewModel.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
 				DDBA24BD2153CC8C003C9CAF /* DocumentError.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */,

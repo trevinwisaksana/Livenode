@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol SceneActionsMenuDelegate: class {
-    func delete()
-    func move()
-    func copy()
-    func paste()
+public protocol SceneActionsMenuDelegate: class {
+    func didSelectDelete()
+    func didSelectMove()
+    func didSelectCopy()
+    func didSelectPaste()
 }
 
 public class SceneActionMenuCell: UICollectionViewCell {
@@ -69,13 +69,13 @@ public class SceneActionMenuCell: UICollectionViewCell {
     private func didPressActionButton(_ sender: UIButton) {
         switch sender.titleLabel?.text {
         case Action.delete.capitalized:
-            delegate?.delete()
+            delegate?.didSelectDelete()
         case Action.move.capitalized:
-            delegate?.move()
+            delegate?.didSelectMove()
         case Action.copy.capitalized:
-            delegate?.copy()
+            delegate?.didSelectCopy()
         case Action.paste.capitalized:
-            delegate?.paste()
+            delegate?.didSelectPaste()
         default:
             break
         }
