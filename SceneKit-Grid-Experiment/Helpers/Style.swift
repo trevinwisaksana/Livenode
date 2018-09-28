@@ -11,5 +11,5 @@ import UIKit
 
 struct Style {
     static let containerCornerRadius: CGFloat = 5.0
-    static let popoverWidth: Int = 320
+    static let navigationItemPopoverWidth: Int = 320
 }

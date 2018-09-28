@@ -12,7 +12,7 @@ final class ColorPickerViewController<View: ColorPickerPresentableView>: UIViewC
     
     // MARK: - Internal Properties
     
-    private let popoverWidth: Int = 320
+    private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
     lazy var mainView: ColorPickerPresentableView = {
