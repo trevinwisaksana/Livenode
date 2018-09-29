@@ -39,7 +39,7 @@ class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
         // TODO: Scenes should be injectable to the view controller
-        controller.navigationController?.pushViewController(SceneViewController(), animated: true)
+        controller.navigationController?.pushViewController(SceneEditorViewController(), animated: true)
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didImportDocumentAt sourceURL: URL, toDestinationURL destinationURL: URL) {

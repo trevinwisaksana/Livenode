@@ -19,12 +19,13 @@ public class SceneActionMenuCell: UICollectionViewCell {
     
     // MARK: - Internal Properties
     
+    private static let borderViewWidth: CGFloat = 0.5
+    
     private lazy var actionButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Copy", for: .normal)
         button.titleLabel?.font = UIFont(name: "Helvetica", size: 13)
         button.titleLabel?.textAlignment = .center
-        button.addTarget(self, action: #selector(didPressActionButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didSelectActionButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -61,17 +62,30 @@ public class SceneActionMenuCell: UICollectionViewCell {
             borderView.rightAnchor.constraint(equalTo: rightAnchor),
             borderView.topAnchor.constraint(equalTo: topAnchor),
             borderView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            borderView.widthAnchor.constraint(equalToConstant: 1),
+            borderView.widthAnchor.constraint(equalToConstant: SceneActionMenuCell.borderViewWidth),
         ])
     }
     
+    public func setTitle(forCellAtIndex index: Int) {
+        switch index {
+        case 0:
+            actionButton.setTitle("Cut", for: .normal)
+        case 1:
+            actionButton.setTitle("Copy", for: .normal)
+        case 2:
+            actionButton.setTitle("Paste", for: .normal)
+        case 3:
+            actionButton.setTitle("Delete", for: .normal)
+        default:
+            break
+        }
+    }
+    
     @objc
-    private func didPressActionButton(_ sender: UIButton) {
+    private func didSelectActionButton(_ sender: UIButton) {
         switch sender.titleLabel?.text {
         case Action.delete.capitalized:
             delegate?.didSelectDelete()
-        case Action.move.capitalized:
-            delegate?.didSelectMove()
         case Action.copy.capitalized:
             delegate?.didSelectCopy()
         case Action.paste.capitalized:

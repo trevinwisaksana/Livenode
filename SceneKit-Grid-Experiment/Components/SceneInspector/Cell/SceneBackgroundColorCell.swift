@@ -18,18 +18,22 @@ public class SceneBackgroundColorCell: UITableViewCell {
     
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
-    private static let titleBottomMargin: CGFloat = 3.0
+    private static let titleBottomMargin: CGFloat = -3.0
     private static let titleLeftMargin: CGFloat = 15.0
     
-    private static let colorViewWidth: CGFloat = 60.0
+    private static let colorViewWidth: CGFloat = Style.colorViewWidth
     private static let colorViewTopMargin: CGFloat = 15.0
-    private static let colorViewBottomMargin: CGFloat = 15.0
-    private static let colorViewRightMargin: CGFloat = 15.0
+    private static let colorViewBottomMargin: CGFloat = -15.0
+    private static let colorViewRightMargin: CGFloat = -15.0
+    
+    private static let nextIndicatorImageViewTopMargin: CGFloat = 15.0
+    private static let nextIndicatorImageViewBottomMargin: CGFloat = -15.0
+    private static let nextIndicatorImageViewRightMargin: CGFloat = -15.0
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Background Color"
+        label.text = "Background"
         label.backgroundColor = .clear
         return label
     }()
@@ -41,6 +45,14 @@ public class SceneBackgroundColorCell: UITableViewCell {
         view.layer.cornerRadius = Style.containerCornerRadius
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    private lazy var nextIndicatorImageView: UIImageView = {
+        let image = UIImage(named: .nextIndicator)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     // MARK: - External properties
@@ -63,18 +75,23 @@ public class SceneBackgroundColorCell: UITableViewCell {
     private func setup() {
         addSubview(titleLabel)
         addSubview(colorView)
+        addSubview(nextIndicatorImageView)
         
         backgroundColor = .milk
         
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: SceneBackgroundColorCell.titleLeftMargin),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: SceneBackgroundColorCell.titleTopMargin),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SceneBackgroundColorCell.titleBottomMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: SceneBackgroundColorCell.titleBottomMargin),
             
-            colorView.rightAnchor.constraint(equalTo: rightAnchor, constant: -SceneBackgroundColorCell.colorViewRightMargin),
+            colorView.rightAnchor.constraint(equalTo: nextIndicatorImageView.leftAnchor, constant: SceneBackgroundColorCell.colorViewRightMargin),
             colorView.widthAnchor.constraint(equalToConstant: SceneBackgroundColorCell.colorViewWidth),
             colorView.topAnchor.constraint(equalTo: topAnchor, constant: SceneBackgroundColorCell.colorViewTopMargin),
-            colorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SceneBackgroundColorCell.colorViewBottomMargin),
+            colorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: SceneBackgroundColorCell.colorViewBottomMargin),
+            
+            nextIndicatorImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: SceneBackgroundColorCell.nextIndicatorImageViewRightMargin),
+            nextIndicatorImageView.topAnchor.constraint(equalTo: topAnchor, constant: SceneBackgroundColorCell.nextIndicatorImageViewTopMargin),
+            nextIndicatorImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: SceneBackgroundColorCell.nextIndicatorImageViewBottomMargin),
         ])
     }
     

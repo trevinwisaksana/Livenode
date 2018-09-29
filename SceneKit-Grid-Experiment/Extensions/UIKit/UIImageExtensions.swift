@@ -17,9 +17,10 @@ extension UIImage {
 }
 
 enum ImageAsset: String {
-    case addObjectButton
+    case objectCatalogButton
     case createScene
     case playButton
     case nodeInspectorButton
     case utilitiesInspectorButton
+    case nextIndicator
 }

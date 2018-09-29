@@ -21,7 +21,7 @@ public class NodeColorCell: UITableViewCell {
     private static let titleBottomMargin: CGFloat = 3.0
     private static let titleLeftMargin: CGFloat = 15.0
     
-    private static let colorViewWidth: CGFloat = 60.0
+    private static let colorViewWidth: CGFloat = Style.colorViewWidth
     private static let colorViewTopMargin: CGFloat = 15.0
     private static let colorViewBottomMargin: CGFloat = 15.0
     private static let colorViewRightMargin: CGFloat = 15.0

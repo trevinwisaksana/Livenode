@@ -16,10 +16,11 @@
 		DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */; };
 		DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */; };
 		DD38321D21598E5400809856 /* DefaultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD38321C21598E5300809856 /* DefaultScene.swift */; };
+		DD43429B215F398E00FF3D91 /* SceneEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43429A215F398E00FF3D91 /* SceneEditorDelegate.swift */; };
 		DD4960B7215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */; };
 		DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */; };
 		DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */; };
-		DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneViewController.swift */; };
+		DD51FEFE208818ED00A0D857 /* SceneEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */; };
 		DD638DB720AACA1700395557 /* SceneActionsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */; };
 		DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */; };
 		DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */; };
@@ -83,10 +84,11 @@
 		DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogCell.swift; sourceTree = "<group>"; };
 		DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		DD38321C21598E5300809856 /* DefaultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScene.swift; sourceTree = "<group>"; };
+		DD43429A215F398E00FF3D91 /* SceneEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorDelegate.swift; sourceTree = "<group>"; };
 		DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogPresentableView.swift; sourceTree = "<group>"; };
 		DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogView.swift; sourceTree = "<group>"; };
 		DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewModel.swift; sourceTree = "<group>"; };
-		DD51FEFD208818ED00A0D857 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
+		DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* SceneActionsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionsMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuCell.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNodeExtensions.swift; sourceTree = "<group>"; };
@@ -202,6 +204,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		DD434299215F395F00FF3D91 /* SceneEditor */ = {
+			isa = PBXGroup;
+			children = (
+				DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */,
+				DD43429A215F398E00FF3D91 /* SceneEditorDelegate.swift */,
+			);
+			path = SceneEditor;
+			sourceTree = "<group>";
+		};
 		DD4960B8215B4A4200B6E016 /* ObjectCatalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,7 +253,7 @@
 			children = (
 				DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */,
 				DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */,
-				DD51FEFD208818ED00A0D857 /* SceneViewController.swift */,
+				DD434299215F395F00FF3D91 /* SceneEditor */,
 				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
 				DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */,
@@ -676,7 +687,7 @@
 				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
 				DDBA24BD2153CC8C003C9CAF /* DocumentError.swift in Sources */,
-				DD51FEFE208818ED00A0D857 /* SceneViewController.swift in Sources */,
+				DD51FEFE208818ED00A0D857 /* SceneEditorViewController.swift in Sources */,
 				DDBA24D32158A090003C9CAF /* SceneActionsMenuView.swift in Sources */,
 				DD68C235212905910061100F /* ColorPickerViewModel.swift in Sources */,
 				DD8E1261213BE88500D4F4DE /* UtilitiesInspectorViewController.swift in Sources */,
@@ -703,6 +714,7 @@
 				DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */,
 				DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */,
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
+				DD43429B215F398E00FF3D91 /* SceneEditorDelegate.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
