@@ -120,14 +120,14 @@ final class SceneEditorViewController: UIViewController {
         nodeSelected = sceneView.hitTest(location, options: nil).first?.node
         
         if nodeSelected?.name == "Floor" || nodeSelected == nil {
-            unhighlight(lastNodeSelected)
+//            unhighlight(lastNodeSelected)
             return
         }
         
         if nodeSelected?.name == "testNode" {
             didSelectTargetNode = true
             State.nodeSelected = Node(node: nodeSelected)
-            highlight(nodeSelected)
+//            highlight(nodeSelected)
         } else {
             didSelectTargetNode = false
         }
@@ -199,38 +199,38 @@ final class SceneEditorViewController: UIViewController {
     
     // TODO: Move the node manipulation code elsewhere
     // TODO: Find solution that doesn't only work with boxes
-    private func highlight(_ nodeSelected: SCNNode?) {
-        if didHighlightNode {
-            return
-        }
-        
-        guard let nodeSelected = nodeSelected else {
-            return
-        }
-        
-        // TODO: Make the dimensions the same with the node selected
-        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-        
-        let nodeHighlight = SCNNode(geometry: box)
-        nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "box_wireframe")
-        nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
-        nodeHighlight.name = "nodeHighlight"
-        
-        nodeSelected.addChildNode(nodeHighlight)
-        
-        didHighlightNode = true
-    }
-    
-    private func unhighlight(_ lastNodeSelected: SCNNode?) {
-        didHighlightNode = false
-        
-        guard let node = lastNodeSelected else {
-            return
-        }
-        
-        let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
-        nodeHighlight?.removeFromParentNode()
-    }
+//    private func highlight(_ nodeSelected: SCNNode?) {
+//        if didHighlightNode {
+//            return
+//        }
+//
+//        guard let nodeSelected = nodeSelected else {
+//            return
+//        }
+//
+//        // TODO: Make the dimensions the same with the node selected
+//        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+//
+//        let nodeHighlight = SCNNode(geometry: box)
+//        nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "box_wireframe")
+//        nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
+//        nodeHighlight.name = "nodeHighlight"
+//
+//        nodeSelected.addChildNode(nodeHighlight)
+//
+//        didHighlightNode = true
+//    }
+//
+//    private func unhighlight(_ lastNodeSelected: SCNNode?) {
+//        didHighlightNode = false
+//
+//        guard let node = lastNodeSelected else {
+//            return
+//        }
+//
+//        let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
+//        nodeHighlight?.removeFromParentNode()
+//    }
     
     
     // MARK: - Device Configuration
