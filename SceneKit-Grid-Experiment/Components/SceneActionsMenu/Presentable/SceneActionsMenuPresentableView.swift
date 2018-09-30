@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SceneKit
 
 public class SceneActionsMenuDataSource: NSObject {
-    
+    let nodeSelected: Node? = State.nodeSelected
 }
 
 public class SceneActionsMenuPresentableView: UIView {
@@ -41,7 +42,19 @@ public class SceneActionsMenuPresentableView: UIView {
 // MARK: - SceneActionsMenuViewDelegate
 
 extension SceneActionsMenuPresentableView: SceneActionsMenuViewDelegate {
-    public func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectItemAtIndexPath indexPath: IndexPath) {
+    public func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectDeleteFor node: SCNNode) {
+        
+    }
+    
+    public func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectMoveFor node: SCNNode) {
+        
+    }
+    
+    public func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectCopyFor node: SCNNode) {
+        
+    }
+    
+    public func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectPasteFor node: SCNNode) {
         
     }
 }

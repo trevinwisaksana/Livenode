@@ -39,4 +39,5 @@ final class ObjectCatalogViewController<View: UIView>: UIViewController {
         
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
+    
 }

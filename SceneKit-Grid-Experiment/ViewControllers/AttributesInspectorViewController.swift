@@ -43,4 +43,5 @@ final class AttributesInspectorViewController<View: UIView>: UIViewController {
         title = ""
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
+    
 }

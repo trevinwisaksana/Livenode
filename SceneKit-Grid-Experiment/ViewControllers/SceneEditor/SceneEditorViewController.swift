@@ -14,8 +14,8 @@ final class SceneEditorViewController: UIViewController {
     // MARK: - Internal Properties
     
     private var sceneView: SCNView = SCNView()
-    
-    lazy var sceneEditorDelegate: SceneEditorDelegateProtocol = SceneEditorDelegate()
+
+    lazy var delegate: SceneEditorDelegateProtocol = SceneEditorViewControllerDelegate()
     
     private var mainScene: DefaultScene! {
         didSet {
@@ -166,17 +166,17 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapObjectCatalogButton(_ sender: UIBarButtonItem) {
-        sceneEditorDelegate.sceneEditor(self, didDisplayObjectCatalogWith: sender)
+        delegate.sceneEditor(self, didDisplayObjectCatalogWith: sender)
     }
     
     @objc
     private func didTapNodeInspectorButton(_ sender: UIBarButtonItem) {
-        sceneEditorDelegate.sceneEditor(self, didDisplayInspectorViewWith: sender)
+        delegate.sceneEditor(self, didDisplayInspectorViewWith: sender)
     }
     
     @objc
     private func didTapUtilitiesInspectorButton(_ sender: UIBarButtonItem) {
-        sceneEditorDelegate.sceneEditor(self, didDisplayUtilitiesInspectorWith: sender)
+        delegate.sceneEditor(self, didDisplayUtilitiesInspectorWith: sender)
     }
     
     @objc
@@ -193,7 +193,7 @@ final class SceneEditorViewController: UIViewController {
         }
         
         if nodeSelected.name == "testNode" {
-            sceneEditorDelegate.sceneEditor(self, didDisplaySceneActionsMenuFor: nodeSelected, with: sender)
+            delegate.sceneEditor(self, didDisplaySceneActionsMenuFor: nodeSelected, with: sender)
         }
     }
     

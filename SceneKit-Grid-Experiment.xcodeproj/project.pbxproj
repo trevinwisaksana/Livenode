@@ -15,8 +15,8 @@
 		DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */; };
 		DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */; };
 		DD38321D21598E5400809856 /* DefaultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD38321C21598E5300809856 /* DefaultScene.swift */; };
-		DD43429B215F398E00FF3D91 /* SceneEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43429A215F398E00FF3D91 /* SceneEditorDelegate.swift */; };
-		DD43429E215F772A00FF3D91 /* ScenePresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43429D215F772A00FF3D91 /* ScenePresentableView.swift */; };
+		DD43429E215F772A00FF3D91 /* SceneEditorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43429D215F772A00FF3D91 /* SceneEditorPresentableView.swift */; };
+		DD4342A2215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4342A1215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift */; };
 		DD4960B7215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */; };
 		DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */; };
 		DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */; };
@@ -58,7 +58,7 @@
 		DDBA24C22153D0D5003C9CAF /* SceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C12153D0D5003C9CAF /* SceneViewModel.swift */; };
 		DDBA24C42153D309003C9CAF /* DocumentBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C32153D309003C9CAF /* DocumentBrowserDelegate.swift */; };
 		DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */; };
-		DDBA24CC21579255003C9CAF /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24CB21579255003C9CAF /* SceneView.swift */; };
+		DDBA24CC21579255003C9CAF /* SceneEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24CB21579255003C9CAF /* SceneEditorView.swift */; };
 		DDBA24CF2158A03B003C9CAF /* SceneActionsMenuPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24CE2158A03B003C9CAF /* SceneActionsMenuPresentableView.swift */; };
 		DDBA24D32158A090003C9CAF /* SceneActionsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24D22158A090003C9CAF /* SceneActionsMenuView.swift */; };
 		DDBA24D62158A1A2003C9CAF /* SceneActionsMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24D52158A1A2003C9CAF /* SceneActionsMenuViewModel.swift */; };
@@ -83,8 +83,8 @@
 		DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogCell.swift; sourceTree = "<group>"; };
 		DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		DD38321C21598E5300809856 /* DefaultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScene.swift; sourceTree = "<group>"; };
-		DD43429A215F398E00FF3D91 /* SceneEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorDelegate.swift; sourceTree = "<group>"; };
-		DD43429D215F772A00FF3D91 /* ScenePresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePresentableView.swift; sourceTree = "<group>"; };
+		DD43429D215F772A00FF3D91 /* SceneEditorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorPresentableView.swift; sourceTree = "<group>"; };
+		DD4342A1215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneEditorViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogPresentableView.swift; sourceTree = "<group>"; };
 		DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogView.swift; sourceTree = "<group>"; };
 		DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewModel.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		DDBA24C12153D0D5003C9CAF /* SceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModel.swift; sourceTree = "<group>"; };
 		DDBA24C32153D309003C9CAF /* DocumentBrowserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserDelegate.swift; sourceTree = "<group>"; };
 		DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
-		DDBA24CB21579255003C9CAF /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
+		DDBA24CB21579255003C9CAF /* SceneEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorView.swift; sourceTree = "<group>"; };
 		DDBA24CE2158A03B003C9CAF /* SceneActionsMenuPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionsMenuPresentableView.swift; sourceTree = "<group>"; };
 		DDBA24D22158A090003C9CAF /* SceneActionsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionsMenuView.swift; sourceTree = "<group>"; };
 		DDBA24D52158A1A2003C9CAF /* SceneActionsMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionsMenuViewModel.swift; sourceTree = "<group>"; };
@@ -204,29 +204,36 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		DD434299215F395F00FF3D91 /* SceneEditor */ = {
+		DD43429C215F770C00FF3D91 /* SceneEditorView */ = {
 			isa = PBXGroup;
 			children = (
-				DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */,
-				DD43429A215F398E00FF3D91 /* SceneEditorDelegate.swift */,
+				DDBA24CB21579255003C9CAF /* SceneEditorView.swift */,
 			);
-			path = SceneEditor;
-			sourceTree = "<group>";
-		};
-		DD43429C215F770C00FF3D91 /* SceneView */ = {
-			isa = PBXGroup;
-			children = (
-				DDBA24CB21579255003C9CAF /* SceneView.swift */,
-			);
-			path = SceneView;
+			path = SceneEditorView;
 			sourceTree = "<group>";
 		};
 		DD43429F215F772E00FF3D91 /* Presentable */ = {
 			isa = PBXGroup;
 			children = (
-				DD43429D215F772A00FF3D91 /* ScenePresentableView.swift */,
+				DD43429D215F772A00FF3D91 /* SceneEditorPresentableView.swift */,
 			);
 			path = Presentable;
+			sourceTree = "<group>";
+		};
+		DD4342A0215F77C000FF3D91 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		DD4342A3215F7E7400FF3D91 /* SceneEditor */ = {
+			isa = PBXGroup;
+			children = (
+				DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */,
+				DD4342A1215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift */,
+			);
+			path = SceneEditor;
 			sourceTree = "<group>";
 		};
 		DD4960B8215B4A4200B6E016 /* ObjectCatalog */ = {
@@ -269,7 +276,7 @@
 			children = (
 				DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */,
 				DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */,
-				DD434299215F395F00FF3D91 /* SceneEditor */,
+				DD4342A3215F7E7400FF3D91 /* SceneEditor */,
 				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
 				DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */,
@@ -574,7 +581,8 @@
 			isa = PBXGroup;
 			children = (
 				DD43429F215F772E00FF3D91 /* Presentable */,
-				DD43429C215F770C00FF3D91 /* SceneView */,
+				DD43429C215F770C00FF3D91 /* SceneEditorView */,
+				DD4342A0215F77C000FF3D91 /* Delegate */,
 			);
 			path = SceneEditor;
 			sourceTree = "<group>";
@@ -711,7 +719,7 @@
 				DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */,
 				DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */,
 				DD6C16FD210C16EF002CB031 /* ColorPickerViewController.swift in Sources */,
-				DD43429E215F772A00FF3D91 /* ScenePresentableView.swift in Sources */,
+				DD43429E215F772A00FF3D91 /* SceneEditorPresentableView.swift in Sources */,
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
 				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
 				DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */,
@@ -724,13 +732,13 @@
 				DD6CC450210A111A009284C6 /* SCNSceneExtensions.swift in Sources */,
 				DD68C221211076690061100F /* Scene.swift in Sources */,
 				DD68C21F2110735C0061100F /* Node.swift in Sources */,
+				DD4342A2215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift in Sources */,
 				DD6C16F0210B217A002CB031 /* ViewComponent.swift in Sources */,
 				DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */,
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
 				DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */,
 				DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */,
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
-				DD43429B215F398E00FF3D91 /* SceneEditorDelegate.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
@@ -745,7 +753,7 @@
 				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
 				DDBA24D62158A1A2003C9CAF /* SceneActionsMenuViewModel.swift in Sources */,
 				DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */,
-				DDBA24CC21579255003C9CAF /* SceneView.swift in Sources */,
+				DDBA24CC21579255003C9CAF /* SceneEditorView.swift in Sources */,
 				DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */,
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,

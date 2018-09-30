@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import SceneKit
 
 public protocol SceneActionsMenuViewDelegate: class {
-    func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectItemAtIndexPath indexPath: IndexPath)
+    func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectDeleteFor node: SCNNode)
+    func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectMoveFor node: SCNNode)
+    func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectCopyFor node: SCNNode)
+    func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectPasteFor node: SCNNode)
 }
 
 public protocol SceneActionsMenuViewDataSource: class {
@@ -93,24 +97,8 @@ extension SceneActionsMenuView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: SceneActionsMenuView.cellWidth, height: frame.height)
     }
-}
-
-// MARK: - SceneActionsMenuDelegate
-
-extension SceneActionsMenuView: SceneActionsMenuDelegate {
-    public func didSelectDelete() {
-        
-    }
     
-    public func didSelectMove() {
-        
-    }
-    
-    public func didSelectCopy() {
-        
-    }
-    
-    public func didSelectPaste() {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
 }

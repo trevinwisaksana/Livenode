@@ -10,15 +10,13 @@ import UIKit
 import SceneKit
 
 protocol SceneEditorDelegateProtocol: class {
-    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: Scene)
-    func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: Scene)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuFor node: SCNNode, with sender: UILongPressGestureRecognizer)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayUtilitiesInspectorWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
 }
 
-class SceneEditorDelegate: NSObject, SceneEditorDelegateProtocol {
+class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
     
     // MARK: - Internal Properties
     
@@ -41,7 +39,7 @@ class SceneEditorDelegate: NSObject, SceneEditorDelegateProtocol {
         }
         
         let yOffset = height * 0.05
-        let sourceRect = CGRect(x: 0, y: yOffset, width: SceneEditorDelegate.sourceRectWidth, height: SceneEditorDelegate.sourceRectHeight)
+        let sourceRect = CGRect(x: 0, y: yOffset, width: SceneEditorViewControllerDelegate.sourceRectWidth, height: SceneEditorViewControllerDelegate.sourceRectHeight)
         
         let touchView = UIView(frame: sourceRect)
         controller.view.addSubview(touchView)
@@ -99,21 +97,17 @@ class SceneEditorDelegate: NSObject, SceneEditorDelegateProtocol {
         controller.present(navigationController, animated: true, completion: nil)
     }
     
-    // MARK: - Scene Editor State
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: Scene) {
-        
-    }
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: Scene) {
-        
-    }
+}
+
+// MARK: - SceneActionsMenuDelegate
+
+extension SceneEditorViewControllerDelegate {
     
 }
 
 // MARK: - UIPopoverPresentationControllerDelegate
 
-extension SceneEditorDelegate: UIPopoverPresentationControllerDelegate {
+extension SceneEditorViewControllerDelegate: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
