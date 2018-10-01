@@ -9,18 +9,12 @@
 import Foundation
 
 struct Constants {
-    
     struct Controller {
         static let objectCatalog = "ObjectCatalogController"
         static let popoverMenu = "PopoverMenuController"
         static let objectAttribute = "ObjectAttributeController"
         static let utilities = "UtilitiesController"
     }
-    
-    struct NotificationCenter {
-        static let nodeColorModifiedKey = Notification.Name("NSNotification.NodeColorModified")
-    }
-    
 }
 
 enum Action: String {

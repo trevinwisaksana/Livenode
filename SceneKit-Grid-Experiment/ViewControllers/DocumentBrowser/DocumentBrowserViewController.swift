@@ -12,7 +12,7 @@ final class DocumentBrowserViewController: UIDocumentBrowserViewController {
     
     // MARK: - Internal Properties
     
-    lazy var browserDelegate: DocumentBrowserDelegate = DocumentBrowserDelegate()
+    lazy var browserDelegate: DocumentBrowserViewControllerDelegate = DocumentBrowserViewControllerDelegate()
     
     // MARK: - VC Lifecycle
     

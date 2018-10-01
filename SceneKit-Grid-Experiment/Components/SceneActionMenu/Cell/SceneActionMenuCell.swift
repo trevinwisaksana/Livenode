@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SceneActionsMenuCellDelegate: class {
+public protocol SceneActionMenuCellDelegate: class {
     func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCutButton button: UIButton)
     func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCopyButton button: UIButton)
     func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPasteButton button: UIButton)
@@ -36,7 +36,7 @@ public class SceneActionMenuCell: UICollectionViewCell {
         return view
     }()
     
-    weak var delegate: SceneActionsMenuCellDelegate?
+    weak var delegate: SceneActionMenuCellDelegate?
     
     // MARK: - Setup
     
@@ -69,13 +69,13 @@ public class SceneActionMenuCell: UICollectionViewCell {
     public func setTitle(forCellAtIndex index: Int) {
         switch index {
         case 0:
-            actionButton.setTitle("Cut", for: .normal)
+            actionButton.setTitle(Action.cut.capitalized, for: .normal)
         case 1:
-            actionButton.setTitle("Copy", for: .normal)
+            actionButton.setTitle(Action.copy.capitalized, for: .normal)
         case 2:
-            actionButton.setTitle("Paste", for: .normal)
+            actionButton.setTitle(Action.paste.capitalized, for: .normal)
         case 3:
-            actionButton.setTitle("Delete", for: .normal)
+            actionButton.setTitle(Action.delete.capitalized, for: .normal)
         default:
             break
         }

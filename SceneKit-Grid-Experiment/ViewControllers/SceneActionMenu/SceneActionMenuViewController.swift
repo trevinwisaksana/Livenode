@@ -1,5 +1,5 @@
 //
-//  PopoverMenuViewController.swift
+//  SceneActionMenuViewController:.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 15/05/2018.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-final class SceneActionsMenuViewController: UIViewController {
+final class SceneActionMenuViewController: UIViewController {
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = 400
     private let popoverHeight: Int = 35
     
-    lazy var delegate: SceneActionsMenuViewControllerDelegate = SceneActionsMenuViewControllerDelegate()
+    lazy var delegate = SceneActionMenuViewControllerDelegate()
     
-    lazy var mainView: SceneActionsMenuView = {
-        let mainView = SceneActionsMenuView(delegate: delegate)
+    lazy var mainView: SceneActionMenuView = {
+        let mainView = SceneActionMenuView(delegate: delegate)
         return mainView
     }()
     

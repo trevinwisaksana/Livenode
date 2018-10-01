@@ -1,5 +1,5 @@
 //
-//  DocumentBrowserDelegate.swift
+//  DocumentBrowserViewControllerDelegate.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 20/09/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
+class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
     
     // MARK: - Internal Properties
     
@@ -53,7 +53,7 @@ class DocumentBrowserDelegate: NSObject, UIDocumentBrowserViewControllerDelegate
 
 // MARK: - Opening Document
 
-extension DocumentBrowserDelegate {
+extension DocumentBrowserViewControllerDelegate {
     private func openDocument(with url: URL) {
         if !isDocumentOpen(with: url) {
             return
@@ -74,9 +74,9 @@ extension DocumentBrowserDelegate {
 
 // MARK: - Document Creation
 
-extension DocumentBrowserDelegate {
+extension DocumentBrowserViewControllerDelegate {
     private func createDefaultDocumentName() -> String {
-        let newDocumentNumber = UserDefaults.standard.integer(forKey: DocumentBrowserDelegate.documentNumberKey)
+        let newDocumentNumber = UserDefaults.standard.integer(forKey: DocumentBrowserViewControllerDelegate.documentNumberKey)
         
         if newDocumentNumber == 0 {
             return "Blank"
@@ -87,13 +87,13 @@ extension DocumentBrowserDelegate {
     
     private func incrementDocumentNameCount() {
         // TODO: Decrement document name count when deleting document
-        var newDocumentNumber = UserDefaults.standard.integer(forKey: DocumentBrowserDelegate.documentNumberKey) + 1
+        var newDocumentNumber = UserDefaults.standard.integer(forKey: DocumentBrowserViewControllerDelegate.documentNumberKey) + 1
         
         if newDocumentNumber == 1 {
             newDocumentNumber += 1
         }
         
-        UserDefaults.standard.set(newDocumentNumber, forKey: DocumentBrowserDelegate.documentNumberKey)
+        UserDefaults.standard.set(newDocumentNumber, forKey: DocumentBrowserViewControllerDelegate.documentNumberKey)
     }
     
     func createDocumentURL() -> URL {

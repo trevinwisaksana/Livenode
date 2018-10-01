@@ -50,7 +50,7 @@ final class SceneEditorViewController: UIViewController {
         setupScene()
         setupLongPressGestureRecognizer()
         setupNavigationBar()
-        setupNodeSelectedListener()
+        setupNotificationListeners()
     }
     
     private func setupScene() {
@@ -86,8 +86,9 @@ final class SceneEditorViewController: UIViewController {
         navigationItem.setRightBarButtonItems([utilitiesInspectorBarButton, objectCatalogBarButton, nodeInspectorBarButton, playBarButton], animated: true)
     }
     
-    private func setupNodeSelectedListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Constants.NotificationCenter.nodeColorModifiedKey, object: nil)
+    private func setupNotificationListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Notification.Name.ColorPickerDidModifyNodeColor, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectSceneAction(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
     }
     
     private func setupLongPressGestureRecognizer() {
@@ -195,6 +196,11 @@ final class SceneEditorViewController: UIViewController {
         if nodeSelected.name == "testNode" {
             delegate.sceneEditor(self, didDisplaySceneActionsMenuFor: nodeSelected, with: sender)
         }
+    }
+    
+    @objc
+    private func didSelectSceneAction(_ notification: Notification) {
+        delegate.sceneEditor(self, didSelectSceneActionButtonFrom: notification, for: mainScene)
     }
     
     // TODO: Move the node manipulation code elsewhere

@@ -1,5 +1,5 @@
 //
-//  SceneActionsMenuView.swift
+//  SceneActionMenuView.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 24/09/2018.
@@ -10,13 +10,13 @@ import UIKit
 import SceneKit
 
 public protocol SceneActionsMenuViewDelegate: class {
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionsMenuView, didSelectCutButton button: UIButton)
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionsMenuView, didSelectCopyButton button: UIButton)
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionsMenuView, didSelectPasteButton button: UIButton)
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionsMenuView, didSelectDeleteButton button: UIButton)
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectCutButton button: UIButton)
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectCopyButton button: UIButton)
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectPasteButton button: UIButton)
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectDeleteButton button: UIButton)
 }
 
-public class SceneActionsMenuView: UIView {
+public class SceneActionMenuView: UIView {
     
     // MARK: - Internal properties
     
@@ -71,9 +71,9 @@ public class SceneActionsMenuView: UIView {
 
 // MARK: - UICollectionViewDataSource
 
-extension SceneActionsMenuView: UICollectionViewDataSource {
+extension SceneActionMenuView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return SceneActionsMenuView.numberOfItemsInSection
+        return SceneActionMenuView.numberOfItemsInSection
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -88,19 +88,19 @@ extension SceneActionsMenuView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension SceneActionsMenuView: UICollectionViewDelegateFlowLayout {
+extension SceneActionMenuView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: SceneActionsMenuView.cellWidth, height: frame.height)
+        return CGSize(width: SceneActionMenuView.cellWidth, height: frame.height)
     }
 }
 
-// MARK: - SceneActionsMenuCellDelegate
+// MARK: - SceneActionMenuCellDelegate
 
-extension SceneActionsMenuView: SceneActionsMenuCellDelegate {
+extension SceneActionMenuView: SceneActionMenuCellDelegate {
     public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCutButton button: UIButton) {
         delegate?.sceneActionMenuView(self, didSelectCutButton: button)
     }

@@ -42,7 +42,7 @@ public class ColorPickerPresentableView: UIView {
 
 extension ColorPickerPresentableView: ColorPickerViewDelegate {
     public func didTap(color: UIColor) {
-        NotificationCenter.default.post(name: Constants.NotificationCenter.nodeColorModifiedKey, object: color)
+        NotificationCenter.default.post(name: Notification.Name.ColorPickerDidModifyNodeColor, object: color)
     }
 }
 
