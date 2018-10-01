@@ -8,11 +8,11 @@
 
 import UIKit
 
-public protocol SceneActionsMenuDelegate: class {
-    func didSelectDelete()
-    func didSelectMove()
-    func didSelectCopy()
-    func didSelectPaste()
+public protocol SceneActionsMenuCellDelegate: class {
+    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCutButton button: UIButton)
+    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCopyButton button: UIButton)
+    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPasteButton button: UIButton)
+    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectDeleteButton button: UIButton)
 }
 
 public class SceneActionMenuCell: UICollectionViewCell {
@@ -36,7 +36,7 @@ public class SceneActionMenuCell: UICollectionViewCell {
         return view
     }()
     
-    weak var delegate: SceneActionsMenuDelegate?
+    weak var delegate: SceneActionsMenuCellDelegate?
     
     // MARK: - Setup
     
@@ -84,12 +84,14 @@ public class SceneActionMenuCell: UICollectionViewCell {
     @objc
     private func didSelectActionButton(_ sender: UIButton) {
         switch sender.titleLabel?.text {
-        case Action.delete.capitalized:
-            delegate?.didSelectDelete()
+        case Action.cut.capitalized:
+            delegate?.sceneActionMenuCell(self, didSelectCutButton: sender)
         case Action.copy.capitalized:
-            delegate?.didSelectCopy()
+            delegate?.sceneActionMenuCell(self, didSelectCopyButton: sender)
         case Action.paste.capitalized:
-            delegate?.didSelectPaste()
+            delegate?.sceneActionMenuCell(self, didSelectPasteButton: sender)
+        case Action.delete.capitalized:
+            delegate?.sceneActionMenuCell(self, didSelectDeleteButton: sender)
         default:
             break
         }

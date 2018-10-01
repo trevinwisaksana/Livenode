@@ -8,15 +8,15 @@
 
 import UIKit
 
-final class ColorPickerViewController<View: ColorPickerPresentableView>: UIViewController {
+final class ColorPickerViewController<View: UIView>: UIViewController {
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var mainView: ColorPickerPresentableView = {
-        let mainView = ColorPickerPresentableView(frame: view.frame)
+    lazy var mainView: View = {
+        let mainView = View(frame: view.frame)
         return mainView
     }()
     

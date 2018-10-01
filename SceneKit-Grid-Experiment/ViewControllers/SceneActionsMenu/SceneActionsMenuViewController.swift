@@ -8,15 +8,17 @@
 
 import UIKit
 
-final class SceneActionsMenuViewController<View: UIView>: UIViewController {
+final class SceneActionsMenuViewController: UIViewController {
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = 400
     private let popoverHeight: Int = 35
     
-    lazy var mainView: View = {
-        let mainView = View(frame: view.frame)
+    lazy var delegate: SceneActionsMenuViewControllerDelegate = SceneActionsMenuViewControllerDelegate()
+    
+    lazy var mainView: SceneActionsMenuView = {
+        let mainView = SceneActionsMenuView(delegate: delegate)
         return mainView
     }()
     
@@ -37,4 +39,5 @@ final class SceneActionsMenuViewController<View: UIView>: UIViewController {
         popoverPresentationController?.backgroundColor = .black
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
+    
 }

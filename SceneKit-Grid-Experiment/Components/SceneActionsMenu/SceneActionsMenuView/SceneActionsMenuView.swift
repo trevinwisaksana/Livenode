@@ -10,19 +10,17 @@ import UIKit
 import SceneKit
 
 public protocol SceneActionsMenuViewDelegate: class {
-    func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectDeleteFor node: SCNNode)
-    func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectMoveFor node: SCNNode)
-    func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectCopyFor node: SCNNode)
-    func sceneActionsMenuView(_ sceneActionsMenuView: SceneActionsMenuView, didSelectPasteFor node: SCNNode)
-}
-
-public protocol SceneActionsMenuViewDataSource: class {
-    func viewModel(InSceneActionsMenuView sceneActionsMenuView: SceneActionsMenuView) -> SceneActionsMenuViewModel
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionsMenuView, didSelectCutButton button: UIButton)
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionsMenuView, didSelectCopyButton button: UIButton)
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionsMenuView, didSelectPasteButton button: UIButton)
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionsMenuView, didSelectDeleteButton button: UIButton)
 }
 
 public class SceneActionsMenuView: UIView {
     
     // MARK: - Internal properties
+    
+    private static let numberOfItemsInSection: Int = 4
     
     private static let cellWidth: CGFloat = 80.0
     
@@ -37,15 +35,13 @@ public class SceneActionsMenuView: UIView {
     }()
     
     private weak var delegate: SceneActionsMenuViewDelegate?
-    private weak var dataSource: SceneActionsMenuViewDataSource?
     
     // MARK: - Setup
     
-    public init(delegate: SceneActionsMenuViewDelegate, dataSource: SceneActionsMenuViewDataSource) {
+    public init(delegate: SceneActionsMenuViewDelegate) {
         super.init(frame: .zero)
         
         self.delegate = delegate
-        self.dataSource = dataSource
         
         setup()
     }
@@ -77,12 +73,15 @@ public class SceneActionsMenuView: UIView {
 
 extension SceneActionsMenuView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return SceneActionsMenuView.numberOfItemsInSection
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SceneActionMenuCell = collectionView.dequeueReusableCell(for: indexPath)
+        
         cell.setTitle(forCellAtIndex: indexPath.row)
+        cell.delegate = self
+        
         return cell
     }
 }
@@ -97,8 +96,24 @@ extension SceneActionsMenuView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: SceneActionsMenuView.cellWidth, height: frame.height)
     }
+}
+
+// MARK: - SceneActionsMenuCellDelegate
+
+extension SceneActionsMenuView: SceneActionsMenuCellDelegate {
+    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCutButton button: UIButton) {
+        delegate?.sceneActionMenuView(self, didSelectCutButton: button)
+    }
     
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCopyButton button: UIButton) {
+        delegate?.sceneActionMenuView(self, didSelectCopyButton: button)
+    }
+    
+    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPasteButton button: UIButton) {
+        delegate?.sceneActionMenuView(self, didSelectPasteButton: button)
+    }
+    
+    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectDeleteButton button: UIButton) {
+        delegate?.sceneActionMenuView(self, didSelectDeleteButton: button)
     }
 }

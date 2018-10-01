@@ -99,12 +99,6 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
     
 }
 
-// MARK: - SceneActionsMenuDelegate
-
-extension SceneEditorViewControllerDelegate {
-    
-}
-
 // MARK: - UIPopoverPresentationControllerDelegate
 
 extension SceneEditorViewControllerDelegate: UIPopoverPresentationControllerDelegate {

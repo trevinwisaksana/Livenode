@@ -23,7 +23,7 @@ public class SceneEditorView: UIView {
     
     // MARK: - Setup
     
-    public init(delegate: SceneActionsMenuViewDelegate, dataSource: SceneActionsMenuViewDataSource) {
+    public init(delegate: SceneActionsMenuViewDelegate) {
         super.init(frame: .zero)
         
 //        self.delegate = delegate
