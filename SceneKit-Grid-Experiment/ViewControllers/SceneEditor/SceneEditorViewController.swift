@@ -108,7 +108,7 @@ final class SceneEditorViewController: UIViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        
+        delegate.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: mainScene)
     }
     
     @objc

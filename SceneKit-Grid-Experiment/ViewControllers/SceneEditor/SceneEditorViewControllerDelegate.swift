@@ -21,6 +21,7 @@ protocol SceneEditorDelegateProtocol: class {
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
 }
 
 class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
@@ -187,6 +188,10 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         }
         
         scene.lastNodeSelected = scene.nodeSelected
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
+        sceneView.allowsCameraControl = true
     }
     
 }
