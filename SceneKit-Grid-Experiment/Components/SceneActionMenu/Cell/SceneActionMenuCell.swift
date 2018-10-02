@@ -67,6 +67,10 @@ public class SceneActionMenuCell: UICollectionViewCell {
         ])
     }
     
+    public func hideBorder() {
+        borderView.isHidden = true
+    }
+    
     public func setTitle(forCellAtIndex index: Int) {
         switch index {
         case 0:
@@ -101,4 +105,5 @@ public class SceneActionMenuCell: UICollectionViewCell {
             break
         }
     }
+    
 }

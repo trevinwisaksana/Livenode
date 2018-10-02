@@ -22,6 +22,7 @@ public class SceneActionMenuView: UIView {
     // MARK: - Internal properties
     
     private static let numberOfItemsInSection: Int = 5
+    private let indexOflastItemInSection: Int = SceneActionMenuView.numberOfItemsInSection - 1
     
     private static let cellWidth: CGFloat = 80.0
     
@@ -78,10 +79,18 @@ extension SceneActionMenuView: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return setupCellForItemAt(indexPath: indexPath)
+    }
+    
+    private func setupCellForItemAt(indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SceneActionMenuCell = collectionView.dequeueReusableCell(for: indexPath)
         
         cell.setTitle(forCellAtIndex: indexPath.row)
         cell.delegate = self
+        
+        if indexPath.row == indexOflastItemInSection {
+            cell.hideBorder()
+        }
         
         return cell
     }
