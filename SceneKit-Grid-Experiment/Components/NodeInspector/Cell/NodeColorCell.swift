@@ -8,23 +8,23 @@
 
 import UIKit
 
-public protocol NodeAttributesDelegate {
-    func nodeColorCell(_ nodeColorCell: NodeColorCell, changeBackgroundColorForModel model: SceneInspectorViewModel)
-}
-
 public class NodeColorCell: UITableViewCell {
     
     // MARK: - Internal properties
     
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
-    private static let titleBottomMargin: CGFloat = 3.0
+    private static let titleBottomMargin: CGFloat = -3.0
     private static let titleLeftMargin: CGFloat = 15.0
     
     private static let colorViewWidth: CGFloat = Style.colorViewWidth
     private static let colorViewTopMargin: CGFloat = 15.0
-    private static let colorViewBottomMargin: CGFloat = 15.0
-    private static let colorViewRightMargin: CGFloat = 15.0
+    private static let colorViewBottomMargin: CGFloat = -15.0
+    private static let colorViewRightMargin: CGFloat = -15.0
+    
+    private static let nextIndicatorImageViewTopMargin: CGFloat = 15.0
+    private static let nextIndicatorImageViewBottomMargin: CGFloat = -15.0
+    private static let nextIndicatorImageViewRightMargin: CGFloat = -15.0
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -43,10 +43,18 @@ public class NodeColorCell: UITableViewCell {
         return view
     }()
     
+    private lazy var nextIndicatorImageView: UIImageView = {
+        let image = UIImage(named: .nextIndicator)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     // MARK: - External properties
     
     /// A delegate to modify the model
-    public var delegate: NodeAttributesDelegate?
+    public var delegate: SceneBackgroundColorDelegate?
     
     // MARK: - Setup
     
@@ -63,19 +71,24 @@ public class NodeColorCell: UITableViewCell {
     private func setup() {
         addSubview(titleLabel)
         addSubview(colorView)
+        addSubview(nextIndicatorImageView)
         
         backgroundColor = .milk
         
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: NodeColorCell.titleLeftMargin),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: NodeColorCell.titleTopMargin),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -NodeColorCell.titleBottomMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: NodeColorCell.titleBottomMargin),
             
-            colorView.rightAnchor.constraint(equalTo: rightAnchor, constant: -NodeColorCell.colorViewRightMargin),
+            colorView.rightAnchor.constraint(equalTo: nextIndicatorImageView.leftAnchor, constant: NodeColorCell.colorViewRightMargin),
             colorView.widthAnchor.constraint(equalToConstant: NodeColorCell.colorViewWidth),
             colorView.topAnchor.constraint(equalTo: topAnchor, constant: NodeColorCell.colorViewTopMargin),
-            colorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -NodeColorCell.colorViewBottomMargin),
-        ])
+            colorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: NodeColorCell.colorViewBottomMargin),
+            
+            nextIndicatorImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: NodeColorCell.nextIndicatorImageViewRightMargin),
+            nextIndicatorImageView.topAnchor.constraint(equalTo: topAnchor, constant: NodeColorCell.nextIndicatorImageViewTopMargin),
+            nextIndicatorImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: NodeColorCell.nextIndicatorImageViewBottomMargin),
+            ])
     }
     
     // MARK: - Dependency injection

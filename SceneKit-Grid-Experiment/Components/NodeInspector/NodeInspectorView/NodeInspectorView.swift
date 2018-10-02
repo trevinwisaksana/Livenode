@@ -98,7 +98,6 @@ extension NodeInspectorView: UITableViewDataSource {
         switch section {
         case 0:
             let cell: NodeColorCell = tableView.dequeueReusableCell()
-            cell.delegate = self
             
             if let model = dataSource?.viewModel(inNodeInspectorView: self) {
                 cell.model = model
@@ -113,10 +112,4 @@ extension NodeInspectorView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return NodeInspectorView.cellHeight
     }
-}
-
-// MARK: - NodeAttributesDelegate
-
-extension NodeInspectorView: NodeAttributesDelegate {
-    public func nodeColorCell(_ nodeColorCell: NodeColorCell, changeBackgroundColorForModel model: SceneInspectorViewModel) {}
 }
