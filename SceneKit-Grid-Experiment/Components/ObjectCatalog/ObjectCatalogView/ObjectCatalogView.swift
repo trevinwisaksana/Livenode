@@ -109,10 +109,10 @@ extension ObjectCatalogView: UICollectionViewDataSource {
 
 extension ObjectCatalogView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSelectItemAt(indexPath: indexPath)
+        didSelectItemAt(indexPath)
     }
     
-    private func didSelectItemAt(indexPath: IndexPath) {
+    private func didSelectItemAt(_ indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             break
