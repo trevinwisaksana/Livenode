@@ -10,24 +10,30 @@ import UIKit
 import SceneKit
 
 protocol SceneEditorDelegateProtocol: class {
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuFor node: SCNNode, with sender: UILongPressGestureRecognizer)
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuWith sender: UILongPressGestureRecognizer, at sceneView: SCNView)
+    
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayUtilitiesInspectorWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonFrom notification: Notification, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColor notification: Notification, for scene: DefaultScene)
+    
+    func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
 }
 
 class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
     
-    // MARK: - Internal Properties
-    
-    private static let sourceRectWidth: CGFloat = 1.0
-    private static let sourceRectHeight: CGFloat = 100.0
-    
     // MARK: - Presenting
     
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuFor node: SCNNode, with sender: UILongPressGestureRecognizer) {
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuWith sender: UILongPressGestureRecognizer, at sceneView: SCNView) {
+        let location = sender.location(in: controller.view)
+        
+        if sceneView.hitTest(location, options: nil).first?.node == nil {
+            return
+        }
+        
         let sceneActionsMenuController = Presenter.inject(.sceneActionsMenu)
         
         sceneActionsMenuController.modalPresentationStyle = .popover
@@ -41,7 +47,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         }
         
         let yOffset = height * 0.05
-        let sourceRect = CGRect(x: 0, y: yOffset, width: SceneEditorViewControllerDelegate.sourceRectWidth, height: SceneEditorViewControllerDelegate.sourceRectHeight)
+        let sourceRect = CGRect(x: 0, y: yOffset, width: 1.0, height: 100.0)
         
         let touchView = UIView(frame: sourceRect)
         controller.view.addSubview(touchView)
@@ -116,11 +122,68 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
             break
         case Action.delete.capitalized:
             scene.testNode.removeFromParentNode()
+        case Action.move.capitalized:
+            scene.testNode.isMovable = true
         default:
             break
         }
         
         controller.presentedViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Color Picker
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColor notification: Notification, for scene: DefaultScene) {
+        if let color = notification.object as? UIColor {
+            scene.modifyNode(color: color)
+        }
+    }
+    
+    // MARK: - Touches
+    
+    func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
+        let touch = touches.first ?? UITouch()
+        let location = touch.location(in: controller.view)
+        
+        guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node else {
+            return
+        }
+        
+        if scene.didSelectTargetNode {
+            let nodeXPos = nodeSelected.position.x
+            let nodeYPos = nodeSelected.position.y
+            var nodeZPos = nodeSelected.position.z
+            
+            if nodeZPos >= 1 {
+                nodeZPos = 0
+            }
+            
+            if nodeSelected.isMovable {
+                nodeSelected.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
+            }
+        }
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
+        let touch = touches.first ?? UITouch()
+        let location = touch.location(in: controller.view)
+        
+        scene.nodeSelected = sceneView.hitTest(location, options: nil).first?.node
+        
+        if scene.nodeSelected?.name == "Floor" || scene.nodeSelected == nil {
+//            unhighlight(lastNodeSelected)
+            return
+        }
+        
+        if scene.nodeSelected?.name == "testNode" {
+            scene.didSelectTargetNode = true
+            State.nodeSelected = Node(node: scene.nodeSelected)
+//            highlight(nodeSelected)
+        } else {
+            scene.didSelectTargetNode = false
+        }
+        
+        scene.lastNodeSelected = scene.nodeSelected
     }
     
 }
@@ -130,9 +193,5 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
 extension SceneEditorViewControllerDelegate: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
-    }
-    
-    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        return true
     }
 }

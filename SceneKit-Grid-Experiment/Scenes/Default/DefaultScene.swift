@@ -12,6 +12,9 @@ import SceneKit
 protocol SceneEditorDelegate {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: Scene)
     func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: Scene)
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didBeginDraggingNode scene: Scene)
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishDraggingNode scene: Scene)
 }
 
 public class DefaultScene: SCNScene, SceneViewModel {
@@ -20,6 +23,10 @@ public class DefaultScene: SCNScene, SceneViewModel {
     
     private static let gridWidth: Int = 20
     private static let gridTileWidth: CGFloat = 1
+    
+    public var nodeSelected: SCNNode?
+    public var lastNodeSelected: SCNNode?
+    public var didSelectTargetNode: Bool = false
     
     public var cameraNode: SCNNode = SCNNode()
     public var testNode: SCNNode = SCNNode()
@@ -35,7 +42,7 @@ public class DefaultScene: SCNScene, SceneViewModel {
         super.init()
         
         background.contents = UIColor.gray
-    
+        
         setup()
     }
     
@@ -111,7 +118,7 @@ public class DefaultScene: SCNScene, SceneViewModel {
                 tileNode.position.x = Float(xIndex)
                 tileNode.position.y = Float(yIndex)
                 
-                highlightNode(tileNode)
+                createBorder(for: tileNode)
 
                 rootNode.addChildNode(tileNode)
             }
@@ -135,8 +142,19 @@ public class DefaultScene: SCNScene, SceneViewModel {
 
         return SCNGeometry(sources: [source], elements: [element])
     }
+    
+    // MARK: - Color
+    
+    public func modifyNode(color: UIColor) {
+        guard let name = nodeSelected?.name else {
+            return
+        }
+        
+        let node = rootNode.childNode(withName: name, recursively: true)
+        node?.color = color
+    }
 
-    private func highlightNode(_ node: SCNNode?) {
+    private func createBorder(for node: SCNNode?) {
         guard let node = node else {
             return
         }
@@ -158,19 +176,40 @@ public class DefaultScene: SCNScene, SceneViewModel {
             node.addChildNode($0)
         }
     }
-
-    private func unhighlightNode(_ node: SCNNode?) {
-        guard let node = node else {
-            return
-        }
-
-        let highlightningNodes = node.childNodes { (child, stop) -> Bool in
-            child.name == "highlightNode"
-        }
-
-        highlightningNodes.forEach {
-            $0.removeFromParentNode()
-        }
-    }
+    
+//     TODO: Move the node manipulation code elsewhere
+//     TODO: Find solution that doesn't only work with boxes
+//        private func highlight(_ nodeSelected: SCNNode?) {
+//            if didHighlightNode {
+//                return
+//            }
+//    
+//            guard let nodeSelected = nodeSelected else {
+//                return
+//            }
+//
+//            // TODO: Make the dimensions the same with the node selected
+//            let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+//    
+//            let nodeHighlight = SCNNode(geometry: box)
+//            nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "box_wireframe")
+//            nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
+//            nodeHighlight.name = "nodeHighlight"
+//    
+//            nodeSelected.addChildNode(nodeHighlight)
+//    
+//            didHighlightNode = true
+//        }
+//    
+//        private func unhighlight(_ lastNodeSelected: SCNNode?) {
+//            didHighlightNode = false
+//
+//            guard let node = lastNodeSelected else {
+//                return
+//            }
+//    
+//            let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
+//            nodeHighlight?.removeFromParentNode()
+//        }
 
 }

@@ -13,64 +13,55 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Internal Properties
     
-    private var sceneView: SCNView = SCNView()
-
+    private var sceneView: SCNView = {
+        let sceneView = SCNView()
+        return sceneView
+    }()
+    
+    private var mainScene: DefaultScene = {
+        let scene = DefaultScene()
+        State.currentScene = Scene(scene: scene)
+        return scene
+    }()
+    
     lazy var delegate: SceneEditorDelegateProtocol = SceneEditorViewControllerDelegate()
-    
-    private var mainScene: DefaultScene! {
-        didSet {
-            State.currentScene = Scene(scene: mainScene)
-        }
-    }
-    
-    private var nodeSelected: SCNNode?
-    private var lastNodeSelected: SCNNode?
-    private var lastNodePosition: SCNVector3?
-    
-    private var didSelectTargetNode = false
-    private var didHighlightNode = false
-    
-    private var didFinishDraggingNode = false {
-        didSet {
-            sceneView.allowsCameraControl = true
-        }
-    }
     
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sceneView.allowsCameraControl = false
+        
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     // MARK: - Setup
     
     private func setup() {
-        setupScene()
-        setupLongPressGestureRecognizer()
-        setupNavigationBar()
-        setupNotificationListeners()
-    }
-    
-    private func setupScene() {
-        mainScene = DefaultScene()
+        title = "Blank"
+        sceneView.scene = mainScene
+        
         view.addSubview(sceneView)
         sceneView.fillInSuperview()
         
-        sceneView.scene = mainScene
+        // TODO: Place this inside SceneView
         sceneView.allowsCameraControl = true
         sceneView.showsStatistics = false
         sceneView.autoenablesDefaultLighting = true
-    }
-    
-    private func setupNavigationBar() {
-        navigationController?.setNavigationBarHidden(false, animated: true)
         
-        setupNavigationBarButtons()
+        setupNavigationItems()
+        setupLongPressGestureRecognizer()
+        setupNotificationListeners()
     }
     
-    private func setupNavigationBarButtons() {
+    private func setupNavigationItems() {
         let utilitiesInspectorButtonImage = UIImage(named: .utilitiesInspectorButton)
         let utilitiesInspectorBarButton = UIBarButtonItem(image: utilitiesInspectorButtonImage, style: .plain, target: self, action: #selector(didTapUtilitiesInspectorButton(_:)))
         
@@ -96,73 +87,28 @@ final class SceneEditorViewController: UIViewController {
         view.addGestureRecognizer(longPressGesture)
     }
     
-    // MARK: - Node Selected
+    // MARK: - Color Picker
     
     @objc
     private func didModifyNodeColor(_ notification: Notification) {
-        if let color = notification.object as? UIColor {
-            guard let name = nodeSelected?.name else {
-                return
-            }
-            
-            let node = mainScene.rootNode.childNode(withName: name, recursively: true)
-            node?.color = color
-        }
+        delegate.sceneEditor(self, didModifyNodeColor: notification, for: mainScene)
     }
     
     // MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        
-        let touch = touches.first ?? UITouch()
-        let location = touch.location(in: view)
-        
-        nodeSelected = sceneView.hitTest(location, options: nil).first?.node
-        
-        if nodeSelected?.name == "Floor" || nodeSelected == nil {
-//            unhighlight(lastNodeSelected)
-            return
-        }
-        
-        if nodeSelected?.name == "testNode" {
-            didSelectTargetNode = true
-            State.nodeSelected = Node(node: nodeSelected)
-//            highlight(nodeSelected)
-        } else {
-            didSelectTargetNode = false
-        }
-        
-        lastNodeSelected = nodeSelected
+        delegate.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: mainScene)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
-        
-        let touch = touches.first ?? UITouch()
-        let location = touch.location(in: view)
-        
-        guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node else {
-            return
-        }
-
-        if didSelectTargetNode {
-            let nodeXPos = nodeSelected.position.x
-            let nodeYPos = nodeSelected.position.y
-            var nodeZPos = nodeSelected.position.z
-            
-            if nodeZPos >= 1 {
-                nodeZPos = 0
-            }
-            
-            if mainScene.testNode.isMovable {
-                mainScene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
-            }
-        }
+        delegate.sceneEditor(self, touchesMovedWith: touches, at: sceneView, for: mainScene)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        didFinishDraggingNode = true
+        super.touchesEnded(touches, with: event)
+        
     }
     
     @objc
@@ -187,57 +133,13 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didLongPress(_ sender: UILongPressGestureRecognizer) {
-        let location = sender.location(in: view)
-        
-        guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node else {
-            return
-        }
-        
-        if nodeSelected.name == "testNode" {
-            delegate.sceneEditor(self, didDisplaySceneActionsMenuFor: nodeSelected, with: sender)
-        }
+        delegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
     }
     
     @objc
     private func didSelectSceneAction(_ notification: Notification) {
         delegate.sceneEditor(self, didSelectSceneActionButtonFrom: notification, for: mainScene)
     }
-    
-    // TODO: Move the node manipulation code elsewhere
-    // TODO: Find solution that doesn't only work with boxes
-//    private func highlight(_ nodeSelected: SCNNode?) {
-//        if didHighlightNode {
-//            return
-//        }
-//
-//        guard let nodeSelected = nodeSelected else {
-//            return
-//        }
-//
-//        // TODO: Make the dimensions the same with the node selected
-//        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-//
-//        let nodeHighlight = SCNNode(geometry: box)
-//        nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "box_wireframe")
-//        nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
-//        nodeHighlight.name = "nodeHighlight"
-//
-//        nodeSelected.addChildNode(nodeHighlight)
-//
-//        didHighlightNode = true
-//    }
-//
-//    private func unhighlight(_ lastNodeSelected: SCNNode?) {
-//        didHighlightNode = false
-//
-//        guard let node = lastNodeSelected else {
-//            return
-//        }
-//
-//        let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
-//        nodeHighlight?.removeFromParentNode()
-//    }
-    
     
     // MARK: - Device Configuration
     
