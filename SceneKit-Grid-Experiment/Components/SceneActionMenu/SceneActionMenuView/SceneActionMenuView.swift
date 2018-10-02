@@ -15,13 +15,14 @@ public protocol SceneActionsMenuViewDelegate: class {
     func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectPasteButton button: UIButton)
     func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectDeleteButton button: UIButton)
     func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectMoveButton button: UIButton)
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectPinButton button: UIButton)
 }
 
 public class SceneActionMenuView: UIView {
     
     // MARK: - Internal properties
     
-    private static let numberOfItemsInSection: Int = 5
+    private static let numberOfItemsInSection: Int = 6
     private let indexOflastItemInSection: Int = SceneActionMenuView.numberOfItemsInSection - 1
     
     private static let cellWidth: CGFloat = 80.0
@@ -129,5 +130,9 @@ extension SceneActionMenuView: SceneActionMenuCellDelegate {
     
     public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectMoveButton button: UIButton) {
         delegate?.sceneActionMenuView(self, didSelectMoveButton: button)
+    }
+    
+    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPinButton button: UIButton) {
+        delegate?.sceneActionMenuView(self, didSelectPinButton: button)
     }
 }

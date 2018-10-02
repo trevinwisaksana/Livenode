@@ -12,7 +12,7 @@ final class SceneActionMenuViewController: UIViewController {
     
     // MARK: - Internal Properties
     
-    private let popoverWidth: Int = 400
+    private let popoverWidth: Int = 480
     private let popoverHeight: Int = 35
     
     lazy var delegate = SceneActionMenuViewControllerDelegate()

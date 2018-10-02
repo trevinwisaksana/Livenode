@@ -29,4 +29,8 @@ class SceneActionMenuViewControllerDelegate: NSObject, SceneActionsMenuViewDeleg
     func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectMoveButton button: UIButton) {
         NotificationCenter.default.post(name: Notification.Name.SceneActionMenuDidSelectButton, object: Action.move.capitalized)
     }
+    
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectPinButton button: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name.SceneActionMenuDidSelectButton, object: Action.pin.capitalized)
+    }
 }

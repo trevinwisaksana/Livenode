@@ -14,6 +14,7 @@ public protocol SceneActionMenuCellDelegate: class {
     func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPasteButton button: UIButton)
     func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectDeleteButton button: UIButton)
     func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectMoveButton button: UIButton)
+    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPinButton button: UIButton)
 }
 
 public class SceneActionMenuCell: UICollectionViewCell {
@@ -83,6 +84,8 @@ public class SceneActionMenuCell: UICollectionViewCell {
             actionButton.setTitle(Action.delete.capitalized, for: .normal)
         case 4:
             actionButton.setTitle(Action.move.capitalized, for: .normal)
+        case 5:
+            actionButton.setTitle(Action.pin.capitalized, for: .normal)
         default:
             break
         }
@@ -101,6 +104,8 @@ public class SceneActionMenuCell: UICollectionViewCell {
             delegate?.sceneActionMenuCell(self, didSelectDeleteButton: sender)
         case Action.move.capitalized:
             delegate?.sceneActionMenuCell(self, didSelectMoveButton: sender)
+        case Action.pin.capitalized:
+            delegate?.sceneActionMenuCell(self, didSelectPinButton: sender)
         default:
             break
         }

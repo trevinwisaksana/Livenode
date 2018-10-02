@@ -125,6 +125,8 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
             scene.testNode.removeFromParentNode()
         case Action.move.capitalized:
             scene.testNode.isMovable = true
+        case Action.pin.capitalized:
+            scene.testNode.isMovable = false
         default:
             break
         }
@@ -146,6 +148,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: controller.view)
         
+        // TODO: Move this code to the DefaultScene
         guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node else {
             return
         }
@@ -162,7 +165,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
             // TESTING
             if scene.testNode.isMovable {
 //                nodeSelected.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
-                scene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
+                scene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 0.5)
                 sceneView.allowsCameraControl = false
             }
         }
@@ -172,6 +175,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: controller.view)
         
+        // TODO: Move this code to the DefaultScene
         scene.nodeSelected = sceneView.hitTest(location, options: nil).first?.node
         
         if scene.nodeSelected?.name == "Floor" || scene.nodeSelected == nil {

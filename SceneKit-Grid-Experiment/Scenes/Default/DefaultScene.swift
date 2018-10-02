@@ -57,7 +57,7 @@ public class DefaultScene: SCNScene, SceneViewModel {
         let testBox = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         testNode.geometry = testBox
         testNode.geometry?.firstMaterial?.diffuse.contents = UIColor.green
-        testNode.position = SCNVector3(0, 0.5, 0)
+        testNode.position = SCNVector3(0, 0, 0.5)
         testNode.name = "testNode"
         
         rootNode.addChildNode(testNode)

@@ -18,11 +18,12 @@ struct Constants {
 }
 
 enum Action: String {
-    case move
+    case cut
     case copy
     case delete
     case paste
-    case cut
+    case move
+    case pin
     
     var capitalized: String {
         return rawValue.capitalized
