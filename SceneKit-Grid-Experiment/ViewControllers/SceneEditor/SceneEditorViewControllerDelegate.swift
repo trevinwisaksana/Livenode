@@ -158,8 +158,11 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
                 nodeZPos = 0
             }
             
-            if nodeSelected.isMovable {
-                nodeSelected.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
+            // TESTING
+            if scene.testNode.isMovable {
+//                nodeSelected.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
+                scene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
+                sceneView.allowsCameraControl = false
             }
         }
     }
