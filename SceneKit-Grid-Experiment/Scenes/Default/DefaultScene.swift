@@ -12,7 +12,6 @@ import SceneKit
 protocol SceneEditorDelegate {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: Scene)
     func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: Scene)
-    
     func sceneEditor(_ controller: SceneEditorViewController, didBeginDraggingNode scene: Scene)
     func sceneEditor(_ controller: SceneEditorViewController, didFinishDraggingNode scene: Scene)
 }

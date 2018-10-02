@@ -158,7 +158,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
             let nodeYPos = nodeSelected.position.y
             var nodeZPos = nodeSelected.position.z
             
-            if nodeZPos >= 1 {
+            if nodeZPos >= 0.5 {
                 nodeZPos = 0
             }
             
