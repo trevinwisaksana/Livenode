@@ -16,8 +16,9 @@ protocol SceneEditorDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
     
-    func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonFrom notification: Notification, for scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColor notification: Notification, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene)
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
@@ -108,7 +109,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
     
     // MARK: - Scene Action Menu
     
-    func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonFrom notification: Notification, for scene: DefaultScene) {
+    func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene) {
         guard let action = notification.object as? String else {
             return
         }
@@ -136,9 +137,22 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
     
     // MARK: - Color Picker
     
-    func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColor notification: Notification, for scene: DefaultScene) {
+    func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene) {
         if let color = notification.object as? UIColor {
             scene.modifyNode(color: color)
+        }
+    }
+    
+    // MARK: - Object Catalog
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene) {
+        if let nodeModel = notification.object as? NodeModel {
+            switch nodeModel {
+            case .box:
+                scene.insertBox()
+            case .pyramid:
+                scene.insertPyramid()
+            }
         }
     }
     

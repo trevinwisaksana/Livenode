@@ -18,6 +18,8 @@ public class ObjectCatalogCell: UICollectionViewCell {
         return sceneView
     }()
     
+    private var nodeModel: NodeModel?
+    
     // MARK: - Setup
     
     public override init(frame: CGRect) {
@@ -43,6 +45,7 @@ public class ObjectCatalogCell: UICollectionViewCell {
         didSet {
             if let model = model {
                 objectSceneView.scene = model.objectModelScene
+                nodeModel = model.nodeModel
             }
         }
     }

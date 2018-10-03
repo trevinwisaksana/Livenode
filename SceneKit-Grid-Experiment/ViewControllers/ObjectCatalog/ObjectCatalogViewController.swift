@@ -9,19 +9,20 @@
 import UIKit
 import SceneKit
 
-final class ObjectCatalogViewController<View: UIView>: UIViewController {
+final class ObjectCatalogViewController: UIViewController {
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var mainView: View = {
-        let mainView = View(frame: view.frame)
+    private lazy var delegate = ObjectCatalogViewControllerDelegate()
+
+    lazy var mainView: ObjectCatalogPresentableView = {
+        let mainView = ObjectCatalogPresentableView(frame: view.frame)
+        mainView.delegate = delegate
         return mainView
     }()
-    
-//    weak var delegate: ObjectInsertionDelegate?
     
     // MARK: - VC Lifecycle
     

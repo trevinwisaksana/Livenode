@@ -32,7 +32,7 @@ enum Presenter {
             controller = SceneActionMenuViewController()
             return controller
         case .objectCatalog:
-            controller = ObjectCatalogViewController<ObjectCatalogPresentableView>()
+            controller = ObjectCatalogViewController()
             return controller
         }
     }

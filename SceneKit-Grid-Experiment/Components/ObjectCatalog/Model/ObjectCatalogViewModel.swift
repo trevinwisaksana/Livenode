@@ -10,4 +10,5 @@ import SceneKit
 
 public protocol ObjectCatalogViewModel {
     var objectModelScene: SCNScene { get set }
+    var nodeModel: NodeModel { get set }
 }

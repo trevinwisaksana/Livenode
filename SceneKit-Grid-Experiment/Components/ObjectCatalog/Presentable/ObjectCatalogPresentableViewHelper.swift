@@ -11,6 +11,7 @@ import SceneKit
 
 public struct ObjectCatalogModel: ObjectCatalogViewModel {
     public var objectModelScene: SCNScene
+    public var nodeModel: NodeModel
 }
 
 public struct ObjectCatalogModelFactory {
@@ -22,7 +23,9 @@ public struct ObjectCatalogModelFactory {
                 fatalError("Cannot load model scene.")
             }
             
-            objectCatalogModels.append(ObjectCatalogModel(objectModelScene: modelScene))
+            let nodeModel = nodeModels[objectModelIndex]
+            
+            objectCatalogModels.append(ObjectCatalogModel(objectModelScene: modelScene, nodeModel: nodeModel))
         }
     
         return objectCatalogModels
@@ -30,8 +33,24 @@ public struct ObjectCatalogModelFactory {
     
     private static var filenames: [String] {
         return [
-            "Box.scn",
-            "Pyramid.scn"
+            NodeModel.box.filename,
+            NodeModel.pyramid.filename
         ]
+    }
+    
+    private static var nodeModels: [NodeModel] {
+        return [
+            NodeModel.box,
+            NodeModel.pyramid
+        ]
+    }
+}
+
+public enum NodeModel: String {
+    case box
+    case pyramid
+    
+    var filename: String {
+        return self.rawValue.capitalized + ".scn"
     }
 }

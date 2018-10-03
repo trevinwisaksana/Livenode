@@ -86,7 +86,7 @@ public class DefaultScene: SCNScene, SceneViewModel {
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         let boxNode = SCNNode(geometry: box)
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        boxNode.position = SCNVector3(0, 0.5, 5)
+        boxNode.position = SCNVector3(10, 10, 0.5)
         // TODO: Change the name
         boxNode.name = "testNode"
         
@@ -97,7 +97,7 @@ public class DefaultScene: SCNScene, SceneViewModel {
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
         let pyramidNode = SCNNode(geometry: pyramid)
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        pyramidNode.position = SCNVector3(0, 0.5, 5)
+        pyramidNode.position = SCNVector3(10, 10, 0.5)
         // TODO: Change the name
         pyramidNode.name = "testNode"
         

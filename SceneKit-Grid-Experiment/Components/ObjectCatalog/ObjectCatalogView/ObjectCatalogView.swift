@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol ObjectCatalogViewDelegate: class {
-    func objectCatalogView(_ objectCatalogView: ObjectCatalogView, didSelectItemAtIndexPath indexPath: IndexPath)
+    func objectCatalogView(_ objectCatalogView: ObjectCatalogView, didSelectNodeModel model: NodeModel)
 }
 
 public protocol ObjectCatalogViewDataSource: class {
@@ -119,14 +119,13 @@ extension ObjectCatalogView: UICollectionViewDelegateFlowLayout {
     }
     
     private func didSelectItemAt(_ indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            break
-        case 1:
-            break
-        default:
-            break
+        let viewModel = dataSource?.objectCatalogView(self, modelAtIndex: indexPath.row)
+        
+        guard let nodeModel = viewModel?.nodeModel else {
+            return
         }
+        
+        delegate?.objectCatalogView(self, didSelectNodeModel: nodeModel)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -24,7 +24,7 @@ final class SceneEditorViewController: UIViewController {
         return scene
     }()
     
-    lazy var delegate: SceneEditorDelegateProtocol = SceneEditorViewControllerDelegate()
+    private lazy var delegate = SceneEditorViewControllerDelegate()
     
     // MARK: - VC Lifecycle
     
@@ -80,6 +80,7 @@ final class SceneEditorViewController: UIViewController {
     private func setupNotificationListeners() {
         NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Notification.Name.ColorPickerDidModifyNodeColor, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectSceneAction(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectNodeModel(_:)), name: Notification.Name.ObjectCatalogDidSelectNodeModel, object: nil)
     }
     
     private func setupLongPressGestureRecognizer() {
@@ -91,7 +92,7 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didModifyNodeColor(_ notification: Notification) {
-        delegate.sceneEditor(self, didModifyNodeColor: notification, for: mainScene)
+        delegate.sceneEditor(self, didModifyNodeColorUsing: notification, for: mainScene)
     }
     
     // MARK: - Touches
@@ -138,7 +139,12 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didSelectSceneAction(_ notification: Notification) {
-        delegate.sceneEditor(self, didSelectSceneActionButtonFrom: notification, for: mainScene)
+        delegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: mainScene)
+    }
+    
+    @objc
+    private func didSelectNodeModel(_ notification: Notification) {
+        delegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: mainScene)
     }
     
     // MARK: - Device Configuration

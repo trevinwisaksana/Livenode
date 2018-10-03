@@ -13,14 +13,22 @@ public class ObjectCatalogDataSource: NSObject {
     let objectModels: [ObjectCatalogModel] = ObjectCatalogModelFactory.create()
 }
 
+public protocol ObjectCatalogPresentableViewDelegate: class {
+    func objectCatalogPresentableView(_ objectCatalogPresentableView: ObjectCatalogPresentableView, didSelectNodeModel model: NodeModel)
+}
+
 public class ObjectCatalogPresentableView: UIView {
+    
+    // MARK: - Internal Properties
     
     lazy var dataSource: ObjectCatalogDataSource = {
         return ObjectCatalogDataSource()
     }()
     
-    // MARK: - Initializer
+    weak var delegate: ObjectCatalogPresentableViewDelegate?
     
+    // MARK: - Initializer
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -41,8 +49,8 @@ public class ObjectCatalogPresentableView: UIView {
 // MARK: - ObjectCatalogViewDelegate
 
 extension ObjectCatalogPresentableView: ObjectCatalogViewDelegate {
-    public func objectCatalogView(_ objectCatalogView: ObjectCatalogView, didSelectItemAtIndexPath indexPath: IndexPath) {
-        
+    public func objectCatalogView(_ objectCatalogView: ObjectCatalogView, didSelectNodeModel model: NodeModel) {
+        delegate?.objectCatalogPresentableView(self, didSelectNodeModel: model)
     }
 }
 
