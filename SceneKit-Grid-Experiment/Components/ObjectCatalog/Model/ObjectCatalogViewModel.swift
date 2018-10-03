@@ -6,12 +6,8 @@
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
-import Foundation
+import SceneKit
 
 public protocol ObjectCatalogViewModel {
-    
-}
-
-public struct ObjectCatalog: ObjectCatalogViewModel {
-    
+    var objectModelScene: SCNScene { get set }
 }

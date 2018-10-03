@@ -13,7 +13,8 @@ public protocol ObjectCatalogViewDelegate: class {
 }
 
 public protocol ObjectCatalogViewDataSource: class {
-    func viewModel(InObjectCatalogView sceneAcobjectCatalogViewtionsMenuView: ObjectCatalogView) -> ObjectCatalogViewModel
+    func objectCatalogView(_ objectCatalogView: ObjectCatalogView, modelAtIndex index: Int) -> ObjectCatalogViewModel
+    func numberOfItems(InObjectCatalogView inObjectCatalogView: ObjectCatalogView) -> Int
 }
 
 public class ObjectCatalogView: UIView  {
@@ -96,11 +97,16 @@ public class ObjectCatalogView: UIView  {
 
 extension ObjectCatalogView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return dataSource?.numberOfItems(InObjectCatalogView: self) ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ObjectCatalogCell = collectionView.dequeueReusableCell(for: indexPath)
+        
+        if let model = dataSource?.objectCatalogView(self, modelAtIndex: indexPath.row) {
+            cell.model = model
+        }
+        
         return cell
     }
 }

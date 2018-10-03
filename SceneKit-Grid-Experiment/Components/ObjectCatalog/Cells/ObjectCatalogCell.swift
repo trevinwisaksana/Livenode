@@ -34,7 +34,17 @@ public class ObjectCatalogCell: UICollectionViewCell {
     private func setup() {
         addSubview(objectSceneView)
         objectSceneView.fillInSuperview()
-        objectSceneView.scene = SCNScene(named: "Box.scn")
+    }
+    
+    // MARK: - Dependency injection
+    
+    /// The model contains data used to populate the view.
+    public var model: ObjectCatalogViewModel? {
+        didSet {
+            if let model = model {
+                objectSceneView.scene = model.objectModelScene
+            }
+        }
     }
     
 }

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SceneKit
 
 public class ObjectCatalogDataSource: NSObject {
-    
+    let objectModels: [ObjectCatalogModel] = ObjectCatalogModelFactory.create()
 }
 
 public class ObjectCatalogPresentableView: UIView {
@@ -48,7 +49,11 @@ extension ObjectCatalogPresentableView: ObjectCatalogViewDelegate {
 // MARK: - ObjectCatalogViewDataSource
 
 extension ObjectCatalogPresentableView: ObjectCatalogViewDataSource {
-    public func viewModel(InObjectCatalogView sceneAcobjectCatalogViewtionsMenuView: ObjectCatalogView) -> ObjectCatalogViewModel {
-        return ObjectCatalog()
+    public func numberOfItems(InObjectCatalogView inObjectCatalogView: ObjectCatalogView) -> Int {
+        return dataSource.objectModels.count
+    }
+    
+    public func objectCatalogView(_ objectCatalogView: ObjectCatalogView, modelAtIndex index: Int) -> ObjectCatalogViewModel {
+        return dataSource.objectModels[index]
     }
 }
