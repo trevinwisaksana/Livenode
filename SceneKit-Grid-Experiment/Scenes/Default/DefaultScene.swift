@@ -23,12 +23,23 @@ public class DefaultScene: SCNScene, SceneViewModel {
     private static let gridWidth: Int = 20
     private static let gridTileWidth: CGFloat = 1
     
+    // MARK: - Public Properties
+    
     public var nodeSelected: SCNNode?
     public var lastNodeSelected: SCNNode?
     public var didSelectTargetNode: Bool = false
     
     public var cameraNode: SCNNode = SCNNode()
-    public var testNode: SCNNode = SCNNode()
+    
+    public var testNode: SCNNode = {
+        let boxGeometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        let node = SCNNode(geometry: boxGeometry)
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        node.position = SCNVector3(0, 0, 0.5)
+        node.name = "testNode"
+        return node
+    }()
+    
     public var floorNode: SCNNode = SCNNode()
     
     public var floorColor: UIColor? {
@@ -40,35 +51,15 @@ public class DefaultScene: SCNScene, SceneViewModel {
     override public init() {
         super.init()
         
-        background.contents = UIColor.gray
-        
         setup()
     }
     
     private func setup() {
-        setupSCNBox()
-//        setupCamera()
-//        setupFloor()
-        displayGrid()
-    }
-    
-    private func setupSCNBox() {
-        let testBox = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-        testNode.geometry = testBox
-        testNode.geometry?.firstMaterial?.diffuse.contents = UIColor.green
-        testNode.position = SCNVector3(0, 0, 0.5)
-        testNode.name = "testNode"
-        
         rootNode.addChildNode(testNode)
-    }
-    
-    private func setupFloor() {
-        // TODO: Add a grid texture to the SCNFloor
-        let floorGeometry = SCNFloor()
-        floorNode.geometry = floorGeometry
-        floorNode.name = "Floor"
-        floorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        rootNode.addChildNode(floorNode)
+        
+        displayGrid()
+        
+        background.contents = UIColor.gray
     }
     
     private func setupCamera() {
@@ -88,7 +79,7 @@ public class DefaultScene: SCNScene, SceneViewModel {
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         boxNode.position = SCNVector3(10, 10, 0.5)
         // TODO: Change the name
-        boxNode.name = "testNode"
+        boxNode.name = "boxNode"
         
         rootNode.addChildNode(boxNode)
     }
@@ -124,6 +115,29 @@ public class DefaultScene: SCNScene, SceneViewModel {
         }
     }
     
+    private func createBorder(for node: SCNNode?) {
+        guard let node = node else {
+            return
+        }
+        
+        let (min, max) = node.boundingBox
+        let zCoord = node.position.z
+        let topLeft = SCNVector3(min.x, max.y, zCoord)
+        let bottomLeft = SCNVector3(min.x, min.y, zCoord)
+        let topRight = SCNVector3(max.x, max.y, zCoord)
+        let bottomRight = SCNVector3(max.x, min.y, zCoord)
+        
+        let bottomSide = createLineNode(fromPos: bottomLeft, toPos: bottomRight, color: .yellow)
+        let leftSide = createLineNode(fromPos: bottomLeft, toPos: topLeft, color: .yellow)
+        let rightSide = createLineNode(fromPos: bottomRight, toPos: topRight, color: .yellow)
+        let topSide = createLineNode(fromPos: topLeft, toPos: topRight, color: .yellow)
+        
+        [bottomSide, leftSide, rightSide, topSide].forEach {
+            $0.name = "highlightNode"
+            node.addChildNode($0)
+        }
+    }
+    
     private func createLineNode(fromPos origin: SCNVector3, toPos destination: SCNVector3, color: UIColor) -> SCNNode {
         let line = lineFrom(vector: origin, toVector: destination)
 
@@ -142,7 +156,44 @@ public class DefaultScene: SCNScene, SceneViewModel {
         return SCNGeometry(sources: [source], elements: [element])
     }
     
-    // MARK: - Color
+    // MARK: - Node Movement
+    
+    public func move(nodeSelected: SCNNode, in sceneView: SCNView) {
+        if didSelectTargetNode {
+            let nodeXPos = nodeSelected.position.x
+            let nodeYPos = nodeSelected.position.y
+            var nodeZPos = nodeSelected.position.z
+            
+            if nodeZPos >= 0.5 {
+                nodeZPos = 0
+            }
+            
+            if lastNodeSelected?.isMovable ?? false {
+                lastNodeSelected?.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 0.5)
+                sceneView.allowsCameraControl = false
+            }
+        }
+    }
+    
+    // MARK: - Node Selection
+    
+    public func didSelectNode(_ node: SCNNode?) {
+        guard let node = node else {
+            nodeSelected = nil
+            return
+        }
+        
+        if node.name == "Floor" {
+            return
+        }
+        
+        nodeSelected = node
+        didSelectTargetNode = true
+//        State.nodeSelected = Node(node: nodeSelected)
+        lastNodeSelected = nodeSelected
+    }
+    
+    // MARK: - Node Color
     
     public func modifyNode(color: UIColor) {
         guard let name = nodeSelected?.name else {
@@ -151,29 +202,6 @@ public class DefaultScene: SCNScene, SceneViewModel {
         
         let node = rootNode.childNode(withName: name, recursively: true)
         node?.color = color
-    }
-
-    private func createBorder(for node: SCNNode?) {
-        guard let node = node else {
-            return
-        }
-
-        let (min, max) = node.boundingBox
-        let zCoord = node.position.z
-        let topLeft = SCNVector3(min.x, max.y, zCoord)
-        let bottomLeft = SCNVector3(min.x, min.y, zCoord)
-        let topRight = SCNVector3(max.x, max.y, zCoord)
-        let bottomRight = SCNVector3(max.x, min.y, zCoord)
-
-        let bottomSide = createLineNode(fromPos: bottomLeft, toPos: bottomRight, color: .yellow)
-        let leftSide = createLineNode(fromPos: bottomLeft, toPos: topLeft, color: .yellow)
-        let rightSide = createLineNode(fromPos: bottomRight, toPos: topRight, color: .yellow)
-        let topSide = createLineNode(fromPos: topLeft, toPos: topRight, color: .yellow)
-
-        [bottomSide, leftSide, rightSide, topSide].forEach {
-            $0.name = "highlightNode"
-            node.addChildNode($0)
-        }
     }
     
 //     TODO: Move the node manipulation code elsewhere

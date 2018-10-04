@@ -116,18 +116,19 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         
         switch action {
         case Action.cut.capitalized:
-            scene.testNode.copy()
-            scene.testNode.removeFromParentNode()
+            scene.nodeSelected?.copy()
+            scene.nodeSelected?.removeFromParentNode()
         case Action.copy.capitalized:
             scene.testNode.copy()
         case Action.paste.capitalized:
             break
         case Action.delete.capitalized:
-            scene.testNode.removeFromParentNode()
+            scene.nodeSelected?.removeFromParentNode()
         case Action.move.capitalized:
-            scene.testNode.isMovable = true
+            scene.nodeSelected?.isMovable = true
         case Action.pin.capitalized:
-            scene.testNode.isMovable = false
+            scene.nodeSelected?.isMovable = false
+            scene.didSelectTargetNode = false
         default:
             break
         }
@@ -162,27 +163,11 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: controller.view)
         
-        // TODO: Move this code to the DefaultScene
         guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node else {
             return
         }
         
-        if scene.didSelectTargetNode {
-            let nodeXPos = nodeSelected.position.x
-            let nodeYPos = nodeSelected.position.y
-            var nodeZPos = nodeSelected.position.z
-            
-            if nodeZPos >= 0.5 {
-                nodeZPos = 0
-            }
-            
-            // TESTING
-            if scene.testNode.isMovable {
-//                nodeSelected.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 1)
-                scene.testNode.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 0.5)
-                sceneView.allowsCameraControl = false
-            }
-        }
+        scene.move(nodeSelected: nodeSelected, in: sceneView)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
@@ -190,22 +175,8 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         let location = touch.location(in: controller.view)
         
         // TODO: Move this code to the DefaultScene
-        scene.nodeSelected = sceneView.hitTest(location, options: nil).first?.node
-        
-        if scene.nodeSelected?.name == "Floor" || scene.nodeSelected == nil {
-//            unhighlight(lastNodeSelected)
-            return
-        }
-        
-        if scene.nodeSelected?.name == "testNode" {
-            scene.didSelectTargetNode = true
-            State.nodeSelected = Node(node: scene.nodeSelected)
-//            highlight(nodeSelected)
-        } else {
-            scene.didSelectTargetNode = false
-        }
-        
-        scene.lastNodeSelected = scene.nodeSelected
+        let nodeSelected = sceneView.hitTest(location, options: nil).first?.node
+        scene.didSelectNode(nodeSelected)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
