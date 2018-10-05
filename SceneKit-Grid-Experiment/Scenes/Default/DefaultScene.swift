@@ -16,7 +16,7 @@ protocol SceneEditorDelegate {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishDraggingNode scene: Scene)
 }
 
-public class DefaultScene: SCNScene, SceneViewModel {
+public class DefaultScene: SCNScene {
     
     // MARK: - Internal Properties
     
@@ -47,6 +47,13 @@ public class DefaultScene: SCNScene, SceneViewModel {
     }
     
     // MARK: - Setup
+    
+    init(data: SceneViewModel) {
+        super.init()
+        
+        
+        setup()
+    }
     
     override public init() {
         super.init()

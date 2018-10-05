@@ -18,11 +18,7 @@ final class SceneEditorViewController: UIViewController {
         return sceneView
     }()
     
-    private var mainScene: DefaultScene = {
-        let scene = DefaultScene()
-        State.currentScene = Scene(scene: scene)
-        return scene
-    }()
+    private var mainScene: DefaultScene
     
     private lazy var delegate = SceneEditorViewControllerDelegate()
     
@@ -30,9 +26,7 @@ final class SceneEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        sceneView.allowsCameraControl = false
-        
+     
         setup()
     }
     
@@ -43,6 +37,16 @@ final class SceneEditorViewController: UIViewController {
     }
     
     // MARK: - Setup
+    
+    init(sceneDocument: SceneDocument) {
+        mainScene = DefaultScene(data: sceneDocument.scene)
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private func setup() {
         title = "Blank"

@@ -114,6 +114,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
             return
         }
         
+        // TODO: Make functions to encapsulate the code in DefaultScene
         switch action {
         case Action.cut.capitalized:
             scene.nodeSelected?.copy()
@@ -174,7 +175,6 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: controller.view)
         
-        // TODO: Move this code to the DefaultScene
         let nodeSelected = sceneView.hitTest(location, options: nil).first?.node
         scene.didSelectNode(nodeSelected)
     }
@@ -183,6 +183,14 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         sceneView.allowsCameraControl = true
     }
     
+}
+
+// MARK: - SCNSceneExportDelegate
+
+extension SceneEditorViewControllerDelegate: SCNSceneExportDelegate {
+    func write(_ image: UIImage, withSceneDocumentURL documentURL: URL, originalImageURL: URL?) -> URL? {
+        return URL(string: "Users/trevinwisaksana/Desktop")
+    }
 }
 
 // MARK: - UIPopoverPresentationControllerDelegate

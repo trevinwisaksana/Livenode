@@ -393,7 +393,6 @@
 		DD6C16F9210B32DA002CB031 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DD68C21E2110735C0061100F /* Node.swift */,
 				DD6C16F7210B32D5002CB031 /* NodeInspectorViewModel.swift */,
 			);
 			path = Model;
@@ -430,7 +429,6 @@
 		DD6CC4242109B0D5009284C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DD68C220211076690061100F /* Scene.swift */,
 				DDBA24C12153D0D5003C9CAF /* SceneViewModel.swift */,
 				DD6CC4222109B0D2009284C6 /* SceneInspectorViewModel.swift */,
 			);
@@ -570,6 +568,8 @@
 			isa = PBXGroup;
 			children = (
 				DDBA24B82153CADA003C9CAF /* SceneDocument.swift */,
+				DD68C220211076690061100F /* Scene.swift */,
+				DD68C21E2110735C0061100F /* Node.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

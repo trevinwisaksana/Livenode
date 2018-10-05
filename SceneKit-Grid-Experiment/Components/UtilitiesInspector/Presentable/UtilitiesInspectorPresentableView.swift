@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 public class UtilitiesInspectorDataSource: NSObject {
-    let scene: Scene? = State.currentScene
+    let scene: Scene? = State.currentDocument?.scene
 }
 
 public class UtilitiesInspectorPresentableView: UIView {

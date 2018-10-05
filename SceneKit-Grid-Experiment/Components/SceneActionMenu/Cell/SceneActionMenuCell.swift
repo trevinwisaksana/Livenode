@@ -103,6 +103,7 @@ public class SceneActionMenuCell: UICollectionViewCell {
         case Action.delete.capitalized:
             delegate?.sceneActionMenuCell(self, didSelectDeleteButton: sender)
         case Action.move.capitalized:
+            // TODO: Change the Move title to Pin when node selected isMovable
             delegate?.sceneActionMenuCell(self, didSelectMoveButton: sender)
         case Action.pin.capitalized:
             delegate?.sceneActionMenuCell(self, didSelectPinButton: sender)

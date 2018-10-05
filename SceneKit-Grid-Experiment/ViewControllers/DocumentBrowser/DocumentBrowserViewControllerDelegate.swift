@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SceneKit
 
 class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
     
@@ -31,15 +32,18 @@ class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewCont
                     importHandler(nil, .none)
                     return
                 }
-                
+
                 importHandler(url, .move)
             }
         }
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
-        // TODO: Scenes should be injectable to the view controller
-        controller.navigationController?.pushViewController(SceneEditorViewController(), animated: true)
+        guard let documentSelectedURL = documentURLs.first else {
+            return
+        }
+        
+        openDocument(with: documentSelectedURL, using: controller)
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didImportDocumentAt sourceURL: URL, toDestinationURL destinationURL: URL) {
@@ -54,9 +58,33 @@ class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewCont
 // MARK: - Opening Document
 
 extension DocumentBrowserViewControllerDelegate {
-    private func openDocument(with url: URL) {
-        if !isDocumentOpen(with: url) {
+    private func displayDocument(with controller: UIDocumentBrowserViewController) {
+        guard let document = State.currentDocument else {
             return
+        }
+        
+        if State.isEditingScene {
+            return
+        }
+        
+        State.isEditingScene = true
+        
+        let sceneEditor = SceneEditorViewController(sceneDocument: document)
+        controller.navigationController?.pushViewController(sceneEditor, animated: true)
+    }
+    
+    private func openDocument(with url: URL, using controller: UIDocumentBrowserViewController) {
+        if isDocumentOpen(with: url) {
+            return
+        }
+        
+        let document = SceneDocument(fileURL: url)
+        document.open { (openSuccess) in
+            if !openSuccess {
+                return
+            }
+            State.currentDocument = document
+            self.displayDocument(with: controller)
         }
     }
     
@@ -96,7 +124,7 @@ extension DocumentBrowserViewControllerDelegate {
         UserDefaults.standard.set(newDocumentNumber, forKey: DocumentBrowserViewControllerDelegate.documentNumberKey)
     }
     
-    func createDocumentURL() -> URL {
+    private func createDocumentURL() -> URL {
         let documentPath = UIApplication.cacheDirectory()
         let documentName = createDefaultDocumentName()
         let documentURL = documentPath.appendingPathComponent(documentName).appendingPathExtension(SceneDocument.filenameExtension)

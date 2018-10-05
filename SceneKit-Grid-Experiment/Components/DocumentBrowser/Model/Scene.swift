@@ -9,21 +9,23 @@
 import SceneKit
 import UIKit
 
-public class Scene: NSObject, NSCoding {
+public class Scene: NSObject, NSCoding, SceneViewModel {
     
     // MARK: - Internal Properties
     
     private static let backgroundColorKey: String = "backgroundColorKey"
     private static let floorColorKey: String = "floorColorKey"
     
-    public var backgroundColor: UIColor
-    public var floorColor: UIColor
+    public var backgroundColor: UIColor = .white
+    public var floorColor: UIColor = .gray
     
     // MARK: - Initialzer
     
-    init(scene: SceneViewModel) {
-        self.backgroundColor = scene.backgroundColor
-        self.floorColor = scene.floorColor ?? .clear
+    init(template: String) {
+        super.init()
+        
+//        self.backgroundColor = scene.backgroundColor
+//        self.floorColor = scene.floorColor
     }
     
     // MARK: - Encoder
