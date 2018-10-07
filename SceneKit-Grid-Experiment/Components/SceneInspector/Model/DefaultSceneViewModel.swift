@@ -1,5 +1,5 @@
 //
-//  SceneViewModel.swift
+//  DefaultSceneViewModel.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 20/09/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-public protocol SceneViewModel {
-    var backgroundColor: UIColor { get set }
+public protocol DefaultSceneViewModel {
+    var backgroundColor: UIColor { get }
     var floorColor: UIColor { get }
 }

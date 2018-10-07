@@ -12,10 +12,6 @@ public protocol UtilitiesInspectorViewDelegate: class {
     func utilitiesView(_ utilitiesView: UtilitiesInspectorView, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
-public protocol UtilitiesInspectorViewDataSource: class {
-    func viewModel(InColorPickerView colorPickerView: UtilitiesInspectorView) -> UtilitiesInspectorViewModel
-}
-
 public class UtilitiesInspectorView: UIView {
     
     // MARK: - Internal properties
@@ -32,15 +28,13 @@ public class UtilitiesInspectorView: UIView {
     }()
     
     private weak var delegate: UtilitiesInspectorViewDelegate?
-    private weak var dataSource: UtilitiesInspectorViewDataSource?
     
     // MARK: - Setup
     
-    public init(delegate: UtilitiesInspectorViewDelegate, dataSource: UtilitiesInspectorViewDataSource) {
+    public init(delegate: UtilitiesInspectorViewDelegate) {
         super.init(frame: .zero)
         
         self.delegate = delegate
-        self.dataSource = dataSource
         
         setup()
     }

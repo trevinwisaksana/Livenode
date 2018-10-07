@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 public class SceneDataSource: NSObject {
-    let scene: Scene? = State.currentDocument?.scene
+    let scene: DefaultSceneViewModel? = State.currentDocument?.scene
 }
 
 public class SceneInspectorPresentableView: UIView {
@@ -67,6 +67,8 @@ extension SceneInspectorPresentableView: SceneInspectorViewDelegate {
 
 extension SceneInspectorPresentableView: SceneInspectorViewDataSource {
     public func viewModel(inSceneInspectorView sceneInspectorView: SceneInspectorView) -> SceneInspectorViewModel {
-        return SceneInspector(scene: dataSource.scene)
+        let backgroundColor = dataSource.scene?.backgroundColor
+        let floorColor = dataSource.scene?.floorColor
+        return SceneInspector(backgroundColor: backgroundColor, floorColor: floorColor)
     }
 }

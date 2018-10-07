@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-protocol SceneEditorDelegateProtocol: class {
+protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuWith sender: UILongPressGestureRecognizer, at sceneView: SCNView)
     
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayUtilitiesInspectorWith sender: UIBarButtonItem)
@@ -25,7 +25,14 @@ protocol SceneEditorDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
 }
 
-class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
+protocol SceneEditorDelegate: class {
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: SCNScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: SCNScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didBeginDraggingNode scene: SCNScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishDraggingNode scene: SCNScene)
+}
+
+class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDelegateProtocol {
     
     // MARK: - Presenting
     
@@ -183,14 +190,6 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorDelegateProtocol {
         sceneView.allowsCameraControl = true
     }
     
-}
-
-// MARK: - SCNSceneExportDelegate
-
-extension SceneEditorViewControllerDelegate: SCNSceneExportDelegate {
-    func write(_ image: UIImage, withSceneDocumentURL documentURL: URL, originalImageURL: URL?) -> URL? {
-        return URL(string: "Users/trevinwisaksana/Desktop")
-    }
 }
 
 // MARK: - UIPopoverPresentationControllerDelegate

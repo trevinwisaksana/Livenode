@@ -9,17 +9,7 @@
 import UIKit
 import SceneKit
 
-public class UtilitiesInspectorDataSource: NSObject {
-    let scene: Scene? = State.currentDocument?.scene
-}
-
 public class UtilitiesInspectorPresentableView: UIView {
-    
-    // MARK: - Internal Properties
-    
-    lazy var dataSource: UtilitiesInspectorDataSource = {
-        return UtilitiesInspectorDataSource()
-    }()
     
     // MARK: - Initializer
     
@@ -32,7 +22,7 @@ public class UtilitiesInspectorPresentableView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
     
     private func setup() {
-        let view = UtilitiesInspectorView(delegate: self, dataSource: self)
+        let view = UtilitiesInspectorView(delegate: self)
         addSubview(view)
         view.fillInSuperview()
     }
@@ -62,13 +52,3 @@ extension UtilitiesInspectorPresentableView: UtilitiesInspectorViewDelegate {
         }
     }
 }
-
-// MARK: - UtilitiesViewDataSource
-
-// NOTE: Not sure if this is necessary
-extension UtilitiesInspectorPresentableView: UtilitiesInspectorViewDataSource {
-    public func viewModel(InColorPickerView colorPickerView: UtilitiesInspectorView) -> UtilitiesInspectorViewModel {
-        return UtilitiesInspector(scene: dataSource.scene)
-    }
-}
-

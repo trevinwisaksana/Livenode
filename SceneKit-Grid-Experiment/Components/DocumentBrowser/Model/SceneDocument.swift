@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SceneKit
 
 final class SceneDocument: UIDocument {
     
     static let defaultSceneTemplate = ""
-    static let filenameExtension = "scn"
+    static let filenameExtension = "livenote"
     
-    var scene: Scene = Scene(template: "DefaultScene") {
+    var scene: DefaultScene = DefaultScene() {
         didSet {
             updateChangeCount(.done)
         }
@@ -44,7 +45,7 @@ final class SceneDocument: UIDocument {
             throw DocumentError.corruptDocument
         }
         unarchiver.requiresSecureCoding = false
-        let decodedContent = unarchiver.decodeObject(of: Scene.self, forKey: NSKeyedArchiveRootObjectKey)
+        let decodedContent = unarchiver.decodeObject(of: DefaultScene.self, forKey: NSKeyedArchiveRootObjectKey)
         guard let content = decodedContent else {
             throw DocumentError.corruptDocument
         }

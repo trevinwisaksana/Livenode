@@ -20,13 +20,17 @@ final class SceneEditorViewController: UIViewController {
     
     private var mainScene: DefaultScene
     
-    private lazy var delegate = SceneEditorViewControllerDelegate()
+    private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
+    
+    // MARK: - Public Properties
+    
+    public weak var sceneEditorDelegate: SceneEditorDelegate?
     
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         setup()
     }
     
@@ -38,8 +42,9 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Setup
     
-    init(sceneDocument: SceneDocument) {
+    init(sceneDocument: SceneDocument, delegate: SceneEditorDelegate) {
         mainScene = DefaultScene(data: sceneDocument.scene)
+        sceneEditorDelegate = delegate
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -78,12 +83,15 @@ final class SceneEditorViewController: UIViewController {
         let playButtonImage = UIImage(named: .playButton)
         let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
         
+        let backBarButton = UIBarButtonItem(title: "Scenes", style: .plain, target: self, action: #selector(didTapBackButton(_:)))
+        
+        navigationItem.setLeftBarButton(backBarButton, animated: true)
         navigationItem.setRightBarButtonItems([utilitiesInspectorBarButton, objectCatalogBarButton, nodeInspectorBarButton, playBarButton], animated: true)
     }
     
     private func setupNotificationListeners() {
         NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Notification.Name.ColorPickerDidModifyNodeColor, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didSelectSceneAction(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didTapSceneActionButton(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectNodeModel(_:)), name: Notification.Name.ObjectCatalogDidSelectNodeModel, object: nil)
     }
     
@@ -96,39 +104,45 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didModifyNodeColor(_ notification: Notification) {
-        delegate.sceneEditor(self, didModifyNodeColorUsing: notification, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, didModifyNodeColorUsing: notification, for: mainScene)
     }
     
     // MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        delegate.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: mainScene)
+        
+        // Code to locally save SCNScene
+//        let url = createDocumentURL()
+//        mainScene.write(to: url, options: nil, delegate: nil) { (totalProgress, error, stop) in
+//
+//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
-        delegate.sceneEditor(self, touchesMovedWith: touches, at: sceneView, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, touchesMovedWith: touches, at: sceneView, for: mainScene)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        delegate.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: mainScene)
     }
     
     @objc
     private func didTapObjectCatalogButton(_ sender: UIBarButtonItem) {
-        delegate.sceneEditor(self, didDisplayObjectCatalogWith: sender)
+        viewControllerDelegate.sceneEditor(self, didDisplayObjectCatalogWith: sender)
     }
     
     @objc
     private func didTapNodeInspectorButton(_ sender: UIBarButtonItem) {
-        delegate.sceneEditor(self, didDisplayInspectorViewWith: sender)
+        viewControllerDelegate.sceneEditor(self, didDisplayInspectorViewWith: sender)
     }
     
     @objc
     private func didTapUtilitiesInspectorButton(_ sender: UIBarButtonItem) {
-        delegate.sceneEditor(self, didDisplayUtilitiesInspectorWith: sender)
+        viewControllerDelegate.sceneEditor(self, didDisplayUtilitiesInspectorWith: sender)
     }
     
     @objc
@@ -137,18 +151,24 @@ final class SceneEditorViewController: UIViewController {
     }
     
     @objc
-    private func didLongPress(_ sender: UILongPressGestureRecognizer) {
-        delegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
+    private func didTapBackButton(_ sender: UIBarButtonItem) {
+        sceneEditorDelegate?.sceneEditor(self, didFinishEditing: mainScene)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc
-    private func didSelectSceneAction(_ notification: Notification) {
-        delegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: mainScene)
+    private func didLongPress(_ sender: UILongPressGestureRecognizer) {
+        viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
+    }
+    
+    @objc
+    private func didTapSceneActionButton(_ notification: Notification) {
+        viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: mainScene)
     }
     
     @objc
     private func didSelectNodeModel(_ notification: Notification) {
-        delegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: mainScene)
     }
     
     // MARK: - Device Configuration

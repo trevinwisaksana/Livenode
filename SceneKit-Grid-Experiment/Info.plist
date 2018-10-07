@@ -49,14 +49,14 @@
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>Livenot Document</string>
+			<string>Livenote Document</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.livenote.scn</string>
+				<string>com.livenote.document</string>
 			</array>
 		</dict>
 	</array>
@@ -69,15 +69,15 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Markup Document</string>
+			<string>Livenote Document</string>
 			<key>UTTypeIconFile</key>
 			<string></string>
 			<key>UTTypeIdentifier</key>
-			<string>com.livenote.scn</string>
+			<string>com.livenote.document</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
-				<string>scn</string>
+				<string>livenote</string>
 				<key>public.mime-type</key>
 				<string>public.content</string>
 			</dict>

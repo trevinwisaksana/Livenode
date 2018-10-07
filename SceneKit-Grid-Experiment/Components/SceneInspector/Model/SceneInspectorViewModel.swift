@@ -9,9 +9,11 @@
 import SceneKit
 
 public protocol SceneInspectorViewModel {
-    var scene: Scene? { get }
+    var backgroundColor: UIColor? { get set }
+    var floorColor: UIColor? { get set }
 }
 
 public struct SceneInspector: SceneInspectorViewModel {
-    public var scene: Scene?
+    public var backgroundColor: UIColor?
+    public var floorColor: UIColor?
 }

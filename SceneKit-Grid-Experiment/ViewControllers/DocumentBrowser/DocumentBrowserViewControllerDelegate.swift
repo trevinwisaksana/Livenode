@@ -58,21 +58,6 @@ class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewCont
 // MARK: - Opening Document
 
 extension DocumentBrowserViewControllerDelegate {
-    private func displayDocument(with controller: UIDocumentBrowserViewController) {
-        guard let document = State.currentDocument else {
-            return
-        }
-        
-        if State.isEditingScene {
-            return
-        }
-        
-        State.isEditingScene = true
-        
-        let sceneEditor = SceneEditorViewController(sceneDocument: document)
-        controller.navigationController?.pushViewController(sceneEditor, animated: true)
-    }
-    
     private func openDocument(with url: URL, using controller: UIDocumentBrowserViewController) {
         if isDocumentOpen(with: url) {
             return
@@ -86,6 +71,21 @@ extension DocumentBrowserViewControllerDelegate {
             State.currentDocument = document
             self.displayDocument(with: controller)
         }
+    }
+    
+    private func displayDocument(with controller: UIDocumentBrowserViewController) {
+        guard let document = State.currentDocument else {
+            return
+        }
+        
+        if State.isEditingScene {
+            return
+        }
+        
+        State.isEditingScene = true
+        
+        let sceneEditor = SceneEditorViewController(sceneDocument: document, delegate: self)
+        controller.navigationController?.pushViewController(sceneEditor, animated: true)
     }
     
     private func isDocumentOpen(with url: URL) -> Bool {
@@ -131,5 +131,26 @@ extension DocumentBrowserViewControllerDelegate {
         
         incrementDocumentNameCount()
         return documentURL
+    }
+}
+
+// MARK: - SceneEditorDelegate
+
+extension DocumentBrowserViewControllerDelegate: SceneEditorDelegate {
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: SCNScene) {
+        State.isEditingScene = false
+        State.currentDocument = nil
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: SCNScene) {
+        
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didBeginDraggingNode scene: SCNScene) {
+        
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishDraggingNode scene: SCNScene) {
+        
     }
 }

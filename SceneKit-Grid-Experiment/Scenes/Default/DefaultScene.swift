@@ -9,14 +9,7 @@
 import UIKit
 import SceneKit
 
-protocol SceneEditorDelegate {
-    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: Scene)
-    func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: Scene)
-    func sceneEditor(_ controller: SceneEditorViewController, didBeginDraggingNode scene: Scene)
-    func sceneEditor(_ controller: SceneEditorViewController, didFinishDraggingNode scene: Scene)
-}
-
-public class DefaultScene: SCNScene {
+public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Internal Properties
     
@@ -40,15 +33,22 @@ public class DefaultScene: SCNScene {
         return node
     }()
     
-    public var floorNode: SCNNode = SCNNode()
+    public var floorNode: SCNNode = {
+        let node = SCNNode()
+        return node
+    }()
     
-    public var floorColor: UIColor? {
-        return .gray
+    public var backgroundColor: UIColor {
+        return background.contents as! UIColor
+    }
+    
+    public var floorColor: UIColor {
+        return floorNode.color
     }
     
     // MARK: - Setup
     
-    init(data: SceneViewModel) {
+    init(data: DefaultSceneViewModel) {
         super.init()
         
         

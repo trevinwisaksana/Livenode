@@ -98,7 +98,7 @@ public class SceneFloorColorCell: UITableViewCell {
     public var model: SceneInspectorViewModel? {
         didSet {
             if let model = model {
-                colorView.backgroundColor = model.scene?.floorColor
+                colorView.backgroundColor = model.floorColor
             }
         }
     }

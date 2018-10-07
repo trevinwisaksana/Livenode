@@ -9,7 +9,7 @@
 import SceneKit
 import UIKit
 
-public class Scene: NSObject, NSCoding, SceneViewModel {
+public class Scene: NSObject, NSCoding, DefaultSceneViewModel {
     
     // MARK: - Internal Properties
     
@@ -23,9 +23,7 @@ public class Scene: NSObject, NSCoding, SceneViewModel {
     
     init(template: String) {
         super.init()
-        
-//        self.backgroundColor = scene.backgroundColor
-//        self.floorColor = scene.floorColor
+ 
     }
     
     // MARK: - Encoder
