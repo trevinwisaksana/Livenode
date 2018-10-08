@@ -116,12 +116,6 @@ final class SceneEditorViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         viewControllerDelegate.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: currentScene)
-        
-        // Code to locally save SCNScene
-//        let url = createDocumentURL()
-//        mainScene.write(to: url, options: nil, delegate: nil) { (totalProgress, error, stop) in
-//
-//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

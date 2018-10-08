@@ -119,26 +119,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             return
         }
         
-        // TODO: Make functions to encapsulate the code in DefaultScene
-        switch action {
-        case Action.cut.capitalized:
-            scene.nodeSelected?.copy()
-            scene.nodeSelected?.removeFromParentNode()
-        case Action.copy.capitalized:
-            scene.testNode.copy()
-        case Action.paste.capitalized:
-            break
-        case Action.delete.capitalized:
-            scene.nodeSelected?.removeFromParentNode()
-        case Action.move.capitalized:
-            scene.nodeSelected?.isMovable = true
-        case Action.pin.capitalized:
-            scene.nodeSelected?.isMovable = false
-            scene.didSelectTargetNode = false
-        default:
-            break
-        }
-        
+        scene.didSelectScene(action: action)
         controller.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     

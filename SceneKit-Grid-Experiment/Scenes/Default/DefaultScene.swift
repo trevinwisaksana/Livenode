@@ -24,15 +24,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public var cameraNode: SCNNode = SCNNode()
     
-    public var testNode: SCNNode = {
-        let boxGeometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-        let node = SCNNode(geometry: boxGeometry)
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
-        node.position = SCNVector3(0, 0, 0.5)
-        node.name = "testNode"
-        return node
-    }()
-    
     public var floorNode: SCNNode = {
         let node = SCNNode()
         return node
@@ -47,19 +38,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     // MARK: - Setup
-    
-    init(data: DefaultScene) {
-        super.init()
-        
-        setup()
-        
-        // TODO: Should not be called when creating a new scene
-        data.rootNode.enumerateChildNodes { (node, stop) in
-            if node.name != nil {
-                rootNode.addChildNode(node)
-            }
-        }
-    }
     
     override public init() {
         super.init()
@@ -89,7 +67,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let boxNode = SCNNode(geometry: box)
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         boxNode.position = SCNVector3(10, 10, 0.5)
-        // TODO: Change the name
         boxNode.name = "boxNode"
         
         rootNode.addChildNode(boxNode)
@@ -101,7 +78,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         pyramidNode.position = SCNVector3(10, 10, 0.5)
         // TODO: Change the name
-        pyramidNode.name = "testNode"
+        pyramidNode.name = "pyramidNode"
         
         rootNode.addChildNode(pyramidNode)
     }
@@ -199,6 +176,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         nodeSelected = node
         didSelectTargetNode = true
+        // TODO: Change the State.nodeSelected to SCNNode instead of Node
 //        State.nodeSelected = Node(node: nodeSelected)
         lastNodeSelected = nodeSelected
     }
@@ -212,6 +190,29 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let node = rootNode.childNode(withName: name, recursively: true)
         node?.color = color
+    }
+    
+    // MARK: - Scene Actions
+    
+    public func didSelectScene(action: String) {
+        switch action {
+        case Action.cut.capitalized:
+            nodeSelected?.copy()
+            nodeSelected?.removeFromParentNode()
+        case Action.copy.capitalized:
+            nodeSelected?.copy()
+        case Action.paste.capitalized:
+            break
+        case Action.delete.capitalized:
+            nodeSelected?.removeFromParentNode()
+        case Action.move.capitalized:
+            nodeSelected?.isMovable = true
+        case Action.pin.capitalized:
+            nodeSelected?.isMovable = false
+            didSelectTargetNode = false
+        default:
+            break
+        }
     }
     
 //     TODO: Move the node manipulation code elsewhere
