@@ -145,12 +145,4 @@ extension DocumentBrowserViewControllerDelegate: SceneEditorDelegate {
     func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: SCNScene) {
         
     }
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didBeginDraggingNode scene: SCNScene) {
-        
-    }
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didFinishDraggingNode scene: SCNScene) {
-        
-    }
 }
