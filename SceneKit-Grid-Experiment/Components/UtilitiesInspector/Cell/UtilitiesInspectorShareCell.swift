@@ -57,16 +57,5 @@ public class UtilitiesInspectorShareCell: UITableViewCell {
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UtilitiesInspectorShareCell.titleBottomMargin),
         ])
     }
-    
-    // MARK: - Dependency injection
-    
-    /// The model contains data used to populate the view.
-    public var model: UtilitiesInspectorViewModel? {
-        didSet {
-            if let model = model {
-                
-            }
-        }
-    }
 
 }

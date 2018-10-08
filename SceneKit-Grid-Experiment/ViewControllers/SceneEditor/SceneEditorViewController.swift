@@ -60,7 +60,6 @@ final class SceneEditorViewController: UIViewController {
     
     private func setup() {
         sceneView.scene = currentScene
-        
         view.addSubview(sceneView)
         sceneView.fillInSuperview()
         
