@@ -49,8 +49,9 @@ final class SceneEditorViewController: UIViewController {
     init(sceneDocument: SceneDocument, delegate: SceneEditorDelegate) {
         currentScene = sceneDocument.scene
         sceneEditorDelegate = delegate
-        
         super.init(nibName: nil, bundle: nil)
+        
+        title = sceneDocument.localizedName
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -58,7 +59,6 @@ final class SceneEditorViewController: UIViewController {
     }
     
     private func setup() {
-        title = "Blank"
         sceneView.scene = currentScene
         
         view.addSubview(sceneView)

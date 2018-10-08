@@ -11,5 +11,5 @@ import SceneKit
 
 public protocol DefaultSceneViewModel {
     var backgroundColor: UIColor { get }
-    var floorColor: UIColor { get }
+    var floorColor: UIColor? { get }
 }

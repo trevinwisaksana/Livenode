@@ -21,11 +21,16 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var nodeSelected: SCNNode?
     public var lastNodeSelected: SCNNode?
     public var didSelectTargetNode: Bool = false
+    public var isGridDisplayed: Bool = true
     
-    public var cameraNode: SCNNode = SCNNode()
+    public var cameraNode: SCNNode = {
+        let node = SCNNode(geometry: nil)
+        return node
+    }()
     
     public var floorNode: SCNNode = {
-        let node = SCNNode()
+        let node = SCNNode(geometry: nil)
+        node.changeColor(to: .gray)
         return node
     }()
     
@@ -33,20 +38,20 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         return background.contents as! UIColor
     }
     
-    public var floorColor: UIColor {
-        return floorNode.color
-    }
+    public lazy var floorColor: UIColor? = .gray
     
     // MARK: - Setup
     
     override public init() {
         super.init()
-        
+
         setup()
     }
     
     private func setup() {
-        displayGrid()
+        rootNode.addChildNode(floorNode)
+        
+        createGrid()
         
         background.contents = UIColor.gray
     }
@@ -85,8 +90,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Grid
     
-    // TODO: Only display when moving nodes
-    public func displayGrid() {
+    public func createGrid() {
         for xIndex in 0...DefaultScene.gridWidth {
             for yIndex in 0...DefaultScene.gridWidth {
                 let tileGeometry = SCNPlane(width: DefaultScene.gridTileWidth, height: DefaultScene.gridTileWidth)
@@ -98,9 +102,34 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
                 
                 createBorder(for: tileNode)
 
-                rootNode.addChildNode(tileNode)
+                floorNode.addChildNode(tileNode)
             }
         }
+    }
+    
+    public func hideGrid() {
+        if !isGridDisplayed {
+            return
+        }
+        
+        floorNode.enumerateChildNodes { (node, stop) in
+            node.isHidden = true
+        }
+        
+        isGridDisplayed = false
+    }
+    
+    // TODO: Fix issue where we cannot unhide grid
+    public func showGrid() {
+        if isGridDisplayed {
+            return
+        }
+        
+        floorNode.enumerateChildNodes { (node, stop) in
+            node.isHidden = false
+        }
+        
+        isGridDisplayed = true
     }
     
     private func createBorder(for node: SCNNode?) {
@@ -189,7 +218,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         let node = rootNode.childNode(withName: name, recursively: true)
-        node?.color = color
+        node?.changeColor(to: color)
     }
     
     // MARK: - Scene Actions
@@ -207,9 +236,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             nodeSelected?.removeFromParentNode()
         case Action.move.capitalized:
             nodeSelected?.isMovable = true
+//            showGrid()
         case Action.pin.capitalized:
             nodeSelected?.isMovable = false
             didSelectTargetNode = false
+//            hideGrid()
         default:
             break
         }

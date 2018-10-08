@@ -36,12 +36,9 @@ extension SCNNode {
         get {
             return self.geometry?.firstMaterial!.diffuse.contents as! UIColor
         }
-        set {
-            self.geometry?.firstMaterial!.diffuse.contents = newValue
-        }
     }
     
-    public func changeColor(_ color: UIColor) {
+    public func changeColor(to color: UIColor) {
         self.geometry?.firstMaterial?.diffuse.contents = color
     }
     
