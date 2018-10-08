@@ -18,11 +18,15 @@ final class SceneEditorViewController: UIViewController {
         return sceneView
     }()
     
-    private var mainScene: DefaultScene
-    
     private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
     
     // MARK: - Public Properties
+    
+    public var currentScene: DefaultScene {
+        didSet {
+            sceneEditorDelegate?.sceneEditor(self, didUpdateSceneContent: currentScene)
+        }
+    }
     
     public weak var sceneEditorDelegate: SceneEditorDelegate?
     
@@ -43,7 +47,7 @@ final class SceneEditorViewController: UIViewController {
     // MARK: - Setup
     
     init(sceneDocument: SceneDocument, delegate: SceneEditorDelegate) {
-        mainScene = DefaultScene(data: sceneDocument.scene)
+        currentScene = sceneDocument.scene
         sceneEditorDelegate = delegate
         
         super.init(nibName: nil, bundle: nil)
@@ -55,7 +59,7 @@ final class SceneEditorViewController: UIViewController {
     
     private func setup() {
         title = "Blank"
-        sceneView.scene = mainScene
+        sceneView.scene = currentScene
         
         view.addSubview(sceneView)
         sceneView.fillInSuperview()
@@ -104,14 +108,14 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didModifyNodeColor(_ notification: Notification) {
-        viewControllerDelegate.sceneEditor(self, didModifyNodeColorUsing: notification, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, didModifyNodeColorUsing: notification, for: currentScene)
     }
     
     // MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        viewControllerDelegate.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: currentScene)
         
         // Code to locally save SCNScene
 //        let url = createDocumentURL()
@@ -122,12 +126,12 @@ final class SceneEditorViewController: UIViewController {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
-        viewControllerDelegate.sceneEditor(self, touchesMovedWith: touches, at: sceneView, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, touchesMovedWith: touches, at: sceneView, for: currentScene)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        viewControllerDelegate.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: currentScene)
     }
     
     @objc
@@ -152,7 +156,7 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapBackButton(_ sender: UIBarButtonItem) {
-        sceneEditorDelegate?.sceneEditor(self, didFinishEditing: mainScene)
+        sceneEditorDelegate?.sceneEditor(self, didFinishEditing: currentScene)
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -163,12 +167,12 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapSceneActionButton(_ notification: Notification) {
-        viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: currentScene)
     }
     
     @objc
     private func didSelectNodeModel(_ notification: Notification) {
-        viewControllerDelegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: mainScene)
+        viewControllerDelegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: currentScene)
     }
     
     // MARK: - Device Configuration

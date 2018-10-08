@@ -137,12 +137,12 @@ extension DocumentBrowserViewControllerDelegate {
 // MARK: - SceneEditorDelegate
 
 extension DocumentBrowserViewControllerDelegate: SceneEditorDelegate {
-    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: SCNScene) {
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: DefaultScene) {
         State.isEditingScene = false
         State.currentDocument = nil
     }
     
-    func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: SCNScene) {
-        
+    func sceneEditor(_ controller: SceneEditorViewController, didUpdateSceneContent scene: DefaultScene) {
+        State.currentDocument?.scene = scene
     }
 }

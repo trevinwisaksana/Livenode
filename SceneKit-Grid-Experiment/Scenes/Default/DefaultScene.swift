@@ -48,11 +48,17 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Setup
     
-    init(data: DefaultSceneViewModel) {
+    init(data: DefaultScene) {
         super.init()
         
-        
         setup()
+        
+        // TODO: Should not be called when creating a new scene
+        data.rootNode.enumerateChildNodes { (node, stop) in
+            if node.name != nil {
+                rootNode.addChildNode(node)
+            }
+        }
     }
     
     override public init() {
@@ -62,8 +68,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func setup() {
-        rootNode.addChildNode(testNode)
-        
         displayGrid()
         
         background.contents = UIColor.gray
@@ -140,7 +144,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let topSide = createLineNode(fromPos: topLeft, toPos: topRight, color: .yellow)
         
         [bottomSide, leftSide, rightSide, topSide].forEach {
-            $0.name = "highlightNode"
             node.addChildNode($0)
         }
     }
@@ -190,7 +193,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-        if node.name == "Floor" {
+        if node.name == "floorNode" {
             return
         }
         

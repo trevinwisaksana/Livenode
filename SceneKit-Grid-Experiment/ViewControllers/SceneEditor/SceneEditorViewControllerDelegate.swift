@@ -26,8 +26,8 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
 }
 
 protocol SceneEditorDelegate: class {
-    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: SCNScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didUpdateContent scene: SCNScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didUpdateSceneContent scene: DefaultScene)
 }
 
 class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDelegateProtocol {
