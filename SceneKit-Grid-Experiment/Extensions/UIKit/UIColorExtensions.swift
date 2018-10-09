@@ -24,6 +24,10 @@ extension UIColor {
         return UIColor(r: 106, g: 84, b: 227)!
     }
     
+    public class var utilityBlue: UIColor {
+        return UIColor(r: 0, g: 162, b: 255)!
+    }
+    
     public class var dark: UIColor {
         return UIColor(r: 29, g: 29, b: 29)!
     }

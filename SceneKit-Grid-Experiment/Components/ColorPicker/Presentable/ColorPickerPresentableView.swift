@@ -9,7 +9,7 @@
 import UIKit
 
 public class ColorPickerDataSource: NSObject {
-    let node: Node? = State.nodeSelected
+    let nodeColor: UIColor? = State.nodeSelected?.color
 }
 
 public class ColorPickerPresentableView: UIView {
@@ -50,6 +50,6 @@ extension ColorPickerPresentableView: ColorPickerViewDelegate {
 
 extension ColorPickerPresentableView: ColorPickerViewDataSource {
     public func viewModel(InColorPickerView colorPickerView: ColorPickerView) -> ColorPickerViewModel {
-        return ColorPicker(node: dataSource.node)
+        return ColorPicker(color: dataSource.nodeColor)
     }
 }

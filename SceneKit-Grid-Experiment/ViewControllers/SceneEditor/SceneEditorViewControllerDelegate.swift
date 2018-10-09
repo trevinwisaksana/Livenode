@@ -119,7 +119,12 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             return
         }
         
-        scene.didSelectScene(action: action)
+        if action == Action.animate.capitalized {
+            controller.navigationController?.navigationBar.barTintColor = .utilityBlue
+        } else {
+            scene.didSelectScene(action: action)
+        }
+        
         controller.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     

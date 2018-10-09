@@ -24,6 +24,7 @@ enum Action: String {
     case paste
     case move
     case pin
+    case animate
     
     var capitalized: String {
         return rawValue.capitalized

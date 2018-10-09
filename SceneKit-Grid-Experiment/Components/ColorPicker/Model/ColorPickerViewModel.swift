@@ -6,14 +6,14 @@
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol ColorPickerViewModel {
-    var node: Node? { get }
+    var color: UIColor? { get }
 }
 
 public struct ColorPicker: ColorPickerViewModel {
-    public var node: Node?
+    public var color: UIColor?
 }
 
 

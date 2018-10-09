@@ -30,6 +30,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public var floorNode: SCNNode = {
         let node = SCNNode(geometry: nil)
+        node.name = "floorNode"
         node.changeColor(to: .gray)
         return node
     }()
@@ -49,8 +50,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func setup() {
-        rootNode.addChildNode(floorNode)
-        
         createGrid()
         
         background.contents = UIColor.gray
@@ -102,7 +101,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
                 
                 createBorder(for: tileNode)
 
-                floorNode.addChildNode(tileNode)
+                rootNode.addChildNode(tileNode)
             }
         }
     }
@@ -194,20 +193,19 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        guard let node = node else {
+        if node == nil || node?.name == nil {
             nodeSelected = nil
-            return
-        }
-        
-        if node.name == "floorNode" {
+            State.nodeSelected = nil
+            unhighlight(lastNodeSelected)
             return
         }
         
         nodeSelected = node
-        didSelectTargetNode = true
-        // TODO: Change the State.nodeSelected to SCNNode instead of Node
-//        State.nodeSelected = Node(node: nodeSelected)
         lastNodeSelected = nodeSelected
+        State.nodeSelected = nodeSelected
+        
+        highlight(nodeSelected)
+        didSelectTargetNode = true
     }
     
     // MARK: - Node Color
@@ -246,39 +244,43 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
     }
     
-//     TODO: Move the node manipulation code elsewhere
-//     TODO: Find solution that doesn't only work with boxes
-//        private func highlight(_ nodeSelected: SCNNode?) {
-//            if didHighlightNode {
-//                return
-//            }
-//    
-//            guard let nodeSelected = nodeSelected else {
-//                return
-//            }
-//
-//            // TODO: Make the dimensions the same with the node selected
-//            let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-//    
-//            let nodeHighlight = SCNNode(geometry: box)
-//            nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "box_wireframe")
-//            nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
-//            nodeHighlight.name = "nodeHighlight"
-//    
-//            nodeSelected.addChildNode(nodeHighlight)
-//    
-//            didHighlightNode = true
-//        }
-//    
-//        private func unhighlight(_ lastNodeSelected: SCNNode?) {
-//            didHighlightNode = false
-//
-//            guard let node = lastNodeSelected else {
-//                return
-//            }
-//    
-//            let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
-//            nodeHighlight?.removeFromParentNode()
-//        }
+    // TODO: Move the node manipulation code elsewhere
+    // TODO: Find solution that doesn't only work with boxes
+    private func highlight(_ nodeSelected: SCNNode?) {
+        guard let node = nodeSelected else {
+            return
+        }
+    
+        if node.isHighlighted {
+            return
+        }
+
+        // TODO: Make the dimensions the same with the node selected
+        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+
+        let nodeHighlight = SCNNode(geometry: box)
+        nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: .boxWireframe)
+        nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
+        nodeHighlight.name = "nodeHighlight"
+
+        node.addChildNode(nodeHighlight)
+
+        node.isHighlighted = true
+    }
+
+    private func unhighlight(_ lastNodeSelected: SCNNode?) {
+        guard let node = lastNodeSelected else {
+            return
+        }
+        
+        if !node.isHighlighted {
+            return
+        }
+        
+        node.isHighlighted = false
+
+        let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
+        nodeHighlight?.removeFromParentNode()
+    }
 
 }

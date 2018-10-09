@@ -23,4 +23,5 @@ enum ImageAsset: String {
     case nodeInspectorButton
     case utilitiesInspectorButton
     case nextIndicator
+    case boxWireframe
 }

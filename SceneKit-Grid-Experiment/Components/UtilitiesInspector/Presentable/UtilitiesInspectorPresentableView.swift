@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-// TODO: Remove UtilitiesInspectorView
+// TODO: Remove UtilitiesInspectorPresentableView
 public class UtilitiesInspectorPresentableView: UIView {
     
     // MARK: - Initializer

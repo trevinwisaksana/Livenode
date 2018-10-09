@@ -9,9 +9,9 @@
 import SceneKit
 
 public protocol NodeInspectorViewModel {
-    var node: Node? { get }
+    var color: UIColor { get }
 }
 
 public struct NodeInspector: NodeInspectorViewModel {
-    public var node: Node?
+    public var color: UIColor
 }

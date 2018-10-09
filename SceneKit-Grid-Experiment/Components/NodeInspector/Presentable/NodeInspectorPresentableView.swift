@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 public class NodeDataSource: NSObject {
-    let node: Node? = State.nodeSelected
+    let node: NodeInspectorViewModel? = State.nodeSelected
 }
 
 public class NodeInspectorPresentableView: UIView {
@@ -59,6 +59,6 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
 
 extension NodeInspectorPresentableView: NodeInspectorViewDataSource {
     public func viewModel(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> NodeInspectorViewModel {
-        return NodeInspector(node: dataSource.node)
+        return NodeInspector(color: dataSource.node?.color ?? .clear)
     }
 }
