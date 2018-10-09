@@ -30,26 +30,6 @@ extension SCNNode {
         }
     }
     
-    // MARK: - Highlight
-    
-    private struct HighlightState {
-        static var isHighlighted = false
-    }
-    
-    var isHighlighted: Bool {
-        get {
-            guard let highlightState = objc_getAssociatedObject(self, &HighlightState.isHighlighted) as? Bool else {
-                return Bool()
-            }
-            
-            return highlightState
-        }
-        
-        set(value) {
-            objc_setAssociatedObject(self, &HighlightState.isHighlighted, value, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-    }
-    
 }
 
 extension SCNNode: NodeInspectorViewModel {
