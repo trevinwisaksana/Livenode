@@ -71,7 +71,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let boxNode = SCNNode(geometry: box)
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         boxNode.position = SCNVector3(10, 10, 0.5)
-        boxNode.name = "boxNode"
+        boxNode.name = "\(Int.random(in: 0...1000))"
         
         rootNode.addChildNode(boxNode)
     }
@@ -81,8 +81,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let pyramidNode = SCNNode(geometry: pyramid)
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         pyramidNode.position = SCNVector3(10, 10, 0.5)
-        // TODO: Change the name
-        pyramidNode.name = "pyramidNode"
+        pyramidNode.name = "\(Int.random(in: 0...1000))"
         
         rootNode.addChildNode(pyramidNode)
     }
@@ -270,10 +269,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
 
     private func unhighlight(_ lastNodeSelected: SCNNode?) {
         guard let node = lastNodeSelected else {
-            return
-        }
-        
-        if !node.isHighlighted {
             return
         }
         

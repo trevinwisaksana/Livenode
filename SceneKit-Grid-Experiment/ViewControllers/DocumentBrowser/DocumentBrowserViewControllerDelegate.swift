@@ -103,31 +103,9 @@ extension DocumentBrowserViewControllerDelegate {
 // MARK: - Document Creation
 
 extension DocumentBrowserViewControllerDelegate {
-    private func createDefaultDocumentName() -> String {
-        let newDocumentNumber = UserDefaults.standard.integer(forKey: DocumentBrowserViewControllerDelegate.documentNumberKey)
-        
-        if newDocumentNumber == 0 {
-            return "Blank"
-        } else {
-            return "Blank \(newDocumentNumber)"
-        }
-    }
-    
-    private func incrementDocumentNameCount() {
-        // TODO: Decrement document name count when deleting document
-        var newDocumentNumber = UserDefaults.standard.integer(forKey: DocumentBrowserViewControllerDelegate.documentNumberKey) + 1
-        
-        if newDocumentNumber == 1 {
-            newDocumentNumber += 1
-        }
-        
-        UserDefaults.standard.set(newDocumentNumber, forKey: DocumentBrowserViewControllerDelegate.documentNumberKey)
-    }
-    
     private func createDocumentURL() -> URL {
         let documentPath = UIApplication.cacheDirectory()
-        let documentName = createDefaultDocumentName()
-        let documentURL = documentPath.appendingPathComponent(documentName).appendingPathExtension(SceneDocument.filenameExtension)
+        let documentURL = documentPath.appendingPathComponent("Blank").appendingPathExtension(SceneDocument.filenameExtension)
         
         incrementDocumentNameCount()
         return documentURL
