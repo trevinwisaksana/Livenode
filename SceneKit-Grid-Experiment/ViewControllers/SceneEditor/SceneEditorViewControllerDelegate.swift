@@ -159,7 +159,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             return
         }
         
-        scene.move(nodeSelected: nodeSelected, in: sceneView)
+        scene.move(targetNode: nodeSelected, in: sceneView)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {

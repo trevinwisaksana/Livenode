@@ -44,6 +44,11 @@ final class SceneEditorViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        // TODO: Reset the current node highlighted and selected
+    }
+    
     // MARK: - Setup
     
     init(sceneDocument: SceneDocument, delegate: SceneEditorDelegate) {

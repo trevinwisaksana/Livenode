@@ -106,8 +106,6 @@ extension DocumentBrowserViewControllerDelegate {
     private func createDocumentURL() -> URL {
         let documentPath = UIApplication.cacheDirectory()
         let documentURL = documentPath.appendingPathComponent("Blank").appendingPathExtension(SceneDocument.filenameExtension)
-        
-        incrementDocumentNameCount()
         return documentURL
     }
 }

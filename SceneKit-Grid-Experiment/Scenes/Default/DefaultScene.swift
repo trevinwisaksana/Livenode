@@ -20,8 +20,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public var nodeSelected: SCNNode?
     public var lastNodeSelected: SCNNode?
-    public var didSelectTargetNode: Bool = false
+    public var currentNodeHighlighted: SCNNode?
+    
+    public var didSelectANode: Bool = false
     public var isGridDisplayed: Bool = true
+    public var didHighlightANode: Bool = false
     
     public var cameraNode: SCNNode = {
         let node = SCNNode(geometry: nil)
@@ -172,18 +175,18 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Node Movement
     
-    public func move(nodeSelected: SCNNode, in sceneView: SCNView) {
-        if didSelectTargetNode {
-            let nodeXPos = nodeSelected.position.x
-            let nodeYPos = nodeSelected.position.y
-            var nodeZPos = nodeSelected.position.z
+    public func move(targetNode: SCNNode, in sceneView: SCNView) {
+        if didSelectANode {
+            let nodeXPos = targetNode.position.x
+            let nodeYPos = targetNode.position.y
+            var nodeZPos = targetNode.position.z
             
             if nodeZPos >= 0.5 {
                 nodeZPos = 0
             }
             
-            if lastNodeSelected?.isMovable ?? false {
-                lastNodeSelected?.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 0.5)
+            if nodeSelected?.isMovable ?? false {
+                nodeSelected?.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 0.5)
                 sceneView.allowsCameraControl = false
             }
         }
@@ -193,18 +196,22 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public func didSelectNode(_ node: SCNNode?) {
         if node == nil || node?.name == nil {
-            nodeSelected = nil
-            State.nodeSelected = nil
-            unhighlight(lastNodeSelected)
+            didUnselectNode()
             return
         }
         
         nodeSelected = node
-        lastNodeSelected = nodeSelected
         State.nodeSelected = nodeSelected
-        
         highlight(nodeSelected)
-        didSelectTargetNode = true
+        
+        didSelectANode = true
+    }
+    
+    public func didUnselectNode() {
+        nodeSelected = nil
+        State.nodeSelected = nil
+        didSelectANode = false
+        unhighlight(currentNodeHighlighted)
     }
     
     // MARK: - Node Color
@@ -236,21 +243,20 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
 //            showGrid()
         case Action.pin.capitalized:
             nodeSelected?.isMovable = false
-            didSelectTargetNode = false
+            didSelectANode = false
 //            hideGrid()
         default:
             break
         }
     }
     
-    // TODO: Move the node manipulation code elsewhere
     // TODO: Find solution that doesn't only work with boxes
     private func highlight(_ nodeSelected: SCNNode?) {
         guard let node = nodeSelected else {
             return
         }
     
-        if node.isHighlighted {
+        if currentNodeHighlighted != nil {
             return
         }
 
@@ -263,19 +269,19 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         nodeHighlight.name = "nodeHighlight"
 
         node.addChildNode(nodeHighlight)
-
-        node.isHighlighted = true
+        
+        currentNodeHighlighted = node
     }
 
     private func unhighlight(_ lastNodeSelected: SCNNode?) {
         guard let node = lastNodeSelected else {
             return
         }
-        
-        node.isHighlighted = false
 
         let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
         nodeHighlight?.removeFromParentNode()
+        
+        currentNodeHighlighted = nil
     }
 
 }
