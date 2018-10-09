@@ -8,15 +8,17 @@
 
 import UIKit
 
-final class UtilitiesInspectorViewController<View: UIView>: UIViewController {
+final class UtilitiesInspectorViewController: UIViewController {
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var mainView: View = {
-        let mainView = View(frame: view.frame)
+    lazy var delegate = UtilitiesInspectorViewControllerDelegate()
+    
+    lazy var mainView: UtilitiesInspectorView = {
+        let mainView = UtilitiesInspectorView(delegate: delegate)
         return mainView
     }()
     

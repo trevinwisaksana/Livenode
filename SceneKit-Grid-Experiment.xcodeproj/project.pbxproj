@@ -47,7 +47,6 @@
 		DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */; };
 		DD8E125F21381BA700D4F4DE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E125E21381BA700D4F4DE /* Style.swift */; };
 		DD8E1261213BE88500D4F4DE /* UtilitiesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */; };
-		DD8E1264213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1263213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift */; };
 		DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */; };
 		DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */; };
 		DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */; };
@@ -66,6 +65,8 @@
 		DDEF325E20DF776100FEE793 /* Box.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Box.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
 		DDF38F5D2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F5C2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift */; };
+		DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F5F216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift */; };
+		DDF38F62216C97A80000069E /* UtilitiesInspectorExportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F61216C97A80000069E /* UtilitiesInspectorExportCell.swift */; };
 		DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */; };
 		DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */; };
 /* End PBXBuildFile section */
@@ -113,7 +114,6 @@
 		DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogPresentableViewHelper.swift; sourceTree = "<group>"; };
 		DD8E125E21381BA700D4F4DE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorViewController.swift; sourceTree = "<group>"; };
-		DD8E1263213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorPresentableView.swift; sourceTree = "<group>"; };
 		DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorView.swift; sourceTree = "<group>"; };
 		DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorShareCell.swift; sourceTree = "<group>"; };
 		DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesInspectorViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +132,8 @@
 		DDEF325D20DF776100FEE793 /* Box.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Box.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
 		DDF38F5C2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewControllerDelegate.swift; sourceTree = "<group>"; };
+		DDF38F5F216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorViewControllerDelegate.swift; sourceTree = "<group>"; };
+		DDF38F61216C97A80000069E /* UtilitiesInspectorExportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorExportCell.swift; sourceTree = "<group>"; };
 		DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -286,9 +288,9 @@
 				DD4342A3215F7E7400FF3D91 /* SceneEditor */,
 				DD4720282161E70900028727 /* SceneActionMenu */,
 				DDF38F592164ADE70000069E /* ObjectCatalog */,
+				DDF38F5E216C96B60000069E /* UtilitiesInspector */,
 				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
-				DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -465,19 +467,10 @@
 		DD8E1265213CDC0C00D4F4DE /* UtilitiesInspector */ = {
 			isa = PBXGroup;
 			children = (
-				DD8E1266213CDC1D00D4F4DE /* Presentable */,
-				DD8E126F213CE11300D4F4DE /* Cell */,
 				DD8E1269213CDC7F00D4F4DE /* UtilitiesView */,
+				DD8E126F213CE11300D4F4DE /* Cell */,
 			);
 			path = UtilitiesInspector;
-			sourceTree = "<group>";
-		};
-		DD8E1266213CDC1D00D4F4DE /* Presentable */ = {
-			isa = PBXGroup;
-			children = (
-				DD8E1263213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift */,
-			);
-			path = Presentable;
 			sourceTree = "<group>";
 		};
 		DD8E1269213CDC7F00D4F4DE /* UtilitiesView */ = {
@@ -492,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */,
+				DDF38F61216C97A80000069E /* UtilitiesInspectorExportCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -592,6 +586,15 @@
 			path = ObjectCatalog;
 			sourceTree = "<group>";
 		};
+		DDF38F5E216C96B60000069E /* UtilitiesInspector */ = {
+			isa = PBXGroup;
+			children = (
+				DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */,
+				DDF38F5F216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift */,
+			);
+			path = UtilitiesInspector;
+			sourceTree = "<group>";
+		};
 		DDFC63E320F1FE5900109EC5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */,
 				DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */,
 				DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */,
 				DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */,
@@ -709,6 +713,7 @@
 				DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */,
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
+				DDF38F62216C97A80000069E /* UtilitiesInspectorExportCell.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* SceneActionMenuViewController.swift in Sources */,
@@ -728,7 +733,6 @@
 				DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */,
 				DDBA24C22153D0D5003C9CAF /* DefaultSceneViewModel.swift in Sources */,
 				DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */,
-				DD8E1264213CDC0400D4F4DE /* UtilitiesInspectorPresentableView.swift in Sources */,
 				DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */,
 				DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */,
 			);

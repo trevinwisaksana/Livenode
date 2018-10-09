@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO: Refactor Scene Editor to use this
 public class SceneEditorPresentableView: UIView {
     
     // MARK: - Initializer
