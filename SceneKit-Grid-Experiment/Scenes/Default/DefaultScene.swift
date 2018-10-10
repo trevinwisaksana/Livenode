@@ -34,6 +34,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var gridContainer: SCNNode = {
         let node = SCNNode(geometry: nil)
         node.name = "gridContainer"
+        node.position = SCNVector3(0, 0.1, 0)
         node.eulerAngles = SCNVector3(1.5708, 0, 0)
         return node
     }()
@@ -72,7 +73,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         createGrid()
         
-        background.contents = UIColor.white
+        background.contents = UIColor.aluminium
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -190,15 +191,15 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
         if didSelectANode {
             let nodeXPos = targetNode.position.x
-            let nodeYPos = targetNode.position.y
-            var nodeZPos = targetNode.position.z
+            var nodeYPos = targetNode.position.y
+            let nodeZPos = targetNode.position.z
             
-            if nodeZPos >= 0.5 {
-                nodeZPos = 0
+            if nodeYPos >= 0.5 {
+                nodeYPos = 0
             }
             
             if nodeSelected?.isMovable ?? false {
-                nodeSelected?.position = SCNVector3(nodeXPos, nodeYPos, nodeZPos + 0.5)
+                nodeSelected?.position = SCNVector3(nodeXPos, nodeYPos + 0.5, nodeZPos)
                 sceneView.allowsCameraControl = false
             }
         }
