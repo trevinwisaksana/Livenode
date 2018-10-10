@@ -24,17 +24,22 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public var didSelectANode: Bool = false
     public var isGridDisplayed: Bool = true
-    public var didHighlightANode: Bool = false
     
     public var cameraNode: SCNNode = {
         let node = SCNNode(geometry: nil)
+        node.camera = SCNCamera()
         return node
     }()
     
     public var floorNode: SCNNode = {
-        let node = SCNNode(geometry: nil)
+        let floorGeometry = SCNFloor()
+        floorGeometry.reflectivity = 0
+        floorGeometry.firstMaterial?.lightingModel = .constant
+        
+        let node = SCNNode(geometry: floorGeometry)
         node.name = "floorNode"
-        node.changeColor(to: .gray)
+        node.changeColor(to: .white)
+        
         return node
     }()
     
@@ -53,14 +58,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func setup() {
+        rootNode.addChildNode(floorNode)
+        
         createGrid()
         
-        background.contents = UIColor.gray
-    }
-    
-    private func setupCamera() {
-        cameraNode.camera = SCNCamera()
-        rootNode.addChildNode(cameraNode)
+        background.contents = UIColor.white
     }
     
     required public init?(coder aDecoder: NSCoder) {

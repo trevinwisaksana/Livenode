@@ -32,8 +32,8 @@ final class DocumentBrowserViewController: UIDocumentBrowserViewController {
     
     private func setup() {
         title = ""
-        view.tintColor = .white
-        browserUserInterfaceStyle = .dark
+        view.tintColor = .lavender
+        browserUserInterfaceStyle = .white
         
         allowsDocumentCreation = true
         delegate = browserDelegate

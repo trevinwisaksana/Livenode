@@ -19,10 +19,9 @@ final class RootNavigationController: UINavigationController {
     }
     
     private func setup() {
-        navigationBar.barTintColor = .dark
-        navigationBar.barStyle = .black
+        navigationBar.barTintColor = .aluminium
         navigationBar.isTranslucent = false
-        navigationBar.tintColor = .white
+        navigationBar.tintColor = .lavender
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
