@@ -37,6 +37,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuWith sender: UILongPressGestureRecognizer, at sceneView: SCNView) {
         let location = sender.location(in: controller.view)
         
+        // TODO: Create a method in DefaultScene that determines if a node or a floor is selected
         if sceneView.hitTest(location, options: nil).first?.node == nil {
             return
         }

@@ -89,7 +89,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
         let pyramidNode = SCNNode(geometry: pyramid)
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        pyramidNode.position = SCNVector3(10, DefaultScene.nodeBottomMargin, 10)
+        pyramidNode.position = SCNVector3(10, 0, 10)
         pyramidNode.name = "\(Int.random(in: 0...1000))"
         
         rootNode.addChildNode(pyramidNode)
@@ -147,11 +147,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         let (min, max) = node.boundingBox
-        let zCoord = node.position.z
-        let topLeft = SCNVector3(min.x, max.y, 0)
-        let bottomLeft = SCNVector3(min.x, min.y, 0)
-        let topRight = SCNVector3(max.x, max.y, 0)
-        let bottomRight = SCNVector3(max.x, min.y, 0)
+        let zCoord: Float = 0.0
+        let topLeft = SCNVector3(min.x, max.y, zCoord)
+        let bottomLeft = SCNVector3(min.x, min.y, zCoord)
+        let topRight = SCNVector3(max.x, max.y, zCoord)
+        let bottomRight = SCNVector3(max.x, min.y, zCoord)
         
         let bottomSide = createLineNode(fromPos: bottomLeft, toPos: bottomRight, color: .yellow)
         let leftSide = createLineNode(fromPos: bottomLeft, toPos: topLeft, color: .yellow)
@@ -159,6 +159,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let topSide = createLineNode(fromPos: topLeft, toPos: topRight, color: .yellow)
         
         [bottomSide, leftSide, rightSide, topSide].forEach {
+            node.name = "tileBorder"
             node.addChildNode($0)
         }
     }
@@ -184,7 +185,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Movement
     
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
-        if didSelectANode && targetNode.name != "floorNode" {
+        let isCorrectNodeSelected = targetNode.name != "nodeHighlight" && targetNode.name != "floorNode"
+        if didSelectANode && isCorrectNodeSelected {
             let nodeXPos = targetNode.position.x
             let nodeZPos = targetNode.position.z
             
