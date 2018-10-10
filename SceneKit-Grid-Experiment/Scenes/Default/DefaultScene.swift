@@ -17,22 +17,18 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     private static let gridTileWidth: CGFloat = 1
     private static let nodeBottomMargin: Float = 0.5
     
-    // MARK: - Public Properties
-    
-    public var nodeSelected: SCNNode?
-    public var lastNodeSelected: SCNNode?
-    public var currentNodeHighlighted: SCNNode?
-    
-    public var didSelectANode: Bool = false
-    public var isGridDisplayed: Bool = true
-    
-    public var cameraNode: SCNNode = {
+    private var cameraNode: SCNNode = {
         let node = SCNNode(geometry: nil)
         node.camera = SCNCamera()
         return node
     }()
-
-    public var floorNode: SCNNode = {
+    
+    private var gridContainer: SCNNode = {
+        let node = SCNNode(geometry: nil)
+        return node
+    }()
+    
+    private var floorNode: SCNNode = {
         let floorGeometry = SCNFloor()
         floorGeometry.reflectivity = 0
         floorGeometry.firstMaterial?.lightingModel = .constant
@@ -44,6 +40,16 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         return node
     }()
+    
+    // MARK: - Public Properties
+    
+    public var nodeSelected: SCNNode?
+    public var lastNodeSelected: SCNNode?
+    public var currentNodeHighlighted: SCNNode?
+    
+    public var didSelectANode: Bool = false
+    public var isGridDisplayed: Bool = true
+    
     
     public var backgroundColor: UIColor {
         return background.contents as! UIColor
@@ -62,6 +68,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func setup() {
+        rootNode.addChildNode(gridContainer)
         rootNode.addChildNode(floorNode)
         
         createGrid()
@@ -111,7 +118,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
                 
                 createBorder(for: tileNode)
 
-                rootNode.addChildNode(tileNode)
+                gridContainer.addChildNode(tileNode)
             }
         }
     }
