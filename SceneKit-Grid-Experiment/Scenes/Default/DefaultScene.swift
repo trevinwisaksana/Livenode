@@ -15,6 +15,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     private static let gridWidth: Int = 20
     private static let gridTileWidth: CGFloat = 1
+    private static let nodeBottomMargin: Float = 0.5
     
     // MARK: - Public Properties
     
@@ -30,21 +31,14 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         node.camera = SCNCamera()
         return node
     }()
-    
-    public var gridContainer: SCNNode = {
-        let node = SCNNode(geometry: nil)
-        node.name = "gridContainer"
-        node.position = SCNVector3(0, 0.5, 0)
-        node.eulerAngles = SCNVector3(1.5708, 0, 0)
-        return node
-    }()
-    
+
     public var floorNode: SCNNode = {
         let floorGeometry = SCNFloor()
         floorGeometry.reflectivity = 0
         floorGeometry.firstMaterial?.lightingModel = .constant
         
         let node = SCNNode(geometry: floorGeometry)
+        node.position = SCNVector3(0, -0.1, 0)
         node.name = "floorNode"
         node.changeColor(to: .white)
         
@@ -68,7 +62,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func setup() {
-        rootNode.addChildNode(gridContainer)
         rootNode.addChildNode(floorNode)
         
         createGrid()
@@ -86,7 +79,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         let boxNode = SCNNode(geometry: box)
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        boxNode.position = SCNVector3(10, 0.5, 10)
+        boxNode.position = SCNVector3(10, DefaultScene.nodeBottomMargin, 10)
         boxNode.name = "\(Int.random(in: 0...1000))"
         
         rootNode.addChildNode(boxNode)
@@ -96,7 +89,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
         let pyramidNode = SCNNode(geometry: pyramid)
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        pyramidNode.position = SCNVector3(10, 0.5, 10)
+        pyramidNode.position = SCNVector3(10, DefaultScene.nodeBottomMargin, 10)
         pyramidNode.name = "\(Int.random(in: 0...1000))"
         
         rootNode.addChildNode(pyramidNode)
@@ -106,17 +99,19 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public func createGrid() {
         for xIndex in 0...DefaultScene.gridWidth {
-            for yIndex in 0...DefaultScene.gridWidth {
+            for zIndex in 0...DefaultScene.gridWidth {
                 let tileGeometry = SCNPlane(width: DefaultScene.gridTileWidth, height: DefaultScene.gridTileWidth)
+                
                 let tileNode = SCNNode(geometry: tileGeometry)
-                tileNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+                tileNode.changeColor(to: .clear)
+                tileNode.eulerAngles = SCNVector3(-1.5708, 0, 0)
 
                 tileNode.position.x = Float(xIndex)
-                tileNode.position.y = Float(yIndex)
+                tileNode.position.z = Float(zIndex)
                 
                 createBorder(for: tileNode)
 
-                gridContainer.addChildNode(tileNode)
+                rootNode.addChildNode(tileNode)
             }
         }
     }
@@ -153,10 +148,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let (min, max) = node.boundingBox
         let zCoord = node.position.z
-        let topLeft = SCNVector3(min.x, max.y, zCoord)
-        let bottomLeft = SCNVector3(min.x, min.y, zCoord)
-        let topRight = SCNVector3(max.x, max.y, zCoord)
-        let bottomRight = SCNVector3(max.x, min.y, zCoord)
+        let topLeft = SCNVector3(min.x, max.y, 0)
+        let bottomLeft = SCNVector3(min.x, min.y, 0)
+        let topRight = SCNVector3(max.x, max.y, 0)
+        let bottomRight = SCNVector3(max.x, min.y, 0)
         
         let bottomSide = createLineNode(fromPos: bottomLeft, toPos: bottomRight, color: .yellow)
         let leftSide = createLineNode(fromPos: bottomLeft, toPos: topLeft, color: .yellow)
@@ -189,18 +184,12 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Movement
     
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
-        // TODO: Fix issue where floorNode is always selected
         if didSelectANode && targetNode.name != "floorNode" {
             let nodeXPos = targetNode.position.x
-            var nodeYPos = targetNode.position.y
             let nodeZPos = targetNode.position.z
             
-            if nodeYPos >= 0.5 {
-                nodeYPos = 0
-            }
-            
             if nodeSelected?.isMovable ?? false {
-                nodeSelected?.position = SCNVector3(nodeXPos, 0.5, nodeZPos)
+                nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
                 sceneView.allowsCameraControl = false
             }
         }
@@ -209,7 +198,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        print("Node Name: \(node?.name)")
         if node == nil || node?.name == nil || node?.name == "floorNode" {
             didUnselectNode()
             return
