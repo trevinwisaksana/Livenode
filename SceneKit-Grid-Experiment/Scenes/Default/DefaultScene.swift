@@ -34,7 +34,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var gridContainer: SCNNode = {
         let node = SCNNode(geometry: nil)
         node.name = "gridContainer"
-        node.position = SCNVector3(0, 0.1, 0)
+        node.position = SCNVector3(0, 0.5, 0)
         node.eulerAngles = SCNVector3(1.5708, 0, 0)
         return node
     }()
@@ -109,7 +109,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             for yIndex in 0...DefaultScene.gridWidth {
                 let tileGeometry = SCNPlane(width: DefaultScene.gridTileWidth, height: DefaultScene.gridTileWidth)
                 let tileNode = SCNNode(geometry: tileGeometry)
-                tileNode.geometry?.firstMaterial?.diffuse.contents = UIColor.clear
+                tileNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
 
                 tileNode.position.x = Float(xIndex)
                 tileNode.position.y = Float(yIndex)
@@ -189,7 +189,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Movement
     
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
-        if didSelectANode {
+        // TODO: Fix issue where floorNode is always selected
+        if didSelectANode && targetNode.name != "floorNode" {
             let nodeXPos = targetNode.position.x
             var nodeYPos = targetNode.position.y
             let nodeZPos = targetNode.position.z
@@ -199,7 +200,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             }
             
             if nodeSelected?.isMovable ?? false {
-                nodeSelected?.position = SCNVector3(nodeXPos, nodeYPos + 0.5, nodeZPos)
+                nodeSelected?.position = SCNVector3(nodeXPos, 0.5, nodeZPos)
                 sceneView.allowsCameraControl = false
             }
         }
@@ -208,6 +209,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
+        print("Node Name: \(node?.name)")
         if node == nil || node?.name == nil || node?.name == "floorNode" {
             didUnselectNode()
             return
