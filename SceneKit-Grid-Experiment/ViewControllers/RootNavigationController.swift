@@ -19,7 +19,7 @@ final class RootNavigationController: UINavigationController {
     }
     
     private func setup() {
-        navigationBar.barTintColor = .aluminium
+        navigationBar.barTintColor = .white
         navigationBar.isTranslucent = false
         navigationBar.tintColor = .lavender
     }
