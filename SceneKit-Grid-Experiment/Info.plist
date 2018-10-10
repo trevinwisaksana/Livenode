@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Livenote requires camera access to use Augmented Reality.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -71,7 +73,7 @@
 			<key>UTTypeDescription</key>
 			<string>Livenote Document</string>
 			<key>UTTypeIconFile</key>
-			<string></string>
+			<string>AppIcon</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.livenote.document</string>
 			<key>UTTypeTagSpecification</key>

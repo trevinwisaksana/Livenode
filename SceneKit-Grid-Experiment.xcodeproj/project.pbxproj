@@ -67,7 +67,8 @@
 		DDF38F5D2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F5C2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift */; };
 		DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F5F216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift */; };
 		DDF38F62216C97A80000069E /* UtilitiesInspectorExportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F61216C97A80000069E /* UtilitiesInspectorExportCell.swift */; };
-		DDF38F66216DFD030000069E /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F65216DFD030000069E /* PresentationViewController.swift */; };
+		DDF38F69216E193A0000069E /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F68216E193A0000069E /* PresentationViewController.swift */; };
+		DDF38F6B216E2ABA0000069E /* PresentationViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F6A216E2ABA0000069E /* PresentationViewControllerDelegate.swift */; };
 		DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */; };
 		DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */; };
 /* End PBXBuildFile section */
@@ -135,7 +136,8 @@
 		DDF38F5C2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DDF38F5F216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DDF38F61216C97A80000069E /* UtilitiesInspectorExportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorExportCell.swift; sourceTree = "<group>"; };
-		DDF38F65216DFD030000069E /* PresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
+		DDF38F68216E193A0000069E /* PresentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
+		DDF38F6A216E2ABA0000069E /* PresentationViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -601,7 +603,8 @@
 		DDF38F67216DFD1B0000069E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				DDF38F65216DFD030000069E /* PresentationViewController.swift */,
+				DDF38F68216E193A0000069E /* PresentationViewController.swift */,
+				DDF38F6A216E2ABA0000069E /* PresentationViewControllerDelegate.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -728,6 +731,8 @@
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* SceneActionMenuViewController.swift in Sources */,
+				DDF38F69216E193A0000069E /* PresentationViewController.swift in Sources */,
+				DDF38F6B216E2ABA0000069E /* PresentationViewControllerDelegate.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
 				DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */,
 				DD47202D2161F92200028727 /* NotificationExtensions.swift in Sources */,
@@ -738,7 +743,6 @@
 				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
 				DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */,
 				DDBA24CC21579255003C9CAF /* SceneEditorView.swift in Sources */,
-				DDF38F66216DFD030000069E /* PresentationViewController.swift in Sources */,
 				DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */,
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,

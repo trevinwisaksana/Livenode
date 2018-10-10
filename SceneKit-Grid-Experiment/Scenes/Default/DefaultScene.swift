@@ -244,11 +244,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             nodeSelected?.removeFromParentNode()
         case Action.move.capitalized:
             nodeSelected?.isMovable = true
-            showGrid()
+//            showGrid()
         case Action.pin.capitalized:
             nodeSelected?.isMovable = false
             didSelectANode = false
-            hideGrid()
+//            hideGrid()
         default:
             break
         }

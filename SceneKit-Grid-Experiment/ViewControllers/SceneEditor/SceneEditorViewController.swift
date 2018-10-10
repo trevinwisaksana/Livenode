@@ -54,6 +54,7 @@ final class SceneEditorViewController: UIViewController {
     init(sceneDocument: SceneDocument, delegate: SceneEditorDelegate) {
         currentScene = sceneDocument.scene
         sceneEditorDelegate = delegate
+        
         super.init(nibName: nil, bundle: nil)
         
         title = sceneDocument.localizedName
@@ -175,19 +176,15 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Device Configuration
     
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    
     override var prefersStatusBarHidden: Bool {
         return false
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
+            return .landscape
         } else {
-            return .all
+            return .landscape
         }
     }
     

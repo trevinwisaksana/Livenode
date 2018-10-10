@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ARKit
 
 final class PresentationViewController: UIViewController {
     
@@ -14,6 +15,15 @@ final class PresentationViewController: UIViewController {
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
+    
+    private var sceneView: ARSCNView = {
+        let view = ARSCNView(frame: .zero)
+        return view
+    }()
+    
+    // MARK: - Public Properties
+    
+    public var delegate = PresentationViewControllerDelegate()
     
     // MARK: - VC Lifecycle
     
@@ -26,16 +36,32 @@ final class PresentationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        createARSession()
     }
     
     // MARK: - Setup
     
     private func setup() {
+        // TODO: Create a method in DefaultScene that would prepare for AR usage
+        guard let scene = State.currentDocument?.scene else {
+            return
+        }
+        
+        sceneView.delegate = delegate
+        sceneView.scene = scene
+        view.addSubview(sceneView)
+        sceneView.fillInSuperview()
+        
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didPinchToDismiss(_:)))
         view.addGestureRecognizer(pinchGesture)
         
         view.backgroundColor = .white
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    private func createARSession() {
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration, options: .resetTracking)
     }
     
     @objc
