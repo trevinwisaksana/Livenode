@@ -31,6 +31,13 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         return node
     }()
     
+    public var gridContainer: SCNNode = {
+        let node = SCNNode(geometry: nil)
+        node.name = "gridContainer"
+        node.eulerAngles = SCNVector3(1.5708, 0, 0)
+        return node
+    }()
+    
     public var floorNode: SCNNode = {
         let floorGeometry = SCNFloor()
         floorGeometry.reflectivity = 0
@@ -38,7 +45,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let node = SCNNode(geometry: floorGeometry)
         node.name = "floorNode"
-        node.changeColor(to: .white)
+        node.changeColor(to: .gray)
         
         return node
     }()
@@ -58,6 +65,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func setup() {
+        rootNode.addChildNode(gridContainer)
         rootNode.addChildNode(floorNode)
         
         createGrid()
@@ -75,7 +83,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         let boxNode = SCNNode(geometry: box)
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        boxNode.position = SCNVector3(10, 10, 0.5)
+        boxNode.position = SCNVector3(10, 0.5, 10)
         boxNode.name = "\(Int.random(in: 0...1000))"
         
         rootNode.addChildNode(boxNode)
@@ -85,7 +93,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
         let pyramidNode = SCNNode(geometry: pyramid)
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        pyramidNode.position = SCNVector3(10, 10, 0.5)
+        pyramidNode.position = SCNVector3(10, 0.5, 10)
         pyramidNode.name = "\(Int.random(in: 0...1000))"
         
         rootNode.addChildNode(pyramidNode)
@@ -105,7 +113,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
                 
                 createBorder(for: tileNode)
 
-                rootNode.addChildNode(tileNode)
+                gridContainer.addChildNode(tileNode)
             }
         }
     }
@@ -197,7 +205,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        if node == nil || node?.name == nil {
+        if node == nil || node?.name == nil || node?.name == "floorNode" {
             didUnselectNode()
             return
         }
