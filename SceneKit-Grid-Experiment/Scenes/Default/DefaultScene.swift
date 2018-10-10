@@ -45,7 +45,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let node = SCNNode(geometry: floorGeometry)
         node.name = "floorNode"
-        node.changeColor(to: .gray)
+        node.changeColor(to: .white)
         
         return node
     }()
@@ -54,7 +54,9 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         return background.contents as! UIColor
     }
     
-    public lazy var floorColor: UIColor? = .gray
+    public lazy var floorColor: UIColor? = {
+        return floorNode.color
+    }()
     
     // MARK: - Setup
     
