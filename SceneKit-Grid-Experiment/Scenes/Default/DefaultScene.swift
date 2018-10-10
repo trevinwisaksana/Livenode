@@ -48,7 +48,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var currentNodeHighlighted: SCNNode?
     
     public var didSelectANode: Bool = false
-    public var isGridDisplayed: Bool = true
+    public var isGridDisplayed: Bool = false
     
     
     public var backgroundColor: UIColor {
@@ -123,31 +123,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
     }
     
-    public func hideGrid() {
-        if !isGridDisplayed {
-            return
-        }
-        
-        floorNode.enumerateChildNodes { (node, stop) in
-            node.isHidden = true
-        }
-        
-        isGridDisplayed = false
-    }
-    
-    // TODO: Fix issue where we cannot unhide grid
-    public func showGrid() {
-        if isGridDisplayed {
-            return
-        }
-        
-        floorNode.enumerateChildNodes { (node, stop) in
-            node.isHidden = false
-        }
-        
-        isGridDisplayed = true
-    }
-    
     private func createBorder(for node: SCNNode?) {
         guard let node = node else {
             return
@@ -187,6 +162,23 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let element = SCNGeometryElement(indices: indices, primitiveType: .line)
 
         return SCNGeometry(sources: [source], elements: [element])
+    }
+    
+    public func hideGrid() {
+        gridContainer.enumerateChildNodes { (node, _) in
+            node.isHidden = true
+        }
+        
+        isGridDisplayed = false
+    }
+    
+    // TODO: Fix issue where we cannot unhide grid
+    public func showGrid() {
+        gridContainer.enumerateChildNodes { (node, _) in
+            node.isHidden = false
+        }
+        
+        isGridDisplayed = true
     }
     
     // MARK: - Node Movement
@@ -252,11 +244,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             nodeSelected?.removeFromParentNode()
         case Action.move.capitalized:
             nodeSelected?.isMovable = true
-//            showGrid()
+            showGrid()
         case Action.pin.capitalized:
             nodeSelected?.isMovable = false
             didSelectANode = false
-//            hideGrid()
+            hideGrid()
         default:
             break
         }

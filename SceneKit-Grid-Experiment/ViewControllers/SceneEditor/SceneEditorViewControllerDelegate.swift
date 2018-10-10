@@ -15,6 +15,7 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayUtilitiesInspectorWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayPresentationViewWith sender: UIBarButtonItem)
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene)
@@ -111,6 +112,11 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         navigationController.popoverPresentationController?.barButtonItem = sender
         
         controller.present(navigationController, animated: true, completion: nil)
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayPresentationViewWith sender: UIBarButtonItem) {
+        let presentationController = Presenter.inject(.presentation)
+        controller.present(presentationController, animated: true, completion: nil)
     }
     
     // MARK: - Scene Action Menu

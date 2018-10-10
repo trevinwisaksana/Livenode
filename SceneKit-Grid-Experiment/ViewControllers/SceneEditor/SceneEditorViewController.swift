@@ -149,12 +149,11 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapPlayButton(_ sender: UIBarButtonItem) {
-        
+        viewControllerDelegate.sceneEditor(self, didDisplayPresentationViewWith: sender)
     }
     
     @objc
     private func didTapBackButton(_ sender: UIBarButtonItem) {
-        // TODO: Close the document
         sceneEditorDelegate?.sceneEditor(self, didFinishEditing: currentScene)
         navigationController?.popToRootViewController(animated: true)
     }
