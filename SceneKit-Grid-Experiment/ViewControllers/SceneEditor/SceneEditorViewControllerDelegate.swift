@@ -139,7 +139,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     
     func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene) {
         if let color = notification.object as? UIColor {
-            scene.modifyNode(color: color)
+            scene.modifyNodeColor(to: color)
         }
     }
     

@@ -182,9 +182,9 @@ final class SceneEditorViewController: UIViewController {
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return .landscape
+            return .allButUpsideDown
         } else {
-            return .landscape
+            return .all
         }
     }
     

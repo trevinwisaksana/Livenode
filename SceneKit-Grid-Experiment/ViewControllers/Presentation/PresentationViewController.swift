@@ -39,18 +39,27 @@ final class PresentationViewController: UIViewController {
         createARSession()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        sceneView.session.pause()
+    }
+    
     // MARK: - Setup
     
     private func setup() {
-        // TODO: Create a method in DefaultScene that would prepare for AR usage
         guard let scene = State.currentDocument?.scene else {
             return
         }
+        
+        // TODO: Fix issue where floor and grid nodes are not hidden
+        scene.prepareForPresentation()
         
         sceneView.delegate = delegate
         sceneView.scene = scene
         view.addSubview(sceneView)
         sceneView.fillInSuperview()
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didPinchToDismiss(_:)))
         view.addGestureRecognizer(pinchGesture)
@@ -61,6 +70,7 @@ final class PresentationViewController: UIViewController {
     
     private func createARSession() {
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         sceneView.session.run(configuration, options: .resetTracking)
     }
     

@@ -80,8 +80,20 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         super.init(coder: aDecoder)
     }
     
+    // MARK: - Presentation
+    
+    public func prepareForPresentation() {
+        floorNode.isHidden = true
+        hideGrid()
+    }
+    
+    public func didFinishPresentation() {
+        floorNode.isHidden = false
+    }
+    
     // MARK: - Node Insertion
     
+    // TODO: Set to private
     func insertBox() {
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         let boxNode = SCNNode(geometry: box)
@@ -104,7 +116,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Grid
     
-    public func createGrid() {
+    private func createGrid() {
         for xIndex in 0...DefaultScene.gridWidth {
             for zIndex in 0...DefaultScene.gridWidth {
                 let tileGeometry = SCNPlane(width: DefaultScene.gridTileWidth, height: DefaultScene.gridTileWidth)
@@ -164,16 +176,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         return SCNGeometry(sources: [source], elements: [element])
     }
     
-    public func hideGrid() {
-        gridContainer.enumerateChildNodes { (node, _) in
-            node.isHidden = true
-        }
-        
-        isGridDisplayed = false
-    }
-    
-    // TODO: Fix issue where we cannot unhide grid
-    public func showGrid() {
+    private func showGrid() {
         gridContainer.enumerateChildNodes { (node, _) in
             node.isHidden = false
         }
@@ -181,25 +184,20 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         isGridDisplayed = true
     }
     
-    // MARK: - Node Movement
-    
-    public func move(targetNode: SCNNode, in sceneView: SCNView) {
-        let isCorrectNodeSelected = targetNode.name != "nodeHighlight" && targetNode.name != "floorNode"
-        if didSelectANode && isCorrectNodeSelected {
-            let nodeXPos = targetNode.position.x
-            let nodeZPos = targetNode.position.z
-            
-            if nodeSelected?.isMovable ?? false {
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
-                sceneView.allowsCameraControl = false
-            }
+    private func hideGrid() {
+        // TODO: Fix issue where we cannot unhide grid
+        gridContainer.enumerateChildNodes { (node, _) in
+            node.isHidden = true
         }
+        
+        isGridDisplayed = false
     }
     
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        if node == nil || node?.name == nil || node?.name == "floorNode" {
+        let isCorrectNodeSelected = node?.name == "floorNode" || node?.name == "tileBorder"
+        if node == nil || node?.name == nil || isCorrectNodeSelected {
             didUnselectNode()
             return
         }
@@ -218,9 +216,24 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         unhighlight(currentNodeHighlighted)
     }
     
+    // MARK: - Node Movement
+    
+    public func move(targetNode: SCNNode, in sceneView: SCNView) {
+        let isCorrectNodeSelected = targetNode.name != "nodeHighlight" && targetNode.name != "floorNode"
+        if didSelectANode && isCorrectNodeSelected {
+            let nodeXPos = targetNode.position.x
+            let nodeZPos = targetNode.position.z
+            
+            if nodeSelected?.isMovable ?? false {
+                nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
+                sceneView.allowsCameraControl = false
+            }
+        }
+    }
+    
     // MARK: - Node Color
     
-    public func modifyNode(color: UIColor) {
+    public func modifyNodeColor(to color: UIColor) {
         guard let name = nodeSelected?.name else {
             return
         }
