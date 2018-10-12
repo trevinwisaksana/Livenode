@@ -22,12 +22,13 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Public Properties
     
-    // TODO: Fix issue where current scene is reset when returning from PresentationVC
     public var currentScene: DefaultScene {
         didSet {
             sceneEditorDelegate?.sceneEditor(self, didUpdateSceneContent: currentScene)
         }
     }
+    
+    public var documentName: String = ""
     
     public weak var sceneEditorDelegate: SceneEditorDelegate?
     
@@ -59,7 +60,7 @@ final class SceneEditorViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        title = sceneDocument.localizedName
+        documentName = sceneDocument.localizedName
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -76,12 +77,12 @@ final class SceneEditorViewController: UIViewController {
         sceneView.showsStatistics = false
         sceneView.autoenablesDefaultLighting = true
         
-        setupNavigationItems()
+        setupDefaultNavigationItems()
         setupLongPressGestureRecognizer()
         setupNotificationListeners()
     }
     
-    private func setupNavigationItems() {
+    private func setupDefaultNavigationItems() {
         let utilitiesInspectorButtonImage = UIImage(named: .utilitiesInspectorButton)
         let utilitiesInspectorBarButton = UIBarButtonItem(image: utilitiesInspectorButtonImage, style: .plain, target: self, action: #selector(didTapUtilitiesInspectorButton(_:)))
         
@@ -94,10 +95,32 @@ final class SceneEditorViewController: UIViewController {
         let playButtonImage = UIImage(named: .playButton)
         let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
         
-        let backBarButton = UIBarButtonItem(title: "Scenes", style: .plain, target: self, action: #selector(didTapBackButton(_:)))
+        let backBarButton = UIBarButtonItem(title: "Projects", style: .plain, target: self, action: #selector(didTapBackButton(_:)))
+        
+        title = documentName
+        
+        navigationController?.navigationBar.tintColor = .lavender
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.black]
         
         navigationItem.setLeftBarButton(backBarButton, animated: true)
         navigationItem.setRightBarButtonItems([utilitiesInspectorBarButton, objectCatalogBarButton, nodeInspectorBarButton, playBarButton], animated: true)
+    }
+    
+    func setupAnimationNavigationItems() {
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneAnimatingButton(_:)))
+    
+        let playButtonImage = UIImage(named: .playButton)
+        let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
+        
+        title = "Select to add an animation."
+        
+        navigationController?.navigationBar.barTintColor = .utilityBlue
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.setRightBarButtonItems([doneBarButton, playBarButton], animated: true)
     }
     
     private func setupNotificationListeners() {
@@ -162,13 +185,18 @@ final class SceneEditorViewController: UIViewController {
     }
     
     @objc
-    private func didLongPress(_ sender: UILongPressGestureRecognizer) {
-        viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
+    private func didTapSceneActionButton(_ notification: Notification) {
+        viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: currentScene)
     }
     
     @objc
-    private func didTapSceneActionButton(_ notification: Notification) {
-        viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: currentScene)
+    private func didTapDoneAnimatingButton(_ sender: UITapGestureRecognizer) {
+        setupDefaultNavigationItems()
+    }
+    
+    @objc
+    private func didLongPress(_ sender: UILongPressGestureRecognizer) {
+        viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
     }
     
     @objc
