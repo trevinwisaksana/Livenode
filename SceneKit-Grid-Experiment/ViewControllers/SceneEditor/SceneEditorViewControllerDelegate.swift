@@ -11,11 +11,12 @@ import SceneKit
 
 protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuWith sender: UILongPressGestureRecognizer, at sceneView: SCNView)
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayPresentationViewWith scene: DefaultScene, using sender: UIBarButtonItem)
     
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayUtilitiesInspectorWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayPresentationViewWith sender: UIBarButtonItem)
+    
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene)
@@ -114,11 +115,11 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         controller.present(navigationController, animated: true, completion: nil)
     }
     
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayPresentationViewWith sender: UIBarButtonItem) {
-        let presentationController = Presenter.inject(.presentation)
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayPresentationViewWith scene: DefaultScene, using sender: UIBarButtonItem) {
+        let presentationController = Presenter.inject(.presentation(scene: scene))
         controller.present(presentationController, animated: true, completion: nil)
     }
-    
+
     // MARK: - Scene Action Menu
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene) {

@@ -34,8 +34,8 @@ enum Presenter {
         case .objectCatalog:
             controller = ObjectCatalogViewController()
             return controller
-        case .presentation:
-            controller = PresentationViewController()
+        case .presentation(let document):
+            controller = PresentationViewController(scene: document)
             return controller
         }
     }

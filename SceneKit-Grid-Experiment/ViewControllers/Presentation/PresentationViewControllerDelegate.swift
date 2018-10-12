@@ -13,7 +13,11 @@ class PresentationViewControllerDelegate: NSObject, ARSCNViewDelegate {
     
     // MARK: - ARSCNViewDelegate
     
-    func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
     }
     

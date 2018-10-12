@@ -22,6 +22,7 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Public Properties
     
+    // TODO: Fix issue where current scene is reset when returning from PresentationVC
     public var currentScene: DefaultScene {
         didSet {
             sceneEditorDelegate?.sceneEditor(self, didUpdateSceneContent: currentScene)
@@ -47,6 +48,7 @@ final class SceneEditorViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         // TODO: Reset the current node highlighted and selected
+        sceneEditorDelegate?.sceneEditor(self, didUpdateSceneContent: currentScene)
     }
     
     // MARK: - Setup
@@ -150,7 +152,7 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapPlayButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didDisplayPresentationViewWith: sender)
+        viewControllerDelegate.sceneEditor(self, didDisplayPresentationViewWith: currentScene, using: sender)
     }
     
     @objc

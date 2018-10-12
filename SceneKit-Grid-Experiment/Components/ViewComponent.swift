@@ -6,7 +6,7 @@
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
-import Foundation
+import SceneKit
 
 enum ViewComponent {
     case colorPickerView
@@ -16,7 +16,7 @@ enum ViewComponent {
     case documentBrowser
     case sceneActionsMenu
     case objectCatalog
-    case presentation
+    case presentation(scene: DefaultScene)
     
     var all: [ViewComponent] {
         return [
@@ -27,7 +27,6 @@ enum ViewComponent {
             .documentBrowser,
             .sceneActionsMenu,
             .objectCatalog,
-            .presentation
         ]
     }
 }

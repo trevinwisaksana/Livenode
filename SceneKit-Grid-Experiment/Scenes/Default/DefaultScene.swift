@@ -17,6 +17,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     private static let gridTileWidth: CGFloat = 1
     private static let nodeBottomMargin: Float = 0.5
     
+    // TODO: Create node extension that sets name for itself
     private var cameraNode: SCNNode = {
         let node = SCNNode(geometry: nil)
         node.camera = SCNCamera()
@@ -25,6 +26,12 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     private var gridContainer: SCNNode = {
         let node = SCNNode(geometry: nil)
+        return node
+    }()
+    
+    private var presentationNodeContainer: SCNNode = {
+        let node = SCNNode(geometry: nil)
+        node.name = "presentationNodeContainer"
         return node
     }()
     
@@ -50,7 +57,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var didSelectANode: Bool = false
     public var isGridDisplayed: Bool = false
     
-    
     public var backgroundColor: UIColor {
         return background.contents as! UIColor
     }
@@ -69,6 +75,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     private func setup() {
         rootNode.addChildNode(gridContainer)
+        rootNode.addChildNode(presentationNodeContainer)
         rootNode.addChildNode(floorNode)
         
         createGrid()
@@ -93,29 +100,41 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Node Insertion
     
-    // TODO: Set to private
     func insertBox() {
+        // TODO: Set function to private
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         let boxNode = SCNNode(geometry: box)
+        
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         boxNode.position = SCNVector3(10, DefaultScene.nodeBottomMargin, 10)
         boxNode.name = "\(Int.random(in: 0...1000))"
         
-        rootNode.addChildNode(boxNode)
+        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+            return
+        }
+        
+        presentationNodeContainer.addChildNode(boxNode)
     }
     
     func insertPyramid() {
+        // TODO: Set function to private
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
         let pyramidNode = SCNNode(geometry: pyramid)
+        
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         pyramidNode.position = SCNVector3(10, 0, 10)
         pyramidNode.name = "\(Int.random(in: 0...1000))"
         
-        rootNode.addChildNode(pyramidNode)
+        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+            return
+        }
+        
+        presentationNodeContainer.addChildNode(pyramidNode)
     }
     
     // MARK: - Grid
     
+    // TODO: Create grid where the center is at 0
     private func createGrid() {
         for xIndex in 0...DefaultScene.gridWidth {
             for zIndex in 0...DefaultScene.gridWidth {
