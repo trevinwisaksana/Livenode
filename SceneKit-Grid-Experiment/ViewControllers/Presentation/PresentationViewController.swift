@@ -18,6 +18,7 @@ final class PresentationViewController: UIViewController {
     
     private var sceneView: ARSCNView = {
         let view = ARSCNView(frame: .zero)
+        view.autoenablesDefaultLighting = true
         return view
     }()
     
