@@ -101,22 +101,7 @@ final class PresentationViewController: UIViewController {
         }
         
         let translation = hitTestResult.worldTransform.columns.3
-        let x = translation.x
-        let y = translation.y
-        let z = translation.z
-        
-        guard let defaultScene = currentScene,
-              let presentationNodes = defaultScene.rootNode.childNode(withName: "presentationNodeContainer", recursively: true)
-        else {
-            // TODO: Fix issue which deletes the nodes when retrieving it from the rootNode
-            print("Cannot find the presentation node container.")
-            return
-        }
-        
-        presentationNodes.position = SCNVector3(x, y, z)
-        presentationNodes.scale = SCNVector3(0.01, 0.01, 0.01)
-        
-        sceneView.scene.rootNode.addChildNode(presentationNodes)
+        delegate.addPresentingNode(to: sceneView, using: currentScene, at: translation)
     }
     
     // MARK: - Device Configuration
