@@ -78,7 +78,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         rootNode.addChildNode(presentationNodeContainer)
         rootNode.addChildNode(floorNode)
         
-        createGrid()
+        createGrid(with: CGSize(width: DefaultScene.gridWidth, height: DefaultScene.gridWidth))
         
         background.contents = UIColor.aluminium
     }
@@ -106,7 +106,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let boxNode = SCNNode(geometry: box)
         
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        boxNode.position = SCNVector3(10, DefaultScene.nodeBottomMargin, 10)
+        boxNode.position = SCNVector3(0, DefaultScene.nodeBottomMargin, 0)
         boxNode.name = "\(Int.random(in: 0...1000))"
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
@@ -122,7 +122,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let pyramidNode = SCNNode(geometry: pyramid)
         
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        pyramidNode.position = SCNVector3(10, 0, 10)
+        pyramidNode.position = SCNVector3(0, 0, 0)
         pyramidNode.name = "\(Int.random(in: 0...1000))"
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
@@ -134,21 +134,29 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Grid
     
-    // TODO: Create grid where the center is at 0
-    private func createGrid() {
-        for xIndex in 0...DefaultScene.gridWidth {
-            for zIndex in 0...DefaultScene.gridWidth {
+    private func createGrid(with size: CGSize) {
+        for xIndex in 0...Int(size.width) {
+            for zIndex in 0...Int(size.height) {
                 let tileGeometry = SCNPlane(width: DefaultScene.gridTileWidth, height: DefaultScene.gridTileWidth)
                 
                 let tileNode = SCNNode(geometry: tileGeometry)
                 tileNode.changeColor(to: .clear)
                 tileNode.eulerAngles = SCNVector3(-1.5708, 0, 0)
-
-                tileNode.position.x = Float(xIndex)
-                tileNode.position.z = Float(zIndex)
+                
+                if zIndex > 10 {
+                    tileNode.position.z = Float(zIndex - Int(size.height + 1))
+                } else {
+                    tileNode.position.z = Float(zIndex)
+                }
+                
+                if xIndex > 10 {
+                    tileNode.position.x = Float(xIndex - Int(size.width + 1))
+                } else {
+                    tileNode.position.x = Float(xIndex)
+                }
                 
                 createBorder(for: tileNode)
-
+                
                 gridContainer.addChildNode(tileNode)
             }
         }
