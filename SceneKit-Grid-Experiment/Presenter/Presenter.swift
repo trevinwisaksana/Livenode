@@ -37,6 +37,9 @@ enum Presenter {
         case .presentation(let document):
             controller = PresentationViewController(scene: document)
             return controller
+        case .nodeAnimationMenu:
+            controller = NodeAnimationMenuViewController()
+            return controller
         }
     }
 }

@@ -17,6 +17,7 @@ enum ViewComponent {
     case sceneActionsMenu
     case objectCatalog
     case presentation(scene: DefaultScene)
+    case nodeAnimationMenu
     
     var all: [ViewComponent] {
         return [

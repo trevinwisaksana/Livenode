@@ -30,3 +30,11 @@ enum Action: String {
         return rawValue.capitalized
     }
 }
+
+enum Animation: String {
+    case move
+    
+    var capitalized: String {
+        return rawValue.capitalized
+    }
+}

@@ -109,6 +109,12 @@ final class SceneEditorViewController: UIViewController {
     
     func setupAnimationNavigationItems() {
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneAnimatingButton(_:)))
+        
+        let animationCatalogButtonImage = UIImage(named: .objectCatalogButton)
+        let animationCatalogBarButton = UIBarButtonItem(image: animationCatalogButtonImage, style: .plain, target: self, action: #selector(didTapAnimationCatalogButton(_:)))
+        
+        let undoButtonImage = UIImage(named: .undoButton)
+        let undoBarButton = UIBarButtonItem(image: undoButtonImage, style: .plain, target: self, action: #selector(didTapUndoAnimationButton(_:)))
     
         let playButtonImage = UIImage(named: .playButton)
         let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
@@ -119,8 +125,8 @@ final class SceneEditorViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
         navigationController?.navigationBar.tintColor = .white
         
-        navigationItem.leftBarButtonItem = nil
-        navigationItem.setRightBarButtonItems([doneBarButton, playBarButton], animated: true)
+        navigationItem.setLeftBarButton(undoBarButton, animated: true)
+        navigationItem.setRightBarButtonItems([doneBarButton, animationCatalogBarButton, playBarButton], animated: true)
     }
     
     private func setupNotificationListeners() {
@@ -185,6 +191,16 @@ final class SceneEditorViewController: UIViewController {
     }
     
     @objc
+    private func didTapAnimationCatalogButton(_ sender: UIBarButtonItem) {
+        viewControllerDelegate.sceneEditor(self, didDisplayNodeAnimationMenuWith: sender)
+    }
+
+    @objc
+    private func didTapUndoAnimationButton(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @objc
     private func didTapSceneActionButton(_ notification: Notification) {
         viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: currentScene)
     }
@@ -193,7 +209,7 @@ final class SceneEditorViewController: UIViewController {
     private func didTapDoneAnimatingButton(_ sender: UITapGestureRecognizer) {
         setupDefaultNavigationItems()
     }
-    
+
     @objc
     private func didLongPress(_ sender: UILongPressGestureRecognizer) {
         viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
