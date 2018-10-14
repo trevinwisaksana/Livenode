@@ -11,5 +11,5 @@ import SceneKit
 struct State {    
     static var currentDocument: SceneDocument?
     static var isEditingScene: Bool = false
-    static var nodeSelected: NodeInspectorViewModel?
+    static var nodeSelected: SCNNode?
 }

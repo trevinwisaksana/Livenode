@@ -50,6 +50,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Public Properties
     
+    // TODO: Remove the local nodeSelected variable and use the State version
     public var nodeSelected: SCNNode?
     public var lastNodeSelected: SCNNode?
     public var currentNodeHighlighted: SCNNode?
@@ -272,7 +273,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Animation
     
     func testMoveAnimation() {
-        let action = SCNAction.move(by: SCNVector3(x: 5, y: 0, z: 0), duration: 5)
+        let action = SCNAction.move(by: SCNVector3(x: 5, y: 0, z: 0), duration: 3)
         nodeSelected?.runAction(action)
     }
     

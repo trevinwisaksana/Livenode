@@ -40,6 +40,9 @@ enum Presenter {
         case .nodeAnimationMenu:
             controller = NodeAnimationMenuViewController()
             return controller
+        case .moveAnimationAttributes:
+            controller = AttributesInspectorViewController<MoveAnimationAttributesView>()
+            return controller
         }
     }
 }

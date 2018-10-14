@@ -73,8 +73,15 @@ extension NodeAnimationMenuView: UITableViewDelegate {
     }
     
     private func didSelectNodeAnimation(atIndex index: Int) {
+        guard let navigationController = parentViewController?.parent as? UINavigationController else {
+            return
+        }
+        
         switch index {
         case 0:
+            let moveAnimationAttributes = Presenter.inject(.moveAnimationAttributes)
+            navigationController.pushViewController(moveAnimationAttributes, animated: true)
+            
             delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: .move)
         default:
             break

@@ -124,13 +124,17 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationMenuWith sender: UIBarButtonItem) {
         let nodeAnimationMenuController = Presenter.inject(.nodeAnimationMenu)
+
+        let navigationController = UINavigationController()
         
-        nodeAnimationMenuController.modalPresentationStyle = .popover
-        nodeAnimationMenuController.popoverPresentationController?.permittedArrowDirections = .up
-        nodeAnimationMenuController.popoverPresentationController?.delegate = self
-        nodeAnimationMenuController.popoverPresentationController?.barButtonItem = sender
+        navigationController.viewControllers = [nodeAnimationMenuController]
         
-        controller.present(nodeAnimationMenuController, animated: true, completion: nil)
+        navigationController.modalPresentationStyle = .popover
+        navigationController.popoverPresentationController?.permittedArrowDirections = .up
+        navigationController.popoverPresentationController?.delegate = self
+        navigationController.popoverPresentationController?.barButtonItem = sender
+        
+        controller.present(navigationController, animated: true, completion: nil)
     }
 
     // MARK: - Scene Action Menu

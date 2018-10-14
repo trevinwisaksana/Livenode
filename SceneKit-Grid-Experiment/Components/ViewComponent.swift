@@ -18,6 +18,7 @@ enum ViewComponent {
     case objectCatalog
     case presentation(scene: DefaultScene)
     case nodeAnimationMenu
+    case moveAnimationAttributes
     
     var all: [ViewComponent] {
         return [
