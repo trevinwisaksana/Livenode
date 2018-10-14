@@ -25,4 +25,5 @@ enum ImageAsset: String {
     case nextIndicator
     case boxWireframe
     case undoButton
+    case animationMenuButton
 }

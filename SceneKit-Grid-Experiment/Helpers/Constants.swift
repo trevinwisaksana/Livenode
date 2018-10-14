@@ -17,7 +17,7 @@ struct Constants {
     }
 }
 
-enum Action: String {
+public enum Action: String {
     case cut
     case copy
     case delete
@@ -31,7 +31,7 @@ enum Action: String {
     }
 }
 
-enum Animation: String {
+public enum Animation: String {
     case move
     
     var capitalized: String {

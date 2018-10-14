@@ -9,7 +9,7 @@
 import Foundation
 
 class NodeAnimationMenuViewControllerDelegate: NSObject, NodeAnimationMenuViewDelegate {
-    func nodeAnimationMenuView(_ nodeAnimationMenuView: NodeAnimationMenuView, didSelectItemAtIndexPath indexPath: IndexPath) {
-        
+    func nodeAnimationMenuView(_ nodeAnimationMenuView: NodeAnimationMenuView, didSelectNodeAnimation animation: Animation) {
+        NotificationCenter.default.post(name: Notification.Name.NodeAnimationMenuDidSelectAnimation, object: animation)
     }
 }

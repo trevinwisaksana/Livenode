@@ -269,6 +269,13 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         node?.changeColor(to: color)
     }
     
+    // MARK: - Node Animation
+    
+    func testMoveAnimation() {
+        let action = SCNAction.move(by: SCNVector3(x: 5, y: 0, z: 0), duration: 5)
+        nodeSelected?.runAction(action)
+    }
+    
     // MARK: - Scene Actions
     
     public func didSelectScene(action: String) {

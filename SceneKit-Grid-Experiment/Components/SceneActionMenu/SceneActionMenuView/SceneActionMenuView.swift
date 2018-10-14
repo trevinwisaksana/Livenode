@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 
 public protocol SceneActionsMenuViewDelegate: class {
+    // TODO: Change to one function that accepts actions
     func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectCutButton button: UIButton)
     func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectCopyButton button: UIButton)
     func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectPasteButton button: UIButton)

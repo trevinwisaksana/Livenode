@@ -10,32 +10,24 @@ import UIKit
 
 public class NodeAnimationMenuCell: UITableViewCell {
     
-    // MARK: - Internal Properties
+    // MARK: - Internal properties
     
-    private static let borderViewWidth: CGFloat = 0.5
+    private static let titleHeight: CGFloat = 20.0
+    private static let titleTopMargin: CGFloat = 3.0
+    private static let titleBottomMargin: CGFloat = 3.0
+    private static let titleLeftMargin: CGFloat = 15.0
     
-    private lazy var animationButton: UIButton = {
-        let button = UIButton()
-        button.titleLabel?.font = UIFont(name: "Helvetica", size: 13)
-        button.titleLabel?.textAlignment = .center
-        button.addTarget(self, action: #selector(didSelectActionButton(_:)), for: .touchUpInside)
-        return button
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        return label
     }()
-    
-    private lazy var borderView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    weak var delegate: SceneActionMenuCellDelegate?
     
     // MARK: - Setup
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setup()
     }
     
@@ -45,38 +37,21 @@ public class NodeAnimationMenuCell: UITableViewCell {
     }
     
     private func setup() {
-        addSubview(animationButton)
-        addSubview(borderView)
-        animationButton.fillInSuperview()
+        addSubview(titleLabel)
         
-        backgroundColor = .clear
+        backgroundColor = .milk
         
         NSLayoutConstraint.activate([
-            borderView.rightAnchor.constraint(equalTo: rightAnchor),
-            borderView.topAnchor.constraint(equalTo: topAnchor),
-            borderView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            borderView.widthAnchor.constraint(equalToConstant: NodeAnimationMenuCell.borderViewWidth),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: NodeAnimationMenuCell.titleLeftMargin),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: NodeAnimationMenuCell.titleTopMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -NodeAnimationMenuCell.titleBottomMargin),
         ])
     }
     
-    public func hideBorder() {
-        borderView.isHidden = true
-    }
-    
-    public func setTitle(forCellAtIndex index: Int) {
+    public func setTitle(forIndex index: Int) {
         switch index {
         case 0:
-            animationButton.setTitle(Animation.move.capitalized, for: .normal)
-        default:
-            break
-        }
-    }
-    
-    @objc
-    private func didSelectActionButton(_ sender: UIButton) {
-        switch sender.titleLabel?.text {
-        case Animation.move.capitalized:
-            break
+            titleLabel.text = Animation.move.capitalized
         default:
             break
         }

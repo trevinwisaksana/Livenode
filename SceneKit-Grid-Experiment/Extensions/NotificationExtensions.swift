@@ -20,4 +20,8 @@ extension Notification.Name {
     public static var ObjectCatalogDidSelectNodeModel: Notification.Name {
         return Notification.Name("ObjectCatalogDidSelectNodeModel")
     }
+    
+    public static var NodeAnimationMenuDidSelectAnimation: Notification.Name {
+        return Notification.Name("NodeAnimationMenuDidSelectAnimation")
+    }
 }

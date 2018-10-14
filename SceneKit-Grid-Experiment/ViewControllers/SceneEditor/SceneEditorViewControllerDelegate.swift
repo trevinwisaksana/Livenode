@@ -20,6 +20,7 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
     
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene)
     
@@ -166,6 +167,14 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             case .pyramid:
                 scene.insertPyramid()
             }
+        }
+    }
+    
+    // MARK: - Node Animation
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene) {
+        if let animation = notification.object as? Animation {
+            scene.testMoveAnimation()
         }
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol NodeAnimationMenuViewDelegate: class {
-    func nodeAnimationMenuView(_ nodeAnimationMenuView: NodeAnimationMenuView, didSelectItemAtIndexPath indexPath: IndexPath)
+    func nodeAnimationMenuView(_ nodeAnimationMenuView: NodeAnimationMenuView, didSelectNodeAnimation animation: Animation)
 }
 
 public class NodeAnimationMenuView: UIView {
@@ -68,7 +68,17 @@ public class NodeAnimationMenuView: UIView {
 
 extension NodeAnimationMenuView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelectNodeAnimation(atIndex: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    private func didSelectNodeAnimation(atIndex index: Int) {
+        switch index {
+        case 0:
+            delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: .move)
+        default:
+            break
+        }
     }
 }
 
@@ -87,7 +97,8 @@ extension NodeAnimationMenuView: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell: NodeAnimationMenuCell = tableView.dequeueReusableCell()
-            cell.setTitle(forCellAtIndex: 0)
+            // TODO: Change from hard-coded index to dynamic values
+            cell.setTitle(forIndex: 0)
             
             return cell
         default:

@@ -119,7 +119,7 @@ final class SceneEditorViewController: UIViewController {
         let playButtonImage = UIImage(named: .playButton)
         let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
         
-        title = "Select to add an animation."
+        title = "Tap the add button to select an animation."
         
         navigationController?.navigationBar.barTintColor = .utilityBlue
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
@@ -133,6 +133,7 @@ final class SceneEditorViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Notification.Name.ColorPickerDidModifyNodeColor, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didTapSceneActionButton(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectNodeModel(_:)), name: Notification.Name.ObjectCatalogDidSelectNodeModel, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectNodeAnimation(_:)), name: Notification.Name.NodeAnimationMenuDidSelectAnimation, object: nil)
     }
     
     private func setupLongPressGestureRecognizer() {
@@ -206,6 +207,17 @@ final class SceneEditorViewController: UIViewController {
     }
     
     @objc
+    private func didSelectNodeModel(_ notification: Notification) {
+        viewControllerDelegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: currentScene)
+    }
+    
+    
+    @objc
+    private func didSelectNodeAnimation(_ notification: Notification) {
+        viewControllerDelegate.sceneEditor(self, didSelectNodeAnimationUsing: notification, for: currentScene)
+    }
+    
+    @objc
     private func didTapDoneAnimatingButton(_ sender: UITapGestureRecognizer) {
         setupDefaultNavigationItems()
     }
@@ -213,11 +225,6 @@ final class SceneEditorViewController: UIViewController {
     @objc
     private func didLongPress(_ sender: UILongPressGestureRecognizer) {
         viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
-    }
-    
-    @objc
-    private func didSelectNodeModel(_ notification: Notification) {
-        viewControllerDelegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: currentScene)
     }
     
     // MARK: - Device Configuration
