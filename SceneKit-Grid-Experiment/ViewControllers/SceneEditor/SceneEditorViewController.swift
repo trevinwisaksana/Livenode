@@ -15,6 +15,7 @@ final class SceneEditorViewController: UIViewController {
     
     private var sceneView: SCNView = {
         let sceneView = SCNView()
+        sceneView.backgroundColor = .white
         return sceneView
     }()
     

@@ -123,7 +123,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationMenuWith sender: UIBarButtonItem) {
-        let nodeAnimationMenuController = Presenter.inject(.nodeAnimationMenu)
+        let nodeAnimationMenuController = Presenter.inject(.nodeAnimationList)
 
         let navigationController = UINavigationController()
         
@@ -178,7 +178,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene) {
         if let animation = notification.object as? Animation {
-            scene.testMoveAnimation()
+            
         }
     }
     

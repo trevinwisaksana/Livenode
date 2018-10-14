@@ -1,5 +1,5 @@
 //
-//  NodeAnimationMenuViewControllerDelegate.swift
+//  NodeAnimationListViewControllerDelegate.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 13/10/18.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class NodeAnimationMenuViewControllerDelegate: NSObject, NodeAnimationMenuViewDelegate {
-    func nodeAnimationMenuView(_ nodeAnimationMenuView: NodeAnimationMenuView, didSelectNodeAnimation animation: Animation) {
+class NodeAnimationListViewControllerDelegate: NSObject, NodeAnimationListViewDelegate {
+    func nodeAnimationListView(_ nodeAnimationListView: NodeAnimationListView, didSelectNodeAnimation animation: Animation) {
         NotificationCenter.default.post(name: Notification.Name.NodeAnimationMenuDidSelectAnimation, object: animation)
     }
 }

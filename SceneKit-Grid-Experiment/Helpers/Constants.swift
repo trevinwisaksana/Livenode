@@ -33,6 +33,8 @@ public enum Action: String {
 
 public enum Animation: String {
     case move
+    case rotate
+    case alert
     
     var capitalized: String {
         return rawValue.capitalized

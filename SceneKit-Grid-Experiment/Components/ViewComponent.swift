@@ -13,10 +13,13 @@ enum ViewComponent {
     case sceneInspectorView
     case nodeInspectorView
     case utilitiesView
+    
     case documentBrowser
     case sceneActionsMenu
     case objectCatalog
     case presentation(scene: DefaultScene)
+    
+    case nodeAnimationList
     case nodeAnimationMenu
     case moveAnimationAttributes
     

@@ -52,10 +52,9 @@
 		DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */; };
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
 		DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */; };
-		DD9D811F21716AB0006638F8 /* NodeAnimationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D811E21716AB0006638F8 /* NodeAnimationMenuView.swift */; };
-		DD9D812321716DBF006638F8 /* NodeAnimationMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D812221716DBF006638F8 /* NodeAnimationMenuViewController.swift */; };
-		DD9D81252171A3C0006638F8 /* NodeAnimationMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81242171A3C0006638F8 /* NodeAnimationMenuCell.swift */; };
-		DD9D81292171A694006638F8 /* NodeAnimationMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81282171A694006638F8 /* NodeAnimationMenuViewControllerDelegate.swift */; };
+		DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D811E21716AB0006638F8 /* NodeAnimationListView.swift */; };
+		DD9D81252171A3C0006638F8 /* NodeAnimationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */; };
+		DD9D81292171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */; };
 		DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */; };
 		DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24B82153CADA003C9CAF /* SceneDocument.swift */; };
 		DDBA24BD2153CC8C003C9CAF /* DocumentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */; };
@@ -68,6 +67,11 @@
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
 		DDE60E4621731BB30052E506 /* MoveAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */; };
 		DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */; };
+		DDE60E5021738DBA0052E506 /* NodeAnimationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4F21738DBA0052E506 /* NodeAnimationListViewController.swift */; };
+		DDE60E5221738DE40052E506 /* NodeAnimationMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E5121738DE40052E506 /* NodeAnimationMenuViewController.swift */; };
+		DDE60E5421738E740052E506 /* NodeAnimationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E5321738E740052E506 /* NodeAnimationMenuView.swift */; };
+		DDE60E5821738FCE0052E506 /* NodeAnimationMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E5721738FCE0052E506 /* NodeAnimationMenuCell.swift */; };
+		DDE60E5C2173955A0052E506 /* MoveAnimationLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E5B2173955A0052E506 /* MoveAnimationLocationCell.swift */; };
 		DDEF325E20DF776100FEE793 /* Box.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Box.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
 		DDF38F5D2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F5C2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift */; };
@@ -127,10 +131,9 @@
 		DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
 		DD9C6AF3210AC920001E4982 /* SceneInspectorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorPresentableView.swift; sourceTree = "<group>"; };
-		DD9D811E21716AB0006638F8 /* NodeAnimationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuView.swift; sourceTree = "<group>"; };
-		DD9D812221716DBF006638F8 /* NodeAnimationMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuViewController.swift; sourceTree = "<group>"; };
-		DD9D81242171A3C0006638F8 /* NodeAnimationMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuCell.swift; sourceTree = "<group>"; };
-		DD9D81282171A694006638F8 /* NodeAnimationMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
+		DD9D811E21716AB0006638F8 /* NodeAnimationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListView.swift; sourceTree = "<group>"; };
+		DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListCell.swift; sourceTree = "<group>"; };
+		DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
 		DDBA24B82153CADA003C9CAF /* SceneDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocument.swift; sourceTree = "<group>"; };
 		DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentError.swift; sourceTree = "<group>"; };
@@ -143,6 +146,11 @@
 		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDurationCell.swift; sourceTree = "<group>"; };
+		DDE60E4F21738DBA0052E506 /* NodeAnimationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeAnimationListViewController.swift; sourceTree = "<group>"; };
+		DDE60E5121738DE40052E506 /* NodeAnimationMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuViewController.swift; sourceTree = "<group>"; };
+		DDE60E5321738E740052E506 /* NodeAnimationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuView.swift; sourceTree = "<group>"; };
+		DDE60E5721738FCE0052E506 /* NodeAnimationMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuCell.swift; sourceTree = "<group>"; };
+		DDE60E5B2173955A0052E506 /* MoveAnimationLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationLocationCell.swift; sourceTree = "<group>"; };
 		DDEF325D20DF776100FEE793 /* Box.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Box.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
 		DDF38F5C2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -306,7 +314,8 @@
 				DDF38F592164ADE70000069E /* ObjectCatalog */,
 				DDF38F5E216C96B60000069E /* UtilitiesInspector */,
 				DDF38F67216DFD1B0000069E /* Presentation */,
-				DD9D81272171A646006638F8 /* NodeAnimationMenu */,
+				DD9D81272171A646006638F8 /* NodeAnimationList */,
+				DDE60E5A217391F80052E506 /* NodeAnimationMenu */,
 				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
 			);
@@ -536,38 +545,38 @@
 			path = Presentable;
 			sourceTree = "<group>";
 		};
-		DD9D812021716AB5006638F8 /* NodeAnimationMenu */ = {
+		DD9D812021716AB5006638F8 /* NodeAnimationList */ = {
 			isa = PBXGroup;
 			children = (
-				DD9D812121716AE6006638F8 /* NodeAnimationMenuView */,
+				DD9D812121716AE6006638F8 /* NodeAnimationListView */,
 				DD9D81262171A3C3006638F8 /* Cell */,
 			);
-			path = NodeAnimationMenu;
+			path = NodeAnimationList;
 			sourceTree = "<group>";
 		};
-		DD9D812121716AE6006638F8 /* NodeAnimationMenuView */ = {
+		DD9D812121716AE6006638F8 /* NodeAnimationListView */ = {
 			isa = PBXGroup;
 			children = (
-				DD9D811E21716AB0006638F8 /* NodeAnimationMenuView.swift */,
+				DD9D811E21716AB0006638F8 /* NodeAnimationListView.swift */,
 			);
-			path = NodeAnimationMenuView;
+			path = NodeAnimationListView;
 			sourceTree = "<group>";
 		};
 		DD9D81262171A3C3006638F8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				DD9D81242171A3C0006638F8 /* NodeAnimationMenuCell.swift */,
+				DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		DD9D81272171A646006638F8 /* NodeAnimationMenu */ = {
+		DD9D81272171A646006638F8 /* NodeAnimationList */ = {
 			isa = PBXGroup;
 			children = (
-				DD9D812221716DBF006638F8 /* NodeAnimationMenuViewController.swift */,
-				DD9D81282171A694006638F8 /* NodeAnimationMenuViewControllerDelegate.swift */,
+				DDE60E4F21738DBA0052E506 /* NodeAnimationListViewController.swift */,
+				DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */,
 			);
-			path = NodeAnimationMenu;
+			path = NodeAnimationList;
 			sourceTree = "<group>";
 		};
 		DDA37E7D20DD343D005A340C /* Storyboard */ = {
@@ -633,8 +642,8 @@
 		DDE60E4721731BB90052E506 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */,
-				DD9D812021716AB5006638F8 /* NodeAnimationMenu */,
+				DDE60E5521738E7A0052E506 /* NodeAnimationMenu */,
+				DD9D812021716AB5006638F8 /* NodeAnimationList */,
 				DDE60E4821731BC60052E506 /* MoveAnimationAttributes */,
 			);
 			path = Animation;
@@ -644,6 +653,7 @@
 			isa = PBXGroup;
 			children = (
 				DDE60E4921731BE30052E506 /* MoveAnimationAttributesView */,
+				DDE60E4C2173861C0052E506 /* Cell */,
 			);
 			path = MoveAnimationAttributes;
 			sourceTree = "<group>";
@@ -654,6 +664,48 @@
 				DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */,
 			);
 			path = MoveAnimationAttributesView;
+			sourceTree = "<group>";
+		};
+		DDE60E4C2173861C0052E506 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */,
+				DDE60E5B2173955A0052E506 /* MoveAnimationLocationCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DDE60E5521738E7A0052E506 /* NodeAnimationMenu */ = {
+			isa = PBXGroup;
+			children = (
+				DDE60E5621738EC90052E506 /* NodeAnimationMenuView */,
+				DDE60E5921738FDB0052E506 /* Cell */,
+			);
+			path = NodeAnimationMenu;
+			sourceTree = "<group>";
+		};
+		DDE60E5621738EC90052E506 /* NodeAnimationMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				DDE60E5321738E740052E506 /* NodeAnimationMenuView.swift */,
+			);
+			path = NodeAnimationMenuView;
+			sourceTree = "<group>";
+		};
+		DDE60E5921738FDB0052E506 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DDE60E5721738FCE0052E506 /* NodeAnimationMenuCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DDE60E5A217391F80052E506 /* NodeAnimationMenu */ = {
+			isa = PBXGroup;
+			children = (
+				DDE60E5121738DE40052E506 /* NodeAnimationMenuViewController.swift */,
+			);
+			path = NodeAnimationMenu;
 			sourceTree = "<group>";
 		};
 		DDF38F592164ADE70000069E /* ObjectCatalog */ = {
@@ -766,12 +818,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */,
-				DD9D812321716DBF006638F8 /* NodeAnimationMenuViewController.swift in Sources */,
 				DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */,
 				DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */,
 				DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */,
 				DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */,
-				DD9D811F21716AB0006638F8 /* NodeAnimationMenuView.swift in Sources */,
+				DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */,
 				DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
@@ -782,6 +833,7 @@
 				DD8E1261213BE88500D4F4DE /* UtilitiesInspectorViewController.swift in Sources */,
 				DDF38F5D2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift in Sources */,
 				DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */,
+				DDE60E5C2173955A0052E506 /* MoveAnimationLocationCell.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
 				DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */,
 				DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */,
@@ -791,16 +843,19 @@
 				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
 				DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */,
 				DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */,
+				DDE60E5021738DBA0052E506 /* NodeAnimationListViewController.swift in Sources */,
+				DDE60E5221738DE40052E506 /* NodeAnimationMenuViewController.swift in Sources */,
 				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
 				DD38321D21598E5400809856 /* DefaultScene.swift in Sources */,
 				DD68C2322127BA1F0061100F /* ColorPickerPresentableView.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
-				DD9D81292171A694006638F8 /* NodeAnimationMenuViewControllerDelegate.swift in Sources */,
+				DD9D81292171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift in Sources */,
 				DD68C21F2110735C0061100F /* Node.swift in Sources */,
 				DD4342A2215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift in Sources */,
 				DD6C16F0210B217A002CB031 /* ViewComponent.swift in Sources */,
 				DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */,
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
+				DDE60E5421738E740052E506 /* NodeAnimationMenuView.swift in Sources */,
 				DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */,
 				DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */,
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
@@ -808,7 +863,7 @@
 				DDF38F62216C97A80000069E /* UtilitiesInspectorExportCell.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
-				DD9D81252171A3C0006638F8 /* NodeAnimationMenuCell.swift in Sources */,
+				DD9D81252171A3C0006638F8 /* NodeAnimationListCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* SceneActionMenuViewController.swift in Sources */,
 				DDF38F69216E193A0000069E /* PresentationViewController.swift in Sources */,
 				DDF38F6B216E2ABA0000069E /* PresentationViewControllerDelegate.swift in Sources */,
@@ -825,6 +880,7 @@
 				DDBA24CC21579255003C9CAF /* SceneEditorView.swift in Sources */,
 				DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */,
 				DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */,
+				DDE60E5821738FCE0052E506 /* NodeAnimationMenuCell.swift in Sources */,
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,
 				DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */,
 				DDBA24C22153D0D5003C9CAF /* DefaultSceneViewModel.swift in Sources */,

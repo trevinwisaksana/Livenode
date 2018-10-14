@@ -2,22 +2,22 @@
 //  NodeAnimationMenuView.swift
 //  SceneKit-Grid-Experiment
 //
-//  Created by Trevin Wisaksana on 13/10/18.
+//  Created by Trevin Wisaksana on 14/10/18.
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
 import UIKit
 
 public protocol NodeAnimationMenuViewDelegate: class {
-    func nodeAnimationMenuView(_ nodeAnimationMenuView: NodeAnimationMenuView, didSelectNodeAnimation animation: Animation)
+    func nodeAnimationMenuView(_ nodeAnimationMenuView: NodeAnimationListView, didSelectNodeAnimation animation: Animation)
 }
 
 public class NodeAnimationMenuView: UIView {
     
     // MARK: - Internal properties
     
-    private static let numberOfItemsInSection: Int = 1
-    private static let cellHeight: CGFloat = 60.0
+    private static let numberOfItemsInSection: Int = 3
+    private static let cellHeight: CGFloat = 50.0
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -68,24 +68,8 @@ public class NodeAnimationMenuView: UIView {
 
 extension NodeAnimationMenuView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectNodeAnimation(atIndex: indexPath.row)
+        // TODO: If cell is selected, dismiss the entire popover, show an instruction and highlight a tile to indicate target position
         tableView.deselectRow(at: indexPath, animated: false)
-    }
-    
-    private func didSelectNodeAnimation(atIndex index: Int) {
-        guard let navigationController = parentViewController?.parent as? UINavigationController else {
-            return
-        }
-        
-        switch index {
-        case 0:
-            let moveAnimationAttributes = Presenter.inject(.moveAnimationAttributes)
-            navigationController.pushViewController(moveAnimationAttributes, animated: true)
-            
-            delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: .move)
-        default:
-            break
-        }
     }
 }
 
@@ -97,25 +81,12 @@ extension NodeAnimationMenuView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return setupCell(with: indexPath)
-    }
-    
-    private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell: NodeAnimationMenuCell = tableView.dequeueReusableCell()
-            // TODO: Change from hard-coded index to dynamic values
-            cell.setTitle(forIndex: 0)
-            
-            return cell
-        default:
-            fatalError("Index out of range.")
-        }
+        let cell: NodeAnimationMenuCell = tableView.dequeueReusableCell()
+        cell.setTitle(forIndex: indexPath.row)
+        return cell
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return NodeAnimationMenuView.cellHeight
     }
 }
-
-

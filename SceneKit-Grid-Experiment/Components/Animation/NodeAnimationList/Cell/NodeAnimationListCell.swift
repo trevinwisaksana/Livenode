@@ -2,14 +2,14 @@
 //  NodeAnimationMenuCell.swift
 //  SceneKit-Grid-Experiment
 //
-//  Created by Trevin Wisaksana on 14/10/18.
+//  Created by Trevin Wisaksana on 13/10/18.
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
 import UIKit
 
-public class NodeAnimationMenuCell: UITableViewCell {
-
+public class NodeAnimationListCell: UITableViewCell {
+    
     // MARK: - Internal properties
     
     private static let titleHeight: CGFloat = 20.0
@@ -42,23 +42,19 @@ public class NodeAnimationMenuCell: UITableViewCell {
         backgroundColor = .milk
         
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: NodeAnimationMenuCell.titleLeftMargin),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: NodeAnimationMenuCell.titleTopMargin),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -NodeAnimationMenuCell.titleBottomMargin),
-            ])
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: NodeAnimationListCell.titleLeftMargin),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: NodeAnimationListCell.titleTopMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -NodeAnimationListCell.titleBottomMargin),
+        ])
     }
     
     public func setTitle(forIndex index: Int) {
         switch index {
         case 0:
             titleLabel.text = Animation.move.capitalized
-        case 1:
-            titleLabel.text = Animation.rotate.capitalized
-        case 2:
-            titleLabel.text = Animation.alert.capitalized
         default:
             break
         }
     }
-
+    
 }

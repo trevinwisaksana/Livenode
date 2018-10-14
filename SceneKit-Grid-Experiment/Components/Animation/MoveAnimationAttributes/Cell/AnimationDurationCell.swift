@@ -17,15 +17,15 @@ public class AnimationDurationCell: UITableViewCell {
     private static let titleLeftMargin: CGFloat = 15.0
     
     private static let durationSliderTopMargin: CGFloat = 20.0
-    private static let durationSliderBottomMargin: CGFloat = -3.0
+    private static let durationSliderBottomMargin: CGFloat = -20.0
     private static let durationSliderLeftMargin: CGFloat = 15.0
     private static let durationSliderWidth: CGFloat = 210.0
     
-    private static let durationLabelBottomMargin: CGFloat = -3.0
+    private static let durationLabelBottomMargin: CGFloat = -20.0
     private static let durationLabelRightMargin: CGFloat = 3.0
     private static let durationLabelLeftMargin: CGFloat = 5.0
     
-    private static let secondsLabelBottomMargin: CGFloat = -3.0
+    private static let secondsLabelBottomMargin: CGFloat = -20.0
     private static let secondsLabelRightMargin: CGFloat = -15.0
     
     private lazy var titleLabel: UILabel = {
@@ -56,6 +56,7 @@ public class AnimationDurationCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "secs"
+        label.textColor = .gray
         label.textAlignment = .center
         label.backgroundColor = .clear
         return label
