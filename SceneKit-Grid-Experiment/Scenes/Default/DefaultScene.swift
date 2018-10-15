@@ -54,9 +54,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var nodeSelected: SCNNode?
     public var lastNodeSelected: SCNNode?
     public var currentNodeHighlighted: SCNNode?
+    public var nodeAnimationTarget: SCNNode?
     
     public var didSelectANode: Bool = false
     public var isGridDisplayed: Bool = false
+    public var isSelectingAnimationTargetLocation: Bool = false
     
     public var backgroundColor: UIColor {
         return background.contents as! UIColor
@@ -97,6 +99,45 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public func didFinishPresentation() {
         floorNode.isHidden = false
+    }
+    
+    // MARK: - Node Selection
+    
+    // TODO: Refactor code repetition
+    public func didSelectNode(_ node: SCNNode?) {
+        if isSelectingAnimationTargetLocation {
+            
+            nodeSelected = node
+            node?.changeColor(to: .green)
+            
+            if lastNodeSelected != nil {
+                lastNodeSelected?.changeColor(to: .clear)
+            }
+            
+            lastNodeSelected = nodeSelected
+            didSelectANode = true
+            
+            return
+        }
+        
+        let isCorrectNodeSelected = node?.name == "floorNode" || node?.name == "tileBorder"
+        if node == nil || node?.name == nil || isCorrectNodeSelected {
+            didUnselectNode()
+            return
+        }
+        
+        nodeSelected = node
+        State.nodeSelected = nodeSelected
+        highlight(nodeSelected)
+        
+        didSelectANode = true
+    }
+    
+    public func didUnselectNode() {
+        nodeSelected = nil
+        State.nodeSelected = nil
+        didSelectANode = false
+        unhighlight(currentNodeHighlighted)
     }
     
     // MARK: - Node Insertion
@@ -221,29 +262,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         isGridDisplayed = false
     }
     
-    // MARK: - Node Selection
-    
-    public func didSelectNode(_ node: SCNNode?) {
-        let isCorrectNodeSelected = node?.name == "floorNode" || node?.name == "tileBorder"
-        if node == nil || node?.name == nil || isCorrectNodeSelected {
-            didUnselectNode()
-            return
-        }
-        
-        nodeSelected = node
-        State.nodeSelected = nodeSelected
-        highlight(nodeSelected)
-        
-        didSelectANode = true
-    }
-    
-    public func didUnselectNode() {
-        nodeSelected = nil
-        State.nodeSelected = nil
-        didSelectANode = false
-        unhighlight(currentNodeHighlighted)
-    }
-    
     // MARK: - Node Movement
     
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
@@ -272,9 +290,17 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Node Animation
     
+    func setNodeAnimationTarget() {
+        nodeAnimationTarget = nodeSelected
+    }
+    
+    func setMoveAnimationTarget(location: SCNVector3) {
+        
+    }
+    
     func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
         let action = SCNAction.move(by: location, duration: duration)
-        nodeSelected?.runAction(action)
+        nodeAnimationTarget?.runAction(action)
     }
     
     // MARK: - Scene Actions
@@ -292,15 +318,15 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             nodeSelected?.removeFromParentNode()
         case Action.move.capitalized:
             nodeSelected?.isMovable = true
-//            showGrid()
         case Action.pin.capitalized:
             nodeSelected?.isMovable = false
             didSelectANode = false
-//            hideGrid()
         default:
             break
         }
     }
+    
+    // MARK: - Node Highlight
     
     // TODO: Find solution that doesn't only work with boxes
     private func highlight(_ nodeSelected: SCNNode?) {
@@ -311,15 +337,15 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         if currentNodeHighlighted != nil {
             return
         }
-
+        
         // TODO: Make the dimensions the same with the node selected
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-
+        
         let nodeHighlight = SCNNode(geometry: box)
         nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: .boxWireframe)
         nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
         nodeHighlight.name = "nodeHighlight"
-
+        
         node.addChildNode(nodeHighlight)
         
         currentNodeHighlighted = node
@@ -329,7 +355,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         guard let node = lastNodeSelected else {
             return
         }
-
+        
         let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
         nodeHighlight?.removeFromParentNode()
         

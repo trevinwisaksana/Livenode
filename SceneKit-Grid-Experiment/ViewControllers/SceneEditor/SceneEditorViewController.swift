@@ -130,6 +130,20 @@ final class SceneEditorViewController: UIViewController {
         navigationItem.setRightBarButtonItems([doneBarButton, animationCatalogBarButton, playBarButton], animated: true)
     }
     
+    func setupEditMoveAnimationNavigationItems() {
+        let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelEditingMoveAnimationButton(_:)))
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneEditingMoveAnimationButton(_:)))
+        
+        title = "Select a point on the grid."
+        
+        navigationController?.navigationBar.barTintColor = .orange
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        
+        navigationItem.setLeftBarButton(cancelBarButton, animated: true)
+        navigationItem.setRightBarButtonItems([doneBarButton], animated: true)
+    }
+    
     private func setupNotificationListeners() {
         NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Notification.Name.ColorPickerDidModifyNodeColor, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didTapSceneActionButton(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
@@ -194,12 +208,27 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapAnimationCatalogButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didDisplayNodeAnimationMenuWith: sender)
+        viewControllerDelegate.sceneEditor(self, didDisplayNodeAnimationListWith: sender)
     }
 
     @objc
     private func didTapUndoAnimationButton(_ sender: UIBarButtonItem) {
         
+    }
+    
+    @objc
+    private func didTapCancelEditingMoveAnimationButton(_ sender: UIBarButtonItem) {
+        setupAnimationNavigationItems()
+    }
+    
+    @objc
+    private func didTapDoneEditingMoveAnimationButton(_ sender: UIBarButtonItem) {
+        guard let position = currentScene.nodeSelected?.position else {
+            return
+        }
+        
+        currentScene.addMoveAnimation(toLocation: position, withDuration: 3)
+        setupAnimationNavigationItems()
     }
     
     @objc
@@ -212,10 +241,12 @@ final class SceneEditorViewController: UIViewController {
         viewControllerDelegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: currentScene)
     }
     
-    
     @objc
     private func didSelectNodeAnimation(_ notification: Notification) {
         viewControllerDelegate.sceneEditor(self, didSelectNodeAnimationUsing: notification, for: currentScene)
+        setupEditMoveAnimationNavigationItems()
+        
+        presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     @objc

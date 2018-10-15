@@ -16,7 +16,7 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayUtilitiesInspectorWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationMenuWith sender: UIBarButtonItem)
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationListWith sender: UIBarButtonItem)
     
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene)
@@ -122,7 +122,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         controller.present(presentationController, animated: true, completion: nil)
     }
     
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationMenuWith sender: UIBarButtonItem) {
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationListWith sender: UIBarButtonItem) {
         let nodeAnimationMenuController = Presenter.inject(.nodeAnimationList)
 
         let navigationController = UINavigationController()
@@ -146,6 +146,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         
         if action == Action.animate.capitalized {
             controller.setupAnimationNavigationItems()
+            scene.setNodeAnimationTarget()
         } else {
             scene.didSelectScene(action: action)
         }
@@ -178,10 +179,8 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene) {
         if let animation = notification.object as? Animation {
-            
+            scene.isSelectingAnimationTargetLocation = true
         }
-        
-        controller.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Touches
