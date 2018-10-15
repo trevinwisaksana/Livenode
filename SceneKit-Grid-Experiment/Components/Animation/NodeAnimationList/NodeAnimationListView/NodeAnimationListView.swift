@@ -12,12 +12,19 @@ public protocol NodeAnimationListViewDelegate: class {
     func nodeAnimationListView(_ nodeAnimationListView: NodeAnimationListView, didSelectNodeAnimation animation: Animation)
 }
 
+public class NodeAnimationListViewDataSource: NSObject {
+    let nodeAnimations: [String] = State.nodeSelected?.animationKeys ?? []
+}
+
 public class NodeAnimationListView: UIView {
     
     // MARK: - Internal properties
     
-    private static let numberOfItemsInSection: Int = 1
     private static let cellHeight: CGFloat = 60.0
+    
+    lazy var dataSource: NodeAnimationListViewDataSource = {
+        return NodeAnimationListViewDataSource()
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -83,6 +90,7 @@ extension NodeAnimationListView: UITableViewDelegate {
             navigationController.pushViewController(moveAnimationAttributes, animated: true)
             
             delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .move)
+            
         default:
             break
         }
@@ -93,7 +101,7 @@ extension NodeAnimationListView: UITableViewDelegate {
 
 extension NodeAnimationListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return NodeAnimationListView.numberOfItemsInSection
+        return dataSource.nodeAnimations.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,10 +112,10 @@ extension NodeAnimationListView: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell: NodeAnimationListCell = tableView.dequeueReusableCell()
-            // TODO: Change from hard-coded index to dynamic values
-            cell.setTitle(forIndex: 0)
+            cell.set(title: dataSource.nodeAnimations[indexPath.row])
             
             return cell
+            
         default:
             fatalError("Index out of range.")
         }

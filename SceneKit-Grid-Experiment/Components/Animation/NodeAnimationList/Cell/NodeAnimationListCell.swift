@@ -48,13 +48,8 @@ public class NodeAnimationListCell: UITableViewCell {
         ])
     }
     
-    public func setTitle(forIndex index: Int) {
-        switch index {
-        case 0:
-            titleLabel.text = Animation.move.capitalized
-        default:
-            break
-        }
+    public func set(title: String) {
+        titleLabel.text = title
     }
     
 }

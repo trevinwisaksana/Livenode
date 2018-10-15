@@ -272,8 +272,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Node Animation
     
-    func testMoveAnimation() {
-        let action = SCNAction.move(by: SCNVector3(x: 5, y: 0, z: 0), duration: 3)
+    func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
+        let action = SCNAction.move(by: location, duration: duration)
         nodeSelected?.runAction(action)
     }
     

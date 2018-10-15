@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol NodeAnimationMenuViewDelegate: class {
-    func nodeAnimationMenuView(_ nodeAnimationMenuView: NodeAnimationListView, didSelectNodeAnimation animation: Animation)
+    func nodeAnimationMenuView(_ nodeAnimationMenuView: NodeAnimationMenuView, didSelectNodeAnimation animation: Animation)
 }
 
 public class NodeAnimationMenuView: UIView {
@@ -68,8 +68,19 @@ public class NodeAnimationMenuView: UIView {
 
 extension NodeAnimationMenuView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: If cell is selected, dismiss the entire popover, show an instruction and highlight a tile to indicate target position
+        didSelectNodeAnimation(atIndex: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    private func didSelectNodeAnimation(atIndex index: Int) {
+        switch index {
+        case 0:
+            delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.move)
+        case 1:
+            delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.rotate)
+        default:
+            break
+        }
     }
 }
 

@@ -24,6 +24,7 @@
 		DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */; };
 		DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */; };
 		DD51FEFE208818ED00A0D857 /* SceneEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */; };
+		DD5456C2217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456C1217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift */; };
 		DD638DB720AACA1700395557 /* SceneActionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* SceneActionMenuViewController.swift */; };
 		DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */; };
 		DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */; };
@@ -103,6 +104,7 @@
 		DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogView.swift; sourceTree = "<group>"; };
 		DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewModel.swift; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorViewController.swift; sourceTree = "<group>"; };
+		DD5456C1217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* SceneActionMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuCell.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNodeExtensions.swift; sourceTree = "<group>"; };
@@ -642,8 +644,8 @@
 		DDE60E4721731BB90052E506 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				DDE60E5521738E7A0052E506 /* NodeAnimationMenu */,
 				DD9D812021716AB5006638F8 /* NodeAnimationList */,
+				DDE60E5521738E7A0052E506 /* NodeAnimationMenu */,
 				DDE60E4821731BC60052E506 /* MoveAnimationAttributes */,
 			);
 			path = Animation;
@@ -704,6 +706,7 @@
 			isa = PBXGroup;
 			children = (
 				DDE60E5121738DE40052E506 /* NodeAnimationMenuViewController.swift */,
+				DD5456C1217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift */,
 			);
 			path = NodeAnimationMenu;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */,
 				DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */,
 				DDE60E5021738DBA0052E506 /* NodeAnimationListViewController.swift in Sources */,
+				DD5456C2217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift in Sources */,
 				DDE60E5221738DE40052E506 /* NodeAnimationMenuViewController.swift in Sources */,
 				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
 				DD38321D21598E5400809856 /* DefaultScene.swift in Sources */,

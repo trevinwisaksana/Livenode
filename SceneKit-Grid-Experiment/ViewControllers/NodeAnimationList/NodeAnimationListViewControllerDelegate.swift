@@ -10,6 +10,6 @@ import Foundation
 
 class NodeAnimationListViewControllerDelegate: NSObject, NodeAnimationListViewDelegate {
     func nodeAnimationListView(_ nodeAnimationListView: NodeAnimationListView, didSelectNodeAnimation animation: Animation) {
-        NotificationCenter.default.post(name: Notification.Name.NodeAnimationMenuDidSelectAnimation, object: animation)
+        
     }
 }

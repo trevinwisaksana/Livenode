@@ -180,6 +180,8 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         if let animation = notification.object as? Animation {
             
         }
+        
+        controller.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Touches

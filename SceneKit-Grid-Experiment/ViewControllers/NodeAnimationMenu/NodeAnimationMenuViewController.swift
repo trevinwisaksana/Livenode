@@ -15,8 +15,10 @@ final class NodeAnimationMenuViewController: UIViewController {
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
+    lazy var delegate = NodeAnimationMenuViewControllerDelegate()
+    
     lazy var mainView: NodeAnimationMenuView = {
-        let mainView = NodeAnimationMenuView()
+        let mainView = NodeAnimationMenuView(delegate: delegate)
         return mainView
     }()
     
