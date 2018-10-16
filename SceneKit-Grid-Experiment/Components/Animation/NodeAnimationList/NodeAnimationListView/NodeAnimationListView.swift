@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SceneKit
 
 public protocol NodeAnimationListViewDelegate: class {
     func nodeAnimationListView(_ nodeAnimationListView: NodeAnimationListView, didSelectNodeAnimation animation: Animation)
 }
 
 public class NodeAnimationListViewDataSource: NSObject {
-    let nodeAnimations: [String] = State.nodeAnimationTarget?.actionKeys ?? []
+    let nodeAnimations: [SCNAction] = State.nodeAnimationTarget?.actions ?? []
 }
 
 public class NodeAnimationListView: UIView {
@@ -109,16 +110,11 @@ extension NodeAnimationListView: UITableViewDataSource {
     }
     
     private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell: NodeAnimationListCell = tableView.dequeueReusableCell()
-            cell.set(title: dataSource.nodeAnimations[indexPath.row])
-            
-            return cell
-            
-        default:
-            fatalError("Index out of range.")
-        }
+        let cell: NodeAnimationListCell = tableView.dequeueReusableCell()
+        let title = dataSource.nodeAnimations[indexPath.row].description
+        cell.set(title: title)
+        
+        return cell
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

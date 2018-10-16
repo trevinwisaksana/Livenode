@@ -293,13 +293,27 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         State.nodeAnimationTarget = nodeSelected
     }
     
-    func setMoveAnimationTarget(location: SCNVector3) {
-        
+    func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
+        // TODO: When adding a second move animation, check for the most recent position
+        let moveAction = SCNAction.move(by: location, duration: duration)
+        nodeAnimationTarget?.addAction(moveAction, forKey: .move)
     }
     
-    func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
-        let action = SCNAction.move(by: location, duration: duration)
-        nodeAnimationTarget?.runAction(action, forKey: "Move")
+    func addRotateAnimation(withAngle angle: CGFloat, withDuration duration: TimeInterval) {
+        guard let currentLocation = nodeAnimationTarget?.position else {
+            return
+        }
+        
+        let rotateAction = SCNAction.rotate(by: angle, around: currentLocation, duration: duration)
+        nodeAnimationTarget?.addAction(rotateAction, forKey: .rotate)
+    }
+    
+    func playAnimation() {
+        nodeAnimationTarget?.playAllAnimations()
+    }
+    
+    func delay(_ delay: Double, closure: @escaping ()->()) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
     // MARK: - Scene Actions

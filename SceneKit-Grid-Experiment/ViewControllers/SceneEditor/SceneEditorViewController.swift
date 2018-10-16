@@ -118,7 +118,7 @@ final class SceneEditorViewController: UIViewController {
         let undoBarButton = UIBarButtonItem(image: undoButtonImage, style: .plain, target: self, action: #selector(didTapUndoAnimationButton(_:)))
     
         let playButtonImage = UIImage(named: .playButton)
-        let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
+        let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayAnimationButton(_:)))
         
         title = "Tap the add button to select an animation."
         
@@ -216,6 +216,11 @@ final class SceneEditorViewController: UIViewController {
     }
     
     @objc
+    private func didTapPlayAnimationButton(_ sender: UIBarButtonItem) {
+        viewControllerDelegate.sceneEditor(self, didTapPlayAnimationButtonWith: sender, for: currentScene)
+    }
+    
+    @objc
     private func didTapCancelEditingMoveAnimationButton(_ sender: UIBarButtonItem) {
         setupAnimationNavigationItems()
     }
@@ -238,9 +243,6 @@ final class SceneEditorViewController: UIViewController {
     @objc
     private func didSelectNodeAnimation(_ notification: Notification) {
         viewControllerDelegate.sceneEditor(self, didSelectNodeAnimationUsing: notification, for: currentScene)
-        setupEditMoveAnimationNavigationItems()
-        
-        presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     @objc

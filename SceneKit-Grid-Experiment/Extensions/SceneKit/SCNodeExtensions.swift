@@ -8,7 +8,6 @@
 
 import SceneKit
 
-// TODO: Create a list of animations to keep track of them
 extension SCNNode {
     
     // MARK: - Move
@@ -31,11 +30,33 @@ extension SCNNode {
         }
     }
     
-    // MARK: - Animation
+    // MARK: - Animations
     
-//    var listOfActions: [SCNAction] {
-//        
-//    }
+    private struct ActionsState {
+        static var actions = [SCNAction]()
+    }
+    
+    private(set) var actions: [SCNAction] {
+        get {
+            return objc_getAssociatedObject(self, &ActionsState.actions) as? [SCNAction] ?? []
+        }
+        set {
+            objc_setAssociatedObject(self, &ActionsState.actions, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+    
+    func addAction(_ action: SCNAction, forKey key: Animation) {
+        actions.append(action)
+    }
+    
+    func removeAllActions() {
+        actions.removeAll()
+    }
+    
+    func playAllAnimations() {
+        let sequence = SCNAction.sequence(actions)
+        runAction(sequence)
+    }
     
 }
 
