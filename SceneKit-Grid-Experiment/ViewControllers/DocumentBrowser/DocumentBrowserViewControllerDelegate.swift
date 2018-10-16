@@ -112,13 +112,15 @@ extension DocumentBrowserViewControllerDelegate {
 
 // MARK: - SceneEditorDelegate
 
-extension DocumentBrowserViewControllerDelegate: SceneEditorDelegate {
+extension DocumentBrowserViewControllerDelegate: SceneEditorDocumentDelegate {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: DefaultScene) {
         State.isEditingScene = false
         
         State.currentDocument?.close(completionHandler: { (_) in
             State.currentDocument = nil
         })
+        
+        controller.navigationController?.popToRootViewController(animated: true)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didUpdateSceneContent scene: DefaultScene) {

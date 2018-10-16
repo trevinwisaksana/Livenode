@@ -103,10 +103,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Node Selection
     
-    // TODO: Refactor code repetition
     public func didSelectNode(_ node: SCNNode?) {
-        if isSelectingAnimationTargetLocation {
-            
+        if isSelectingAnimationTargetLocation && node?.name != "floorNode" {
             nodeSelected = node
             node?.changeColor(to: .green)
             
@@ -292,6 +290,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     func setNodeAnimationTarget() {
         nodeAnimationTarget = nodeSelected
+        State.nodeAnimationTarget = nodeSelected
     }
     
     func setMoveAnimationTarget(location: SCNVector3) {
@@ -300,7 +299,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
         let action = SCNAction.move(by: location, duration: duration)
-        nodeAnimationTarget?.runAction(action)
+        nodeAnimationTarget?.runAction(action, forKey: "Move")
     }
     
     // MARK: - Scene Actions

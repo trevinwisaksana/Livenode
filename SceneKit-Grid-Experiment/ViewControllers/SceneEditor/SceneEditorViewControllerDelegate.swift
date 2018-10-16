@@ -18,18 +18,19 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationListWith sender: UIBarButtonItem)
     
-    
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene)
+    // TODO: Change method name to something else
     func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didTapDoneEditingMoveAnimationButtonForScene scene: DefaultScene)
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
 }
 
-protocol SceneEditorDelegate: class {
+protocol SceneEditorDocumentDelegate: class {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didUpdateSceneContent scene: DefaultScene)
 }
@@ -181,6 +182,17 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         if let animation = notification.object as? Animation {
             scene.isSelectingAnimationTargetLocation = true
         }
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didTapDoneEditingMoveAnimationButtonForScene scene: DefaultScene) {
+        guard let position = scene.nodeSelected?.position else {
+            return
+        }
+        
+        scene.addMoveAnimation(toLocation: position, withDuration: 2)
+        scene.isSelectingAnimationTargetLocation = false
+        
+        controller.setupAnimationNavigationItems()
     }
     
     // MARK: - Touches

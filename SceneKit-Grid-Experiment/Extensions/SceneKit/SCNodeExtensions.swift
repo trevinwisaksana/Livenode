@@ -8,6 +8,7 @@
 
 import SceneKit
 
+// TODO: Create a list of animations to keep track of them
 extension SCNNode {
     
     // MARK: - Move
@@ -29,6 +30,12 @@ extension SCNNode {
             objc_setAssociatedObject(self, &MovableState.isMovable, value, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    
+    // MARK: - Animation
+    
+//    var listOfActions: [SCNAction] {
+//        
+//    }
     
 }
 

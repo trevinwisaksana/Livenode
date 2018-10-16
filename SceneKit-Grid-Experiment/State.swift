@@ -12,4 +12,5 @@ struct State {
     static var currentDocument: SceneDocument?
     static var isEditingScene: Bool = false
     static var nodeSelected: SCNNode?
+    static var nodeAnimationTarget: SCNNode?
 }

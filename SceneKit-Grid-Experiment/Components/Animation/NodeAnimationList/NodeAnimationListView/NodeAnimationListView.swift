@@ -13,7 +13,7 @@ public protocol NodeAnimationListViewDelegate: class {
 }
 
 public class NodeAnimationListViewDataSource: NSObject {
-    let nodeAnimations: [String] = State.nodeSelected?.animationKeys ?? []
+    let nodeAnimations: [String] = State.nodeAnimationTarget?.actionKeys ?? []
 }
 
 public class NodeAnimationListView: UIView {

@@ -31,7 +31,7 @@ final class SceneEditorViewController: UIViewController {
     
     public var documentName: String = ""
     
-    public weak var sceneEditorDelegate: SceneEditorDelegate?
+    public weak var sceneEditorDelegate: SceneEditorDocumentDelegate?
     
     // MARK: - VC Lifecycle
     
@@ -55,7 +55,7 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Setup
     
-    init(sceneDocument: SceneDocument, delegate: SceneEditorDelegate) {
+    init(sceneDocument: SceneDocument, delegate: SceneEditorDocumentDelegate) {
         currentScene = sceneDocument.scene
         sceneEditorDelegate = delegate
         
@@ -146,7 +146,7 @@ final class SceneEditorViewController: UIViewController {
     
     private func setupNotificationListeners() {
         NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Notification.Name.ColorPickerDidModifyNodeColor, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didTapSceneActionButton(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectSceneActionButton(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectNodeModel(_:)), name: Notification.Name.ObjectCatalogDidSelectNodeModel, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectNodeAnimation(_:)), name: Notification.Name.NodeAnimationMenuDidSelectAnimation, object: nil)
     }
@@ -203,7 +203,6 @@ final class SceneEditorViewController: UIViewController {
     @objc
     private func didTapBackButton(_ sender: UIBarButtonItem) {
         sceneEditorDelegate?.sceneEditor(self, didFinishEditing: currentScene)
-        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc
@@ -223,16 +222,11 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapDoneEditingMoveAnimationButton(_ sender: UIBarButtonItem) {
-        guard let position = currentScene.nodeSelected?.position else {
-            return
-        }
-        
-        currentScene.addMoveAnimation(toLocation: position, withDuration: 3)
-        setupAnimationNavigationItems()
+        viewControllerDelegate.sceneEditor(self, didTapDoneEditingMoveAnimationButtonForScene: currentScene)
     }
     
     @objc
-    private func didTapSceneActionButton(_ notification: Notification) {
+    private func didSelectSceneActionButton(_ notification: Notification) {
         viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: currentScene)
     }
     
