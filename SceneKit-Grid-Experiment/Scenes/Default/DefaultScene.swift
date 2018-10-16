@@ -90,17 +90,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         super.init(coder: aDecoder)
     }
     
-    // MARK: - Presentation
-    
-    public func prepareForPresentation() {
-        floorNode.isHidden = true
-        hideGrid()
-    }
-    
-    public func didFinishPresentation() {
-        floorNode.isHidden = false
-    }
-    
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
@@ -243,23 +232,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         return SCNGeometry(sources: [source], elements: [element])
     }
     
-    private func showGrid() {
-        gridContainer.enumerateChildNodes { (node, _) in
-            node.isHidden = false
-        }
-        
-        isGridDisplayed = true
-    }
-    
-    private func hideGrid() {
-        // TODO: Fix issue where we cannot unhide grid
-        gridContainer.enumerateChildNodes { (node, _) in
-            node.isHidden = true
-        }
-        
-        isGridDisplayed = false
-    }
-    
     // MARK: - Node Movement
     
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
@@ -294,8 +266,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
-        // TODO: When adding a second move animation, check for the most recent position
-        let moveAction = SCNAction.move(by: location, duration: duration)
+        let moveAction = SCNAction.move(to: location, duration: duration)
         nodeAnimationTarget?.addAction(moveAction, forKey: .move)
     }
     
@@ -311,11 +282,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     func playAnimation() {
         nodeAnimationTarget?.playAllAnimations()
     }
-    
-    func delay(_ delay: Double, closure: @escaping ()->()) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
-    }
-    
+  
     // MARK: - Scene Actions
     
     public func didSelectScene(action: String) {
