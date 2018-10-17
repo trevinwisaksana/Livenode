@@ -31,10 +31,10 @@ class SceneActionMenuViewControllerDelegate: NSObject, SceneActionsMenuViewDeleg
     }
     
     func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectPinButton button: UIButton) {
-        NotificationCenter.default.post(name: Notification.Name.SceneActionMenuDidSelectButton, object: Action.pin.capitalized)
+        NotificationCenter.default.post(name: Notification.Name.SceneActionMenuDidSelectButton, object: Action.pin)
     }
     
     func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectAnimateButton button: UIButton) {
-        NotificationCenter.default.post(name: Notification.Name.SceneActionMenuDidSelectButton, object: Action.animate.capitalized)
+        NotificationCenter.default.post(name: Notification.Name.SceneActionMenuDidSelectButton, object: Action.animate)
     }
 }

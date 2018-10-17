@@ -46,6 +46,9 @@ enum Presenter {
         case .moveAnimationAttributes:
             controller = AttributesInspectorViewController<MoveAnimationAttributesView>()
             return controller
+        case .rotateAnimationAttributes:
+            controller = AttributesInspectorViewController<RotateAniamtionAttributesView>()
+            return controller
         }
     }
 }

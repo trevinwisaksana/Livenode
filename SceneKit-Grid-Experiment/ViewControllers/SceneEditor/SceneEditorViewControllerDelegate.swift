@@ -124,11 +124,11 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationListWith sender: UIBarButtonItem) {
-        let nodeAnimationMenuController = Presenter.inject(.nodeAnimationList)
+        let nodeAnimationListController = Presenter.inject(.nodeAnimationList)
 
         let navigationController = UINavigationController()
         
-        navigationController.viewControllers = [nodeAnimationMenuController]
+        navigationController.viewControllers = [nodeAnimationListController]
         
         navigationController.modalPresentationStyle = .popover
         navigationController.popoverPresentationController?.permittedArrowDirections = .up
@@ -184,14 +184,16 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             case .move:
                 controller.setupEditMoveAnimationNavigationItems()
                 scene.isSelectingAnimationTargetLocation = true
+                
+                controller.presentedViewController?.dismiss(animated: true, completion: nil)
             case .rotate:
-                break
+                let rotateAnimationAttributesView = Presenter.inject(.rotateAnimationAttributes)
+                let navigationController = controller.presentedViewController as! UINavigationController
+                navigationController.pushViewController(rotateAnimationAttributesView, animated: true)
             default:
                 break
             }
         }
-        
-        controller.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didTapDoneEditingMoveAnimationButtonForScene scene: DefaultScene) {
