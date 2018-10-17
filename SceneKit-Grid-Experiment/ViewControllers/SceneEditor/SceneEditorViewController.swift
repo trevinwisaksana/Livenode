@@ -145,6 +145,7 @@ final class SceneEditorViewController: UIViewController {
     }
     
     private func setupNotificationListeners() {
+        // TODO: Refactor code to remove notifications and use dependencies instead
         NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Notification.Name.ColorPickerDidModifyNodeColor, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectSceneActionButton(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectNodeModel(_:)), name: Notification.Name.ObjectCatalogDidSelectNodeModel, object: nil)

@@ -8,8 +8,9 @@
 
 import UIKit
 
-public protocol RotateAniamtionAttributesViewDelegate: class {
+public protocol RotateAnimationAttributesViewDelegate: class {
     func rotateAniamtionAttributesView(_ rotateAniamtionAttributesView: RotateAniamtionAttributesView, didUpdateAnimationDuration duration: Int)
+    func rotateAniamtionAttributesView(_ rotateAniamtionAttributesView: RotateAniamtionAttributesView, didTapAddAnimationButton button: UIButton)
 }
 
 public class RotateAniamtionAttributesView: UIView {
@@ -29,11 +30,11 @@ public class RotateAniamtionAttributesView: UIView {
         return tableView
     }()
     
-    private weak var delegate: RotateAniamtionAttributesViewDelegate?
+    private weak var delegate: RotateAnimationAttributesViewDelegate?
     
     // MARK: - Setup
     
-    public init(delegate: RotateAniamtionAttributesViewDelegate) {
+    public init(delegate: RotateAnimationAttributesViewDelegate) {
         super.init(frame: .zero)
         
         self.delegate = delegate
@@ -106,6 +107,7 @@ extension RotateAniamtionAttributesView: UITableViewDataSource {
             return cell
         case 2:
             let cell: AddAnimationCell = tableView.dequeueReusableCell()
+            cell.delegate = self
             return cell
         default:
             fatalError("Index out of range.")
@@ -121,5 +123,13 @@ extension RotateAniamtionAttributesView: UITableViewDataSource {
         default:
             return 60.0
         }
+    }
+}
+
+// MARK: - AddAnimationCellDelegate
+
+extension RotateAniamtionAttributesView: AddAnimationCellDelegate {
+    public func didTapAddAnimationButton(_ sender: UIButton) {
+        delegate?.rotateAniamtionAttributesView(self, didTapAddAnimationButton: sender)
     }
 }

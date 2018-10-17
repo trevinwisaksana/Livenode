@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol AddAnimationCellDelegate: class {
+    func didTapAddAnimationButton(_ sender: UIButton)
+}
+
 public class AddAnimationCell: UITableViewCell {
     
     // MARK: - Internal properties
@@ -22,9 +26,13 @@ public class AddAnimationCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .aluminium
         button.setTitle("Add animation", for: .normal)
-        button.setTitleColor(.purple, for: .normal)
+        button.setTitleColor(.blue, for: .normal)
         return button
     }()
+    
+    // MARK: - Pubilc Properties
+    
+    weak var delegate: AddAnimationCellDelegate?
     
     // MARK: - Setup
     
@@ -41,6 +49,13 @@ public class AddAnimationCell: UITableViewCell {
     private func setup() {
         addSubview(addAnimationButton)
         addAnimationButton.fillInSuperview()
+        
+        addAnimationButton.addTarget(self, action: #selector(didTapAddAnimationButton(_:)), for: .touchUpInside)
+    }
+    
+    @objc
+    private func didTapAddAnimationButton(_ sender: UIButton) {
+        delegate?.didTapAddAnimationButton(sender)
     }
     
 }

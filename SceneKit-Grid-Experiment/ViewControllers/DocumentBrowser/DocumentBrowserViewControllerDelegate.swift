@@ -85,7 +85,8 @@ extension DocumentBrowserViewControllerDelegate {
         State.isEditingScene = true
         
         let sceneEditor = SceneEditorViewController(sceneDocument: document, delegate: self)
-        controller.navigationController?.pushViewController(sceneEditor, animated: true)
+        let navigationController = RootNavigationController(rootViewController: sceneEditor)
+        controller.present(navigationController, animated: true, completion: nil)
     }
     
     private func isDocumentOpen(with url: URL) -> Bool {
@@ -120,7 +121,7 @@ extension DocumentBrowserViewControllerDelegate: SceneEditorDocumentDelegate {
             State.currentDocument = nil
         })
         
-        controller.navigationController?.popToRootViewController(animated: true)
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didUpdateSceneContent scene: DefaultScene) {

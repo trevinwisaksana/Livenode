@@ -276,7 +276,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-        let rotateAction = SCNAction.rotate(by: angle, around: currentLocation, duration: duration)
+        let radians = angle * (CGFloat.pi / 180)
+        let rotateAction = SCNAction.rotate(by: radians, around: currentLocation, duration: duration)
         nodeAnimationTarget?.addAction(rotateAction, forKey: .rotate)
     }
     
