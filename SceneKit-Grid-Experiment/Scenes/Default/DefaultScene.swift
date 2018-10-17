@@ -286,20 +286,20 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
   
     // MARK: - Scene Actions
     
-    public func didSelectScene(action: String) {
+    public func didSelectScene(action: Action) {
         switch action {
-        case Action.cut.capitalized:
+        case .cut:
             nodeSelected?.copy()
             nodeSelected?.removeFromParentNode()
-        case Action.copy.capitalized:
+        case .copy:
             nodeSelected?.copy()
-        case Action.paste.capitalized:
+        case .paste:
             break
-        case Action.delete.capitalized:
+        case .delete:
             nodeSelected?.removeFromParentNode()
-        case Action.move.capitalized:
+        case .move:
             nodeSelected?.isMovable = true
-        case Action.pin.capitalized:
+        case .pin:
             nodeSelected?.isMovable = false
             didSelectANode = false
         default:

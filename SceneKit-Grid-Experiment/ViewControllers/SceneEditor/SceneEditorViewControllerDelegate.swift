@@ -141,11 +141,11 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     // MARK: - Scene Action Menu
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene) {
-        guard let action = notification.object as? String else {
+        guard let action = notification.object as? Action else {
             return
         }
         
-        if action == Action.animate.capitalized {
+        if action == .animate {
             controller.setupAnimationNavigationItems()
             scene.setNodeAnimationTarget()
         } else {
@@ -180,10 +180,17 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene) {
         if let animation = notification.object as? Animation {
-            scene.isSelectingAnimationTargetLocation = true
+            switch animation {
+            case .move:
+                controller.setupEditMoveAnimationNavigationItems()
+                scene.isSelectingAnimationTargetLocation = true
+            case .rotate:
+                break
+            default:
+                break
+            }
         }
         
-        controller.setupEditMoveAnimationNavigationItems()
         controller.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
