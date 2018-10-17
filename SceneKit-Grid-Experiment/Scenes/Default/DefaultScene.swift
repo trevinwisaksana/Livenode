@@ -266,7 +266,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
-        let targetLocation = SCNVector3(location.x, 0.5, location.y)
+        let targetLocation = SCNVector3(x: location.x, y: 0.5, z: location.z)
         let moveAction = SCNAction.move(to: targetLocation, duration: duration)
         nodeAnimationTarget?.addAction(moveAction, forKey: .move)
     }
