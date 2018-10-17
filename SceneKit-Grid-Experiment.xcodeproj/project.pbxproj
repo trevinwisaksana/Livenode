@@ -28,6 +28,8 @@
 		DD5456C421747D4A00AE25D8 /* DefaultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456C321747D4A00AE25D8 /* DefaultSceneDelegate.swift */; };
 		DD5456C62176DC9400AE25D8 /* RotateAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456C52176DC9400AE25D8 /* RotateAnimationAttributesView.swift */; };
 		DD5456CA2176E86500AE25D8 /* RotateAnimationAngleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456C92176E86500AE25D8 /* RotateAnimationAngleCell.swift */; };
+		DD5456CE21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456CD21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift */; };
+		DD5456D02177480700AE25D8 /* AddAnimationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456CF2177480700AE25D8 /* AddAnimationCell.swift */; };
 		DD638DB720AACA1700395557 /* SceneActionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* SceneActionMenuViewController.swift */; };
 		DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */; };
 		DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */; };
@@ -111,6 +113,8 @@
 		DD5456C321747D4A00AE25D8 /* DefaultSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSceneDelegate.swift; sourceTree = "<group>"; };
 		DD5456C52176DC9400AE25D8 /* RotateAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DD5456C92176E86500AE25D8 /* RotateAnimationAngleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateAnimationAngleCell.swift; sourceTree = "<group>"; };
+		DD5456CD21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationAttributesInspectorViewController.swift; sourceTree = "<group>"; };
+		DD5456CF2177480700AE25D8 /* AddAnimationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnimationCell.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* SceneActionMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuViewController.swift; sourceTree = "<group>"; };
 		DD638DB820ABD44200395557 /* SceneActionMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuCell.swift; sourceTree = "<group>"; };
 		DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNodeExtensions.swift; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */,
+				DD5456CF2177480700AE25D8 /* AddAnimationCell.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				DD9D81272171A646006638F8 /* NodeAnimationList */,
 				DDE60E5A217391F80052E506 /* NodeAnimationMenu */,
 				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
+				DD5456CD21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
 			);
 			path = ViewControllers;
@@ -912,6 +918,7 @@
 				DD9D81252171A3C0006638F8 /* NodeAnimationListCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* SceneActionMenuViewController.swift in Sources */,
 				DDF38F69216E193A0000069E /* PresentationViewController.swift in Sources */,
+				DD5456CE21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift in Sources */,
 				DDF38F6B216E2ABA0000069E /* PresentationViewControllerDelegate.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
 				DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */,
@@ -922,6 +929,7 @@
 				DD4960B7215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift in Sources */,
 				DDE60E4621731BB30052E506 /* MoveAnimationAttributesView.swift in Sources */,
 				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
+				DD5456D02177480700AE25D8 /* AddAnimationCell.swift in Sources */,
 				DD6CC4232109B0D2009284C6 /* SceneInspectorViewModel.swift in Sources */,
 				DDBA24CC21579255003C9CAF /* SceneEditorView.swift in Sources */,
 				DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */,

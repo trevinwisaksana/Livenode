@@ -44,10 +44,10 @@ enum Presenter {
             controller = NodeAnimationMenuViewController()
             return controller
         case .moveAnimationAttributes:
-            controller = AttributesInspectorViewController<MoveAnimationAttributesView>()
+            controller = AnimationAttributesInspectorViewController<MoveAnimationAttributesView>()
             return controller
         case .rotateAnimationAttributes:
-            controller = AttributesInspectorViewController<RotateAniamtionAttributesView>()
+            controller = AnimationAttributesInspectorViewController<RotateAniamtionAttributesView>()
             return controller
         }
     }

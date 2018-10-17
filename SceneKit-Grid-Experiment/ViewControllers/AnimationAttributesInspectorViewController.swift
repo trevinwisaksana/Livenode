@@ -1,24 +1,22 @@
 //
-//  NodeAnimationMenuViewController.swift
+//  AnimationAttributesInspectorViewController.swift
 //  SceneKit-Grid-Experiment
 //
-//  Created by Trevin Wisaksana on 14/10/18.
+//  Created by Trevin Wisaksana on 17/10/18.
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
 import UIKit
 
-final class NodeAnimationMenuViewController: UIViewController {
+final class AnimationAttributesInspectorViewController<View: UIView>: UIViewController {
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var delegate = NodeAnimationMenuViewControllerDelegate()
-    
-    lazy var mainView: NodeAnimationMenuView = {
-        let mainView = NodeAnimationMenuView(delegate: delegate)
+    lazy var mainView: View = {
+        let mainView = View(frame: view.frame)
         return mainView
     }()
     

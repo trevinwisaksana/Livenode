@@ -186,10 +186,13 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
                 scene.isSelectingAnimationTargetLocation = true
                 
                 controller.presentedViewController?.dismiss(animated: true, completion: nil)
+                
             case .rotate:
                 let rotateAnimationAttributesView = Presenter.inject(.rotateAnimationAttributes)
                 let navigationController = controller.presentedViewController as! UINavigationController
+                
                 navigationController.pushViewController(rotateAnimationAttributesView, animated: true)
+                
             default:
                 break
             }

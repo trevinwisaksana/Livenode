@@ -16,8 +16,9 @@ public class RotateAniamtionAttributesView: UIView {
     
     // MARK: - Internal properties
     
-    private static let numberOfItemsInSection: Int = 2
-    private static let cellHeight: CGFloat = 90.0
+    private static let numberOfItemsInSection: Int = 3
+    private static let animationDurationCellHeight: CGFloat = 90.0
+    private static let rotateAnimationAngleCellHeight: CGFloat = 60.0
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -53,6 +54,7 @@ public class RotateAniamtionAttributesView: UIView {
     private func setup() {
         tableView.register(cell: AnimationDurationCell.self)
         tableView.register(cell: RotateAnimationAngleCell.self)
+        tableView.register(cell: AddAnimationCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -102,12 +104,22 @@ extension RotateAniamtionAttributesView: UITableViewDataSource {
         case 1:
             let cell: RotateAnimationAngleCell = tableView.dequeueReusableCell()
             return cell
+        case 2:
+            let cell: AddAnimationCell = tableView.dequeueReusableCell()
+            return cell
         default:
             fatalError("Index out of range.")
         }
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return RotateAniamtionAttributesView.cellHeight
+        switch indexPath.row {
+        case 0:
+            return RotateAniamtionAttributesView.animationDurationCellHeight
+        case 1:
+            return RotateAniamtionAttributesView.rotateAnimationAngleCellHeight
+        default:
+            return 60.0
+        }
     }
 }

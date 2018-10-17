@@ -10,13 +10,18 @@ import UIKit
 
 public class RotateAnimationAngleCell: UITableViewCell {
     
-    
     // MARK: - Internal properties
     
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
-    private static let titleBottomMargin: CGFloat = 3.0
+    private static let titleBottomMargin: CGFloat = -3.0
     private static let titleLeftMargin: CGFloat = 15.0
+    
+    private static let angleTextFieldlRightMargin: CGFloat = -15.0
+    private static let angleTextFieldlWidth: CGFloat = 50.0
+    
+    private static let plusMinusSegmentedControlWidth: CGFloat = 100.0
+    private static let plusMinusSegmentedControlRightMargin: CGFloat = -15.0
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -24,6 +29,27 @@ public class RotateAnimationAngleCell: UITableViewCell {
         label.backgroundColor = .clear
         label.text = "Angle"
         return label
+    }()
+    
+    private lazy var angleTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .clear
+        textField.keyboardType = .numberPad
+        textField.borderStyle = .roundedRect
+        textField.text = "0˚"
+        return textField
+    }()
+    
+    private lazy var plusMinusSegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl()
+        segmentedControl.insertSegment(withTitle: "+", at: 0, animated: true)
+        segmentedControl.insertSegment(withTitle: "-", at: 1, animated: true)
+        
+        let font = UIFont.systemFont(ofSize: 15)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        return segmentedControl
     }()
     
     // MARK: - Setup
@@ -40,13 +66,23 @@ public class RotateAnimationAngleCell: UITableViewCell {
     
     private func setup() {
         addSubview(titleLabel)
+        addSubview(angleTextField)
+        addSubview(plusMinusSegmentedControl)
         
         backgroundColor = .milk
         
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: RotateAnimationAngleCell.titleLeftMargin),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: RotateAnimationAngleCell.titleTopMargin),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -RotateAnimationAngleCell.titleBottomMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: RotateAnimationAngleCell.titleBottomMargin),
+            
+            angleTextField.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            angleTextField.widthAnchor.constraint(equalToConstant: RotateAnimationAngleCell.angleTextFieldlWidth),
+            angleTextField.rightAnchor.constraint(equalTo: plusMinusSegmentedControl.leftAnchor, constant: RotateAnimationAngleCell.angleTextFieldlRightMargin),
+            
+            plusMinusSegmentedControl.centerYAnchor.constraint(equalTo: angleTextField.centerYAnchor),
+            plusMinusSegmentedControl.widthAnchor.constraint(equalToConstant: RotateAnimationAngleCell.plusMinusSegmentedControlWidth),
+            plusMinusSegmentedControl.rightAnchor.constraint(equalTo: rightAnchor, constant: RotateAnimationAngleCell.plusMinusSegmentedControlRightMargin)
         ])
     }
 
