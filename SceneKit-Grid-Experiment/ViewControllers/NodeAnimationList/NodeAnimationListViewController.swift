@@ -45,11 +45,14 @@ final class NodeAnimationListViewController: UIViewController {
         let addAnimationButton = UIImage(named: .objectCatalogButton)
         let addAnimationBarButton = UIBarButtonItem(image: addAnimationButton, style: .plain, target: self, action: #selector(didTapAddAnimationButton(_:)))
         
+        let editAnimationListButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(didTapEditAnimationListButton(_:)))
+        
         navigationController?.navigationBar.tintColor = .lavender
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        navigationItem.setRightBarButtonItems([addAnimationBarButton], animated: true)
+        navigationItem.setLeftBarButtonItems([addAnimationBarButton], animated: true)
+        navigationItem.setRightBarButtonItems([editAnimationListButton], animated: true)
     }
     
     // MARK: - Touches
@@ -58,6 +61,17 @@ final class NodeAnimationListViewController: UIViewController {
     private func didTapAddAnimationButton(_ sender: UIBarButtonItem) {
         let nodeAnimationMenu = Presenter.inject(.nodeAnimationMenu)
         navigationController?.pushViewController(nodeAnimationMenu, animated: true)
+    }
+    
+    @objc
+    private func didTapEditAnimationListButton(_ sender: UIBarButtonItem) {
+        if mainView.tableViewIsEditing() {
+            sender.style = .done
+            sender.title = "Done"
+        } else {
+            sender.style = .plain
+            sender.title = "Edit"
+        }
     }
     
 }

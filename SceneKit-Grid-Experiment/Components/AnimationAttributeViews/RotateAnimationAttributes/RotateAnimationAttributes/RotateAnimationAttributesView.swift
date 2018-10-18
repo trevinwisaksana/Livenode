@@ -28,6 +28,7 @@ public class RotateAnimationAttributesView: UIView {
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.delaysContentTouches = false
+        tableView.isScrollEnabled = false
         return tableView
     }()
     

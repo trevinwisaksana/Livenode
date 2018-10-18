@@ -93,7 +93,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        if isSelectingAnimationTargetLocation && node?.name != "floorNode" {
+        if isSelectingAnimationTargetLocation && node?.name != "floorNode" && node?.name != "nodeHighlight" {
             nodeSelected = node
             node?.changeColor(to: .green)
             

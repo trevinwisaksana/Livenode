@@ -80,6 +80,13 @@ extension NodeAnimationListView: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
+    public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        if let movedAnimation = State.nodeAnimationTarget?.actions[sourceIndexPath.row] {
+            State.nodeAnimationTarget?.actions.remove(at: sourceIndexPath.row)
+            State.nodeAnimationTarget?.actions.insert(movedAnimation, at: destinationIndexPath.row)
+        }
+    }
+    
     private func didSelectNodeAnimation(atIndex index: Int) {
         guard let navigationController = parentViewController?.parent as? UINavigationController else {
             return
@@ -95,6 +102,16 @@ extension NodeAnimationListView: UITableViewDelegate {
         default:
             break
         }
+    }
+    
+    public func tableViewIsEditing() -> Bool {
+        if tableView.isEditing {
+            tableView.isEditing = false
+        } else {
+            tableView.isEditing = true
+        }
+        
+        return tableView.isEditing
     }
 }
 

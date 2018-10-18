@@ -36,7 +36,7 @@ extension SCNNode {
         static var actions = [SCNAction]()
     }
     
-    private(set) var actions: [SCNAction] {
+    public var actions: [SCNAction] {
         get {
             return objc_getAssociatedObject(self, &ActionsState.actions) as? [SCNAction] ?? []
         }
