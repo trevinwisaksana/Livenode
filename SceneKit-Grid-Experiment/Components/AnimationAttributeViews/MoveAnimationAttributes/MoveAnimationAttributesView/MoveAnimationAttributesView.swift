@@ -17,7 +17,8 @@ public class MoveAnimationAttributesView: UIView {
     // MARK: - Internal properties
     
     private static let numberOfItemsInSection: Int = 2
-    private static let cellHeight: CGFloat = 90.0
+    private static let animationDurationCellHeight: CGFloat = 90.0
+    private static let moveAnimationLocationCellHeight: CGFloat = 150.0
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -108,6 +109,14 @@ extension MoveAnimationAttributesView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return MoveAnimationAttributesView.cellHeight
+        switch indexPath.row {
+        case 0:
+            return MoveAnimationAttributesView.animationDurationCellHeight
+        case 1:
+            return MoveAnimationAttributesView.moveAnimationLocationCellHeight
+        default:
+            return 60.0
+        }
+        
     }
 }

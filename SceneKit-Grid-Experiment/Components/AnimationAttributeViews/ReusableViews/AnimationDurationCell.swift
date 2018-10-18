@@ -17,7 +17,7 @@ public class AnimationDurationCell: UITableViewCell {
     // MARK: - Internal properties
     
     private static let titleHeight: CGFloat = 20.0
-    private static let titleTopMargin: CGFloat = 20.0
+    private static let titleTopMargin: CGFloat = 10.0
     private static let titleLeftMargin: CGFloat = 15.0
     
     private static let durationSliderTopMargin: CGFloat = 20.0
