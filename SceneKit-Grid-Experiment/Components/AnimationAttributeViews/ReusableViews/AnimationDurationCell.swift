@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol AnimationDurationCellDelegate: class {
+    func animationDurationCell(_ animationDurationCell: AnimationDurationCell, didUpdateAnimationDuration duration: TimeInterval)
+}
+
 public class AnimationDurationCell: UITableViewCell {
     
     // MARK: - Internal properties
@@ -39,7 +43,9 @@ public class AnimationDurationCell: UITableViewCell {
     private lazy var durationSlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
-        slider.value = 0.00
+        slider.addTarget(self, action: #selector(didUpdateDurationSlider(_:)), for: .valueChanged)
+        slider.maximumValue = 60
+        slider.minimumValue = 0
         return slider
     }()
     
@@ -65,7 +71,7 @@ public class AnimationDurationCell: UITableViewCell {
     // MARK: - External properties
     
     /// A delegate to modify the model
-    public var delegate: SceneBackgroundColorDelegate?
+    public var delegate: AnimationDurationCellDelegate?
     
     // MARK: - Setup
     
@@ -104,6 +110,12 @@ public class AnimationDurationCell: UITableViewCell {
             secondsLabel.centerYAnchor.constraint(equalTo: durationLabel.centerYAnchor),
             secondsLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: AnimationDurationCell.secondsLabelBottomMargin),
         ])
+    }
+    
+    @objc
+    private func didUpdateDurationSlider(_ sender: UISlider) {
+        durationLabel.text = "\(Int(sender.value))"
+        delegate?.animationDurationCell(self, didUpdateAnimationDuration: Double(sender.value))
     }
     
     // MARK: - Dependency injection

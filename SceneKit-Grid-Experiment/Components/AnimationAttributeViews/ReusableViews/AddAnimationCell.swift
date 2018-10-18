@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol AddAnimationCellDelegate: class {
-    func didTapAddAnimationButton(_ sender: UIButton)
+    func addAnimationCell(_ addAnimationCell: AddAnimationCell, didTapAddAnimationButton button: UIButton)
 }
 
 public class AddAnimationCell: UITableViewCell {
@@ -55,7 +55,7 @@ public class AddAnimationCell: UITableViewCell {
     
     @objc
     private func didTapAddAnimationButton(_ sender: UIButton) {
-        delegate?.didTapAddAnimationButton(sender)
+        delegate?.addAnimationCell(self, didTapAddAnimationButton: sender)
     }
     
 }

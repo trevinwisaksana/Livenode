@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol RotateAnimationAngleCellDelegate: class {
+    func rotateAnimationAngleCell(_ rotateAnimationAngleCell: RotateAnimationAngleCell, didUpdateRotationAngle angle: CGFloat)
+}
+
 public class RotateAnimationAngleCell: UITableViewCell {
     
     // MARK: - Internal properties
@@ -22,6 +26,8 @@ public class RotateAnimationAngleCell: UITableViewCell {
     
     private static let plusMinusSegmentedControlWidth: CGFloat = 100.0
     private static let plusMinusSegmentedControlRightMargin: CGFloat = -15.0
+    
+    private var currentAngleValue: Int = 0
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -45,12 +51,18 @@ public class RotateAnimationAngleCell: UITableViewCell {
         let segmentedControl = UISegmentedControl()
         segmentedControl.insertSegment(withTitle: "+", at: 0, animated: true)
         segmentedControl.insertSegment(withTitle: "-", at: 1, animated: true)
+        segmentedControl.addTarget(self, action: #selector(didSelectSegmentedIndex(_:)), for: .valueChanged)
         
         let font = UIFont.systemFont(ofSize: 15)
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.isMomentary = true
         return segmentedControl
     }()
+    
+    // MARK: - External Properties
+    
+    weak var delegate: RotateAnimationAngleCellDelegate?
     
     // MARK: - Setup
     
@@ -84,6 +96,19 @@ public class RotateAnimationAngleCell: UITableViewCell {
             plusMinusSegmentedControl.widthAnchor.constraint(equalToConstant: RotateAnimationAngleCell.plusMinusSegmentedControlWidth),
             plusMinusSegmentedControl.rightAnchor.constraint(equalTo: rightAnchor, constant: RotateAnimationAngleCell.plusMinusSegmentedControlRightMargin)
         ])
+    }
+    
+    @objc
+    private func didSelectSegmentedIndex(_ sender: UISegmentedControl) {
+        // TODO: Keep track if the number becomes negative
+        if sender.selectedSegmentIndex == 0 {
+            currentAngleValue += 5
+        } else {
+            currentAngleValue -= 5
+        }
+        
+        angleTextField.text = "\(currentAngleValue)˚"
+        delegate?.rotateAnimationAngleCell(self, didUpdateRotationAngle: CGFloat(currentAngleValue))
     }
 
 }

@@ -88,6 +88,7 @@
 		DDF38F6B216E2ABA0000069E /* PresentationViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F6A216E2ABA0000069E /* PresentationViewControllerDelegate.swift */; };
 		DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */; };
 		DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */; };
+		DDFFE039217840D100AFF7DA /* RotateAnimationAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFE038217840D100AFF7DA /* RotateAnimationAttributesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +175,7 @@
 		DDF38F6A216E2ABA0000069E /* PresentationViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DDFC63E420F5DD0E00109EC5 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DDFC63EC20F9CDCC00109EC5 /* SceneInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInspectorView.swift; sourceTree = "<group>"; };
+		DDFFE038217840D100AFF7DA /* RotateAnimationAttributesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateAnimationAttributesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 			children = (
 				DD5456C82176E84A00AE25D8 /* RotateAnimationAttributes */,
 				DD5456CB2176E87600AE25D8 /* Cell */,
+				DDFFE03A217840D600AFF7DA /* Model */,
 			);
 			path = RotateAnimationAttributes;
 			sourceTree = "<group>";
@@ -796,6 +799,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		DDFFE03A217840D600AFF7DA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DDFFE038217840D100AFF7DA /* RotateAnimationAttributesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -883,6 +894,7 @@
 				DD51FEFE208818ED00A0D857 /* SceneEditorViewController.swift in Sources */,
 				DD47202F2161F96A00028727 /* SceneActionMenuView.swift in Sources */,
 				DD68C235212905910061100F /* ColorPickerViewModel.swift in Sources */,
+				DDFFE039217840D100AFF7DA /* RotateAnimationAttributesModel.swift in Sources */,
 				DD8E1261213BE88500D4F4DE /* UtilitiesInspectorViewController.swift in Sources */,
 				DDF38F5D2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift in Sources */,
 				DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */,

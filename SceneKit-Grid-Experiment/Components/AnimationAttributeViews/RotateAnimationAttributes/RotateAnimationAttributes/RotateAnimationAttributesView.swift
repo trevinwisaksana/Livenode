@@ -9,11 +9,11 @@
 import UIKit
 
 public protocol RotateAnimationAttributesViewDelegate: class {
-    func rotateAniamtionAttributesView(_ rotateAniamtionAttributesView: RotateAniamtionAttributesView, didUpdateAnimationDuration duration: Int)
-    func rotateAniamtionAttributesView(_ rotateAniamtionAttributesView: RotateAniamtionAttributesView, didTapAddAnimationButton button: UIButton)
+    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: Int)
+    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributesViewModel)
 }
 
-public class RotateAniamtionAttributesView: UIView {
+public class RotateAnimationAttributesView: UIView {
     
     // MARK: - Internal properties
     
@@ -27,10 +27,12 @@ public class RotateAniamtionAttributesView: UIView {
         tableView.dataSource = self
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
+        tableView.delaysContentTouches = false
         return tableView
     }()
     
     private weak var delegate: RotateAnimationAttributesViewDelegate?
+    private var dataSource = RotateAnimationAttributes()
     
     // MARK: - Setup
     
@@ -70,7 +72,7 @@ public class RotateAniamtionAttributesView: UIView {
 
 // MARK: - UITableViewDelegate
 
-extension RotateAniamtionAttributesView: UITableViewDelegate {
+extension RotateAnimationAttributesView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectNodeAnimation(atIndex: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
@@ -88,9 +90,9 @@ extension RotateAniamtionAttributesView: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 
-extension RotateAniamtionAttributesView: UITableViewDataSource {
+extension RotateAnimationAttributesView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RotateAniamtionAttributesView.numberOfItemsInSection
+        return RotateAnimationAttributesView.numberOfItemsInSection
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -101,9 +103,11 @@ extension RotateAniamtionAttributesView: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell: AnimationDurationCell = tableView.dequeueReusableCell()
+            cell.delegate = self
             return cell
         case 1:
             let cell: RotateAnimationAngleCell = tableView.dequeueReusableCell()
+            cell.delegate = self
             return cell
         case 2:
             let cell: AddAnimationCell = tableView.dequeueReusableCell()
@@ -117,9 +121,9 @@ extension RotateAniamtionAttributesView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return RotateAniamtionAttributesView.animationDurationCellHeight
+            return RotateAnimationAttributesView.animationDurationCellHeight
         case 1:
-            return RotateAniamtionAttributesView.rotateAnimationAngleCellHeight
+            return RotateAnimationAttributesView.rotateAnimationAngleCellHeight
         default:
             return 60.0
         }
@@ -128,8 +132,24 @@ extension RotateAniamtionAttributesView: UITableViewDataSource {
 
 // MARK: - AddAnimationCellDelegate
 
-extension RotateAniamtionAttributesView: AddAnimationCellDelegate {
-    public func didTapAddAnimationButton(_ sender: UIButton) {
-        delegate?.rotateAniamtionAttributesView(self, didTapAddAnimationButton: sender)
+extension RotateAnimationAttributesView: AddAnimationCellDelegate {
+    public func addAnimationCell(_ addAnimationCell: AddAnimationCell, didTapAddAnimationButton button: UIButton) {
+        delegate?.rotateAnimationAttributesView(self, didTapAddAnimationButton: button, animation: dataSource)
+    }
+}
+
+// MARK: - AnimationDurationCellDelegate
+
+extension RotateAnimationAttributesView: AnimationDurationCellDelegate {
+    public func animationDurationCell(_ animationDurationCell: AnimationDurationCell, didUpdateAnimationDuration duration: TimeInterval) {
+        dataSource.duration = duration
+    }
+}
+
+// MARK: - RotateAnimationAngleCellDelegate
+
+extension RotateAnimationAttributesView: RotateAnimationAngleCellDelegate {
+    public func rotateAnimationAngleCell(_ rotateAnimationAngleCell: RotateAnimationAngleCell, didUpdateRotationAngle angle: CGFloat) {
+        dataSource.angle = angle
     }
 }

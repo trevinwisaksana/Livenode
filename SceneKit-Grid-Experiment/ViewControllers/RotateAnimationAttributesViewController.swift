@@ -15,8 +15,8 @@ final class RotateAnimationAttributesViewController: UIViewController {
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var mainView: RotateAniamtionAttributesView = {
-        let view = RotateAniamtionAttributesView(delegate: self)
+    lazy var mainView: RotateAnimationAttributesView = {
+        let view = RotateAnimationAttributesView(delegate: self)
         return view
     }()
     
@@ -43,15 +43,19 @@ final class RotateAnimationAttributesViewController: UIViewController {
 // MARK: - RotateAnimationAttributesViewDelegate
 
 extension RotateAnimationAttributesViewController: RotateAnimationAttributesViewDelegate {
-    func rotateAniamtionAttributesView(_ rotateAniamtionAttributesView: RotateAniamtionAttributesView, didUpdateAnimationDuration duration: Int) {
+    func rotateAnimationAttributesView(_ rotateAniamtionAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: Int) {
         
     }
     
-    func rotateAniamtionAttributesView(_ rotateAniamtionAttributesView: RotateAniamtionAttributesView, didTapAddAnimationButton button: UIButton) {
+    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributesViewModel) {
         let rootNavigationController = presentingViewController as! RootNavigationController
         let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
-        // TODO: Make this method send a struct of animation data
-        sceneEditorViewController.currentScene.addRotateAnimation(withAngle: 90, withDuration: 2)
+        
+        let angle = animation.angle ?? 0.0
+        let duration = animation.duration ?? 0.0
+        
+        sceneEditorViewController.currentScene.addRotateAnimation(withAngle: angle, withDuration: duration)
+        
         dismiss(animated: true, completion: nil)
     }
 }
