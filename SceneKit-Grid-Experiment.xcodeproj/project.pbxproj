@@ -28,7 +28,6 @@
 		DD5456C421747D4A00AE25D8 /* DefaultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456C321747D4A00AE25D8 /* DefaultSceneDelegate.swift */; };
 		DD5456C62176DC9400AE25D8 /* RotateAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456C52176DC9400AE25D8 /* RotateAnimationAttributesView.swift */; };
 		DD5456CA2176E86500AE25D8 /* RotateAnimationAngleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456C92176E86500AE25D8 /* RotateAnimationAngleCell.swift */; };
-		DD5456CE21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456CD21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift */; };
 		DD5456D02177480700AE25D8 /* AddAnimationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456CF2177480700AE25D8 /* AddAnimationCell.swift */; };
 		DD5456D221778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456D121778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift */; };
 		DD638DB720AACA1700395557 /* SceneActionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD638DB620AACA1700395557 /* SceneActionMenuViewController.swift */; };
@@ -91,6 +90,8 @@
 		DDFFE039217840D100AFF7DA /* RotateAnimationAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFE038217840D100AFF7DA /* RotateAnimationAttributesModel.swift */; };
 		DDFFE03D2179813000AFF7DA /* AnimationDurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFE03C2179813000AFF7DA /* AnimationDurationModel.swift */; };
 		DDFFE040217984D800AFF7DA /* SCNActionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFE03F217984D800AFF7DA /* SCNActionExtensions.swift */; };
+		DDFFE04221799D7D00AFF7DA /* ModelAnimationAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFE04121799D7D00AFF7DA /* ModelAnimationAttributesModel.swift */; };
+		DDFFE0452179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFE0442179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,7 +118,6 @@
 		DD5456C321747D4A00AE25D8 /* DefaultSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSceneDelegate.swift; sourceTree = "<group>"; };
 		DD5456C52176DC9400AE25D8 /* RotateAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DD5456C92176E86500AE25D8 /* RotateAnimationAngleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateAnimationAngleCell.swift; sourceTree = "<group>"; };
-		DD5456CD21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationAttributesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD5456CF2177480700AE25D8 /* AddAnimationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnimationCell.swift; sourceTree = "<group>"; };
 		DD5456D121778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateAnimationAttributesViewController.swift; sourceTree = "<group>"; };
 		DD638DB620AACA1700395557 /* SceneActionMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +180,8 @@
 		DDFFE038217840D100AFF7DA /* RotateAnimationAttributesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateAnimationAttributesModel.swift; sourceTree = "<group>"; };
 		DDFFE03C2179813000AFF7DA /* AnimationDurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDurationModel.swift; sourceTree = "<group>"; };
 		DDFFE03F217984D800AFF7DA /* SCNActionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNActionExtensions.swift; sourceTree = "<group>"; };
+		DDFFE04121799D7D00AFF7DA /* ModelAnimationAttributesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAnimationAttributesModel.swift; sourceTree = "<group>"; };
+		DDFFE0442179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationAttributesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,7 +375,7 @@
 				DDE60E5A217391F80052E506 /* NodeAnimationMenu */,
 				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
 				DD5456D121778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift */,
-				DD5456CD21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift */,
+				DDFFE0442179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
 			);
 			path = ViewControllers;
@@ -715,6 +717,7 @@
 			children = (
 				DDE60E4921731BE30052E506 /* MoveAnimationAttributesView */,
 				DDE60E4C2173861C0052E506 /* Cell */,
+				DDFFE04321799D8100AFF7DA /* Model */,
 			);
 			path = MoveAnimationAttributes;
 			sourceTree = "<group>";
@@ -825,6 +828,14 @@
 			isa = PBXGroup;
 			children = (
 				DDFFE03C2179813000AFF7DA /* AnimationDurationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DDFFE04321799D8100AFF7DA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DDFFE04121799D7D00AFF7DA /* ModelAnimationAttributesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -950,6 +961,7 @@
 				DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */,
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
 				DD5456C421747D4A00AE25D8 /* DefaultSceneDelegate.swift in Sources */,
+				DDFFE0452179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DDF38F62216C97A80000069E /* UtilitiesInspectorExportCell.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
@@ -957,9 +969,9 @@
 				DD9D81252171A3C0006638F8 /* NodeAnimationListCell.swift in Sources */,
 				DD638DB720AACA1700395557 /* SceneActionMenuViewController.swift in Sources */,
 				DDF38F69216E193A0000069E /* PresentationViewController.swift in Sources */,
-				DD5456CE21773A9900AE25D8 /* AnimationAttributesInspectorViewController.swift in Sources */,
 				DDF38F6B216E2ABA0000069E /* PresentationViewControllerDelegate.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
+				DDFFE04221799D7D00AFF7DA /* ModelAnimationAttributesModel.swift in Sources */,
 				DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */,
 				DD47202D2161F92200028727 /* NotificationExtensions.swift in Sources */,
 				DD8E125F21381BA700D4F4DE /* Style.swift in Sources */,

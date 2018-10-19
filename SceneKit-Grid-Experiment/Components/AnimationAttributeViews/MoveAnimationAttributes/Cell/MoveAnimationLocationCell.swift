@@ -25,7 +25,6 @@ public class MoveAnimationLocationCell: UITableViewCell {
     
     private static let targetLocationTitleTopMargin: CGFloat = 15.0
     private static let targetLocationTitleLeftMargin: CGFloat = 15.0
-//    private static let targetLocationTitleBottomMargin: CGFloat = -10.0
     
     private static let targetCoordinateContainerTopMargin: CGFloat = 8.0
     private static let targetCoordinateContainerLeftMargin: CGFloat = 15.0
@@ -34,34 +33,29 @@ public class MoveAnimationLocationCell: UITableViewCell {
     private lazy var locationTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Location"
+        label.text = "Target Location"
         return label
     }()
     
-    private lazy var currentLocationTitleLabel: UILabel = {
+    private lazy var xCoordinateTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Current"
-        label.textColor = .gray
+        label.text = "X:"
         return label
     }()
     
-    private lazy var targetLocationTitleLabel: UILabel = {
+    private lazy var yCoordinateTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Target"
-        label.textColor = .gray
+        label.text = "Y:"
         return label
     }()
     
-    private lazy var currentCoordinateTextFieldContainer: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [currentXCoordinateTextField, currentYCoordinateTextField, currentZCoordinateTextField])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 10
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
-        return stackView
+    private lazy var zCoordinateTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Z:"
+        return label
     }()
     
     private lazy var targetCoordinateTextFieldContainer: UIStackView = {
@@ -72,27 +66,6 @@ public class MoveAnimationLocationCell: UITableViewCell {
         stackView.distribution = .fillEqually
         stackView.axis = .horizontal
         return stackView
-    }()
-    
-    private lazy var currentXCoordinateTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    private lazy var currentYCoordinateTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    private lazy var currentZCoordinateTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.borderStyle = .roundedRect
-        return textField
     }()
     
     private lazy var targetXCoordinateTextField: UITextField = {
@@ -130,9 +103,6 @@ public class MoveAnimationLocationCell: UITableViewCell {
     
     private func setup() {
         addSubview(locationTitleLabel)
-        addSubview(currentLocationTitleLabel)
-        addSubview(targetLocationTitleLabel)
-        addSubview(currentCoordinateTextFieldContainer)
         addSubview(targetCoordinateTextFieldContainer)
         
         NSLayoutConstraint.activate([
@@ -140,22 +110,24 @@ public class MoveAnimationLocationCell: UITableViewCell {
             locationTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: MoveAnimationLocationCell.titleTopMargin),
             locationTitleLabel.heightAnchor.constraint(equalToConstant: MoveAnimationLocationCell.titleHeight),
             
-            currentLocationTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: MoveAnimationLocationCell.currentLocationTitleLeftMargin),
-            currentLocationTitleLabel.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: MoveAnimationLocationCell.currentLocationTitleTopMargin),
-            
-            currentCoordinateTextFieldContainer.centerXAnchor.constraint(equalTo: centerXAnchor),
-            currentCoordinateTextFieldContainer.leftAnchor.constraint(equalTo: leftAnchor, constant: MoveAnimationLocationCell.currentCoordinateContainerLeftMargin),
-            currentCoordinateTextFieldContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: MoveAnimationLocationCell.currentCoordinateContainerRightMargin),
-            currentCoordinateTextFieldContainer.topAnchor.constraint(equalTo: currentLocationTitleLabel.bottomAnchor, constant: MoveAnimationLocationCell.currentCoordinateContainerTopMargin),
-            
-            targetLocationTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: MoveAnimationLocationCell.titleLeftMargin),
-            targetLocationTitleLabel.topAnchor.constraint(equalTo: currentCoordinateTextFieldContainer.bottomAnchor, constant: MoveAnimationLocationCell.targetLocationTitleTopMargin),
-            
             targetCoordinateTextFieldContainer.centerXAnchor.constraint(equalTo: centerXAnchor),
             targetCoordinateTextFieldContainer.leftAnchor.constraint(equalTo: leftAnchor, constant: MoveAnimationLocationCell.targetCoordinateContainerLeftMargin),
             targetCoordinateTextFieldContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: MoveAnimationLocationCell.targetCoordinateContainerRightMargin),
-            targetCoordinateTextFieldContainer.topAnchor.constraint(equalTo: targetLocationTitleLabel.bottomAnchor, constant: MoveAnimationLocationCell.targetCoordinateContainerTopMargin),
+            targetCoordinateTextFieldContainer.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: MoveAnimationLocationCell.targetCoordinateContainerTopMargin),
         ])
+    }
+    
+    // MARK: - Dependency injection
+    
+    /// The model contains data used to populate the view.
+    public var model: MoveAnimationAttributesViewModel? {
+        didSet {
+            if let model = model {
+                targetXCoordinateTextField.text = "\(model.targetLocation.x)"
+                targetYCoordinateTextField.text = "\(model.targetLocation.y)"
+                targetZCoordinateTextField.text = "\(model.targetLocation.z)"
+            }
+        }
     }
     
 }

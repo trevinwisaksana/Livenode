@@ -83,7 +83,7 @@ final class SceneEditorViewController: UIViewController {
         setupNotificationListeners()
     }
     
-    private func setupDefaultNavigationItems() {
+    func setupDefaultNavigationItems() {
         let utilitiesInspectorButtonImage = UIImage(named: .utilitiesInspectorButton)
         let utilitiesInspectorBarButton = UIBarButtonItem(image: utilitiesInspectorButtonImage, style: .plain, target: self, action: #selector(didTapUtilitiesInspectorButton(_:)))
         
@@ -232,6 +232,11 @@ final class SceneEditorViewController: UIViewController {
     }
     
     @objc
+    private func didTapDoneAnimatingButton(_ sender: UIBarButtonItem) {
+        viewControllerDelegate.sceneEditor(self, didFinishEditingAnimation: sender, for: currentScene)
+    }
+    
+    @objc
     private func didSelectSceneActionButton(_ notification: Notification) {
         viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: currentScene)
     }
@@ -244,11 +249,6 @@ final class SceneEditorViewController: UIViewController {
     @objc
     private func didSelectNodeAnimation(_ notification: Notification) {
         viewControllerDelegate.sceneEditor(self, didSelectNodeAnimationUsing: notification, for: currentScene)
-    }
-    
-    @objc
-    private func didTapDoneAnimatingButton(_ sender: UITapGestureRecognizer) {
-        setupDefaultNavigationItems()
     }
 
     @objc

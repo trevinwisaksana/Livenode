@@ -34,7 +34,7 @@ final class RotateAnimationAttributesViewController: UIViewController {
         view.addSubview(mainView)
         mainView.fillInSuperview()
         
-        title = ""
+        title = "Rotate"
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     

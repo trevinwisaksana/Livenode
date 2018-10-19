@@ -1,22 +1,22 @@
 //
-//  AnimationAttributesInspectorViewController.swift
+//  MoveAnimationAttributesViewController.swift
 //  SceneKit-Grid-Experiment
 //
-//  Created by Trevin Wisaksana on 17/10/18.
+//  Created by Trevin Wisaksana on 19/10/18.
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
 import UIKit
 
-final class AnimationAttributesInspectorViewController<View: UIView>: UIViewController {
+final class MoveAnimationAttributesViewController: UIViewController {
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var mainView: View = {
-        let mainView = View(frame: view.frame)
+    lazy var mainView: MoveAnimationAttributesView = {
+        let mainView = MoveAnimationAttributesView(frame: .zero)
         return mainView
     }()
     
@@ -30,11 +30,21 @@ final class AnimationAttributesInspectorViewController<View: UIView>: UIViewCont
     
     // MARK: - Setup
     
+    init(animationAttributes: MoveAnimationAttributes) {
+        super.init(nibName: nil, bundle: nil)
+        
+        mainView.dataSource = animationAttributes
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setup() {
         view.addSubview(mainView)
         mainView.fillInSuperview()
         
-        title = ""
+        title = "Move"
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     

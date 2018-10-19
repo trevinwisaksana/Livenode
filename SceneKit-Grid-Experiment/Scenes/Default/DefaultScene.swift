@@ -267,8 +267,9 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
         let targetLocation = SCNVector3(x: location.x, y: 0.5, z: location.z)
-        let moveAction = SCNAction.move(to: targetLocation, duration: duration)
+        let moveAction = SCNAction().move(to: targetLocation, duration: duration)
         moveAction.animationType = .move
+        
         nodeAnimationTarget?.addAction(moveAction, forKey: .move)
     }
     
@@ -344,6 +345,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         nodeHighlight?.removeFromParentNode()
         
         currentNodeHighlighted = nil
+    }
+    
+    func resetLastNodeSelected() {
+        lastNodeSelected?.changeColor(to: .clear)
+        lastNodeSelected = nil
     }
 
 }

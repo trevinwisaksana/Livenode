@@ -20,7 +20,7 @@ public class AnimationDurationCell: UITableViewCell {
     private static let titleTopMargin: CGFloat = 5.0
     private static let titleLeftMargin: CGFloat = 15.0
     
-    private static let durationSliderTopMargin: CGFloat = 20.0
+    private static let durationSliderTopMargin: CGFloat = 15.0
     private static let durationSliderBottomMargin: CGFloat = -20.0
     private static let durationSliderLeftMargin: CGFloat = 15.0
     private static let durationSliderWidth: CGFloat = 210.0

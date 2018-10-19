@@ -23,7 +23,9 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didTapDoneEditingMoveAnimationButtonForScene scene: DefaultScene)
+    
     func sceneEditor(_ controller: SceneEditorViewController, didTapPlayAnimationButtonWith sender: UIBarButtonItem, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingAnimation sender: UIBarButtonItem, for scene: DefaultScene)
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
@@ -206,12 +208,17 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         
         scene.addMoveAnimation(toLocation: position, withDuration: 2)
         scene.isSelectingAnimationTargetLocation = false
+        scene.resetLastNodeSelected()
         
         controller.setupAnimationNavigationItems()
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didTapPlayAnimationButtonWith sender: UIBarButtonItem, for scene: DefaultScene) {
         scene.playAnimation()
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingAnimation sender: UIBarButtonItem, for scene: DefaultScene) {
+        controller.setupDefaultNavigationItems()
     }
     
     // MARK: - Touches

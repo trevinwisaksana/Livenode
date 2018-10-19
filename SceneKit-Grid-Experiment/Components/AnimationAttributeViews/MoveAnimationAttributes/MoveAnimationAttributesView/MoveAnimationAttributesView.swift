@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SceneKit
 
 public protocol MoveAnimationAttributesViewDelegate: class {
     func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationDuration duration: Int)
@@ -18,7 +19,7 @@ public class MoveAnimationAttributesView: UIView {
     
     private static let numberOfItemsInSection: Int = 2
     private static let animationDurationCellHeight: CGFloat = 90.0
-    private static let moveAnimationLocationCellHeight: CGFloat = 150.0
+    private static let moveAnimationLocationCellHeight: CGFloat = 90.0
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -29,7 +30,10 @@ public class MoveAnimationAttributesView: UIView {
         return tableView
     }()
     
-    private weak var delegate: MoveAnimationAttributesViewDelegate?
+    // MARK: - Public Properties
+    
+    public weak var delegate: MoveAnimationAttributesViewDelegate?
+    public var dataSource: MoveAnimationAttributes?
     
     // MARK: - Setup
     
@@ -99,9 +103,11 @@ extension MoveAnimationAttributesView: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell: AnimationDurationCell = tableView.dequeueReusableCell()
+            cell.model = dataSource
             return cell
         case 1:
             let cell: MoveAnimationLocationCell = tableView.dequeueReusableCell()
+            cell.model = dataSource
             return cell
         default:
             fatalError("Index out of range.")

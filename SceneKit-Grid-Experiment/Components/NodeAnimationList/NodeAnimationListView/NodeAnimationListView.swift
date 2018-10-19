@@ -90,19 +90,23 @@ extension NodeAnimationListView: UITableViewDelegate {
     
     private func didSelectNodeAnimation(at indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! NodeAnimationListCell
+        let animation = dataSource.nodeAnimations[indexPath.row]
+        
         guard let navigationController = parentViewController?.parent as? UINavigationController else {
             return
         }
-        
+
         switch cell.animationType {
         case .move:
-            let moveAnimationAttributes = Presenter.inject(.moveAnimationAttributes)
+            let animationAttributes = MoveAnimationAttributes(duration: animation.duration, targetLocation: animation.targetLocation)
+            let moveAnimationAttributes = Presenter.inject(.moveAnimationAttributes(attributes: animationAttributes))
             navigationController.pushViewController(moveAnimationAttributes, animated: true)
             
             delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .move)
+            
         case .rotate:
-            let rotateAnimationAttributes = Presenter.inject(.rotateAnimationAttributes)
-            navigationController.pushViewController(rotateAnimationAttributes, animated: true)
+            let rotateAnimationAttributesController = Presenter.inject(.rotateAnimationAttributes)
+            navigationController.pushViewController(rotateAnimationAttributesController, animated: true)
             
             delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .rotate)
             
