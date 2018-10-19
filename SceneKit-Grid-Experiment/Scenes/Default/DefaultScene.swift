@@ -268,6 +268,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
         let targetLocation = SCNVector3(x: location.x, y: 0.5, z: location.z)
         let moveAction = SCNAction.move(to: targetLocation, duration: duration)
+        moveAction.animationType = .move
         nodeAnimationTarget?.addAction(moveAction, forKey: .move)
     }
     
@@ -278,6 +279,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let radians = angle * (CGFloat.pi / 180)
         let rotateAction = SCNAction.rotate(by: radians, around: currentLocation, duration: duration)
+        rotateAction.animationType = .rotate
         nodeAnimationTarget?.addAction(rotateAction, forKey: .rotate)
     }
     

@@ -117,6 +117,5 @@ extension MoveAnimationAttributesView: UITableViewDataSource {
         default:
             return 60.0
         }
-        
     }
 }

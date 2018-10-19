@@ -10,7 +10,7 @@ import UIKit
 
 public protocol RotateAnimationAttributesViewDelegate: class {
     func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: Int)
-    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributesViewModel)
+    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributes)
 }
 
 public class RotateAnimationAttributesView: UIView {
@@ -59,6 +59,7 @@ public class RotateAnimationAttributesView: UIView {
         tableView.register(cell: AnimationDurationCell.self)
         tableView.register(cell: RotateAnimationAngleCell.self)
         tableView.register(cell: AddAnimationCell.self)
+        
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -105,6 +106,7 @@ extension RotateAnimationAttributesView: UITableViewDataSource {
         case 0:
             let cell: AnimationDurationCell = tableView.dequeueReusableCell()
             cell.delegate = self
+            cell.model = dataSource
             return cell
         case 1:
             let cell: RotateAnimationAngleCell = tableView.dequeueReusableCell()

@@ -15,7 +15,7 @@ public class NodeAnimationListCell: UITableViewCell {
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
     private static let titleBottomMargin: CGFloat = 3.0
-    private static let titleLeftMargin: CGFloat = 15.0
+    private static let titleLeftMargin: CGFloat = 60.0
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -42,14 +42,22 @@ public class NodeAnimationListCell: UITableViewCell {
         backgroundColor = .milk
         
         NSLayoutConstraint.activate([
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: NodeAnimationListCell.titleLeftMargin),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: NodeAnimationListCell.titleTopMargin),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -NodeAnimationListCell.titleBottomMargin),
         ])
     }
     
     public func set(title: String) {
         titleLabel.text = title
+    }
+    
+    // MARK: - Dependency injection
+    
+    /// The model contains data used to populate the view.
+    public var animationType: Animation = .default {
+        didSet {
+            titleLabel.text = animationType.capitalized
+        }
     }
     
 }

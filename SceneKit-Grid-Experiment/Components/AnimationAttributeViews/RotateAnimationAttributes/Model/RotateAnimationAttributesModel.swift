@@ -9,11 +9,10 @@
 import UIKit
 
 public protocol RotateAnimationAttributesViewModel {
-    var duration: TimeInterval? { get }
     var angle: CGFloat? { get }
 }
 
-public struct RotateAnimationAttributes: RotateAnimationAttributesViewModel {
+public struct RotateAnimationAttributes: RotateAnimationAttributesViewModel, AnimationDurationModel {
     public var duration: TimeInterval?
     public var angle: CGFloat?
 }

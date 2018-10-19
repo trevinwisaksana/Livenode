@@ -17,7 +17,7 @@ public class AnimationDurationCell: UITableViewCell {
     // MARK: - Internal properties
     
     private static let titleHeight: CGFloat = 20.0
-    private static let titleTopMargin: CGFloat = 10.0
+    private static let titleTopMargin: CGFloat = 5.0
     private static let titleLeftMargin: CGFloat = 15.0
     
     private static let durationSliderTopMargin: CGFloat = 20.0
@@ -121,12 +121,13 @@ public class AnimationDurationCell: UITableViewCell {
     // MARK: - Dependency injection
     
     /// The model contains data used to populate the view.
-//    public var model: SceneInspectorViewModel? {
-//        didSet {
-//            if let model = model {
-//
-//            }
-//        }
-//    }
+    public var model: AnimationDurationModel? {
+        didSet {
+            if let model = model {
+                durationSlider.value = Float(model.duration ?? 0)
+                durationLabel.text = "\(model.duration ?? 0)"
+            }
+        }
+    }
     
 }

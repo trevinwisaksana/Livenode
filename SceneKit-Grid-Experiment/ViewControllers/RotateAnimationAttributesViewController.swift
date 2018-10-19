@@ -47,7 +47,7 @@ extension RotateAnimationAttributesViewController: RotateAnimationAttributesView
         
     }
     
-    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributesViewModel) {
+    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributes) {
         let rootNavigationController = presentingViewController as! RootNavigationController
         let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
         

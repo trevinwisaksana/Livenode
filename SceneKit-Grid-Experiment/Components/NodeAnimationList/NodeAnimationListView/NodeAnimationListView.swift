@@ -76,7 +76,8 @@ public class NodeAnimationListView: UIView {
 
 extension NodeAnimationListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectNodeAnimation(atIndex: indexPath.row)
+        didSelectNodeAnimation(at: indexPath)
+        
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
@@ -87,17 +88,23 @@ extension NodeAnimationListView: UITableViewDelegate {
         }
     }
     
-    private func didSelectNodeAnimation(atIndex index: Int) {
+    private func didSelectNodeAnimation(at indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! NodeAnimationListCell
         guard let navigationController = parentViewController?.parent as? UINavigationController else {
             return
         }
         
-        switch index {
-        case 0:
+        switch cell.animationType {
+        case .move:
             let moveAnimationAttributes = Presenter.inject(.moveAnimationAttributes)
             navigationController.pushViewController(moveAnimationAttributes, animated: true)
             
             delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .move)
+        case .rotate:
+            let rotateAnimationAttributes = Presenter.inject(.rotateAnimationAttributes)
+            navigationController.pushViewController(rotateAnimationAttributes, animated: true)
+            
+            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .rotate)
             
         default:
             break
@@ -128,8 +135,9 @@ extension NodeAnimationListView: UITableViewDataSource {
     
     private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
         let cell: NodeAnimationListCell = tableView.dequeueReusableCell()
-        let title = dataSource.nodeAnimations[indexPath.row].description
-        cell.set(title: title)
+        
+        let animationType = dataSource.nodeAnimations[indexPath.row].animationType
+        cell.animationType = animationType
         
         return cell
     }

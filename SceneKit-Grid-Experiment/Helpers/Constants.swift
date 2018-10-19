@@ -36,6 +36,7 @@ public enum Animation: String {
     case rotate
     case alert
     case jump
+    case `default`
     
     var capitalized: String {
         return rawValue.capitalized
