@@ -22,7 +22,7 @@ enum ViewComponent {
     case nodeAnimationList
     case nodeAnimationMenu
     case moveAnimationAttributes(attributes: MoveAnimationAttributes)
-    case rotateAnimationAttributes
+    case rotateAnimationAttributes(attributes: RotateAnimationAttributes)
     
     var all: [ViewComponent] {
         return [

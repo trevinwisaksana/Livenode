@@ -13,7 +13,7 @@ public protocol MoveAnimationAttributesViewModel {
     var targetLocation: SCNVector3 { get }
 }
 
-public struct MoveAnimationAttributes:  MoveAnimationAttributesViewModel, AnimationDurationModel {
+public struct MoveAnimationAttributes:  MoveAnimationAttributesViewModel, AnimationDurationViewModel {
     public var duration: TimeInterval?
     public var targetLocation: SCNVector3
 }

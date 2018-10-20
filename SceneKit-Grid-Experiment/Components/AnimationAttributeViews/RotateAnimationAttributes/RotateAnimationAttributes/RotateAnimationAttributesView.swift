@@ -37,8 +37,8 @@ public class RotateAnimationAttributesView: UIView {
         return tableView
     }()
     
-    private weak var delegate: RotateAnimationAttributesViewDelegate?
-    private var dataSource = RotateAnimationAttributesDataSource()
+    public weak var delegate: RotateAnimationAttributesViewDelegate?
+    public var dataSource: RotateAnimationAttributes?
     
     // MARK: - Setup
     
@@ -111,13 +111,14 @@ extension RotateAnimationAttributesView: UITableViewDataSource {
         case 0:
             let cell: AnimationDurationCell = tableView.dequeueReusableCell()
             cell.delegate = self
-            cell.model = dataSource.animationAttributes
+            cell.model = dataSource
             
             return cell
             
         case 1:
             let cell: RotateAnimationAngleCell = tableView.dequeueReusableCell()
             cell.delegate = self
+            cell.model = dataSource
             
             return cell
             
@@ -148,7 +149,8 @@ extension RotateAnimationAttributesView: UITableViewDataSource {
 
 extension RotateAnimationAttributesView: AddAnimationCellDelegate {
     public func addAnimationCell(_ addAnimationCell: AddAnimationCell, didTapAddAnimationButton button: UIButton) {
-        delegate?.rotateAnimationAttributesView(self, didTapAddAnimationButton: button, animation: dataSource.animationAttributes)
+        guard let dataSource = dataSource else { return }
+        delegate?.rotateAnimationAttributesView(self, didTapAddAnimationButton: button, animation: dataSource)
     }
 }
 
@@ -156,7 +158,7 @@ extension RotateAnimationAttributesView: AddAnimationCellDelegate {
 
 extension RotateAnimationAttributesView: AnimationDurationCellDelegate {
     public func animationDurationCell(_ animationDurationCell: AnimationDurationCell, didUpdateAnimationDuration duration: TimeInterval) {
-        dataSource.animationAttributes.duration = duration
+        dataSource?.duration = duration
     }
 }
 
@@ -164,6 +166,6 @@ extension RotateAnimationAttributesView: AnimationDurationCellDelegate {
 
 extension RotateAnimationAttributesView: RotateAnimationAngleCellDelegate {
     public func rotateAnimationAngleCell(_ rotateAnimationAngleCell: RotateAnimationAngleCell, didUpdateRotationAngle angle: CGFloat) {
-        dataSource.animationAttributes.angle = angle
+        dataSource?.angle = angle
     }
 }

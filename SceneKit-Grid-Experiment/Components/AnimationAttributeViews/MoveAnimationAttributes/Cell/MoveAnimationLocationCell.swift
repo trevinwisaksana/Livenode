@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import SceneKit
+
+public protocol MoveAnimationLocationCellDelegate: class {
+    func moveAnimationLocationCell(_ moveAnimationLocationCell: MoveAnimationLocationCell, didUpdateAnimationLocation location: SCNVector3)
+}
 
 public class MoveAnimationLocationCell: UITableViewCell {
     
@@ -88,6 +93,10 @@ public class MoveAnimationLocationCell: UITableViewCell {
         textField.borderStyle = .roundedRect
         return textField
     }()
+    
+    // MARK: - External Properties
+    
+    weak var delegate: MoveAnimationLocationCellDelegate?
     
     // MARK: - Setup
     

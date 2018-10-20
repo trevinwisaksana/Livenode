@@ -46,8 +46,8 @@ enum Presenter {
         case .moveAnimationAttributes(let animationAttributes):
             controller = MoveAnimationAttributesViewController(animationAttributes: animationAttributes)
             return controller
-        case .rotateAnimationAttributes:
-            controller = RotateAnimationAttributesViewController()
+        case .rotateAnimationAttributes(let animationAttributes):
+            controller = RotateAnimationAttributesViewController(animationAttributes: animationAttributes)
             return controller
         }
     }

@@ -107,6 +107,7 @@ extension MoveAnimationAttributesView: UITableViewDataSource {
             return cell
         case 1:
             let cell: MoveAnimationLocationCell = tableView.dequeueReusableCell()
+            cell.delegate = self
             cell.model = dataSource
             return cell
         default:
@@ -123,5 +124,13 @@ extension MoveAnimationAttributesView: UITableViewDataSource {
         default:
             return 60.0
         }
+    }
+}
+
+// MARK: - MoveAnimationLocationCellDelegate
+
+extension MoveAnimationAttributesView: MoveAnimationLocationCellDelegate {
+    public func moveAnimationLocationCell(_ moveAnimationLocationCell: MoveAnimationLocationCell, didUpdateAnimationLocation location: SCNVector3) {
+        
     }
 }

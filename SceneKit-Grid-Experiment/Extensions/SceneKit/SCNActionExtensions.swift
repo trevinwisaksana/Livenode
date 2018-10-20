@@ -45,6 +45,7 @@ extension SCNAction {
     func move(to location: SCNVector3, duration: TimeInterval) -> SCNAction {
         let action = SCNAction.move(to: location, duration: duration)
         action.targetLocation = location
+        
         return action
     }
     
@@ -62,6 +63,14 @@ extension SCNAction {
     }
     
     // MARK: - Current Angle
+    
+    func rotate(by angle: CGFloat, around position: SCNVector3, duration: TimeInterval) -> SCNAction {
+        let radians = angle * (CGFloat.pi / 180)
+        let action = SCNAction.rotate(by: radians, around: position, duration: duration)
+        action.rotationAngle = angle
+        
+        return action
+    }
     
     private struct RotationAngleState {
         static var rotationAngle: CGFloat = 0.0

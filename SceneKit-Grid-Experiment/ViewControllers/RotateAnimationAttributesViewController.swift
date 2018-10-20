@@ -22,6 +22,16 @@ final class RotateAnimationAttributesViewController: UIViewController {
     
     // MARK: - VC Lifecycle
     
+    init(animationAttributes: RotateAnimationAttributes) {
+        super.init(nibName: nil, bundle: nil)
+        
+        mainView.dataSource = animationAttributes
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

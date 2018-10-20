@@ -1,5 +1,5 @@
 //
-//  AnimationDurationModel.swift
+//  AnimationDurationViewModel.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 19/10/18.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-public protocol AnimationDurationModel {
+public protocol AnimationDurationViewModel {
     var duration: TimeInterval? { get }
 }

@@ -105,7 +105,8 @@ extension NodeAnimationListView: UITableViewDelegate {
             delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .move)
             
         case .rotate:
-            let rotateAnimationAttributesController = Presenter.inject(.rotateAnimationAttributes)
+            let animationAttributes = RotateAnimationAttributes(duration: animation.duration, angle: animation.rotationAngle)
+            let rotateAnimationAttributesController = Presenter.inject(.rotateAnimationAttributes(attributes: animationAttributes))
             navigationController.pushViewController(rotateAnimationAttributesController, animated: true)
             
             delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .rotate)

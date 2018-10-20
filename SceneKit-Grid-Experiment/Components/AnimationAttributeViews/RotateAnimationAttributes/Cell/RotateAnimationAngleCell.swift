@@ -21,6 +21,7 @@ public class RotateAnimationAngleCell: UITableViewCell {
     private static let titleBottomMargin: CGFloat = -3.0
     private static let titleLeftMargin: CGFloat = 15.0
     
+    private static let angleTextFieldlLeftMargin: CGFloat = 20.0
     private static let angleTextFieldlRightMargin: CGFloat = -15.0
     private static let angleTextFieldlWidth: CGFloat = 50.0
     
@@ -90,6 +91,7 @@ public class RotateAnimationAngleCell: UITableViewCell {
             
             angleTextField.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             angleTextField.widthAnchor.constraint(equalToConstant: RotateAnimationAngleCell.angleTextFieldlWidth),
+            angleTextField.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: RotateAnimationAngleCell.angleTextFieldlLeftMargin),
             angleTextField.rightAnchor.constraint(equalTo: plusMinusSegmentedControl.leftAnchor, constant: RotateAnimationAngleCell.angleTextFieldlRightMargin),
             
             plusMinusSegmentedControl.centerYAnchor.constraint(equalTo: angleTextField.centerYAnchor),
@@ -109,6 +111,18 @@ public class RotateAnimationAngleCell: UITableViewCell {
         
         angleTextField.text = "\(currentAngleValue)˚"
         delegate?.rotateAnimationAngleCell(self, didUpdateRotationAngle: CGFloat(currentAngleValue))
+    }
+    
+    // MARK: - Dependency injection
+    
+    /// The model contains data used to populate the view.
+    public var model: RotateAnimationAttributesViewModel? {
+        didSet {
+            if let model = model {
+                angleTextField.text = "\(Int(model.angle ?? 0.0))˚"
+                currentAngleValue = Int(model.angle ?? 0.0)
+            }
+        }
     }
 
 }

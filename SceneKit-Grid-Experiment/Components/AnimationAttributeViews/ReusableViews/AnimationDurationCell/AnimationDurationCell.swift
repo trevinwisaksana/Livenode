@@ -21,15 +21,15 @@ public class AnimationDurationCell: UITableViewCell {
     private static let titleLeftMargin: CGFloat = 15.0
     
     private static let durationSliderTopMargin: CGFloat = 15.0
-    private static let durationSliderBottomMargin: CGFloat = -20.0
+    private static let durationSliderBottomMargin: CGFloat = -10.0
     private static let durationSliderLeftMargin: CGFloat = 15.0
     private static let durationSliderWidth: CGFloat = 210.0
     
-    private static let durationLabelBottomMargin: CGFloat = -20.0
+    private static let durationLabelBottomMargin: CGFloat = -10.0
     private static let durationLabelRightMargin: CGFloat = 3.0
     private static let durationLabelLeftMargin: CGFloat = 5.0
     
-    private static let secondsLabelBottomMargin: CGFloat = -20.0
+    private static let secondsLabelBottomMargin: CGFloat = -10.0
     private static let secondsLabelRightMargin: CGFloat = -15.0
     
     private lazy var titleLabel: UILabel = {
@@ -121,11 +121,11 @@ public class AnimationDurationCell: UITableViewCell {
     // MARK: - Dependency injection
     
     /// The model contains data used to populate the view.
-    public var model: AnimationDurationModel? {
+    public var model: AnimationDurationViewModel? {
         didSet {
             if let model = model {
-                durationSlider.value = Float(model.duration ?? 0)
-                durationLabel.text = "\(model.duration ?? 0)"
+                durationSlider.value = Float(model.duration?.rounded() ?? 0)
+                durationLabel.text = "\(model.duration?.rounded() ?? 0)"
             }
         }
     }
