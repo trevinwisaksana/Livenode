@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SceneKit
 
 final class MoveAnimationAttributesViewController: UIViewController {
     
@@ -53,6 +54,10 @@ final class MoveAnimationAttributesViewController: UIViewController {
 // MARK: - MoveAnimationAttributesViewController
 
 extension MoveAnimationAttributesViewController: MoveAnimationAttributesViewDelegate {
+    func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationLocation location: SCNVector3, forAnimationAtIndex index: Int) {
+        sceneEditorViewController().currentScene.didUpdateMoveAnimationLocation(location, forAnimationAtIndex: index)
+    }
+    
     func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int) {
         sceneEditorViewController().currentScene.didUpdateMoveAnimationDuration(duration, forAnimationAtIndex: index)
     }

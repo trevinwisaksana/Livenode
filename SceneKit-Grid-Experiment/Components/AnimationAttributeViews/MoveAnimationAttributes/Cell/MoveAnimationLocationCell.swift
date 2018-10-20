@@ -76,6 +76,7 @@ public class MoveAnimationLocationCell: UITableViewCell {
     private lazy var targetXCoordinateTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.addTarget(self, action: #selector(didFinishEditingCoordinateTextField(_:)), for: .editingDidEnd)
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -83,6 +84,7 @@ public class MoveAnimationLocationCell: UITableViewCell {
     private lazy var targetYCoordinateTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.addTarget(self, action: #selector(didFinishEditingCoordinateTextField(_:)), for: .editingDidEnd)
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -90,6 +92,7 @@ public class MoveAnimationLocationCell: UITableViewCell {
     private lazy var targetZCoordinateTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.addTarget(self, action: #selector(didFinishEditingCoordinateTextField(_:)), for: .editingDidEnd)
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -124,6 +127,21 @@ public class MoveAnimationLocationCell: UITableViewCell {
             targetCoordinateTextFieldContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: MoveAnimationLocationCell.targetCoordinateContainerRightMargin),
             targetCoordinateTextFieldContainer.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: MoveAnimationLocationCell.targetCoordinateContainerTopMargin),
         ])
+    }
+    
+    // MARK: - Text Field Interactions
+    
+    @objc
+    private func didFinishEditingCoordinateTextField(_ sender: UITextField) {
+        guard let xCoordinate = Double(targetXCoordinateTextField.text ?? "0.0"),
+              let yCoordinate = Double(targetYCoordinateTextField.text ?? "0.0"),
+              let zCoordinate = Double(targetZCoordinateTextField.text ?? "0.0")
+        else {
+            return
+        }
+        
+        let updatedLocation = SCNVector3(xCoordinate, yCoordinate, zCoordinate)
+        delegate?.moveAnimationLocationCell(self, didUpdateAnimationLocation: updatedLocation)
     }
     
     // MARK: - Dependency injection

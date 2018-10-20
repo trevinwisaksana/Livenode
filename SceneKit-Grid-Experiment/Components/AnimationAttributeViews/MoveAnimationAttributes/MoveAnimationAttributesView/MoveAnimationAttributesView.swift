@@ -11,6 +11,7 @@ import SceneKit
 
 public protocol MoveAnimationAttributesViewDelegate: class {
     func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int)
+    func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationLocation location: SCNVector3, forAnimationAtIndex index: Int)
 }
 
 public class MoveAnimationAttributesView: UIView {
@@ -142,6 +143,7 @@ extension MoveAnimationAttributesView: AnimationDurationCellDelegate {
 
 extension MoveAnimationAttributesView: MoveAnimationLocationCellDelegate {
     public func moveAnimationLocationCell(_ moveAnimationLocationCell: MoveAnimationLocationCell, didUpdateAnimationLocation location: SCNVector3) {
-        
+        guard let animationIndex = dataSource?.animationIndex else { return }
+        delegate?.moveAnimationAttributesView(self, didUpdateAnimationLocation: location, forAnimationAtIndex: animationIndex)
     }
 }

@@ -374,8 +374,8 @@
 				DD9D81272171A646006638F8 /* NodeAnimationList */,
 				DDE60E5A217391F80052E506 /* NodeAnimationMenu */,
 				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
-				DD5456D121778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift */,
 				DDFFE0442179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift */,
+				DD5456D121778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
 			);
 			path = ViewControllers;
