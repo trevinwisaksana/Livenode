@@ -53,9 +53,9 @@ extension SCNNode {
         actions.removeAll()
     }
     
-    func playAllAnimations() {
+    func playAllAnimations(completionHandler: (() -> Void)?) {
         let sequence = SCNAction.sequence(actions)
-        runAction(sequence)
+        runAction(sequence, completionHandler: completionHandler)
     }
     
 }

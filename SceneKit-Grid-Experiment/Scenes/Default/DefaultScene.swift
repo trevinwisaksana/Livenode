@@ -54,7 +54,14 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var nodeSelected: SCNNode?
     public var lastNodeSelected: SCNNode?
     public var currentNodeHighlighted: SCNNode?
-    public var nodeAnimationTarget: SCNNode?
+    
+    public var nodeAnimationTarget: SCNNode? {
+        didSet {
+            nodeAnimationTargetOriginalPosition = nodeAnimationTarget?.position
+        }
+    }
+    
+    public var nodeAnimationTargetOriginalPosition: SCNVector3?
     
     public var didSelectANode: Bool = false
     public var isGridDisplayed: Bool = false
@@ -266,10 +273,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func addMoveAnimation(_ animation: MoveAnimationAttributes) {
-        let targetLocation = SCNVector3(x: animation.targetLocation.x,
-                                        y: 0.5,
-                                        z: animation.targetLocation.z)
-        
+        let targetLocation = SCNVector3(x: animation.targetLocation.x, y: 0.5, z: animation.targetLocation.z)
         guard let duration = animation.duration else { return }
         let moveAction = SCNAction().move(to: targetLocation, duration: duration)
         moveAction.animationType = .move
@@ -307,7 +311,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func playAnimation() {
-        nodeAnimationTarget?.playAllAnimations()
+        guard let originalNodePosition = nodeAnimationTargetOriginalPosition else { return }
+        nodeAnimationTarget?.playAllAnimations(completionHandler: {
+            self.nodeAnimationTarget?.position = originalNodePosition
+        })
     }
   
     // MARK: - Scene Actions
