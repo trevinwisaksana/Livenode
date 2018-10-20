@@ -274,6 +274,21 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         State.nodeAnimationTarget = nodeSelected
     }
     
+    func playAnimation() {
+        guard let originalNodePosition = nodeAnimationTargetOriginalPosition,
+              let originalNodeRotation = nodeAnimationTargetOriginalRotation
+        else {
+            return
+        }
+        
+        nodeAnimationTarget?.playAllAnimations(completionHandler: {
+            self.nodeAnimationTarget?.position = originalNodePosition
+            self.nodeAnimationTarget?.rotation = originalNodeRotation
+        })
+    }
+    
+    // MARK: - Move Animation
+    
     func addMoveAnimation(_ animation: MoveAnimationAttributes) {
         let targetLocation = SCNVector3(x: animation.targetLocation.x, y: 0.5, z: animation.targetLocation.z)
         guard let duration = animation.duration else { return }
@@ -298,6 +313,25 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         nodeAnimationTarget?.actions[index] = updatedAnimation
     }
     
+    func displayMoveAnimationTargetLocation(_ location: SCNVector3) {
+        let targetIndicatorGeometry = SCNPlane(width: DefaultScene.gridTileWidth, height: DefaultScene.gridTileWidth)
+        let targetIndicatorNode = SCNNode(geometry: targetIndicatorGeometry)
+        targetIndicatorNode.name = "MoveAnimationTargetLocationIndicator"
+        
+        targetIndicatorNode.changeColor(to: .green)
+        targetIndicatorNode.eulerAngles = SCNVector3(-1.5708, 0, 0)
+        targetIndicatorNode.position = SCNVector3(location.x, 0.0, location.z)
+        
+        rootNode.addChildNode(targetIndicatorNode)
+    }
+    
+    func hideMoveAnimationTargetLocation() {
+        let targetIndicatorNode = rootNode.childNode(withName: "MoveAnimationTargetLocationIndicator", recursively: true)
+        targetIndicatorNode?.removeFromParentNode()
+    }
+    
+    // MARK: - Rotate Animation
+    
     func addRotateAnimation(_ animation: RotateAnimationAttributes) {
         guard let currentLocation = nodeAnimationTarget?.position else {
             return
@@ -310,19 +344,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let rotateAction = SCNAction().rotate(by: angle, around: currentLocation, duration: duration)
         rotateAction.animationType = .rotate
         nodeAnimationTarget?.addAction(rotateAction, forKey: .rotate)
-    }
-    
-    func playAnimation() {
-        guard let originalNodePosition = nodeAnimationTargetOriginalPosition,
-              let originalNodeRotation = nodeAnimationTargetOriginalRotation
-        else {
-            return
-        }
-        
-        nodeAnimationTarget?.playAllAnimations(completionHandler: {
-            self.nodeAnimationTarget?.position = originalNodePosition
-            self.nodeAnimationTarget?.rotation = originalNodeRotation
-        })
     }
   
     // MARK: - Scene Actions

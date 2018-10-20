@@ -29,6 +29,12 @@ final class MoveAnimationAttributesViewController: UIViewController {
         setup()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        hideMoveAnimationTargetLocation()
+    }
+    
     // MARK: - Setup
     
     init(animationAttributes: MoveAnimationAttributes) {
@@ -44,6 +50,8 @@ final class MoveAnimationAttributesViewController: UIViewController {
     private func setup() {
         view.addSubview(mainView)
         mainView.fillInSuperview()
+        
+        displayMoveAnimationTargetLocation()
         
         title = "Move"
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
@@ -66,5 +74,18 @@ extension MoveAnimationAttributesViewController: MoveAnimationAttributesViewDele
         let rootNavigationController = presentingViewController as! RootNavigationController
         let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
         return sceneEditorViewController
+    }
+}
+
+// MARK: - MoveAnimationTargetLocation
+
+extension MoveAnimationAttributesViewController {
+    private func displayMoveAnimationTargetLocation() {
+        guard let location = mainView.dataSource?.targetLocation else { return }
+        sceneEditorViewController().currentScene.displayMoveAnimationTargetLocation(location)
+    }
+    
+    private func hideMoveAnimationTargetLocation() {
+        sceneEditorViewController().currentScene.hideMoveAnimationTargetLocation()
     }
 }
