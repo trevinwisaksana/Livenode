@@ -206,7 +206,9 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             return
         }
         
-        scene.addMoveAnimation(toLocation: position, withDuration: 2)
+        let animation = MoveAnimationAttributes(duration: 2, targetLocation: position, animationIndex: nil)
+        scene.addMoveAnimation(animation)
+        
         scene.isSelectingAnimationTargetLocation = false
         scene.resetLastNodeSelected()
         

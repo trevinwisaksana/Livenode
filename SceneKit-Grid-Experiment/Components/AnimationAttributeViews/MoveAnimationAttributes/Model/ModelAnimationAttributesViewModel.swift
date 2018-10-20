@@ -11,9 +11,11 @@ import SceneKit
 
 public protocol MoveAnimationAttributesViewModel {
     var targetLocation: SCNVector3 { get }
+    var animationIndex: Int? { get }
 }
 
 public struct MoveAnimationAttributes:  MoveAnimationAttributesViewModel, AnimationDurationViewModel {
     public var duration: TimeInterval?
     public var targetLocation: SCNVector3
+    public var animationIndex: Int?
 }

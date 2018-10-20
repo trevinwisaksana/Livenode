@@ -10,12 +10,8 @@ import UIKit
 import SceneKit
 
 public protocol RotateAnimationAttributesViewDelegate: class {
-    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: Int)
+    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval)
     func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributes)
-}
-
-public class RotateAnimationAttributesDataSource: NSObject {
-    var animationAttributes = RotateAnimationAttributes()
 }
 
 public class RotateAnimationAttributesView: UIView {

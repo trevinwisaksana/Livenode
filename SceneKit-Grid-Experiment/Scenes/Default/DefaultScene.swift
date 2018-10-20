@@ -265,16 +265,38 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         State.nodeAnimationTarget = nodeSelected
     }
     
-    func addMoveAnimation(toLocation location: SCNVector3, withDuration duration: TimeInterval) {
-        let targetLocation = SCNVector3(x: location.x, y: 0.5, z: location.z)
+    func addMoveAnimation(_ animation: MoveAnimationAttributes) {
+        let targetLocation = SCNVector3(x: animation.targetLocation.x,
+                                        y: animation.targetLocation.y,
+                                        z: animation.targetLocation.z)
+        
+        guard let duration = animation.duration else { return }
         let moveAction = SCNAction().move(to: targetLocation, duration: duration)
         moveAction.animationType = .move
         
         nodeAnimationTarget?.addAction(moveAction, forKey: .move)
     }
     
-    func addRotateAnimation(withAngle angle: CGFloat, withDuration duration: TimeInterval) {
+    func didUpdateMoveAnimationDuration(_ duration: TimeInterval, forAnimationAtIndex index: Int) {
+        let animation = nodeAnimationTarget?.actions[index]
+        animation?.duration = duration
+    }
+    
+    func didUpdateMoveAnimationLocation(_ location: SCNVector3, forAnimationAtIndex index: Int) {
+        let animation = nodeAnimationTarget?.actions[index]
+        guard let duration = animation?.duration else { return }
+        
+        let updatedAnimation = SCNAction().move(to: location, duration: duration)
+        
+        nodeAnimationTarget?.actions[index] = updatedAnimation
+    }
+    
+    func addRotateAnimation(_ animation: RotateAnimationAttributes) {
         guard let currentLocation = nodeAnimationTarget?.position else {
+            return
+        }
+        
+        guard let angle = animation.angle, let duration = animation.duration else {
             return
         }
         

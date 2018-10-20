@@ -16,7 +16,7 @@ final class MoveAnimationAttributesViewController: UIViewController {
     private let popoverHeight: Int = 300
     
     lazy var mainView: MoveAnimationAttributesView = {
-        let mainView = MoveAnimationAttributesView(frame: .zero)
+        let mainView = MoveAnimationAttributesView(delegate: self)
         return mainView
     }()
     
@@ -48,4 +48,18 @@ final class MoveAnimationAttributesViewController: UIViewController {
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     
+}
+
+// MARK: - MoveAnimationAttributesViewController
+
+extension MoveAnimationAttributesViewController: MoveAnimationAttributesViewDelegate {
+    func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int) {
+        sceneEditorViewController().currentScene.didUpdateMoveAnimationDuration(duration, forAnimationAtIndex: index)
+    }
+    
+    private func sceneEditorViewController() -> SceneEditorViewController {
+        let rootNavigationController = presentingViewController as! RootNavigationController
+        let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
+        return sceneEditorViewController
+    }
 }

@@ -98,7 +98,7 @@ extension NodeAnimationListView: UITableViewDelegate {
 
         switch cell.animationType {
         case .move:
-            let animationAttributes = MoveAnimationAttributes(duration: animation.duration, targetLocation: animation.targetLocation)
+            let animationAttributes = MoveAnimationAttributes(duration: animation.duration, targetLocation: animation.targetLocation, animationIndex: indexPath.row)
             let moveAnimationAttributes = Presenter.inject(.moveAnimationAttributes(attributes: animationAttributes))
             navigationController.pushViewController(moveAnimationAttributes, animated: true)
             

@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 public protocol MoveAnimationAttributesViewDelegate: class {
-    func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationDuration duration: Int)
+    func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int)
 }
 
 public class MoveAnimationAttributesView: UIView {
@@ -58,6 +58,7 @@ public class MoveAnimationAttributesView: UIView {
     private func setup() {
         tableView.register(cell: AnimationDurationCell.self)
         tableView.register(cell: MoveAnimationLocationCell.self)
+        
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -103,6 +104,7 @@ extension MoveAnimationAttributesView: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell: AnimationDurationCell = tableView.dequeueReusableCell()
+            cell.delegate = self
             cell.model = dataSource
             return cell
         case 1:
@@ -124,6 +126,15 @@ extension MoveAnimationAttributesView: UITableViewDataSource {
         default:
             return 60.0
         }
+    }
+}
+
+// MARK: - AnimationDurationCellDelegate
+
+extension MoveAnimationAttributesView: AnimationDurationCellDelegate {
+    public func animationDurationCell(_ animationDurationCell: AnimationDurationCell, didUpdateAnimationDuration duration: TimeInterval) {
+        guard let animationIndex = dataSource?.animationIndex else { return }
+        delegate?.moveAnimationAttributesView(self, didUpdateAnimationDuration: duration, forAnimationAtIndex: animationIndex)
     }
 }
 

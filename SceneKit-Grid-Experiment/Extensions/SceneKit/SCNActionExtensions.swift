@@ -25,21 +25,6 @@ extension SCNAction {
         }
     }
     
-    // MARK: - Current Location
-    
-    private struct CurrentLocationState {
-        static var currentLocation: SCNVector3 = SCNVector3Zero
-    }
-    
-    public var currentLocation: SCNVector3 {
-        get {
-            return objc_getAssociatedObject(self, &CurrentLocationState.currentLocation) as? SCNVector3 ?? SCNVector3Zero
-        }
-        set {
-            objc_setAssociatedObject(self, &CurrentLocationState.currentLocation, newValue, .OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-    
     // MARK: - Target Location
     
     func move(to location: SCNVector3, duration: TimeInterval) -> SCNAction {
@@ -53,7 +38,7 @@ extension SCNAction {
         static var targetLocation: SCNVector3 = SCNVector3Zero
     }
     
-    public var targetLocation: SCNVector3 {
+    private(set) var targetLocation: SCNVector3 {
         get {
             return objc_getAssociatedObject(self, &TargetLocationState.targetLocation) as? SCNVector3 ?? SCNVector3Zero
         }
@@ -76,7 +61,7 @@ extension SCNAction {
         static var rotationAngle: CGFloat = 0.0
     }
     
-    public var rotationAngle: CGFloat {
+    private(set) var rotationAngle: CGFloat {
         get {
             return objc_getAssociatedObject(self, &RotationAngleState.rotationAngle) as? CGFloat ?? 0.0
         }

@@ -22,6 +22,19 @@ final class RotateAnimationAttributesViewController: UIViewController {
     
     // MARK: - VC Lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setup()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+    }
+    
+    // MARK: - Setup
+    
     init(animationAttributes: RotateAnimationAttributes) {
         super.init(nibName: nil, bundle: nil)
         
@@ -31,14 +44,6 @@ final class RotateAnimationAttributesViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setup()
-    }
-    
-    // MARK: - Setup
     
     private func setup() {
         view.addSubview(mainView)
@@ -53,19 +58,18 @@ final class RotateAnimationAttributesViewController: UIViewController {
 // MARK: - RotateAnimationAttributesViewDelegate
 
 extension RotateAnimationAttributesViewController: RotateAnimationAttributesViewDelegate {
-    func rotateAnimationAttributesView(_ rotateAniamtionAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: Int) {
+    func rotateAnimationAttributesView(_ rotateAniamtionAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval) {
         
     }
     
     func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributes) {
+        sceneEditorViewController().currentScene.addRotateAnimation(animation)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func sceneEditorViewController() -> SceneEditorViewController {
         let rootNavigationController = presentingViewController as! RootNavigationController
         let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
-        
-        let angle = animation.angle ?? 0.0
-        let duration = animation.duration ?? 0.0
-        
-        sceneEditorViewController.currentScene.addRotateAnimation(withAngle: angle, withDuration: duration)
-        
-        dismiss(animated: true, completion: nil)
+        return sceneEditorViewController
     }
 }
