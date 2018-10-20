@@ -58,10 +58,12 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var nodeAnimationTarget: SCNNode? {
         didSet {
             nodeAnimationTargetOriginalPosition = nodeAnimationTarget?.position
+            nodeAnimationTargetOriginalRotation = nodeAnimationTarget?.rotation
         }
     }
     
     public var nodeAnimationTargetOriginalPosition: SCNVector3?
+    public var nodeAnimationTargetOriginalRotation: SCNVector4?
     
     public var didSelectANode: Bool = false
     public var isGridDisplayed: Bool = false
@@ -311,9 +313,15 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func playAnimation() {
-        guard let originalNodePosition = nodeAnimationTargetOriginalPosition else { return }
+        guard let originalNodePosition = nodeAnimationTargetOriginalPosition,
+              let originalNodeRotation = nodeAnimationTargetOriginalRotation
+        else {
+            return
+        }
+        
         nodeAnimationTarget?.playAllAnimations(completionHandler: {
             self.nodeAnimationTarget?.position = originalNodePosition
+            self.nodeAnimationTarget?.rotation = originalNodeRotation
         })
     }
   
