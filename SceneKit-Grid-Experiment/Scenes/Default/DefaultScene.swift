@@ -287,6 +287,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         })
     }
     
+    func didUpdateAnimationDuration(_ duration: TimeInterval, forAnimationAtIndex index: Int) {
+        let animation = nodeAnimationTarget?.actions[index]
+        animation?.duration = duration
+    }
+    
     // MARK: - Move Animation
     
     func addMoveAnimation(_ animation: MoveAnimationAttributes) {
@@ -298,17 +303,13 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         nodeAnimationTarget?.addAction(moveAction, forKey: .move)
     }
     
-    func didUpdateMoveAnimationDuration(_ duration: TimeInterval, forAnimationAtIndex index: Int) {
-        let animation = nodeAnimationTarget?.actions[index]
-        animation?.duration = duration
-    }
-    
     func didUpdateMoveAnimationLocation(_ location: SCNVector3, forAnimationAtIndex index: Int) {
         let animation = nodeAnimationTarget?.actions[index]
         guard let duration = animation?.duration else { return }
         
         let updatedLocation = SCNVector3(location.x, 0.5, location.z)
         let updatedAnimation = SCNAction().move(to: updatedLocation, duration: duration)
+        updatedAnimation.animationType = .move
         
         nodeAnimationTarget?.actions[index] = updatedAnimation
     }
@@ -344,6 +345,20 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let rotateAction = SCNAction().rotate(by: angle, around: currentLocation, duration: duration)
         rotateAction.animationType = .rotate
         nodeAnimationTarget?.addAction(rotateAction, forKey: .rotate)
+    }
+    
+    func didUpdateRotateAnimation(angle: CGFloat, forAnimationAtIndex index: Int) {
+        let animation = nodeAnimationTarget?.actions[index]
+        guard let duration = animation?.duration,
+              let currentLocation = nodeAnimationTarget?.position
+        else {
+            return
+        }
+        
+        let updatedAnimation = SCNAction().rotate(by: angle, around: currentLocation, duration: duration)
+        updatedAnimation.animationType = .rotate
+        
+        nodeAnimationTarget?.actions[index] = updatedAnimation
     }
   
     // MARK: - Scene Actions

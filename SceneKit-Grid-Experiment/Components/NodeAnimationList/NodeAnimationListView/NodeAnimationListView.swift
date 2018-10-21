@@ -13,19 +13,11 @@ public protocol NodeAnimationListViewDelegate: class {
     func nodeAnimationListView(_ nodeAnimationListView: NodeAnimationListView, didSelectNodeAnimation animation: Animation)
 }
 
-public class NodeAnimationListViewDataSource: NSObject {
-    let nodeAnimations: [SCNAction] = State.nodeAnimationTarget?.actions ?? []
-}
-
 public class NodeAnimationListView: UIView {
     
     // MARK: - Internal properties
     
     private static let cellHeight: CGFloat = 60.0
-    
-    lazy var dataSource: NodeAnimationListViewDataSource = {
-        return NodeAnimationListViewDataSource()
-    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -90,7 +82,7 @@ extension NodeAnimationListView: UITableViewDelegate {
     
     private func didSelectNodeAnimation(at indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! NodeAnimationListCell
-        let animation = dataSource.nodeAnimations[indexPath.row]
+        let animation = State.nodeAnimationTarget?.actions[indexPath.row]
         
         guard let navigationController = parentViewController?.parent as? UINavigationController else {
             return
@@ -98,14 +90,16 @@ extension NodeAnimationListView: UITableViewDelegate {
 
         switch cell.animationType {
         case .move:
-            let animationAttributes = MoveAnimationAttributes(duration: animation.duration, targetLocation: animation.targetLocation, animationIndex: indexPath.row)
+            guard let targetLocation = animation?.targetLocation else { return }
+            
+            let animationAttributes = MoveAnimationAttributes(duration: animation?.duration, targetLocation: targetLocation, animationIndex: indexPath.row)
             let moveAnimationAttributes = Presenter.inject(.moveAnimationAttributes(attributes: animationAttributes))
             navigationController.pushViewController(moveAnimationAttributes, animated: true)
             
             delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .move)
             
         case .rotate:
-            let animationAttributes = RotateAnimationAttributes(duration: animation.duration, angle: animation.rotationAngle)
+            let animationAttributes = RotateAnimationAttributes(duration: animation?.duration, angle: animation?.rotationAngle, animationIndex: indexPath.row)
             let rotateAnimationAttributesController = Presenter.inject(.rotateAnimationAttributes(attributes: animationAttributes))
             navigationController.pushViewController(rotateAnimationAttributesController, animated: true)
             
@@ -131,7 +125,7 @@ extension NodeAnimationListView: UITableViewDelegate {
 
 extension NodeAnimationListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.nodeAnimations.count
+        return State.nodeAnimationTarget?.actions.count ?? 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,8 +135,8 @@ extension NodeAnimationListView: UITableViewDataSource {
     private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
         let cell: NodeAnimationListCell = tableView.dequeueReusableCell()
         
-        let animationType = dataSource.nodeAnimations[indexPath.row].animationType
-        cell.animationType = animationType
+        let animationType = State.nodeAnimationTarget?.actions[indexPath.row].animationType
+        cell.animationType = animationType ?? .default
         
         return cell
     }

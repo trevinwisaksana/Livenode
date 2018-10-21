@@ -58,8 +58,12 @@ final class RotateAnimationAttributesViewController: UIViewController {
 // MARK: - RotateAnimationAttributesViewDelegate
 
 extension RotateAnimationAttributesViewController: RotateAnimationAttributesViewDelegate {
-    func rotateAnimationAttributesView(_ rotateAniamtionAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval) {
-        
+    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationRotationAngle angle: CGFloat, forAnimationAtIndex index: Int) {
+        sceneEditorViewController().currentScene.didUpdateRotateAnimation(angle: angle, forAnimationAtIndex: index)
+    }
+    
+    func rotateAnimationAttributesView(_ rotateAniamtionAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int) {
+        sceneEditorViewController().currentScene.didUpdateAnimationDuration(duration, forAnimationAtIndex: index)
     }
     
     func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributes) {

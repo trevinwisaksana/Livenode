@@ -67,7 +67,7 @@ extension MoveAnimationAttributesViewController: MoveAnimationAttributesViewDele
     }
     
     func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int) {
-        sceneEditorViewController().currentScene.didUpdateMoveAnimationDuration(duration, forAnimationAtIndex: index)
+        sceneEditorViewController().currentScene.didUpdateAnimationDuration(duration, forAnimationAtIndex: index)
     }
     
     private func sceneEditorViewController() -> SceneEditorViewController {

@@ -10,7 +10,8 @@ import UIKit
 import SceneKit
 
 public protocol RotateAnimationAttributesViewDelegate: class {
-    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval)
+    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int)
+    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationRotationAngle angle: CGFloat, forAnimationAtIndex index: Int)
     func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributes)
 }
 
@@ -163,5 +164,8 @@ extension RotateAnimationAttributesView: AnimationDurationCellDelegate {
 extension RotateAnimationAttributesView: RotateAnimationAngleCellDelegate {
     public func rotateAnimationAngleCell(_ rotateAnimationAngleCell: RotateAnimationAngleCell, didUpdateRotationAngle angle: CGFloat) {
         dataSource?.angle = angle
+        
+        guard let animationIndex = dataSource?.animationIndex else { return }
+        delegate?.rotateAnimationAttributesView(self, didUpdateAnimationRotationAngle: angle, forAnimationAtIndex: animationIndex)
     }
 }
