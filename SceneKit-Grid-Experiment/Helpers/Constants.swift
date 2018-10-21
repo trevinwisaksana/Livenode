@@ -33,6 +33,7 @@ public enum Action: String {
 
 public enum Animation: String {
     case move
+    case delay
     case rotate
     case alert
     case jump

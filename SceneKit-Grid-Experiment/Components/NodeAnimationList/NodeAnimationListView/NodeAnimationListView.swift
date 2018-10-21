@@ -105,6 +105,13 @@ extension NodeAnimationListView: UITableViewDelegate {
             
             delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .rotate)
             
+        case .delay:
+            let animationAttributes = DelayAnimationAttributes(duration: animation?.duration, animationIndex: indexPath.row)
+            let delayAnimationAttributesController = Presenter.inject(.delayAnimationAttributes(attributes: animationAttributes))
+            navigationController.pushViewController(delayAnimationAttributesController, animated: true)
+            
+            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .delay)
+            
         default:
             break
         }

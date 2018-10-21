@@ -56,6 +56,8 @@ public class NodeAnimationMenuCell: UITableViewCell {
             titleLabel.text = Animation.rotate.capitalized
         case 2:
             titleLabel.text = Animation.alert.capitalized
+        case 3:
+            titleLabel.text = Animation.delay.capitalized
         default:
             break
         }

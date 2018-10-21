@@ -16,7 +16,7 @@ public class NodeAnimationMenuView: UIView {
     
     // MARK: - Internal properties
     
-    private static let numberOfItemsInSection: Int = 3
+    private static let numberOfItemsInSection: Int = 4
     private static let cellHeight: CGFloat = 50.0
     
     private lazy var tableView: UITableView = {
@@ -78,6 +78,10 @@ extension NodeAnimationMenuView: UITableViewDelegate {
             delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.move)
         case 1:
             delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.rotate)
+        case 2:
+            delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.alert)
+        case 3:
+            delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.delay)
         default:
             break
         }

@@ -195,6 +195,12 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
                 
                 navigationController.pushViewController(rotateAnimationAttributesView, animated: true)
                 
+            case .delay:
+                let delayAnimationAttributesView = Presenter.inject(.delayAnimationAttributes(attributes: DelayAnimationAttributes()))
+                let navigationController = controller.presentedViewController as! UINavigationController
+                
+                navigationController.pushViewController(delayAnimationAttributesView, animated: true)
+                
             default:
                 break
             }

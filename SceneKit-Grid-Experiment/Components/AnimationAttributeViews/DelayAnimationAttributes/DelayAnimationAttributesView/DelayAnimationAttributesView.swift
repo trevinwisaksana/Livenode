@@ -1,27 +1,25 @@
 //
-//  RotateAnimationAttributesView.swift
+//  DelayAnimationAttributesView.swift
 //  SceneKit-Grid-Experiment
 //
-//  Created by Trevin Wisaksana on 17/10/18.
+//  Created by Trevin Wisaksana on 21/10/18.
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
 import UIKit
 import SceneKit
 
-public protocol RotateAnimationAttributesViewDelegate: class {
-    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int)
-    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didUpdateAnimationRotationAngle angle: CGFloat, forAnimationAtIndex index: Int)
-    func rotateAnimationAttributesView(_ rotateAnimationAttributesView: RotateAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: RotateAnimationAttributes)
+public protocol DelayAnimationAttributesViewDelegate: class {
+    func delayAnimationAttributesView(_ delayAnimationAttributesView: DelayAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: DelayAnimationAttributes)
 }
 
-public class RotateAnimationAttributesView: UIView {
+public class DelayAnimationAttributesView: UIView {
     
     // MARK: - Internal properties
     
-    private static let numberOfItemsInSection: Int = 3
+    private static let numberOfItemsInSection: Int = 2
     private static let animationDurationCellHeight: CGFloat = 90.0
-    private static let rotateAnimationAngleCellHeight: CGFloat = 60.0
+    private static let addAnimationCellHeight: CGFloat = 90.0
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -29,17 +27,17 @@ public class RotateAnimationAttributesView: UIView {
         tableView.dataSource = self
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
-        tableView.delaysContentTouches = false
-        tableView.isScrollEnabled = false
         return tableView
     }()
     
-    public weak var delegate: RotateAnimationAttributesViewDelegate?
-    public var dataSource: RotateAnimationAttributes?
+    // MARK: - Public Properties
+    
+    public weak var delegate: DelayAnimationAttributesViewDelegate?
+    public var dataSource: DelayAnimationAttributes?
     
     // MARK: - Setup
     
-    public init(delegate: RotateAnimationAttributesViewDelegate) {
+    public init(delegate: DelayAnimationAttributesViewDelegate) {
         super.init(frame: .zero)
         
         self.delegate = delegate
@@ -59,7 +57,6 @@ public class RotateAnimationAttributesView: UIView {
     
     private func setup() {
         tableView.register(cell: AnimationDurationCell.self)
-        tableView.register(cell: RotateAnimationAngleCell.self)
         tableView.register(cell: AddAnimationCell.self)
         
         addSubview(tableView)
@@ -76,7 +73,7 @@ public class RotateAnimationAttributesView: UIView {
 
 // MARK: - UITableViewDelegate
 
-extension RotateAnimationAttributesView: UITableViewDelegate {
+extension DelayAnimationAttributesView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectNodeAnimation(atIndex: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
@@ -92,11 +89,12 @@ extension RotateAnimationAttributesView: UITableViewDelegate {
     }
 }
 
+
 // MARK: - UITableViewDataSource
 
-extension RotateAnimationAttributesView: UITableViewDataSource {
+extension DelayAnimationAttributesView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RotateAnimationAttributesView.numberOfItemsInSection
+        return DelayAnimationAttributesView.numberOfItemsInSection
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,15 +109,8 @@ extension RotateAnimationAttributesView: UITableViewDataSource {
             cell.model = dataSource
             
             return cell
-            
+
         case 1:
-            let cell: RotateAnimationAngleCell = tableView.dequeueReusableCell()
-            cell.delegate = self
-            cell.model = dataSource
-            
-            return cell
-            
-        case 2:
             let cell: AddAnimationCell = tableView.dequeueReusableCell()
             cell.delegate = self
             
@@ -133,9 +124,9 @@ extension RotateAnimationAttributesView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return RotateAnimationAttributesView.animationDurationCellHeight
+            return DelayAnimationAttributesView.animationDurationCellHeight
         case 1:
-            return RotateAnimationAttributesView.rotateAnimationAngleCellHeight
+            return DelayAnimationAttributesView.addAnimationCellHeight
         default:
             return 60.0
         }
@@ -144,28 +135,17 @@ extension RotateAnimationAttributesView: UITableViewDataSource {
 
 // MARK: - AddAnimationCellDelegate
 
-extension RotateAnimationAttributesView: AddAnimationCellDelegate {
+extension DelayAnimationAttributesView: AddAnimationCellDelegate {
     public func addAnimationCell(_ addAnimationCell: AddAnimationCell, didTapAddAnimationButton button: UIButton) {
-        guard let dataSource = dataSource else { return }
-        delegate?.rotateAnimationAttributesView(self, didTapAddAnimationButton: button, animation: dataSource)
+        guard let animation = dataSource else { return }
+        delegate?.delayAnimationAttributesView(self, didTapAddAnimationButton: button, animation: animation)
     }
 }
 
 // MARK: - AnimationDurationCellDelegate
 
-extension RotateAnimationAttributesView: AnimationDurationCellDelegate {
+extension DelayAnimationAttributesView: AnimationDurationCellDelegate {
     public func animationDurationCell(_ animationDurationCell: AnimationDurationCell, didUpdateAnimationDuration duration: TimeInterval) {
         dataSource?.duration = duration
-    }
-}
-
-// MARK: - RotateAnimationAngleCellDelegate
-
-extension RotateAnimationAttributesView: RotateAnimationAngleCellDelegate {
-    public func rotateAnimationAngleCell(_ rotateAnimationAngleCell: RotateAnimationAngleCell, didUpdateRotationAngle angle: CGFloat) {
-        dataSource?.angle = angle
-        
-        guard let animationIndex = dataSource?.animationIndex else { return }
-        delegate?.rotateAnimationAttributesView(self, didUpdateAnimationRotationAngle: angle, forAnimationAtIndex: animationIndex)
     }
 }

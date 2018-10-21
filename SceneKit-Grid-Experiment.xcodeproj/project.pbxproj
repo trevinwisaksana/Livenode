@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD0BFFBC217C590100429F52 /* AlertAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFBB217C590100429F52 /* AlertAnimationAttributesViewController.swift */; };
+		DD0BFFBF217C593F00429F52 /* DelayAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */; };
+		DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFC0217C599C00429F52 /* DelayAnimationAttributesView.swift */; };
+		DD0BFFC5217C761000429F52 /* DelayAnimationAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFC4217C761000429F52 /* DelayAnimationAttributesViewModel.swift */; };
 		DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F66720672FBD005E838C /* AppDelegate.swift */; };
 		DD20F67120672FBD005E838C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67020672FBD005E838C /* Assets.xcassets */; };
 		DD20F67420672FBD005E838C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67220672FBD005E838C /* LaunchScreen.storyboard */; };
@@ -95,6 +99,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD0BFFBB217C590100429F52 /* AlertAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAnimationAttributesViewController.swift; sourceTree = "<group>"; };
+		DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesViewController.swift; sourceTree = "<group>"; };
+		DD0BFFC0217C599C00429F52 /* DelayAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesView.swift; sourceTree = "<group>"; };
+		DD0BFFC4217C761000429F52 /* DelayAnimationAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesViewModel.swift; sourceTree = "<group>"; };
 		DD20F66420672FBD005E838C /* SceneKit-Grid-Experiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SceneKit-Grid-Experiment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD20F66720672FBD005E838C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -195,6 +203,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD0BFFBD217C590A00429F52 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				DDFFE0442179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift */,
+				DD5456D121778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift */,
+				DD0BFFBB217C590100429F52 /* AlertAnimationAttributesViewController.swift */,
+				DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		DD0BFFC2217C59AB00429F52 /* DelayAnimationAttributes */ = {
+			isa = PBXGroup;
+			children = (
+				DD0BFFC3217C748700429F52 /* DelayAnimationAttributesView */,
+				DD0BFFC6217C761E00429F52 /* ViewModel */,
+			);
+			path = DelayAnimationAttributes;
+			sourceTree = "<group>";
+		};
+		DD0BFFC3217C748700429F52 /* DelayAnimationAttributesView */ = {
+			isa = PBXGroup;
+			children = (
+				DD0BFFC0217C599C00429F52 /* DelayAnimationAttributesView.swift */,
+			);
+			path = DelayAnimationAttributesView;
+			sourceTree = "<group>";
+		};
+		DD0BFFC6217C761E00429F52 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD0BFFC4217C761000429F52 /* DelayAnimationAttributesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DD20F65B20672FBD005E838C = {
 			isa = PBXGroup;
 			children = (
@@ -329,19 +373,19 @@
 		DD5456C72176DC9F00AE25D8 /* RotateAnimationAttributes */ = {
 			isa = PBXGroup;
 			children = (
-				DD5456C82176E84A00AE25D8 /* RotateAnimationAttributes */,
+				DD5456C82176E84A00AE25D8 /* RotateAnimationAttributesView */,
 				DD5456CB2176E87600AE25D8 /* Cell */,
 				DDFFE03A217840D600AFF7DA /* Model */,
 			);
 			path = RotateAnimationAttributes;
 			sourceTree = "<group>";
 		};
-		DD5456C82176E84A00AE25D8 /* RotateAnimationAttributes */ = {
+		DD5456C82176E84A00AE25D8 /* RotateAnimationAttributesView */ = {
 			isa = PBXGroup;
 			children = (
 				DD5456C52176DC9400AE25D8 /* RotateAnimationAttributesView.swift */,
 			);
-			path = RotateAnimationAttributes;
+			path = RotateAnimationAttributesView;
 			sourceTree = "<group>";
 		};
 		DD5456CB2176E87600AE25D8 /* Cell */ = {
@@ -373,10 +417,9 @@
 				DDF38F67216DFD1B0000069E /* Presentation */,
 				DD9D81272171A646006638F8 /* NodeAnimationList */,
 				DDE60E5A217391F80052E506 /* NodeAnimationMenu */,
-				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
-				DDFFE0442179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift */,
-				DD5456D121778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift */,
+				DD0BFFBD217C590A00429F52 /* Animations */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
+				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -708,6 +751,7 @@
 				DDE60E5521738E7A0052E506 /* NodeAnimationMenu */,
 				DDE60E4821731BC60052E506 /* MoveAnimationAttributes */,
 				DD5456C72176DC9F00AE25D8 /* RotateAnimationAttributes */,
+				DD0BFFC2217C59AB00429F52 /* DelayAnimationAttributes */,
 			);
 			path = AnimationAttributeViews;
 			sourceTree = "<group>";
@@ -916,6 +960,7 @@
 			files = (
 				DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */,
 				DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */,
+				DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */,
 				DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */,
 				DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */,
 				DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */,
@@ -954,10 +999,12 @@
 				DD4342A2215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift in Sources */,
 				DD6C16F0210B217A002CB031 /* ViewComponent.swift in Sources */,
 				DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */,
+				DD0BFFBF217C593F00429F52 /* DelayAnimationAttributesViewController.swift in Sources */,
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
 				DD5456D221778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift in Sources */,
 				DDE60E5421738E740052E506 /* NodeAnimationMenuView.swift in Sources */,
 				DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */,
+				DD0BFFC5217C761000429F52 /* DelayAnimationAttributesViewModel.swift in Sources */,
 				DD6CC42C2109B4C5009284C6 /* UIViewExtensions.swift in Sources */,
 				DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */,
 				DD5456C421747D4A00AE25D8 /* DefaultSceneDelegate.swift in Sources */,
@@ -995,6 +1042,7 @@
 				DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */,
 				DD5456C62176DC9400AE25D8 /* RotateAnimationAttributesView.swift in Sources */,
 				DD5456CA2176E86500AE25D8 /* RotateAnimationAngleCell.swift in Sources */,
+				DD0BFFBC217C590100429F52 /* AlertAnimationAttributesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

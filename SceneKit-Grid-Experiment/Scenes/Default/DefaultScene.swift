@@ -287,10 +287,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         })
     }
     
-    func playAllAnimations() {
-        
-    }
-    
     func didUpdateAnimationDuration(_ duration: TimeInterval, forAnimationAtIndex index: Int) {
         let animation = nodeAnimationTarget?.actions[index]
         animation?.duration = duration
@@ -348,6 +344,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let rotateAction = SCNAction().rotate(by: angle, around: currentLocation, duration: duration)
         rotateAction.animationType = .rotate
+        
         nodeAnimationTarget?.addAction(rotateAction, forKey: .rotate)
     }
     
@@ -363,6 +360,23 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         updatedAnimation.animationType = .rotate
         
         nodeAnimationTarget?.actions[index] = updatedAnimation
+    }
+    
+    // MARK: - Alert Animation
+    
+    
+    
+    // MARK: - Delay Animation
+    
+    func addDelayAnimation(_ animation: DelayAnimationAttributes) {
+        guard let duration = animation.duration else {
+            return
+        }
+        
+        let updatedAnimation = SCNAction.wait(duration: duration)
+        updatedAnimation.animationType = .delay
+        
+        nodeAnimationTarget?.addAction(updatedAnimation, forKey: .delay)
     }
   
     // MARK: - Scene Actions
