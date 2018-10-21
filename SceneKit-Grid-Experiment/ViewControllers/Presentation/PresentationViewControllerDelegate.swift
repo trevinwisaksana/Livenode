@@ -38,8 +38,12 @@ class PresentationViewControllerDelegate: NSObject, ARSCNViewDelegate {
         
         presentationNodes.position = SCNVector3(x, y, z)
         presentationNodes.scale = SCNVector3(0.02, 0.02, 0.02)
-        
         sceneView.scene.rootNode.addChildNode(presentationNodes)
+
+        presentationNodes.childNodes.forEach { (node) in
+            let sequence = SCNAction.sequence(node.actions)
+            node.runAction(sequence)
+        }
     }
     
 }

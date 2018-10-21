@@ -287,6 +287,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         })
     }
     
+    func playAllAnimations() {
+        
+    }
+    
     func didUpdateAnimationDuration(_ duration: TimeInterval, forAnimationAtIndex index: Int) {
         let animation = nodeAnimationTarget?.actions[index]
         animation?.duration = duration
