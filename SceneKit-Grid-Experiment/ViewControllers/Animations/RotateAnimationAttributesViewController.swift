@@ -28,11 +28,6 @@ final class RotateAnimationAttributesViewController: UIViewController {
         setup()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-    }
-    
     // MARK: - Setup
     
     init(animationAttributes: RotateAnimationAttributes) {

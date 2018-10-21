@@ -11,6 +11,7 @@ import SceneKit
 
 public protocol DelayAnimationAttributesViewDelegate: class {
     func delayAnimationAttributesView(_ delayAnimationAttributesView: DelayAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: DelayAnimationAttributes)
+    func delayAnimationAttributesView(_ delayAnimationAttributesView: DelayAnimationAttributesView, didUpdateAnimationDelayDuration duration: TimeInterval, forAnimationAtIndex index: Int)
 }
 
 public class DelayAnimationAttributesView: UIView {
@@ -147,5 +148,8 @@ extension DelayAnimationAttributesView: AddAnimationCellDelegate {
 extension DelayAnimationAttributesView: AnimationDurationCellDelegate {
     public func animationDurationCell(_ animationDurationCell: AnimationDurationCell, didUpdateAnimationDuration duration: TimeInterval) {
         dataSource?.duration = duration
+        
+        guard let animationIndex = dataSource?.animationIndex else { return }
+        delegate?.delayAnimationAttributesView(self, didUpdateAnimationDelayDuration: duration, forAnimationAtIndex: animationIndex)
     }
 }

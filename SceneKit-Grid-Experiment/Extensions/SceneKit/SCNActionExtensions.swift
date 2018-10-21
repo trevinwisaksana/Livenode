@@ -30,6 +30,7 @@ extension SCNAction {
     func move(to location: SCNVector3, duration: TimeInterval) -> SCNAction {
         let action = SCNAction.move(to: location, duration: duration)
         action.targetLocation = location
+        action.animationType = .move
         
         return action
     }
@@ -53,6 +54,7 @@ extension SCNAction {
         let radians = angle * (CGFloat.pi / 180)
         let action = SCNAction.rotate(by: radians, around: position, duration: duration)
         action.rotationAngle = angle
+        action.animationType = .rotate
         
         return action
     }
@@ -67,6 +69,29 @@ extension SCNAction {
         }
         set {
             objc_setAssociatedObject(self, &RotationAngleState.rotationAngle, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+    
+    // MARK: - Delay
+    
+    func wait(duration: TimeInterval) -> SCNAction {
+        let action = SCNAction.wait(duration: duration)
+        action.delayDuration = duration
+        action.animationType = .delay
+        
+        return action
+    }
+    
+    private struct DelayState {
+        static var delayDuration: TimeInterval = 0.0
+    }
+    
+    private(set) var delayDuration: TimeInterval {
+        get {
+            return objc_getAssociatedObject(self, &DelayState.delayDuration) as? TimeInterval ?? 0.0
+        }
+        set {
+            objc_setAssociatedObject(self, &DelayState.delayDuration, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
     
