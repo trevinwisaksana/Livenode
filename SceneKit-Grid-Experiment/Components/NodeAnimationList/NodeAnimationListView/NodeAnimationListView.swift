@@ -119,6 +119,16 @@ extension NodeAnimationListView: UITableViewDelegate {
         
         return tableView.isEditing
     }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            State.nodeAnimationTarget?.actions.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
