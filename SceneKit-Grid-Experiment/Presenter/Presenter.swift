@@ -52,6 +52,12 @@ enum Presenter {
         case .delayAnimationAttributes(let animationAttributes):
             controller = DelayAnimationAttributesViewController(animationAttributes: animationAttributes)
             return controller
+        case .alertAnimationAttributes(attributes: let animationAttributes):
+            controller = AlertAnimationAttributesViewController(animationAttributes: animationAttributes)
+            return controller
+        case .alertAnimationPopover:
+            controller = AlertAnimationPopoverViewController()
+            return controller
         }
     }
 }

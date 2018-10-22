@@ -27,6 +27,8 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didTapPlayAnimationButtonWith sender: UIBarButtonItem, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingAnimation sender: UIBarButtonItem, for scene: DefaultScene)
     
+    func sceneEditor(_ controller: SceneEditorViewController, didAddAlertAnimation animation: AlertAnimationAttributes, for scene: DefaultScene, in sceneView: SCNView)
+    
     func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
@@ -201,6 +203,12 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
                 
                 navigationController.pushViewController(delayAnimationAttributesView, animated: true)
                 
+            case .alert:
+                let alertAnimationAttributesView = Presenter.inject(.alertAnimationAttributes(attributes: AlertAnimationAttributes()))
+                let navigationController = controller.presentedViewController as! UINavigationController
+                
+                navigationController.pushViewController(alertAnimationAttributesView, animated: true)
+                
             default:
                 break
             }
@@ -223,6 +231,10 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     
     func sceneEditor(_ controller: SceneEditorViewController, didTapPlayAnimationButtonWith sender: UIBarButtonItem, for scene: DefaultScene) {
         scene.playAnimation()
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didAddAlertAnimation animation: AlertAnimationAttributes, for scene: DefaultScene, in sceneView: SCNView) {
+        scene.addAlertAnimation(animation, on: sceneView)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingAnimation sender: UIBarButtonItem, for scene: DefaultScene) {

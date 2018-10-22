@@ -8,6 +8,7 @@
 
 import UIKit
 import SceneKit
+import SpriteKit
 
 public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
@@ -360,7 +361,28 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Alert Animation
     
+    func addAlertAnimation(_ animation: AlertAnimationAttributes, on sceneView: SCNView) {
+        guard let nodeTarget = nodeAnimationTarget else { return }
+        guard let duration = animation.duration else { return }
+        createAlertPopover(for: nodeTarget, duration: duration)
+    }
     
+    private func createAlertPopover(for node: SCNNode, duration: TimeInterval) {
+        let text = SCNText(string: "!", extrusionDepth: 0)
+        text.firstMaterial?.isDoubleSided = true
+        
+        let textNode = SCNNode(geometry: text)
+        textNode.changeColor(to: .green)
+        textNode.scale = SCNVector3(0.15, 0.15, 0.15)
+        textNode.position = SCNVector3(-0.28, 0.5, 0)
+        textNode.opacity = 0
+        
+        node.addChildNode(textNode)
+        
+        let fadeInAnimation = SCNAction.fadeIn(duration: 0.5)
+        fadeInAnimation.timingMode = .easeInEaseOut
+        textNode.addAction(fadeInAnimation, forKey: .alert)
+    }
     
     // MARK: - Delay Animation
     
@@ -442,4 +464,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         lastNodeSelected = nil
     }
 
+}
+
+// MARK: - SCNSceneRendererDelegate
+
+extension DefaultScene: SCNSceneRendererDelegate {
+    
 }

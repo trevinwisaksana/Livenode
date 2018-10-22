@@ -54,8 +54,15 @@ extension SCNNode {
     }
     
     func playAllAnimations(completionHandler: (() -> Void)?) {
-        let sequence = SCNAction.sequence(actions)
-        runAction(sequence, completionHandler: completionHandler)
+        if actions.isEmpty {
+            enumerateChildNodes { (node, stop) in
+                let sequence = SCNAction.sequence(node.actions)
+                node.runAction(sequence, completionHandler: completionHandler)
+            }
+        } else {
+            let sequence = SCNAction.sequence(actions)
+            runAction(sequence, completionHandler: completionHandler)
+        }
     }
     
 }

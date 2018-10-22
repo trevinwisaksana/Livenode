@@ -1,5 +1,5 @@
 //
-//  DelayAnimationAttributesView.swift
+//  AlertAnimationAttributesView.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 21/10/18.
@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import SceneKit
 
-public protocol DelayAnimationAttributesViewDelegate: class {
-    func delayAnimationAttributesView(_ delayAnimationAttributesView: DelayAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: DelayAnimationAttributes)
-    func delayAnimationAttributesView(_ delayAnimationAttributesView: DelayAnimationAttributesView, didUpdateAnimationDelayDuration duration: TimeInterval, forAnimationAtIndex index: Int)
+public protocol AlertAnimationAttributesViewDelegate: class {
+    func alertAnimationAttributesView(_ alertAnimationAttributesView: AlertAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: AlertAnimationAttributes)
+    func alertAnimationAttributesView(_ alertAnimationAttributesView: AlertAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int)
 }
 
-public class DelayAnimationAttributesView: UIView {
+public class AlertAnimationAttributesView: UIView {
     
     // MARK: - Internal properties
     
@@ -33,12 +32,12 @@ public class DelayAnimationAttributesView: UIView {
     
     // MARK: - Public Properties
     
-    public weak var delegate: DelayAnimationAttributesViewDelegate?
-    public var dataSource: DelayAnimationAttributes?
+    public weak var delegate: AlertAnimationAttributesViewDelegate?
+    public var dataSource: AlertAnimationAttributes?
     
     // MARK: - Setup
     
-    public init(delegate: DelayAnimationAttributesViewDelegate) {
+    public init(delegate: AlertAnimationAttributesViewDelegate) {
         super.init(frame: .zero)
         
         self.delegate = delegate
@@ -74,7 +73,7 @@ public class DelayAnimationAttributesView: UIView {
 
 // MARK: - UITableViewDelegate
 
-extension DelayAnimationAttributesView: UITableViewDelegate {
+extension AlertAnimationAttributesView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectNodeAnimation(atIndex: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
@@ -90,12 +89,11 @@ extension DelayAnimationAttributesView: UITableViewDelegate {
     }
 }
 
-
 // MARK: - UITableViewDataSource
 
-extension DelayAnimationAttributesView: UITableViewDataSource {
+extension AlertAnimationAttributesView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DelayAnimationAttributesView.numberOfItemsInSection
+        return AlertAnimationAttributesView.numberOfItemsInSection
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,7 +108,7 @@ extension DelayAnimationAttributesView: UITableViewDataSource {
             cell.model = dataSource
             
             return cell
-
+            
         case 1:
             let cell: AddAnimationCell = tableView.dequeueReusableCell()
             cell.delegate = self
@@ -125,9 +123,9 @@ extension DelayAnimationAttributesView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return DelayAnimationAttributesView.animationDurationCellHeight
+            return AlertAnimationAttributesView.animationDurationCellHeight
         case 1:
-            return DelayAnimationAttributesView.addAnimationCellHeight
+            return AlertAnimationAttributesView.addAnimationCellHeight
         default:
             return 60.0
         }
@@ -136,20 +134,24 @@ extension DelayAnimationAttributesView: UITableViewDataSource {
 
 // MARK: - AddAnimationCellDelegate
 
-extension DelayAnimationAttributesView: AddAnimationCellDelegate {
+extension AlertAnimationAttributesView: AddAnimationCellDelegate {
     public func addAnimationCell(_ addAnimationCell: AddAnimationCell, didTapAddAnimationButton button: UIButton) {
-        guard let animation = dataSource else { return }
-        delegate?.delayAnimationAttributesView(self, didTapAddAnimationButton: button, animation: animation)
+        guard let animatedNodeLocation = State.nodeAnimationTarget?.position else { return }
+        dataSource?.nodeLocation = animatedNodeLocation
+        
+        guard let dataSource = dataSource else { return }
+        
+        delegate?.alertAnimationAttributesView(self, didTapAddAnimationButton: button, animation: dataSource)
     }
 }
 
 // MARK: - AnimationDurationCellDelegate
 
-extension DelayAnimationAttributesView: AnimationDurationCellDelegate {
+extension AlertAnimationAttributesView: AnimationDurationCellDelegate {
     public func animationDurationCell(_ animationDurationCell: AnimationDurationCell, didUpdateAnimationDuration duration: TimeInterval) {
         dataSource?.duration = duration
         
         guard let animationIndex = dataSource?.animationIndex else { return }
-        delegate?.delayAnimationAttributesView(self, didUpdateAnimationDelayDuration: duration, forAnimationAtIndex: animationIndex)
+        delegate?.alertAnimationAttributesView(self, didUpdateAnimationDuration: duration, forAnimationAtIndex: animationIndex)
     }
 }

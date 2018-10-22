@@ -55,6 +55,10 @@
 		DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */; };
 		DD6CC452210AB626009284C6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC451210AB626009284C6 /* Presenter.swift */; };
 		DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */; };
+		DD734413217CA8D300E4EE91 /* AlertAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734412217CA8D300E4EE91 /* AlertAnimationAttributesView.swift */; };
+		DD734416217CA99700E4EE91 /* AlertAnimationAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734415217CA99700E4EE91 /* AlertAnimationAttributesViewModel.swift */; };
+		DD73441A217D5E1C00E4EE91 /* AlertIconMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */; };
+		DD73441E217D71B600E4EE91 /* AlertAnimationPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73441D217D71B600E4EE91 /* AlertAnimationPopoverViewController.swift */; };
 		DD8E125F21381BA700D4F4DE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E125E21381BA700D4F4DE /* Style.swift */; };
 		DD8E1261213BE88500D4F4DE /* UtilitiesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */; };
 		DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */; };
@@ -149,6 +153,10 @@
 		DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		DD6CC451210AB626009284C6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogPresentableViewHelper.swift; sourceTree = "<group>"; };
+		DD734412217CA8D300E4EE91 /* AlertAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAnimationAttributesView.swift; sourceTree = "<group>"; };
+		DD734415217CA99700E4EE91 /* AlertAnimationAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAnimationAttributesViewModel.swift; sourceTree = "<group>"; };
+		DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIconMenuCell.swift; sourceTree = "<group>"; };
+		DD73441D217D71B600E4EE91 /* AlertAnimationPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAnimationPopoverViewController.swift; sourceTree = "<group>"; };
 		DD8E125E21381BA700D4F4DE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorView.swift; sourceTree = "<group>"; };
@@ -208,7 +216,7 @@
 			children = (
 				DDFFE0442179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift */,
 				DD5456D121778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift */,
-				DD0BFFBB217C590100429F52 /* AlertAnimationAttributesViewController.swift */,
+				DD73441C217D71A700E4EE91 /* AlertAnimation */,
 				DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */,
 			);
 			path = Animations;
@@ -597,6 +605,49 @@
 			path = ColorPicker;
 			sourceTree = "<group>";
 		};
+		DD734414217CA8D800E4EE91 /* AlertAnimationAttributes */ = {
+			isa = PBXGroup;
+			children = (
+				DD734418217CA9B300E4EE91 /* AlertAnimationAttributesView */,
+				DD73441B217D5E2400E4EE91 /* Cell */,
+				DD734417217CA9A800E4EE91 /* ViewModel */,
+			);
+			path = AlertAnimationAttributes;
+			sourceTree = "<group>";
+		};
+		DD734417217CA9A800E4EE91 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD734415217CA99700E4EE91 /* AlertAnimationAttributesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DD734418217CA9B300E4EE91 /* AlertAnimationAttributesView */ = {
+			isa = PBXGroup;
+			children = (
+				DD734412217CA8D300E4EE91 /* AlertAnimationAttributesView.swift */,
+			);
+			path = AlertAnimationAttributesView;
+			sourceTree = "<group>";
+		};
+		DD73441B217D5E2400E4EE91 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DD73441C217D71A700E4EE91 /* AlertAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				DD0BFFBB217C590100429F52 /* AlertAnimationAttributesViewController.swift */,
+				DD73441D217D71B600E4EE91 /* AlertAnimationPopoverViewController.swift */,
+			);
+			path = AlertAnimation;
+			sourceTree = "<group>";
+		};
 		DD8E1265213CDC0C00D4F4DE /* UtilitiesInspector */ = {
 			isa = PBXGroup;
 			children = (
@@ -752,6 +803,7 @@
 				DDE60E4821731BC60052E506 /* MoveAnimationAttributes */,
 				DD5456C72176DC9F00AE25D8 /* RotateAnimationAttributes */,
 				DD0BFFC2217C59AB00429F52 /* DelayAnimationAttributes */,
+				DD734414217CA8D800E4EE91 /* AlertAnimationAttributes */,
 			);
 			path = AnimationAttributeViews;
 			sourceTree = "<group>";
@@ -982,6 +1034,7 @@
 				DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */,
 				DD6C16FD210C16EF002CB031 /* ColorPickerViewController.swift in Sources */,
 				DDFFE040217984D800AFF7DA /* SCNActionExtensions.swift in Sources */,
+				DD73441A217D5E1C00E4EE91 /* AlertIconMenuCell.swift in Sources */,
 				DD43429E215F772A00FF3D91 /* SceneEditorPresentableView.swift in Sources */,
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
 				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
@@ -1001,6 +1054,7 @@
 				DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */,
 				DD0BFFBF217C593F00429F52 /* DelayAnimationAttributesViewController.swift in Sources */,
 				DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */,
+				DD734416217CA99700E4EE91 /* AlertAnimationAttributesViewModel.swift in Sources */,
 				DD5456D221778B4E00AE25D8 /* RotateAnimationAttributesViewController.swift in Sources */,
 				DDE60E5421738E740052E506 /* NodeAnimationMenuView.swift in Sources */,
 				DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */,
@@ -1011,6 +1065,7 @@
 				DDFFE0452179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DDF38F62216C97A80000069E /* UtilitiesInspectorExportCell.swift in Sources */,
+				DD734413217CA8D300E4EE91 /* AlertAnimationAttributesView.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
 				DD9D81252171A3C0006638F8 /* NodeAnimationListCell.swift in Sources */,
@@ -1042,6 +1097,7 @@
 				DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */,
 				DD5456C62176DC9400AE25D8 /* RotateAnimationAttributesView.swift in Sources */,
 				DD5456CA2176E86500AE25D8 /* RotateAnimationAngleCell.swift in Sources */,
+				DD73441E217D71B600E4EE91 /* AlertAnimationPopoverViewController.swift in Sources */,
 				DD0BFFBC217C590100429F52 /* AlertAnimationAttributesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

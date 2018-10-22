@@ -24,6 +24,8 @@ enum ViewComponent {
     case moveAnimationAttributes(attributes: MoveAnimationAttributes)
     case rotateAnimationAttributes(attributes: RotateAnimationAttributes)
     case delayAnimationAttributes(attributes: DelayAnimationAttributes)
+    case alertAnimationAttributes(attributes: AlertAnimationAttributes)
+    case alertAnimationPopover
     
     var all: [ViewComponent] {
         return [

@@ -19,7 +19,7 @@ final class SceneEditorViewController: UIViewController {
         return sceneView
     }()
     
-    private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
+    private lazy var viewControllerDelegate: SceneEditorViewControllerDelegateProtocol = SceneEditorViewControllerDelegate()
     
     // MARK: - Public Properties
     
@@ -51,6 +51,7 @@ final class SceneEditorViewController: UIViewController {
         super.viewDidDisappear(animated)
         // TODO: Reset the current node highlighted and selected
         sceneEditorDelegate?.sceneEditor(self, didUpdateSceneContent: currentScene)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Setup
@@ -153,7 +154,7 @@ final class SceneEditorViewController: UIViewController {
     }
     
     private func setupLongPressGestureRecognizer() {
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressSceneEditorView(_:)))
         view.addGestureRecognizer(longPressGesture)
     }
     
@@ -252,8 +253,19 @@ final class SceneEditorViewController: UIViewController {
     }
 
     @objc
-    private func didLongPress(_ sender: UILongPressGestureRecognizer) {
-        viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
+    private func didLongPressSceneEditorView(_ sender: UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
+        default:
+            break
+        }
+    }
+    
+    // MARK: - External Properties
+    
+    func didTapAddAlertAnimationButton(_ sender: UIButton, animation: AlertAnimationAttributes) {
+        viewControllerDelegate.sceneEditor(self, didAddAlertAnimation: animation, for: currentScene, in: sceneView)
     }
     
     // MARK: - Device Configuration

@@ -16,4 +16,3 @@ public struct DelayAnimationAttributes: DelayAnimationAttributesViewModel, Anima
     public var duration: TimeInterval?
     public var animationIndex: Int?
 }
-
