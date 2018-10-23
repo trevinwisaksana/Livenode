@@ -366,8 +366,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Alert Animation
     
     func addAlertAnimation(_ animation: AlertAnimationAttributes, on sceneView: SCNView) {
-        guard let duration = animation.duration else { return }
-        createAlertPopover(duration: duration)
+        createAlertPopover(duration: animation.duration ?? 0.25)
     }
     
     private func createAlertPopover(duration: TimeInterval) {
@@ -385,7 +384,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         lookAtConstraint.localFront = SCNVector3(0, 0, 0)
         alertNode.constraints = [lookAtConstraint]
         
-        let fadeInAnimation = SCNAction.fadeIn(duration: 0.5)
+        let fadeInAnimation = SCNAction.fadeIn(duration: duration)
         fadeInAnimation.animationType = .alert
         fadeInAnimation.timingMode = .easeInEaseOut
         nodeAnimationTarget?.addAction(fadeInAnimation, forKey: .alert)
