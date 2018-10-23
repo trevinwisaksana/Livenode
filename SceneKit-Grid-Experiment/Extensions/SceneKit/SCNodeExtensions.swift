@@ -54,15 +54,23 @@ extension SCNNode {
     }
     
     func playAllAnimations(completionHandler: (() -> Void)?) {
-        if actions.isEmpty {
-            enumerateChildNodes { (node, stop) in
-                let sequence = SCNAction.sequence(node.actions)
-                node.runAction(sequence, completionHandler: completionHandler)
+        var actionSequence = [SCNAction]()
+
+        actions.forEach { (action) in
+            if action.animationType == .alert {
+                let customAction = SCNAction.customAction(duration: action.duration) { (node, time) in
+                    let alertNode = node.childNode(withName: "AlertNode", recursively: true)
+                    alertNode?.runAction(action)
+                }
+
+                actionSequence.append(customAction)
             }
-        } else {
-            let sequence = SCNAction.sequence(actions)
-            runAction(sequence, completionHandler: completionHandler)
+            
+            actionSequence.append(action)
         }
+        
+        let sequence = SCNAction.sequence(actionSequence)
+        runAction(sequence, completionHandler: completionHandler)
     }
     
 }

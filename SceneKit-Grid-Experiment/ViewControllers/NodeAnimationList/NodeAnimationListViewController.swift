@@ -30,12 +30,6 @@ final class NodeAnimationListViewController: UIViewController {
         setup()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        mainView.reloadData()
-    }
-    
     // MARK: - Setup
     
     private func setup() {

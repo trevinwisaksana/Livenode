@@ -21,7 +21,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // TODO: Create node extension that sets name for itself
     private var cameraNode: SCNNode = {
         let node = SCNNode(geometry: nil)
+        node.position = SCNVector3(0, 0, 20)
         node.camera = SCNCamera()
+        node.camera?.automaticallyAdjustsZRange = true
+        node.camera?.focalLength = 30
         return node
     }()
     
@@ -90,6 +93,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         rootNode.addChildNode(gridContainer)
         rootNode.addChildNode(presentationNodeContainer)
         rootNode.addChildNode(floorNode)
+        rootNode.addChildNode(cameraNode)
         
         createGrid(with: CGSize(width: DefaultScene.gridWidth, height: DefaultScene.gridWidth))
         
@@ -362,26 +366,31 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Alert Animation
     
     func addAlertAnimation(_ animation: AlertAnimationAttributes, on sceneView: SCNView) {
-        guard let nodeTarget = nodeAnimationTarget else { return }
         guard let duration = animation.duration else { return }
-        createAlertPopover(for: nodeTarget, duration: duration)
+        createAlertPopover(duration: duration)
     }
     
-    private func createAlertPopover(for node: SCNNode, duration: TimeInterval) {
+    private func createAlertPopover(duration: TimeInterval) {
         let text = SCNText(string: "!", extrusionDepth: 0)
         text.firstMaterial?.isDoubleSided = true
         
-        let textNode = SCNNode(geometry: text)
-        textNode.changeColor(to: .green)
-        textNode.scale = SCNVector3(0.15, 0.15, 0.15)
-        textNode.position = SCNVector3(-0.28, 0.5, 0)
-        textNode.opacity = 0
+        let alertNode = SCNNode(geometry: text)
+        alertNode.name = "AlertNode"
+        alertNode.changeColor(to: .green)
+        alertNode.scale = SCNVector3(0.15, 0.15, 0.15)
+        alertNode.position = SCNVector3(-0.28, 0.5, 0)
+        alertNode.opacity = 0
         
-        node.addChildNode(textNode)
+        let lookAtConstraint = SCNLookAtConstraint(target: cameraNode)
+        lookAtConstraint.localFront = SCNVector3(0, 0, 0)
+        alertNode.constraints = [lookAtConstraint]
         
         let fadeInAnimation = SCNAction.fadeIn(duration: 0.5)
+        fadeInAnimation.animationType = .alert
         fadeInAnimation.timingMode = .easeInEaseOut
-        textNode.addAction(fadeInAnimation, forKey: .alert)
+        nodeAnimationTarget?.addAction(fadeInAnimation, forKey: .alert)
+        
+        nodeAnimationTarget?.addChildNode(alertNode)
     }
     
     // MARK: - Delay Animation

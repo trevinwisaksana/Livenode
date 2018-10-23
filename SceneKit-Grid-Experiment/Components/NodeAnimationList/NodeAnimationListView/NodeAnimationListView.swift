@@ -28,7 +28,9 @@ public class NodeAnimationListView: UIView {
         return tableView
     }()
     
-    private weak var delegate: NodeAnimationListViewDelegate?
+    // MARK: - External Properties
+    
+    public weak var delegate: NodeAnimationListViewDelegate?
     
     // MARK: - Setup
     
@@ -53,6 +55,7 @@ public class NodeAnimationListView: UIView {
     private func setup() {
         tableView.register(cell: NodeAnimationListCell.self)
         addSubview(tableView)
+        
         tableView.fillInSuperview()
     }
     
@@ -63,6 +66,32 @@ public class NodeAnimationListView: UIView {
     }
     
 }
+
+// MARK: - UITableViewDataSource
+
+extension NodeAnimationListView: UITableViewDataSource {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return State.nodeAnimationTarget?.actions.count ?? 0
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return setupCell(with: indexPath)
+    }
+    
+    private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
+        let cell: NodeAnimationListCell = tableView.dequeueReusableCell()
+        
+        let animationType = State.nodeAnimationTarget?.actions[indexPath.row].animationType
+        cell.animationType = animationType ?? .default
+        
+        return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return NodeAnimationListView.cellHeight
+    }
+}
+
 
 // MARK: - UITableViewDelegate
 
@@ -144,30 +173,5 @@ extension NodeAnimationListView: UITableViewDelegate {
         default:
             break
         }
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension NodeAnimationListView: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return State.nodeAnimationTarget?.actions.count ?? 0
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return setupCell(with: indexPath)
-    }
-    
-    private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
-        let cell: NodeAnimationListCell = tableView.dequeueReusableCell()
-        
-        let animationType = State.nodeAnimationTarget?.actions[indexPath.row].animationType
-        cell.animationType = animationType ?? .default
-        
-        return cell
-    }
-    
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return NodeAnimationListView.cellHeight
     }
 }
