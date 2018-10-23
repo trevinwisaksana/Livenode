@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/livenoteBanner.jpg" width="2400" height="559">
+</p>
+
 # Livenote
 This micro-project is a series of quick experiments designed to add-up to build the Livenote app. It explores how to construct a grid view for a 3D modeling environment in which users are able to construct a 3D scene purely using SceneKit. 
 
