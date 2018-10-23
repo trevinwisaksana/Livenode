@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/livenoteBanner.pdf" width="2400" height="559">
+  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/livenoteBanner.jpg" width="2400" height="559">
 </p>
 
 # Livenote
