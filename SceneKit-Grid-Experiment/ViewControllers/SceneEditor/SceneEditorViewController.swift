@@ -80,7 +80,7 @@ final class SceneEditorViewController: UIViewController {
         setupDefaultNavigationItems()
         setupLongPressGestureRecognizer()
         setupNotificationListeners()
-        setupSceneViewPanGesture()
+        setupSceneViewGestures()
     }
     
     func setupDefaultNavigationItems() {
@@ -157,9 +157,12 @@ final class SceneEditorViewController: UIViewController {
         view.addGestureRecognizer(longPressGesture)
     }
     
-    private func setupSceneViewPanGesture() {
+    private func setupSceneViewGestures() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
         sceneView.addGestureRecognizer(panGesture)
+        
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didBeginPinching(_:)))
+        sceneView.addGestureRecognizer(pinchGesture)
     }
     
     // MARK: - Color Picker
@@ -189,6 +192,11 @@ final class SceneEditorViewController: UIViewController {
     @objc
     private func didBeginPanning(_ gesture: UIPanGestureRecognizer) {
         currentScene.limitCameraRotation(using: gesture)
+    }
+    
+    @objc
+    private func didBeginPinching(_ gesture: UIPinchGestureRecognizer) {
+        currentScene.adjustCameraZoom(using: gesture)
     }
     
     @objc

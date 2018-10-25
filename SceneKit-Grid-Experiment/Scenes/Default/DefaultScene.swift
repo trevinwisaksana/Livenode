@@ -20,22 +20,27 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     private var lastWidthRatio: Float = 0
     private var lastHeightRatio: Float = 0
+    private var pinchAttenuation: CGFloat = 1.0  // 1.0: very fast ---- 100.0 very slow
+    
+    private var camera: SCNCamera = {
+        let camera = SCNCamera()
+        camera.usesOrthographicProjection = false
+        camera.automaticallyAdjustsZRange = true
+        camera.focalLength = 30
+        return camera
+    }()
     
     private var cameraNode: SCNNode = {
         let node = SCNNode(geometry: nil)
+        node.name = "CameraNode"
         node.position = SCNVector3(0, 0, 50)
-        
-        node.camera = SCNCamera()
-        node.camera?.usesOrthographicProjection = false
-        node.camera?.automaticallyAdjustsZRange = true
-        node.camera?.focalLength = 30
-        
         return node
     }()
     
     private var cameraOrbit: SCNNode = {
         let node = SCNNode(geometry: nil)
         node.name = "CameraOrbit"
+        node.eulerAngles = SCNVector3(-0.26, -0.025, 0)
         return node
     }()
     
@@ -105,6 +110,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         rootNode.addChildNode(presentationNodeContainer)
         rootNode.addChildNode(floorNode)
         
+        cameraNode.camera = camera
         cameraOrbit.addChildNode(cameraNode)
         rootNode.addChildNode(cameraOrbit)
         
@@ -500,13 +506,13 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         var heightRatio = Float(translation.y) / Float(view.frame.size.height) + lastHeightRatio
         
         // Max Contraints
-        if heightRatio >= 0.99 {
-            heightRatio = 0.99
+        if heightRatio >= 0.995 {
+            heightRatio = 0.995
         }
         
         // Min Constraints
-        if heightRatio <= 0.0045 {
-            heightRatio = 0.0045
+        if heightRatio <= 0.005 {
+            heightRatio = 0.005
         }
         
         cameraOrbit.eulerAngles.y = (-2 * Float.pi) * widthRatio
@@ -516,6 +522,23 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             lastWidthRatio = widthRatio.truncatingRemainder(dividingBy: 1)
             lastHeightRatio = heightRatio.truncatingRemainder(dividingBy: 1)
         }
+    }
+    
+    func adjustCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
+        guard let camera = rootNode.childNode(withName: "CameraNode", recursively: true)?.camera else {
+            return
+        }
+        
+        if camera.fieldOfView <= 5 {
+            // TODO: Fix camera gitter
+            camera.fieldOfView = 5.01
+        } else {
+            camera.fieldOfView -= (pinchGesture.velocity / pinchAttenuation)
+        }
+    }
+    
+    func rotateCamera(using pinchGesture: UIPinchGestureRecognizer) {
+        
     }
     
 }
