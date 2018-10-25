@@ -75,13 +75,12 @@ final class SceneEditorViewController: UIViewController {
         sceneView.fillInSuperview()
         
         // TODO: Place this inside SceneView
-        sceneView.allowsCameraControl = true
-        sceneView.showsStatistics = false
         sceneView.autoenablesDefaultLighting = true
         
         setupDefaultNavigationItems()
         setupLongPressGestureRecognizer()
         setupNotificationListeners()
+        setupSceneViewPanGesture()
     }
     
     func setupDefaultNavigationItems() {
@@ -158,6 +157,11 @@ final class SceneEditorViewController: UIViewController {
         view.addGestureRecognizer(longPressGesture)
     }
     
+    private func setupSceneViewPanGesture() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
+        sceneView.addGestureRecognizer(panGesture)
+    }
+    
     // MARK: - Color Picker
     
     @objc
@@ -180,6 +184,11 @@ final class SceneEditorViewController: UIViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         viewControllerDelegate.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: currentScene)
+    }
+    
+    @objc
+    private func didBeginPanning(_ gesture: UIPanGestureRecognizer) {
+        currentScene.limitCameraRotation(using: gesture)
     }
     
     @objc

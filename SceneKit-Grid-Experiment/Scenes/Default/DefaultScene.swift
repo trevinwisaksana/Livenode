@@ -18,13 +18,24 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     private static let gridTileWidth: CGFloat = 1
     private static let nodeBottomMargin: Float = 0.5
     
-    // TODO: Create node extension that sets name for itself
+    private var lastWidthRatio: Float = 0
+    private var lastHeightRatio: Float = 0
+    
     private var cameraNode: SCNNode = {
         let node = SCNNode(geometry: nil)
-        node.position = SCNVector3(0, 0, 20)
+        node.position = SCNVector3(0, 0, 50)
+        
         node.camera = SCNCamera()
+        node.camera?.usesOrthographicProjection = false
         node.camera?.automaticallyAdjustsZRange = true
         node.camera?.focalLength = 30
+        
+        return node
+    }()
+    
+    private var cameraOrbit: SCNNode = {
+        let node = SCNNode(geometry: nil)
+        node.name = "CameraOrbit"
         return node
     }()
     
@@ -93,7 +104,9 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         rootNode.addChildNode(gridContainer)
         rootNode.addChildNode(presentationNodeContainer)
         rootNode.addChildNode(floorNode)
-        rootNode.addChildNode(cameraNode)
+        
+        cameraOrbit.addChildNode(cameraNode)
+        rootNode.addChildNode(cameraOrbit)
         
         createGrid(with: CGSize(width: DefaultScene.gridWidth, height: DefaultScene.gridWidth))
         
@@ -102,6 +115,36 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    // MARK: - Grid
+    
+    private func createGrid(with size: CGSize) {
+        for xIndex in 0...Int(size.width) {
+            for zIndex in 0...Int(size.height) {
+                let tileGeometry = SCNPlane(width: DefaultScene.gridTileWidth, height: DefaultScene.gridTileWidth)
+                
+                let tileNode = SCNNode(geometry: tileGeometry)
+                tileNode.changeColor(to: .clear)
+                tileNode.eulerAngles = SCNVector3(-1.5708, 0, 0)
+                
+                if zIndex > 10 {
+                    tileNode.position.z = Float(zIndex - Int(size.height + 1))
+                } else {
+                    tileNode.position.z = Float(zIndex)
+                }
+                
+                if xIndex > 10 {
+                    tileNode.position.x = Float(xIndex - Int(size.width + 1))
+                } else {
+                    tileNode.position.x = Float(xIndex)
+                }
+                
+                createBorder(for: tileNode)
+                
+                gridContainer.addChildNode(tileNode)
+            }
+        }
     }
     
     // MARK: - Node Selection
@@ -173,36 +216,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         presentationNodeContainer.addChildNode(pyramidNode)
-    }
-    
-    // MARK: - Grid
-    
-    private func createGrid(with size: CGSize) {
-        for xIndex in 0...Int(size.width) {
-            for zIndex in 0...Int(size.height) {
-                let tileGeometry = SCNPlane(width: DefaultScene.gridTileWidth, height: DefaultScene.gridTileWidth)
-                
-                let tileNode = SCNNode(geometry: tileGeometry)
-                tileNode.changeColor(to: .clear)
-                tileNode.eulerAngles = SCNVector3(-1.5708, 0, 0)
-                
-                if zIndex > 10 {
-                    tileNode.position.z = Float(zIndex - Int(size.height + 1))
-                } else {
-                    tileNode.position.z = Float(zIndex)
-                }
-                
-                if xIndex > 10 {
-                    tileNode.position.x = Float(xIndex - Int(size.width + 1))
-                } else {
-                    tileNode.position.x = Float(xIndex)
-                }
-                
-                createBorder(for: tileNode)
-                
-                gridContainer.addChildNode(tileNode)
-            }
-        }
     }
     
     private func createBorder(for node: SCNNode?) {
@@ -408,29 +421,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         nodeAnimationTarget?.actions[index] = updatedAnimation
     }
   
-    // MARK: - Scene Actions
-    
-    public func didSelectScene(action: Action) {
-        switch action {
-        case .cut:
-            nodeSelected?.copy()
-            nodeSelected?.removeFromParentNode()
-        case .copy:
-            nodeSelected?.copy()
-        case .paste:
-            break
-        case .delete:
-            nodeSelected?.removeFromParentNode()
-        case .move:
-            nodeSelected?.isMovable = true
-        case .pin:
-            nodeSelected?.isMovable = false
-            didSelectANode = false
-        default:
-            break
-        }
-    }
-    
     // MARK: - Node Highlight
     
     // TODO: Find solution that doesn't only work with boxes
@@ -471,11 +461,61 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         lastNodeSelected?.changeColor(to: .clear)
         lastNodeSelected = nil
     }
+    
+    // MARK: - Scene Actions
+    
+    public func didSelectScene(action: Action) {
+        switch action {
+        case .cut:
+            nodeSelected?.copy()
+            nodeSelected?.removeFromParentNode()
+        case .copy:
+            nodeSelected?.copy()
+        case .paste:
+            break
+        case .delete:
+            nodeSelected?.removeFromParentNode()
+        case .move:
+            nodeSelected?.isMovable = true
+        case .pin:
+            nodeSelected?.isMovable = false
+            didSelectANode = false
+        default:
+            break
+        }
+    }
 
-}
-
-// MARK: - SCNSceneRendererDelegate
-
-extension DefaultScene: SCNSceneRendererDelegate {
+    // MARK: - Camera Movement
+    // TODO: Add pinch to zoom and two-finger rotate
+    
+    func limitCameraRotation(using panGesture: UIPanGestureRecognizer) {
+        guard let cameraOrbit = rootNode.childNode(withName: "CameraOrbit", recursively: true) else {
+            return
+        }
+        
+        guard let view = panGesture.view else { return }
+        let translation = panGesture.translation(in: view)
+        
+        let widthRatio = Float(translation.x) / Float(view.frame.size.width) + lastWidthRatio
+        var heightRatio = Float(translation.y) / Float(view.frame.size.height) + lastHeightRatio
+        
+        // Max Contraints
+        if heightRatio >= 0.99 {
+            heightRatio = 0.99
+        }
+        
+        // Min Constraints
+        if heightRatio <= 0.0045 {
+            heightRatio = 0.0045
+        }
+        
+        cameraOrbit.eulerAngles.y = (-2 * Float.pi) * widthRatio
+        cameraOrbit.eulerAngles.x = -Float.pi * heightRatio
+        
+        if panGesture.state == .ended {
+            lastWidthRatio = widthRatio.truncatingRemainder(dividingBy: 1)
+            lastHeightRatio = heightRatio.truncatingRemainder(dividingBy: 1)
+        }
+    }
     
 }
