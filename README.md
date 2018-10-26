@@ -7,5 +7,5 @@
 <br/>
 
 <p align="center">
-  <img src="https://github.com/trevinwisaksana/SceneKit-Experiment/blob/master/Screenshots/Livenote%20Prototype%20Demo.gif" width="800" height="584">
+  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/LivenoteDemo.gif" width="800" height="584">
 </p>
