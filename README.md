@@ -9,5 +9,6 @@
 <br/>
 
 <p align="center">
-  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/Livenote%20Demo.gif">
+  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/Livenote%20Demo.gif" width="400"/>
+  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/Livenote%20AR%20Demo.gif" width="400"/>
 </p>
