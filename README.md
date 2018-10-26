@@ -15,5 +15,5 @@
 
 
 <p align="center">
-  <em>The GIF on the left shows a user animating a cube in Livenote's Scene Editor while on the right shows the result projected in augmented reality. As the GIF on the left was recorded on MacBook, it is unable to use augmented reality. The result on the right is done on an iPhone using the Livenote app.</em>
+  <em>The GIF on the left shows a user animating a cube in Livenote's Scene Editor while on the right shows the result projected in augmented reality. As the GIF on the left was recorded on a MacBook, it is unable to use augmented reality. The result on the right is done on an iPhone using the Livenote app.</em>
 </p>
