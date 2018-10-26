@@ -9,6 +9,11 @@
 <br/>
 
 <p align="center">
-  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/Livenote%20Demo.gif" width="400"/>
+  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/Livenote%20Demo.gif" width="400"/?
   <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/Livenote%20AR%20Demo.gif" width="400"/>
+</p>
+
+
+<p align="center">
+  <em>The GIF on the left shows a user animating a cube in Livenote's Scene Editor while the one on the right shows the result in augmented reality. As the GIF on the left was recorded on MacBook, it would not be able to use augmented reality. The result on the right is done on an iPhone using the Livenote app.</em>
 </p>
