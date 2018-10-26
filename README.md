@@ -7,5 +7,5 @@
 <br/>
 
 <p align="center">
-  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/Livenote%20Demo.gif" width="1280" height="720">
+  <img src="https://github.com/trevinwisaksana/Livenote/blob/master/Screenshots/Livenote%20Demo.gif">
 </p>
