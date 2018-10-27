@@ -292,6 +292,7 @@ final class SceneEditorViewController: UIViewController {
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        // TODO: Switch to iPad for production
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
         } else {

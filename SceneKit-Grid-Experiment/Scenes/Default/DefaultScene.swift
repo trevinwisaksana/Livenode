@@ -275,7 +275,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             
             if nodeSelected?.isMovable ?? false {
                 nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
-                sceneView.allowsCameraControl = false
+                // TODO: Prevent camera control
             }
         }
     }
