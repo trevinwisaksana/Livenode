@@ -116,6 +116,9 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         createGrid(with: CGSize(width: DefaultScene.gridWidth, height: DefaultScene.gridWidth))
         
+        // TESTING
+        insertHouse()
+        
         background.contents = UIColor.aluminium
     }
     
@@ -151,6 +154,47 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
                 gridContainer.addChildNode(tileNode)
             }
         }
+    }
+    
+    private func createBorder(for node: SCNNode?) {
+        guard let node = node else {
+            return
+        }
+        
+        let (min, max) = node.boundingBox
+        let zCoord: Float = 0.0
+        let topLeft = SCNVector3(min.x, max.y, zCoord)
+        let bottomLeft = SCNVector3(min.x, min.y, zCoord)
+        let topRight = SCNVector3(max.x, max.y, zCoord)
+        let bottomRight = SCNVector3(max.x, min.y, zCoord)
+        
+        let bottomSide = createLineNode(fromPos: bottomLeft, toPos: bottomRight, color: .yellow)
+        let leftSide = createLineNode(fromPos: bottomLeft, toPos: topLeft, color: .yellow)
+        let rightSide = createLineNode(fromPos: bottomRight, toPos: topRight, color: .yellow)
+        let topSide = createLineNode(fromPos: topLeft, toPos: topRight, color: .yellow)
+        
+        [bottomSide, leftSide, rightSide, topSide].forEach {
+            node.name = "tileBorder"
+            node.addChildNode($0)
+        }
+    }
+    
+    private func createLineNode(fromPos origin: SCNVector3, toPos destination: SCNVector3, color: UIColor) -> SCNNode {
+        let line = lineFrom(vector: origin, toVector: destination)
+        
+        let lineNode = SCNNode(geometry: line)
+        lineNode.geometry?.firstMaterial?.diffuse.contents = color
+        
+        return lineNode
+    }
+    
+    private func lineFrom(vector vector1: SCNVector3, toVector vector2: SCNVector3) -> SCNGeometry {
+        let indices: [Int32] = [0, 1]
+        
+        let source = SCNGeometrySource(vertices: [vector1, vector2])
+        let element = SCNGeometryElement(indices: indices, primitiveType: .line)
+        
+        return SCNGeometry(sources: [source], elements: [element])
     }
     
     // MARK: - Node Selection
@@ -224,45 +268,42 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(pyramidNode)
     }
     
-    private func createBorder(for node: SCNNode?) {
-        guard let node = node else {
-            return
-        }
+    func insertHouse() {
+//        let vertices: [SCNVector3] = [SCNVector3(-0.25, 1, 0),
+//                                      SCNVector3(-0.5, 0, 0.5),
+//                                      SCNVector3(-0.5, 0, -0.5),
+//                                      SCNVector3(0.5, 0, 0.5),
+//                                      SCNVector3(0.5, 0, -0.5),
+//                                      SCNVector3(0.5, 0, -0.5),
+//                                      SCNVector3(0, -1, 0),]
         
-        let (min, max) = node.boundingBox
-        let zCoord: Float = 0.0
-        let topLeft = SCNVector3(min.x, max.y, zCoord)
-        let bottomLeft = SCNVector3(min.x, min.y, zCoord)
-        let topRight = SCNVector3(max.x, max.y, zCoord)
-        let bottomRight = SCNVector3(max.x, min.y, zCoord)
         
-        let bottomSide = createLineNode(fromPos: bottomLeft, toPos: bottomRight, color: .yellow)
-        let leftSide = createLineNode(fromPos: bottomLeft, toPos: topLeft, color: .yellow)
-        let rightSide = createLineNode(fromPos: bottomRight, toPos: topRight, color: .yellow)
-        let topSide = createLineNode(fromPos: topLeft, toPos: topRight, color: .yellow)
+        let vertices: [SCNVector3] = [
+            SCNVector3(0, 1, 0),
+            SCNVector3(-0.5, 0, 0.5),
+            SCNVector3(0.5, 0, 0.5),
+            SCNVector3(0.5, 0, -0.5),
+            SCNVector3(-0.5, 0, -0.5),
+            SCNVector3(0, -1, 0)]
         
-        [bottomSide, leftSide, rightSide, topSide].forEach {
-            node.name = "tileBorder"
-            node.addChildNode($0)
-        }
-    }
-    
-    private func createLineNode(fromPos origin: SCNVector3, toPos destination: SCNVector3, color: UIColor) -> SCNNode {
-        let line = lineFrom(vector: origin, toVector: destination)
-
-        let lineNode = SCNNode(geometry: line)
-        lineNode.geometry?.firstMaterial?.diffuse.contents = color
-
-        return lineNode
-    }
-
-    private func lineFrom(vector vector1: SCNVector3, toVector vector2: SCNVector3) -> SCNGeometry {
-        let indices: [Int32] = [0, 1]
-
-        let source = SCNGeometrySource(vertices: [vector1, vector2])
-        let element = SCNGeometryElement(indices: indices, primitiveType: .line)
-
-        return SCNGeometry(sources: [source], elements: [element])
+        let indices: [UInt16] = [0, 1, 2,
+                                 2, 3, 0,
+                                 3, 4, 0,
+                                 4, 1, 0,
+                                 1, 5, 2,
+                                 2, 5, 3,
+                                 3, 5, 4,
+                                 4, 5, 1]
+        
+        let source = SCNGeometrySource(vertices: vertices)
+        let elements = SCNGeometryElement(indices: indices, primitiveType: .triangles)
+        
+        let geometry = SCNGeometry(sources: [source], elements: [elements])
+        geometry.firstMaterial?.diffuse.contents = UIColor.blue
+        geometry.firstMaterial?.lightingModel = .constant
+        
+        let houseNode = SCNNode(geometry: geometry)
+        rootNode.addChildNode(houseNode)
     }
     
     // MARK: - Node Movement
