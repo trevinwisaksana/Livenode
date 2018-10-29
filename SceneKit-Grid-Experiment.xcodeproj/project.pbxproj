@@ -86,6 +86,8 @@
 		DDE60E5421738E740052E506 /* NodeAnimationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E5321738E740052E506 /* NodeAnimationMenuView.swift */; };
 		DDE60E5821738FCE0052E506 /* NodeAnimationMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E5721738FCE0052E506 /* NodeAnimationMenuCell.swift */; };
 		DDE60E5C2173955A0052E506 /* MoveAnimationLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E5B2173955A0052E506 /* MoveAnimationLocationCell.swift */; };
+		DDEDD4E12185BE13002005F5 /* Car.dae in Resources */ = {isa = PBXBuildFile; fileRef = DDEDD4E02185BE13002005F5 /* Car.dae */; };
+		DDEDD4E32185BF34002005F5 /* Building.dae in Resources */ = {isa = PBXBuildFile; fileRef = DDEDD4E22185BF34002005F5 /* Building.dae */; };
 		DDEF325E20DF776100FEE793 /* Box.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF325D20DF776100FEE793 /* Box.scn */; };
 		DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDEF326020DF797F00FEE793 /* Pyramid.scn */; };
 		DDF38F5D2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF38F5C2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift */; };
@@ -184,6 +186,8 @@
 		DDE60E5321738E740052E506 /* NodeAnimationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuView.swift; sourceTree = "<group>"; };
 		DDE60E5721738FCE0052E506 /* NodeAnimationMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuCell.swift; sourceTree = "<group>"; };
 		DDE60E5B2173955A0052E506 /* MoveAnimationLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationLocationCell.swift; sourceTree = "<group>"; };
+		DDEDD4E02185BE13002005F5 /* Car.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Car.dae; sourceTree = "<group>"; };
+		DDEDD4E22185BF34002005F5 /* Building.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Building.dae; sourceTree = "<group>"; };
 		DDEF325D20DF776100FEE793 /* Box.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Box.scn; sourceTree = "<group>"; };
 		DDEF326020DF797F00FEE793 /* Pyramid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Pyramid.scn; sourceTree = "<group>"; };
 		DDF38F5C2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -746,6 +750,8 @@
 		DDBA24B421535056003C9CAF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DDEDD4E02185BE13002005F5 /* Car.dae */,
+				DDEDD4E22185BF34002005F5 /* Building.dae */,
 				DDEF325D20DF776100FEE793 /* Box.scn */,
 				DDEF326020DF797F00FEE793 /* Pyramid.scn */,
 			);
@@ -998,7 +1004,9 @@
 			files = (
 				DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */,
 				DD20F67420672FBD005E838C /* LaunchScreen.storyboard in Resources */,
+				DDEDD4E12185BE13002005F5 /* Car.dae in Resources */,
 				DDEF325E20DF776100FEE793 /* Box.scn in Resources */,
+				DDEDD4E32185BF34002005F5 /* Building.dae in Resources */,
 				DD20F67120672FBD005E838C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

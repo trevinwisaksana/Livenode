@@ -116,9 +116,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         createGrid(with: CGSize(width: DefaultScene.gridWidth, height: DefaultScene.gridWidth))
         
-        // TESTING
-        insertHouse()
-        
         background.contents = UIColor.aluminium
     }
     
@@ -266,6 +263,23 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         presentationNodeContainer.addChildNode(pyramidNode)
+    }
+    
+    func insertCar() {
+        let carNode = daeToSCNNode(filepath: "Car.dae")
+        
+        carNode.position = SCNVector3(0, 0, 0)
+        carNode.name = "\(Int.random(in: 0...1000))"
+        
+        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+            return
+        }
+        
+        presentationNodeContainer.addChildNode(carNode)
+    }
+    
+    func insertBuilding() {
+        
     }
     
     func insertHouse() {
@@ -580,6 +594,21 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     func rotateCamera(using pinchGesture: UIPinchGestureRecognizer) {
         
+    }
+    
+    // MARK: - Utilities
+    
+    private func daeToSCNNode(filepath: String) -> SCNNode {
+        let node = SCNNode()
+        let scene = SCNScene(named: filepath)
+        
+        let childNodes = scene?.rootNode.childNodes
+        
+        for childNode in childNodes ?? [] {
+            node.addChildNode(childNode as SCNNode)
+        }
+        
+        return node
     }
     
 }

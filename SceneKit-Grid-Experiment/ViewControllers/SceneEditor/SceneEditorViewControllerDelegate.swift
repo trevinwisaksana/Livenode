@@ -176,6 +176,10 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
                 scene.insertBox()
             case .pyramid:
                 scene.insertPyramid()
+            case .car:
+                scene.insertCar()
+            case .building:
+                scene.insertBuilding()
             }
         }
     }

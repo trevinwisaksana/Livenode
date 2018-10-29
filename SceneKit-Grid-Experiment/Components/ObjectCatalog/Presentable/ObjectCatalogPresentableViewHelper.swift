@@ -18,7 +18,7 @@ public struct ObjectCatalogModelFactory {
     public static func create() -> [ObjectCatalogModel] {
         var objectCatalogModels: [ObjectCatalogModel] = []
         
-        for objectModelIndex in 0...1 {
+        for objectModelIndex in 0...3 {
             guard let modelScene = SCNScene(named: filenames[objectModelIndex]) else {
                 fatalError("Cannot load model scene.")
             }
@@ -32,25 +32,31 @@ public struct ObjectCatalogModelFactory {
     }
     
     private static var filenames: [String] {
-        return [
-            NodeModel.box.filename,
-            NodeModel.pyramid.filename
-        ]
+        return [NodeModel.box.scnFilename,
+                NodeModel.pyramid.scnFilename,
+                NodeModel.car.daeFilename,
+                NodeModel.building.daeFilename]
     }
     
     private static var nodeModels: [NodeModel] {
-        return [
-            NodeModel.box,
-            NodeModel.pyramid
-        ]
+        return [NodeModel.box,
+                NodeModel.pyramid,
+                NodeModel.car,
+                NodeModel.building]
     }
 }
 
 public enum NodeModel: String {
     case box
     case pyramid
+    case building
+    case car
     
-    var filename: String {
-        return self.rawValue.capitalized + ".scn"
+    var scnFilename: String {
+        return rawValue.capitalized + ".scn"
+    }
+    
+    var daeFilename: String {
+        return rawValue.capitalized + ".dae"
     }
 }
