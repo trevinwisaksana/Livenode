@@ -34,8 +34,8 @@ public struct ObjectCatalogModelFactory {
     private static var filenames: [String] {
         return [NodeModel.box.scnFilename,
                 NodeModel.pyramid.scnFilename,
-                NodeModel.car.daeFilename,
-                NodeModel.building.daeFilename]
+                NodeModel.car.scnFilename,
+                NodeModel.building.scnFilename]
     }
     
     private static var nodeModels: [NodeModel] {

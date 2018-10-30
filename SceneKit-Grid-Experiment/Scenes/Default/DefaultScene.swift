@@ -266,9 +266,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func insertCar() {
+        // TODO: Fix issue where car isn't able to be rotated using SCNAction
         let carNode = daeToSCNNode(filepath: "Car.dae")
         
         carNode.position = SCNVector3(0, 0, 0)
+        carNode.scale = SCNVector3(0.5, 0.5, 0.5)
         carNode.name = "\(Int.random(in: 0...1000))"
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
