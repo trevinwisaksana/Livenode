@@ -35,21 +35,21 @@ public struct ObjectCatalogModelFactory {
         return [NodeModel.box.scnFilename,
                 NodeModel.pyramid.scnFilename,
                 NodeModel.car.scnFilename,
-                NodeModel.building.scnFilename]
+                NodeModel.house.scnFilename]
     }
     
     private static var nodeModels: [NodeModel] {
         return [NodeModel.box,
                 NodeModel.pyramid,
                 NodeModel.car,
-                NodeModel.building]
+                NodeModel.house]
     }
 }
 
 public enum NodeModel: String {
     case box
     case pyramid
-    case building
+    case house
     case car
     
     var scnFilename: String {

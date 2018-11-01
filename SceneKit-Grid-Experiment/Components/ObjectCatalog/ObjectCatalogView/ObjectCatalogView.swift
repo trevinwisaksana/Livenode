@@ -21,8 +21,11 @@ public class ObjectCatalogView: UIView  {
     
     // MARK: - Internal properties
     
-    private static let cellWidth: CGFloat = 140.0
+    private static let cellWidth: CGFloat = 130.0
     private static let segmentedIndexTopMargin: CGFloat = 10.0
+    
+    private static let collectionViewLeftMargin: CGFloat = 20.0
+    private static let collectionViewRightMargin: CGFloat = -20.0
     
     private lazy var collectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -80,8 +83,8 @@ public class ObjectCatalogView: UIView  {
             
             collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            collectionView.leftAnchor.constraint(equalTo: leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: rightAnchor),
+            collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: ObjectCatalogView.collectionViewLeftMargin),
+            collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: ObjectCatalogView.collectionViewRightMargin),
         ])
     }
     
@@ -114,6 +117,10 @@ extension ObjectCatalogView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension ObjectCatalogView: UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         didSelectItemAt(indexPath)
     }
