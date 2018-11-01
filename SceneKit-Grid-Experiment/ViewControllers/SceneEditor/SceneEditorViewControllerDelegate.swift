@@ -179,7 +179,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             case .car:
                 scene.insertCar()
             case .house:
-                scene.insertBuilding()
+                scene.insertHouse()
             }
         }
     }

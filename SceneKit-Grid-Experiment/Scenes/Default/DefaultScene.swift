@@ -267,24 +267,42 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     func insertCar() {
         // TODO: Fix issue where car isn't able to be rotated using SCNAction
-        let carNode = daeToSCNNode(filepath: "Car.dae")
+        let carNodeContainer = SCNNode()
+        let carNode = daeToSCNNode(filepath: "Car.scn")
         
         carNode.position = SCNVector3(0, 0, 0)
-        carNode.scale = SCNVector3(0.5, 0.5, 0.5)
         carNode.name = "\(Int.random(in: 0...1000))"
+        
+        let minimum = float3(carNode.boundingBox.min)
+        let maximum = float3(carNode.boundingBox.max)
+        
+        let translation = (maximum - minimum) * 0.5
+        
+        carNode.pivot = SCNMatrix4MakeTranslation(translation.x, 0, translation.z)
+        
+        carNodeContainer.addChildNode(carNode)
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
         }
         
-        presentationNodeContainer.addChildNode(carNode)
-    }
-    
-    func insertBuilding() {
-        
+        presentationNodeContainer.addChildNode(carNodeContainer)
     }
     
     func insertHouse() {
+        let houseNode = daeToSCNNode(filepath: "House.scn")
+        
+        houseNode.position = SCNVector3(0, 0, 0)
+        houseNode.name = "\(Int.random(in: 0...1000))"
+        
+        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+            return
+        }
+        
+        presentationNodeContainer.addChildNode(houseNode)
+    }
+    
+//    func insertHouse() {
 //        let vertices: [SCNVector3] = [SCNVector3(-0.25, 1, 0),
 //                                      SCNVector3(-0.5, 0, 0.5),
 //                                      SCNVector3(-0.5, 0, -0.5),
@@ -292,35 +310,35 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
 //                                      SCNVector3(0.5, 0, -0.5),
 //                                      SCNVector3(0.5, 0, -0.5),
 //                                      SCNVector3(0, -1, 0),]
-        
-        
-        let vertices: [SCNVector3] = [
-            SCNVector3(0, 1, 0),
-            SCNVector3(-0.5, 0, 0.5),
-            SCNVector3(0.5, 0, 0.5),
-            SCNVector3(0.5, 0, -0.5),
-            SCNVector3(-0.5, 0, -0.5),
-            SCNVector3(0, -1, 0)]
-        
-        let indices: [UInt16] = [0, 1, 2,
-                                 2, 3, 0,
-                                 3, 4, 0,
-                                 4, 1, 0,
-                                 1, 5, 2,
-                                 2, 5, 3,
-                                 3, 5, 4,
-                                 4, 5, 1]
-        
-        let source = SCNGeometrySource(vertices: vertices)
-        let elements = SCNGeometryElement(indices: indices, primitiveType: .triangles)
-        
-        let geometry = SCNGeometry(sources: [source], elements: [elements])
-        geometry.firstMaterial?.diffuse.contents = UIColor.blue
-        geometry.firstMaterial?.lightingModel = .constant
-        
-        let houseNode = SCNNode(geometry: geometry)
-        rootNode.addChildNode(houseNode)
-    }
+//
+//
+//        let vertices: [SCNVector3] = [
+//            SCNVector3(0, 1, 0),
+//            SCNVector3(-0.5, 0, 0.5),
+//            SCNVector3(0.5, 0, 0.5),
+//            SCNVector3(0.5, 0, -0.5),
+//            SCNVector3(-0.5, 0, -0.5),
+//            SCNVector3(0, -1, 0)]
+//
+//        let indices: [UInt16] = [0, 1, 2,
+//                                 2, 3, 0,
+//                                 3, 4, 0,
+//                                 4, 1, 0,
+//                                 1, 5, 2,
+//                                 2, 5, 3,
+//                                 3, 5, 4,
+//                                 4, 5, 1]
+//
+//        let source = SCNGeometrySource(vertices: vertices)
+//        let elements = SCNGeometryElement(indices: indices, primitiveType: .triangles)
+//
+//        let geometry = SCNGeometry(sources: [source], elements: [elements])
+//        geometry.firstMaterial?.diffuse.contents = UIColor.blue
+//        geometry.firstMaterial?.lightingModel = .constant
+//
+//        let houseNode = SCNNode(geometry: geometry)
+//        rootNode.addChildNode(houseNode)
+//    }
     
     // MARK: - Node Movement
     
@@ -601,13 +619,18 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Utilities
     
     private func daeToSCNNode(filepath: String) -> SCNNode {
+        // TODO: Move this to SCNNodeExtensions
         let node = SCNNode()
         let scene = SCNScene(named: filepath)
         
         let childNodes = scene?.rootNode.childNodes
         
         for childNode in childNodes ?? [] {
-            node.addChildNode(childNode as SCNNode)
+            // TODO: Create a list of names that the child node has to compare to
+            if childNode.name == "car" || childNode.name == "house" {
+                node.addChildNode(childNode as SCNNode)
+                break
+            }
         }
         
         return node
