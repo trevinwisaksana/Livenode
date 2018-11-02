@@ -52,6 +52,7 @@ extension SCNAction {
     
     func rotate(by angle: CGFloat, around position: SCNVector3, duration: TimeInterval) -> SCNAction {
         let radians = angle * (CGFloat.pi / 180)
+        
         let action = SCNAction.rotate(by: radians, around: position, duration: duration)
         action.rotationAngle = angle
         action.animationType = .rotate

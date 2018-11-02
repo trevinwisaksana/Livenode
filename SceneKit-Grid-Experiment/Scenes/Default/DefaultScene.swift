@@ -266,31 +266,25 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func insertCar() {
-        // TODO: Fix issue where car isn't able to be rotated using SCNAction
-        let carNodeContainer = SCNNode()
-        let carNode = daeToSCNNode(filepath: "Car.scn")
+        guard let carNode = daeToSCNNode(filepath: "Car.scn") else {
+            return
+        }
         
-        carNode.position = SCNVector3(0, 0, 0)
+        carNode.position = SCNVector3(0, 0.5, 0)
+        carNode.eulerAngles = SCNVector3(0, 0, 0)
         carNode.name = "\(Int.random(in: 0...1000))"
-        
-        let minimum = float3(carNode.boundingBox.min)
-        let maximum = float3(carNode.boundingBox.max)
-        
-        let translation = (maximum - minimum) * 0.5
-        
-        carNode.pivot = SCNMatrix4MakeTranslation(translation.x, 0, translation.z)
-        
-        carNodeContainer.addChildNode(carNode)
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
         }
         
-        presentationNodeContainer.addChildNode(carNodeContainer)
+        presentationNodeContainer.addChildNode(carNode)
     }
     
     func insertHouse() {
-        let houseNode = daeToSCNNode(filepath: "House.scn")
+        guard let houseNode = daeToSCNNode(filepath: "House.scn") else {
+            return
+        }
         
         houseNode.position = SCNVector3(0, 0, 0)
         houseNode.name = "\(Int.random(in: 0...1000))"
@@ -618,9 +612,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Utilities
     
-    private func daeToSCNNode(filepath: String) -> SCNNode {
+    private func daeToSCNNode(filepath: String) -> SCNNode? {
         // TODO: Move this to SCNNodeExtensions
-        let node = SCNNode()
         let scene = SCNScene(named: filepath)
         
         let childNodes = scene?.rootNode.childNodes
@@ -628,12 +621,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         for childNode in childNodes ?? [] {
             // TODO: Create a list of names that the child node has to compare to
             if childNode.name == "car" || childNode.name == "house" {
-                node.addChildNode(childNode as SCNNode)
-                break
+                return childNode
             }
         }
         
-        return node
+        return nil
     }
     
 }
