@@ -10,8 +10,10 @@ import SceneKit
 
 public protocol NodeInspectorViewModel {
     var color: UIColor { get }
+    var angle: SCNVector3 { get }
 }
 
 public struct NodeInspector: NodeInspectorViewModel {
     public var color: UIColor
+    public var angle: SCNVector3
 }

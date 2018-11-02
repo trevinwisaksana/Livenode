@@ -85,6 +85,12 @@ extension SCNNode: NodeInspectorViewModel {
         }
     }
     
+    public var angle: SCNVector3 {
+        get {
+            return self.eulerAngles
+        }
+    }
+    
     public func changeColor(to color: UIColor) {
         self.geometry?.firstMaterial?.diffuse.contents = color
     }

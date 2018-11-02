@@ -15,7 +15,6 @@ public class SceneEditorView: UIView {
     
     private var sceneView: SCNView = {
         let sceneView = SCNView()
-        sceneView.allowsCameraControl = true
         sceneView.showsStatistics = false
         sceneView.autoenablesDefaultLighting = true
         return sceneView

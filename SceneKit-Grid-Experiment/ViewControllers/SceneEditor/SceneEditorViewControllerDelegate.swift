@@ -149,10 +149,16 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             return
         }
         
-        if action == .animate {
+        switch action {
+        case .animate:
             controller.setupAnimationNavigationItems()
             scene.setNodeAnimationTarget()
-        } else {
+        case .move:
+            controller.panGesture.isEnabled = false
+            scene.didSelectScene(action: action)
+        case .pin:
+            controller.panGesture.isEnabled = true
+        default:
             scene.didSelectScene(action: action)
         }
         
@@ -267,7 +273,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
-        sceneView.allowsCameraControl = true
+        
     }
     
 }

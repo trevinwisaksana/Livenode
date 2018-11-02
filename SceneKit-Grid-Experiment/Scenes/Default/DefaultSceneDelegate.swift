@@ -6,10 +6,12 @@
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class DefaultSceneDelegate: NSObject {
+public protocol DefaultSceneDelegateProtocol: class {
     
-    
+}
+
+public class DefaultSceneDelegate: NSObject, DefaultSceneDelegateProtocol {
     
 }

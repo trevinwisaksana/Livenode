@@ -11,17 +11,24 @@ import SceneKit
 
 final class SceneEditorViewController: UIViewController {
     
+    // MARK: - Private Properties
+    
+    private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
+    
     // MARK: - Internal Properties
     
-    private var sceneView: SCNView = {
-        let sceneView = SCNView()
-        sceneView.backgroundColor = .white
-        return sceneView
-    }()
-    
-    private lazy var viewControllerDelegate: SceneEditorViewControllerDelegateProtocol = SceneEditorViewControllerDelegate()
+    var longPressGesture: UILongPressGestureRecognizer!
+    var panGesture: UIPanGestureRecognizer!
+    var pinchGesture: UIPinchGestureRecognizer!
     
     // MARK: - Public Properties
+    
+    public var sceneView: SCNView = {
+        let sceneView = SCNView()
+        sceneView.backgroundColor = .white
+        sceneView.isJitteringEnabled = false
+        return sceneView
+    }()
     
     public var currentScene: DefaultScene {
         didSet {
@@ -153,15 +160,15 @@ final class SceneEditorViewController: UIViewController {
     }
     
     private func setupLongPressGestureRecognizer() {
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressSceneEditorView(_:)))
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressSceneEditorView(_:)))
         view.addGestureRecognizer(longPressGesture)
     }
     
     private func setupSceneViewGestures() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
         sceneView.addGestureRecognizer(panGesture)
         
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didBeginPinching(_:)))
+        pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didBeginPinching(_:)))
         sceneView.addGestureRecognizer(pinchGesture)
     }
     
@@ -191,6 +198,7 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didBeginPanning(_ gesture: UIPanGestureRecognizer) {
+        // TODO: Create a way to disable the pan gesture
         currentScene.limitCameraRotation(using: gesture)
     }
     

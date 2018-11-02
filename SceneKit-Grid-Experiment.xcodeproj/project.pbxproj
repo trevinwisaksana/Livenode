@@ -13,6 +13,9 @@
 		DD0BFFC5217C761000429F52 /* DelayAnimationAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFC4217C761000429F52 /* DelayAnimationAttributesViewModel.swift */; };
 		DD1058BE218AECAA00FF7301 /* Car.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD1058BD218AECAA00FF7301 /* Car.scn */; };
 		DD1058C0218AECB000FF7301 /* House.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD1058BF218AECB000FF7301 /* House.scn */; };
+		DD1058C2218C0CE100FF7301 /* NodePositionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1058C1218C0CE100FF7301 /* NodePositionCell.swift */; };
+		DD1058C4218C0CE900FF7301 /* NodeAngleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1058C3218C0CE900FF7301 /* NodeAngleCell.swift */; };
+		DD1058CC218C39E600FF7301 /* Building.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD1058CB218C39E600FF7301 /* Building.scn */; };
 		DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F66720672FBD005E838C /* AppDelegate.swift */; };
 		DD20F67120672FBD005E838C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67020672FBD005E838C /* Assets.xcassets */; };
 		DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */; };
@@ -111,6 +114,9 @@
 		DD1058BA218AEA1F00FF7301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD1058BD218AECAA00FF7301 /* Car.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Car.scn; sourceTree = "<group>"; };
 		DD1058BF218AECB000FF7301 /* House.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = House.scn; sourceTree = "<group>"; };
+		DD1058C1218C0CE100FF7301 /* NodePositionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePositionCell.swift; sourceTree = "<group>"; };
+		DD1058C3218C0CE900FF7301 /* NodeAngleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAngleCell.swift; sourceTree = "<group>"; };
+		DD1058CB218C39E600FF7301 /* Building.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Building.scn; sourceTree = "<group>"; };
 		DD20F66420672FBD005E838C /* SceneKit-Grid-Experiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SceneKit-Grid-Experiment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD20F66720672FBD005E838C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -533,6 +539,8 @@
 			isa = PBXGroup;
 			children = (
 				DD6C16F4210B2423002CB031 /* NodeColorCell.swift */,
+				DD1058C1218C0CE100FF7301 /* NodePositionCell.swift */,
+				DD1058C3218C0CE900FF7301 /* NodeAngleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -753,6 +761,7 @@
 				DDEF326020DF797F00FEE793 /* Pyramid.scn */,
 				DD1058BD218AECAA00FF7301 /* Car.scn */,
 				DD1058BF218AECB000FF7301 /* House.scn */,
+				DD1058CB218C39E600FF7301 /* Building.scn */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1001,6 +1010,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1058CC218C39E600FF7301 /* Building.scn in Resources */,
 				DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */,
 				DDEF325E20DF776100FEE793 /* Box.scn in Resources */,
 				DD20F67120672FBD005E838C /* Assets.xcassets in Resources */,
@@ -1016,6 +1026,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1058C2218C0CE100FF7301 /* NodePositionCell.swift in Sources */,
 				DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */,
 				DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */,
 				DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */,
@@ -1045,6 +1056,7 @@
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
 				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
 				DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */,
+				DD1058C4218C0CE900FF7301 /* NodeAngleCell.swift in Sources */,
 				DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */,
 				DDE60E5021738DBA0052E506 /* NodeAnimationListViewController.swift in Sources */,
 				DD5456C2217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift in Sources */,

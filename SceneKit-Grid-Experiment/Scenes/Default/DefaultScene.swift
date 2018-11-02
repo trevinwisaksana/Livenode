@@ -16,7 +16,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     private static let gridWidth: Int = 20
     private static let gridTileWidth: CGFloat = 1
-    private static let nodeBottomMargin: Float = 0.5
+    private static let nodeBottomMargin: Float = 0
     
     private var lastWidthRatio: Float = 0
     private var lastHeightRatio: Float = 0
@@ -74,6 +74,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var nodeSelected: SCNNode?
     public var lastNodeSelected: SCNNode?
     public var currentNodeHighlighted: SCNNode?
+    
+    public weak var delegate: DefaultSceneDelegateProtocol?
     
     public var nodeAnimationTarget: SCNNode? {
         didSet {
@@ -219,7 +221,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         nodeSelected = node
         State.nodeSelected = nodeSelected
-        highlight(nodeSelected)
+//        highlight(nodeSelected)
         
         didSelectANode = true
     }
@@ -271,7 +273,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         carNode.position = SCNVector3(0, 0, 0)
-        carNode.eulerAngles = SCNVector3(0, 0, 0)
         carNode.name = "\(Int.random(in: 0...1000))"
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
@@ -287,6 +288,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         houseNode.position = SCNVector3(0, 0, 0)
+        houseNode.scale = SCNVector3(0.2, 0.2, 0.2)
         houseNode.name = "\(Int.random(in: 0...1000))"
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
@@ -344,7 +346,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             
             if nodeSelected?.isMovable ?? false {
                 nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
-                // TODO: Prevent camera control
             }
         }
     }
@@ -435,7 +436,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-        let rotateAction = SCNAction().rotate(by: angle, around: currentLocation, duration: duration)
+        let rotateAction = SCNAction().rotate(by: angle, aroundAxis: currentLocation, duration: duration)
         nodeAnimationTarget?.addAction(rotateAction, forKey: .rotate)
     }
     
@@ -447,7 +448,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-        let updatedAnimation = SCNAction().rotate(by: angle, around: currentLocation, duration: duration)
+        let updatedAnimation = SCNAction().rotate(by: angle, aroundAxis: currentLocation, duration: duration)
         nodeAnimationTarget?.actions[index] = updatedAnimation
     }
     
@@ -561,7 +562,15 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
 
     // MARK: - Camera Movement
-    // TODO: Add pinch to zoom and two-finger rotate
+    // TODO: Add two-finger rotate
+    
+    func disableCameraControl(using panGesture: UIPanGestureRecognizer) {
+        panGesture.isEnabled = false
+    }
+    
+    func enableCameraControl(using panGesture: UIPanGestureRecognizer) {
+        panGesture.isEnabled = true
+    }
     
     func limitCameraRotation(using panGesture: UIPanGestureRecognizer) {
         guard let cameraOrbit = rootNode.childNode(withName: "CameraOrbit", recursively: true) else {
