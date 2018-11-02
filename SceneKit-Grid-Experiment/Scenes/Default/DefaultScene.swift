@@ -270,7 +270,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-        carNode.position = SCNVector3(0, 0.5, 0)
+        carNode.position = SCNVector3(0, 0, 0)
         carNode.eulerAngles = SCNVector3(0, 0, 0)
         carNode.name = "\(Int.random(in: 0...1000))"
         
