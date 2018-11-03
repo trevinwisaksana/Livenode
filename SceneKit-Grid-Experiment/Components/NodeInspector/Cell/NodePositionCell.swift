@@ -6,4 +6,10 @@
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+public class NodePositonCell: UITableViewCell {
+    
+    
+    
+}

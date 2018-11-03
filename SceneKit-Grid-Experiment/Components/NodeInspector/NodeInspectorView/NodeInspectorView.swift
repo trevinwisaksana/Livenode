@@ -22,6 +22,7 @@ public class NodeInspectorView: UIView {
     // MARK: - Internal properties
     
     private static let cellHeight: CGFloat = 60.0
+    private static let numberOfRowsInSection: Int = 2
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -58,6 +59,7 @@ public class NodeInspectorView: UIView {
     
     private func setup() {
         tableView.register(cell: NodeColorCell.self)
+        tableView.register(cell: NodeAngleCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -87,15 +89,15 @@ extension NodeInspectorView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return NodeInspectorView.numberOfRowsInSection
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return setupCell(atSection: indexPath.section)
+        return setupCell(forRowAtIndex: indexPath.row)
     }
     
-    private func setupCell(atSection section: Int) -> UITableViewCell {
-        switch section {
+    private func setupCell(forRowAtIndex index: Int) -> UITableViewCell {
+        switch index {
         case 0:
             let cell: NodeColorCell = tableView.dequeueReusableCell()
             
@@ -104,6 +106,16 @@ extension NodeInspectorView: UITableViewDataSource {
             }
             
             return cell
+            
+        case 1:
+            let cell: NodeAngleCell = tableView.dequeueReusableCell()
+            
+            if let model = dataSource?.viewModel(inNodeInspectorView: self) {
+                cell.model = model
+            }
+            
+            return cell
+            
         default:
             fatalError("Index out of range.")
         }
