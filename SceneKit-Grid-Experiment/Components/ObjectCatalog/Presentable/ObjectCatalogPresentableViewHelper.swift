@@ -18,6 +18,7 @@ public struct ObjectCatalogModelFactory {
     public static func create() -> [ObjectCatalogModel] {
         var objectCatalogModels: [ObjectCatalogModel] = []
         
+        // TODO: Cache these models
         for objectModelIndex in 0...3 {
             guard let modelScene = SCNScene(named: filenames[objectModelIndex]) else {
                 fatalError("Cannot load model scene.")
