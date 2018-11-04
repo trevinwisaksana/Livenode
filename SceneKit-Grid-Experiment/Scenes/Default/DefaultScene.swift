@@ -16,7 +16,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     private static let gridWidth: Int = 20
     private static let gridTileWidth: CGFloat = 1
-    private static let nodeBottomMargin: Float = 0
+    private static let nodeBottomMargin: Float = 0.5
     
     private var lastWidthRatio: Float = 0
     private var lastHeightRatio: Float = 0
