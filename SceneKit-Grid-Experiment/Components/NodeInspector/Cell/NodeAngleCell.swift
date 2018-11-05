@@ -25,7 +25,7 @@ public class NodeAngleCell: UITableViewCell {
     private static let angleTextFieldlRightMargin: CGFloat = -15.0
     private static let angleTextFieldlWidth: CGFloat = 70.0
     
-    private static let plusMinusSegmentedControlWidth: CGFloat = 100.0
+    private static let plusMinusSegmentedControlWidth: CGFloat = 80.0
     private static let plusMinusSegmentedControlRightMargin: CGFloat = -15.0
     
     private var currentAngleValue: Int = 0
