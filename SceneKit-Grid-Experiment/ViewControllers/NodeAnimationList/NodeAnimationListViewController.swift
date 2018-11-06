@@ -47,6 +47,12 @@ final class NodeAnimationListViewController: UIViewController {
         
         let editAnimationListButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(didTapEditAnimationListButton(_:)))
         
+        if mainView.tableViewIsEmpty() {
+            editAnimationListButton.isEnabled = false
+        }
+        
+        editAnimationListButton.isEnabled = true
+        
         navigationController?.navigationBar.tintColor = .lavender
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()

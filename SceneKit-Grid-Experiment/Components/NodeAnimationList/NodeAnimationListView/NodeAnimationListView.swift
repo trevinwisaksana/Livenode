@@ -92,7 +92,6 @@ extension NodeAnimationListView: UITableViewDataSource {
     }
 }
 
-
 // MARK: - UITableViewDelegate
 
 extension NodeAnimationListView: UITableViewDelegate {
@@ -163,6 +162,14 @@ extension NodeAnimationListView: UITableViewDelegate {
         }
         
         return tableView.isEditing
+    }
+    
+    public func tableViewIsEmpty() -> Bool {
+        if tableView.numberOfRows(inSection: 0) == 0 {
+            return true
+        }
+        
+        return false
     }
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
