@@ -49,9 +49,9 @@ final class NodeAnimationListViewController: UIViewController {
         
         if mainView.tableViewIsEmpty() {
             editAnimationListButton.isEnabled = false
+        } else {
+            editAnimationListButton.isEnabled = true
         }
-        
-        editAnimationListButton.isEnabled = true
         
         navigationController?.navigationBar.tintColor = .lavender
         navigationController?.navigationBar.barTintColor = .white
