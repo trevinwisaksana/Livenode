@@ -251,6 +251,22 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(boxNode)
     }
     
+    func insertSphere() {
+        // TODO: Set function to private
+        let sphere = SCNSphere(radius: 1)
+        let sphereNode = SCNNode(geometry: sphere)
+        
+        sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+        sphereNode.position = SCNVector3(0, 0, 0)
+        sphereNode.name = "\(Int.random(in: 0...1000))"
+        
+        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+            return
+        }
+        
+        presentationNodeContainer.addChildNode(sphereNode)
+    }
+    
     func insertPyramid() {
         // TODO: Set function to private
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)

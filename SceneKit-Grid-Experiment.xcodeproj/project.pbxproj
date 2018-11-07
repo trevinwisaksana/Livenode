@@ -63,6 +63,7 @@
 		DD734416217CA99700E4EE91 /* AlertAnimationAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734415217CA99700E4EE91 /* AlertAnimationAttributesViewModel.swift */; };
 		DD73441A217D5E1C00E4EE91 /* AlertIconMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */; };
 		DD73441E217D71B600E4EE91 /* AlertAnimationPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73441D217D71B600E4EE91 /* AlertAnimationPopoverViewController.swift */; };
+		DD80A77B219334FC00441CC1 /* Sphere.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD80A77A219334FC00441CC1 /* Sphere.scn */; };
 		DD8E125F21381BA700D4F4DE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E125E21381BA700D4F4DE /* Style.swift */; };
 		DD8E1261213BE88500D4F4DE /* UtilitiesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */; };
 		DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */; };
@@ -166,6 +167,7 @@
 		DD734415217CA99700E4EE91 /* AlertAnimationAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAnimationAttributesViewModel.swift; sourceTree = "<group>"; };
 		DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIconMenuCell.swift; sourceTree = "<group>"; };
 		DD73441D217D71B600E4EE91 /* AlertAnimationPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAnimationPopoverViewController.swift; sourceTree = "<group>"; };
+		DD80A77A219334FC00441CC1 /* Sphere.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Sphere.scn; sourceTree = "<group>"; };
 		DD8E125E21381BA700D4F4DE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorView.swift; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 			isa = PBXGroup;
 			children = (
 				DDEF325D20DF776100FEE793 /* Box.scn */,
+				DD80A77A219334FC00441CC1 /* Sphere.scn */,
 				DDEF326020DF797F00FEE793 /* Pyramid.scn */,
 				DD1058BD218AECAA00FF7301 /* Car.scn */,
 				DD1058BF218AECB000FF7301 /* House.scn */,
@@ -1012,6 +1015,7 @@
 			files = (
 				DD1058CC218C39E600FF7301 /* Building.scn in Resources */,
 				DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */,
+				DD80A77B219334FC00441CC1 /* Sphere.scn in Resources */,
 				DDEF325E20DF776100FEE793 /* Box.scn in Resources */,
 				DD20F67120672FBD005E838C /* Assets.xcassets in Resources */,
 				DD1058BE218AECAA00FF7301 /* Car.scn in Resources */,
