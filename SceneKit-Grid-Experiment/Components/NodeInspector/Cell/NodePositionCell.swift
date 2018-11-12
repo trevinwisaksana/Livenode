@@ -143,14 +143,14 @@ public class NodePositionCell: UITableViewCell {
     // MARK: - Dependency injection
     
     /// The model contains data used to populate the view.
-//    public var model: MoveAnimationAttributesViewModel? {
-//        didSet {
-//            if let model = model {
-//                targetXCoordinateTextField.text = "\(model.targetLocation.x)"
-//                targetYCoordinateTextField.text = "\(model.targetLocation.y)"
-//                targetZCoordinateTextField.text = "\(model.targetLocation.z)"
-//            }
-//        }
-//    }
+    public var model: NodeInspectorViewModel? {
+        didSet {
+            if let position = model?.position {
+                targetXCoordinateTextField.text = "\(position.x)"
+                targetYCoordinateTextField.text = "\(position.y)"
+                targetZCoordinateTextField.text = "\(position.z)"
+            }
+        }
+    }
     
 }

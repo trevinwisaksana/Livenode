@@ -111,9 +111,9 @@ extension NodeInspectorView: UITableViewDataSource {
         case 1:
             let cell: NodePositionCell = tableView.dequeueReusableCell()
             
-//            if let model = dataSource?.viewModel(inNodeInspectorView: self) {
-//                cell.model = model
-//            }
+            if let model = dataSource?.viewModel(inNodeInspectorView: self) {
+                cell.model = model
+            }
             
             return cell
             

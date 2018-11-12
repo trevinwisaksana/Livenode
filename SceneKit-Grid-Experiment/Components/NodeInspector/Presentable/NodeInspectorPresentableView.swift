@@ -59,6 +59,6 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
 
 extension NodeInspectorPresentableView: NodeInspectorViewDataSource {
     public func viewModel(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> NodeInspectorViewModel {
-        return NodeInspector(color: dataSource.node?.color ?? .clear, angle: dataSource.node?.angle ?? SCNVector3Zero)
+        return NodeInspector(color: dataSource.node?.color ?? .clear, angle: dataSource.node?.angle ?? SCNVector3Zero, position: dataSource.node?.position ?? SCNVector3Zero)
     }
 }
