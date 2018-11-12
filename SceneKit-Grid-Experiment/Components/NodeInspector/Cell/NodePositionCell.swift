@@ -14,7 +14,7 @@ public class NodePositionCell: UITableViewCell {
     // MARK: - Internal properties
     
     private static let titleHeight: CGFloat = 20.0
-    private static let titleTopMargin: CGFloat = 15.0
+    private static let titleTopMargin: CGFloat = 5.0
     private static let titleLeftMargin: CGFloat = 15.0
     
     private static let currentLocationTitleTopMargin: CGFloat = 15.0

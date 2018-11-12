@@ -22,7 +22,7 @@ public class NodeInspectorView: UIView {
     // MARK: - Internal properties
     
     private static let cellHeight: CGFloat = 60.0
-    private static let numberOfRowsInSection: Int = 2
+    private static let numberOfRowsInSection: Int = 3
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -59,6 +59,7 @@ public class NodeInspectorView: UIView {
     
     private func setup() {
         tableView.register(cell: NodeColorCell.self)
+        tableView.register(cell: NodePositionCell.self)
         tableView.register(cell: NodeAngleCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
@@ -108,6 +109,15 @@ extension NodeInspectorView: UITableViewDataSource {
             return cell
             
         case 1:
+            let cell: NodePositionCell = tableView.dequeueReusableCell()
+            
+//            if let model = dataSource?.viewModel(inNodeInspectorView: self) {
+//                cell.model = model
+//            }
+            
+            return cell
+            
+        case 2:
             let cell: NodeAngleCell = tableView.dequeueReusableCell()
             
             if let model = dataSource?.viewModel(inNodeInspectorView: self) {
