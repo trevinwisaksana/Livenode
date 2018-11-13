@@ -11,7 +11,6 @@ import SceneKit
 
 public protocol NodeInspectorViewDelegate: NSObjectProtocol {
     func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didSelectItemAtIndexPath indexPath: IndexPath)
-    func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didUpdateNodePosition position: SCNVector3)
 }
 
 public protocol NodeInspectorViewDataSource: NSObjectProtocol {
@@ -114,7 +113,6 @@ extension NodeInspectorView: UITableViewDataSource {
             
             if let model = dataSource?.viewModel(inNodeInspectorView: self) {
                 cell.model = model
-                cell.delegate = self
             }
             
             return cell
@@ -135,13 +133,5 @@ extension NodeInspectorView: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return NodeInspectorView.cellHeight
-    }
-}
-
-// MARK: - NodePositionCellDelegate
-
-extension NodeInspectorView: NodePositionCellDelegate {
-    public func nodePositionCell(_ nodePositionCell: NodePositionCell, didUpdateNodePosition position: SCNVector3) {
-        
     }
 }

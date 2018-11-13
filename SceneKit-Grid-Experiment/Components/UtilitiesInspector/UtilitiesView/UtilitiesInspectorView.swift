@@ -16,7 +16,7 @@ public class UtilitiesInspectorView: UIView {
     
     // MARK: - Internal properties
     
-    private static let numberOfItemsInSection: Int = 2
+    private static let numberOfItemsInSection: Int = 3
     private static let cellHeight: CGFloat = 60.0
     
     private lazy var tableView: UITableView = {
@@ -53,6 +53,8 @@ public class UtilitiesInspectorView: UIView {
     private func setup() {
         tableView.register(cell: UtilitiesInspectorShareCell.self)
         tableView.register(cell: UtilitiesInspectorExportCell.self)
+        tableView.register(cell: UtilitiesInspectorSceneSettingsCell.self)
+        
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -92,6 +94,9 @@ extension UtilitiesInspectorView: UITableViewDataSource {
             return cell
         case 1:
             let cell: UtilitiesInspectorExportCell = tableView.dequeueReusableCell()
+            return cell
+        case 2:
+            let cell: UtilitiesInspectorSceneSettingsCell = tableView.dequeueReusableCell()
             return cell
         default:
             fatalError("Index out of range.")

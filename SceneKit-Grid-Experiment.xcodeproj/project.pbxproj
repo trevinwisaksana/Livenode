@@ -17,6 +17,7 @@
 		DD1058C4218C0CE900FF7301 /* NodeAngleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1058C3218C0CE900FF7301 /* NodeAngleCell.swift */; };
 		DD1058CC218C39E600FF7301 /* Building.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD1058CB218C39E600FF7301 /* Building.scn */; };
 		DD14E159219A6235006ECF67 /* NodeInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */; };
+		DD14E15B219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */; };
 		DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F66720672FBD005E838C /* AppDelegate.swift */; };
 		DD20F67120672FBD005E838C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67020672FBD005E838C /* Assets.xcassets */; };
 		DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */; };
@@ -120,6 +121,7 @@
 		DD1058C3218C0CE900FF7301 /* NodeAngleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAngleCell.swift; sourceTree = "<group>"; };
 		DD1058CB218C39E600FF7301 /* Building.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Building.scn; sourceTree = "<group>"; };
 		DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorViewController.swift; sourceTree = "<group>"; };
+		DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorSceneSettingsCell.swift; sourceTree = "<group>"; };
 		DD20F66420672FBD005E838C /* SceneKit-Grid-Experiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SceneKit-Grid-Experiment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD20F66720672FBD005E838C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 			children = (
 				DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */,
 				DDF38F61216C97A80000069E /* UtilitiesInspectorExportCell.swift */,
+				DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1075,6 +1078,7 @@
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
 				DD9D81292171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift in Sources */,
 				DD68C21F2110735C0061100F /* Node.swift in Sources */,
+				DD14E15B219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift in Sources */,
 				DD4342A2215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift in Sources */,
 				DD6C16F0210B217A002CB031 /* ViewComponent.swift in Sources */,
 				DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */,

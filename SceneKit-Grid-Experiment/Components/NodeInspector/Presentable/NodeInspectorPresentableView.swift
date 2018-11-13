@@ -26,9 +26,16 @@ public class NodeInspectorPresentableView: UIView {
         return NodeDataSource()
     }()
     
+    lazy var inspectorView: NodeInspectorView = {
+        let view = NodeInspectorView(delegate: self, dataSource: self)
+        return view
+    }()
+    
     // MARK: - Public properties
     
     weak var delegate: NodeInspectorPresentableViewDelegate?
+    
+    // MARK: - Setup
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,9 +46,8 @@ public class NodeInspectorPresentableView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
     
     private func setup() {
-        let view = NodeInspectorView(delegate: self, dataSource: self)
-        addSubview(view)
-        view.fillInSuperview()
+        addSubview(inspectorView)
+        inspectorView.fillInSuperview()
     }
 }
 

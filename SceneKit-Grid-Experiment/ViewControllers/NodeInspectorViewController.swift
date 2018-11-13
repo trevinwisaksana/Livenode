@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SceneKit
 
 final class NodeInspectorViewController: UIViewController {
     
@@ -17,6 +18,7 @@ final class NodeInspectorViewController: UIViewController {
     
     lazy var mainView: NodeInspectorPresentableView = {
         let mainView = NodeInspectorPresentableView(frame: .zero)
+        mainView.delegate = self
         return mainView
     }()
     
@@ -31,6 +33,8 @@ final class NodeInspectorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        mainView.inspectorView.reloadData()
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
@@ -44,4 +48,16 @@ final class NodeInspectorViewController: UIViewController {
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     
+}
+
+// MARK: - NodeInspectorPresentableViewDelegate
+
+extension NodeInspectorViewController: NodeInspectorPresentableViewDelegate {
+    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didSelectItemAtIndexPath indexPath: IndexPath) {
+        
+    }
+    
+    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdateNodePosition position: SCNVector3) {
+        
+    }
 }
