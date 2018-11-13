@@ -17,6 +17,7 @@ enum Presenter {
             controller = ColorPickerViewController<ColorPickerPresentableView>()
             return controller
         case .sceneInspectorView:
+            // MARK: - Separate this to a different view controller
             controller = AttributesInspectorViewController<SceneInspectorPresentableView>()
             return controller
         case .nodeInspectorView:

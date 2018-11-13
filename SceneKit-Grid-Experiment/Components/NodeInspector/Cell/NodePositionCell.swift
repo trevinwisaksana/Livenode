@@ -9,6 +9,10 @@
 import UIKit
 import SceneKit
 
+public protocol NodePositionCellDelegate: class {
+    func nodePositionCell(_ nodePositionCell: NodePositionCell, didUpdateNodePosition position: SCNVector3)
+}
+
 public class NodePositionCell: UITableViewCell {
     
     // MARK: - Internal properties
@@ -95,7 +99,7 @@ public class NodePositionCell: UITableViewCell {
     
     // MARK: - External Properties
     
-    weak var delegate: MoveAnimationLocationCellDelegate?
+    weak var delegate: NodePositionCellDelegate?
     
     // MARK: - Setup
     
@@ -130,14 +134,14 @@ public class NodePositionCell: UITableViewCell {
     @objc
     private func didFinishEditingCoordinateTextField(_ sender: UITextField) {
         guard let xCoordinate = Double(targetXCoordinateTextField.text ?? "0.0"),
-            let yCoordinate = Double(targetYCoordinateTextField.text ?? "0.0"),
-            let zCoordinate = Double(targetZCoordinateTextField.text ?? "0.0")
-            else {
-                return
+              let yCoordinate = Double(targetYCoordinateTextField.text ?? "0.0"),
+              let zCoordinate = Double(targetZCoordinateTextField.text ?? "0.0")
+        else {
+            return
         }
         
         let updatedLocation = SCNVector3(xCoordinate, yCoordinate, zCoordinate)
-//        delegate?.moveAnimationLocationCell(self, didUpdateAnimationLocation: updatedLocation)
+        delegate?.nodePositionCell(self, didUpdateNodePosition: updatedLocation)
     }
     
     // MARK: - Dependency injection

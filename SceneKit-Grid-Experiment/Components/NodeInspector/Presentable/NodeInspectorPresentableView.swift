@@ -9,14 +9,26 @@
 import UIKit
 import SceneKit
 
+public protocol NodeInspectorPresentableViewDelegate: class {
+    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didSelectItemAtIndexPath indexPath: IndexPath)
+    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdateNodePosition position: SCNVector3)
+}
+
 public class NodeDataSource: NSObject {
     let node: NodeInspectorViewModel? = State.nodeSelected
 }
 
 public class NodeInspectorPresentableView: UIView {
+    
+    // MARK: - Internal Properties
+    
     lazy var dataSource: NodeDataSource = {
         return NodeDataSource()
     }()
+    
+    // MARK: - Public properties
+    
+    weak var delegate: NodeInspectorPresentableViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,6 +64,10 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
         default:
             break
         }
+    }
+    
+    public func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didUpdateNodePosition position: SCNVector3) {
+        delegate?.nodeInspectorPresentableView(self, didUpdateNodePosition: position)
     }
 }
 
