@@ -47,7 +47,6 @@ final class NodeInspectorViewController: UIViewController {
         title = ""
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
-    
 }
 
 // MARK: - NodeInspectorPresentableViewDelegate
@@ -58,6 +57,12 @@ extension NodeInspectorViewController: NodeInspectorPresentableViewDelegate {
     }
     
     func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdateNodePosition position: SCNVector3) {
-        
+        sceneEditorViewController().currentScene.changeNodePosition(to: position)
+    }
+    
+    private func sceneEditorViewController() -> SceneEditorViewController {
+        let rootNavigationController = presentingViewController as! RootNavigationController
+        let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
+        return sceneEditorViewController
     }
 }

@@ -366,6 +366,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
     }
     
+    public func changeNodePosition(to position: SCNVector3) {
+        nodeSelected?.position = SCNVector3(x: position.x, y: position.y, z: position.z)
+    }
+    
     // MARK: - Node Color
     
     public func modifyNodeColor(to color: UIColor) {

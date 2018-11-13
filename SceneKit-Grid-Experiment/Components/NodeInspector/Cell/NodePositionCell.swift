@@ -117,6 +117,10 @@ public class NodePositionCell: UITableViewCell {
         addSubview(locationTitleLabel)
         addSubview(targetCoordinateTextFieldContainer)
         
+        targetXCoordinateTextField.delegate = self
+        targetYCoordinateTextField.delegate = self
+        targetZCoordinateTextField.delegate = self
+        
         NSLayoutConstraint.activate([
             locationTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: NodePositionCell.titleLeftMargin),
             locationTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: NodePositionCell.titleTopMargin),
@@ -157,4 +161,13 @@ public class NodePositionCell: UITableViewCell {
         }
     }
     
+}
+
+// MARK: - UITextFieldDelegate
+
+extension NodePositionCell: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
 }
