@@ -119,8 +119,8 @@ public class NodeAngleCell: UITableViewCell {
     public var model: NodeInspectorViewModel? {
         didSet {
             if let model = model {
-                angleTextField.text = "\(Int(model.angle.z))˚"
-                currentAngleValue = Int(model.angle.z)
+                angleTextField.text = "\(Int(model.angle.y))˚"
+                currentAngleValue = Int(model.angle.y)
             }
         }
     }

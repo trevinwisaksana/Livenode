@@ -371,7 +371,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     public func changeNodeRotation(toAngle angle: Float) {
-        nodeSelected?.eulerAngles.z = angle
+        nodeSelected?.eulerAngles.y = angle
     }
     
     // MARK: - Node Color
