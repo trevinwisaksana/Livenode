@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol NodeAngleCellDelegate: class {
-    func nodeAngleCell(_ nodeAngleCell: NodeAngleCell, didUpdateRotationAngle angle: CGFloat)
+    func nodeAngleCell(_ nodeAngleCell: NodeAngleCell, didUpdateRotationAngle angle: Float)
 }
 
 public class NodeAngleCell: UITableViewCell {
@@ -110,7 +110,7 @@ public class NodeAngleCell: UITableViewCell {
         }
         
         angleTextField.text = "\(currentAngleValue)˚"
-        delegate?.nodeAngleCell(self, didUpdateRotationAngle: CGFloat(currentAngleValue))
+        delegate?.nodeAngleCell(self, didUpdateRotationAngle: Float(currentAngleValue))
     }
     
     // MARK: - Dependency injection
@@ -119,8 +119,8 @@ public class NodeAngleCell: UITableViewCell {
     public var model: NodeInspectorViewModel? {
         didSet {
             if let model = model {
-                angleTextField.text = "\(Int(model.angle.z ?? 0.0))˚"
-                currentAngleValue = Int(model.angle.z ?? 0.0)
+                angleTextField.text = "\(Int(model.angle.z))˚"
+                currentAngleValue = Int(model.angle.z)
             }
         }
     }

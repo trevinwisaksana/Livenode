@@ -12,7 +12,6 @@ import SceneKit
 public protocol NodeInspectorViewDelegate: NSObjectProtocol {
     func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didSelectItemAtIndexPath indexPath: IndexPath)
     func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didUpdateNodePosition position: SCNVector3)
-    func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didAngleNodePosition angle: Float)
 }
 
 public protocol NodeInspectorViewDataSource: NSObjectProtocol {
@@ -151,7 +150,7 @@ extension NodeInspectorView: NodePositionCellDelegate {
 // MARK: - NodeAngleCellDelegate
 
 extension NodeInspectorView: NodeAngleCellDelegate {
-    public func nodeAngleCell(_ nodeAngleCell: NodeAngleCell, didUpdateRotationAngle angle: Float) {
-        delegate?.nodeInspectorView(self, didAngleNodePosition: angle)
+    public func nodeAngleCell(_ nodeAngleCell: NodeAngleCell, didUpdateRotationAngle angle: CGFloat) {
+        delegate?.nodeInspectorView(self, didUpdateNodePosition: angle)
     }
 }

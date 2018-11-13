@@ -370,6 +370,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         nodeSelected?.position = SCNVector3(x: position.x, y: position.y, z: position.z)
     }
     
+    public func changeNodeRotation(toAngle angle: Float) {
+        nodeSelected?.eulerAngles.z = angle
+    }
+    
     // MARK: - Node Color
     
     public func modifyNodeColor(to color: UIColor) {

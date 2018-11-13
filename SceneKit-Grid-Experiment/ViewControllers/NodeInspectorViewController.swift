@@ -60,6 +60,10 @@ extension NodeInspectorViewController: NodeInspectorPresentableViewDelegate {
         sceneEditorViewController().currentScene.changeNodePosition(to: position)
     }
     
+    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didAngleNodePosition angle: Float) {
+        sceneEditorViewController().currentScene.changeNodeRotation(toAngle: angle)
+    }
+    
     private func sceneEditorViewController() -> SceneEditorViewController {
         let rootNavigationController = presentingViewController as! RootNavigationController
         let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
