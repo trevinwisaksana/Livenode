@@ -76,6 +76,7 @@
 		DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D811E21716AB0006638F8 /* NodeAnimationListView.swift */; };
 		DD9D81252171A3C0006638F8 /* NodeAnimationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */; };
 		DD9D81292171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */; };
+		DDAFED5B219BBE6A00D7CC7D /* Seaplane.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDAFED5A219BBE6A00D7CC7D /* Seaplane.scn */; };
 		DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */; };
 		DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24B82153CADA003C9CAF /* SceneDocument.swift */; };
 		DDBA24BD2153CC8C003C9CAF /* DocumentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */; };
@@ -182,6 +183,7 @@
 		DD9D811E21716AB0006638F8 /* NodeAnimationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListView.swift; sourceTree = "<group>"; };
 		DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListCell.swift; sourceTree = "<group>"; };
 		DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListViewControllerDelegate.swift; sourceTree = "<group>"; };
+		DDAFED5A219BBE6A00D7CC7D /* Seaplane.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Seaplane.scn; sourceTree = "<group>"; };
 		DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
 		DDBA24B82153CADA003C9CAF /* SceneDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocument.swift; sourceTree = "<group>"; };
 		DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentError.swift; sourceTree = "<group>"; };
@@ -771,6 +773,7 @@
 				DD1058BD218AECAA00FF7301 /* Car.scn */,
 				DD1058BF218AECB000FF7301 /* House.scn */,
 				DD1058CB218C39E600FF7301 /* Building.scn */,
+				DDAFED5A219BBE6A00D7CC7D /* Seaplane.scn */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1026,6 +1029,7 @@
 				DD20F67120672FBD005E838C /* Assets.xcassets in Resources */,
 				DD1058BE218AECAA00FF7301 /* Car.scn in Resources */,
 				DD1058C0218AECB000FF7301 /* House.scn in Resources */,
+				DDAFED5B219BBE6A00D7CC7D /* Seaplane.scn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

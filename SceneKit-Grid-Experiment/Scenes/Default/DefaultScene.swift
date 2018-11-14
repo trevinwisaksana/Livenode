@@ -314,6 +314,22 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(houseNode)
     }
     
+    func insertSeaplane() {
+        guard let seaplaneNode = daeToSCNNode(filepath: "Seaplane.scn") else {
+            return
+        }
+        
+        seaplaneNode.position = SCNVector3(0, 0.5, 0)
+        seaplaneNode.scale = SCNVector3(0.2, 0.2, 0.2)
+        seaplaneNode.name = "\(Int.random(in: 0...1000))"
+        
+        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+            return
+        }
+        
+        presentationNodeContainer.addChildNode(seaplaneNode)
+    }
+    
 //    func insertHouse() {
 //        let vertices: [SCNVector3] = [SCNVector3(-0.25, 1, 0),
 //                                      SCNVector3(-0.5, 0, 0.5),
@@ -653,7 +669,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         for childNode in childNodes ?? [] {
             // TODO: Create a list of names that the child node has to compare to
-            if childNode.name == "car" || childNode.name == "house" {
+            if childNode.name == "car" || childNode.name == "house" || childNode.name == "seaplane" {
                 return childNode
             }
         }
