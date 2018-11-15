@@ -19,7 +19,7 @@ public struct ObjectCatalogModelFactory {
         var objectCatalogModels: [ObjectCatalogModel] = []
         
         // TODO: Cache these models
-        for objectModelIndex in 0...5 {
+        for objectModelIndex in 0...6 {
             guard let modelScene = SCNScene(named: filenames[objectModelIndex]) else {
                 fatalError("Cannot load model scene.")
             }
@@ -33,6 +33,7 @@ public struct ObjectCatalogModelFactory {
     
     private static var filenames: [String] {
         return [NodeModel.box.scnFilename,
+                NodeModel.plane.scnFilename,
                 NodeModel.sphere.scnFilename,
                 NodeModel.pyramid.scnFilename,
                 NodeModel.car.scnFilename,
@@ -42,6 +43,7 @@ public struct ObjectCatalogModelFactory {
     
     private static var nodeModels: [NodeModel] {
         return [NodeModel.box,
+                NodeModel.plane,
                 NodeModel.sphere,
                 NodeModel.pyramid,
                 NodeModel.car,
@@ -52,6 +54,7 @@ public struct ObjectCatalogModelFactory {
 
 public enum NodeModel: String {
     case box
+    case plane
     case pyramid
     case sphere
     case house

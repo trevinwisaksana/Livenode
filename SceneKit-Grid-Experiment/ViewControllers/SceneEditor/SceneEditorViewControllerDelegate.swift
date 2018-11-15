@@ -180,6 +180,8 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             switch nodeModel {
             case .box:
                 scene.insertBox()
+            case .plane:
+                scene.insertPlane()
             case .sphere:
                 scene.insertSphere()
             case .pyramid:

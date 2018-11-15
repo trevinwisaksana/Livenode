@@ -283,6 +283,22 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(pyramidNode)
     }
     
+    func insertPlane() {
+        let plane = SCNPlane(width: 5, height: 5)
+        let planeNode = SCNNode(geometry: plane)
+        
+        planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+        planeNode.eulerAngles = SCNVector3(-1.57, 0, 0)
+        planeNode.position = SCNVector3(0, 0.05, 0)
+        planeNode.name = "\(Int.random(in: 0...1000))"
+        
+        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+            return
+        }
+        
+        presentationNodeContainer.addChildNode(planeNode)
+    }
+    
     func insertCar() {
         guard let carNode = daeToSCNNode(filepath: "Car.scn") else {
             return
