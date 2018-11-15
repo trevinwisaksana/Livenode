@@ -199,7 +199,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        if isSelectingAnimationTargetLocation && node?.name != Constants.Node.floor && node?.name != "nodeHighlight" {
+        if isSelectingAnimationTargetLocation && node?.name != "floorNode" && node?.name != "nodeHighlight" {
             nodeSelected = node
             node?.changeColor(to: .green)
             
@@ -241,11 +241,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         // TODO: Set function to private
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         let boxNode = SCNNode(geometry: box)
-        boxNode.type = .box
         
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         boxNode.position = SCNVector3(0, DefaultScene.nodeBottomMargin, 0)
         boxNode.name = "\(Int.random(in: 0...1000))"
+        boxNode.type = .box
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
@@ -258,11 +258,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         // TODO: Set function to private
         let sphere = SCNSphere(radius: 1)
         let sphereNode = SCNNode(geometry: sphere)
-        sphereNode.type = .sphere
         
         sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         sphereNode.position = SCNVector3(0, 0, 0)
         sphereNode.name = "\(Int.random(in: 0...1000))"
+        sphereNode.type = .sphere
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
@@ -275,11 +275,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         // TODO: Set function to private
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
         let pyramidNode = SCNNode(geometry: pyramid)
-        pyramidNode.type = .pyramid
         
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         pyramidNode.position = SCNVector3(0, 0, 0)
         pyramidNode.name = "\(Int.random(in: 0...1000))"
+        pyramidNode.type = .pyramid
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
@@ -291,12 +291,12 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     func insertPlane() {
         let plane = SCNPlane(width: 5, height: 5)
         let planeNode = SCNNode(geometry: plane)
-        planeNode.type = .plane
         
         planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         planeNode.eulerAngles = SCNVector3(-1.57, 0, 0)
         planeNode.position = SCNVector3(0, 0.05, 0)
         planeNode.name = "\(Int.random(in: 0...1000))"
+        planeNode.type = .plane
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
@@ -397,11 +397,14 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
         let isCorrectNodeSelected = targetNode.name != "nodeHighlight" && targetNode.name != "floorNode"
-        if didSelectANode && isCorrectNodeSelected {
+        if didSelectANode && isCorrectNodeSelected && nodeSelected?.isMovable ?? false {
             let nodeXPos = targetNode.position.x
             let nodeZPos = targetNode.position.z
             
-            if nodeSelected?.isMovable ?? false {
+            switch nodeSelected?.type ?? .default {
+            case .plane:
+                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.05, z: nodeZPos)
+            default:
                 nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
             }
         }
