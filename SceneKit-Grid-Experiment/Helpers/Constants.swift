@@ -15,6 +15,11 @@ struct Constants {
         static let objectAttribute = "ObjectAttributeController"
         static let utilities = "UtilitiesController"
     }
+    
+    struct Node {
+        static let floor = "floorNode"
+        static let tileBorder = "tileBorderNode"
+    }
 }
 
 public enum Action: String {

@@ -192,6 +192,8 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
                 scene.insertHouse()
             case .seaplane:
                 scene.insertSeaplane()
+            default:
+                break
             }
         }
     }

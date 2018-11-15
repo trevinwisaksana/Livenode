@@ -173,7 +173,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let topSide = createLineNode(fromPos: topLeft, toPos: topRight, color: .yellow)
         
         [bottomSide, leftSide, rightSide, topSide].forEach {
-            node.name = "tileBorder"
+            node.name = "tileBorderNode"
             node.addChildNode($0)
         }
     }
@@ -199,7 +199,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        if isSelectingAnimationTargetLocation && node?.name != "floorNode" && node?.name != "nodeHighlight" {
+        if isSelectingAnimationTargetLocation && node?.name != Constants.Node.floor && node?.name != "nodeHighlight" {
             nodeSelected = node
             node?.changeColor(to: .green)
             
@@ -213,20 +213,22 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-        let isCorrectNodeSelected = node?.name == "floorNode" || node?.name == "tileBorder"
+        let isCorrectNodeSelected = node?.name == Constants.Node.floor || node?.name == Constants.Node.tileBorder
         if node == nil || node?.name == nil || isCorrectNodeSelected {
-            didUnselectNode()
+            didDeselectNode()
             return
         }
         
         nodeSelected = node
         State.nodeSelected = nodeSelected
+        
+        // TODO: Figure out how to highlight the node
 //        highlight(nodeSelected)
         
         didSelectANode = true
     }
     
-    public func didUnselectNode() {
+    public func didDeselectNode() {
         nodeSelected = nil
         State.nodeSelected = nil
         didSelectANode = false
@@ -239,6 +241,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         // TODO: Set function to private
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         let boxNode = SCNNode(geometry: box)
+        boxNode.type = .box
         
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         boxNode.position = SCNVector3(0, DefaultScene.nodeBottomMargin, 0)
@@ -255,6 +258,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         // TODO: Set function to private
         let sphere = SCNSphere(radius: 1)
         let sphereNode = SCNNode(geometry: sphere)
+        sphereNode.type = .sphere
         
         sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         sphereNode.position = SCNVector3(0, 0, 0)
@@ -271,6 +275,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         // TODO: Set function to private
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
         let pyramidNode = SCNNode(geometry: pyramid)
+        pyramidNode.type = .pyramid
         
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         pyramidNode.position = SCNVector3(0, 0, 0)
@@ -286,6 +291,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     func insertPlane() {
         let plane = SCNPlane(width: 5, height: 5)
         let planeNode = SCNNode(geometry: plane)
+        planeNode.type = .plane
         
         planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         planeNode.eulerAngles = SCNVector3(-1.57, 0, 0)
@@ -306,6 +312,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         carNode.position = SCNVector3(0, 0, 0)
         carNode.name = "\(Int.random(in: 0...1000))"
+        carNode.type = .car
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
@@ -322,6 +329,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         houseNode.position = SCNVector3(0, 0, 0)
         houseNode.scale = SCNVector3(0.2, 0.2, 0.2)
         houseNode.name = "\(Int.random(in: 0...1000))"
+        houseNode.type = .house
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
@@ -338,6 +346,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         seaplaneNode.position = SCNVector3(0, 0.5, 0)
         seaplaneNode.scale = SCNVector3(0.2, 0.2, 0.2)
         seaplaneNode.name = "\(Int.random(in: 0...1000))"
+        seaplaneNode.type = .seaplane
         
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return

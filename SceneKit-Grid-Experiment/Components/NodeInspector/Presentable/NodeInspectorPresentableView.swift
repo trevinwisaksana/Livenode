@@ -28,8 +28,18 @@ public class NodeInspectorPresentableView: UIView {
     }()
     
     lazy var inspectorView: NodeInspectorView = {
-        let view = NodeInspectorView(delegate: self, dataSource: self)
-        return view
+        guard let type = dataSource.node?.type else {
+            fatalError("Cannot determine the type of the node.")
+        }
+        
+        switch type {
+        case .plane:
+            let view = PlaneNodeInspectorView(delegate: self, dataSource: self)
+            return view
+        default:
+            let view = NodeInspectorView(delegate: self, dataSource: self)
+            return view
+        }
     }()
     
     // MARK: - Public properties
@@ -85,7 +95,11 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
 // MARK: - NodeInspectorViewDataSource
 
 extension NodeInspectorPresentableView: NodeInspectorViewDataSource {
-    public func viewModel(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> NodeInspectorViewModel {
-        return NodeInspector(color: dataSource.node?.color ?? .clear, angle: dataSource.node?.angle ?? SCNVector3Zero, position: dataSource.node?.position ?? SCNVector3Zero)
+    public func viewModel(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> NodeInspectorViewModel? {
+        guard let node = dataSource.node else {
+            return nil
+        }
+        
+        return NodeInspector(color: node.color, angle: node.angle, position: node.position, type: node.type)
     }
 }

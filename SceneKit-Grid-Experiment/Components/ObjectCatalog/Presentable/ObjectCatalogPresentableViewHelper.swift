@@ -53,6 +53,7 @@ public struct ObjectCatalogModelFactory {
 }
 
 public enum NodeModel: String {
+    case `default`
     case box
     case plane
     case pyramid

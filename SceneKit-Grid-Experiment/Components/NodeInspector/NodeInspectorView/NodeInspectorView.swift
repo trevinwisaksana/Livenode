@@ -16,7 +16,7 @@ public protocol NodeInspectorViewDelegate: NSObjectProtocol {
 }
 
 public protocol NodeInspectorViewDataSource: NSObjectProtocol {
-    func viewModel(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> NodeInspectorViewModel
+    func viewModel(inNodeInspectorView nodeInspectorView: NodeInspectorView) -> NodeInspectorViewModel?
 }
 
 public class NodeInspectorView: UIView {
@@ -24,7 +24,7 @@ public class NodeInspectorView: UIView {
     // MARK: - Internal properties
     
     private static let cellHeight: CGFloat = 60.0
-    private static let numberOfRowsInSection: Int = 3
+    static let numberOfRowsInSection: Int = 3
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)

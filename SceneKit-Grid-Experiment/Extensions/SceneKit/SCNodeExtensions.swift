@@ -95,4 +95,19 @@ extension SCNNode: NodeInspectorViewModel {
         self.geometry?.firstMaterial?.diffuse.contents = color
     }
     
+    // MARK: - Type
+    
+    private struct TypeState {
+        static var type = NodeModel.default
+    }
+    
+    public var type: NodeModel {
+        get {
+            return objc_getAssociatedObject(self, &TypeState.type) as? NodeModel ?? .default
+        }
+        set {
+            objc_setAssociatedObject(self, &TypeState.type, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+    
 }
