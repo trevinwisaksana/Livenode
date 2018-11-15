@@ -88,6 +88,7 @@
 		DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */; };
 		DDCCAA93219D00CE0071FE7A /* Plane.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDCCAA92219D00CE0071FE7A /* Plane.scn */; };
 		DDCCAA95219D1EC50071FE7A /* PlaneNodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCCAA94219D1EC50071FE7A /* PlaneNodeInspectorView.swift */; };
+		DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCCAA96219D41090071FE7A /* PlaneNodeSizeCell.swift */; };
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
 		DDE60E4621731BB30052E506 /* MoveAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */; };
 		DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */; };
@@ -197,6 +198,7 @@
 		DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		DDCCAA92219D00CE0071FE7A /* Plane.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Plane.scn; sourceTree = "<group>"; };
 		DDCCAA94219D1EC50071FE7A /* PlaneNodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneNodeInspectorView.swift; sourceTree = "<group>"; };
+		DDCCAA96219D41090071FE7A /* PlaneNodeSizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneNodeSizeCell.swift; sourceTree = "<group>"; };
 		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDurationCell.swift; sourceTree = "<group>"; };
@@ -548,14 +550,13 @@
 			path = Presentable;
 			sourceTree = "<group>";
 		};
-		DD6C16F6210B2426002CB031 /* Cell */ = {
+		DD6C16F6210B2426002CB031 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DD6C16F4210B2423002CB031 /* NodeColorCell.swift */,
-				DD1058C1218C0CE100FF7301 /* NodePositionCell.swift */,
-				DD1058C3218C0CE900FF7301 /* NodeAngleCell.swift */,
+				DDCCAA99219D413D0071FE7A /* NodeInspector */,
+				DDCCAA98219D410E0071FE7A /* PlaneNodeInspector */,
 			);
-			path = Cell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		DD6C16F9210B32DA002CB031 /* Model */ = {
@@ -711,20 +712,20 @@
 			isa = PBXGroup;
 			children = (
 				DD6C16F3210B2343002CB031 /* Presentable */,
-				DD9C6AF0210AC0FB001E4982 /* NodeInspectorView */,
-				DD6C16F6210B2426002CB031 /* Cell */,
+				DD9C6AF0210AC0FB001E4982 /* NodeInspectorViews */,
+				DD6C16F6210B2426002CB031 /* Cells */,
 				DD6C16F9210B32DA002CB031 /* Model */,
 			);
 			path = NodeInspector;
 			sourceTree = "<group>";
 		};
-		DD9C6AF0210AC0FB001E4982 /* NodeInspectorView */ = {
+		DD9C6AF0210AC0FB001E4982 /* NodeInspectorViews */ = {
 			isa = PBXGroup;
 			children = (
 				DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */,
 				DDCCAA94219D1EC50071FE7A /* PlaneNodeInspectorView.swift */,
 			);
-			path = NodeInspectorView;
+			path = NodeInspectorViews;
 			sourceTree = "<group>";
 		};
 		DD9C6AF5210AF4C2001E4982 /* Presentable */ = {
@@ -825,6 +826,24 @@
 				DD47202E2161F96A00028727 /* SceneActionMenuView.swift */,
 			);
 			path = SceneActionMenuView;
+			sourceTree = "<group>";
+		};
+		DDCCAA98219D410E0071FE7A /* PlaneNodeInspector */ = {
+			isa = PBXGroup;
+			children = (
+				DDCCAA96219D41090071FE7A /* PlaneNodeSizeCell.swift */,
+			);
+			path = PlaneNodeInspector;
+			sourceTree = "<group>";
+		};
+		DDCCAA99219D413D0071FE7A /* NodeInspector */ = {
+			isa = PBXGroup;
+			children = (
+				DD6C16F4210B2423002CB031 /* NodeColorCell.swift */,
+				DD1058C1218C0CE100FF7301 /* NodePositionCell.swift */,
+				DD1058C3218C0CE900FF7301 /* NodeAngleCell.swift */,
+			);
+			path = NodeInspector;
 			sourceTree = "<group>";
 		};
 		DDE60E4721731BB90052E506 /* AnimationAttributeViews */ = {
@@ -1055,6 +1074,7 @@
 				DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */,
 				DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */,
 				DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */,
+				DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */,
 				DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,

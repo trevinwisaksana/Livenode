@@ -24,9 +24,9 @@ public class NodeInspectorView: UIView {
     // MARK: - Internal properties
     
     private static let cellHeight: CGFloat = 60.0
-    static let numberOfRowsInSection: Int = 3
+    var numberOfRowsInSection: Int = 3
     
-    private lazy var tableView: UITableView = {
+    private(set) lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.delegate = self
         tableView.dataSource = self
@@ -92,7 +92,7 @@ extension NodeInspectorView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return NodeInspectorView.numberOfRowsInSection
+        return numberOfRowsInSection
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
