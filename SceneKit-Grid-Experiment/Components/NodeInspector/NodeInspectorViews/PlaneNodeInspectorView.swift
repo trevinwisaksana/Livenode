@@ -15,9 +15,6 @@ public class PlaneNodeInspectorView: NodeInspectorView {
     
     private static let cellHeight: CGFloat = 60.0
     
-    private weak var delegate: NodeInspectorViewDelegate?
-    private weak var dataSource: NodeInspectorViewDataSource?
-    
     public override init(delegate: NodeInspectorViewDelegate, dataSource: NodeInspectorViewDataSource) {
         super.init(delegate: delegate, dataSource: dataSource)
         

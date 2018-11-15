@@ -35,8 +35,8 @@ public class NodeInspectorView: UIView {
         return tableView
     }()
     
-    private weak var delegate: NodeInspectorViewDelegate?
-    private weak var dataSource: NodeInspectorViewDataSource?
+    weak var delegate: NodeInspectorViewDelegate?
+    weak var dataSource: NodeInspectorViewDataSource?
     
     // MARK: - Setup
     
