@@ -88,3 +88,11 @@ extension PlaneNodeInspectorView {
         return PlaneNodeInspectorView.cellHeight
     }
 }
+
+// MARK: - PlaneNodeSizeCellDelegate
+
+extension PlaneNodeInspectorView: PlaneNodeSizeCellDelegate {
+    public func planeNodeSizeCell(_ planeNodeSizeCell: PlaneNodeSizeCell, didUpdatePlaneSize size: CGSize) {
+        
+    }
+}

@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol PlaneNodeSizeCellDelegate: class {
+    func planeNodeSizeCell(_ planeNodeSizeCell: PlaneNodeSizeCell, didUpdatePlaneSize size: CGSize)
+}
+
 public class PlaneNodeSizeCell: UITableViewCell {
     
     // MARK: - Internal properties
@@ -30,36 +34,29 @@ public class PlaneNodeSizeCell: UITableViewCell {
     private static let targetCoordinateContainerLeftMargin: CGFloat = 15.0
     private static let targetCoordinateContainerRightMargin: CGFloat = -15.0
     
-    private lazy var locationTitleLabel: UILabel = {
+    private lazy var sizeTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Size"
         return label
     }()
     
-    private lazy var xCoordinateTitleLabel: UILabel = {
+    private lazy var widthTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "X:"
+        label.text = "W:"
         return label
     }()
     
-    private lazy var yCoordinateTitleLabel: UILabel = {
+    private lazy var lengthTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Y:"
+        label.text = "L:"
         return label
     }()
     
-    private lazy var zCoordinateTitleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Z:"
-        return label
-    }()
-    
-    private lazy var targetCoordinateTextFieldContainer: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [targetXCoordinateTextField, targetYCoordinateTextField, targetZCoordinateTextField])
+    private lazy var sizeTextFieldContainer: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [widthTitleLabel, widthTextField, lengthTitleLabel, lengthTextField])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 10
         stackView.alignment = .center
@@ -68,7 +65,7 @@ public class PlaneNodeSizeCell: UITableViewCell {
         return stackView
     }()
     
-    private lazy var targetXCoordinateTextField: UITextField = {
+    private lazy var widthTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.addTarget(self, action: #selector(didFinishEditingCoordinateTextField(_:)), for: .editingDidEnd)
@@ -76,15 +73,7 @@ public class PlaneNodeSizeCell: UITableViewCell {
         return textField
     }()
     
-    private lazy var targetYCoordinateTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.addTarget(self, action: #selector(didFinishEditingCoordinateTextField(_:)), for: .editingDidEnd)
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    private lazy var targetZCoordinateTextField: UITextField = {
+    private lazy var lengthTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.addTarget(self, action: #selector(didFinishEditingCoordinateTextField(_:)), for: .editingDidEnd)
@@ -94,7 +83,7 @@ public class PlaneNodeSizeCell: UITableViewCell {
     
     // MARK: - External Properties
     
-    weak var delegate: NodePositionCellDelegate?
+    weak var delegate: PlaneNodeSizeCellDelegate?
     
     // MARK: - Setup
     
@@ -109,18 +98,18 @@ public class PlaneNodeSizeCell: UITableViewCell {
     }
     
     private func setup() {
-        addSubview(locationTitleLabel)
-        addSubview(targetCoordinateTextFieldContainer)
+        addSubview(sizeTitleLabel)
+        addSubview(sizeTextFieldContainer)
         
         NSLayoutConstraint.activate([
-            locationTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: PlaneNodeSizeCell.titleLeftMargin),
-            locationTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: PlaneNodeSizeCell.titleTopMargin),
-            locationTitleLabel.heightAnchor.constraint(equalToConstant: PlaneNodeSizeCell.titleHeight),
+            sizeTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: PlaneNodeSizeCell.titleLeftMargin),
+            sizeTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: PlaneNodeSizeCell.titleTopMargin),
+            sizeTitleLabel.heightAnchor.constraint(equalToConstant: PlaneNodeSizeCell.titleHeight),
             
-            targetCoordinateTextFieldContainer.centerXAnchor.constraint(equalTo: centerXAnchor),
-            targetCoordinateTextFieldContainer.leftAnchor.constraint(equalTo: leftAnchor, constant: PlaneNodeSizeCell.targetCoordinateContainerLeftMargin),
-            targetCoordinateTextFieldContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: PlaneNodeSizeCell.targetCoordinateContainerRightMargin),
-            targetCoordinateTextFieldContainer.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: PlaneNodeSizeCell.targetCoordinateContainerTopMargin),
+            sizeTextFieldContainer.centerXAnchor.constraint(equalTo: centerXAnchor),
+            sizeTextFieldContainer.leftAnchor.constraint(equalTo: leftAnchor, constant: PlaneNodeSizeCell.targetCoordinateContainerLeftMargin),
+            sizeTextFieldContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: PlaneNodeSizeCell.targetCoordinateContainerRightMargin),
+            sizeTextFieldContainer.topAnchor.constraint(equalTo: sizeTitleLabel.bottomAnchor, constant: PlaneNodeSizeCell.targetCoordinateContainerTopMargin),
             ])
     }
     
@@ -136,7 +125,7 @@ public class PlaneNodeSizeCell: UITableViewCell {
     /// The model contains data used to populate the view.
     public var model: NodeInspectorViewModel? {
         didSet {
-         
+            
         }
     }
     
