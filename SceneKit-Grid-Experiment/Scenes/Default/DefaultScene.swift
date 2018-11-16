@@ -429,6 +429,26 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         node?.changeColor(to: color)
     }
     
+    // MARK: - Node Size
+    
+    public func modifyPlaneNode(length: CGFloat) {
+        guard let name = nodeSelected?.name else {
+            return
+        }
+        
+        let node = rootNode.childNode(withName: name, recursively: true)
+        node?.scale.x = Float(length)
+    }
+    
+    public func modifyPlaneNode(width: CGFloat) {
+        guard let name = nodeSelected?.name else {
+            return
+        }
+        
+        let node = rootNode.childNode(withName: name, recursively: true)
+        node?.scale.y = Float(width)
+    }
+    
     // MARK: - Node Animation
     
     func setNodeAnimationTarget() {

@@ -9,6 +9,11 @@
 import UIKit
 import SceneKit
 
+public protocol PlaneNodeInspectorViewDelegate: NSObjectProtocol {
+    func planeNodeInspectorView(_ planeNodeInspectorView: PlaneNodeInspectorView, didUpdatePlaneWidth width: CGFloat)
+    func planeNodeInspectorView(_ planeNodeInspectorView: PlaneNodeInspectorView, didUpdatePlaneLength length: CGFloat)
+}
+
 public class PlaneNodeInspectorView: NodeInspectorView {
     
     // MARK: - Internal properties
@@ -93,10 +98,10 @@ extension PlaneNodeInspectorView {
 
 extension PlaneNodeInspectorView: PlaneNodeSizeCellDelegate {
     public func planeNodeSizeCell(_ planeNodeSizeCell: PlaneNodeSizeCell, didUpdatePlaneLength length: CGFloat) {
-        
+        delegate?.planeNodeInspectorView(self, didUpdatePlaneLength: length)
     }
     
     public func planeNodeSizeCell(_ planeNodeSizeCell: PlaneNodeSizeCell, didUpdatePlaneWidth width: CGFloat) {
-        
+        delegate?.planeNodeInspectorView(self, didUpdatePlaneWidth: width)
     }
 }

@@ -13,6 +13,9 @@ public protocol NodeInspectorViewDelegate: NSObjectProtocol {
     func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didSelectItemAtIndexPath indexPath: IndexPath)
     func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didUpdateNodePosition position: SCNVector3)
     func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didAngleNodePosition angle: Float)
+    
+    func planeNodeInspectorView(_ planeNodeInspectorView: PlaneNodeInspectorView, didUpdatePlaneWidth width: CGFloat)
+    func planeNodeInspectorView(_ planeNodeInspectorView: PlaneNodeInspectorView, didUpdatePlaneLength length: CGFloat)
 }
 
 public protocol NodeInspectorViewDataSource: NSObjectProtocol {

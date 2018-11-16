@@ -98,6 +98,9 @@ public class PlaneNodeSizeCell: UITableViewCell {
         addSubview(lengthTextField)
         addSubview(widthTextField)
         
+        lengthTextField.delegate = self
+        widthTextField.delegate = self
+        
         NSLayoutConstraint.activate([
             sizeTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: PlaneNodeSizeCell.titleLeftMargin),
             sizeTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: PlaneNodeSizeCell.titleTopMargin),
@@ -146,4 +149,13 @@ public class PlaneNodeSizeCell: UITableViewCell {
         }
     }
     
+}
+
+// MARK: - UITextFieldDelegate
+
+extension PlaneNodeSizeCell: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
 }

@@ -64,6 +64,16 @@ extension NodeInspectorViewController: NodeInspectorPresentableViewDelegate {
         sceneEditorViewController().currentScene.changeNodeRotation(toAngle: angle)
     }
     
+    // MARK: PlaneNodeInspectorDelegate
+    
+    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdatePlaneWidth width: CGFloat) {
+        sceneEditorViewController().currentScene.modifyPlaneNode(width: width)
+    }
+    
+    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdatePlaneLength length: CGFloat) {
+        sceneEditorViewController().currentScene.modifyPlaneNode(length: length)
+    }
+    
     private func sceneEditorViewController() -> SceneEditorViewController {
         let rootNavigationController = presentingViewController as! RootNavigationController
         let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
