@@ -100,6 +100,6 @@ extension NodeInspectorPresentableView: NodeInspectorViewDataSource {
             return nil
         }
         
-        return NodeInspector(color: node.color, angle: node.angle, position: node.position, type: node.type)
+        return NodeInspector(color: node.color, angle: node.angle, position: node.position, type: node.type, width: node.width, length: node.length)
     }
 }

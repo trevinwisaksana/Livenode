@@ -110,4 +110,18 @@ extension SCNNode: NodeInspectorViewModel {
         }
     }
     
+    // MARK: - Size
+    
+    public var length: CGFloat? {
+        get {
+            return CGFloat(boundingBox.max.x - boundingBox.min.x)
+        }
+    }
+    
+    public var width: CGFloat? {
+        get {
+            return CGFloat(boundingBox.max.y - boundingBox.min.y)
+        }
+    }
+    
 }

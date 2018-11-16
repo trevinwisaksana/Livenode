@@ -92,7 +92,11 @@ extension PlaneNodeInspectorView {
 // MARK: - PlaneNodeSizeCellDelegate
 
 extension PlaneNodeInspectorView: PlaneNodeSizeCellDelegate {
-    public func planeNodeSizeCell(_ planeNodeSizeCell: PlaneNodeSizeCell, didUpdatePlaneSize size: CGSize) {
+    public func planeNodeSizeCell(_ planeNodeSizeCell: PlaneNodeSizeCell, didUpdatePlaneLength length: CGFloat) {
+        
+    }
+    
+    public func planeNodeSizeCell(_ planeNodeSizeCell: PlaneNodeSizeCell, didUpdatePlaneWidth width: CGFloat) {
         
     }
 }

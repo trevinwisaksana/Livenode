@@ -8,11 +8,19 @@
 
 import SceneKit
 
-public protocol NodeInspectorViewModel {
+public protocol NodeInspectorViewModel: PlaneNodeInspectorViewModel {
     var color: UIColor { get }
     var angle: SCNVector3 { get }
     var position: SCNVector3 { get }
     var type: NodeModel { get }
+    
+    var width: CGFloat? { get }
+    var length: CGFloat? { get }
+}
+
+public protocol PlaneNodeInspectorViewModel {
+    var width: CGFloat? { get }
+    var length: CGFloat? { get }
 }
 
 public struct NodeInspector: NodeInspectorViewModel {
@@ -20,4 +28,7 @@ public struct NodeInspector: NodeInspectorViewModel {
     public var angle: SCNVector3
     public var position: SCNVector3
     public var type: NodeModel
+    
+    public var width: CGFloat?
+    public var length: CGFloat?
 }
