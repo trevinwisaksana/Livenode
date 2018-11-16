@@ -114,13 +114,13 @@ extension SCNNode: NodeInspectorViewModel {
     
     public var length: CGFloat? {
         get {
-            return CGFloat(boundingBox.max.x - boundingBox.min.x)
+            return CGFloat(boundingBox.max.y - boundingBox.min.y)
         }
     }
     
     public var width: CGFloat? {
         get {
-            return CGFloat(boundingBox.max.y - boundingBox.min.y)
+            return CGFloat(boundingBox.max.x - boundingBox.min.x)
         }
     }
     

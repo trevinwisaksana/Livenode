@@ -437,7 +437,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         let node = rootNode.childNode(withName: name, recursively: true)
-        node?.scale.x = Float(length)
+        // The variable name "length" is preferred as it may confuse the rest of the code
+        (node?.geometry as! SCNPlane).height = length
     }
     
     public func modifyPlaneNode(width: CGFloat) {
@@ -446,7 +447,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         let node = rootNode.childNode(withName: name, recursively: true)
-        node?.scale.y = Float(width)
+        (node?.geometry as! SCNPlane).width = width
     }
     
     // MARK: - Node Animation
