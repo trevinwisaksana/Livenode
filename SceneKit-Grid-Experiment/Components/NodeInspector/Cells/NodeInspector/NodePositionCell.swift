@@ -130,7 +130,7 @@ public class NodePositionCell: UITableViewCell {
             targetCoordinateTextFieldContainer.leftAnchor.constraint(equalTo: leftAnchor, constant: NodePositionCell.targetCoordinateContainerLeftMargin),
             targetCoordinateTextFieldContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: NodePositionCell.targetCoordinateContainerRightMargin),
             targetCoordinateTextFieldContainer.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: NodePositionCell.targetCoordinateContainerTopMargin),
-            ])
+        ])
     }
     
     // MARK: - Text Field Interactions

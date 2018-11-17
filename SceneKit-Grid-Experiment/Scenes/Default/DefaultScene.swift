@@ -8,7 +8,6 @@
 
 import UIKit
 import SceneKit
-import SpriteKit
 
 public class DefaultScene: SCNScene, DefaultSceneViewModel {
     

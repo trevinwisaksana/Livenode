@@ -9,7 +9,7 @@
 import UIKit
 import ARKit
 
-class PresentationViewControllerDelegate: NSObject, ARSCNViewDelegate {
+class PresentationViewControllerDelegate: NSObject, ARSCNViewDelegate, ARSessionDelegate {
     
     // MARK: - ARSCNViewDelegate
     
