@@ -547,7 +547,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func createAlertPopover(duration: TimeInterval) {
-        let text = SCNText(string: "!", extrusionDepth: 0)
+        let text = SCNText(string: "!", extrusionDepth: 2)
         text.firstMaterial?.isDoubleSided = true
         
         let alertNode = SCNNode(geometry: text)
