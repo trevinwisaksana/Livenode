@@ -21,19 +21,7 @@ public class NodePositionCell: UITableViewCell {
     private static let titleTopMargin: CGFloat = 5.0
     private static let titleLeftMargin: CGFloat = 15.0
     
-    private static let currentLocationTitleTopMargin: CGFloat = 15.0
-    private static let currentLocationTitleLeftMargin: CGFloat = 15.0
-    
-    private static let currentCoordinateContainerTopMargin: CGFloat = 8.0
-    private static let currentCoordinateContainerLeftMargin: CGFloat = 15.0
-    private static let currentCoordinateContainerRightMargin: CGFloat = -15.0
-    
-    private static let targetLocationTitleTopMargin: CGFloat = 15.0
-    private static let targetLocationTitleLeftMargin: CGFloat = 15.0
-    
-    private static let targetCoordinateContainerTopMargin: CGFloat = 8.0
-    private static let targetCoordinateContainerLeftMargin: CGFloat = 15.0
-    private static let targetCoordinateContainerRightMargin: CGFloat = -15.0
+    private static let targetCoordinateTextFieldWidth: CGFloat = 60.0
     
     private lazy var locationTitleLabel: UILabel = {
         let label = UILabel()
@@ -61,16 +49,6 @@ public class NodePositionCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Z:"
         return label
-    }()
-    
-    private lazy var targetCoordinateTextFieldContainer: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [targetXCoordinateTextField, targetYCoordinateTextField, targetZCoordinateTextField])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 10
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
-        return stackView
     }()
     
     private lazy var targetXCoordinateTextField: UITextField = {
@@ -115,7 +93,12 @@ public class NodePositionCell: UITableViewCell {
     
     private func setup() {
         addSubview(locationTitleLabel)
-        addSubview(targetCoordinateTextFieldContainer)
+        addSubview(xCoordinateTitleLabel)
+        addSubview(yCoordinateTitleLabel)
+        addSubview(zCoordinateTitleLabel)
+        addSubview(targetXCoordinateTextField)
+        addSubview(targetYCoordinateTextField)
+        addSubview(targetZCoordinateTextField)
         
         targetXCoordinateTextField.delegate = self
         targetYCoordinateTextField.delegate = self
@@ -126,10 +109,26 @@ public class NodePositionCell: UITableViewCell {
             locationTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: NodePositionCell.titleTopMargin),
             locationTitleLabel.heightAnchor.constraint(equalToConstant: NodePositionCell.titleHeight),
             
-            targetCoordinateTextFieldContainer.centerXAnchor.constraint(equalTo: centerXAnchor),
-            targetCoordinateTextFieldContainer.leftAnchor.constraint(equalTo: leftAnchor, constant: NodePositionCell.targetCoordinateContainerLeftMargin),
-            targetCoordinateTextFieldContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: NodePositionCell.targetCoordinateContainerRightMargin),
-            targetCoordinateTextFieldContainer.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: NodePositionCell.targetCoordinateContainerTopMargin),
+            xCoordinateTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
+            xCoordinateTitleLabel.centerYAnchor.constraint(equalTo: targetXCoordinateTextField.centerYAnchor),
+            
+            targetXCoordinateTextField.leftAnchor.constraint(equalTo: xCoordinateTitleLabel.rightAnchor, constant: 10),
+            targetXCoordinateTextField.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: 8),
+            targetXCoordinateTextField.widthAnchor.constraint(equalToConstant: NodePositionCell.targetCoordinateTextFieldWidth),
+            
+            yCoordinateTitleLabel.leftAnchor.constraint(equalTo: targetXCoordinateTextField.rightAnchor, constant: 15),
+            yCoordinateTitleLabel.centerYAnchor.constraint(equalTo: targetYCoordinateTextField.centerYAnchor),
+            
+            targetYCoordinateTextField.leftAnchor.constraint(equalTo: yCoordinateTitleLabel.rightAnchor, constant: 10),
+            targetYCoordinateTextField.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: 8),
+            targetYCoordinateTextField.widthAnchor.constraint(equalToConstant: NodePositionCell.targetCoordinateTextFieldWidth),
+            
+            zCoordinateTitleLabel.leftAnchor.constraint(equalTo: targetYCoordinateTextField.rightAnchor, constant: 15),
+            zCoordinateTitleLabel.centerYAnchor.constraint(equalTo: targetZCoordinateTextField.centerYAnchor),
+            
+            targetZCoordinateTextField.leftAnchor.constraint(equalTo: zCoordinateTitleLabel.rightAnchor, constant: 10),
+            targetZCoordinateTextField.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: 8),
+            targetZCoordinateTextField.widthAnchor.constraint(equalToConstant: NodePositionCell.targetCoordinateTextFieldWidth),
         ])
     }
     
