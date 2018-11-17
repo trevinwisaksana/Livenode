@@ -16,8 +16,8 @@ final class PresentationViewController: UIViewController {
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    private let feedbackViewWidth: CGFloat = 200.0
-    private let feedbackViewHeight: CGFloat = 22.0
+    private let feedbackViewWidth: CGFloat = 750.0
+    private let feedbackViewHeight: CGFloat = 35.0
     private let feedbackViewBottomMargin: CGFloat = -12.0
     
     private var sceneView: ARSCNView = {
@@ -27,7 +27,7 @@ final class PresentationViewController: UIViewController {
     }()
     
     private var feedbackView: SurfaceDetectionFeedbackView = {
-        let view = SurfaceDetectionFeedbackView(frame: .zero)
+        let view = SurfaceDetectionFeedbackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

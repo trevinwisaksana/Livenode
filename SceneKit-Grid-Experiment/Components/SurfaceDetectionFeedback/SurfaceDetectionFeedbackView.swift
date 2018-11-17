@@ -13,10 +13,15 @@ public class SurfaceDetectionFeedbackView: UIView {
     
     // MARK: - Internal Properties
     
+    private let feedbackLabelLeftMargin: CGFloat = 6.0
+    private let feedbackLabelRightMargin: CGFloat = -6.0
+    private let feedbackLabelTopMargin: CGFloat = 2.0
+    private let feedbackLabelBottomMargin: CGFloat = -2.0
+    
     lazy var feedbackLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
     
@@ -39,20 +44,20 @@ public class SurfaceDetectionFeedbackView: UIView {
         layer.cornerRadius = Style.containerCornerRadius
         
         NSLayoutConstraint.activate([
-            feedbackLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            feedbackLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+            feedbackLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: feedbackLabelLeftMargin),
+            feedbackLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: feedbackLabelRightMargin),
+            feedbackLabel.topAnchor.constraint(equalTo: topAnchor, constant: feedbackLabelTopMargin),
+            feedbackLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: feedbackLabelBottomMargin),
         ])
     }
     
     // MARK: - Feedback Labels
     
     func updateFeedbackLabel(for frame: ARFrame, trackingState: ARCamera.TrackingState) {
-        // Update the UI to provide feedback on the state of the AR experience.
         let message: String
         
         switch trackingState {
         case .normal where frame.anchors.isEmpty:
-            // No planes detected; provide instructions for this app's AR interactions.
             message = "Move the device around to detect horizontal and vertical surfaces."
             
         case .notAvailable:
@@ -69,11 +74,11 @@ public class SurfaceDetectionFeedbackView: UIView {
             
         default:
             // No feedback needed when tracking is normal and planes are visible.
-            // (Nor when in unreachable limited-tracking states.)
             message = ""
         }
         
         feedbackLabel.text = message
+        isHidden = message.isEmpty
     }
     
     func sessionWasInterruptedLabel() {
