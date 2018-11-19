@@ -547,6 +547,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func createAlertPopover(duration: TimeInterval) {
+        guard let nodeAnimationTarget = nodeAnimationTarget else {
+            return
+        }
+    
         let text = SCNText(string: "!", extrusionDepth: 2)
         text.firstMaterial?.isDoubleSided = true
         
@@ -554,8 +558,17 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         alertNode.name = "AlertNode"
         alertNode.changeColor(to: .green)
         alertNode.scale = SCNVector3(0.15, 0.15, 0.15)
-        alertNode.position = SCNVector3(-0.28, 0.5, 0)
         alertNode.opacity = 0
+        
+        switch nodeAnimationTarget.type {
+        case .box:
+            alertNode.position = SCNVector3(-0.28, 0.5, 0)
+        case .plane:
+            alertNode.position = SCNVector3(0, 1, 0)
+            alertNode.eulerAngles = SCNVector3(1.57, 0, 0)
+        default:
+            alertNode.position = SCNVector3(-0.28, 0.5, 0)
+        }
         
         let lookAtConstraint = SCNLookAtConstraint(target: cameraNode)
         lookAtConstraint.localFront = SCNVector3(0, 0, 0)
@@ -564,9 +577,9 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let fadeInAnimation = SCNAction.fadeIn(duration: duration)
         fadeInAnimation.animationType = .alert
         fadeInAnimation.timingMode = .easeInEaseOut
-        nodeAnimationTarget?.addAction(fadeInAnimation, forKey: .alert)
+        nodeAnimationTarget.addAction(fadeInAnimation, forKey: .alert)
         
-        nodeAnimationTarget?.addChildNode(alertNode)
+        nodeAnimationTarget.addChildNode(alertNode)
     }
     
     // MARK: - Delay Animation
