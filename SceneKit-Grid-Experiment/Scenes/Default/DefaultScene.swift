@@ -354,44 +354,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(seaplaneNode)
     }
     
-//    func insertHouse() {
-//        let vertices: [SCNVector3] = [SCNVector3(-0.25, 1, 0),
-//                                      SCNVector3(-0.5, 0, 0.5),
-//                                      SCNVector3(-0.5, 0, -0.5),
-//                                      SCNVector3(0.5, 0, 0.5),
-//                                      SCNVector3(0.5, 0, -0.5),
-//                                      SCNVector3(0.5, 0, -0.5),
-//                                      SCNVector3(0, -1, 0),]
-//
-//
-//        let vertices: [SCNVector3] = [
-//            SCNVector3(0, 1, 0),
-//            SCNVector3(-0.5, 0, 0.5),
-//            SCNVector3(0.5, 0, 0.5),
-//            SCNVector3(0.5, 0, -0.5),
-//            SCNVector3(-0.5, 0, -0.5),
-//            SCNVector3(0, -1, 0)]
-//
-//        let indices: [UInt16] = [0, 1, 2,
-//                                 2, 3, 0,
-//                                 3, 4, 0,
-//                                 4, 1, 0,
-//                                 1, 5, 2,
-//                                 2, 5, 3,
-//                                 3, 5, 4,
-//                                 4, 5, 1]
-//
-//        let source = SCNGeometrySource(vertices: vertices)
-//        let elements = SCNGeometryElement(indices: indices, primitiveType: .triangles)
-//
-//        let geometry = SCNGeometry(sources: [source], elements: [elements])
-//        geometry.firstMaterial?.diffuse.contents = UIColor.blue
-//        geometry.firstMaterial?.lightingModel = .constant
-//
-//        let houseNode = SCNNode(geometry: geometry)
-//        rootNode.addChildNode(houseNode)
-//    }
-    
     // MARK: - Node Movement
     
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
