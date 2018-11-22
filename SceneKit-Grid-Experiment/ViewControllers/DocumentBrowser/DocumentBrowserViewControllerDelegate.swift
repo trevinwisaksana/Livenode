@@ -11,10 +11,6 @@ import SceneKit
 
 class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
     
-    // MARK: - Internal Properties
-    
-    private static let documentNumberKey = "documentNumberKey"
-    
     // MARK: - Delegate Methods
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {
@@ -119,11 +115,10 @@ extension DocumentBrowserViewControllerDelegate {
 
 extension DocumentBrowserViewControllerDelegate: SceneEditorDocumentDelegate {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: DefaultScene) {
+
+        State.currentDocument?.close()
+        State.currentDocument = nil
         State.isEditingScene = false
-        
-        State.currentDocument?.close(completionHandler: { (_) in
-            State.currentDocument = nil
-        })
         
         controller.dismiss(animated: true, completion: nil)
     }

@@ -198,7 +198,6 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didBeginPanning(_ gesture: UIPanGestureRecognizer) {
-        // TODO: Create a way to disable the pan gesture
         currentScene.limitCameraRotation(using: gesture)
     }
     
