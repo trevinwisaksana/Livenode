@@ -32,6 +32,8 @@ class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewCont
                     importHandler(nil, .none)
                     return
                 }
+                
+                self.openDocument(with: url, using: controller)
 
                 importHandler(url, .move)
             }
@@ -66,8 +68,10 @@ extension DocumentBrowserViewControllerDelegate {
         let document = SceneDocument(fileURL: url)
         document.open { (openSuccess) in
             if !openSuccess {
+                print("Failed to open document.")
                 return
             }
+            
             State.currentDocument = document
             self.displayDocument(with: controller)
         }
