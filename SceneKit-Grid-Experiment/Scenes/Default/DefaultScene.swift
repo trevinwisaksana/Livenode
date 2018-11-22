@@ -74,8 +74,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var lastNodeSelected: SCNNode?
     public var currentNodeHighlighted: SCNNode?
     
-    public weak var delegate: DefaultSceneDelegateProtocol?
-    
     public var nodeAnimationTarget: SCNNode? {
         didSet {
             nodeAnimationTargetOriginalPosition = nodeAnimationTarget?.position

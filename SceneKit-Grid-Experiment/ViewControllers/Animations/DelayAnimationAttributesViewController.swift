@@ -56,11 +56,11 @@ final class DelayAnimationAttributesViewController: UIViewController {
 
 extension DelayAnimationAttributesViewController: DelayAnimationAttributesViewDelegate {
     func delayAnimationAttributesView(_ delayAnimationAttributesView: DelayAnimationAttributesView, didUpdateAnimationDelayDuration duration: TimeInterval, forAnimationAtIndex index: Int) {
-        sceneEditorViewController().currentScene.didUpdateDelayAnimation(duration: duration, forAnimationAtIndex: index)
+        sceneEditorViewController().document?.scene.didUpdateDelayAnimation(duration: duration, forAnimationAtIndex: index)
     }
     
     func delayAnimationAttributesView(_ delayAnimationAttributesView: DelayAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: DelayAnimationAttributes) {
-        sceneEditorViewController().currentScene.addDelayAnimation(animation)
+        sceneEditorViewController().document?.scene.addDelayAnimation(animation)
         dismiss(animated: true, completion: nil)
     }
     

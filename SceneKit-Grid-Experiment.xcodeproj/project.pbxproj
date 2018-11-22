@@ -11,6 +11,7 @@
 		DD0BFFBF217C593F00429F52 /* DelayAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */; };
 		DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFC0217C599C00429F52 /* DelayAnimationAttributesView.swift */; };
 		DD0BFFC5217C761000429F52 /* DelayAnimationAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFC4217C761000429F52 /* DelayAnimationAttributesViewModel.swift */; };
+		DD0EBD2521A694C300BA2F39 /* DocumentBrowserTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0EBD2421A694C300BA2F39 /* DocumentBrowserTransitionDelegate.swift */; };
 		DD1058BE218AECAA00FF7301 /* Car.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD1058BD218AECAA00FF7301 /* Car.scn */; };
 		DD1058C0218AECB000FF7301 /* House.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD1058BF218AECB000FF7301 /* House.scn */; };
 		DD1058C2218C0CE100FF7301 /* NodePositionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1058C1218C0CE100FF7301 /* NodePositionCell.swift */; };
@@ -119,6 +120,7 @@
 		DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesViewController.swift; sourceTree = "<group>"; };
 		DD0BFFC0217C599C00429F52 /* DelayAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DD0BFFC4217C761000429F52 /* DelayAnimationAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesViewModel.swift; sourceTree = "<group>"; };
+		DD0EBD2421A694C300BA2F39 /* DocumentBrowserTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserTransitionDelegate.swift; sourceTree = "<group>"; };
 		DD1058BA218AEA1F00FF7301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD1058BD218AECAA00FF7301 /* Car.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Car.scn; sourceTree = "<group>"; };
 		DD1058BF218AECB000FF7301 /* House.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = House.scn; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 			children = (
 				DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */,
 				DDBA24C32153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift */,
+				DD0EBD2421A694C300BA2F39 /* DocumentBrowserTransitionDelegate.swift */,
 			);
 			path = DocumentBrowser;
 			sourceTree = "<group>";
@@ -1078,6 +1081,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD1058C2218C0CE100FF7301 /* NodePositionCell.swift in Sources */,
+				DD0EBD2521A694C300BA2F39 /* DocumentBrowserTransitionDelegate.swift in Sources */,
 				DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */,
 				DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */,
 				DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */,

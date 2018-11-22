@@ -51,6 +51,7 @@ class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewCont
     func documentBrowser(_ controller: UIDocumentBrowserViewController, failedToImportDocumentAt documentURL: URL, error: Error?) {
         
     }
+    
 }
 
 // MARK: - Opening Document
@@ -115,15 +116,18 @@ extension DocumentBrowserViewControllerDelegate {
 
 extension DocumentBrowserViewControllerDelegate: SceneEditorDocumentDelegate {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: DefaultScene) {
-
-        State.currentDocument?.close()
-        State.currentDocument = nil
-        State.isEditingScene = false
-        
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didUpdateSceneContent scene: DefaultScene) {
         State.currentDocument?.scene = scene
+        State.currentDocument?.updateChangeCount(.done)
+        
+        State.currentDocument?.close(completionHandler: { (isClosedSuccessfully) in
+            if !isClosedSuccessfully {
+                return
+            }
+            
+            State.currentDocument = nil
+            State.isEditingScene = false
+        })
+    
+        controller.dismiss(animated: true, completion: nil)
     }
 }

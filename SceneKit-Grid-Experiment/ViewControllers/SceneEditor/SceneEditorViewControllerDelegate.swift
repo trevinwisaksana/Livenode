@@ -39,7 +39,6 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
 
 protocol SceneEditorDocumentDelegate: class {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didUpdateSceneContent scene: DefaultScene)
 }
 
 class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDelegateProtocol {

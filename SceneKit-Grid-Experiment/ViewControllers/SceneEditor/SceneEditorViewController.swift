@@ -13,7 +13,10 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Private Properties
     
+    // TODO: Change the name from delegate to Helper
     private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
+    
+    private var browserTransition: DocumentBrowserTransitioningDelegate?
     
     // MARK: - Internal Properties
     
@@ -30,15 +33,33 @@ final class SceneEditorViewController: UIViewController {
         return sceneView
     }()
     
-    public var currentScene: DefaultScene {
+    public var document: SceneDocument? {
         didSet {
-            sceneEditorDelegate?.sceneEditor(self, didUpdateSceneContent: currentScene)
+            if let document = document {
+                document.delegate = self
+            }
         }
     }
     
     public var documentName: String = ""
     
     public weak var sceneEditorDelegate: SceneEditorDocumentDelegate?
+    
+    public var transitionController: UIDocumentBrowserTransitionController? {
+        didSet {
+            if let controller = transitionController {
+                // Set the transition animation.
+                modalPresentationStyle = .custom
+                browserTransition = DocumentBrowserTransitioningDelegate(withTransitionController: controller)
+                transitioningDelegate = browserTransition
+                
+            } else {
+                modalPresentationStyle = .none
+                browserTransition = nil
+                transitioningDelegate = nil
+            }
+        }
+    }
     
     // MARK: - VC Lifecycle
     
@@ -56,15 +77,14 @@ final class SceneEditorViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        // TODO: Reset the current node highlighted and selected
-        sceneEditorDelegate?.sceneEditor(self, didUpdateSceneContent: currentScene)
+
         NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Setup
     
     init(sceneDocument: SceneDocument, delegate: SceneEditorDocumentDelegate) {
-        currentScene = sceneDocument.scene
+        document = sceneDocument
         sceneEditorDelegate = delegate
         
         super.init(nibName: nil, bundle: nil)
@@ -77,7 +97,7 @@ final class SceneEditorViewController: UIViewController {
     }
     
     private func setup() {
-        sceneView.scene = currentScene
+        sceneView.scene = document?.scene
         view.addSubview(sceneView)
         sceneView.fillInSuperview()
         
@@ -191,34 +211,50 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didModifyNodeColor(_ notification: Notification) {
-        viewControllerDelegate.sceneEditor(self, didModifyNodeColorUsing: notification, for: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didModifyNodeColorUsing: notification, for: scene)
     }
     
     // MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        viewControllerDelegate.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: scene)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
-        viewControllerDelegate.sceneEditor(self, touchesMovedWith: touches, at: sceneView, for: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, touchesMovedWith: touches, at: sceneView, for: scene)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        viewControllerDelegate.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: scene)
     }
     
     @objc
     private func didBeginPanning(_ gesture: UIPanGestureRecognizer) {
-        currentScene.limitCameraRotation(using: gesture)
+        document?.scene.limitCameraRotation(using: gesture)
     }
     
     @objc
     private func didBeginPinching(_ gesture: UIPinchGestureRecognizer) {
-        currentScene.adjustCameraZoom(using: gesture)
+        document?.scene.adjustCameraZoom(using: gesture)
     }
     
     @objc
@@ -238,12 +274,20 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapPlayButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didDisplayPresentationViewWith: currentScene, using: sender)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didDisplayPresentationViewWith: scene, using: sender)
     }
     
     @objc
     private func didTapBackButton(_ sender: UIBarButtonItem) {
-        sceneEditorDelegate?.sceneEditor(self, didFinishEditing: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        sceneEditorDelegate?.sceneEditor(self, didFinishEditing: scene)
     }
     
     @objc
@@ -258,7 +302,11 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapPlayAnimationButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didTapPlayAnimationButtonWith: sender, for: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didTapPlayAnimationButtonWith: sender, for: scene)
     }
     
     @objc
@@ -268,37 +316,65 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapCancelEditingNodePositionButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didTapCancelEditingNodePositionButton: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didTapCancelEditingNodePositionButton: scene)
     }
     
     @objc
     private func didFinishEdittingNodePositionButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didFinishEditingNodePositionButton: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didFinishEditingNodePositionButton: scene)
     }
     
     @objc
     private func didTapDoneEditingMoveAnimationButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didTapDoneEditingMoveAnimationButtonForScene: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didTapDoneEditingMoveAnimationButtonForScene: scene)
     }
     
     @objc
     private func didTapDoneAnimatingButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didFinishEditingAnimation: sender, for: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didFinishEditingAnimation: sender, for: scene)
     }
     
     @objc
     private func didSelectSceneActionButton(_ notification: Notification) {
-        viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: scene)
     }
     
     @objc
     private func didSelectNodeModel(_ notification: Notification) {
-        viewControllerDelegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: scene)
     }
     
     @objc
     private func didSelectNodeAnimation(_ notification: Notification) {
-        viewControllerDelegate.sceneEditor(self, didSelectNodeAnimationUsing: notification, for: currentScene)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didSelectNodeAnimationUsing: notification, for: scene)
     }
 
     @objc
@@ -314,7 +390,11 @@ final class SceneEditorViewController: UIViewController {
     // MARK: - External Properties
     
     func didTapAddAlertAnimationButton(_ sender: UIButton, animation: AlertAnimationAttributes) {
-        viewControllerDelegate.sceneEditor(self, didAddAlertAnimation: animation, for: currentScene, in: sceneView)
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didAddAlertAnimation: animation, for: scene, in: sceneView)
     }
     
     // MARK: - Device Configuration
@@ -332,4 +412,32 @@ final class SceneEditorViewController: UIViewController {
         }
     }
     
+}
+
+// MARK: - SceneDocumentDelegate
+
+extension SceneEditorViewController: SceneDocumentDelegate {
+    func sceneDocumentUpdateContent(_ document: SceneDocument) {
+        sceneView.scene = document.scene
+    }
+    
+    func sceneDocumentTransferBegan(_ document: SceneDocument) {
+//        progressBar.isHidden = false
+//        progressBar.observedProgress = document.progress
+    }
+    
+    func sceneDocumentTransferEnded(_ document: SceneDocument) {
+        
+    }
+    
+    func sceneDocumentSaveFailed(_ document: SceneDocument) {
+        let alert = UIAlertController(title: "Save Error", message: "An attempt to save the document failed", preferredStyle: .alert)
+        
+        let dismiss = UIAlertAction(title: "OK", style: .default) { (_) in
+            // just dismiss the alert.
+        }
+        
+        alert.addAction(dismiss)
+        present(alert, animated: true, completion: nil)
+    }
 }

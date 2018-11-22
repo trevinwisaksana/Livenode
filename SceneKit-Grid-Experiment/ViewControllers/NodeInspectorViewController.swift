@@ -57,21 +57,21 @@ extension NodeInspectorViewController: NodeInspectorPresentableViewDelegate {
     }
     
     func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdateNodePosition position: SCNVector3) {
-        sceneEditorViewController().currentScene.changeNodePosition(to: position)
+        sceneEditorViewController().document?.scene.changeNodePosition(to: position)
     }
     
     func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didAngleNodePosition angle: Float) {
-        sceneEditorViewController().currentScene.changeNodeRotation(toAngle: angle)
+        sceneEditorViewController().document?.scene.changeNodeRotation(toAngle: angle)
     }
     
-    // MARK: PlaneNodeInspectorDelegate
+    // MARK: - PlaneNodeInspectorDelegate
     
     func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdatePlaneWidth width: CGFloat) {
-        sceneEditorViewController().currentScene.modifyPlaneNode(width: width)
+        sceneEditorViewController().document?.scene.modifyPlaneNode(width: width)
     }
     
     func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdatePlaneLength length: CGFloat) {
-        sceneEditorViewController().currentScene.modifyPlaneNode(length: length)
+        sceneEditorViewController().document?.scene.modifyPlaneNode(length: length)
     }
     
     private func sceneEditorViewController() -> SceneEditorViewController {

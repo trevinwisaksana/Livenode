@@ -63,11 +63,11 @@ final class MoveAnimationAttributesViewController: UIViewController {
 
 extension MoveAnimationAttributesViewController: MoveAnimationAttributesViewDelegate {
     func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationLocation location: SCNVector3, forAnimationAtIndex index: Int) {
-        sceneEditorViewController().currentScene.didUpdateMoveAnimationLocation(location, forAnimationAtIndex: index)
+        sceneEditorViewController().document?.scene.didUpdateMoveAnimationLocation(location, forAnimationAtIndex: index)
     }
     
     func moveAnimationAttributesView(_ moveAnimationAttributesView: MoveAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int) {
-        sceneEditorViewController().currentScene.didUpdateAnimationDuration(duration, forAnimationAtIndex: index)
+        sceneEditorViewController().document?.scene.didUpdateAnimationDuration(duration, forAnimationAtIndex: index)
     }
     
     private func sceneEditorViewController() -> SceneEditorViewController {
@@ -82,10 +82,10 @@ extension MoveAnimationAttributesViewController: MoveAnimationAttributesViewDele
 extension MoveAnimationAttributesViewController {
     private func displayMoveAnimationTargetLocation() {
         guard let location = mainView.dataSource?.targetLocation else { return }
-        sceneEditorViewController().currentScene.displayMoveAnimationTargetLocation(location)
+        sceneEditorViewController().document?.scene.displayMoveAnimationTargetLocation(location)
     }
     
     private func hideMoveAnimationTargetLocation() {
-        sceneEditorViewController().currentScene.hideMoveAnimationTargetLocation()
+        sceneEditorViewController().document?.scene.hideMoveAnimationTargetLocation()
     }
 }
