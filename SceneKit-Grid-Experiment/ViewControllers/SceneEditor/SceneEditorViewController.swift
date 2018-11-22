@@ -137,11 +137,26 @@ final class SceneEditorViewController: UIViewController {
         navigationItem.setRightBarButtonItems([doneBarButton, animationCatalogBarButton, playBarButton], animated: true)
     }
     
+    // TODO: Reuse this when editing the position of the node
     func setupEditMoveAnimationNavigationItems() {
         let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelEditingMoveAnimationButton(_:)))
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneEditingMoveAnimationButton(_:)))
         
         title = "Select a point on the grid."
+        
+        navigationController?.navigationBar.barTintColor = .orange
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        
+        navigationItem.setLeftBarButton(cancelBarButton, animated: true)
+        navigationItem.setRightBarButtonItems([doneBarButton], animated: true)
+    }
+    
+    func setupEditNodePositionNavigationItems() {
+        let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelEditingNodePositionButton(_:)))
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didFinishEdittingNodePositionButton(_:)))
+        
+        title = "Drag the node to a point on the grid."
         
         navigationController?.navigationBar.barTintColor = .orange
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
@@ -249,6 +264,16 @@ final class SceneEditorViewController: UIViewController {
     @objc
     private func didTapCancelEditingMoveAnimationButton(_ sender: UIBarButtonItem) {
         setupAnimationNavigationItems()
+    }
+    
+    @objc
+    private func didTapCancelEditingNodePositionButton(_ sender: UIBarButtonItem) {
+        viewControllerDelegate.sceneEditor(self, didTapCancelEditingNodePositionButton: currentScene)
+    }
+    
+    @objc
+    private func didFinishEdittingNodePositionButton(_ sender: UIBarButtonItem) {
+        viewControllerDelegate.sceneEditor(self, didFinishEditingNodePositionButton: currentScene)
     }
     
     @objc

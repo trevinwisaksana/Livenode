@@ -10,11 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SceneKit-Grid-Experiment/ViewControllers/DocumentBrowser/DocumentBrowserViewControllerDelegate.swift"
-            timestampString = "564557154.040907"
+            timestampString = "564561121.533214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131">
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "sceneEditor(_:didUpdateSceneContent:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

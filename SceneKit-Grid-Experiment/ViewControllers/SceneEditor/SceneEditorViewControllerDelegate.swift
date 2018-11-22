@@ -22,9 +22,12 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didTapDoneEditingMoveAnimationButtonForScene scene: DefaultScene)
     
+    func sceneEditor(_ controller: SceneEditorViewController, didTapDoneEditingMoveAnimationButtonForScene scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didTapPlayAnimationButtonWith sender: UIBarButtonItem, for scene: DefaultScene)
+    func sceneEditor(_ controller: SceneEditorViewController, didTapCancelEditingNodePositionButton scene: DefaultScene)
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingAnimation sender: UIBarButtonItem, for scene: DefaultScene)
     
     func sceneEditor(_ controller: SceneEditorViewController, didAddAlertAnimation animation: AlertAnimationAttributes, for scene: DefaultScene, in sceneView: SCNView)
@@ -155,12 +158,14 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             scene.setNodeAnimationTarget()
         case .move:
             controller.panGesture.isEnabled = false
-            scene.didSelectScene(action: action)
+            controller.setupEditNodePositionNavigationItems()
         case .pin:
             controller.panGesture.isEnabled = true
         default:
-            scene.didSelectScene(action: action)
+            break
         }
+        
+        scene.didSelectScene(action: action)
         
         controller.presentedViewController?.dismiss(animated: true, completion: nil)
     }
@@ -196,6 +201,22 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
                 break
             }
         }
+    }
+    
+    // MARK: - Node Movement
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didTapCancelEditingNodePositionButton scene: DefaultScene) {
+        controller.setupDefaultNavigationItems()
+        controller.panGesture.isEnabled = true
+        
+        scene.didSelectScene(action: .pin)
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene) {
+        controller.setupDefaultNavigationItems()
+        controller.panGesture.isEnabled = true
+        
+        scene.didSelectScene(action: .pin)
     }
     
     // MARK: - Node Animation
