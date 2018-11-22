@@ -603,7 +603,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Scene Actions
     
-    public func didSelectScene(action: Action) {
+    public func didSelectSceneAction(_ action: Action) {
         switch action {
         case .cut:
             nodeSelected?.copy()

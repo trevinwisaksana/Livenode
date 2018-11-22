@@ -10,21 +10,14 @@ import UIKit
 import SceneKit
 
 public protocol SceneActionsMenuViewDelegate: class {
-    // TODO: Change to one function that accepts actions
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectCutButton button: UIButton)
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectCopyButton button: UIButton)
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectPasteButton button: UIButton)
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectDeleteButton button: UIButton)
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectMoveButton button: UIButton)
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectPinButton button: UIButton)
-    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectAnimateButton button: UIButton)
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectSceneActionButton button: UIButton)
 }
 
 public class SceneActionMenuView: UIView {
     
     // MARK: - Internal properties
     
-    private static let numberOfItemsInSection: Int = 7
+    private static let numberOfItemsInSection: Int = 6
     private let indexOflastItemInSection: Int = SceneActionMenuView.numberOfItemsInSection - 1
     
     private static let cellWidth: CGFloat = 80.0
@@ -114,31 +107,7 @@ extension SceneActionMenuView: UICollectionViewDelegateFlowLayout {
 // MARK: - SceneActionMenuCellDelegate
 
 extension SceneActionMenuView: SceneActionMenuCellDelegate {
-    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCutButton button: UIButton) {
-        delegate?.sceneActionMenuView(self, didSelectCutButton: button)
-    }
-    
-    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCopyButton button: UIButton) {
-        delegate?.sceneActionMenuView(self, didSelectCopyButton: button)
-    }
-    
-    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPasteButton button: UIButton) {
-        delegate?.sceneActionMenuView(self, didSelectPasteButton: button)
-    }
-    
-    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectDeleteButton button: UIButton) {
-        delegate?.sceneActionMenuView(self, didSelectDeleteButton: button)
-    }
-    
-    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectMoveButton button: UIButton) {
-        delegate?.sceneActionMenuView(self, didSelectMoveButton: button)
-    }
-    
-    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPinButton button: UIButton) {
-        delegate?.sceneActionMenuView(self, didSelectPinButton: button)
-    }
-    
-    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectAnimateButton button: UIButton) {
-        delegate?.sceneActionMenuView(self, didSelectAnimateButton: button)
+    public func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectSceneActionButton button: UIButton) {
+        delegate?.sceneActionMenuView(self, didSelectSceneActionButton: button)
     }
 }

@@ -148,24 +148,32 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     // MARK: - Scene Action Menu
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene) {
-        guard let action = notification.object as? Action else {
+        guard let action = notification.object as? String else {
             return
         }
         
         switch action {
-        case .animate:
+        case Action.animate.capitalized:
             controller.setupAnimationNavigationItems()
             scene.setNodeAnimationTarget()
-        case .move:
+        case Action.move.capitalized:
             controller.panGesture.isEnabled = false
             controller.setupEditNodePositionNavigationItems()
-        case .pin:
+            scene.didSelectSceneAction(.move)
+        case Action.pin.capitalized:
             controller.panGesture.isEnabled = true
+            scene.didSelectSceneAction(.pin)
+        case Action.delete.capitalized:
+            scene.didSelectSceneAction(.delete)
+        case Action.copy.capitalized:
+            scene.didSelectSceneAction(.copy)
+        case Action.paste.capitalized:
+            scene.didSelectSceneAction(.paste)
+        case Action.cut.capitalized:
+            scene.didSelectSceneAction(.cut)
         default:
             break
         }
-        
-        scene.didSelectScene(action: action)
         
         controller.presentedViewController?.dismiss(animated: true, completion: nil)
     }
@@ -209,14 +217,14 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         controller.setupDefaultNavigationItems()
         controller.panGesture.isEnabled = true
         
-        scene.didSelectScene(action: .pin)
+        scene.didSelectSceneAction(.pin)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene) {
         controller.setupDefaultNavigationItems()
         controller.panGesture.isEnabled = true
         
-        scene.didSelectScene(action: .pin)
+        scene.didSelectSceneAction(.pin)
     }
     
     // MARK: - Node Animation

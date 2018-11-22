@@ -9,13 +9,7 @@
 import UIKit
 
 public protocol SceneActionMenuCellDelegate: class {
-    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCutButton button: UIButton)
-    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectCopyButton button: UIButton)
-    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPasteButton button: UIButton)
-    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectDeleteButton button: UIButton)
-    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectMoveButton button: UIButton)
-    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectPinButton button: UIButton)
-    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectAnimateButton button: UIButton)
+    func sceneActionMenuCell(_ sceneActionMenuCell: SceneActionMenuCell, didSelectSceneActionButton button: UIButton)
 }
 
 public class SceneActionMenuCell: UICollectionViewCell {
@@ -86,8 +80,6 @@ public class SceneActionMenuCell: UICollectionViewCell {
         case 4:
             actionButton.setTitle(Action.move.capitalized, for: .normal)
         case 5:
-            actionButton.setTitle(Action.pin.capitalized, for: .normal)
-        case 6:
             actionButton.setTitle(Action.animate.capitalized, for: .normal)
         default:
             break
@@ -96,25 +88,7 @@ public class SceneActionMenuCell: UICollectionViewCell {
     
     @objc
     private func didSelectActionButton(_ sender: UIButton) {
-        switch sender.titleLabel?.text {
-        case Action.cut.capitalized:
-            delegate?.sceneActionMenuCell(self, didSelectCutButton: sender)
-        case Action.copy.capitalized:
-            delegate?.sceneActionMenuCell(self, didSelectCopyButton: sender)
-        case Action.paste.capitalized:
-            delegate?.sceneActionMenuCell(self, didSelectPasteButton: sender)
-        case Action.delete.capitalized:
-            delegate?.sceneActionMenuCell(self, didSelectDeleteButton: sender)
-        case Action.move.capitalized:
-            // TODO: Change the Move title to Pin when node selected isMovable
-            delegate?.sceneActionMenuCell(self, didSelectMoveButton: sender)
-        case Action.pin.capitalized:
-            delegate?.sceneActionMenuCell(self, didSelectPinButton: sender)
-        case Action.animate.capitalized:
-            delegate?.sceneActionMenuCell(self, didSelectAnimateButton: sender)
-        default:
-            break
-        }
+        delegate?.sceneActionMenuCell(self, didSelectSceneActionButton: sender)
     }
     
 }
