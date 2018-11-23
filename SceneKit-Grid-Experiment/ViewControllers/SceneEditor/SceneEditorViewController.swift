@@ -13,7 +13,6 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    // TODO: Change the name from delegate to Helper
     private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
     
     private var browserTransition: DocumentBrowserTransitioningDelegate?
@@ -427,7 +426,7 @@ extension SceneEditorViewController: SceneDocumentDelegate {
     }
     
     func sceneDocumentTransferEnded(_ document: SceneDocument) {
-        
+//        progressBar.isHidden = true
     }
     
     func sceneDocumentSaveFailed(_ document: SceneDocument) {

@@ -82,7 +82,6 @@ final class PresentationViewController: UIViewController {
         view.addSubview(sceneView)
         view.addSubview(feedbackView)
         
-        sceneView.delegate = delegate
         sceneView.fillInSuperview()
         
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(didPinchToDismiss(_:)))
@@ -195,4 +194,5 @@ extension PresentationViewController: ARSessionDelegate {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    
 }

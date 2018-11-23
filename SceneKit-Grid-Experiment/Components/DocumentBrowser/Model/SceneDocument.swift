@@ -23,7 +23,6 @@ class SceneDocument: UIDocument {
     
     public var scene: DefaultScene = DefaultScene() {
         didSet {
-            // Notify the delegate when the text changes.
             if let currentDelegate = delegate {
                 currentDelegate.sceneDocumentUpdateContent(self)
             }
