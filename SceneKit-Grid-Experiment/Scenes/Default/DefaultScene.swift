@@ -105,6 +105,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func setup() {
+        
+        
         rootNode.addChildNode(gridContainer)
         rootNode.addChildNode(presentationNodeContainer)
         rootNode.addChildNode(floorNode)
@@ -510,11 +512,20 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         guard let nodeAnimationTarget = nodeAnimationTarget else {
             return
         }
-    
-        let text = SCNText(string: "!", extrusionDepth: 2)
+        
+        let text = SCNText(string: "!", extrusionDepth: 0)
         text.firstMaterial?.isDoubleSided = true
         
+        // TODO: Change the white background to an image of a popover
+        let background = SCNPlane(width: 10, height: 10)
+        background.firstMaterial?.diffuse.contents = UIColor.white
+        
+        let backgroundNode = SCNNode(geometry: background)
+        background.firstMaterial?.isDoubleSided = true
+        
         let alertNode = SCNNode(geometry: text)
+//        alertNode.addChildNode(backgroundNode)
+        
         alertNode.name = "AlertNode"
         alertNode.changeColor(to: .green)
         alertNode.scale = SCNVector3(0.15, 0.15, 0.15)
@@ -534,7 +545,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         lookAtConstraint.localFront = SCNVector3(0, 0, 0)
         alertNode.constraints = [lookAtConstraint]
         
-        let fadeInAnimation = SCNAction.fadeIn(duration: duration)
+        // TODO: Fix the duration slider because it's not rounding up numbers
+        let fadeInAnimation = SCNAction.fadeIn(duration: 0.2)
         fadeInAnimation.animationType = .alert
         fadeInAnimation.timingMode = .easeInEaseOut
         nodeAnimationTarget.addAction(fadeInAnimation, forKey: .alert)

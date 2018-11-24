@@ -26,9 +26,8 @@ final class AlertAnimationPopoverViewController: UIViewController {
     // MARK: - Setup
     
     private func setup() {
-        
-        
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
+        
         view.backgroundColor = .white
         view.layer.shadowColor = UIColor.clear.cgColor
     }
