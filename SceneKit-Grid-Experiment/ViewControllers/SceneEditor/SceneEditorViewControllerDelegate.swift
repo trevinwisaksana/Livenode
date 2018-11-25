@@ -188,6 +188,11 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     // MARK: - Object Catalog
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene) {
+        
+        controller.setupEditNodePositionNavigationItems()
+        scene.didSelectSceneAction(.move)
+        scene.showGrid()
+        
         if let nodeModel = notification.object as? NodeModel {
             switch nodeModel {
             case .box:
@@ -216,13 +221,16 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         controller.setupDefaultNavigationItems()
         controller.panGesture.isEnabled = true
         
+        scene.hideGrid()
         scene.didSelectSceneAction(.pin)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene) {
+        
         controller.setupDefaultNavigationItems()
         controller.panGesture.isEnabled = true
         
+        scene.hideGrid()
         scene.didSelectSceneAction(.pin)
     }
     

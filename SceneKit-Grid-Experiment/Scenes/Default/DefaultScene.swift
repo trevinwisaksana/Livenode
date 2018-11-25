@@ -31,20 +31,21 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     private var cameraNode: SCNNode = {
         let node = SCNNode(geometry: nil)
-        node.name = "CameraNode"
+        node.name = "cameraNode"
         node.position = SCNVector3(0, 0, 50)
         return node
     }()
     
     private var cameraOrbit: SCNNode = {
         let node = SCNNode(geometry: nil)
-        node.name = "CameraOrbit"
+        node.name = "cameraOrbit"
         node.eulerAngles = SCNVector3(-0.26, -0.025, 0)
         return node
     }()
     
     private var gridContainer: SCNNode = {
         let node = SCNNode(geometry: nil)
+        node.name = "gridContainer"
         return node
     }()
     
@@ -105,8 +106,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func setup() {
-        
-        
         rootNode.addChildNode(gridContainer)
         rootNode.addChildNode(presentationNodeContainer)
         rootNode.addChildNode(floorNode)
@@ -116,6 +115,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         rootNode.addChildNode(cameraOrbit)
         
         createGrid(with: CGSize(width: DefaultScene.gridWidth, height: DefaultScene.gridWidth))
+        
+        hideGrid()
         
         background.contents = UIColor.aluminium
     }
@@ -151,6 +152,20 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
                 
                 gridContainer.addChildNode(tileNode)
             }
+        }
+    }
+    
+    func hideGrid() {
+        let gridContainer = rootNode.childNode(withName: "gridContainer", recursively: true)
+        gridContainer?.enumerateChildNodes { (node, stop) in
+            node.isHidden = true
+        }
+    }
+    
+    func showGrid() {
+        let gridContainer = rootNode.childNode(withName: "gridContainer", recursively: true)
+        gridContainer?.enumerateChildNodes { (node, stop) in
+            node.isHidden = false
         }
     }
     
@@ -646,7 +661,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func limitCameraRotation(using panGesture: UIPanGestureRecognizer) {
-        guard let cameraOrbit = rootNode.childNode(withName: "CameraOrbit", recursively: true) else {
+        guard let cameraOrbit = rootNode.childNode(withName: "cameraOrbit", recursively: true) else {
             return
         }
         
@@ -676,7 +691,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func adjustCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
-        guard let camera = rootNode.childNode(withName: "CameraNode", recursively: true)?.camera else {
+        guard let camera = rootNode.childNode(withName: "cameraNode", recursively: true)?.camera else {
             return
         }
         
