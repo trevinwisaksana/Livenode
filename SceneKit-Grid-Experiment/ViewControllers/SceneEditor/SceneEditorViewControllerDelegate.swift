@@ -157,6 +157,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             scene.setNodeAnimationTarget()
             
         case Action.move.capitalized:
+            // TODO: Create a more sophistcated way to disable pan gesture when node is being moved
             controller.panGesture.isEnabled = false
             controller.setupEditNodePositionNavigationItems()
             
@@ -317,6 +318,10 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             return
         }
         
+        if nodeSelected == State.nodeSelected {
+            controller.panGesture.isEnabled = false
+        }
+        
         scene.move(targetNode: nodeSelected, in: sceneView)
     }
     
@@ -329,7 +334,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
-        
+        controller.panGesture.isEnabled = true
     }
     
 }

@@ -656,7 +656,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         case .delete:
             nodeSelected?.removeFromParentNode()
         case .move:
-            // TODO: Fix issue where node inserted cannot be moved immediately
             nodeSelected?.isMovable = true
         case .pin:
             nodeSelected?.isMovable = false
