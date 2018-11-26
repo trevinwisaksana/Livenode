@@ -155,21 +155,30 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         case Action.animate.capitalized:
             controller.setupAnimationNavigationItems()
             scene.setNodeAnimationTarget()
+            
         case Action.move.capitalized:
             controller.panGesture.isEnabled = false
             controller.setupEditNodePositionNavigationItems()
+            
+            scene.showGrid()
             scene.didSelectSceneAction(.move)
+            
         case Action.pin.capitalized:
             controller.panGesture.isEnabled = true
             scene.didSelectSceneAction(.pin)
+            
         case Action.delete.capitalized:
             scene.didSelectSceneAction(.delete)
+            
         case Action.copy.capitalized:
             scene.didSelectSceneAction(.copy)
+            
         case Action.paste.capitalized:
             scene.didSelectSceneAction(.paste)
+            
         case Action.cut.capitalized:
             scene.didSelectSceneAction(.cut)
+            
         default:
             break
         }
@@ -190,7 +199,6 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene) {
         
         controller.setupEditNodePositionNavigationItems()
-        scene.didSelectSceneAction(.move)
         scene.showGrid()
         
         if let nodeModel = notification.object as? NodeModel {
@@ -212,6 +220,10 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             default:
                 break
             }
+            
+            scene.didSelectSceneAction(.move)
+            
+            controller.presentedViewController?.dismiss(animated: true, completion: nil)
         }
     }
     

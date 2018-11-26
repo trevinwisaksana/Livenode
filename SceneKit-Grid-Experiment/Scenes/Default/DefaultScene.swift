@@ -265,6 +265,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
+        nodeSelected = boxNode
+        
         presentationNodeContainer.addChildNode(boxNode)
     }
     
@@ -281,6 +283,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
         }
+        
+        nodeSelected = sphereNode
         
         presentationNodeContainer.addChildNode(sphereNode)
     }
@@ -299,6 +303,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
+        nodeSelected = pyramidNode
+        
         presentationNodeContainer.addChildNode(pyramidNode)
     }
     
@@ -316,6 +322,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
+        nodeSelected = planeNode
+        
         presentationNodeContainer.addChildNode(planeNode)
     }
     
@@ -331,6 +339,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             return
         }
+        
+        nodeSelected = carNode
         
         presentationNodeContainer.addChildNode(carNode)
     }
@@ -349,6 +359,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
+        nodeSelected = houseNode
+        
         presentationNodeContainer.addChildNode(houseNode)
     }
     
@@ -366,6 +378,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
+        nodeSelected = seaplaneNode
+        
         presentationNodeContainer.addChildNode(seaplaneNode)
     }
     
@@ -374,6 +388,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
         let isCorrectNodeSelected = targetNode.name != "nodeHighlight" && targetNode.name != "floorNode"
         if didSelectANode && isCorrectNodeSelected && nodeSelected?.isMovable ?? false {
+            // TODO: Disable panning
+            
             let nodeXPos = targetNode.position.x
             let nodeZPos = targetNode.position.z
             
@@ -640,6 +656,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         case .delete:
             nodeSelected?.removeFromParentNode()
         case .move:
+            // TODO: Fix issue where node inserted cannot be moved immediately
             nodeSelected?.isMovable = true
         case .pin:
             nodeSelected?.isMovable = false
