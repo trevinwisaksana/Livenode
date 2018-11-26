@@ -63,6 +63,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let node = SCNNode(geometry: floorGeometry)
         node.position = SCNVector3(0, -0.1, 0)
         node.name = "floorNode"
+        
         node.changeColor(to: .white)
         
         return node

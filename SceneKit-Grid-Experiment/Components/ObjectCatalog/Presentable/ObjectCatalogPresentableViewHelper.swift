@@ -61,6 +61,7 @@ public enum NodeModel: String {
     case house
     case car
     case seaplane
+    case floor
     
     var scnFilename: String {
         return rawValue.capitalized + ".scn"

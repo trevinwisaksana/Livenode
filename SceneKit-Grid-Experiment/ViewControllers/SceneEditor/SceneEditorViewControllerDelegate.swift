@@ -49,7 +49,8 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         let location = sender.location(in: controller.view)
         
         // TODO: Create a method in Scene View that determines if a node or a floor is selected
-        if sceneView.hitTest(location, options: nil).first?.node == nil {
+        guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node,
+              nodeSelected.name != "floorNode" else {
             return
         }
         
