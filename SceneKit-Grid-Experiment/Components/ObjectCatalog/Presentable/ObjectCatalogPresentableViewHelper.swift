@@ -25,7 +25,8 @@ public struct ObjectCatalogModelFactory {
             }
             
             let nodeModel = nodeModels[objectModelIndex]
-            objectCatalogModels.append(ObjectCatalogModel(objectModelScene: modelScene, nodeModel: nodeModel))
+            let objectCatalogModel = ObjectCatalogModel(objectModelScene: modelScene, nodeModel: nodeModel)
+            objectCatalogModels.append(objectCatalogModel)
         }
     
         return objectCatalogModels

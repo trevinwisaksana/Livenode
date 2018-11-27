@@ -15,6 +15,10 @@ public class ObjectCatalogCell: UICollectionViewCell {
     
     private lazy var objectSceneView: SCNView = {
         let sceneView = SCNView(frame: .zero)
+        sceneView.antialiasingMode = .none
+        sceneView.isJitteringEnabled = false
+        sceneView.rendersContinuously = false
+        sceneView.isPlaying = false
         return sceneView
     }()
     
