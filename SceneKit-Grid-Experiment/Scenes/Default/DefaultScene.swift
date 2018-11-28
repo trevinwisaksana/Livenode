@@ -310,6 +310,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func insertPlane() {
+        // TODO: Fix issue where plane cannot be moved easily if it's too big
         let plane = SCNPlane(width: 5, height: 5)
         let planeNode = SCNNode(geometry: plane)
         

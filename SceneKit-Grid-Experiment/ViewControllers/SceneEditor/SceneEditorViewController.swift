@@ -199,6 +199,7 @@ final class SceneEditorViewController: UIViewController {
     }
     
     private func setupSceneViewGestures() {
+        // TODO: Add two finger pan gesture to pan around the scene
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
         sceneView.addGestureRecognizer(panGesture)
         
