@@ -201,6 +201,7 @@ final class SceneEditorViewController: UIViewController {
     
     private func setupSceneViewGestures() {
         cameraNavigationPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
+        cameraNavigationPanGesture.maximumNumberOfTouches = 1
         
         cameraPanningPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
         cameraPanningPanGesture.minimumNumberOfTouches = 2
