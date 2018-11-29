@@ -159,14 +159,14 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             
         case Action.move.capitalized:
             // TODO: Create a more sophistcated way to disable pan gesture when node is being moved
-            controller.panGesture.isEnabled = false
+            controller.cameraNavigationPanGesture.isEnabled = false
             controller.setupEditNodePositionNavigationItems()
             
             scene.showGrid()
             scene.didSelectSceneAction(.move)
             
         case Action.pin.capitalized:
-            controller.panGesture.isEnabled = true
+            controller.cameraNavigationPanGesture.isEnabled = true
             scene.didSelectSceneAction(.pin)
             
         case Action.delete.capitalized:
@@ -233,7 +233,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     
     func sceneEditor(_ controller: SceneEditorViewController, didTapCancelEditingNodePositionButton scene: DefaultScene) {
         controller.setupDefaultNavigationItems()
-        controller.panGesture.isEnabled = true
+        controller.cameraNavigationPanGesture.isEnabled = true
         
         scene.hideGrid()
         scene.didSelectSceneAction(.pin)
@@ -242,7 +242,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene) {
         
         controller.setupDefaultNavigationItems()
-        controller.panGesture.isEnabled = true
+        controller.cameraNavigationPanGesture.isEnabled = true
         
         scene.hideGrid()
         scene.didSelectSceneAction(.pin)
@@ -320,7 +320,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         }
         
         if nodeSelected == State.nodeSelected {
-            controller.panGesture.isEnabled = false
+            controller.cameraNavigationPanGesture.isEnabled = false
         }
         
         scene.move(targetNode: nodeSelected, in: sceneView)
@@ -335,7 +335,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
-        controller.panGesture.isEnabled = true
+        controller.cameraNavigationPanGesture.isEnabled = true
     }
     
 }

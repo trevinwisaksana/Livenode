@@ -20,7 +20,8 @@ final class SceneEditorViewController: UIViewController {
     // MARK: - Internal Properties
     
     var longPressGesture: UILongPressGestureRecognizer!
-    var panGesture: UIPanGestureRecognizer!
+    var cameraNavigationPanGesture: UIPanGestureRecognizer!
+    var cameraPanningPanGesture: UIPanGestureRecognizer!
     var pinchGesture: UIPinchGestureRecognizer!
     
     // MARK: - Public Properties
@@ -199,9 +200,12 @@ final class SceneEditorViewController: UIViewController {
     }
     
     private func setupSceneViewGestures() {
-        // TODO: Add two finger pan gesture to pan around the scene
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
-        sceneView.addGestureRecognizer(panGesture)
+        cameraNavigationPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
+        
+        cameraPanningPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
+        cameraPanningPanGesture.minimumNumberOfTouches = 2
+        
+        sceneView.addGestureRecognizer(cameraNavigationPanGesture)
         
         pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didBeginPinching(_:)))
         sceneView.addGestureRecognizer(pinchGesture)
