@@ -200,10 +200,10 @@ final class SceneEditorViewController: UIViewController {
     }
     
     private func setupSceneViewGestures() {
-        cameraNavigationPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
+        cameraNavigationPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginNavigatingCamera(_:)))
         cameraNavigationPanGesture.maximumNumberOfTouches = 1
         
-        cameraPanningPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanning(_:)))
+        cameraPanningPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginNavigatingCamera(_:)))
         cameraPanningPanGesture.minimumNumberOfTouches = 2
         
         sceneView.addGestureRecognizer(cameraNavigationPanGesture)
@@ -253,8 +253,13 @@ final class SceneEditorViewController: UIViewController {
     }
     
     @objc
-    private func didBeginPanning(_ gesture: UIPanGestureRecognizer) {
+    private func didBeginNavigatingCamera(_ gesture: UIPanGestureRecognizer) {
         document?.scene.limitCameraRotation(using: gesture)
+    }
+    
+    @objc
+    private func didBeginPanningCamera(_ gesture: UIPanGestureRecognizer) {
+        
     }
     
     @objc
