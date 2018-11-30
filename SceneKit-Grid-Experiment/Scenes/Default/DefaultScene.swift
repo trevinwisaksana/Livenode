@@ -699,8 +699,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             heightRatio = 0.005
         }
         
-        cameraOrbit.eulerAngles.y = (-2 * Float.pi) * widthRatio
-        cameraOrbit.eulerAngles.x = -Float.pi * heightRatio
+        if panGesture.state == .changed {
+            cameraOrbit.eulerAngles.y = (-2 * Float.pi) * widthRatio
+            cameraOrbit.eulerAngles.x = -Float.pi * heightRatio
+        }
         
         if panGesture.state == .ended {
             lastWidthRatio = widthRatio.truncatingRemainder(dividingBy: 1)
@@ -708,21 +710,35 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
     }
     
-    func adjustCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
+    func didAdjustCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
         guard let camera = rootNode.childNode(withName: "cameraNode", recursively: true)?.camera else {
             return
         }
         
-        if camera.fieldOfView <= 5 {
-            // TODO: Fix camera gitter
-            camera.fieldOfView = 5.01
-        } else {
-            camera.fieldOfView -= (pinchGesture.velocity / pinchAttenuation)
+        if pinchGesture.state == .changed {
+            if camera.fieldOfView <= 5 {
+                // TODO: Fix camera gitter
+                camera.fieldOfView = 5.01
+            } else {
+                camera.fieldOfView -= (pinchGesture.velocity / pinchAttenuation)
+            }
         }
     }
     
-    func rotateCamera(using pinchGesture: UIPinchGestureRecognizer) {
+    func didPanCamera(using panGesture: UIPanGestureRecognizer) {
+        guard let cameraNode = rootNode.childNode(withName: "cameraNode", recursively: true) else {
+            return
+        }
         
+        guard let view = panGesture.view else { return }
+        let translation = panGesture.translation(in: view)
+        
+        let xValue = translation.x * 0.002
+        let yValue = translation.y * 0.002
+        
+        if panGesture.state == .changed {
+            cameraNode.localTranslate(by: SCNVector3(-xValue, yValue, 0.0))
+        }
     }
     
     // MARK: - Utilities

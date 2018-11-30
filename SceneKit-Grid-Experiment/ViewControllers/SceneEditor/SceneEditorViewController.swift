@@ -48,11 +48,9 @@ final class SceneEditorViewController: UIViewController {
     public var transitionController: UIDocumentBrowserTransitionController? {
         didSet {
             if let controller = transitionController {
-                // Set the transition animation.
                 modalPresentationStyle = .custom
                 browserTransition = DocumentBrowserTransitioningDelegate(withTransitionController: controller)
                 transitioningDelegate = browserTransition
-                
             } else {
                 modalPresentationStyle = .none
                 browserTransition = nil
@@ -203,10 +201,11 @@ final class SceneEditorViewController: UIViewController {
         cameraNavigationPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginNavigatingCamera(_:)))
         cameraNavigationPanGesture.maximumNumberOfTouches = 1
         
-        cameraPanningPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginNavigatingCamera(_:)))
+        cameraPanningPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didBeginPanningCamera(_:)))
         cameraPanningPanGesture.minimumNumberOfTouches = 2
         
         sceneView.addGestureRecognizer(cameraNavigationPanGesture)
+        sceneView.addGestureRecognizer(cameraPanningPanGesture)
         
         pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didBeginPinching(_:)))
         sceneView.addGestureRecognizer(pinchGesture)
@@ -259,12 +258,12 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didBeginPanningCamera(_ gesture: UIPanGestureRecognizer) {
-        
+        document?.scene.didPanCamera(using: gesture)
     }
     
     @objc
     private func didBeginPinching(_ gesture: UIPinchGestureRecognizer) {
-        document?.scene.adjustCameraZoom(using: gesture)
+        document?.scene.didAdjustCameraZoom(using: gesture)
     }
     
     @objc
@@ -443,9 +442,7 @@ extension SceneEditorViewController: SceneDocumentDelegate {
     func sceneDocumentSaveFailed(_ document: SceneDocument) {
         let alert = UIAlertController(title: "Save Error", message: "An attempt to save the document failed", preferredStyle: .alert)
         
-        let dismiss = UIAlertAction(title: "OK", style: .default) { (_) in
-            // just dismiss the alert.
-        }
+        let dismiss = UIAlertAction(title: "OK", style: .default)
         
         alert.addAction(dismiss)
         present(alert, animated: true, completion: nil)
