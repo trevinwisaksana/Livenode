@@ -21,6 +21,7 @@
 		DD14E15B219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */; };
 		DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F66720672FBD005E838C /* AppDelegate.swift */; };
 		DD20F67120672FBD005E838C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67020672FBD005E838C /* Assets.xcassets */; };
+		DD2234B621B27D6A0041AD70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1058B9218AEA1F00FF7301 /* LaunchScreen.storyboard */; };
 		DD2A55E720DD34EF00EA00ED /* ObjectCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */; };
 		DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E820DE12AA00EA00ED /* Constants.swift */; };
 		DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */; };
@@ -132,6 +133,7 @@
 		DD20F66720672FBD005E838C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD20F67520672FBD005E838C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD2234B521B277750041AD70 /* SceneKit-Grid-Experiment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SceneKit-Grid-Experiment.entitlements"; sourceTree = "<group>"; };
 		DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewController.swift; sourceTree = "<group>"; };
 		DD2A55E820DE12AA00EA00ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogCell.swift; sourceTree = "<group>"; };
@@ -272,14 +274,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		DD1058B8218AEA1F00FF7301 /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				DD1058B9218AEA1F00FF7301 /* LaunchScreen.storyboard */,
-			);
-			path = Storyboard;
-			sourceTree = "<group>";
-		};
 		DD20F65B20672FBD005E838C = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +293,7 @@
 		DD20F66620672FBD005E838C /* SceneKit-Grid-Experiment */ = {
 			isa = PBXGroup;
 			children = (
+				DD2234B521B277750041AD70 /* SceneKit-Grid-Experiment.entitlements */,
 				DD20F66720672FBD005E838C /* AppDelegate.swift */,
 				DD68C2192110688A0061100F /* State.swift */,
 				DD638DBC20AC2D3800395557 /* ViewControllers */,
@@ -307,7 +302,7 @@
 				DD638DBE20AC2D4800395557 /* Scenes */,
 				DD638DC820AC64E800395557 /* Extensions */,
 				DD2A55EA20DE12B000EA00ED /* Helpers */,
-				DD1058B8218AEA1F00FF7301 /* Storyboard */,
+				DD1058B9218AEA1F00FF7301 /* LaunchScreen.storyboard */,
 				DD20F67020672FBD005E838C /* Assets.xcassets */,
 				DD20F67520672FBD005E838C /* Info.plist */,
 			);
@@ -1032,6 +1027,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1061,6 +1061,7 @@
 				DD1058CC218C39E600FF7301 /* Building.scn in Resources */,
 				DDEF326120DF797F00FEE793 /* Pyramid.scn in Resources */,
 				DD80A77B219334FC00441CC1 /* Sphere.scn in Resources */,
+				DD2234B621B27D6A0041AD70 /* LaunchScreen.storyboard in Resources */,
 				DDCCAA93219D00CE0071FE7A /* Plane.scn in Resources */,
 				DDEF325E20DF776100FEE793 /* Box.scn in Resources */,
 				DD20F67120672FBD005E838C /* Assets.xcassets in Resources */,
@@ -1305,12 +1306,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SceneKit-Grid-Experiment/SceneKit-Grid-Experiment.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9ME882KZTA;
 				INFOPLIST_FILE = "SceneKit-Grid-Experiment/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trevinwisaksana.Livenote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twisaksanaa.livenode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1321,12 +1323,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SceneKit-Grid-Experiment/SceneKit-Grid-Experiment.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9ME882KZTA;
 				INFOPLIST_FILE = "SceneKit-Grid-Experiment/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trevinwisaksana.Livenote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twisaksanaa.livenode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
