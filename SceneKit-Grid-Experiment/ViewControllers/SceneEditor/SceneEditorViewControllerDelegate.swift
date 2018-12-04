@@ -255,6 +255,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             switch animation {
             case .move:
                 controller.setupEditMoveAnimationNavigationItems()
+                scene.showGrid()
                 scene.isSelectingAnimationTargetLocation = true
                 
                 controller.presentedViewController?.dismiss(animated: true, completion: nil)
@@ -292,6 +293,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         scene.addMoveAnimation(animation)
         
         scene.isSelectingAnimationTargetLocation = false
+        scene.hideGrid()
         scene.resetLastNodeSelected()
         
         controller.setupAnimationNavigationItems()

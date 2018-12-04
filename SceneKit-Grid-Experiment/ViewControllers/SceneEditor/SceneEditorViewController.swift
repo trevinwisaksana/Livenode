@@ -320,6 +320,12 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapCancelEditingMoveAnimationButton(_ sender: UIBarButtonItem) {
+        guard let scene = document?.scene else {
+            fatalError("No scene found.")
+        }
+        
+        scene.hideGrid()
+        
         setupAnimationNavigationItems()
     }
     
