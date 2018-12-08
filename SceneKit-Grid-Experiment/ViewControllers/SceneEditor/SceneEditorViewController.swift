@@ -33,13 +33,7 @@ final class SceneEditorViewController: UIViewController {
         return sceneView
     }()
     
-    public var document: SceneDocument? {
-        didSet {
-            if let document = document {
-                document.delegate = self
-            }
-        }
-    }
+    public var document: SceneDocument?
     
     public var documentName: String = ""
     
@@ -82,10 +76,12 @@ final class SceneEditorViewController: UIViewController {
     // MARK: - Setup
     
     init(sceneDocument: SceneDocument, delegate: SceneEditorDocumentDelegate) {
-        document = sceneDocument
-        sceneEditorDelegate = delegate
-        
         super.init(nibName: nil, bundle: nil)
+        
+        document = sceneDocument
+        document?.delegate = self
+        
+        sceneEditorDelegate = delegate
         
         documentName = sceneDocument.localizedName
     }

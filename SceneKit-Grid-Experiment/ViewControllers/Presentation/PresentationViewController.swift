@@ -32,6 +32,17 @@ final class PresentationViewController: UIViewController {
         return view
     }()
     
+    private var exitButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setTitle("Exit", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .yellow
+        button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(didTapExitButton(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private var currentScene: DefaultScene?
     
     // MARK: - Public Properties
@@ -62,7 +73,6 @@ final class PresentationViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        // TODO: Fix issue where scene is reset after dismissing view controller
         sceneView.session.pause()
     }
     
@@ -80,7 +90,10 @@ final class PresentationViewController: UIViewController {
     
     private func setup() {
         view.addSubview(sceneView)
+        view.sendSubviewToBack(sceneView)
+        
         view.addSubview(feedbackView)
+        view.addSubview(exitButton)
         
         sceneView.fillInSuperview()
         
@@ -97,7 +110,11 @@ final class PresentationViewController: UIViewController {
             feedbackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             feedbackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: feedbackViewBottomMargin),
             feedbackView.widthAnchor.constraint(lessThanOrEqualToConstant: feedbackViewWidth),
-            feedbackView.heightAnchor.constraint(greaterThanOrEqualToConstant: feedbackViewHeight)
+            feedbackView.heightAnchor.constraint(greaterThanOrEqualToConstant: feedbackViewHeight),
+            
+            exitButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            exitButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            exitButton.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
 
@@ -126,6 +143,11 @@ final class PresentationViewController: UIViewController {
         
         let translation = hitTestResult.worldTransform.columns.3
         delegate.addPresentingNode(to: sceneView, using: currentScene, at: translation)
+    }
+    
+    @objc
+    private func didTapExitButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Device Configuration
@@ -190,6 +212,7 @@ extension PresentationViewController: ARSessionDelegate {
                 alertController.dismiss(animated: true, completion: nil)
                 self.resetTracking()
             }
+            
             alertController.addAction(restartAction)
             self.present(alertController, animated: true, completion: nil)
         }

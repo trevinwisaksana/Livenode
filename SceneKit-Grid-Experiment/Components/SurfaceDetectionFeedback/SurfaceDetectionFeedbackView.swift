@@ -60,6 +60,9 @@ public class SurfaceDetectionFeedbackView: UIView {
         case .normal where frame.anchors.isEmpty:
             message = "Move the device around to detect horizontal and vertical surfaces."
             
+        case .normal:
+            message = "Tap on the screen to insert the 3D models."
+            
         case .notAvailable:
             message = "Tracking unavailable."
             
