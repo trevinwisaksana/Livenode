@@ -64,7 +64,6 @@ final class PresentationViewController: UIViewController {
         configuration.planeDetection = [.horizontal, .vertical]
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         sceneView.session.run(configuration)
-        
         sceneView.session.delegate = self
         
         UIApplication.shared.isIdleTimerDisabled = true
@@ -209,6 +208,11 @@ extension PresentationViewController: ARSessionDelegate {
             // Present an alert informing about the error that has occurred.
             let alertController = UIAlertController(title: "The AR session failed.", message: errorMessage, preferredStyle: .alert)
             let restartAction = UIAlertAction(title: "Restart Session", style: .default) { _ in
+                if errorMessage.contains("Unsupported configuration") {
+                    self.dismiss(animated: true, completion: nil)
+                    return
+                }
+                
                 alertController.dismiss(animated: true, completion: nil)
                 self.resetTracking()
             }
