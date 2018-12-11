@@ -717,7 +717,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         if pinchGesture.state == .changed {
             if camera.fieldOfView <= 5 {
-                // TODO: Fix camera gitter
                 camera.fieldOfView = 5.01
             } else {
                 camera.fieldOfView -= (pinchGesture.velocity / pinchAttenuation)

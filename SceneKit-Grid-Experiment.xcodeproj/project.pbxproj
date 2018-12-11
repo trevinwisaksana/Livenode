@@ -26,6 +26,7 @@
 		DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55E820DE12AA00EA00ED /* Constants.swift */; };
 		DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */; };
 		DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */; };
+		DD2FBAEA21BFB93E00B9B2C9 /* AnimationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2FBAE921BFB93E00B9B2C9 /* AnimationCell.swift */; };
 		DD38321D21598E5400809856 /* DefaultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD38321C21598E5300809856 /* DefaultScene.swift */; };
 		DD43429E215F772A00FF3D91 /* SceneEditorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43429D215F772A00FF3D91 /* SceneEditorPresentableView.swift */; };
 		DD4342A2215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4342A1215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift */; };
@@ -138,6 +139,7 @@
 		DD2A55E820DE12AA00EA00ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogCell.swift; sourceTree = "<group>"; };
 		DD2A55ED20DE3BD100EA00ED /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
+		DD2FBAE921BFB93E00B9B2C9 /* AnimationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCell.swift; sourceTree = "<group>"; };
 		DD38321C21598E5300809856 /* DefaultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScene.swift; sourceTree = "<group>"; };
 		DD43429D215F772A00FF3D91 /* SceneEditorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorPresentableView.swift; sourceTree = "<group>"; };
 		DD4342A1215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneEditorViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				DD5456CF2177480700AE25D8 /* AddAnimationCell.swift */,
+				DD2FBAE921BFB93E00B9B2C9 /* AnimationCell.swift */,
 				DDFFE03B2179811100AFF7DA /* AnimationDurationCell */,
 			);
 			path = ReusableViews;
@@ -1138,6 +1141,7 @@
 				DDFFE0452179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift in Sources */,
 				DD2A55EC20DE31FB00EA00ED /* ObjectCatalogCell.swift in Sources */,
 				DDF38F62216C97A80000069E /* UtilitiesInspectorExportCell.swift in Sources */,
+				DD2FBAEA21BFB93E00B9B2C9 /* AnimationCell.swift in Sources */,
 				DD734413217CA8D300E4EE91 /* AlertAnimationAttributesView.swift in Sources */,
 				DD6CC452210AB626009284C6 /* Presenter.swift in Sources */,
 				DD68C22B211989F30061100F /* SceneFloorColorCell.swift in Sources */,
