@@ -71,15 +71,4 @@ final class AnimationCell: UITableViewCell {
         ])
     }
     
-    // MARK: - Dependency injection
-    
-    /// The model contains data used to populate the view.
-    public var model: NodeInspectorViewModel? {
-        didSet {
-            if let model = model {
-                
-            }
-        }
-    }
-    
 }

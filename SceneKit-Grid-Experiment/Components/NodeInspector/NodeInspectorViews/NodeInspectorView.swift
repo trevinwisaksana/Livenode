@@ -137,10 +137,6 @@ extension NodeInspectorView: UITableViewDataSource {
         case 3:
             let cell: AnimationCell = tableView.dequeueReusableCell()
             
-//            if let model = dataSource?.viewModel(inNodeInspectorView: self) {
-//                cell.model = model
-//            }
-            
             return cell
             
         default:
