@@ -73,6 +73,7 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
     }
     
     private func transition(using indexPath: IndexPath) {
+        // TODO: Avoid accessing parent view controller
         guard let navigationController = parentViewController?.parent as? UINavigationController else {
             return
         }
@@ -81,6 +82,9 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
         case 0:
             let colorPicker = Presenter.inject(.colorPickerView)
             navigationController.pushViewController(colorPicker, animated: true)
+        case 3:
+            let nodeAnimationList = Presenter.inject(.nodeAnimationList)
+            navigationController.pushViewController(nodeAnimationList, animated: true)
         default:
             break
         }
