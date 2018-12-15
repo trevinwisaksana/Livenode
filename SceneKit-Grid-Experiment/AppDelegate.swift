@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+//        let onboardingViewController = Presenter.inject(.onboarding)
+//
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.rootViewController = onboardingViewController
+//        window?.makeKeyAndVisible()
+        
         if UserDefaults.standard.bool(forKey: "didDisplayOnboarding") {
             let documentBrowserViewController = Presenter.inject(.documentBrowser)
 
@@ -30,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
 
             UserDefaults.standard.set(true, forKey: "didDisplayOnboarding")
-        }
+//        }
 
         return true
     }

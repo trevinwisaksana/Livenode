@@ -104,22 +104,22 @@ final class OnboardingView: UIView {
     
     static func createPages(delegate: OnboardingViewDelegate) -> [OnboardingView] {
         let firstPage = OnboardingView()
-        firstPage.titleLabel.text = "Create 3D presentations, present it in Augmented Reality"
-        firstPage.descriptionLabel.text = "Create compelling presentations and present in Augmented Reality (AR)."
+        firstPage.titleLabel.text = "Create presentations & present it in Augmented Reality"
+        firstPage.descriptionLabel.text = "Livenode gives you the ability to create compelling presentations and immersively storytell it in Augmented Reality. Here's a quick tip on how to use it."
         
         let secondPage = OnboardingView()
-        secondPage.titleLabel.text = "Step 1: Add a 3D model to your scene"
-        secondPage.descriptionLabel.text = "Select the button shown above to choose a model you would like to include in your scene."
+        secondPage.titleLabel.text = "First, add a 3D model to your scene"
+        secondPage.descriptionLabel.text = "Select the button shown above and choose a 3D model you would like to include into your scene."
         
         let thirdPage = OnboardingView()
-        thirdPage.titleLabel.text = "Step 2: Animate your models"
-        thirdPage.descriptionLabel.text = "Select a 3D model you would like to animate and select the button show above to choose your preferred animation."
+        thirdPage.titleLabel.text = "Second, animate your 3D models"
+        thirdPage.descriptionLabel.text = "Select a 3D model you would like to animate. Then select the button show above to choose your preferred animation."
         
         let fourthPage = OnboardingView()
         fourthPage.delegate = delegate
         fourthPage.getStartedButton.isHidden = false
-        fourthPage.titleLabel.text = "Step 3: Present your scene in Augmented Reality"
-        fourthPage.descriptionLabel.text = "Press the button shown above to present the scene you've created!"
+        fourthPage.titleLabel.text = "Last but not least, present your scene!"
+        fourthPage.descriptionLabel.text = "Press the play button shown above to present the scene you've created in Augmented Reality."
         
         return [firstPage, secondPage, thirdPage, fourthPage]
     }
