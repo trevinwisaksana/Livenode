@@ -11,7 +11,7 @@ import UIKit
 final class OnboardingViewController: UIViewController {
     
     lazy var mainView: OnboardingPresentableView = {
-        let mainView = OnboardingPresentableView(frame: .zero)
+        let mainView = OnboardingPresentableView(frame: view.frame)
         mainView.scrollView.delegate = self
         return mainView
     }()

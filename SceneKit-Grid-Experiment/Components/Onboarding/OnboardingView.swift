@@ -21,16 +21,19 @@ final class OnboardingView: UIView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.numberOfLines = 0
         label.textColor = .lavender
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+        label.font = UIFont(name: "Avenir-Black", size: 18)
         return label
     }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = UIFont(name: "HelveticaNeue", size: 15)
+        label.font = UIFont(name: "Avenir", size: 16)
         return label
     }()
     
@@ -52,24 +55,27 @@ final class OnboardingView: UIView {
         addSubview(descriptionLabel)
         
         NSLayoutConstraint.activate([
-                instructionImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 50),
+                instructionImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20),
                 instructionImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                instructionImageView.widthAnchor.constraint(equalToConstant: 25),
-                instructionImageView.heightAnchor.constraint(equalToConstant: 25),
+                instructionImageView.widthAnchor.constraint(equalToConstant: 300),
+                instructionImageView.heightAnchor.constraint(equalToConstant: 300),
             
-                titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 50),
+                titleLabel.topAnchor.constraint(equalTo: instructionImageView.bottomAnchor, constant: 50),
+                titleLabel.centerXAnchor.constraint(equalTo: instructionImageView.centerXAnchor),
+                titleLabel.widthAnchor.constraint(equalToConstant: 500),
                 
-                descriptionLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor, constant: 50),
-                descriptionLabel.widthAnchor.constraint(equalToConstant: 100),
+                descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+                descriptionLabel.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
+                descriptionLabel.widthAnchor.constraint(equalToConstant: 400),
         ])
     }
     
     // MARK: - Page Creation
     
-    public func createPages() -> [OnboardingView] {
+    static func createPages() -> [OnboardingView] {
         let firstPage = OnboardingView()
         firstPage.titleLabel.text = "Create 3D presentations, present it in Augmented Reality"
-        firstPage.descriptionLabel.text = "Create compelling presentations and present it in Augmented Reality (AR) in a few simple steps."
+        firstPage.descriptionLabel.text = "Create compelling presentations and present in Augmented Reality (AR)."
         
         let secondPage = OnboardingView()
         secondPage.titleLabel.text = "Step 1: Add a 3D model to your scene"

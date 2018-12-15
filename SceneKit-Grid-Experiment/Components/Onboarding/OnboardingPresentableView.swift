@@ -12,19 +12,18 @@ final class OnboardingPresentableView: UIView {
     
     // MARK: - Internal Properties
     
-    lazy var onboardingView: OnboardingView = {
-        let view = OnboardingView(frame: .zero)
-        return view
-    }()
-    
     lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView(frame: .zero)
+        let scrollView = UIScrollView(frame: frame)
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.alwaysBounceHorizontal = true
         return scrollView
     }()
     
     lazy var pageControl: UIPageControl = {
-        let pageControl = UIPageControl(frame: .zero)
-        pageControl.tintColor = .lavender
+        let pageControl = UIPageControl(frame: frame)
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.pageIndicatorTintColor = .gray
+        pageControl.currentPageIndicatorTintColor = .lavender
         return pageControl
     }()
     
@@ -45,24 +44,27 @@ final class OnboardingPresentableView: UIView {
     }
     
     private func setup() {
-        addSubview(onboardingView)
         addSubview(scrollView)
         addSubview(pageControl)
         
         scrollView.fillInSuperview()
-        pageControl.fillInSuperview()
         
-        bringSubviewToFront(scrollView)
+        bringSubviewToFront(pageControl)
         
-        pages = onboardingView.createPages()
+        pages = OnboardingView.createPages()
         setupSlideScrollView(pages: pages)
         
         pageControl.numberOfPages = pages.count
         pageControl.currentPage = 0
         
         backgroundColor = .white
+        
+        NSLayoutConstraint.activate([
+            pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            pageControl.widthAnchor.constraint(equalToConstant: 100)
+        ])
     }
-    
     
     func setupSlideScrollView(pages: [OnboardingView]) {
         scrollView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
@@ -91,8 +93,7 @@ final class OnboardingPresentableView: UIView {
         let percentOffset: CGPoint = CGPoint(x: percentageHorizontalOffset, y: percentageVerticalOffset)
         
         if(percentOffset.x > 0 && percentOffset.x <= 0.25) {
-            
-            pages[0].instructionImageView.transform = CGAffineTransform(scaleX: (0.25-percentOffset.x)/0.25, y: (0.25-percentOffset.x)/0.25)
+            pages[0].instructionImageView.transform = CGAffineTransform(scaleX: (0.25 - percentOffset.x) / 0.25, y: (0.25 - percentOffset.x) / 0.25)
             pages[1].instructionImageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.25, y: percentOffset.x/0.25)
             
         } else if(percentOffset.x > 0.25 && percentOffset.x <= 0.50) {
@@ -105,7 +106,6 @@ final class OnboardingPresentableView: UIView {
             
         } else if(percentOffset.x > 0.75 && percentOffset.x <= 1) {
             pages[3].instructionImageView.transform = CGAffineTransform(scaleX: (1-percentOffset.x)/0.25, y: (1-percentOffset.x)/0.25)
-            pages[4].instructionImageView.transform = CGAffineTransform(scaleX: percentOffset.x, y: percentOffset.x)
         }
     }
     
