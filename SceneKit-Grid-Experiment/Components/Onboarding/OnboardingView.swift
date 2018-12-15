@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol OnboardingViewDelegate: class {
+    func didTapGetStartedButton(_ sender: UIButton)
+}
+
 final class OnboardingView: UIView {
   
     // MARK: - Internal Properties
@@ -37,6 +41,20 @@ final class OnboardingView: UIView {
         return label
     }()
     
+    lazy var getStartedButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
+        button.setTitle("Get started", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir", size: 18)
+        button.backgroundColor = .lavender
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(didTapGetStartedButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    weak var delegate: OnboardingViewDelegate?
+    
     // MARK: - Setup
     
     override init(frame: CGRect) {
@@ -53,6 +71,7 @@ final class OnboardingView: UIView {
         addSubview(instructionImageView)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
+        addSubview(getStartedButton)
         
         NSLayoutConstraint.activate([
                 instructionImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20),
@@ -67,12 +86,23 @@ final class OnboardingView: UIView {
                 descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
                 descriptionLabel.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
                 descriptionLabel.widthAnchor.constraint(equalToConstant: 400),
+                
+                getStartedButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+                getStartedButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+                getStartedButton.widthAnchor.constraint(equalToConstant: 150),
         ])
+    }
+    
+    // MARK: - Button Action
+    
+    @objc
+    private func didTapGetStartedButton(_ sender: UIButton) {
+        delegate?.didTapGetStartedButton(sender)
     }
     
     // MARK: - Page Creation
     
-    static func createPages() -> [OnboardingView] {
+    static func createPages(delegate: OnboardingViewDelegate) -> [OnboardingView] {
         let firstPage = OnboardingView()
         firstPage.titleLabel.text = "Create 3D presentations, present it in Augmented Reality"
         firstPage.descriptionLabel.text = "Create compelling presentations and present in Augmented Reality (AR)."
@@ -86,6 +116,8 @@ final class OnboardingView: UIView {
         thirdPage.descriptionLabel.text = "Select a 3D model you would like to animate and select the button show above to choose your preferred animation."
         
         let fourthPage = OnboardingView()
+        fourthPage.delegate = delegate
+        fourthPage.getStartedButton.isHidden = false
         fourthPage.titleLabel.text = "Step 3: Present your scene in Augmented Reality"
         fourthPage.descriptionLabel.text = "Press the button shown above to present the scene you've created!"
         

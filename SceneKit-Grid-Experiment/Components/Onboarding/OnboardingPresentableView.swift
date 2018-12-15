@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol OnboardingPresentableViewDelegate: class {
+    func didTapGetStartedButton(_ sender: UIButton)
+}
+
 final class OnboardingPresentableView: UIView {
     
     // MARK: - Internal Properties
@@ -20,12 +24,14 @@ final class OnboardingPresentableView: UIView {
     }()
     
     lazy var pageControl: UIPageControl = {
-        let pageControl = UIPageControl(frame: frame)
+        let pageControl = UIPageControl(frame: .zero)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.pageIndicatorTintColor = .gray
         pageControl.currentPageIndicatorTintColor = .lavender
         return pageControl
     }()
+    
+    weak var delegate: OnboardingPresentableViewDelegate?
     
     // MARK: - Private Properties
     
@@ -51,8 +57,8 @@ final class OnboardingPresentableView: UIView {
         
         bringSubviewToFront(pageControl)
         
-        pages = OnboardingView.createPages()
-        setupSlideScrollView(pages: pages)
+        pages = OnboardingView.createPages(delegate: self)
+        setupSlideScrollView()
         
         pageControl.numberOfPages = pages.count
         pageControl.currentPage = 0
@@ -66,7 +72,7 @@ final class OnboardingPresentableView: UIView {
         ])
     }
     
-    func setupSlideScrollView(pages: [OnboardingView]) {
+    func setupSlideScrollView() {
         scrollView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         scrollView.contentSize = CGSize(width: frame.width * CGFloat(pages.count), height: frame.height)
         scrollView.isPagingEnabled = true
@@ -109,4 +115,12 @@ final class OnboardingPresentableView: UIView {
         }
     }
     
+}
+
+// MARK: - OnboardingViewDelegate
+
+extension OnboardingPresentableView: OnboardingViewDelegate {
+    func didTapGetStartedButton(_ sender: UIButton) {
+        delegate?.didTapGetStartedButton(sender)
+    }
 }

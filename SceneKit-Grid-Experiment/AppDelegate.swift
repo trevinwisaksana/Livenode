@@ -16,27 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let onboardingViewController = Presenter.inject(.onboarding)
+        if UserDefaults.standard.bool(forKey: "didDisplayOnboarding") {
+            let documentBrowserViewController = Presenter.inject(.documentBrowser)
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = onboardingViewController
-        window?.makeKeyAndVisible()
-        
-//        if UserDefaults.standard.bool(forKey: "didDisplayOnboarding") {
-//            let documentBrowserViewController = Presenter.inject(.documentBrowser)
-//
-//            window = UIWindow(frame: UIScreen.main.bounds)
-//            window?.rootViewController = documentBrowserViewController
-//            window?.makeKeyAndVisible()
-//        } else {
-//            let onboardingViewController = Presenter.inject(.onboarding)
-//
-//            window = UIWindow(frame: UIScreen.main.bounds)
-//            window?.rootViewController = onboardingViewController
-//            window?.makeKeyAndVisible()
-//
-//            UserDefaults.standard.set(true, forKey: "didDisplayOnboarding")
-//        }
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.rootViewController = documentBrowserViewController
+            window?.makeKeyAndVisible()
+        } else {
+            let onboardingViewController = Presenter.inject(.onboarding)
+
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.rootViewController = onboardingViewController
+            window?.makeKeyAndVisible()
+
+            UserDefaults.standard.set(true, forKey: "didDisplayOnboarding")
+        }
 
         return true
     }
@@ -63,4 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
+
+extension AppDelegate {
+    static var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    var rootViewController: UIViewController? {
+        return window?.rootViewController
+    }
 }
