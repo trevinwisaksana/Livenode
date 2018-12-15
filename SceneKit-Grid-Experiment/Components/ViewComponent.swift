@@ -14,6 +14,7 @@ enum ViewComponent {
     case nodeInspectorView
     case utilitiesView
     
+    case onboarding
     case documentBrowser
     case sceneActionsMenu
     case objectCatalog

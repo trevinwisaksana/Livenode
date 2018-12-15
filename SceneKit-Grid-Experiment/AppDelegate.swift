@@ -15,13 +15,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        let documentBrowserViewController = Presenter.inject(.documentBrowser)
+        
+        let onboardingViewController = Presenter.inject(.onboarding)
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = documentBrowserViewController
+        window?.rootViewController = onboardingViewController
         window?.makeKeyAndVisible()
         
+//        if UserDefaults.standard.bool(forKey: "didDisplayOnboarding") {
+//            let documentBrowserViewController = Presenter.inject(.documentBrowser)
+//
+//            window = UIWindow(frame: UIScreen.main.bounds)
+//            window?.rootViewController = documentBrowserViewController
+//            window?.makeKeyAndVisible()
+//        } else {
+//            let onboardingViewController = Presenter.inject(.onboarding)
+//
+//            window = UIWindow(frame: UIScreen.main.bounds)
+//            window?.rootViewController = onboardingViewController
+//            window?.makeKeyAndVisible()
+//
+//            UserDefaults.standard.set(true, forKey: "didDisplayOnboarding")
+//        }
+
         return true
     }
 

@@ -12,6 +12,7 @@ final class OnboardingViewController: UIViewController {
     
     lazy var mainView: OnboardingPresentableView = {
         let mainView = OnboardingPresentableView(frame: .zero)
+        mainView.scrollView.delegate = self
         return mainView
     }()
     
@@ -30,4 +31,12 @@ final class OnboardingViewController: UIViewController {
         mainView.fillInSuperview()
     }
     
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension OnboardingViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        mainView.scrollViewDidScroll(scrollView)
+    }
 }
