@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
 
             UserDefaults.standard.set(true, forKey: "didDisplayOnboarding")
-//        }
+        }
 
         return true
     }
