@@ -83,8 +83,10 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
             let colorPicker = Presenter.inject(.colorPickerView)
             navigationController.pushViewController(colorPicker, animated: true)
         case 3:
-            let nodeAnimationList = Presenter.inject(.nodeAnimationList)
-            navigationController.pushViewController(nodeAnimationList, animated: true)
+            // TODO: Show the animation navigation item
+            break
+//            let nodeAnimationList = Presenter.inject(.nodeAnimationList)
+//            navigationController.pushViewController(nodeAnimationList, animated: true)
         default:
             break
         }

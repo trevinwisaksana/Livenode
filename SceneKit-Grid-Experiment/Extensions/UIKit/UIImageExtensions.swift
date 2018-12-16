@@ -26,4 +26,5 @@ enum ImageAsset: String {
     case boxWireframe
     case undoButton
     case animationMenuButton
+    case onboardingImageOne
 }

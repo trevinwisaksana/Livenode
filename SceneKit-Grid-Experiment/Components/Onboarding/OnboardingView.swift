@@ -19,6 +19,7 @@ final class OnboardingView: UIView {
     lazy var instructionImageView: UIImageView = {
         let imageView = UIImageView(image: nil)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -74,18 +75,18 @@ final class OnboardingView: UIView {
         addSubview(getStartedButton)
         
         NSLayoutConstraint.activate([
-                instructionImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20),
+                instructionImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -80),
                 instructionImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                instructionImageView.widthAnchor.constraint(equalToConstant: 300),
-                instructionImageView.heightAnchor.constraint(equalToConstant: 300),
+                instructionImageView.widthAnchor.constraint(equalToConstant: 400),
+                instructionImageView.heightAnchor.constraint(equalToConstant: 400),
             
                 titleLabel.topAnchor.constraint(equalTo: instructionImageView.bottomAnchor, constant: 50),
                 titleLabel.centerXAnchor.constraint(equalTo: instructionImageView.centerXAnchor),
-                titleLabel.widthAnchor.constraint(equalToConstant: 500),
+                titleLabel.widthAnchor.constraint(equalToConstant: 600),
                 
                 descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
                 descriptionLabel.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
-                descriptionLabel.widthAnchor.constraint(equalToConstant: 400),
+                descriptionLabel.widthAnchor.constraint(equalToConstant: 500),
                 
                 getStartedButton.centerXAnchor.constraint(equalTo: centerXAnchor),
                 getStartedButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
@@ -104,22 +105,23 @@ final class OnboardingView: UIView {
     
     static func createPages(delegate: OnboardingViewDelegate) -> [OnboardingView] {
         let firstPage = OnboardingView()
-        firstPage.titleLabel.text = "Create presentations & present it in Augmented Reality"
-        firstPage.descriptionLabel.text = "Livenode gives you the ability to create compelling presentations and immersively storytell it in Augmented Reality. Here's a quick tip on how to use it."
+        firstPage.instructionImageView.image = UIImage(named: .onboardingImageOne)
+        firstPage.titleLabel.text = "Create 3D presentations, present using Augmented Reality"
+        firstPage.descriptionLabel.text = "The goal of Livenode is to help create immersive presentations that conveys information more effectively than bullet-points."
         
         let secondPage = OnboardingView()
-        secondPage.titleLabel.text = "First, add a 3D model to your scene"
+        secondPage.titleLabel.text = "Add a wide range of 3D models to your scene"
         secondPage.descriptionLabel.text = "Select the button shown above and choose a 3D model you would like to include into your scene."
         
         let thirdPage = OnboardingView()
-        thirdPage.titleLabel.text = "Second, animate your 3D models"
+        thirdPage.titleLabel.text = "Animate your 3D models, express your ideas"
         thirdPage.descriptionLabel.text = "Select a 3D model you would like to animate. Then select the button show above to choose your preferred animation."
         
         let fourthPage = OnboardingView()
         fourthPage.delegate = delegate
         fourthPage.getStartedButton.isHidden = false
-        fourthPage.titleLabel.text = "Last but not least, present your scene!"
-        fourthPage.descriptionLabel.text = "Press the play button shown above to present the scene you've created in Augmented Reality."
+        fourthPage.titleLabel.text = "Present your scene in the most compelling way"
+        fourthPage.descriptionLabel.text = "Press the play button to present the scene you've created in Augmented Reality."
         
         return [firstPage, secondPage, thirdPage, fourthPage]
     }
