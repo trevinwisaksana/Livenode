@@ -110,14 +110,17 @@ final class OnboardingView: UIView {
         firstPage.descriptionLabel.text = "The goal of Livenode is to help create immersive presentations that conveys information more effectively than bullet-points."
         
         let secondPage = OnboardingView()
+        secondPage.instructionImageView.image = UIImage(named: .onboardingImageOne)
         secondPage.titleLabel.text = "Add a wide range of 3D models to your scene"
         secondPage.descriptionLabel.text = "Select the button shown above and choose a 3D model you would like to include into your scene."
         
         let thirdPage = OnboardingView()
+        thirdPage.instructionImageView.image = UIImage(named: .onboardingImageOne)
         thirdPage.titleLabel.text = "Animate your 3D models, express your ideas"
         thirdPage.descriptionLabel.text = "Select a 3D model you would like to animate. Then select the button show above to choose your preferred animation."
         
         let fourthPage = OnboardingView()
+        fourthPage.instructionImageView.image = UIImage(named: .onboardingImageOne)
         fourthPage.delegate = delegate
         fourthPage.getStartedButton.isHidden = false
         fourthPage.titleLabel.text = "Present your scene in the most compelling way"
