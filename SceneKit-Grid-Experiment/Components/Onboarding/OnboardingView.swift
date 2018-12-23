@@ -111,7 +111,7 @@ final class OnboardingView: UIView {
         
         let secondPage = OnboardingView()
         secondPage.instructionImageView.image = UIImage(named: .onboardingImageOne)
-        secondPage.titleLabel.text = "Add a wide range of 3D models to your scene"
+        secondPage.titleLabel.text = "Add a wide range of 3D models to your scenes, create new worlds"
         secondPage.descriptionLabel.text = "Select the button shown above and choose a 3D model you would like to include into your scene."
         
         let thirdPage = OnboardingView()

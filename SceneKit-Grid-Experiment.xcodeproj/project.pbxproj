@@ -138,6 +138,7 @@
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD20F67520672FBD005E838C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD2234B521B277750041AD70 /* SceneKit-Grid-Experiment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SceneKit-Grid-Experiment.entitlements"; sourceTree = "<group>"; };
+		DD276DB121CF99C4004FD5AA /* Humanoid.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Humanoid.scn; sourceTree = "<group>"; };
 		DD2A55E620DD34EF00EA00ED /* ObjectCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewController.swift; sourceTree = "<group>"; };
 		DD2A55E820DE12AA00EA00ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD2A55EB20DE31FB00EA00ED /* ObjectCatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogCell.swift; sourceTree = "<group>"; };
@@ -790,6 +791,7 @@
 		DDBA24B421535056003C9CAF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DD276DB121CF99C4004FD5AA /* Humanoid.scn */,
 				DDEF325D20DF776100FEE793 /* Box.scn */,
 				DDCCAA92219D00CE0071FE7A /* Plane.scn */,
 				DD80A77A219334FC00441CC1 /* Sphere.scn */,
