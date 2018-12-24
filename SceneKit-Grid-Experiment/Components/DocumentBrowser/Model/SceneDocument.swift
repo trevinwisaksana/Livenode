@@ -19,7 +19,7 @@ protocol SceneDocumentDelegate: class {
 
 class SceneDocument: UIDocument {
     
-    static let filenameExtension = "livenote"
+    static let filenameExtension = "livenode"
     
     public var scene: DefaultScene = DefaultScene() {
         didSet {
@@ -36,7 +36,6 @@ class SceneDocument: UIDocument {
     private var transfering: Bool = false
     
     override init(fileURL url: URL) {
-        
         docStateObserver = nil
         super.init(fileURL: url)
         
@@ -88,7 +87,6 @@ class SceneDocument: UIDocument {
     // MARK: - Private Methods
     
     private func updateDocumentState() {
-        
         if documentState == .normal {
             os_log("=> Document entered normal state", log: OSLog.default, type: .debug)
         }
@@ -138,7 +136,6 @@ class SceneDocument: UIDocument {
     }
     
     private func resolveDocumentConflict() {
-        
         // To accept the current version, remove the other versions,
         // and resolve all the unresolved versions.
         

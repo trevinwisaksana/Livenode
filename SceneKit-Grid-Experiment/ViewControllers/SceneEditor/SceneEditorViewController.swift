@@ -64,11 +64,19 @@ final class SceneEditorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        sceneView.scene = document?.scene
+        
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        
+        guard let scene = document?.scene else {
+            fatalError("No document found.")
+        }
+        
+        sceneEditorDelegate?.sceneEditor(self, didFinishEditing: scene)
 
         NotificationCenter.default.removeObserver(self)
     }
@@ -91,7 +99,6 @@ final class SceneEditorViewController: UIViewController {
     }
     
     private func setup() {
-        sceneView.scene = document?.scene
         view.addSubview(sceneView)
         sceneView.fillInSuperview()
         
@@ -288,11 +295,7 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapBackButton(_ sender: UIBarButtonItem) {
-        guard let scene = document?.scene else {
-            fatalError("No scene found.")
-        }
-        
-        sceneEditorDelegate?.sceneEditor(self, didFinishEditing: scene)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc
@@ -442,7 +445,7 @@ extension SceneEditorViewController: SceneDocumentDelegate {
     }
     
     func sceneDocumentSaveFailed(_ document: SceneDocument) {
-        let alert = UIAlertController(title: "Save Error", message: "An attempt to save the document failed", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Save Error", message: "An attempt to save the document failed.", preferredStyle: .alert)
         
         let dismiss = UIAlertAction(title: "OK", style: .default)
         

@@ -6,23 +6,6 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Livenode</string>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeIconFiles</key>
-			<array/>
-			<key>CFBundleTypeName</key>
-			<string>Livenote Document</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSHandlerRank</key>
-			<string>Owner</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.livenote.document</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -40,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>
-	<string>Livenote requires camera access to use Augmented Reality.</string>
+	<string>Livenode requires camera access to use Augmented Reality.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -65,6 +48,23 @@
 	</array>
 	<key>UISupportsDocumentBrowser</key>
 	<true/>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
+			<key>CFBundleTypeName</key>
+			<string>Livenode Document</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.livenode.document</string>
+			</array>
+		</dict>
+	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
@@ -74,15 +74,15 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Livenote Document</string>
+			<string>Livenode Document</string>
 			<key>UTTypeIconFile</key>
 			<string>AppIcon</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.livenote.document</string>
+			<string>com.livenode.document</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
-				<string>livenote</string>
+				<string>livenode</string>
 				<key>public.mime-type</key>
 				<string>public.content</string>
 			</dict>

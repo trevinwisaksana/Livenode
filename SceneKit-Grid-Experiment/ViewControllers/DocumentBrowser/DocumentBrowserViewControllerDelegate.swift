@@ -17,14 +17,14 @@ class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewCont
         let url = createDocumentURL()
         let document = SceneDocument(fileURL: url)
         
-        document.save(to: url, for: .forCreating) { (isSavedSuccessfuly) in
-            if !isSavedSuccessfuly {
+        document.save(to: url, for: .forCreating) { (success) in
+            guard success else {
                 importHandler(nil, .none)
                 return
             }
             
-            document.close { (isClosedSuccessfully) in
-                if !isClosedSuccessfully {
+            document.close { (success) in
+                guard success else {
                     importHandler(nil, .none)
                     return
                 }
@@ -43,15 +43,6 @@ class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewCont
         
         openDocument(with: documentSelectedURL, using: controller)
     }
-    
-    func documentBrowser(_ controller: UIDocumentBrowserViewController, didImportDocumentAt sourceURL: URL, toDestinationURL destinationURL: URL) {
-        
-    }
-    
-    func documentBrowser(_ controller: UIDocumentBrowserViewController, failedToImportDocumentAt documentURL: URL, error: Error?) {
-        
-    }
-    
 }
 
 // MARK: - Opening Document
@@ -119,15 +110,13 @@ extension DocumentBrowserViewControllerDelegate: SceneEditorDocumentDelegate {
         State.currentDocument?.scene = scene
         State.currentDocument?.updateChangeCount(.done)
         
-        State.currentDocument?.close(completionHandler: { (isClosedSuccessfully) in
-            if !isClosedSuccessfully {
-                return
+        State.currentDocument?.close(completionHandler: { (success) in
+            guard success else {
+                fatalError( "Error saving document.")
             }
             
             State.currentDocument = nil
             State.isEditingScene = false
         })
-    
-        controller.dismiss(animated: true, completion: nil)
     }
 }
