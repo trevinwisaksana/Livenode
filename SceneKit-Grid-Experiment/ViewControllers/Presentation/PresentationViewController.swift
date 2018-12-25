@@ -32,17 +32,6 @@ final class PresentationViewController: UIViewController {
         return view
     }()
     
-    private var exitButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setTitle("Exit", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .yellow
-        button.layer.cornerRadius = 15
-        button.addTarget(self, action: #selector(didTapExitButton(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     private var currentScene: DefaultScene?
     
     // MARK: - Public Properties
@@ -92,7 +81,6 @@ final class PresentationViewController: UIViewController {
         view.sendSubviewToBack(sceneView)
         
         view.addSubview(feedbackView)
-        view.addSubview(exitButton)
         
         guard let scene = currentScene else { fatalError("Failed to initialize scene.") }
         sceneView.prepare(scene, shouldAbortBlock: nil)
@@ -104,7 +92,7 @@ final class PresentationViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addNodesToSceneView(_:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         NSLayoutConstraint.activate([
@@ -112,10 +100,6 @@ final class PresentationViewController: UIViewController {
             feedbackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: feedbackViewBottomMargin),
             feedbackView.widthAnchor.constraint(lessThanOrEqualToConstant: feedbackViewWidth),
             feedbackView.heightAnchor.constraint(greaterThanOrEqualToConstant: feedbackViewHeight),
-            
-            exitButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            exitButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            exitButton.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
 
@@ -150,11 +134,6 @@ final class PresentationViewController: UIViewController {
         }
         
         delegate.addPresentingNode(to: sceneView, using: scene, at: translation)
-    }
-    
-    @objc
-    private func didTapExitButton(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Device Configuration
