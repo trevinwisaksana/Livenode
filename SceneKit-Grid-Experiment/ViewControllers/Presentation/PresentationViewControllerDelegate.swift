@@ -13,18 +13,18 @@ class PresentationViewControllerDelegate: NSObject {
     
     // MARK: - Node Presentation
     
-    func addPresentingNode(to sceneView: ARSCNView, using scene: DefaultScene?, at location: simd_float4) {
+    func addPresentingNode(to sceneView: ARSCNView, using scene: DefaultScene, at location: simd_float4) {
         let x = location.x
         let y = location.y
         let z = location.z
         
+        let presentationNodes = SCNNode()
+        guard let presentationNodeContainer = scene.rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+            fatalError("Presentation node container cannot be found.")
+        }
         
-        guard let scene = scene,
-              let presentationNodes = scene.rootNode.childNode(withName: "presentationNodeContainer", recursively: true)?.flattenedClone()
-        else {
-            // TODO: Fix issue which deletes the nodes when retrieving it from the rootNode
-            print("Cannot find the presentation node container.")
-            return
+        presentationNodeContainer.childNodes.forEach { (node) in
+            presentationNodes.addChildNode(node)
         }
         
         presentationNodes.position = SCNVector3(x, y, z)

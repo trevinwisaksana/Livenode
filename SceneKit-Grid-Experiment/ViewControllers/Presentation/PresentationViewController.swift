@@ -94,6 +94,8 @@ final class PresentationViewController: UIViewController {
         view.addSubview(feedbackView)
         view.addSubview(exitButton)
         
+        guard let scene = currentScene else { fatalError("Failed to initialize scene.") }
+        sceneView.prepare(scene, shouldAbortBlock: nil)
         sceneView.fillInSuperview()
         
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(didPinchToDismiss(_:)))
@@ -141,7 +143,13 @@ final class PresentationViewController: UIViewController {
         }
         
         let translation = hitTestResult.worldTransform.columns.3
-        delegate.addPresentingNode(to: sceneView, using: currentScene, at: translation)
+        
+        guard let scene = currentScene else {
+            // TODO: Show error message
+            fatalError("Scene cannot be presented.")
+        }
+        
+        delegate.addPresentingNode(to: sceneView, using: scene, at: translation)
     }
     
     @objc
