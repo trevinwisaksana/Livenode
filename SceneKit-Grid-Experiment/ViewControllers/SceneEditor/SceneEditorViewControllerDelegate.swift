@@ -158,7 +158,6 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
             scene.setNodeAnimationTarget()
             
         case Action.move.capitalized:
-            // TODO: Create a more sophistcated way to disable pan gesture when node is being moved
             controller.cameraNavigationPanGesture.isEnabled = false
             controller.setupEditNodePositionNavigationItems()
             

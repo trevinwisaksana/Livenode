@@ -19,12 +19,15 @@ class PresentationViewControllerDelegate: NSObject {
         let z = location.z
         
         let presentationNodes = SCNNode()
+        
         guard let presentationNodeContainer = scene.rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
             fatalError("Presentation node container cannot be found.")
         }
         
         presentationNodeContainer.childNodes.forEach { (node) in
-            presentationNodes.addChildNode(node)
+            let newNode = node.clone()
+            newNode.actions = node.actions
+            presentationNodes.addChildNode(newNode)
         }
         
         presentationNodes.position = SCNVector3(x, y, z)

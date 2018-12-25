@@ -77,8 +77,6 @@ final class SceneEditorViewController: UIViewController {
         }
         
         sceneEditorDelegate?.sceneEditor(self, didFinishEditing: scene)
-
-        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Setup
