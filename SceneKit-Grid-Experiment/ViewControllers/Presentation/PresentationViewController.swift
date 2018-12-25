@@ -83,7 +83,7 @@ final class PresentationViewController: UIViewController {
         view.addSubview(feedbackView)
         
         guard let scene = currentScene else { fatalError("Failed to initialize scene.") }
-        sceneView.prepare(scene, shouldAbortBlock: nil)
+        sceneView.prepare([scene], completionHandler: nil)
         sceneView.fillInSuperview()
         
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(didPinchToDismiss(_:)))

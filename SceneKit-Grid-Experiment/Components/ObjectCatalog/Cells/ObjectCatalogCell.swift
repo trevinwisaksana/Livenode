@@ -47,6 +47,7 @@ public class ObjectCatalogCell: UICollectionViewCell {
         didSet {
             if let model = model {
                 objectSceneView.scene = model.objectModelScene
+                objectSceneView.prepare([model.objectModelScene], completionHandler: nil)
                 nodeModel = model.nodeModel
             }
         }
