@@ -64,7 +64,13 @@ final class SceneEditorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        sceneView.scene = document?.scene
+        guard let scene = document?.scene else {
+            // TODO: Show error message
+            return
+        }
+        
+        sceneView.scene = scene
+        sceneView.prepare([scene], completionHandler: nil)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
