@@ -235,7 +235,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         controller.cameraNavigationPanGesture.isEnabled = true
         
         scene.hideGrid()
-        scene.didSelectSceneAction(.pin)
+        scene.nodeSelected?.removeFromParentNode()
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene) {
