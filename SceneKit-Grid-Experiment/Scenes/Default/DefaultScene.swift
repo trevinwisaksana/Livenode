@@ -75,6 +75,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var nodeSelected: SCNNode?
     public var lastNodeSelected: SCNNode?
     public var currentNodeHighlighted: SCNNode?
+    public var recentNodeAdded: SCNNode?
     
     public var nodeAnimationTarget: SCNNode? {
         didSet {
@@ -267,6 +268,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         nodeSelected = boxNode
+        recentNodeAdded = boxNode
         
         presentationNodeContainer.addChildNode(boxNode)
     }
@@ -286,6 +288,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         nodeSelected = sphereNode
+        recentNodeAdded = sphereNode
         
         presentationNodeContainer.addChildNode(sphereNode)
     }
@@ -305,6 +308,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         nodeSelected = pyramidNode
+        recentNodeAdded = pyramidNode
         
         presentationNodeContainer.addChildNode(pyramidNode)
     }
@@ -325,6 +329,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         nodeSelected = planeNode
+        recentNodeAdded = planeNode
         
         presentationNodeContainer.addChildNode(planeNode)
     }
@@ -343,6 +348,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         nodeSelected = carNode
+        recentNodeAdded = carNode
         
         presentationNodeContainer.addChildNode(carNode)
     }
@@ -362,6 +368,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         nodeSelected = houseNode
+        recentNodeAdded = houseNode
         
         presentationNodeContainer.addChildNode(houseNode)
     }
@@ -381,6 +388,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         nodeSelected = seaplaneNode
+        recentNodeAdded = seaplaneNode
         
         presentationNodeContainer.addChildNode(seaplaneNode)
     }
