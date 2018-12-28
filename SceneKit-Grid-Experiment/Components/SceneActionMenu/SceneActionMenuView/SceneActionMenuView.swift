@@ -76,7 +76,7 @@ extension SceneActionMenuView: UICollectionViewDataSource {
         if isNodeSelected {
             return SceneActionMenuView.numberOfItemsInSection
         } else {
-            return 3
+            return 1
         }
     }
     
@@ -90,7 +90,7 @@ extension SceneActionMenuView: UICollectionViewDataSource {
         cell.setTitle(forCellAtIndex: indexPath.row)
         cell.delegate = self
         
-        if indexPath.row == indexOflastItemInSection {
+        if indexPath.row == indexOflastItemInSection || !isNodeSelected {
             cell.hideBorder()
         }
         

@@ -70,11 +70,11 @@ public class SceneActionMenuCell: UICollectionViewCell {
     public func setTitle(forCellAtIndex index: Int) {
         switch index {
         case 0:
-            actionButton.setTitle(Action.cut.capitalized, for: .normal)
+            actionButton.setTitle(Action.paste.capitalized, for: .normal)
         case 1:
             actionButton.setTitle(Action.copy.capitalized, for: .normal)
         case 2:
-            actionButton.setTitle(Action.paste.capitalized, for: .normal)
+            actionButton.setTitle(Action.cut.capitalized, for: .normal)
         case 3:
             actionButton.setTitle(Action.delete.capitalized, for: .normal)
         case 4:

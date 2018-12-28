@@ -37,7 +37,7 @@ final class SceneActionMenuViewController: UIViewController {
         if isNodeSelected {
             preferredContentSize = CGSize(width: 480, height: 35)
         } else {
-            preferredContentSize = CGSize(width: 240, height: 35)
+            preferredContentSize = CGSize(width: 80, height: 35)
         }
     }
     
