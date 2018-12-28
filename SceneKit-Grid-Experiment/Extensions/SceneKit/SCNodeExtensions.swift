@@ -73,6 +73,16 @@ extension SCNNode {
         runAction(sequence, completionHandler: completionHandler)
     }
     
+    // MARK: - Duplicate
+    
+    public func duplicate() -> SCNNode {
+        let newNode = self.clone()
+        newNode.geometry = self.geometry
+        newNode.position = SCNVector3Zero
+        
+        return newNode
+    }
+    
 }
 
 extension SCNNode: NodeInspectorViewModel {

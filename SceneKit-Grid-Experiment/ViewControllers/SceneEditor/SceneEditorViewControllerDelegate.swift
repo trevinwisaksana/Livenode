@@ -232,17 +232,17 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     // MARK: - Node Movement
     
     func sceneEditor(_ controller: SceneEditorViewController, didTapCancelEditingNodePositionButton scene: DefaultScene) {
-        guard let recentNodeAdded = scene.recentNodeAdded else {
-            // TODO: Fix issue where canceling to add a node does not work when camera is rotated
-            print("Node selected cannot be found.")
-            return
-        }
         
         controller.setupDefaultNavigationItems()
         controller.cameraNavigationPanGesture.isEnabled = true
         
         scene.hideGrid()
-        recentNodeAdded.removeFromParentNode()
+        
+        if let recentNodeAdded = scene.recentNodeAdded {
+            recentNodeAdded.removeFromParentNode()
+        }
+        
+        scene.resetToOriginalNodeposition()
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene) {

@@ -77,6 +77,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var currentNodeHighlighted: SCNNode?
     public var recentNodeAdded: SCNNode?
     public var nodeCopied: SCNNode?
+    public var originalNodePosition: SCNVector3?
     
     public var nodeAnimationTarget: SCNNode? {
         didSet {
@@ -399,8 +400,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
         let isCorrectNodeSelected = targetNode.name != Constants.Node.highlight && targetNode.name != Constants.Node.floor
         if didSelectANode && isCorrectNodeSelected && nodeSelected?.isMovable ?? false {
-            // TODO: Disable panning
-            
             let nodeXPos = targetNode.position.x
             let nodeZPos = targetNode.position.z
             
@@ -419,6 +418,11 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public func changeNodeRotation(toAngle angle: Float) {
         nodeSelected?.eulerAngles.y = angle
+    }
+    
+    public func resetToOriginalNodeposition() {
+        guard let originalPosition = originalNodePosition else { return }
+        nodeSelected?.position = originalPosition
     }
     
     // MARK: - Node Color
@@ -665,9 +669,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             nodeCopied = nodeSelected
             
         case .paste:
-            guard let nodeCloned = nodeCopied?.clone() else { return }
-            nodeCloned.position = SCNVector3Zero
-            
+            guard let nodeCloned = nodeCopied?.duplicate() else { return }
             rootNode.addChildNode(nodeCloned)
             
         case .delete:
@@ -675,6 +677,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             
         case .move:
             nodeSelected?.isMovable = true
+            originalNodePosition = nodeSelected?.position
             
         case .pin:
             nodeSelected?.isMovable = false

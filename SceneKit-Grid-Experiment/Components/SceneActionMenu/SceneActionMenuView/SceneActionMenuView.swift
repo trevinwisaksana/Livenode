@@ -87,7 +87,12 @@ extension SceneActionMenuView: UICollectionViewDataSource {
     private func setupCellForItemAt(indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SceneActionMenuCell = collectionView.dequeueReusableCell(for: indexPath)
         
-        cell.setTitle(forCellAtIndex: indexPath.row)
+        if isNodeSelected {
+            cell.setTitle(forCellAtIndex: indexPath.row)
+        } else {
+            cell.setTitle()
+        }
+        
         cell.delegate = self
         
         if indexPath.row == indexOflastItemInSection || !isNodeSelected {
