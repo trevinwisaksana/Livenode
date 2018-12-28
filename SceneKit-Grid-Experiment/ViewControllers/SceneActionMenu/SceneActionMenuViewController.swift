@@ -12,9 +12,6 @@ final class SceneActionMenuViewController: UIViewController {
     
     // MARK: - Internal Properties
     
-    private let popoverWidth: Int = 480
-    private let popoverHeight: Int = 35
-    
     lazy var delegate = SceneActionMenuViewControllerDelegate()
     
     lazy var mainView: SceneActionMenuView = {
@@ -32,12 +29,27 @@ final class SceneActionMenuViewController: UIViewController {
     
     // MARK: - Setup
     
+    init(isNodeSelected: Bool) {
+        super.init(nibName: nil, bundle: nil)
+        
+        mainView.isNodeSelected = isNodeSelected
+        
+        if isNodeSelected {
+            preferredContentSize = CGSize(width: 480, height: 35)
+        } else {
+            preferredContentSize = CGSize(width: 240, height: 35)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setup() {
         view.addSubview(mainView)
         mainView.fillInSuperview()
         
         popoverPresentationController?.backgroundColor = .black
-        preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     
 }

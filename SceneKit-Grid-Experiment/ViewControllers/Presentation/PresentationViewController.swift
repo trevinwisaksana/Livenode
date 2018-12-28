@@ -18,7 +18,7 @@ final class PresentationViewController: UIViewController {
     
     private let feedbackViewWidth: CGFloat = 750.0
     private let feedbackViewHeight: CGFloat = 35.0
-    private let feedbackViewBottomMargin: CGFloat = -12.0
+    private let feedbackViewBottomMargin: CGFloat = -30.0
     
     private var sceneView: ARSCNView = {
         let view = ARSCNView(frame: .zero)

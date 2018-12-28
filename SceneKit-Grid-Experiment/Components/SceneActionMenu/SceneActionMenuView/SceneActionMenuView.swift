@@ -62,6 +62,8 @@ public class SceneActionMenuView: UIView {
     
     // MARK: - Public
     
+    var isNodeSelected = false
+    
     public func reloadData() {
         collectionView.reloadData()
     }
@@ -71,7 +73,11 @@ public class SceneActionMenuView: UIView {
 
 extension SceneActionMenuView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return SceneActionMenuView.numberOfItemsInSection
+        if isNodeSelected {
+            return SceneActionMenuView.numberOfItemsInSection
+        } else {
+            return 3
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

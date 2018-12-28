@@ -48,13 +48,14 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuWith sender: UILongPressGestureRecognizer, at sceneView: SCNView) {
         let location = sender.location(in: controller.view)
         
-        // TODO: Create a method in Scene View that determines if a node or a floor is selected
-        guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node,
-              nodeSelected.name != "floorNode" else {
-            return
-        }
+        var sceneActionsMenuController: UIViewController
         
-        let sceneActionsMenuController = Presenter.inject(.sceneActionsMenu)
+        if let nodeSelected = sceneView.hitTest(location, options: nil).first?.node,
+              nodeSelected.name == "floorNode" {
+            sceneActionsMenuController = Presenter.inject(.sceneActionsMenu(isNodeSelected: false))
+        } else {
+            sceneActionsMenuController = Presenter.inject(.sceneActionsMenu(isNodeSelected: true))
+        }
         
         sceneActionsMenuController.modalPresentationStyle = .popover
         sceneActionsMenuController.popoverPresentationController?.permittedArrowDirections = .down

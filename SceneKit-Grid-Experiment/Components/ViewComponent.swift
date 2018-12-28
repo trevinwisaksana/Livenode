@@ -16,7 +16,7 @@ enum ViewComponent {
     
     case onboarding
     case documentBrowser
-    case sceneActionsMenu
+    case sceneActionsMenu(isNodeSelected: Bool)
     case objectCatalog
     case presentation(scene: DefaultScene)
     
@@ -27,16 +27,4 @@ enum ViewComponent {
     case delayAnimationAttributes(attributes: DelayAnimationAttributes)
     case alertAnimationAttributes(attributes: AlertAnimationAttributes)
     case alertAnimationPopover
-    
-    var all: [ViewComponent] {
-        return [
-            .colorPickerView,
-            .sceneInspectorView,
-            .nodeInspectorView,
-            .utilitiesView,
-            .documentBrowser,
-            .sceneActionsMenu,
-            .objectCatalog,
-        ]
-    }
 }

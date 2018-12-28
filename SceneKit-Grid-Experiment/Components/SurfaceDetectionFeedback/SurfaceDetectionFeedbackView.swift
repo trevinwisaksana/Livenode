@@ -13,8 +13,8 @@ public class SurfaceDetectionFeedbackView: UIView {
     
     // MARK: - Internal Properties
     
-    private let feedbackLabelLeftMargin: CGFloat = 6.0
-    private let feedbackLabelRightMargin: CGFloat = -6.0
+    private let feedbackLabelLeftMargin: CGFloat = 8.0
+    private let feedbackLabelRightMargin: CGFloat = -8.0
     private let feedbackLabelTopMargin: CGFloat = 2.0
     private let feedbackLabelBottomMargin: CGFloat = -2.0
     

@@ -32,8 +32,8 @@ enum Presenter {
         case .documentBrowser:
             controller = DocumentBrowserViewController()
             return controller
-        case .sceneActionsMenu:
-            controller = SceneActionMenuViewController()
+        case .sceneActionsMenu(let isNodeSelected):
+            controller = SceneActionMenuViewController(isNodeSelected: isNodeSelected)
             return controller
         case .objectCatalog:
             controller = ObjectCatalogViewController()
