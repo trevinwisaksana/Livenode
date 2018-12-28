@@ -13,4 +13,5 @@ struct State {
     static var isEditingScene: Bool = false
     static var nodeSelected: SCNNode?
     static var nodeAnimationTarget: SCNNode?
+    static var currentTouchLocation: SCNVector3?
 }

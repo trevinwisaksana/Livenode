@@ -76,6 +76,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var lastNodeSelected: SCNNode?
     public var currentNodeHighlighted: SCNNode?
     public var recentNodeAdded: SCNNode?
+    public var nodeCopied: SCNNode?
     
     public var nodeAnimationTarget: SCNNode? {
         didSet {
@@ -659,17 +660,26 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         case .cut:
             nodeSelected?.copy()
             nodeSelected?.removeFromParentNode()
+            
         case .copy:
-            nodeSelected?.copy()
+            nodeCopied = nodeSelected
+            
         case .paste:
-            break
+            guard let nodeCloned = nodeCopied?.clone() else { return }
+            nodeCloned.position = SCNVector3Zero
+            
+            rootNode.addChildNode(nodeCloned)
+            
         case .delete:
             nodeSelected?.removeFromParentNode()
+            
         case .move:
             nodeSelected?.isMovable = true
+            
         case .pin:
             nodeSelected?.isMovable = false
             didSelectANode = false
+            
         default:
             break
         }
