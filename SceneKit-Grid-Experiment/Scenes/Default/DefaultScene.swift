@@ -31,27 +31,27 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     private var cameraNode: SCNNode = {
         let node = SCNNode(geometry: nil)
-        node.name = "cameraNode"
+        node.name = Constants.Node.camera
         node.position = SCNVector3(0, 0, 50)
         return node
     }()
     
     private var cameraOrbit: SCNNode = {
         let node = SCNNode(geometry: nil)
-        node.name = "cameraOrbit"
+        node.name = Constants.Node.cameraOrbit
         node.eulerAngles = SCNVector3(-0.26, -0.025, 0)
         return node
     }()
     
     private var gridContainer: SCNNode = {
         let node = SCNNode(geometry: nil)
-        node.name = "gridContainer"
+        node.name = Constants.Node.gridContainer
         return node
     }()
     
     private var presentationNodeContainer: SCNNode = {
         let node = SCNNode(geometry: nil)
-        node.name = "presentationNodeContainer"
+        node.name = Constants.Node.presentationNodeContainer
         return node
     }()
     
@@ -62,7 +62,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let node = SCNNode(geometry: floorGeometry)
         node.position = SCNVector3(0, -0.1, 0)
-        node.name = "floorNode"
+        node.name = Constants.Node.gridContainer
         
         node.changeColor(to: .white)
         
@@ -159,14 +159,14 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func hideGrid() {
-        let gridContainer = rootNode.childNode(withName: "gridContainer", recursively: true)
+        let gridContainer = rootNode.childNode(withName: Constants.Node.gridContainer, recursively: true)
         gridContainer?.enumerateChildNodes { (node, stop) in
             node.isHidden = true
         }
     }
     
     func showGrid() {
-        let gridContainer = rootNode.childNode(withName: "gridContainer", recursively: true)
+        let gridContainer = rootNode.childNode(withName: Constants.Node.gridContainer, recursively: true)
         gridContainer?.enumerateChildNodes { (node, stop) in
             node.isHidden = false
         }
@@ -190,7 +190,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let topSide = createLineNode(fromPos: topLeft, toPos: topRight, color: .yellow)
         
         [bottomSide, leftSide, rightSide, topSide].forEach {
-            node.name = "tileBorderNode"
+            node.name = Constants.Node.tileBorder
             node.addChildNode($0)
         }
     }
@@ -216,7 +216,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        if isSelectingAnimationTargetLocation && node?.name != "floorNode" && node?.name != "nodeHighlight" {
+        if isSelectingAnimationTargetLocation && node?.name != Constants.Node.floor && node?.name != Constants.Node.highlight {
             nodeSelected = node
             node?.changeColor(to: .green)
             
@@ -264,7 +264,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         boxNode.name = "\(Int.random(in: 0...1000))"
         boxNode.type = .box
         
-        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+        guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
         }
         
@@ -284,7 +284,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         sphereNode.name = "\(Int.random(in: 0...1000))"
         sphereNode.type = .sphere
         
-        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+        guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
         }
         
@@ -304,7 +304,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         pyramidNode.name = "\(Int.random(in: 0...1000))"
         pyramidNode.type = .pyramid
         
-        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+        guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
         }
         
@@ -325,7 +325,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         planeNode.name = "\(Int.random(in: 0...1000))"
         planeNode.type = .plane
         
-        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+        guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
         }
         
@@ -344,7 +344,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         carNode.name = "\(Int.random(in: 0...1000))"
         carNode.type = .car
         
-        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+        guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
         }
         
@@ -364,7 +364,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         houseNode.name = "\(Int.random(in: 0...1000))"
         houseNode.type = .house
         
-        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+        guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
         }
         
@@ -384,7 +384,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         seaplaneNode.name = "\(Int.random(in: 0...1000))"
         seaplaneNode.type = .seaplane
         
-        guard let presentationNodeContainer = rootNode.childNode(withName: "presentationNodeContainer", recursively: true) else {
+        guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
         }
         
@@ -397,7 +397,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Movement
     
     public func move(targetNode: SCNNode, in sceneView: SCNView) {
-        let isCorrectNodeSelected = targetNode.name != "nodeHighlight" && targetNode.name != "floorNode"
+        let isCorrectNodeSelected = targetNode.name != Constants.Node.highlight && targetNode.name != Constants.Node.floor
         if didSelectANode && isCorrectNodeSelected && nodeSelected?.isMovable ?? false {
             // TODO: Disable panning
             
@@ -630,7 +630,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let nodeHighlight = SCNNode(geometry: box)
         nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: .boxWireframe)
         nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
-        nodeHighlight.name = "nodeHighlight"
+        nodeHighlight.name = Constants.Node.highlight
         
         node.addChildNode(nodeHighlight)
         
@@ -642,7 +642,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-        let nodeHighlight = node.childNode(withName: "nodeHighlight", recursively: true)
+        let nodeHighlight = node.childNode(withName: Constants.Node.highlight, recursively: true)
         nodeHighlight?.removeFromParentNode()
         
         currentNodeHighlighted = nil
@@ -697,7 +697,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func limitCameraRotation(using panGesture: UIPanGestureRecognizer) {
-        guard let cameraOrbit = rootNode.childNode(withName: "cameraOrbit", recursively: true) else {
+        guard let cameraOrbit = rootNode.childNode(withName: Constants.Node.cameraOrbit, recursively: true) else {
             return
         }
         
@@ -729,7 +729,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func didAdjustCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
-        guard let camera = rootNode.childNode(withName: "cameraNode", recursively: true)?.camera else {
+        guard let camera = rootNode.childNode(withName: Constants.Node.camera, recursively: true)?.camera else {
             return
         }
         
@@ -743,7 +743,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func didPanCamera(using panGesture: UIPanGestureRecognizer) {
-        guard let cameraNode = rootNode.childNode(withName: "cameraNode", recursively: true) else {
+        guard let cameraNode = rootNode.childNode(withName: Constants.Node.camera, recursively: true) else {
             return
         }
         

@@ -17,8 +17,14 @@ struct Constants {
     }
     
     struct Node {
+        static let highlight = "nodeHightlight"
         static let floor = "floorNode"
         static let tileBorder = "tileBorderNode"
+        static let camera = "cameraNode"
+        static let cameraOrbit = "cameraOrbit"
+        static let gridContainer = "gridContainer"
+        static let presentationNodeContainer = "presentationNodeContainer"
+        
     }
 }
 
