@@ -282,7 +282,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let sphereNode = SCNNode(geometry: sphere)
         
         sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        sphereNode.position = SCNVector3(0, 0, 0)
+        sphereNode.position = SCNVector3(0, 0.9, 0)
         sphereNode.name = "\(Int.random(in: 0...1000))"
         sphereNode.type = .sphere
         
@@ -409,6 +409,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
                 nodeSelected?.position = SCNVector3(x: nodeXPos, y: -0.05, z: nodeZPos)
             case .box:
                 nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.5, z: nodeZPos)
+            case .pyramid:
+                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0, z: nodeZPos)
+            case .sphere:
+                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.9, z: nodeZPos)
             default:
                 nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
             }
