@@ -406,7 +406,9 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             
             switch nodeSelected?.type ?? .default {
             case .plane:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.05, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: nodeXPos, y: -0.05, z: nodeZPos)
+            case .box:
+                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.5, z: nodeZPos)
             default:
                 nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
             }
