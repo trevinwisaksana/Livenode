@@ -62,7 +62,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let node = SCNNode(geometry: floorGeometry)
         node.position = SCNVector3(0, -0.1, 0)
-        node.name = Constants.Node.gridContainer
+        node.name = Constants.Node.floor
         
         node.changeColor(to: .white)
         
@@ -217,7 +217,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        if isSelectingAnimationTargetLocation && node?.name != Constants.Node.floor && node?.name != Constants.Node.highlight {
+        if isSelectingAnimationTargetLocation && node?.name == Constants.Node.tileBorder {
+            
             nodeSelected = node
             node?.changeColor(to: .green)
             
@@ -682,6 +683,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         case .pin:
             nodeSelected?.isMovable = false
             didSelectANode = false
+            recentNodeAdded = nil
             
         default:
             break

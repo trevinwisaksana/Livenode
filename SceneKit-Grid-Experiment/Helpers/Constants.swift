@@ -20,6 +20,7 @@ struct Constants {
         static let highlight = "nodeHightlight"
         static let floor = "floorNode"
         static let tileBorder = "tileBorderNode"
+        static let tileFloor = "tileFloorNode"
         static let camera = "cameraNode"
         static let cameraOrbit = "cameraOrbit"
         static let gridContainer = "gridContainer"

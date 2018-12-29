@@ -77,8 +77,10 @@ extension SCNNode {
     
     public func duplicate() -> SCNNode {
         let newNode = self.clone()
-        newNode.geometry = self.geometry
+        newNode.geometry = self.geometry?.copy() as? SCNGeometry
+        newNode.geometry?.firstMaterial = self.geometry?.firstMaterial?.copy() as? SCNMaterial
         newNode.position = SCNVector3Zero
+        newNode.type = self.type
         
         return newNode
     }

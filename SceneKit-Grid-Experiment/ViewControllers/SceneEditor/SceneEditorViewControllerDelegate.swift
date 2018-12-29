@@ -238,10 +238,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         
         scene.hideGrid()
         
-        if let recentNodeAdded = scene.recentNodeAdded {
-            recentNodeAdded.removeFromParentNode()
-        }
-        
+        scene.recentNodeAdded?.removeFromParentNode()
         scene.resetToOriginalNodeposition()
     }
     
@@ -291,11 +288,12 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didTapDoneEditingMoveAnimationButtonForScene scene: DefaultScene) {
-        guard let position = scene.nodeSelected?.position else {
+        // TODO: Node selected can only be floor nodes
+        guard let nodeSelected = scene.nodeSelected, nodeSelected.name == Constants.Node.tileBorder else {
             return
         }
         
-        let animation = MoveAnimationAttributes(duration: 2, targetLocation: position, animationIndex: nil)
+        let animation = MoveAnimationAttributes(duration: 2, targetLocation: nodeSelected.position, animationIndex: nil)
         scene.addMoveAnimation(animation)
         
         scene.isSelectingAnimationTargetLocation = false
