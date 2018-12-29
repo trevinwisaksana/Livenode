@@ -495,7 +495,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let targetLocation = SCNVector3(x: animation.targetLocation.x, y: 0.5, z: animation.targetLocation.z)
         guard let duration = animation.duration else { return }
         let moveAction = SCNAction().move(to: targetLocation, duration: duration)
-        moveAction.animationType = .move
         
         nodeAnimationTarget?.addAction(moveAction, forKey: .move)
     }
@@ -506,7 +505,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let updatedLocation = SCNVector3(location.x, 0.5, location.z)
         let updatedAnimation = SCNAction().move(to: updatedLocation, duration: duration)
-        updatedAnimation.animationType = .move
         
         nodeAnimationTarget?.actions[index] = updatedAnimation
     }
@@ -600,7 +598,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         // TODO: Fix the duration slider because it's not rounding up numbers
         let fadeInAnimation = SCNAction.fadeIn(duration: 0.2)
-        fadeInAnimation.animationType = .alert
         fadeInAnimation.timingMode = .easeInEaseOut
         nodeAnimationTarget.addAction(fadeInAnimation, forKey: .alert)
         

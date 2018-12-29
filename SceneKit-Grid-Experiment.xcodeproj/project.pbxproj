@@ -95,6 +95,7 @@
 		DDCCAA93219D00CE0071FE7A /* Plane.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDCCAA92219D00CE0071FE7A /* Plane.scn */; };
 		DDCCAA95219D1EC50071FE7A /* PlaneNodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCCAA94219D1EC50071FE7A /* PlaneNodeInspectorView.swift */; };
 		DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCCAA96219D41090071FE7A /* PlaneNodeSizeCell.swift */; };
+		DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C52721D7764C0073119E /* SCNActionSpeechBubble.swift */; };
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
 		DDE60E4621731BB30052E506 /* MoveAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */; };
 		DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */; };
@@ -212,6 +213,7 @@
 		DDCCAA92219D00CE0071FE7A /* Plane.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Plane.scn; sourceTree = "<group>"; };
 		DDCCAA94219D1EC50071FE7A /* PlaneNodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneNodeInspectorView.swift; sourceTree = "<group>"; };
 		DDCCAA96219D41090071FE7A /* PlaneNodeSizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneNodeSizeCell.swift; sourceTree = "<group>"; };
+		DDD1C52721D7764C0073119E /* SCNActionSpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNActionSpeechBubble.swift; sourceTree = "<group>"; };
 		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDurationCell.swift; sourceTree = "<group>"; };
@@ -633,7 +635,7 @@
 			children = (
 				DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */,
 				DD68C224211581E10061100F /* SCNGeometryExtensions.swift */,
-				DDFFE03F217984D800AFF7DA /* SCNActionExtensions.swift */,
+				DDD1C52621D776260073119E /* SCNAction */,
 			);
 			path = SceneKit;
 			sourceTree = "<group>";
@@ -874,6 +876,15 @@
 			path = NodeInspector;
 			sourceTree = "<group>";
 		};
+		DDD1C52621D776260073119E /* SCNAction */ = {
+			isa = PBXGroup;
+			children = (
+				DDFFE03F217984D800AFF7DA /* SCNActionExtensions.swift */,
+				DDD1C52721D7764C0073119E /* SCNActionSpeechBubble.swift */,
+			);
+			path = SCNAction;
+			sourceTree = "<group>";
+		};
 		DDE60E4721731BB90052E506 /* AnimationAttributeViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1104,6 +1115,7 @@
 				DD0EBD2521A694C300BA2F39 /* DocumentBrowserTransitionDelegate.swift in Sources */,
 				DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */,
 				DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */,
+				DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */,
 				DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */,
 				DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */,
 				DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */,

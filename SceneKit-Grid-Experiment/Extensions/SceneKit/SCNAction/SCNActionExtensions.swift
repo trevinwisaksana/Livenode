@@ -12,16 +12,16 @@ extension SCNAction {
     
     // MARK: - Animation Type
     
-    private struct AnimationTypeState {
-        static var animationType: Animation = .default
-    }
-    
-    public var animationType: Animation {
-        get {
-            return objc_getAssociatedObject(self, &AnimationTypeState.animationType) as? Animation ?? .default
-        }
-        set {
-            objc_setAssociatedObject(self, &AnimationTypeState.animationType, newValue, .OBJC_ASSOCIATION_RETAIN)
+    func animationType() -> Animation {
+        switch String(describing: type(of: self)) {
+        case AnimationType.SCNActionMove.string:
+            return .move
+        case AnimationType.SCNActionRotate.string:
+            return .rotate
+        case AnimationType.SCNActionWait.string:
+            return .delay
+        default:
+            return .default
         }
     }
     
@@ -30,7 +30,6 @@ extension SCNAction {
     func move(to location: SCNVector3, duration: TimeInterval) -> SCNAction {
         let action = SCNAction.move(to: location, duration: duration)
         action.targetLocation = location
-        action.animationType = .move
         
         return action
     }
@@ -56,7 +55,6 @@ extension SCNAction {
         let yAxis = SCNVector3(0, 1, 0)
         let action = SCNAction.rotate(by: radians, around: yAxis, duration: duration)
         action.rotationAngle = angle
-        action.animationType = .rotate
         
         return action
     }
@@ -79,7 +77,6 @@ extension SCNAction {
     func wait(duration: TimeInterval) -> SCNAction {
         let action = SCNAction.wait(duration: duration)
         action.delayDuration = duration
-        action.animationType = .delay
         
         return action
     }

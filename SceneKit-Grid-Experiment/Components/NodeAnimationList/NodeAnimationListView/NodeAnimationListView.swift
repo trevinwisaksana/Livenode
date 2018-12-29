@@ -81,7 +81,7 @@ extension NodeAnimationListView: UITableViewDataSource {
     private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
         let cell: NodeAnimationListCell = tableView.dequeueReusableCell()
         
-        let animationType = State.nodeAnimationTarget?.actions[indexPath.row].animationType
+        let animationType = State.nodeAnimationTarget?.actions[indexPath.row].animationType()
         cell.animationType = animationType ?? .default
         
         return cell

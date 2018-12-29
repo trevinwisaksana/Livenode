@@ -10,6 +10,8 @@ import SceneKit
 
 extension SCNNode {
     
+    // TODO: Make this savable
+    
     // MARK: - Move
     
     private struct MovableState {
@@ -38,9 +40,26 @@ extension SCNNode {
     
     public var actions: [SCNAction] {
         get {
-            return objc_getAssociatedObject(self, &ActionsState.actions) as? [SCNAction] ?? []
+            guard let cachedData = UserDefaults.standard.object(forKey: "\(name ?? "")-actions") as? Data
+            else {
+                return []
+            }
+            
+            do {
+                let unarchivedData = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(cachedData) as! [SCNAction]
+                return unarchivedData
+            } catch {
+                fatalError("Failed to retrieve object catalog models.")
+            }
         }
         set {
+            do {
+                let actionsData = try NSKeyedArchiver.archivedData(withRootObject: newValue, requiringSecureCoding: false)
+                UserDefaults.standard.set(actionsData, forKey: "\(name ?? "")-actions")
+            } catch {
+                fatalError("Cannot save object catalog models.")
+            }
+            
             objc_setAssociatedObject(self, &ActionsState.actions, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
@@ -57,7 +76,7 @@ extension SCNNode {
         var actionSequence = [SCNAction]()
 
         actions.forEach { (action) in
-            if action.animationType == .alert {
+            if action.animationType() == .alert {
                 let customAction = SCNAction.customAction(duration: action.duration) { (node, time) in
                     let alertNode = node.childNode(withName: "AlertNode", recursively: true)
                     alertNode?.runAction(action)

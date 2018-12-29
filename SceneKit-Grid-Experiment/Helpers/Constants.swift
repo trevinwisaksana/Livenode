@@ -55,3 +55,15 @@ public enum Animation: String {
         return rawValue.capitalized
     }
 }
+
+public enum AnimationType: String {
+    case SCNActionMove
+    case SCNActionWait
+    case SCNActionRotate
+    case SCNActionSpeechBubble
+    case `default`
+    
+    var string: String {
+        return rawValue
+    }
+}
