@@ -105,3 +105,13 @@ public enum NodeModel: String {
         return rawValue.capitalized + ".dae"
     }
 }
+
+public enum NodeType: String {
+    case `default`
+    case SCNPlane
+    case SCNBox
+    
+    var string: String {
+        return rawValue
+    }
+}

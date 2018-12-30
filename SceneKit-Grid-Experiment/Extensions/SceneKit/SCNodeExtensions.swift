@@ -99,7 +99,6 @@ extension SCNNode {
         newNode.geometry = self.geometry?.copy() as? SCNGeometry
         newNode.geometry?.firstMaterial = self.geometry?.firstMaterial?.copy() as? SCNMaterial
         newNode.position = SCNVector3Zero
-        newNode.type = self.type
         
         return newNode
     }
@@ -128,16 +127,16 @@ extension SCNNode: NodeInspectorViewModel {
     
     // MARK: - Type
     
-    private struct TypeState {
-        static var type = NodeModel.default
-    }
-    
     public var type: NodeModel {
         get {
-            return objc_getAssociatedObject(self, &TypeState.type) as? NodeModel ?? .default
-        }
-        set {
-            objc_setAssociatedObject(self, &TypeState.type, newValue, .OBJC_ASSOCIATION_RETAIN)
+            switch self.geometry?.shape {
+            case NodeType.SCNPlane.string:
+                return .plane
+            case NodeType.SCNBox.string:
+                return .box
+            default:
+                return .default
+            }
         }
     }
     

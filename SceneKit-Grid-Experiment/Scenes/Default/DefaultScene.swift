@@ -264,7 +264,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         boxNode.position = SCNVector3(0, DefaultScene.nodeBottomMargin, 0)
         boxNode.name = "\(Int.random(in: 0...1000))"
-        boxNode.type = .box
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -284,7 +283,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         sphereNode.position = SCNVector3(0, 0.9, 0)
         sphereNode.name = "\(Int.random(in: 0...1000))"
-        sphereNode.type = .sphere
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -304,7 +302,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         pyramidNode.position = SCNVector3(0, 0, 0)
         pyramidNode.name = "\(Int.random(in: 0...1000))"
-        pyramidNode.type = .pyramid
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -325,7 +322,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         planeNode.eulerAngles = SCNVector3(-1.57, 0, 0)
         planeNode.position = SCNVector3(0, 0.05, 0)
         planeNode.name = "\(Int.random(in: 0...1000))"
-        planeNode.type = .plane
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -344,7 +340,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         carNode.position = SCNVector3(0, 0, 0)
         carNode.name = "\(Int.random(in: 0...1000))"
-        carNode.type = .car
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -364,7 +359,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         houseNode.position = SCNVector3(0, 0, 0)
         houseNode.scale = SCNVector3(0.2, 0.2, 0.2)
         houseNode.name = "\(Int.random(in: 0...1000))"
-        houseNode.type = .house
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -384,7 +378,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         seaplaneNode.position = SCNVector3(0, 0.5, 0)
         seaplaneNode.scale = SCNVector3(0.2, 0.2, 0.2)
         seaplaneNode.name = "\(Int.random(in: 0...1000))"
-        seaplaneNode.type = .seaplane
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -674,7 +667,9 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             
         case .paste:
             guard let nodeCloned = nodeCopied?.duplicate() else { return }
-            rootNode.addChildNode(nodeCloned)
+            
+            let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true)
+            presentationNodeContainer?.addChildNode(nodeCloned)
             
         case .delete:
             nodeSelected?.removeFromParentNode()

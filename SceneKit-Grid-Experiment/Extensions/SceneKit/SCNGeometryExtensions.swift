@@ -14,6 +14,4 @@ extension SCNGeometry {
         return String(describing: type(of: self))
     }
     
-    
-    
 }
