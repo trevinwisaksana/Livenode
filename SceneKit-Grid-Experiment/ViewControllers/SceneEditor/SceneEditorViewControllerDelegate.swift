@@ -308,7 +308,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didAddAlertAnimation animation: AlertAnimationAttributes, for scene: DefaultScene, in sceneView: SCNView) {
-        scene.addAlertAnimation(animation, on: sceneView)
+        scene.addSpeechBubbleAnimation(animation, on: sceneView)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingAnimation sender: UIBarButtonItem, for scene: DefaultScene) {

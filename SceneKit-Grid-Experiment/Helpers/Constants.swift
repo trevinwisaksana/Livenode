@@ -25,7 +25,7 @@ struct Constants {
         static let cameraOrbit = "cameraOrbit"
         static let gridContainer = "gridContainer"
         static let presentationNodeContainer = "presentationNodeContainer"
-        
+        static let speechBubble = "speechBubbleNode"
     }
 }
 
@@ -61,6 +61,7 @@ public enum AnimationType: String {
     case SCNActionWait
     case SCNActionRotate
     case SCNActionSpeechBubble
+    case SCNActionFade
     case `default`
     
     var string: String {

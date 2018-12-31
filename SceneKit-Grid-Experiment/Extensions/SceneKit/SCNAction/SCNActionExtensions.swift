@@ -20,6 +20,8 @@ extension SCNAction {
             return .rotate
         case AnimationType.SCNActionWait.string:
             return .delay
+        case AnimationType.SCNActionFade.string:
+            return .alert
         default:
             return .default
         }
@@ -92,6 +94,12 @@ extension SCNAction {
         set {
             objc_setAssociatedObject(self, &DelayState.delayDuration, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
+    }
+    
+    // MARK: - Speech Bubble Animation
+    
+    class func speechBubble(caption: String) -> SCNAction {
+        return SCNActionSpeechBubble()
     }
     
 }

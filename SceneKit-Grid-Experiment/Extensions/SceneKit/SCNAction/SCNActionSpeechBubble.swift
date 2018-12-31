@@ -8,6 +8,4 @@
 
 import SceneKit
 
-class SCNActionSpeechBubble: SCNAction {
-    
-}
+class SCNActionSpeechBubble: SCNAction { }
