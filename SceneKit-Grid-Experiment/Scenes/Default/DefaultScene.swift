@@ -62,7 +62,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let node = SCNNode(geometry: floorGeometry)
         node.position = SCNVector3(0, -0.1, 0)
-        node.name = Constants.Node.floor
+        node.name = Constants.Node.gridContainer
         
         node.changeColor(to: .white)
         
@@ -217,8 +217,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        if isSelectingAnimationTargetLocation && node?.name == Constants.Node.tileBorder {
-            
+        if isSelectingAnimationTargetLocation && node?.name != Constants.Node.floor && node?.name != Constants.Node.highlight {
             nodeSelected = node
             node?.changeColor(to: .green)
             
@@ -264,6 +263,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         boxNode.position = SCNVector3(0, DefaultScene.nodeBottomMargin, 0)
         boxNode.name = "\(Int.random(in: 0...1000))"
+        boxNode.type = .box
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -281,8 +281,9 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let sphereNode = SCNNode(geometry: sphere)
         
         sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        sphereNode.position = SCNVector3(0, 0.9, 0)
+        sphereNode.position = SCNVector3(0, 0, 0)
         sphereNode.name = "\(Int.random(in: 0...1000))"
+        sphereNode.type = .sphere
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -302,6 +303,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         pyramidNode.position = SCNVector3(0, 0, 0)
         pyramidNode.name = "\(Int.random(in: 0...1000))"
+        pyramidNode.type = .pyramid
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -322,6 +324,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         planeNode.eulerAngles = SCNVector3(-1.57, 0, 0)
         planeNode.position = SCNVector3(0, 0.05, 0)
         planeNode.name = "\(Int.random(in: 0...1000))"
+        planeNode.type = .plane
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -340,6 +343,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         carNode.position = SCNVector3(0, 0, 0)
         carNode.name = "\(Int.random(in: 0...1000))"
+        carNode.type = .car
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -359,6 +363,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         houseNode.position = SCNVector3(0, 0, 0)
         houseNode.scale = SCNVector3(0.2, 0.2, 0.2)
         houseNode.name = "\(Int.random(in: 0...1000))"
+        houseNode.type = .house
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -378,6 +383,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         seaplaneNode.position = SCNVector3(0, 0.5, 0)
         seaplaneNode.scale = SCNVector3(0.2, 0.2, 0.2)
         seaplaneNode.name = "\(Int.random(in: 0...1000))"
+        seaplaneNode.type = .seaplane
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -399,13 +405,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             
             switch nodeSelected?.type ?? .default {
             case .plane:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: -0.05, z: nodeZPos)
-            case .box:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.5, z: nodeZPos)
-            case .pyramid:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0, z: nodeZPos)
-            case .sphere:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.9, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.05, z: nodeZPos)
             default:
                 nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
             }
@@ -488,6 +488,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         let targetLocation = SCNVector3(x: animation.targetLocation.x, y: 0.5, z: animation.targetLocation.z)
         guard let duration = animation.duration else { return }
         let moveAction = SCNAction().move(to: targetLocation, duration: duration)
+        moveAction.animationType = .move
         
         nodeAnimationTarget?.addAction(moveAction, forKey: .move)
     }
@@ -498,6 +499,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let updatedLocation = SCNVector3(location.x, 0.5, location.z)
         let updatedAnimation = SCNAction().move(to: updatedLocation, duration: duration)
+        updatedAnimation.animationType = .move
         
         nodeAnimationTarget?.actions[index] = updatedAnimation
     }
@@ -591,6 +593,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         // TODO: Fix the duration slider because it's not rounding up numbers
         let fadeInAnimation = SCNAction.fadeIn(duration: 0.2)
+        fadeInAnimation.animationType = .alert
         fadeInAnimation.timingMode = .easeInEaseOut
         nodeAnimationTarget.addAction(fadeInAnimation, forKey: .alert)
         
@@ -667,9 +670,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             
         case .paste:
             guard let nodeCloned = nodeCopied?.duplicate() else { return }
-            
-            let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true)
-            presentationNodeContainer?.addChildNode(nodeCloned)
+            rootNode.addChildNode(nodeCloned)
             
         case .delete:
             nodeSelected?.removeFromParentNode()
@@ -681,7 +682,6 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         case .pin:
             nodeSelected?.isMovable = false
             didSelectANode = false
-            recentNodeAdded = nil
             
         default:
             break

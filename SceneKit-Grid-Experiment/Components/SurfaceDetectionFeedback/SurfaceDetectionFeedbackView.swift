@@ -61,7 +61,7 @@ public class SurfaceDetectionFeedbackView: UIView {
             message = "Move the device around to detect horizontal and vertical surfaces."
             
         case .normal:
-//            message = "Tap on the screen to insert the 3D models."
+            // TODO: Show message to tap to add nodes
             message = ""
             
         case .notAvailable:
