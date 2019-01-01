@@ -140,14 +140,14 @@ extension NodeAnimationListView: UITableViewDelegate {
             
             delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .delay)
             
-        case .alert:
+        case .speechBubble:
             guard let animatedNodeLocation = State.nodeAnimationTarget?.position else { return }
             
-            let animationAttributes = AlertAnimationAttributes(duration: animation?.duration, animationIndex: indexPath.row, nodeLocation: animatedNodeLocation)
-            let alertAnimationAttributesController = Presenter.inject(.alertAnimationAttributes(attributes: animationAttributes))
+            let animationAttributes = SpeechBubbleAnimationAttributes(duration: animation?.duration, animationIndex: indexPath.row, nodeLocation: animatedNodeLocation)
+            let alertAnimationAttributesController = Presenter.inject(.speechBubbleAnimationAttributes(attributes: animationAttributes))
             navigationController.pushViewController(alertAnimationAttributesController, animated: true)
             
-            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .alert)
+            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .speechBubble)
             
         default:
             break

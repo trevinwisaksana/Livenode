@@ -30,7 +30,7 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingAnimation sender: UIBarButtonItem, for scene: DefaultScene)
     
-    func sceneEditor(_ controller: SceneEditorViewController, didAddAlertAnimation animation: AlertAnimationAttributes, for scene: DefaultScene, in sceneView: SCNView)
+    func sceneEditor(_ controller: SceneEditorViewController, didAddSpeechBubbleAnimation animation: SpeechBubbleAnimationAttributes, for scene: DefaultScene, in sceneView: SCNView)
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
@@ -275,11 +275,11 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
                 
                 navigationController.pushViewController(delayAnimationAttributesView, animated: true)
                 
-            case .alert:
-                let alertAnimationAttributesView = Presenter.inject(.alertAnimationAttributes(attributes: AlertAnimationAttributes()))
+            case .speechBubble:
+                let speechAnimationAnimationAttributesView = Presenter.inject(.speechBubbleAnimationAttributes(attributes: SpeechBubbleAnimationAttributes()))
                 let navigationController = controller.presentedViewController as! UINavigationController
                 
-                navigationController.pushViewController(alertAnimationAttributesView, animated: true)
+                navigationController.pushViewController(speechAnimationAnimationAttributesView, animated: true)
                 
             default:
                 break
@@ -307,7 +307,7 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         scene.playAnimation()
     }
     
-    func sceneEditor(_ controller: SceneEditorViewController, didAddAlertAnimation animation: AlertAnimationAttributes, for scene: DefaultScene, in sceneView: SCNView) {
+    func sceneEditor(_ controller: SceneEditorViewController, didAddSpeechBubbleAnimation animation: SpeechBubbleAnimationAttributes, for scene: DefaultScene, in sceneView: SCNView) {
         scene.addSpeechBubbleAnimation(animation, on: sceneView)
     }
     

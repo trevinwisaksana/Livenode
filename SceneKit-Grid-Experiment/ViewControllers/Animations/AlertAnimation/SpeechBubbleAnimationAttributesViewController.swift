@@ -16,8 +16,8 @@ final class SpeechBubbleAnimationAttributesViewController: UIViewController {
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var mainView: AlertAnimationAttributesView = {
-        let mainView = AlertAnimationAttributesView(delegate: self)
+    lazy var mainView: SpeechBubbleAnimationAttributesView = {
+        let mainView = SpeechBubbleAnimationAttributesView(delegate: self)
         return mainView
     }()
     
@@ -53,13 +53,13 @@ final class SpeechBubbleAnimationAttributesViewController: UIViewController {
 
 // MARK: - AlertAnimationAttributesViewDelegate
 
-extension SpeechBubbleAnimationAttributesViewController: AlertAnimationAttributesViewDelegate {
-    func alertAnimationAttributesView(_ alertAnimationAttributesView: AlertAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: SpeechBubbleAnimationAttributes) {
+extension SpeechBubbleAnimationAttributesViewController: SpeechBubbleAnimationAttributesViewDelegate {
+    func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: SpeechBubbleAnimationAttributes) {
         sceneEditorViewController().didTapAddSpeechBubbleAnimationButton(button, animation: animation)
         dismiss(animated: true, completion: nil)
     }
     
-    func alertAnimationAttributesView(_ alertAnimationAttributesView: AlertAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int) {
+    func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int) {
         
     }
     

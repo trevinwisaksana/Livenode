@@ -47,7 +47,7 @@ public enum Animation: String {
     case move
     case delay
     case rotate
-    case alert
+    case speechBubble
     case jump
     case `default`
     

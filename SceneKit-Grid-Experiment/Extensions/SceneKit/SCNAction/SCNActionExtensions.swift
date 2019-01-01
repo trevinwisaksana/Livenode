@@ -21,7 +21,7 @@ extension SCNAction {
         case AnimationType.SCNActionWait.string:
             return .delay
         case AnimationType.SCNActionFade.string:
-            return .alert
+            return .speechBubble
         default:
             return .default
         }

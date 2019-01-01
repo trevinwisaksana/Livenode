@@ -548,7 +548,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Speech Bubble Animation
     
-    func addSpeechBubbleAnimation(_ animation: AlertAnimationAttributes, on sceneView: SCNView) {
+    func addSpeechBubbleAnimation(_ animation: SpeechBubbleAnimationAttributes, on sceneView: SCNView) {
         createSpeechBubblePopover(duration: animation.duration ?? 0.25)
     }
     
@@ -597,7 +597,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         // TODO: Fix the duration slider because it's not rounding up numbers
         let fadeInAnimation = SCNAction.fadeIn(duration: 0.15)
         fadeInAnimation.timingMode = .easeInEaseOut
-        nodeAnimationTarget.addAction(fadeInAnimation, forKey: .alert)
+        nodeAnimationTarget.addAction(fadeInAnimation, forKey: .speechBubble)
         
         nodeAnimationTarget.addChildNode(speechBubbleNode)
     }

@@ -79,7 +79,7 @@ extension NodeAnimationMenuView: UITableViewDelegate {
         case 1:
             delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.rotate)
         case 2:
-            delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.alert)
+            delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.speechBubble)
         case 3:
             delegate?.nodeAnimationMenuView(self, didSelectNodeAnimation: Animation.delay)
         default:

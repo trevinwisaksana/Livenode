@@ -407,12 +407,12 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - External Properties
     
-    func didTapAddAlertAnimationButton(_ sender: UIButton, animation: AlertAnimationAttributes) {
+    func didTapAddSpeechBubbleAnimationButton(_ sender: UIButton, animation: SpeechBubbleAnimationAttributes) {
         guard let scene = document?.scene else {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, didAddAlertAnimation: animation, for: scene, in: sceneView)
+        viewControllerDelegate.sceneEditor(self, didAddSpeechBubbleAnimation: animation, for: scene, in: sceneView)
     }
     
     // MARK: - Device Configuration

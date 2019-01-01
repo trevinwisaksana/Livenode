@@ -77,7 +77,7 @@ extension SCNNode {
 
         actions.forEach { (action) in
             // TODO: Fix issue where animation type cannot notice SCNActionSpeechBubble as .alert
-            if action.animationType() == .alert {
+            if action.animationType() == .speechBubble {
                 let customAction = SCNAction.customAction(duration: action.duration) { (node, time) in
                     let alertNode = node.childNode(withName: Constants.Node.speechBubble, recursively: true)
                     alertNode?.runAction(action)

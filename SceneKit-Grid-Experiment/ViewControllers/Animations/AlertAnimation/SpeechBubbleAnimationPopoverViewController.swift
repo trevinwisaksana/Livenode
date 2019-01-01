@@ -1,5 +1,5 @@
 //
-//  AlertAnimationPopoverViewController.swift
+//  SpeechBubbleAnimationPopoverViewController.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 22/10/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AlertAnimationPopoverViewController: UIViewController {
+final class SpeechBubbleAnimationPopoverViewController: UIViewController {
     
     // MARK: - Internal Properties
     

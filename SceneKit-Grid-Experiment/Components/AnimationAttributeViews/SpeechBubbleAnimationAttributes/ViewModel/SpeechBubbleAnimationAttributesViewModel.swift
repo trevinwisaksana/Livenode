@@ -1,5 +1,5 @@
 //
-//  AlertAnimationAttributesViewModel.swift
+//  SpeechBubbleAnimationAttributesViewModel.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 21/10/18.
@@ -8,12 +8,12 @@
 
 import SceneKit
 
-public protocol AlertAnimationAttributesViewModel {
+public protocol SpeechBubbleAnimationAttributesViewModel {
     var nodeLocation: SCNVector3? { get }
     var animationIndex: Int? { get }
 }
 
-public struct AlertAnimationAttributes: AlertAnimationAttributesViewModel, AnimationDurationViewModel {
+public struct SpeechBubbleAnimationAttributes: SpeechBubbleAnimationAttributesViewModel, AnimationDurationViewModel {
     public var duration: TimeInterval?
     public var animationIndex: Int?
     public var nodeLocation: SCNVector3?

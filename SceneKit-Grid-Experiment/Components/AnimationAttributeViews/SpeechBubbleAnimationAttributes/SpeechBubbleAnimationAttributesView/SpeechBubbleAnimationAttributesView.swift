@@ -1,5 +1,5 @@
 //
-//  AlertAnimationAttributesView.swift
+//  SpeechBubbleAnimationAttributesView.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 21/10/18.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-public protocol AlertAnimationAttributesViewDelegate: class {
-    func alertAnimationAttributesView(_ alertAnimationAttributesView: AlertAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: AlertAnimationAttributes)
-    func alertAnimationAttributesView(_ alertAnimationAttributesView: AlertAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int)
+public protocol SpeechBubbleAnimationAttributesViewDelegate: class {
+    func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: SpeechBubbleAnimationAttributes)
+    func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int)
 }
 
-public class AlertAnimationAttributesView: UIView {
+public class SpeechBubbleAnimationAttributesView: UIView {
     
     // MARK: - Internal properties
     
@@ -32,12 +32,12 @@ public class AlertAnimationAttributesView: UIView {
     
     // MARK: - Public Properties
     
-    public weak var delegate: AlertAnimationAttributesViewDelegate?
-    public var dataSource: AlertAnimationAttributes?
+    public weak var delegate: SpeechBubbleAnimationAttributesViewDelegate?
+    public var dataSource: SpeechBubbleAnimationAttributes?
     
     // MARK: - Setup
     
-    public init(delegate: AlertAnimationAttributesViewDelegate) {
+    public init(delegate: SpeechBubbleAnimationAttributesViewDelegate) {
         super.init(frame: .zero)
         
         self.delegate = delegate
@@ -73,7 +73,7 @@ public class AlertAnimationAttributesView: UIView {
 
 // MARK: - UITableViewDelegate
 
-extension AlertAnimationAttributesView: UITableViewDelegate {
+extension SpeechBubbleAnimationAttributesView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectNodeAnimation(atIndex: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
@@ -91,9 +91,9 @@ extension AlertAnimationAttributesView: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 
-extension AlertAnimationAttributesView: UITableViewDataSource {
+extension SpeechBubbleAnimationAttributesView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AlertAnimationAttributesView.numberOfItemsInSection
+        return SpeechBubbleAnimationAttributesView.numberOfItemsInSection
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,9 +123,9 @@ extension AlertAnimationAttributesView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return AlertAnimationAttributesView.animationDurationCellHeight
+            return SpeechBubbleAnimationAttributesView.animationDurationCellHeight
         case 1:
-            return AlertAnimationAttributesView.addAnimationCellHeight
+            return SpeechBubbleAnimationAttributesView.addAnimationCellHeight
         default:
             return 60.0
         }
@@ -134,24 +134,24 @@ extension AlertAnimationAttributesView: UITableViewDataSource {
 
 // MARK: - AddAnimationCellDelegate
 
-extension AlertAnimationAttributesView: AddAnimationCellDelegate {
+extension SpeechBubbleAnimationAttributesView: AddAnimationCellDelegate {
     public func addAnimationCell(_ addAnimationCell: AddAnimationCell, didTapAddAnimationButton button: UIButton) {
         guard let animatedNodeLocation = State.nodeAnimationTarget?.position else { return }
         dataSource?.nodeLocation = animatedNodeLocation
         
         guard let dataSource = dataSource else { return }
         
-        delegate?.alertAnimationAttributesView(self, didTapAddAnimationButton: button, animation: dataSource)
+        delegate?.speechBubbleAnimationAttributesView(self, didTapAddAnimationButton: button, animation: dataSource)
     }
 }
 
 // MARK: - AnimationDurationCellDelegate
 
-extension AlertAnimationAttributesView: AnimationDurationCellDelegate {
+extension SpeechBubbleAnimationAttributesView: AnimationDurationCellDelegate {
     public func animationDurationCell(_ animationDurationCell: AnimationDurationCell, didUpdateAnimationDuration duration: TimeInterval) {
         dataSource?.duration = duration
         
         guard let animationIndex = dataSource?.animationIndex else { return }
-        delegate?.alertAnimationAttributesView(self, didUpdateAnimationDuration: duration, forAnimationAtIndex: animationIndex)
+        delegate?.speechBubbleAnimationAttributesView(self, didUpdateAnimationDuration: duration, forAnimationAtIndex: animationIndex)
     }
 }
