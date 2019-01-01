@@ -559,36 +559,43 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         let text = SCNText(string: "Test", extrusionDepth: 0)
         text.firstMaterial?.isDoubleSided = true
-        
-        // TODO: Change the white background to an image of a popover
-        let background = SCNPlane(width: 20, height: 20)
-        background.cornerRadius = 1
-        background.firstMaterial?.diffuse.contents = UIColor.white
-        
-        let backgroundNode = SCNNode(geometry: background)
-        background.firstMaterial?.isDoubleSided = true
-        
         let speechBubbleNode = SCNNode(geometry: text)
-        speechBubbleNode.addChildNode(backgroundNode)
         
         speechBubbleNode.name = Constants.Node.speechBubble
-        speechBubbleNode.scale = SCNVector3(0.15, 0.15, 0.15)
+        speechBubbleNode.scale = SCNVector3(0.1, 0.1, 0.1)
         speechBubbleNode.opacity = 0
+        
+        let (min, max) = speechBubbleNode.boundingBox
+        
+        let dx = min.x + 0.5 * (max.x - min.x)
+        let dy = min.y + 0.5 * (max.y - min.y)
+        let dz = min.z + 0.5 * (max.z - min.z)
+        speechBubbleNode.pivot = SCNMatrix4MakeTranslation(dx, dy, dz)
+        
+        let background = SCNPlane(width: 30, height: 15)
+        background.cornerRadius = 1
+        background.firstMaterial?.diffuse.contents = UIColor.white
+        background.firstMaterial?.isDoubleSided = true
+        
+        let backgroundNode = SCNNode(geometry: background)
+        backgroundNode.changeColor(to: .gray)
+        speechBubbleNode.addChildNode(backgroundNode)
         
         switch nodeAnimationTarget.type {
         case .box:
-            speechBubbleNode.position = SCNVector3(-0.28, 0.5, 0)
+            speechBubbleNode.position = SCNVector3(0, 1.5, 0)
+            backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)
         case .plane:
             speechBubbleNode.position = SCNVector3(0, 1, 0)
             speechBubbleNode.eulerAngles = SCNVector3(1.57, 0, 0)
         case .car:
-            break
+            speechBubbleNode.position = SCNVector3(0, 1.5, 0)
         default:
-            speechBubbleNode.position = SCNVector3(-0.28, 0.5, 0)
+            speechBubbleNode.position = SCNVector3(0, 1, 0)
         }
         
         // TODO: Fix the duration slider because it's not rounding up numbers
-        let fadeInAnimation = SCNAction.fadeIn(duration: 0.2)
+        let fadeInAnimation = SCNAction.fadeIn(duration: 0.15)
         fadeInAnimation.timingMode = .easeInEaseOut
         nodeAnimationTarget.addAction(fadeInAnimation, forKey: .alert)
         
