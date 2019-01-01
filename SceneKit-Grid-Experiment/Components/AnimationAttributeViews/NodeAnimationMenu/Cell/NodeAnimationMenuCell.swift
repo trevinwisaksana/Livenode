@@ -55,7 +55,7 @@ public class NodeAnimationMenuCell: UITableViewCell {
         case 1:
             titleLabel.text = Animation.rotate.capitalized
         case 2:
-            titleLabel.text = Animation.speechBubble.capitalized
+            titleLabel.text = "Speech Bubble"
         case 3:
             titleLabel.text = Animation.delay.capitalized
         default:

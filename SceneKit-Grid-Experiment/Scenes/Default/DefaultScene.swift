@@ -589,7 +589,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             speechBubbleNode.position = SCNVector3(0, 1, 0)
             speechBubbleNode.eulerAngles = SCNVector3(1.57, 0, 0)
         case .car:
-            speechBubbleNode.position = SCNVector3(0, 1.5, 0)
+            speechBubbleNode.position = SCNVector3(0, 3, 0)
         default:
             speechBubbleNode.position = SCNVector3(0, 1, 0)
         }

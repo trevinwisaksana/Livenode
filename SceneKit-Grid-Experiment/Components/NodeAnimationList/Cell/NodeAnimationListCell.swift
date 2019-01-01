@@ -56,7 +56,12 @@ public class NodeAnimationListCell: UITableViewCell {
     /// The model contains data used to populate the view.
     public var animationType: Animation = .default {
         didSet {
-            titleLabel.text = animationType.capitalized
+            switch animationType {
+            case .speechBubble:
+                titleLabel.text = "Speech Bubble"
+            default:
+                titleLabel.text = animationType.capitalized
+            }
         }
     }
     
