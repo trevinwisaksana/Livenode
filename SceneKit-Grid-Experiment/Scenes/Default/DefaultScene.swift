@@ -589,9 +589,12 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             speechBubbleNode.position = SCNVector3(0, 1, 0)
             speechBubbleNode.eulerAngles = SCNVector3(1.57, 0, 0)
         case .car:
+            // TODO: Fix bug where car node isn't recognized
             speechBubbleNode.position = SCNVector3(0, 3, 0)
+            backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)
         default:
-            speechBubbleNode.position = SCNVector3(0, 1, 0)
+            speechBubbleNode.position = SCNVector3(0, 3, 0)
+            backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)
         }
         
         // TODO: Fix the duration slider because it's not rounding up numbers
