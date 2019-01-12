@@ -15,53 +15,57 @@ enum Presenter {
         switch component {
         case .colorPickerView:
             controller = ColorPickerViewController<ColorPickerPresentableView>()
-            return controller
+            
         case .onboarding:
             controller = OnboardingViewController()
-            return controller
+            
         case .sceneInspectorView:
             // MARK: - Separate this to a different view controller
             controller = AttributesInspectorViewController<SceneInspectorPresentableView>()
-            return controller
+            
         case .nodeInspectorView:
             controller = NodeInspectorViewController()
-            return controller
+            
         case .utilitiesView:
             controller = UtilitiesInspectorViewController()
-            return controller
+            
         case .documentBrowser:
             controller = DocumentBrowserViewController()
-            return controller
+            
         case .sceneActionsMenu(let isNodeSelected):
             controller = SceneActionMenuViewController(isNodeSelected: isNodeSelected)
-            return controller
+            
         case .objectCatalog:
             controller = ObjectCatalogViewController()
-            return controller
+            
         case .presentation(let document):
             controller = PresentationViewController(scene: document)
-            return controller
+            
         case .nodeAnimationList:
             controller = NodeAnimationListViewController()
-            return controller
+            
         case .nodeAnimationMenu:
             controller = NodeAnimationMenuViewController()
-            return controller
+            
         case .moveAnimationAttributes(let animationAttributes):
             controller = MoveAnimationAttributesViewController(animationAttributes: animationAttributes)
-            return controller
+            
         case .rotateAnimationAttributes(let animationAttributes):
             controller = RotateAnimationAttributesViewController(animationAttributes: animationAttributes)
-            return controller
+            
         case .delayAnimationAttributes(let animationAttributes):
             controller = DelayAnimationAttributesViewController(animationAttributes: animationAttributes)
-            return controller
+            
         case .speechBubbleAnimationAttributes(attributes: let animationAttributes):
             controller = SpeechBubbleAnimationAttributesViewController(animationAttributes: animationAttributes)
-            return controller
+
         case .alertAnimationPopover:
             controller = SpeechBubbleAnimationPopoverViewController()
-            return controller
+            
+        case .onboardingTipPopover:
+            controller = OnboardingTipViewController()
         }
+        
+        return controller
     }
 }

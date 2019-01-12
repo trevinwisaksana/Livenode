@@ -17,6 +17,7 @@ protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationListWith sender: UIBarButtonItem)
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayOnboardingTipPopover sender: UIBarButtonItem, message: String)
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene)
@@ -144,6 +145,17 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         navigationController.popoverPresentationController?.barButtonItem = sender
         
         controller.present(navigationController, animated: true, completion: nil)
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayOnboardingTipPopover sender: UIBarButtonItem, message: String) {
+        let popover = Presenter.inject(.onboardingTipPopover)
+        
+        popover.modalPresentationStyle = .popover
+        popover.popoverPresentationController?.permittedArrowDirections = .up
+        popover.popoverPresentationController?.delegate = self
+        popover.popoverPresentationController?.barButtonItem = sender
+        
+        controller.present(popover, animated: true, completion: nil)
     }
 
     // MARK: - Scene Action Menu

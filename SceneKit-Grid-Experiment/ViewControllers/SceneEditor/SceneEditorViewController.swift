@@ -9,12 +9,19 @@
 import UIKit
 import SceneKit
 
+private enum SceneEditorState {
+    case onboarding
+    case normal
+    case `default`
+}
+
 final class SceneEditorViewController: UIViewController {
     
     // MARK: - Private Properties
     
     private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
     
+    private var state: SceneEditorState = .default
     private var browserTransition: DocumentBrowserTransitioningDelegate?
     
     // MARK: - Internal Properties
@@ -57,6 +64,8 @@ final class SceneEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        state = .onboarding
         
         setup()
     }
@@ -138,6 +147,17 @@ final class SceneEditorViewController: UIViewController {
         
         navigationItem.setLeftBarButton(backBarButton, animated: true)
         navigationItem.setRightBarButtonItems([utilitiesInspectorBarButton, objectCatalogBarButton, nodeInspectorBarButton, playBarButton], animated: true)
+        
+        switch state {
+        case .onboarding:
+            viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: objectCatalogBarButton, message: "Test")
+            
+        case .normal:
+            break
+            
+        default:
+            break
+        }
     }
     
     func setupAnimationNavigationItems() {

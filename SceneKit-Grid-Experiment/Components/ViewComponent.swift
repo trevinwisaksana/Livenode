@@ -27,4 +27,5 @@ enum ViewComponent {
     case delayAnimationAttributes(attributes: DelayAnimationAttributes)
     case speechBubbleAnimationAttributes(attributes: SpeechBubbleAnimationAttributes)
     case alertAnimationPopover
+    case onboardingTipPopover
 }
