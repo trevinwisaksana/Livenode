@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A2A092CD68042678B3BC0A3 /* Pods_SceneKit_Grid_Experiment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1794DEBD8D603886D8DA8992 /* Pods_SceneKit_Grid_Experiment.framework */; };
 		DD0BFFBC217C590100429F52 /* SpeechBubbleAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFBB217C590100429F52 /* SpeechBubbleAnimationAttributesViewController.swift */; };
 		DD0BFFBF217C593F00429F52 /* DelayAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */; };
 		DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFC0217C599C00429F52 /* DelayAnimationAttributesView.swift */; };
@@ -121,6 +122,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1794DEBD8D603886D8DA8992 /* Pods_SceneKit_Grid_Experiment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SceneKit_Grid_Experiment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8DCAF8D6322CD1B2D8C37F0 /* Pods-SceneKit-Grid-Experiment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SceneKit-Grid-Experiment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SceneKit-Grid-Experiment/Pods-SceneKit-Grid-Experiment.debug.xcconfig"; sourceTree = "<group>"; };
 		DD0BFFBB217C590100429F52 /* SpeechBubbleAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationAttributesViewController.swift; sourceTree = "<group>"; };
 		DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesViewController.swift; sourceTree = "<group>"; };
 		DD0BFFC0217C599C00429F52 /* DelayAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesView.swift; sourceTree = "<group>"; };
@@ -236,6 +239,7 @@
 		DDFFE03F217984D800AFF7DA /* SCNActionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNActionExtensions.swift; sourceTree = "<group>"; };
 		DDFFE04121799D7D00AFF7DA /* ModelAnimationAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAnimationAttributesViewModel.swift; sourceTree = "<group>"; };
 		DDFFE0442179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationAttributesViewController.swift; sourceTree = "<group>"; };
+		E825D8F4323E4359C5D8A148 /* Pods-SceneKit-Grid-Experiment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SceneKit-Grid-Experiment.release.xcconfig"; path = "Pods/Target Support Files/Pods-SceneKit-Grid-Experiment/Pods-SceneKit-Grid-Experiment.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,12 +247,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A2A092CD68042678B3BC0A3 /* Pods_SceneKit_Grid_Experiment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		954B74EF415E98B15224BB32 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C8DCAF8D6322CD1B2D8C37F0 /* Pods-SceneKit-Grid-Experiment.debug.xcconfig */,
+				E825D8F4323E4359C5D8A148 /* Pods-SceneKit-Grid-Experiment.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		989E87B5770AE221DF1A2D05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1794DEBD8D603886D8DA8992 /* Pods_SceneKit_Grid_Experiment.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DD0BFFBD217C590A00429F52 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +312,8 @@
 			children = (
 				DD20F66620672FBD005E838C /* SceneKit-Grid-Experiment */,
 				DD20F66520672FBD005E838C /* Products */,
+				954B74EF415E98B15224BB32 /* Pods */,
+				989E87B5770AE221DF1A2D05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1033,9 +1057,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD20F68320672FBD005E838C /* Build configuration list for PBXNativeTarget "SceneKit-Grid-Experiment" */;
 			buildPhases = (
+				0075A099D8266379818F5D64 /* [CP] Check Pods Manifest.lock */,
 				DD20F66020672FBD005E838C /* Sources */,
 				DD20F66120672FBD005E838C /* Frameworks */,
 				DD20F66220672FBD005E838C /* Resources */,
+				BEB81F70044130534D0EBDFD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1105,6 +1131,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0075A099D8266379818F5D64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SceneKit-Grid-Experiment-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEB81F70044130534D0EBDFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SceneKit-Grid-Experiment/Pods-SceneKit-Grid-Experiment-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMPopTip.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SceneKit-Grid-Experiment/Pods-SceneKit-Grid-Experiment-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DD20F66020672FBD005E838C /* Sources */ = {
@@ -1342,6 +1415,7 @@
 		};
 		DD20F68420672FBD005E838C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8DCAF8D6322CD1B2D8C37F0 /* Pods-SceneKit-Grid-Experiment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "SceneKit-Grid-Experiment/SceneKit-Grid-Experiment.entitlements";
@@ -1359,6 +1433,7 @@
 		};
 		DD20F68520672FBD005E838C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E825D8F4323E4359C5D8A148 /* Pods-SceneKit-Grid-Experiment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "SceneKit-Grid-Experiment/SceneKit-Grid-Experiment.entitlements";
