@@ -12,7 +12,7 @@ final class OnboardingTipViewController: UIViewController {
     
     // MARK: - Internal Properties
     
-    private let popoverWidth: Int = 100
+    private let popoverWidth: Int = 200
     private let popoverHeight: Int = 50
     
     lazy var mainView: UIView = {
@@ -35,7 +35,17 @@ final class OnboardingTipViewController: UIViewController {
         view.addSubview(mainView)
         mainView.fillInSuperview()
         
+        popoverPresentationController?.backgroundColor = .yellow
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapMainView(_:)))
+        mainView.addGestureRecognizer(tapGestureRecognizer)
+        
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
+    }
+    
+    @objc
+    private func didTapMainView(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
