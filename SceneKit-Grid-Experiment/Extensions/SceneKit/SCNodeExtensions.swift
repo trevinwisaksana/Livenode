@@ -135,6 +135,8 @@ extension SCNNode: NodeInspectorViewModel {
                 return .plane
             case NodeType.SCNBox.string:
                 return .box
+            case NodeType.SCNCar.string:
+                return .car
             default:
                 return .default
             }
@@ -153,6 +155,34 @@ extension SCNNode: NodeInspectorViewModel {
         get {
             return CGFloat(boundingBox.max.x - boundingBox.min.x)
         }
+    }
+    
+}
+
+// MARK: - Custom Node Classes
+
+public class SCNCarNode: SCNNode {
+    
+    public init?(node: SCNNode?) {
+        super.init()
+        
+        guard let node = node else {
+            return nil
+        }
+        
+        self.name = node.name
+        
+        let geometrySources = node.geometry?.sources ?? []
+        let geometryElements = node.geometry?.elements ?? []
+        self.geometry = SCNCar(sources: geometrySources, elements: geometryElements)
+        self.geometry?.materials = node.geometry?.materials ?? []
+        
+        self.position = node.position
+        self.scale = node.scale
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

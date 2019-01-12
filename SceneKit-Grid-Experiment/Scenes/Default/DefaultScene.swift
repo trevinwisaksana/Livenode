@@ -334,10 +334,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func insertCar() {
-        guard let carNode = daeToSCNNode(filepath: "Car.scn") else {
+        guard let carNode = SCNCarNode(node: daeToSCNNode(filepath: "Car.scn")) else {
             return
         }
-        
+
         carNode.position = SCNVector3(0, 0, 0)
         carNode.name = "\(Int.random(in: 0...1000))"
         
@@ -585,13 +585,16 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         case .box:
             speechBubbleNode.position = SCNVector3(0, 1.5, 0)
             backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)
+            
         case .plane:
             speechBubbleNode.position = SCNVector3(0, 1, 0)
             speechBubbleNode.eulerAngles = SCNVector3(1.57, 0, 0)
+            
         case .car:
             // TODO: Fix bug where car node isn't recognized
             speechBubbleNode.position = SCNVector3(0, 3, 0)
             backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)
+            
         default:
             speechBubbleNode.position = SCNVector3(0, 3, 0)
             backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)

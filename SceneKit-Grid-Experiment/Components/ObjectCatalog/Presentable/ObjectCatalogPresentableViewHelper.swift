@@ -110,6 +110,7 @@ public enum NodeType: String {
     case `default`
     case SCNPlane
     case SCNBox
+    case SCNCar
     
     var string: String {
         return rawValue
