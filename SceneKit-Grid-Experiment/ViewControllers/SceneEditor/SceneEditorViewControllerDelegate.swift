@@ -8,6 +8,7 @@
 
 import UIKit
 import SceneKit
+import EasyTipView
 
 protocol SceneEditorViewControllerDelegateProtocol: class {
     func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuWith sender: UILongPressGestureRecognizer, at sceneView: SCNView)
@@ -148,14 +149,9 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayOnboardingTipPopover sender: UIBarButtonItem, message: String) {
-        let popover = Presenter.inject(.onboardingTipPopover)
         
-        popover.modalPresentationStyle = .popover
-        popover.popoverPresentationController?.permittedArrowDirections = .up
-        popover.popoverPresentationController?.delegate = self
-        popover.popoverPresentationController?.barButtonItem = sender
-        
-        controller.present(popover, animated: true, completion: nil)
+        let tipView = EasyTipView(text: message, preferences: EasyTipView.globalPreferences, delegate: self)
+        tipView.show(animated: true, forItem: sender, withinSuperView: nil)
     }
 
     // MARK: - Scene Action Menu
@@ -363,5 +359,13 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
 extension SceneEditorViewControllerDelegate: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+}
+
+// MARK: - EasyTipViewDelegate
+
+extension SceneEditorViewControllerDelegate: EasyTipViewDelegate {
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        
     }
 }

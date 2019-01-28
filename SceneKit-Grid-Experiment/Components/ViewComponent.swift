@@ -14,11 +14,11 @@ enum ViewComponent {
     case nodeInspectorView
     case utilitiesView
     
-    case onboarding
     case documentBrowser
     case sceneActionsMenu(isNodeSelected: Bool)
     case objectCatalog
     case presentation(scene: DefaultScene)
+    case onboarding
     
     case nodeAnimationList
     case nodeAnimationMenu
@@ -27,5 +27,4 @@ enum ViewComponent {
     case delayAnimationAttributes(attributes: DelayAnimationAttributes)
     case speechBubbleAnimationAttributes(attributes: SpeechBubbleAnimationAttributes)
     case alertAnimationPopover
-    case onboardingTipPopover
 }

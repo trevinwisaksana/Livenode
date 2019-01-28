@@ -61,9 +61,6 @@ enum Presenter {
 
         case .alertAnimationPopover:
             controller = SpeechBubbleAnimationPopoverViewController()
-            
-        case .onboardingTipPopover:
-            controller = OnboardingTipViewController()
         }
         
         return controller

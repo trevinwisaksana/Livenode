@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EasyTipView
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,12 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = onboardingViewController
 //        window?.makeKeyAndVisible()
         
+        setupTooltip()
+        
         if UserDefaults.standard.bool(forKey: "didDisplayOnboarding") {
             let documentBrowserViewController = Presenter.inject(.documentBrowser)
 
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = documentBrowserViewController
             window?.makeKeyAndVisible()
+            
         } else {
             let onboardingViewController = Presenter.inject(.onboarding)
 
@@ -73,5 +77,21 @@ extension AppDelegate {
     
     var rootViewController: UIViewController? {
         return window?.rootViewController
+    }
+}
+
+extension AppDelegate {
+    private func setupTooltip() {
+        var preferences = EasyTipView.Preferences()
+        preferences.drawing.textAlignment = .center
+        
+        preferences.drawing.backgroundColor = .yellow
+        preferences.drawing.foregroundColor = .black
+        
+        preferences.drawing.arrowHeight = 10.0
+        preferences.drawing.arrowWidth = 10.0
+        preferences.drawing.arrowPosition = .top
+        
+        EasyTipView.globalPreferences = preferences
     }
 }

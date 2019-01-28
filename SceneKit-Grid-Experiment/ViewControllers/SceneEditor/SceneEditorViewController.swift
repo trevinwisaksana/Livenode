@@ -31,17 +31,48 @@ final class SceneEditorViewController: UIViewController {
     var cameraPanningPanGesture: UIPanGestureRecognizer!
     var pinchGesture: UIPinchGestureRecognizer!
     
+    private lazy var utilitiesInspectorBarButton: UIBarButtonItem = {
+        let utilitiesInspectorButtonImage = UIImage(named: .utilitiesInspectorButton)
+        let barButton = UIBarButtonItem(image: utilitiesInspectorButtonImage, style: .plain, target: self, action: #selector(didTapUtilitiesInspectorButton(_:)))
+        return barButton
+    }()
+    
+    private lazy var objectCatalogBarButton: UIBarButtonItem = {
+        let objectCatalogButtonImage = UIImage(named: .objectCatalogButton)
+        let barButton = UIBarButtonItem(image: objectCatalogButtonImage, style: .plain, target: self, action: #selector(didTapObjectCatalogButton(_:)))
+        return barButton
+    }()
+    
+    private lazy var nodeInspectorBarButton: UIBarButtonItem = {
+        let nodeInspectorButtonImage = UIImage(named: .nodeInspectorButton)
+        let barButton = UIBarButtonItem(image: nodeInspectorButtonImage, style: .plain, target: self, action: #selector(didTapNodeInspectorButton(_:)))
+        return barButton
+    }()
+    
+    private lazy var playBarButton: UIBarButtonItem = {
+        let playButtonImage = UIImage(named: .playButton)
+        let barButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
+        return barButton
+    }()
+    
+    private lazy var backBarButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(title: "Projects", style: .plain, target: self, action: #selector(didTapBackButton(_:)))
+        return barButton
+    }()
+    
     // MARK: - Public Properties
     
     public var sceneView: SCNView = {
         let sceneView = SCNView()
+        
         sceneView.backgroundColor = .white
         sceneView.isJitteringEnabled = false
+        sceneView.autoenablesDefaultLighting = true
+        
         return sceneView
     }()
     
     public var document: SceneDocument?
-    
     public var documentName: String = ""
     
     public weak var sceneEditorDelegate: SceneEditorDocumentDelegate?
@@ -84,6 +115,12 @@ final class SceneEditorViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setupOnboarding()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -115,30 +152,26 @@ final class SceneEditorViewController: UIViewController {
         view.addSubview(sceneView)
         sceneView.fillInSuperview()
         
-        // TODO: Place this inside SceneView
-        sceneView.autoenablesDefaultLighting = true
-        
         setupDefaultNavigationItems()
         setupLongPressGestureRecognizer()
         setupNotificationListeners()
         setupSceneViewGestures()
     }
     
+    private func setupOnboarding() {
+        switch state {
+        case .onboarding:
+            viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: objectCatalogBarButton, message: "Tap on this button to insert a 3D model fo your choice.")
+            
+        case .normal:
+            break
+            
+        default:
+            break
+        }
+    }
+    
     func setupDefaultNavigationItems() {
-        let utilitiesInspectorButtonImage = UIImage(named: .utilitiesInspectorButton)
-        let utilitiesInspectorBarButton = UIBarButtonItem(image: utilitiesInspectorButtonImage, style: .plain, target: self, action: #selector(didTapUtilitiesInspectorButton(_:)))
-        
-        let objectCatalogButtonImage = UIImage(named: .objectCatalogButton)
-        let objectCatalogBarButton = UIBarButtonItem(image: objectCatalogButtonImage, style: .plain, target: self, action: #selector(didTapObjectCatalogButton(_:)))
-        
-        let nodeInspectorButtonImage = UIImage(named: .nodeInspectorButton)
-        let nodeInspectorBarButton = UIBarButtonItem(image: nodeInspectorButtonImage, style: .plain, target: self, action: #selector(didTapNodeInspectorButton(_:)))
-        
-        let playButtonImage = UIImage(named: .playButton)
-        let playBarButton = UIBarButtonItem(image: playButtonImage, style: .plain, target: self, action: #selector(didTapPlayButton(_:)))
-        
-        let backBarButton = UIBarButtonItem(title: "Projects", style: .plain, target: self, action: #selector(didTapBackButton(_:)))
-        
         title = documentName
         
         navigationController?.navigationBar.tintColor = .lavender
@@ -147,17 +180,6 @@ final class SceneEditorViewController: UIViewController {
         
         navigationItem.setLeftBarButton(backBarButton, animated: true)
         navigationItem.setRightBarButtonItems([utilitiesInspectorBarButton, objectCatalogBarButton, nodeInspectorBarButton, playBarButton], animated: true)
-        
-        switch state {
-        case .onboarding:
-            viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: objectCatalogBarButton, message: "Test")
-            
-        case .normal:
-            break
-            
-        default:
-            break
-        }
     }
     
     func setupAnimationNavigationItems() {

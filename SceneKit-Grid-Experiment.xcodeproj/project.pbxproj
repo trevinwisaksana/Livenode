@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9490747AC471E5E5F9AADDFB /* Pods_SceneKit_Grid_Experiment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1811557A6AF5F7AB89A042 /* Pods_SceneKit_Grid_Experiment.framework */; };
 		DD0BFFBC217C590100429F52 /* SpeechBubbleAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFBB217C590100429F52 /* SpeechBubbleAnimationAttributesViewController.swift */; };
 		DD0BFFBF217C593F00429F52 /* DelayAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */; };
 		DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFC0217C599C00429F52 /* DelayAnimationAttributesView.swift */; };
@@ -73,6 +74,7 @@
 		DD8E1261213BE88500D4F4DE /* UtilitiesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */; };
 		DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */; };
 		DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */; };
+		DD911A2621FE822900E69154 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD911A2521FE822900E69154 /* OnboardingViewController.swift */; };
 		DD9319D7219FC515004C90A8 /* SurfaceDetectionFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9319D6219FC515004C90A8 /* SurfaceDetectionFeedbackView.swift */; };
 		DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */; };
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
@@ -80,7 +82,6 @@
 		DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D811E21716AB0006638F8 /* NodeAnimationListView.swift */; };
 		DD9D81252171A3C0006638F8 /* NodeAnimationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */; };
 		DD9D81292171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */; };
-		DDA0441F21E9EBDA0070C4CC /* OnboardingTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0441E21E9EBDA0070C4CC /* OnboardingTipViewController.swift */; };
 		DDAFED5B219BBE6A00D7CC7D /* Seaplane.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDAFED5A219BBE6A00D7CC7D /* Seaplane.scn */; };
 		DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */; };
 		DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24B82153CADA003C9CAF /* SceneDocument.swift */; };
@@ -89,7 +90,6 @@
 		DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C32153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift */; };
 		DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */; };
 		DDBA24CC21579255003C9CAF /* SceneEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24CB21579255003C9CAF /* SceneEditorView.swift */; };
-		DDC5092121C1EFE2007B928F /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5092021C1EFE2007B928F /* OnboardingViewController.swift */; };
 		DDC5092321C1F075007B928F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5092221C1F075007B928F /* OnboardingView.swift */; };
 		DDC5092621C23A43007B928F /* OnboardingPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5092521C23A43007B928F /* OnboardingPresentableView.swift */; };
 		DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F81214B92770003B34A /* UIImageExtensions.swift */; };
@@ -123,6 +123,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD1811557A6AF5F7AB89A042 /* Pods_SceneKit_Grid_Experiment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SceneKit_Grid_Experiment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAA66770B2FF80631AAAC11E /* Pods-SceneKit-Grid-Experiment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SceneKit-Grid-Experiment.release.xcconfig"; path = "Pods/Target Support Files/Pods-SceneKit-Grid-Experiment/Pods-SceneKit-Grid-Experiment.release.xcconfig"; sourceTree = "<group>"; };
 		DD0BFFBB217C590100429F52 /* SpeechBubbleAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationAttributesViewController.swift; sourceTree = "<group>"; };
 		DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesViewController.swift; sourceTree = "<group>"; };
 		DD0BFFC0217C599C00429F52 /* DelayAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayAnimationAttributesView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		DD8E1260213BE88500D4F4DE /* UtilitiesInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorView.swift; sourceTree = "<group>"; };
 		DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorShareCell.swift; sourceTree = "<group>"; };
+		DD911A2521FE822900E69154 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		DD9319D6219FC515004C90A8 /* SurfaceDetectionFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceDetectionFeedbackView.swift; sourceTree = "<group>"; };
 		DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
@@ -200,7 +203,6 @@
 		DD9D811E21716AB0006638F8 /* NodeAnimationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListView.swift; sourceTree = "<group>"; };
 		DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListCell.swift; sourceTree = "<group>"; };
 		DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListViewControllerDelegate.swift; sourceTree = "<group>"; };
-		DDA0441E21E9EBDA0070C4CC /* OnboardingTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTipViewController.swift; sourceTree = "<group>"; };
 		DDAFED5A219BBE6A00D7CC7D /* Seaplane.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Seaplane.scn; sourceTree = "<group>"; };
 		DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
 		DDBA24B82153CADA003C9CAF /* SceneDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocument.swift; sourceTree = "<group>"; };
@@ -209,7 +211,6 @@
 		DDBA24C32153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		DDBA24CB21579255003C9CAF /* SceneEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorView.swift; sourceTree = "<group>"; };
-		DDC5092021C1EFE2007B928F /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		DDC5092221C1F075007B928F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		DDC5092521C23A43007B928F /* OnboardingPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresentableView.swift; sourceTree = "<group>"; };
 		DDCB7F81214B92770003B34A /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
@@ -240,6 +241,7 @@
 		DDFFE03F217984D800AFF7DA /* SCNActionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNActionExtensions.swift; sourceTree = "<group>"; };
 		DDFFE04121799D7D00AFF7DA /* ModelAnimationAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAnimationAttributesViewModel.swift; sourceTree = "<group>"; };
 		DDFFE0442179BB2100AFF7DA /* MoveAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationAttributesViewController.swift; sourceTree = "<group>"; };
+		DFCB80C0FD0E9D01D713BFEF /* Pods-SceneKit-Grid-Experiment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SceneKit-Grid-Experiment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SceneKit-Grid-Experiment/Pods-SceneKit-Grid-Experiment.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,12 +249,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9490747AC471E5E5F9AADDFB /* Pods_SceneKit_Grid_Experiment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B76B7B02ACC57350EC10B9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD1811557A6AF5F7AB89A042 /* Pods_SceneKit_Grid_Experiment.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DD0BFFBD217C590A00429F52 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +305,8 @@
 			children = (
 				DD20F66620672FBD005E838C /* SceneKit-Grid-Experiment */,
 				DD20F66520672FBD005E838C /* Products */,
+				FB10106551B54EDAA152A74E /* Pods */,
+				2B76B7B02ACC57350EC10B9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -471,7 +484,7 @@
 				DD9D81272171A646006638F8 /* NodeAnimationList */,
 				DDE60E5A217391F80052E506 /* NodeAnimationMenu */,
 				DD0BFFBD217C590A00429F52 /* Animations */,
-				DDA0442021E9EF2C0070C4CC /* Onboarding */,
+				DD911A2421FE822900E69154 /* Onboarding */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
 				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
 				DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */,
@@ -724,6 +737,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		DD911A2421FE822900E69154 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DD911A2521FE822900E69154 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		DD9319D8219FC5DC004C90A8 /* SurfaceDetectionFeedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,15 +813,6 @@
 				DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */,
 			);
 			path = NodeAnimationList;
-			sourceTree = "<group>";
-		};
-		DDA0442021E9EF2C0070C4CC /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				DDC5092021C1EFE2007B928F /* OnboardingViewController.swift */,
-				DDA0441E21E9EBDA0070C4CC /* OnboardingTipViewController.swift */,
-			);
-			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		DDBA24B421535056003C9CAF /* Models */ = {
@@ -1040,6 +1052,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FB10106551B54EDAA152A74E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DFCB80C0FD0E9D01D713BFEF /* Pods-SceneKit-Grid-Experiment.debug.xcconfig */,
+				CAA66770B2FF80631AAAC11E /* Pods-SceneKit-Grid-Experiment.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1047,9 +1068,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD20F68320672FBD005E838C /* Build configuration list for PBXNativeTarget "SceneKit-Grid-Experiment" */;
 			buildPhases = (
+				E41FDB698050E00B74075CE6 /* [CP] Check Pods Manifest.lock */,
 				DD20F66020672FBD005E838C /* Sources */,
 				DD20F66120672FBD005E838C /* Frameworks */,
 				DD20F66220672FBD005E838C /* Resources */,
+				2353D403440D47030E8D18C6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1120,6 +1143,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2353D403440D47030E8D18C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SceneKit-Grid-Experiment/Pods-SceneKit-Grid-Experiment-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/EasyTipView/EasyTipView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyTipView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SceneKit-Grid-Experiment/Pods-SceneKit-Grid-Experiment-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E41FDB698050E00B74075CE6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SceneKit-Grid-Experiment-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DD20F66020672FBD005E838C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1128,7 +1198,6 @@
 				DD1058C2218C0CE100FF7301 /* NodePositionCell.swift in Sources */,
 				DD0EBD2521A694C300BA2F39 /* DocumentBrowserTransitionDelegate.swift in Sources */,
 				DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */,
-				DDA0441F21E9EBDA0070C4CC /* OnboardingTipViewController.swift in Sources */,
 				DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */,
 				DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */,
 				DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */,
@@ -1163,13 +1232,13 @@
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
 				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
 				DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */,
+				DD911A2621FE822900E69154 /* OnboardingViewController.swift in Sources */,
 				DD1058C4218C0CE900FF7301 /* NodeAngleCell.swift in Sources */,
 				DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */,
 				DDE60E5021738DBA0052E506 /* NodeAnimationListViewController.swift in Sources */,
 				DD5456C2217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift in Sources */,
 				DDE60E5221738DE40052E506 /* NodeAnimationMenuViewController.swift in Sources */,
 				DD6C16F2210B233D002CB031 /* NodeInspectorPresentableView.swift in Sources */,
-				DDC5092121C1EFE2007B928F /* OnboardingViewController.swift in Sources */,
 				DD38321D21598E5400809856 /* DefaultScene.swift in Sources */,
 				DD68C2322127BA1F0061100F /* ColorPickerPresentableView.swift in Sources */,
 				DD2A55E920DE12AA00EA00ED /* Constants.swift in Sources */,
@@ -1358,6 +1427,7 @@
 		};
 		DD20F68420672FBD005E838C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFCB80C0FD0E9D01D713BFEF /* Pods-SceneKit-Grid-Experiment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "SceneKit-Grid-Experiment/SceneKit-Grid-Experiment.entitlements";
@@ -1375,6 +1445,7 @@
 		};
 		DD20F68520672FBD005E838C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAA66770B2FF80631AAAC11E /* Pods-SceneKit-Grid-Experiment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "SceneKit-Grid-Experiment/SceneKit-Grid-Experiment.entitlements";
