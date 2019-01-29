@@ -11,14 +11,25 @@ import SceneKit
 import EasyTipView
 
 protocol SceneEditorViewControllerDelegateProtocol: class {
+    
+    //
+    
     func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuWith sender: UILongPressGestureRecognizer, at sceneView: SCNView)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayPresentationViewWith scene: DefaultScene, using sender: UIBarButtonItem)
+    
+    //
     
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayUtilitiesInspectorWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationListWith sender: UIBarButtonItem)
+    
+    // Onboarding
+    
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayOnboardingTipPopover sender: UIBarButtonItem, message: String)
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayOnboardingTipPopoverFrom view: UIView, message: String)
+    
+    //
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene)
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene)
@@ -152,6 +163,19 @@ class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDele
         
         let tipView = EasyTipView(text: message, preferences: EasyTipView.globalPreferences, delegate: self)
         tipView.show(animated: true, forItem: sender, withinSuperView: nil)
+    }
+    
+    func sceneEditor(_ controller: SceneEditorViewController, didDisplayOnboardingTipPopoverFrom view: UIView, message: String) {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 10)
+        
+        let temporaryView = UIView(frame: frame)
+        temporaryView.center.x = view.center.x
+        temporaryView.center.y = view.center.y * 0.2
+        
+        controller.view.addSubview(temporaryView)
+        
+        let tipView = EasyTipView(text: message, preferences: EasyTipView.toolTipPopupViewPreference(), delegate: self)
+        tipView.show(animated: true, forView: temporaryView, withinSuperview: nil)
     }
 
     // MARK: - Scene Action Menu
