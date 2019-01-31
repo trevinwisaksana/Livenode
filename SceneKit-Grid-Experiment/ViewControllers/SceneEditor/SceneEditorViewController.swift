@@ -9,8 +9,10 @@
 import UIKit
 import SceneKit
 
-private enum SceneEditorState {
+enum SceneEditorState {
     case onboarding
+    case editingNodePosition
+    case editingNodeAnimation
     case normal
     case `default`
 }
@@ -21,7 +23,8 @@ final class SceneEditorViewController: UIViewController {
     
     private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
     
-    private var state: SceneEditorState = .default
+    private(set) var state: SceneEditorState = .default
+    
     private var browserTransition: DocumentBrowserTransitioningDelegate?
     
     // MARK: - Internal Properties
@@ -30,6 +33,7 @@ final class SceneEditorViewController: UIViewController {
     var cameraNavigationPanGesture: UIPanGestureRecognizer!
     var cameraPanningPanGesture: UIPanGestureRecognizer!
     var pinchGesture: UIPinchGestureRecognizer!
+    
     
     // MARK: - Normal Navigation Item Properties
     
@@ -378,6 +382,8 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
+        state = .normal
+        
         scene.hideGrid()
         
         setupAnimationNavigationItems()
@@ -389,6 +395,8 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
+        state = .normal
+        
         viewControllerDelegate.sceneEditor(self, didTapCancelEditingNodePositionButton: scene)
     }
     
@@ -398,11 +406,11 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
+        state = .normal
+        
         viewControllerDelegate.sceneEditor(self, didFinishEditingNodePositionButton: scene)
         
-        // SUDO CODE
-        // if this is the first time pressing done, show popover
-        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Long press the model to display a list of actions you can do.")
+        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Tap the 3D model to select it.")
     }
     
     @objc
@@ -410,6 +418,8 @@ final class SceneEditorViewController: UIViewController {
         guard let scene = document?.scene else {
             fatalError("No scene found.")
         }
+        
+        state = .editingNodeAnimation
         
         viewControllerDelegate.sceneEditor(self, didTapDoneEditingMoveAnimationButtonForScene: scene)
     }
@@ -419,6 +429,8 @@ final class SceneEditorViewController: UIViewController {
         guard let scene = document?.scene else {
             fatalError("No scene found.")
         }
+        
+        state = .normal
         
         viewControllerDelegate.sceneEditor(self, didFinishEditingAnimation: sender, for: scene)
     }
@@ -455,6 +467,7 @@ final class SceneEditorViewController: UIViewController {
         switch sender.state {
         case .began:
             viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
+            
         default:
             break
         }
@@ -468,6 +481,14 @@ final class SceneEditorViewController: UIViewController {
         }
         
         viewControllerDelegate.sceneEditor(self, didAddSpeechBubbleAnimation: animation, for: scene, in: sceneView)
+    }
+    
+    func displayObjectAttributesTipView() {
+        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: nodeInspectorBarButton, message: "Tap this button to to modify the 3D model's properties.")
+    }
+    
+    func displayPressLongGestureTipView() {
+        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Long press the 3D model to display a list of actions.")
     }
     
     // MARK: - Device Configuration
