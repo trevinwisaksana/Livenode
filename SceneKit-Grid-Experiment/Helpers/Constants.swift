@@ -29,6 +29,13 @@ struct Constants {
     }
 }
 
+struct NotificationKey {
+    static let hasDisplayedObjectCatalogTipView = "hasDisplayedObjectCatalogTipView"
+    static let hasDisplayedLongPressGestureTipView = "hasDisplayedPressLongGestureTipView"
+    static let hasDisplayedObjectAttributesTipView = "hasDisplayedObjectAttributesTipView"
+    static let hasDisplayedTap3DModelTipView = "hasDisplayedTap3DModelTipView"
+}
+
 public enum Action: String {
     case cut
     case copy

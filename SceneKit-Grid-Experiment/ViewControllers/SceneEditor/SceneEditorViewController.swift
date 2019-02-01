@@ -180,7 +180,13 @@ final class SceneEditorViewController: UIViewController {
     private func setupOnboarding() {
         switch state {
         case .onboarding:
+            if UserDefaults.standard.bool(forKey: NotificationKey.hasDisplayedObjectCatalogTipView) {
+                return
+            }
+            
             viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: objectCatalogBarButton, message: "Tap this button to insert a 3D model fo your choice.")
+            
+            UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedObjectCatalogTipView)
 
         default:
             break
@@ -410,7 +416,13 @@ final class SceneEditorViewController: UIViewController {
         
         viewControllerDelegate.sceneEditor(self, didFinishEditingNodePositionButton: scene)
         
+        if UserDefaults.standard.bool(forKey: NotificationKey.hasDisplayedTap3DModelTipView) {
+            return
+        }
+        
         viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Tap the 3D model to select it.")
+        
+        UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedTap3DModelTipView)
     }
     
     @objc
@@ -484,11 +496,23 @@ final class SceneEditorViewController: UIViewController {
     }
     
     func displayObjectAttributesTipView() {
+        if UserDefaults.standard.bool(forKey: NotificationKey.hasDisplayedObjectAttributesTipView) {
+            return
+        }
+        
         viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: nodeInspectorBarButton, message: "Tap this button to to modify the 3D model's properties.")
+        
+        UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedObjectAttributesTipView)
     }
     
     func displayPressLongGestureTipView() {
+        if UserDefaults.standard.bool(forKey: NotificationKey.hasDisplayedLongPressGestureTipView) {
+            return
+        }
+        
         viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Long press the 3D model to display a list of actions.")
+        
+        UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedLongPressGestureTipView)
     }
     
     // MARK: - Device Configuration
