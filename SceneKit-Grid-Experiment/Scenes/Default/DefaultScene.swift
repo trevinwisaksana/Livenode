@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-public class DefaultScene: SCNScene, DefaultSceneViewModel {
+final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Internal Properties
     
