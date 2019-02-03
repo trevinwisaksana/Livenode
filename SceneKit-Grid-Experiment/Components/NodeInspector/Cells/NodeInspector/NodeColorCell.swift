@@ -97,7 +97,7 @@ public class NodeColorCell: UITableViewCell {
     public var model: NodeInspectorViewModel? {
         didSet {
             if let model = model {
-                colorView.backgroundColor = model.color
+                colorView.backgroundColor = model.originalColor
             }
         }
     }

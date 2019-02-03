@@ -76,7 +76,6 @@ extension SCNNode {
         var actionSequence = [SCNAction]()
 
         actions.forEach { (action) in
-            // TODO: Fix issue where animation type cannot notice SCNActionSpeechBubble as .alert
             if action.animationType() == .speechBubble {
                 let customAction = SCNAction.customAction(duration: action.duration) { (node, time) in
                     let alertNode = node.childNode(withName: Constants.Node.speechBubble, recursively: true)
@@ -96,9 +95,9 @@ extension SCNNode {
     // MARK: - Duplicate
     
     public func duplicate() -> SCNNode {
-        let newNode = self.clone()
-        newNode.geometry = self.geometry?.copy() as? SCNGeometry
-        newNode.geometry?.firstMaterial = self.geometry?.firstMaterial?.copy() as? SCNMaterial
+        let newNode = clone()
+        newNode.geometry = geometry?.copy() as? SCNGeometry
+        newNode.geometry?.firstMaterial = geometry?.firstMaterial?.copy() as? SCNMaterial
         newNode.position = SCNVector3Zero
         
         return newNode
@@ -112,25 +111,46 @@ extension SCNNode: NodeInspectorViewModel {
     
     public var color: UIColor {
         get {
-            return self.geometry?.firstMaterial!.diffuse.contents as! UIColor
+            return geometry?.firstMaterial!.diffuse.contents as! UIColor
         }
     }
     
-    public var angle: SCNVector3 {
+    private struct OriginalColorState {
+        static var originalColor: UIColor?
+    }
+    
+    public var originalColor: UIColor {
         get {
-            return self.eulerAngles
+            guard let originalColorState = objc_getAssociatedObject(self, &OriginalColorState.originalColor) as? UIColor else {
+                return UIColor.white
+            }
+            
+            return originalColorState
+        }
+        
+        set(value) {
+            objc_setAssociatedObject(self, &OriginalColorState.originalColor, value, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
     public func changeColor(to color: UIColor) {
-        self.geometry?.firstMaterial?.diffuse.contents = color
+        geometry?.firstMaterial?.diffuse.contents = color
+        originalColor = color
+    }
+    
+    /// Changes the node color to yellow to indicate it is selected
+    public func highlight() {
+        // Save the original color so it can be returned to normal when deselected
+        originalColor = color
+        
+        geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
     }
     
     // MARK: - Type
     
     public var type: NodeModel {
         get {
-            switch self.geometry?.shape {
+            switch geometry?.shape {
             case NodeType.SCNPlane.string:
                 return .plane
             case NodeType.SCNBox.string:
@@ -157,6 +177,14 @@ extension SCNNode: NodeInspectorViewModel {
         }
     }
     
+    // MARK: - Position
+    
+    public var angle: SCNVector3 {
+        get {
+            return eulerAngles
+        }
+    }
+    
 }
 
 // MARK: - Custom Node Classes
@@ -170,15 +198,15 @@ public class SCNCarNode: SCNNode {
             return nil
         }
         
-        self.name = node.name
+        name = node.name
         
         let geometrySources = node.geometry?.sources ?? []
         let geometryElements = node.geometry?.elements ?? []
-        self.geometry = SCNCar(sources: geometrySources, elements: geometryElements)
-        self.geometry?.materials = node.geometry?.materials ?? []
+        geometry = SCNCar(sources: geometrySources, elements: geometryElements)
+        geometry?.materials = node.geometry?.materials ?? []
         
-        self.position = node.position
-        self.scale = node.scale
+        position = node.position
+        scale = node.scale
     }
     
     required init?(coder aDecoder: NSCoder) {

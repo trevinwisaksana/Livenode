@@ -77,7 +77,9 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var currentNodeHighlighted: SCNNode?
     public var recentNodeAdded: SCNNode?
     public var nodeCopied: SCNNode?
+    
     public var originalNodePosition: SCNVector3?
+    public var originalNodeColor: UIColor?
     
     public var nodeAnimationTarget: SCNNode? {
         didSet {
@@ -92,6 +94,7 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var didSelectANode: Bool = false
     public var isGridDisplayed: Bool = false
     public var isSelectingAnimationTargetLocation: Bool = false
+    public var isOrbitingCamera = false
     
     public var backgroundColor: UIColor {
         return background.contents as! UIColor
@@ -232,8 +235,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-        let isCorrectNodeSelected = node?.name == Constants.Node.floor || node?.name == Constants.Node.tileBorder
-        if node == nil || node?.name == nil || isCorrectNodeSelected {
+        let isCorrectNodeSelected = node?.name != Constants.Node.floor && node?.name != Constants.Node.tileBorder
+        guard node != nil && node?.name != nil && isCorrectNodeSelected else {
             didDeselectNode()
             return
         }
@@ -242,15 +245,20 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         State.nodeSelected = nodeSelected
         
         // TODO: Figure out how to highlight the node
-//        highlight(nodeSelected)
+        highlight(nodeSelected)
         
         didSelectANode = true
     }
     
     public func didDeselectNode() {
+        if isOrbitingCamera {
+            return
+        }
+        
         nodeSelected = nil
         State.nodeSelected = nil
         didSelectANode = false
+        
         unhighlight(currentNodeHighlighted)
     }
     
@@ -633,18 +641,22 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
     
         if currentNodeHighlighted != nil {
-            return
+            unhighlight(currentNodeHighlighted)
+            
+            currentNodeHighlighted = nil
         }
         
         // TODO: Make the dimensions the same with the node selected
-        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+//        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+//
+//        let nodeHighlight = SCNNode(geometry: box)
+//        nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: .boxWireframe)
+//        nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
+//        nodeHighlight.name = Constants.Node.highlight
+//
+//        node.addChildNode(nodeHighlight)
         
-        let nodeHighlight = SCNNode(geometry: box)
-        nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: .boxWireframe)
-        nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
-        nodeHighlight.name = Constants.Node.highlight
-        
-        node.addChildNode(nodeHighlight)
+        node.highlight()
         
         currentNodeHighlighted = node
     }
@@ -654,8 +666,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-        let nodeHighlight = node.childNode(withName: Constants.Node.highlight, recursively: true)
-        nodeHighlight?.removeFromParentNode()
+//        let nodeHighlight = node.childNode(withName: Constants.Node.highlight, recursively: true)
+//        nodeHighlight?.removeFromParentNode()
+        
+        node.changeColor(to: node.originalColor)
         
         currentNodeHighlighted = nil
     }
@@ -711,6 +725,10 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func limitCameraRotation(using panGesture: UIPanGestureRecognizer) {
+        if panGesture.state == .began {
+            isOrbitingCamera = true
+        }
+        
         guard let cameraOrbit = rootNode.childNode(withName: Constants.Node.cameraOrbit, recursively: true) else {
             return
         }
@@ -739,6 +757,8 @@ public class DefaultScene: SCNScene, DefaultSceneViewModel {
         if panGesture.state == .ended {
             lastWidthRatio = widthRatio.truncatingRemainder(dividingBy: 1)
             lastHeightRatio = heightRatio.truncatingRemainder(dividingBy: 1)
+            
+            isOrbitingCamera = false
         }
     }
     

@@ -9,7 +9,8 @@
 import SceneKit
 
 public protocol NodeInspectorViewModel: PlaneNodeInspectorViewModel {
-    var color: UIColor { get }
+    var originalColor: UIColor { get }
+    
     var angle: SCNVector3 { get }
     var position: SCNVector3 { get }
     var type: NodeModel { get }
@@ -24,7 +25,8 @@ public protocol PlaneNodeInspectorViewModel {
 }
 
 public struct NodeInspector: NodeInspectorViewModel {
-    public var color: UIColor
+    public var originalColor: UIColor
+    
     public var angle: SCNVector3
     public var position: SCNVector3
     public var type: NodeModel

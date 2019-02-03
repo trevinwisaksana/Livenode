@@ -82,11 +82,13 @@ extension NodeInspectorPresentableView: NodeInspectorViewDelegate {
         case 0:
             let colorPicker = Presenter.inject(.colorPickerView)
             navigationController.pushViewController(colorPicker, animated: true)
+            
         case 3:
             // TODO: Show the animation navigation item
             break
 //            let nodeAnimationList = Presenter.inject(.nodeAnimationList)
 //            navigationController.pushViewController(nodeAnimationList, animated: true)
+            
         default:
             break
         }
@@ -117,6 +119,6 @@ extension NodeInspectorPresentableView: NodeInspectorViewDataSource {
             return nil
         }
         
-        return NodeInspector(color: node.color, angle: node.angle, position: node.position, type: node.type, width: node.width, length: node.length)
+        return NodeInspector(originalColor: node.originalColor, angle: node.angle, position: node.position, type: node.type, width: node.width, length: node.length)
     }
 }
