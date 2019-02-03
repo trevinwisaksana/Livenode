@@ -9,8 +9,10 @@
 import UIKit
 import SceneKit
 
-private enum SceneEditorState {
+enum SceneEditorState {
     case onboarding
+    case editingNodePosition
+    case editingNodeAnimation
     case normal
     case `default`
 }
@@ -21,7 +23,8 @@ final class SceneEditorViewController: UIViewController {
     
     private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
     
-    private var state: SceneEditorState = .default
+    private(set) var state: SceneEditorState = .default
+    
     private var browserTransition: DocumentBrowserTransitioningDelegate?
     
     // MARK: - Internal Properties
@@ -30,6 +33,9 @@ final class SceneEditorViewController: UIViewController {
     var cameraNavigationPanGesture: UIPanGestureRecognizer!
     var cameraPanningPanGesture: UIPanGestureRecognizer!
     var pinchGesture: UIPinchGestureRecognizer!
+    
+    
+    // MARK: - Normal Navigation Item Properties
     
     private lazy var utilitiesInspectorBarButton: UIBarButtonItem = {
         let utilitiesInspectorButtonImage = UIImage(named: .utilitiesInspectorButton)
@@ -59,6 +65,19 @@ final class SceneEditorViewController: UIViewController {
         let barButton = UIBarButtonItem(title: "Projects", style: .plain, target: self, action: #selector(didTapBackButton(_:)))
         return barButton
     }()
+    
+    // MARK: - Edit Move Navigation Item Properties
+    
+    private lazy var doneBarButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneEditingMoveAnimationButton(_:)))
+        return barButton
+    }()
+    
+    private lazy var cancelBarButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelEditingMoveAnimationButton(_:)))
+        return barButton
+    }()
+
     
     // MARK: - Public Properties
     
@@ -161,11 +180,14 @@ final class SceneEditorViewController: UIViewController {
     private func setupOnboarding() {
         switch state {
         case .onboarding:
-            viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: objectCatalogBarButton, message: "Tap on this button to insert a 3D model fo your choice.")
+            if UserDefaults.standard.bool(forKey: NotificationKey.hasDisplayedObjectCatalogTipView) {
+                return
+            }
             
-        case .normal:
-            break
+            viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: objectCatalogBarButton, message: "Tap this button to insert a 3D model fo your choice.")
             
+            UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedObjectCatalogTipView)
+
         default:
             break
         }
@@ -206,9 +228,6 @@ final class SceneEditorViewController: UIViewController {
     
     // TODO: Reuse this when editing the position of the node
     func setupEditMoveAnimationNavigationItems() {
-        let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelEditingMoveAnimationButton(_:)))
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneEditingMoveAnimationButton(_:)))
-        
         title = "Select a point on the grid."
         
         navigationController?.navigationBar.barTintColor = .orange
@@ -223,7 +242,7 @@ final class SceneEditorViewController: UIViewController {
         let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelEditingNodePositionButton(_:)))
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didFinishEdittingNodePositionButton(_:)))
         
-        title = "Drag the node to a point on the grid."
+        title = "Drag the model to a point on the grid."
         
         navigationController?.navigationBar.barTintColor = .orange
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
@@ -369,6 +388,8 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
+        state = .normal
+        
         scene.hideGrid()
         
         setupAnimationNavigationItems()
@@ -380,6 +401,8 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
+        state = .normal
+        
         viewControllerDelegate.sceneEditor(self, didTapCancelEditingNodePositionButton: scene)
     }
     
@@ -389,7 +412,17 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
+        state = .normal
+        
         viewControllerDelegate.sceneEditor(self, didFinishEditingNodePositionButton: scene)
+        
+        if UserDefaults.standard.bool(forKey: NotificationKey.hasDisplayedTap3DModelTipView) {
+            return
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Tap the 3D model to select it.")
+        
+        UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedTap3DModelTipView)
     }
     
     @objc
@@ -397,6 +430,8 @@ final class SceneEditorViewController: UIViewController {
         guard let scene = document?.scene else {
             fatalError("No scene found.")
         }
+        
+        state = .editingNodeAnimation
         
         viewControllerDelegate.sceneEditor(self, didTapDoneEditingMoveAnimationButtonForScene: scene)
     }
@@ -406,6 +441,8 @@ final class SceneEditorViewController: UIViewController {
         guard let scene = document?.scene else {
             fatalError("No scene found.")
         }
+        
+        state = .normal
         
         viewControllerDelegate.sceneEditor(self, didFinishEditingAnimation: sender, for: scene)
     }
@@ -442,6 +479,7 @@ final class SceneEditorViewController: UIViewController {
         switch sender.state {
         case .began:
             viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
+            
         default:
             break
         }
@@ -455,6 +493,26 @@ final class SceneEditorViewController: UIViewController {
         }
         
         viewControllerDelegate.sceneEditor(self, didAddSpeechBubbleAnimation: animation, for: scene, in: sceneView)
+    }
+    
+    func displayObjectAttributesTipView() {
+        if UserDefaults.standard.bool(forKey: NotificationKey.hasDisplayedObjectAttributesTipView) {
+            return
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: nodeInspectorBarButton, message: "Tap this button to to modify the 3D model's properties.")
+        
+        UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedObjectAttributesTipView)
+    }
+    
+    func displayPressLongGestureTipView() {
+        if UserDefaults.standard.bool(forKey: NotificationKey.hasDisplayedLongPressGestureTipView) {
+            return
+        }
+        
+        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Long press the 3D model to display a list of actions.")
+        
+        UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedLongPressGestureTipView)
     }
     
     // MARK: - Device Configuration
@@ -498,4 +556,17 @@ extension SceneEditorViewController: SceneDocumentDelegate {
         alert.addAction(dismiss)
         present(alert, animated: true, completion: nil)
     }
+}
+
+// MARK: - Device Rotation
+
+extension SceneEditorViewController {
+    
+    // TODO: Fix positioning of the tip view when rotated
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        view.layoutIfNeeded()
+    }
+    
 }

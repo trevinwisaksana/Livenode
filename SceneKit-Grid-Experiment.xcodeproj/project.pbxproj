@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71337682220036E90096BA13 /* EasyTipViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71337681220036E90096BA13 /* EasyTipViewExtensions.swift */; };
 		9490747AC471E5E5F9AADDFB /* Pods_SceneKit_Grid_Experiment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1811557A6AF5F7AB89A042 /* Pods_SceneKit_Grid_Experiment.framework */; };
 		DD0BFFBC217C590100429F52 /* SpeechBubbleAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFBB217C590100429F52 /* SpeechBubbleAnimationAttributesViewController.swift */; };
 		DD0BFFBF217C593F00429F52 /* DelayAnimationAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0BFFBE217C593F00429F52 /* DelayAnimationAttributesViewController.swift */; };
@@ -123,6 +124,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71337681220036E90096BA13 /* EasyTipViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyTipViewExtensions.swift; sourceTree = "<group>"; };
 		AD1811557A6AF5F7AB89A042 /* Pods_SceneKit_Grid_Experiment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SceneKit_Grid_Experiment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA66770B2FF80631AAAC11E /* Pods-SceneKit-Grid-Experiment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SceneKit-Grid-Experiment.release.xcconfig"; path = "Pods/Target Support Files/Pods-SceneKit-Grid-Experiment/Pods-SceneKit-Grid-Experiment.release.xcconfig"; sourceTree = "<group>"; };
 		DD0BFFBB217C590100429F52 /* SpeechBubbleAnimationAttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationAttributesViewController.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				DD47202C2161F92200028727 /* NotificationExtensions.swift */,
 				DD6CC42E2109B4E2009284C6 /* UIKit */,
 				DD6CC42F2109B4E7009284C6 /* SceneKit */,
+				71337681220036E90096BA13 /* EasyTipViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1219,6 +1222,7 @@
 				DD8E1261213BE88500D4F4DE /* UtilitiesInspectorViewController.swift in Sources */,
 				DDF38F5D2164B8330000069E /* ObjectCatalogViewControllerDelegate.swift in Sources */,
 				DDC5092321C1F075007B928F /* OnboardingView.swift in Sources */,
+				71337682220036E90096BA13 /* EasyTipViewExtensions.swift in Sources */,
 				DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */,
 				DDE60E5C2173955A0052E506 /* MoveAnimationLocationCell.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
