@@ -128,8 +128,11 @@ final class SceneEditorViewController: UIViewController {
             return
         }
         
-        sceneView.scene = scene
-        sceneView.prepare([scene], completionHandler: nil)
+        sceneView.prepare([scene], completionHandler: { (success) in
+            if success {
+                self.sceneView.scene = scene
+            }
+        })
         
         navigationController?.setNavigationBarHidden(false, animated: true)
     }

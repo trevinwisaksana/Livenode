@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SceneKit-Grid-Experiment/Components/ObjectCatalog/ObjectCatalogView/ObjectCatalogView.swift"
-            timestampString = "567418274.288651"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "didSelectItemAt(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SceneKit-Grid-Experiment/Extensions/SceneKit/SCNActionExtensions.swift"
             timestampString = "567768223.037048"
             startingColumnNumber = "9223372036854775807"

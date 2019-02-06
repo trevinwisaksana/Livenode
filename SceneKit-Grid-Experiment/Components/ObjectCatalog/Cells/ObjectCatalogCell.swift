@@ -13,7 +13,7 @@ public class ObjectCatalogCell: UICollectionViewCell {
     
     // MARK: - Internal Properties
     
-    private lazy var objectSceneView: SCNView = {
+    private var objectSceneView: SCNView = {
         let sceneView = SCNView(frame: .zero)
         sceneView.antialiasingMode = .none
         sceneView.stop(self)
@@ -46,7 +46,14 @@ public class ObjectCatalogCell: UICollectionViewCell {
     public var model: ObjectCatalogViewModel? {
         didSet {
             if let model = model {
-                objectSceneView.scene = model.objectModelScene
+                objectSceneView.prepare([model.objectModelScene], completionHandler: { (success) in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.objectSceneView.scene = model.objectModelScene
+                        }
+                    }
+                })
+                
                 nodeModel = model.nodeModel
             }
         }

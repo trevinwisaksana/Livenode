@@ -244,7 +244,6 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         nodeSelected = node
         State.nodeSelected = nodeSelected
         
-        // TODO: Figure out how to highlight the node
         highlight(nodeSelected)
         
         didSelectANode = true
@@ -267,6 +266,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     func insertBox() {
         // TODO: Set function to private
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        box.name = type(of: box.self).description()
         let boxNode = SCNNode(geometry: box)
         
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
@@ -286,6 +286,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     func insertSphere() {
         // TODO: Set function to private
         let sphere = SCNSphere(radius: 1)
+        sphere.name = type(of: sphere.self).description()
         let sphereNode = SCNNode(geometry: sphere)
         
         sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
@@ -305,6 +306,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     func insertPyramid() {
         // TODO: Set function to private
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
+        pyramid.name = type(of: pyramid.self).description()
         let pyramidNode = SCNNode(geometry: pyramid)
         
         pyramidNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
@@ -342,10 +344,10 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func insertCar() {
-        guard let carNode = SCNCarNode(node: daeToSCNNode(filepath: "Car.scn")) else {
+        guard let carNode = daeToSCNNode(filepath: "Car.scn") else {
             return
         }
-
+        
         carNode.position = SCNVector3(0, 0, 0)
         carNode.name = "\(Int.random(in: 0...1000))"
         
@@ -599,13 +601,11 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
             speechBubbleNode.eulerAngles = SCNVector3(1.57, 0, 0)
             
         case .car:
-            // TODO: Fix bug where car node isn't recognized
             speechBubbleNode.position = SCNVector3(0, 3, 0)
             backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)
             
         default:
-            speechBubbleNode.position = SCNVector3(0, 3, 0)
-            backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)
+            return
         }
         
         // TODO: Fix the duration slider because it's not rounding up numbers

@@ -150,7 +150,7 @@ extension SCNNode: NodeInspectorViewModel {
     
     public var type: NodeModel {
         get {
-            switch geometry?.shape {
+            switch geometry?.name {
             case NodeType.SCNPlane.string:
                 return .plane
             case NodeType.SCNBox.string:
@@ -183,34 +183,6 @@ extension SCNNode: NodeInspectorViewModel {
         get {
             return eulerAngles
         }
-    }
-    
-}
-
-// MARK: - Custom Node Classes
-
-public class SCNCarNode: SCNNode {
-    
-    public init?(node: SCNNode?) {
-        super.init()
-        
-        guard let node = node else {
-            return nil
-        }
-        
-        name = node.name
-        
-        let geometrySources = node.geometry?.sources ?? []
-        let geometryElements = node.geometry?.elements ?? []
-        geometry = SCNCar(sources: geometrySources, elements: geometryElements)
-        geometry?.materials = node.geometry?.materials ?? []
-        
-        position = node.position
-        scale = node.scale
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
 }

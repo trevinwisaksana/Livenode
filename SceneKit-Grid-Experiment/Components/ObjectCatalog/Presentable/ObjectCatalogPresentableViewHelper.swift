@@ -34,7 +34,7 @@ public struct ObjectCatalogModelFactory {
         var objectCatalogModels: [ObjectCatalogModel] = []
         
         if UserDefaults.standard.object(forKey: "ObjectCatalogModels") == nil {
-            for objectModelIndex in 0...6 {
+            for objectModelIndex in 0..<nodeModels.count {
                 guard let modelScene = SCNScene(named: filenames[objectModelIndex]) else {
                     fatalError("Cannot load model scene.")
                 }

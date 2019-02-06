@@ -76,6 +76,7 @@
 		DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */; };
 		DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */; };
 		DD911A2621FE822900E69154 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD911A2521FE822900E69154 /* OnboardingViewController.swift */; };
+		DD911A2B220982A900E69154 /* SCNBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD911A2A220982A900E69154 /* SCNBoxExtensions.swift */; };
 		DD9319D7219FC515004C90A8 /* SurfaceDetectionFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9319D6219FC515004C90A8 /* SurfaceDetectionFeedbackView.swift */; };
 		DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */; };
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
@@ -198,6 +199,7 @@
 		DD8E1267213CDC6E00D4F4DE /* UtilitiesInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorView.swift; sourceTree = "<group>"; };
 		DD8E126D213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorShareCell.swift; sourceTree = "<group>"; };
 		DD911A2521FE822900E69154 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DD911A2A220982A900E69154 /* SCNBoxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNBoxExtensions.swift; sourceTree = "<group>"; };
 		DD9319D6219FC515004C90A8 /* SurfaceDetectionFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceDetectionFeedbackView.swift; sourceTree = "<group>"; };
 		DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesInspectorViewController.swift; sourceTree = "<group>"; };
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 			children = (
 				DD638DC620AC5E0300395557 /* SCNodeExtensions.swift */,
 				DD68C224211581E10061100F /* SCNGeometryExtensions.swift */,
+				DD911A2A220982A900E69154 /* SCNBoxExtensions.swift */,
 				DDD1C52621D776260073119E /* SCNAction */,
 			);
 			path = SceneKit;
@@ -1297,6 +1300,7 @@
 				DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */,
 				DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */,
 				DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */,
+				DD911A2B220982A900E69154 /* SCNBoxExtensions.swift in Sources */,
 				DD5456C62176DC9400AE25D8 /* RotateAnimationAttributesView.swift in Sources */,
 				DD5456CA2176E86500AE25D8 /* RotateAnimationAngleCell.swift in Sources */,
 				DD73441E217D71B600E4EE91 /* SpeechBubbleAnimationPopoverViewController.swift in Sources */,

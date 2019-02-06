@@ -15,7 +15,3 @@ extension SCNGeometry {
     }
     
 }
-
-// MARK: - Custom Geometry Classes
-
-public class SCNCar: SCNGeometry {}
