@@ -19,7 +19,13 @@ public class ObjectCatalogView: UIView  {
     
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
-        sceneView.scene = collectionViewScene
+        
+        sceneView.prepare([collectionViewScene], completionHandler: { (success) in
+            if success {
+                self.sceneView.scene = self.collectionViewScene
+            }
+        })
+        
         return sceneView
     }()
     
