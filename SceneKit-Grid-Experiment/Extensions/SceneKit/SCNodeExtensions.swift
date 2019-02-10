@@ -10,6 +10,17 @@ import SceneKit
 
 extension SCNNode {
     
+    /// Appends a list of nodes as a child node.
+    @objc func addChildNodes(_ nodes: [SCNNode]) {
+        nodes.forEach { (node) in
+            addChildNode(node)
+        }
+    }
+    
+}
+
+extension SCNNode {
+    
     // TODO: Make this savable
     
     // MARK: - Move
