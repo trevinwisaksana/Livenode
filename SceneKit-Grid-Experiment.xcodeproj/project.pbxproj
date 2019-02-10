@@ -36,7 +36,6 @@
 		DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4720292161E72800028727 /* SceneActionMenuViewControllerDelegate.swift */; };
 		DD47202D2161F92200028727 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47202C2161F92200028727 /* NotificationExtensions.swift */; };
 		DD47202F2161F96A00028727 /* SceneActionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47202E2161F96A00028727 /* SceneActionMenuView.swift */; };
-		DD4960B7215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */; };
 		DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */; };
 		DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */; };
 		DD51FEFE208818ED00A0D857 /* SceneEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */; };
@@ -65,7 +64,7 @@
 		DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4302109B54E009284C6 /* UIEdgeInsetsExtensions.swift */; };
 		DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */; };
 		DD6CC452210AB626009284C6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC451210AB626009284C6 /* Presenter.swift */; };
-		DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */; };
+		DD725CE42164795D0035ECA9 /* ObjectCatalogModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD725CE32164795D0035ECA9 /* ObjectCatalogModelFactory.swift */; };
 		DD734413217CA8D300E4EE91 /* SpeechBubbleAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734412217CA8D300E4EE91 /* SpeechBubbleAnimationAttributesView.swift */; };
 		DD734416217CA99700E4EE91 /* SpeechBubbleAnimationAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734415217CA99700E4EE91 /* SpeechBubbleAnimationAttributesViewModel.swift */; };
 		DD73441A217D5E1C00E4EE91 /* AlertIconMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */; };
@@ -163,7 +162,6 @@
 		DD4720292161E72800028727 /* SceneActionMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DD47202C2161F92200028727 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
 		DD47202E2161F96A00028727 /* SceneActionMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneActionMenuView.swift; sourceTree = "<group>"; };
-		DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogPresentableView.swift; sourceTree = "<group>"; };
 		DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogView.swift; sourceTree = "<group>"; };
 		DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewModel.swift; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorViewController.swift; sourceTree = "<group>"; };
@@ -192,7 +190,7 @@
 		DD6CC4302109B54E009284C6 /* UIEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		DD6CC451210AB626009284C6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogPresentableViewHelper.swift; sourceTree = "<group>"; };
+		DD725CE32164795D0035ECA9 /* ObjectCatalogModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogModelFactory.swift; sourceTree = "<group>"; };
 		DD734412217CA8D300E4EE91 /* SpeechBubbleAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DD734415217CA99700E4EE91 /* SpeechBubbleAnimationAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationAttributesViewModel.swift; sourceTree = "<group>"; };
 		DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIconMenuCell.swift; sourceTree = "<group>"; };
@@ -414,21 +412,11 @@
 		DD4960B8215B4A4200B6E016 /* ObjectCatalog */ = {
 			isa = PBXGroup;
 			children = (
-				DD4960B9215B4A4F00B6E016 /* Presentable */,
 				DD4960BC215B4A6E00B6E016 /* ObjectCatalogView */,
 				DDFC63E320F1FE5900109EC5 /* Cells */,
 				DD4960BF215B4A8300B6E016 /* Model */,
 			);
 			path = ObjectCatalog;
-			sourceTree = "<group>";
-		};
-		DD4960B9215B4A4F00B6E016 /* Presentable */ = {
-			isa = PBXGroup;
-			children = (
-				DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */,
-				DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */,
-			);
-			path = Presentable;
 			sourceTree = "<group>";
 		};
 		DD4960BC215B4A6E00B6E016 /* ObjectCatalogView */ = {
@@ -442,6 +430,7 @@
 		DD4960BF215B4A8300B6E016 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DD725CE32164795D0035ECA9 /* ObjectCatalogModelFactory.swift */,
 				DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */,
 			);
 			path = Model;
@@ -1228,7 +1217,7 @@
 				DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */,
 				DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */,
 				DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */,
-				DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */,
+				DD725CE42164795D0035ECA9 /* ObjectCatalogModelFactory.swift in Sources */,
 				DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */,
 				DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */,
 				DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */,
@@ -1306,7 +1295,6 @@
 				DD8E125F21381BA700D4F4DE /* Style.swift in Sources */,
 				DD68C21A2110688A0061100F /* State.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */,
-				DD4960B7215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift in Sources */,
 				DDE60E4621731BB30052E506 /* MoveAnimationAttributesView.swift in Sources */,
 				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
 				DD5456D02177480700AE25D8 /* AddAnimationCell.swift in Sources */,

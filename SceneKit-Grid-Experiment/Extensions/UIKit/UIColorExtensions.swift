@@ -28,6 +28,10 @@ extension UIColor {
         return UIColor(r: 0, g: 162, b: 255)!
     }
     
+    public class var skyBlue: UIColor {
+        return UIColor(r: 93, g: 205, b: 255)!
+    }
+    
     public class var dark: UIColor {
         return UIColor(r: 29, g: 29, b: 29)!
     }

@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ObjectCatalogViewControllerDelegate: NSObject, ObjectCatalogPresentableViewDelegate {
-    func objectCatalogPresentableView(_ objectCatalogPresentableView: ObjectCatalogPresentableView, didSelectNodeModel model: NodeModel) {
+class ObjectCatalogViewControllerDelegate: NSObject, ObjectCatalogViewDelegate {
+    func objectCatalogView(_ objectCatalogView: ObjectCatalogView, didSelectNodeModel model: NodeModel) {
         NotificationCenter.default.post(name: Notification.Name.ObjectCatalogDidSelectNodeModel, object: model)
     }
 }

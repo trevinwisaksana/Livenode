@@ -18,10 +18,15 @@ final class ObjectCatalogViewController: UIViewController {
     
     private lazy var delegate = ObjectCatalogViewControllerDelegate()
 
-    lazy var mainView: ObjectCatalogPresentableView = {
-        let mainView = ObjectCatalogPresentableView(frame: view.frame)
-        mainView.delegate = delegate
+    lazy var mainView: ObjectCatalogView = {
+        let mainView = ObjectCatalogView(frame: view.frame, withDelegate: delegate)
         return mainView
+    }()
+    
+    /// Pan gesture to detect scrolling.
+    private lazy var panGestureRecognizer: UIPanGestureRecognizer = {
+        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didBeginScrolling(_:)))
+        return gestureRecognizer
     }()
     
     // MARK: - VC Lifecycle
@@ -38,7 +43,18 @@ final class ObjectCatalogViewController: UIViewController {
         view.addSubview(mainView)
         mainView.fillInSuperview()
         
+        mainView.sceneView.addGestureRecognizer(panGestureRecognizer)
+        
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     
+}
+
+// MARK: - User Interaction
+
+extension ObjectCatalogViewController {
+    @objc
+    private func didBeginScrolling(_ sender: UIPanGestureRecognizer) {
+        mainView.didBeginScrolling(sender, inView: view)
+    }
 }
