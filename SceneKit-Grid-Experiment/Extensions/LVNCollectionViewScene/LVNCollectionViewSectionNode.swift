@@ -24,7 +24,7 @@ open class LVNCollectionViewSectionNode: SCNNode {
     /// Counts how many rows are in the section.
     private var row = 0 {
         didSet {
-            nodeYPosition += 2.8
+            nodeYPosition += 3
         }
     }
     

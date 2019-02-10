@@ -28,7 +28,7 @@ open class LVNCollectionViewScene: SCNScene {
         node.camera = SCNCamera()
         node.camera?.usesOrthographicProjection = true
         node.position.z = 6.0
-        node.scale = SCNVector3(x: 3.2, y: 3.2, z: 3.2)
+        node.scale = SCNVector3(x: 3.5, y: 3.5, z: 3.5)
         
         node.light = SCNLight()
         node.light?.type = SCNLight.LightType.omni
@@ -79,10 +79,14 @@ open class LVNCollectionViewScene: SCNScene {
 
 extension LVNCollectionViewScene {
     func parentNodeTranslate(using sender: UIPanGestureRecognizer, in view: UIView) {
-        let translation = sender.translation(in: view)
+        var translation = sender.translation(in: view)
+        let location = sender.location(in: view)
         
         if sender.state == .changed {
-            parentNode.position.y = -Float(translation.y * 0.02)
+            translation.y = 2 * (location.y - previousParentNodeLocation.y)
+            parentNode.position.y += Float(-translation.y * 0.02)
         }
+        
+        previousParentNodeLocation.y = location.y
     }
 }
