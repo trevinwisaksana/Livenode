@@ -23,9 +23,15 @@ final class ObjectCatalogViewController: UIViewController {
         return mainView
     }()
     
-    /// Pan gesture to detect scrolling.
+    /// Pan gesture to allow scrolling on the LVNCollectionView.
     private lazy var panGestureRecognizer: UIPanGestureRecognizer = {
         let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didBeginScrolling(_:)))
+        return gestureRecognizer
+    }()
+    
+    /// Tap gesture to select the 3D model to be inserted.
+    private lazy var tapGestureRecognizer: UITapGestureRecognizer = {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didSelectModel(_:)))
         return gestureRecognizer
     }()
     
@@ -44,6 +50,7 @@ final class ObjectCatalogViewController: UIViewController {
         mainView.fillInSuperview()
         
         mainView.sceneView.addGestureRecognizer(panGestureRecognizer)
+        mainView.sceneView.addGestureRecognizer(tapGestureRecognizer)
         
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
@@ -56,5 +63,10 @@ extension ObjectCatalogViewController {
     @objc
     private func didBeginScrolling(_ sender: UIPanGestureRecognizer) {
         mainView.didBeginScrolling(sender, inView: view)
+    }
+    
+    @objc
+    private func didSelectModel(_ sender: UITapGestureRecognizer) {
+        delegate.didSelectMode(at: mainView, with: sender)
     }
 }

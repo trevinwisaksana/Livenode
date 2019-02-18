@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 public protocol ObjectCatalogViewDelegate: class {
-    func objectCatalogView(_ objectCatalogView: ObjectCatalogView, didSelectNodeModel model: NodeModel)
+    func objectCatalogView(_ objectCatalogView: ObjectCatalogView, didSelectModel model: NodeModel)
 }
 
 public class ObjectCatalogView: UIView  {
@@ -75,13 +75,7 @@ extension ObjectCatalogView {
 // MARK: - LVNCollectionViewSceneDelegate
 
 extension ObjectCatalogView: LVNCollectionViewSceneDelegate {
-    private func didSelectItemAt(_ indexPath: IndexPath) {
-//        let nodeType = dataSource?.models()[indexPath.row].type
-//
-//        guard let type = nodeType else {
-//            return
-//        }
-//
-//        delegate?.objectCatalogView(self, didSelectNodeModel: type)
+    func didSelectModel(_ sender: UITapGestureRecognizer, withType type: NodeModel) {
+        delegate?.objectCatalogView(self, didSelectModel: type)
     }
 }
