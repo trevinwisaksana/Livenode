@@ -21,7 +21,11 @@ open class LVNCollectionViewScene: SCNScene {
     
     /// A container that will be used to move all the child nodes up/down when scrolling.
     private var parentNode = LVNCollectionViewParentNode()
+    
     private var previousParentNodeLocation = CGPoint(x: 0, y: 0)
+    private var parentNodeVerticalLimit: Float = -100.0
+    private var parentNodeOriginVerticalPosition: Float = 0.0
+    private var totalTranslation: Float = 10
     
     private var cameraNode: SCNNode = {
         let node = SCNNode()
@@ -71,6 +75,8 @@ open class LVNCollectionViewScene: SCNScene {
         parentNode.addChildNodes(sections)
         rootNode.addChildNode(parentNode)
         rootNode.addChildNode(cameraNode)
+        
+        parentNodeOriginVerticalPosition = parentNode.position.y
     }
    
 }
@@ -82,11 +88,25 @@ extension LVNCollectionViewScene {
         var translation = sender.translation(in: view)
         let location = sender.location(in: view)
         
-        if sender.state == .changed {
+        switch sender.state {
+        case .changed:
             translation.y = 2 * (location.y - previousParentNodeLocation.y)
             parentNode.position.y += Float(-translation.y * 0.02)
+            
+            if hasExceededVerticalLimit() {
+                parentNode.position.y = parentNodeOriginVerticalPosition
+            }
+            
+        default:
+            break
+            
         }
         
         previousParentNodeLocation.y = location.y
+        
+    }
+    
+    private func hasExceededVerticalLimit() -> Bool {
+        return parentNode.position.y < parentNodeOriginVerticalPosition
     }
 }
