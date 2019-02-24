@@ -21,6 +21,7 @@
 		DD1058CC218C39E600FF7301 /* Building.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD1058CB218C39E600FF7301 /* Building.scn */; };
 		DD14E159219A6235006ECF67 /* NodeInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */; };
 		DD14E15B219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */; };
+		DD1699882222D51800FB4E72 /* SpeechBubbleTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1699872222D51700FB4E72 /* SpeechBubbleTitleCell.swift */; };
 		DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F66720672FBD005E838C /* AppDelegate.swift */; };
 		DD20F67120672FBD005E838C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67020672FBD005E838C /* Assets.xcassets */; };
 		DD2234B621B27D6A0041AD70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1058B9218AEA1F00FF7301 /* LaunchScreen.storyboard */; };
@@ -67,7 +68,6 @@
 		DD725CE42164795D0035ECA9 /* ObjectCatalogModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD725CE32164795D0035ECA9 /* ObjectCatalogModelFactory.swift */; };
 		DD734413217CA8D300E4EE91 /* SpeechBubbleAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734412217CA8D300E4EE91 /* SpeechBubbleAnimationAttributesView.swift */; };
 		DD734416217CA99700E4EE91 /* SpeechBubbleAnimationAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734415217CA99700E4EE91 /* SpeechBubbleAnimationAttributesViewModel.swift */; };
-		DD73441A217D5E1C00E4EE91 /* AlertIconMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */; };
 		DD73441E217D71B600E4EE91 /* SpeechBubbleAnimationPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73441D217D71B600E4EE91 /* SpeechBubbleAnimationPopoverViewController.swift */; };
 		DD80A77B219334FC00441CC1 /* Sphere.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD80A77A219334FC00441CC1 /* Sphere.scn */; };
 		DD8E125F21381BA700D4F4DE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E125E21381BA700D4F4DE /* Style.swift */; };
@@ -144,6 +144,7 @@
 		DD1058CB218C39E600FF7301 /* Building.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Building.scn; sourceTree = "<group>"; };
 		DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorViewController.swift; sourceTree = "<group>"; };
 		DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorSceneSettingsCell.swift; sourceTree = "<group>"; };
+		DD1699872222D51700FB4E72 /* SpeechBubbleTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechBubbleTitleCell.swift; sourceTree = "<group>"; };
 		DD20F66420672FBD005E838C /* SceneKit-Grid-Experiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SceneKit-Grid-Experiment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD20F66720672FBD005E838C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,7 +194,6 @@
 		DD725CE32164795D0035ECA9 /* ObjectCatalogModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogModelFactory.swift; sourceTree = "<group>"; };
 		DD734412217CA8D300E4EE91 /* SpeechBubbleAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DD734415217CA99700E4EE91 /* SpeechBubbleAnimationAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationAttributesViewModel.swift; sourceTree = "<group>"; };
-		DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIconMenuCell.swift; sourceTree = "<group>"; };
 		DD73441D217D71B600E4EE91 /* SpeechBubbleAnimationPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationPopoverViewController.swift; sourceTree = "<group>"; };
 		DD80A77A219334FC00441CC1 /* Sphere.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Sphere.scn; sourceTree = "<group>"; };
 		DD8E125E21381BA700D4F4DE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
@@ -700,7 +700,7 @@
 		DD73441B217D5E2400E4EE91 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */,
+				DD1699872222D51700FB4E72 /* SpeechBubbleTitleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1221,6 +1221,7 @@
 				DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */,
 				DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */,
 				DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */,
+				DD1699882222D51800FB4E72 /* SpeechBubbleTitleCell.swift in Sources */,
 				DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
@@ -1244,7 +1245,6 @@
 				DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */,
 				DD6C16FD210C16EF002CB031 /* ColorPickerViewController.swift in Sources */,
 				DDFFE040217984D800AFF7DA /* SCNActionExtensions.swift in Sources */,
-				DD73441A217D5E1C00E4EE91 /* AlertIconMenuCell.swift in Sources */,
 				DD43429E215F772A00FF3D91 /* SceneEditorPresentableView.swift in Sources */,
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
 				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
