@@ -17,7 +17,7 @@ final class SpeechBubbleTitleCell: UITableViewCell {
     private static let titleBottomMargin: CGFloat = -3.0
     private static let titleLeftMargin: CGFloat = 15.0
     
-    private static let angleTextFieldlLeftMargin: CGFloat = 5.0
+    private static let angleTextFieldlLeftMargin: CGFloat = 3.0
     private static let angleTextFieldlRightMargin: CGFloat = -15.0
     
     private static let plusMinusSegmentedControlWidth: CGFloat = 80.0
