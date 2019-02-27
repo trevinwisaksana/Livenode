@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SpeechBubbleTitleCellDelegate: class {
+    func speechBubble(title: String)
+}
+
 final class SpeechBubbleTitleCell: UITableViewCell {
     
     // MARK: - Internal properties
@@ -17,13 +21,8 @@ final class SpeechBubbleTitleCell: UITableViewCell {
     private static let titleBottomMargin: CGFloat = -3.0
     private static let titleLeftMargin: CGFloat = 15.0
     
-    private static let angleTextFieldlLeftMargin: CGFloat = 3.0
-    private static let angleTextFieldlRightMargin: CGFloat = -15.0
-    
-    private static let plusMinusSegmentedControlWidth: CGFloat = 80.0
-    private static let plusMinusSegmentedControlRightMargin: CGFloat = -15.0
-    
-    private var currentAngleValue: Int = 0
+    private static let speechBubbleTitleTextFieldlLeftMargin: CGFloat = 3.0
+    private static let speechBubbleTitleTextFieldlRightMargin: CGFloat = -15.0
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +32,7 @@ final class SpeechBubbleTitleCell: UITableViewCell {
         return label
     }()
     
-    private lazy var speechTextField: UITextField = {
+    private lazy var speechBubbleTitleTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .clear
@@ -45,7 +44,7 @@ final class SpeechBubbleTitleCell: UITableViewCell {
     
     // MARK: - External Properties
     
-    weak var delegate: RotateAnimationAngleCellDelegate?
+    weak var delegate: SpeechBubbleTitleCellDelegate?
     
     // MARK: - Setup
     
@@ -61,7 +60,7 @@ final class SpeechBubbleTitleCell: UITableViewCell {
     
     private func setup() {
         addSubview(titleLabel)
-        addSubview(speechTextField)
+        addSubview(speechBubbleTitleTextField)
         
         backgroundColor = .milk
         
@@ -70,10 +69,18 @@ final class SpeechBubbleTitleCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: SpeechBubbleTitleCell.titleTopMargin),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: SpeechBubbleTitleCell.titleBottomMargin),
             
-            speechTextField.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            speechTextField.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: SpeechBubbleTitleCell.angleTextFieldlLeftMargin),
-            speechTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: SpeechBubbleTitleCell.angleTextFieldlRightMargin),
+            speechBubbleTitleTextField.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            speechBubbleTitleTextField.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: SpeechBubbleTitleCell.speechBubbleTitleTextFieldlLeftMargin),
+            speechBubbleTitleTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: SpeechBubbleTitleCell.speechBubbleTitleTextFieldlRightMargin),
         ])
     }
     
+}
+
+// MARK: - UITextFieldDelegate
+
+extension SpeechBubbleTitleCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.speechBubble(title: textField.text ?? "")
+    }
 }

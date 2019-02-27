@@ -559,15 +559,15 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Speech Bubble Animation
     
     func addSpeechBubbleAnimation(_ animation: SpeechBubbleAnimationAttributes, on sceneView: SCNView) {
-        createSpeechBubblePopover(duration: animation.duration ?? 0.25)
+        createSpeechBubblePopover(duration: animation.duration ?? 0.25, title: animation.title)
     }
     
-    private func createSpeechBubblePopover(duration: TimeInterval) {
+    private func createSpeechBubblePopover(duration: TimeInterval, title: String) {
         guard let nodeAnimationTarget = nodeAnimationTarget else {
             return
         }
         
-        let text = SCNText(string: "Test", extrusionDepth: 0)
+        let text = SCNText(string: title, extrusionDepth: 0)
         text.firstMaterial?.isDoubleSided = true
         let speechBubbleNode = SCNNode(geometry: text)
         

@@ -45,7 +45,7 @@ final class SpeechBubbleAnimationAttributesViewController: UIViewController {
         view.addSubview(mainView)
         mainView.fillInSuperview()
         
-        title = "Alert"
+        title = "Speech Bubble"
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     
@@ -55,17 +55,21 @@ final class SpeechBubbleAnimationAttributesViewController: UIViewController {
 
 extension SpeechBubbleAnimationAttributesViewController: SpeechBubbleAnimationAttributesViewDelegate {
     func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: SpeechBubbleAnimationAttributes) {
+        
         sceneEditorViewController().didTapAddSpeechBubbleAnimationButton(button, animation: animation)
+        
         dismiss(animated: true, completion: nil)
     }
     
-    func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int) {
+    func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, speechBubbleTitle title: String, forAnimationAtIndex index: Int) {
         
+        // TODO: Get this to transfer the title to the DefaultScene
     }
     
     private func sceneEditorViewController() -> SceneEditorViewController {
         let rootNavigationController = presentingViewController as! RootNavigationController
         let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
+        
         return sceneEditorViewController
     }
 }

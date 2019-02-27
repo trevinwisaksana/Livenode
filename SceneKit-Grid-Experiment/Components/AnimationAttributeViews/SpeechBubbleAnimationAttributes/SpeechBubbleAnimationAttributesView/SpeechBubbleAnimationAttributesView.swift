@@ -10,7 +10,7 @@ import UIKit
 
 public protocol SpeechBubbleAnimationAttributesViewDelegate: class {
     func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: SpeechBubbleAnimationAttributes)
-    func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, didUpdateAnimationDuration duration: TimeInterval, forAnimationAtIndex index: Int)
+    func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, speechBubbleTitle title: String, forAnimationAtIndex index: Int)
 }
 
 public class SpeechBubbleAnimationAttributesView: UIView {
@@ -173,7 +173,15 @@ extension SpeechBubbleAnimationAttributesView: AnimationDurationCellDelegate {
     public func animationDurationCell(_ animationDurationCell: AnimationDurationCell, didUpdateAnimationDuration duration: TimeInterval) {
         dataSource?.duration = duration
         
-        guard let animationIndex = dataSource?.animationIndex else { return }
-        delegate?.speechBubbleAnimationAttributesView(self, didUpdateAnimationDuration: duration, forAnimationAtIndex: animationIndex)
+        guard let animationIndex = dataSource?.animationIndex, let title = dataSource?.title else { return }
+        delegate?.speechBubbleAnimationAttributesView(self, speechBubbleTitle: title, forAnimationAtIndex: animationIndex)
+    }
+}
+
+// MARK: - SpeechBubbleTitleCellDelegate
+
+extension SpeechBubbleAnimationAttributesView: SpeechBubbleTitleCellDelegate {
+    func speechBubble(title: String) {
+        dataSource?.title = title
     }
 }

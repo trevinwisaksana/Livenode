@@ -143,7 +143,7 @@ extension NodeAnimationListView: UITableViewDelegate {
         case .speechBubble:
             guard let animatedNodeLocation = State.nodeAnimationTarget?.position else { return }
             
-            let animationAttributes = SpeechBubbleAnimationAttributes(duration: animation?.duration, animationIndex: indexPath.row, nodeLocation: animatedNodeLocation)
+            let animationAttributes = SpeechBubbleAnimationAttributes(duration: animation?.duration, animationIndex: indexPath.row, nodeLocation: animatedNodeLocation, title: "")
             let alertAnimationAttributesController = Presenter.inject(.speechBubbleAnimationAttributes(attributes: animationAttributes))
             navigationController.pushViewController(alertAnimationAttributesController, animated: true)
             
