@@ -542,14 +542,9 @@ extension SceneEditorViewController: SceneDocumentDelegate {
         sceneView.scene = document.scene
     }
     
-    func sceneDocumentTransferBegan(_ document: SceneDocument) {
-//        progressBar.isHidden = false
-//        progressBar.observedProgress = document.progress
-    }
+    func sceneDocumentTransferBegan(_ document: SceneDocument) {}
     
-    func sceneDocumentTransferEnded(_ document: SceneDocument) {
-//        progressBar.isHidden = true
-    }
+    func sceneDocumentTransferEnded(_ document: SceneDocument) {}
     
     func sceneDocumentSaveFailed(_ document: SceneDocument) {
         let alert = UIAlertController(title: "Save Error", message: "An attempt to save the document failed.", preferredStyle: .alert)
