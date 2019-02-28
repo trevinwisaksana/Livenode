@@ -21,20 +21,17 @@ public struct ObjectCatalogModelFactory {
         boxGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         boxGeometry.name = type(of: boxGeometry.self).description()
         let boxNode = SCNNode(geometry: boxGeometry)
-        boxNode.name = type(of: boxNode.self).description()
         
         let planeGeometry = SCNPlane(width: nodeLength, height: nodeLength)
         planeGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         planeGeometry.firstMaterial?.isDoubleSided = true
         planeGeometry.name = type(of: planeGeometry.self).description()
         let planeNode = SCNNode(geometry: planeGeometry)
-        planeNode.name = type(of: planeNode.self).description()
         
         let sphereGeometry = SCNSphere(radius: nodeLength / 2)
         sphereGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         sphereGeometry.name = type(of: sphereGeometry.self).description()
         let sphereNode = SCNNode(geometry: sphereGeometry)
-        sphereNode.name = type(of: sphereNode.self).description()
         
         let pyramidGeometry = SCNPyramid(width: nodeLength, height: nodeLength, length: nodeLength)
         pyramidGeometry.firstMaterial?.diffuse.contents = UIColor.blue
@@ -72,6 +69,7 @@ public enum NodeType: String {
     case SCNPlane
     case SCNBox
     case SCNCar
+    case SCNSphere
     
     var string: String {
         return rawValue
