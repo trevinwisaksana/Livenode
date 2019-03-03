@@ -588,6 +588,8 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
+        Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(didStartSpeechBubbleAnimationTimer(_:)), userInfo: nil, repeats: false)
+        
 //        let text = SCNText(string: title, extrusionDepth: 0)
         let text = SCNText(string: "Test", extrusionDepth: 0)
         text.firstMaterial?.isDoubleSided = true
@@ -664,6 +666,20 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         speechBubbleNode.eulerAngles.x = cameraOrbit.eulerAngles.x
         speechBubbleNode.eulerAngles.y = cameraOrbit.eulerAngles.y
+    }
+    
+    @objc
+    private func didStartSpeechBubbleAnimationTimer(_ sender: Timer) {
+        guard let speechBubbleNode = rootNode.childNode(withName: Constants.Node.speechBubble, recursively: true) else {
+            return
+        }
+        
+        let fadeOutAnimation = SCNAction.fadeOut(duration: 0.15)
+        fadeOutAnimation.timingMode = .easeInEaseOut
+        speechBubbleNode.addAction(fadeOutAnimation, forKey: .speechBubble)
+//        speechBubbleNode.playAllAnimations(completionHandler: nil)
+        
+        speechBubbleNode.removeFromParentNode()
     }
     
     // MARK: - Delay Animation

@@ -25,6 +25,7 @@ public class NodeAnimationListView: UIView {
         tableView.dataSource = self
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
+        
         return tableView
     }()
     
@@ -177,6 +178,7 @@ extension NodeAnimationListView: UITableViewDelegate {
         case .delete:
             State.nodeAnimationTarget?.actions.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            
         default:
             break
         }
