@@ -675,11 +675,11 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         }
         
         let fadeOutAnimation = SCNAction.fadeOut(duration: 0.15)
-        fadeOutAnimation.timingMode = .easeInEaseOut
-        speechBubbleNode.addAction(fadeOutAnimation, forKey: .speechBubble)
-//        speechBubbleNode.playAllAnimations(completionHandler: nil)
+        fadeOutAnimation.timingMode = .linear
+        speechBubbleNode.runAction(fadeOutAnimation) {
+            speechBubbleNode.removeFromParentNode()
+        }
         
-        speechBubbleNode.removeFromParentNode()
     }
     
     // MARK: - Delay Animation
