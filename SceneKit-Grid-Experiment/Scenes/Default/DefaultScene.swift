@@ -94,7 +94,8 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     public var didSelectANode: Bool = false
     public var isGridDisplayed: Bool = false
     public var isSelectingAnimationTargetLocation: Bool = false
-    public var isOrbitingCamera = false
+    public var isOrbitingCamera: Bool = false
+    public var speechBubbleShouldFollowCamera: Bool = false
     
     public var backgroundColor: UIColor {
         return background.contents as! UIColor
@@ -263,8 +264,30 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Node Insertion
     
-    func insertBox() {
-        // TODO: Set function to private
+    public func insertNodeModel(_ model: NodeModel) {
+        switch model {
+        case .box:
+            insertBox()
+        case .plane:
+            insertPlane()
+        case .sphere:
+            insertSphere()
+        case .pyramid:
+            insertPyramid()
+        case .car:
+            insertCar()
+        case .house:
+            insertHouse()
+        case .seaplane:
+            insertSeaplane()
+        default:
+            break
+        }
+        
+        didSelectSceneAction(.move)
+    }
+    
+    private func insertBox() {
         let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
         box.name = type(of: box.self).description()
         let boxNode = SCNNode(geometry: box)
@@ -283,8 +306,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(boxNode)
     }
     
-    func insertSphere() {
-        // TODO: Set function to private
+    private func insertSphere() {
         let sphere = SCNSphere(radius: 1)
         sphere.name = type(of: sphere.self).description()
         let sphereNode = SCNNode(geometry: sphere)
@@ -303,8 +325,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(sphereNode)
     }
     
-    func insertPyramid() {
-        // TODO: Set function to private
+    private func insertPyramid() {
         let pyramid = SCNPyramid(width: 1, height: 1, length: 1)
         pyramid.name = type(of: pyramid.self).description()
         let pyramidNode = SCNNode(geometry: pyramid)
@@ -323,7 +344,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(pyramidNode)
     }
     
-    func insertPlane() {
+    private func insertPlane() {
         // TODO: Fix issue where plane cannot be moved easily if it's too big
         let plane = SCNPlane(width: 5, height: 5)
         let planeNode = SCNNode(geometry: plane)
@@ -343,7 +364,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(planeNode)
     }
     
-    func insertCar() {
+    private func insertCar() {
         guard let carNode = daeToSCNNode(filepath: "Car.scn") else {
             return
         }
@@ -361,7 +382,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(carNode)
     }
     
-    func insertHouse() {
+    private func insertHouse() {
         guard let houseNode = daeToSCNNode(filepath: "House.scn") else {
             return
         }
@@ -380,7 +401,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(houseNode)
     }
     
-    func insertSeaplane() {
+    private func insertSeaplane() {
         guard let seaplaneNode = daeToSCNNode(filepath: "Seaplane.scn") else {
             return
         }
@@ -469,12 +490,12 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Node Animation
     
-    func setNodeAnimationTarget() {
+    public func setNodeAnimationTarget() {
         nodeAnimationTarget = nodeSelected
         State.nodeAnimationTarget = nodeSelected
     }
     
-    func playAnimation() {
+    public func playAnimation() {
         guard let originalNodePosition = nodeAnimationTargetOriginalPosition,
               let originalNodeRotation = nodeAnimationTargetOriginalRotation
         else {
@@ -558,15 +579,18 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Speech Bubble Animation
     
-    func addSpeechBubbleAnimation(_ animation: SpeechBubbleAnimationAttributes, on sceneView: SCNView) {
-        createSpeechBubblePopover(duration: animation.duration ?? 0.25)
+    public func addSpeechBubbleAnimation(_ animation: SpeechBubbleAnimationAttributes, on sceneView: SCNView) {
+        createSpeechBubblePopover(duration: animation.duration ?? 0.25, title: animation.title)
     }
     
-    private func createSpeechBubblePopover(duration: TimeInterval) {
+    private func createSpeechBubblePopover(duration: TimeInterval, title: String) {
         guard let nodeAnimationTarget = nodeAnimationTarget else {
             return
         }
         
+        Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(didStartSpeechBubbleAnimationTimer(_:)), userInfo: nil, repeats: false)
+        
+//        let text = SCNText(string: title, extrusionDepth: 0)
         let text = SCNText(string: "Test", extrusionDepth: 0)
         text.firstMaterial?.isDoubleSided = true
         let speechBubbleNode = SCNNode(geometry: text)
@@ -608,12 +632,54 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
+        guard let cameraOrbit = rootNode.childNode(withName: Constants.Node.cameraOrbit, recursively: true) else {
+            return
+        }
+        
+        speechBubbleNode.eulerAngles.x = cameraOrbit.eulerAngles.x
+        speechBubbleNode.eulerAngles.y = cameraOrbit.eulerAngles.y
+        
         // TODO: Fix the duration slider because it's not rounding up numbers
         let fadeInAnimation = SCNAction.fadeIn(duration: 0.15)
         fadeInAnimation.timingMode = .easeInEaseOut
         nodeAnimationTarget.addAction(fadeInAnimation, forKey: .speechBubble)
         
         nodeAnimationTarget.addChildNode(speechBubbleNode)
+        
+        speechBubbleShouldFollowCamera = true
+    }
+    
+    private func adjustSpeechBubbleAngle() {
+        // TODO: Fix issue with speech bubble no longer following when user closes and reopens the document
+        
+        if !speechBubbleShouldFollowCamera {
+            return
+        }
+        
+        guard let speechBubbleNode = rootNode.childNode(withName: Constants.Node.speechBubble, recursively: true) else {
+            return
+        }
+        
+        guard let cameraOrbit = rootNode.childNode(withName: Constants.Node.cameraOrbit, recursively: true) else {
+            return
+        }
+        
+        speechBubbleNode.eulerAngles.x = cameraOrbit.eulerAngles.x
+        speechBubbleNode.eulerAngles.y = cameraOrbit.eulerAngles.y
+    }
+    
+    @objc
+    private func didStartSpeechBubbleAnimationTimer(_ sender: Timer) {
+        guard let speechBubbleNode = rootNode.childNode(withName: Constants.Node.speechBubble, recursively: true) else {
+            return
+        }
+        
+        let fadeOutAnimation = SCNAction.fadeOut(duration: 0.15)
+        fadeOutAnimation.timingMode = .linear
+        speechBubbleNode.runAction(fadeOutAnimation) {
+            speechBubbleNode.removeFromParentNode()
+        }
+        
     }
     
     // MARK: - Delay Animation
@@ -752,6 +818,8 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         if panGesture.state == .changed {
             cameraOrbit.eulerAngles.y = (-2 * Float.pi) * widthRatio
             cameraOrbit.eulerAngles.x = -Float.pi * heightRatio
+            
+            adjustSpeechBubbleAngle()
         }
         
         if panGesture.state == .ended {

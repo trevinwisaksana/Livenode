@@ -21,6 +21,7 @@
 		DD1058CC218C39E600FF7301 /* Building.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD1058CB218C39E600FF7301 /* Building.scn */; };
 		DD14E159219A6235006ECF67 /* NodeInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */; };
 		DD14E15B219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */; };
+		DD1699882222D51800FB4E72 /* SpeechBubbleTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1699872222D51700FB4E72 /* SpeechBubbleTitleCell.swift */; };
 		DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F66720672FBD005E838C /* AppDelegate.swift */; };
 		DD20F67120672FBD005E838C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67020672FBD005E838C /* Assets.xcassets */; };
 		DD2234B621B27D6A0041AD70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1058B9218AEA1F00FF7301 /* LaunchScreen.storyboard */; };
@@ -36,7 +37,6 @@
 		DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4720292161E72800028727 /* SceneActionMenuViewControllerDelegate.swift */; };
 		DD47202D2161F92200028727 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47202C2161F92200028727 /* NotificationExtensions.swift */; };
 		DD47202F2161F96A00028727 /* SceneActionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47202E2161F96A00028727 /* SceneActionMenuView.swift */; };
-		DD4960B7215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */; };
 		DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */; };
 		DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */; };
 		DD51FEFE208818ED00A0D857 /* SceneEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */; };
@@ -65,10 +65,9 @@
 		DD6CC4312109B54F009284C6 /* UIEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4302109B54E009284C6 /* UIEdgeInsetsExtensions.swift */; };
 		DD6CC4332109B94D009284C6 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */; };
 		DD6CC452210AB626009284C6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6CC451210AB626009284C6 /* Presenter.swift */; };
-		DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */; };
+		DD725CE42164795D0035ECA9 /* ObjectCatalogModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD725CE32164795D0035ECA9 /* ObjectCatalogModelFactory.swift */; };
 		DD734413217CA8D300E4EE91 /* SpeechBubbleAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734412217CA8D300E4EE91 /* SpeechBubbleAnimationAttributesView.swift */; };
 		DD734416217CA99700E4EE91 /* SpeechBubbleAnimationAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734415217CA99700E4EE91 /* SpeechBubbleAnimationAttributesViewModel.swift */; };
-		DD73441A217D5E1C00E4EE91 /* AlertIconMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */; };
 		DD73441E217D71B600E4EE91 /* SpeechBubbleAnimationPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73441D217D71B600E4EE91 /* SpeechBubbleAnimationPopoverViewController.swift */; };
 		DD80A77B219334FC00441CC1 /* Sphere.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD80A77A219334FC00441CC1 /* Sphere.scn */; };
 		DD8E125F21381BA700D4F4DE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E125E21381BA700D4F4DE /* Style.swift */; };
@@ -145,6 +144,7 @@
 		DD1058CB218C39E600FF7301 /* Building.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Building.scn; sourceTree = "<group>"; };
 		DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorViewController.swift; sourceTree = "<group>"; };
 		DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorSceneSettingsCell.swift; sourceTree = "<group>"; };
+		DD1699872222D51700FB4E72 /* SpeechBubbleTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechBubbleTitleCell.swift; sourceTree = "<group>"; };
 		DD20F66420672FBD005E838C /* SceneKit-Grid-Experiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SceneKit-Grid-Experiment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD20F66720672FBD005E838C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -163,7 +163,6 @@
 		DD4720292161E72800028727 /* SceneActionMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DD47202C2161F92200028727 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
 		DD47202E2161F96A00028727 /* SceneActionMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneActionMenuView.swift; sourceTree = "<group>"; };
-		DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogPresentableView.swift; sourceTree = "<group>"; };
 		DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogView.swift; sourceTree = "<group>"; };
 		DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewModel.swift; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorViewController.swift; sourceTree = "<group>"; };
@@ -192,10 +191,9 @@
 		DD6CC4302109B54E009284C6 /* UIEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		DD6CC4322109B94D009284C6 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		DD6CC451210AB626009284C6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogPresentableViewHelper.swift; sourceTree = "<group>"; };
+		DD725CE32164795D0035ECA9 /* ObjectCatalogModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogModelFactory.swift; sourceTree = "<group>"; };
 		DD734412217CA8D300E4EE91 /* SpeechBubbleAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DD734415217CA99700E4EE91 /* SpeechBubbleAnimationAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationAttributesViewModel.swift; sourceTree = "<group>"; };
-		DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIconMenuCell.swift; sourceTree = "<group>"; };
 		DD73441D217D71B600E4EE91 /* SpeechBubbleAnimationPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleAnimationPopoverViewController.swift; sourceTree = "<group>"; };
 		DD80A77A219334FC00441CC1 /* Sphere.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Sphere.scn; sourceTree = "<group>"; };
 		DD8E125E21381BA700D4F4DE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
@@ -414,21 +412,11 @@
 		DD4960B8215B4A4200B6E016 /* ObjectCatalog */ = {
 			isa = PBXGroup;
 			children = (
-				DD4960B9215B4A4F00B6E016 /* Presentable */,
 				DD4960BC215B4A6E00B6E016 /* ObjectCatalogView */,
 				DDFC63E320F1FE5900109EC5 /* Cells */,
 				DD4960BF215B4A8300B6E016 /* Model */,
 			);
 			path = ObjectCatalog;
-			sourceTree = "<group>";
-		};
-		DD4960B9215B4A4F00B6E016 /* Presentable */ = {
-			isa = PBXGroup;
-			children = (
-				DD4960B6215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift */,
-				DD725CE32164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift */,
-			);
-			path = Presentable;
 			sourceTree = "<group>";
 		};
 		DD4960BC215B4A6E00B6E016 /* ObjectCatalogView */ = {
@@ -442,6 +430,7 @@
 		DD4960BF215B4A8300B6E016 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DD725CE32164795D0035ECA9 /* ObjectCatalogModelFactory.swift */,
 				DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */,
 			);
 			path = Model;
@@ -711,7 +700,7 @@
 		DD73441B217D5E2400E4EE91 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				DD734419217D5E1C00E4EE91 /* AlertIconMenuCell.swift */,
+				DD1699872222D51700FB4E72 /* SpeechBubbleTitleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1228,10 +1217,11 @@
 				DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */,
 				DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */,
 				DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */,
-				DD725CE42164795D0035ECA9 /* ObjectCatalogPresentableViewHelper.swift in Sources */,
+				DD725CE42164795D0035ECA9 /* ObjectCatalogModelFactory.swift in Sources */,
 				DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */,
 				DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */,
 				DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */,
+				DD1699882222D51800FB4E72 /* SpeechBubbleTitleCell.swift in Sources */,
 				DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
@@ -1255,7 +1245,6 @@
 				DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */,
 				DD6C16FD210C16EF002CB031 /* ColorPickerViewController.swift in Sources */,
 				DDFFE040217984D800AFF7DA /* SCNActionExtensions.swift in Sources */,
-				DD73441A217D5E1C00E4EE91 /* AlertIconMenuCell.swift in Sources */,
 				DD43429E215F772A00FF3D91 /* SceneEditorPresentableView.swift in Sources */,
 				DD6C16F5210B2423002CB031 /* NodeColorCell.swift in Sources */,
 				DD68C225211581E10061100F /* SCNGeometryExtensions.swift in Sources */,
@@ -1306,7 +1295,6 @@
 				DD8E125F21381BA700D4F4DE /* Style.swift in Sources */,
 				DD68C21A2110688A0061100F /* State.swift in Sources */,
 				DD2A55EE20DE3BD200EA00ED /* UICollectionViewExtensions.swift in Sources */,
-				DD4960B7215B4A3E00B6E016 /* ObjectCatalogPresentableView.swift in Sources */,
 				DDE60E4621731BB30052E506 /* MoveAnimationAttributesView.swift in Sources */,
 				DD68C2272115879F0061100F /* UIColorExtensions.swift in Sources */,
 				DD5456D02177480700AE25D8 /* AddAnimationCell.swift in Sources */,

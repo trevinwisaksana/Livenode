@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 public protocol LVNCollectionViewSceneDelegate: class {
-    func collectionViewScene(_ collectionViewScene: LVNCollectionViewScene, didSelectNode section: Int) -> Int
+   
 }
 
 open class LVNCollectionViewScene: SCNScene {
@@ -22,8 +22,31 @@ open class LVNCollectionViewScene: SCNScene {
     /// A container that will be used to move all the child nodes up/down when scrolling.
     private var parentNode = LVNCollectionViewParentNode()
     
+    private var previousParentNodeLocation = CGPoint(x: 0, y: 0)
+    private var parentNodeVerticalLimit: Float = -100.0
+    private var parentNodeOriginVerticalPosition: Float = 0.0
+    private var totalTranslation: Float = 10
+    
+    private var cameraNode: SCNNode = {
+        let node = SCNNode()
+        node.camera = SCNCamera()
+        node.camera?.usesOrthographicProjection = true
+        node.position.z = 6.0
+        node.scale = SCNVector3(x: 3.5, y: 3.5, z: 3.5)
+        
+        node.light = SCNLight()
+        node.light?.type = SCNLight.LightType.omni
+        node.light?.intensity = 2000
+        node.light?.spotInnerAngle = 90.0
+        node.light?.attenuationStartDistance = 2.0
+        node.light?.attenuationFalloffExponent = 5.0
+        node.light?.attenuationEndDistance = 30.0
+        
+        return node
+    }()
+    
     /// A list of nodes that will be presented on the collection view.
-    private var nodeCells: [LVNCollectionViewCellNode] = [] {
+    private var nodeCells: [SCNNode] = [] {
         didSet {
             sections.first?.addChildNodes(nodeCells)
         }
@@ -32,19 +55,14 @@ open class LVNCollectionViewScene: SCNScene {
     /// A list of sections to divide the cell insertion. Is resposible for the cells arrangement. The default value is 1.
     private var sections = [LVNCollectionViewSectionNode()]
     
-    /// Pan gesture to detect scrolling.
-    private var panGestureRecognizer: UIPanGestureRecognizer = {
-        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didBeginScrolling(_:)))
-        return gestureRecognizer
-    }()
-    
-    
     // MARK: - Setup
     
-    public init(nodesToPresent: [LVNCollectionViewCellNode]) {
+    public init(nodesToPresent: [SCNNode]) {
         super.init()
         
-        self.nodeCells = nodesToPresent
+        defer {
+            nodeCells = nodesToPresent
+        }
         
         setup()
     }
@@ -54,17 +72,41 @@ open class LVNCollectionViewScene: SCNScene {
     }
     
     private func setup() {
-        
         parentNode.addChildNodes(sections)
         rootNode.addChildNode(parentNode)
-    }
-    
-    
-    // MARK: - User Interaction
-    
-    @objc
-    private func didBeginScrolling(_ sender: UIPanGestureRecognizer) {
+        rootNode.addChildNode(cameraNode)
         
+        parentNodeOriginVerticalPosition = parentNode.position.y
     }
    
+}
+
+// MARK: - Parent Node Translation
+
+extension LVNCollectionViewScene {
+    func parentNodeTranslate(using sender: UIPanGestureRecognizer, in view: UIView) {
+        var translation = sender.translation(in: view)
+        let location = sender.location(in: view)
+        
+        switch sender.state {
+        case .changed:
+            translation.y = 2 * (location.y - previousParentNodeLocation.y)
+            parentNode.position.y += Float(-translation.y * 0.02)
+            
+            if hasExceededVerticalLimit() {
+                parentNode.position.y = parentNodeOriginVerticalPosition
+            }
+            
+        default:
+            break
+            
+        }
+        
+        previousParentNodeLocation.y = location.y
+        
+    }
+    
+    private func hasExceededVerticalLimit() -> Bool {
+        return parentNode.position.y < parentNodeOriginVerticalPosition
+    }
 }

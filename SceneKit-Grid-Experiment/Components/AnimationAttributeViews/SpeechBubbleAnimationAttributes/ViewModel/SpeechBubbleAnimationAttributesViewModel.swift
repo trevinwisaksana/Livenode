@@ -17,4 +17,5 @@ public struct SpeechBubbleAnimationAttributes: SpeechBubbleAnimationAttributesVi
     public var duration: TimeInterval?
     public var animationIndex: Int?
     public var nodeLocation: SCNVector3?
+    public var title: String = ""
 }

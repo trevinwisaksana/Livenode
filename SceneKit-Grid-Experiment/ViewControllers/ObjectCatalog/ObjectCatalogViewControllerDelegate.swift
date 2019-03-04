@@ -7,9 +7,24 @@
 //
 
 import UIKit
+import SceneKit
 
-class ObjectCatalogViewControllerDelegate: NSObject, ObjectCatalogPresentableViewDelegate {
-    func objectCatalogPresentableView(_ objectCatalogPresentableView: ObjectCatalogPresentableView, didSelectNodeModel model: NodeModel) {
+class ObjectCatalogViewControllerDelegate: NSObject, ObjectCatalogViewDelegate {
+    func objectCatalogView(_ objectCatalogView: ObjectCatalogView, didSelectModel model: NodeModel) {
         NotificationCenter.default.post(name: Notification.Name.ObjectCatalogDidSelectNodeModel, object: model)
+    }
+}
+
+// MARK: - Node Selection
+
+extension ObjectCatalogViewControllerDelegate {
+    func didSelectMode(at view: ObjectCatalogView, with sender: UITapGestureRecognizer) {
+        let location = sender.location(in: view.sceneView)
+        
+        guard let nodeSelected = view.sceneView.hitTest(location, options: nil).first?.node else {
+            return
+        }
+        
+        view.didSelectModel(sender, withType: nodeSelected.type)
     }
 }

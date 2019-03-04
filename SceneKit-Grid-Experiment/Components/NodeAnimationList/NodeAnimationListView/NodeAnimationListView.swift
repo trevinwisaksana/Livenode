@@ -25,6 +25,7 @@ public class NodeAnimationListView: UIView {
         tableView.dataSource = self
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
+        
         return tableView
     }()
     
@@ -143,7 +144,7 @@ extension NodeAnimationListView: UITableViewDelegate {
         case .speechBubble:
             guard let animatedNodeLocation = State.nodeAnimationTarget?.position else { return }
             
-            let animationAttributes = SpeechBubbleAnimationAttributes(duration: animation?.duration, animationIndex: indexPath.row, nodeLocation: animatedNodeLocation)
+            let animationAttributes = SpeechBubbleAnimationAttributes(duration: animation?.duration, animationIndex: indexPath.row, nodeLocation: animatedNodeLocation, title: "")
             let alertAnimationAttributesController = Presenter.inject(.speechBubbleAnimationAttributes(attributes: animationAttributes))
             navigationController.pushViewController(alertAnimationAttributesController, animated: true)
             
@@ -177,6 +178,7 @@ extension NodeAnimationListView: UITableViewDelegate {
         case .delete:
             State.nodeAnimationTarget?.actions.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            
         default:
             break
         }

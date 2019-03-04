@@ -164,10 +164,16 @@ extension SCNNode: NodeInspectorViewModel {
             switch geometry?.name {
             case NodeType.SCNPlane.string:
                 return .plane
+                
             case NodeType.SCNBox.string:
                 return .box
+                
             case NodeType.SCNCar.string:
                 return .car
+                
+            case NodeType.SCNSphere.string:
+                return .sphere
+                
             default:
                 return .default
             }

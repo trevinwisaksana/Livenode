@@ -246,27 +246,7 @@ final class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControll
         scene.showGrid()
         
         if let nodeModel = notification.object as? NodeModel {
-            switch nodeModel {
-            case .box:
-                scene.insertBox()
-            case .plane:
-                scene.insertPlane()
-            case .sphere:
-                scene.insertSphere()
-            case .pyramid:
-                scene.insertPyramid()
-            case .car:
-                scene.insertCar()
-            case .house:
-                scene.insertHouse()
-            case .seaplane:
-                scene.insertSeaplane()
-            default:
-                break
-            }
-            
-            scene.didSelectSceneAction(.move)
-            
+            scene.insertNodeModel(nodeModel)
             controller.presentedViewController?.dismiss(animated: true, completion: nil)
         }
     }
