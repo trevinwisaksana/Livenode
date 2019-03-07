@@ -74,8 +74,6 @@ open class LVNCollectionViewScene: SCNScene {
         rootNode.addChildNode(cameraNode)
         
         parentNodeOriginVerticalPosition = parentNode.position.y
-        
-        background.contents = UIColor.utilityGray
     }
    
 }

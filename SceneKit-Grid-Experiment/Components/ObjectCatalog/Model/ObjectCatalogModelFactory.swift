@@ -30,19 +30,6 @@ public struct ObjectCatalogModelFactory {
         boxNodeTransform = SCNMatrix4Rotate(boxNodeTransform, 0.250, 0, 0, 1)
         boxNode.transform = boxNodeTransform
         
-        let planeGeometry = SCNPlane(width: nodeLength, height: nodeLength)
-        planeGeometry.firstMaterial?.diffuse.contents = UIColor.blue
-        planeGeometry.firstMaterial?.isDoubleSided = true
-        planeGeometry.name = type(of: planeGeometry.self).description()
-        let planeNode = SCNNode(geometry: planeGeometry)
-        planeNode.changeColor(to: .lightGray)
-        
-        var planeNodeTransform = SCNMatrix4Identity
-        planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, 1.27, 1, 0, 0)
-        planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, 0.785, 0, 1, 0)
-        planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, -0.220, 0, 0, 1)
-        planeNode.transform = planeNodeTransform
-        
         let sphereGeometry = SCNSphere(radius: sphereDiameter / 2)
         sphereGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         sphereGeometry.name = type(of: sphereGeometry.self).description()
@@ -69,6 +56,19 @@ public struct ObjectCatalogModelFactory {
         pyramidNodeTransform = SCNMatrix4Rotate(pyramidNodeTransform, 0.785, 0, 1, 0)
         pyramidNodeTransform = SCNMatrix4Rotate(pyramidNodeTransform, 0.250, 0, 0, 1)
         pyramidNode.transform = pyramidNodeTransform
+        
+        let planeGeometry = SCNPlane(width: nodeLength, height: nodeLength)
+        planeGeometry.firstMaterial?.diffuse.contents = UIColor.blue
+        planeGeometry.firstMaterial?.isDoubleSided = true
+        planeGeometry.name = type(of: planeGeometry.self).description()
+        let planeNode = SCNNode(geometry: planeGeometry)
+        planeNode.changeColor(to: .lightGray)
+        
+        var planeNodeTransform = SCNMatrix4Identity
+        planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, 1.27, 1, 0, 0)
+        planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, 0.785, 0, 1, 0)
+        planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, -0.220, 0, 0, 1)
+        planeNode.transform = planeNodeTransform
         
         return [boxNode, planeNode, sphereNode, pyramidNode]
     }
