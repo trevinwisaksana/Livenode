@@ -1,5 +1,5 @@
 //
-//  NotificationExtensions.swift
+//  NotificationNames.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 01/10/2018.

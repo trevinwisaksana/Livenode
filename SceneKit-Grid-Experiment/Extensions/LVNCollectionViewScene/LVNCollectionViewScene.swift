@@ -35,12 +35,9 @@ open class LVNCollectionViewScene: SCNScene {
         node.scale = SCNVector3(x: 3.5, y: 3.5, z: 3.5)
         
         node.light = SCNLight()
-        node.light?.type = SCNLight.LightType.omni
-        node.light?.intensity = 2000
-        node.light?.spotInnerAngle = 90.0
-        node.light?.attenuationStartDistance = 2.0
-        node.light?.attenuationFalloffExponent = 5.0
-        node.light?.attenuationEndDistance = 30.0
+        node.light?.color = UIColor.white
+        node.light?.type = SCNLight.LightType.directional
+        node.light?.intensity = 2500
         
         return node
     }()
@@ -77,6 +74,8 @@ open class LVNCollectionViewScene: SCNScene {
         rootNode.addChildNode(cameraNode)
         
         parentNodeOriginVerticalPosition = parentNode.position.y
+        
+        background.contents = UIColor.utilityGray
     }
    
 }

@@ -38,7 +38,7 @@ open class LVNCollectionViewSectionNode: SCNNode {
         nodes.forEach { (node) in
             
             arrange(nodeInGridFormation: node)
-            rotate(node)
+//            rotate(node)
 
             addChildNode(node)
             

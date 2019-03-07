@@ -28,12 +28,24 @@ extension UIColor {
         return UIColor(r: 0, g: 162, b: 255)!
     }
     
+    public class var utilityGray: UIColor {
+        return UIColor(r: 240, g: 240, b: 242)!
+    }
+    
     public class var skyBlue: UIColor {
         return UIColor(r: 93, g: 205, b: 255)!
     }
     
     public class var dark: UIColor {
         return UIColor(r: 29, g: 29, b: 29)!
+    }
+    
+    public class var orange: UIColor {
+        return UIColor(r: 211, g: 113, b: 27)!
+    }
+    
+    public class var matteRed: UIColor {
+        return UIColor(r: 201, g: 35, b: 39)!
     }
     
     // MARK: - Convenience Initializer

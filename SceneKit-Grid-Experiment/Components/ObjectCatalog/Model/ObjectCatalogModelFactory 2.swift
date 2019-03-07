@@ -13,8 +13,7 @@ public struct ObjectCatalogModelFactory {
     
     // MARK: - Properties
     
-    private static let nodeLength: CGFloat = 1.8
-    private static let sphereDiameter: CGFloat = 2.0
+    private static let nodeLength: CGFloat = 2.0
     
     public static func create() -> [SCNNode] {
         
@@ -22,53 +21,23 @@ public struct ObjectCatalogModelFactory {
         boxGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         boxGeometry.name = type(of: boxGeometry.self).description()
         let boxNode = SCNNode(geometry: boxGeometry)
-        boxNode.changeColor(to: .matteRed)
-        
-        var boxNodeTransform = SCNMatrix4Identity
-        boxNodeTransform = SCNMatrix4Rotate(boxNodeTransform, 0.349, 1, 0, 0)
-        boxNodeTransform = SCNMatrix4Rotate(boxNodeTransform, 0.785, 0, 1, 0)
-        boxNodeTransform = SCNMatrix4Rotate(boxNodeTransform, 0.250, 0, 0, 1)
-        boxNode.transform = boxNodeTransform
         
         let planeGeometry = SCNPlane(width: nodeLength, height: nodeLength)
         planeGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         planeGeometry.firstMaterial?.isDoubleSided = true
         planeGeometry.name = type(of: planeGeometry.self).description()
         let planeNode = SCNNode(geometry: planeGeometry)
-        planeNode.changeColor(to: .lightGray)
         
-        var planeNodeTransform = SCNMatrix4Identity
-        planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, 1.27, 1, 0, 0)
-        planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, 0.785, 0, 1, 0)
-        planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, -0.220, 0, 0, 1)
-        planeNode.transform = planeNodeTransform
-        
-        let sphereGeometry = SCNSphere(radius: sphereDiameter / 2)
+        let sphereGeometry = SCNSphere(radius: nodeLength / 2)
         sphereGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         sphereGeometry.name = type(of: sphereGeometry.self).description()
         let sphereNode = SCNNode(geometry: sphereGeometry)
-        sphereNode.geometry?.firstMaterial?.reflective.contents = UIColor.skyBlue
-        sphereNode.geometry?.firstMaterial?.reflective.intensity = 0.9
-        sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor(r: 10, g: 10, b: 10)
-        
-        var sphereNodeTransform = SCNMatrix4Identity
-        sphereNodeTransform = SCNMatrix4Rotate(sphereNodeTransform, 0.349, 1, 0, 0)
-        sphereNodeTransform = SCNMatrix4Rotate(sphereNodeTransform, 0.785, 0, 1, 0)
-        sphereNodeTransform = SCNMatrix4Rotate(sphereNodeTransform, 0.250, 0, 0, 1)
-        sphereNode.transform = sphereNodeTransform
         
         let pyramidGeometry = SCNPyramid(width: nodeLength, height: nodeLength, length: nodeLength)
         pyramidGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         pyramidGeometry.name = type(of: pyramidGeometry.self).description()
         let pyramidNode = SCNNode(geometry: pyramidGeometry)
-        pyramidNode.pivot = SCNMatrix4MakeTranslation(0, 0.9, 0)
-        pyramidNode.changeColor(to: .orange)
-        
-        var pyramidNodeTransform = SCNMatrix4Identity
-        pyramidNodeTransform = SCNMatrix4Rotate(pyramidNodeTransform, 0.349, 1, 0, 0)
-        pyramidNodeTransform = SCNMatrix4Rotate(pyramidNodeTransform, 0.785, 0, 1, 0)
-        pyramidNodeTransform = SCNMatrix4Rotate(pyramidNodeTransform, 0.250, 0, 0, 1)
-        pyramidNode.transform = pyramidNodeTransform
+        pyramidNode.pivot = SCNMatrix4MakeTranslation(0, 1, 0)
         
         return [boxNode, planeNode, sphereNode, pyramidNode]
     }
