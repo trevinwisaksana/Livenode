@@ -12,8 +12,7 @@ open class LVNCollectionViewSectionNode: SCNNode {
     
     // MARK: - Internal Properties
     
-    /// Number of columns
-    private var numberOfColumns: Int = 3
+    open var numberOfColumns: Int = 3
     
     /// Counts how many elements in are in the section.
     private var index = 0 {
