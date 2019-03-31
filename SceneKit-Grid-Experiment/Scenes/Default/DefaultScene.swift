@@ -831,16 +831,27 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     func didAdjustCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
+        limitCameraZoom(using: pinchGesture)
+    }
+    
+    private func limitCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
         guard let camera = rootNode.childNode(withName: Constants.Node.camera, recursively: true)?.camera else {
             return
         }
         
-        if pinchGesture.state == .changed {
-            if camera.fieldOfView <= 5 {
-                camera.fieldOfView = 5.01
-            } else {
+        switch pinchGesture.state {
+        case .began:
+            if camera.fieldOfView < 5.0 {
+                camera.fieldOfView = 5.0
+            }
+            
+        case .changed:
+            if camera.fieldOfView >= 5.0 {
                 camera.fieldOfView -= (pinchGesture.velocity / pinchAttenuation)
             }
+            
+        default:
+            break
         }
     }
     
