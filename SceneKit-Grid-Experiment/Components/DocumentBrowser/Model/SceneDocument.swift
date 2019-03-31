@@ -88,19 +88,19 @@ class SceneDocument: UIDocument {
     
     private func updateDocumentState() {
         if documentState == .normal {
-            os_log("=> Document entered normal state", log: OSLog.default, type: .debug)
+            os_log("Document entered normal state", log: OSLog.default, type: .debug)
         }
         
         if documentState.contains(.closed) {
-            os_log("=> Document has closed", log: OSLog.default, type: .debug)
+            os_log("Document has closed", log: OSLog.default, type: .debug)
         }
         
         if documentState.contains(.editingDisabled) {
-            os_log("=> Document's editing is disabled", log: OSLog.default, type: .debug)
+            os_log("Document's editing is disabled", log: OSLog.default, type: .debug)
         }
         
         if documentState.contains(.inConflict) {
-            os_log("=> A document conflict was detected", log: OSLog.default, type: .debug)
+            os_log("A document conflict was detected", log: OSLog.default, type: .debug)
             resolveDocumentConflict()
         }
         

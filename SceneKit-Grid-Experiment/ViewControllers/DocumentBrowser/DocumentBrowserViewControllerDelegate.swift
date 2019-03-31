@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
+final class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
     
     // MARK: - Delegate Methods
     
