@@ -84,8 +84,11 @@ final class SceneEditorViewController: UIViewController {
     public var sceneView: SCNView = {
         let sceneView = SCNView()
         
+        if let metalLayer = sceneView.layer as? CAMetalLayer {
+            metalLayer.framebufferOnly = false
+        }
+        
         sceneView.backgroundColor = .white
-        sceneView.isJitteringEnabled = false
         sceneView.autoenablesDefaultLighting = true
         
         return sceneView

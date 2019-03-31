@@ -20,6 +20,10 @@ public class ObjectCatalogView: UIView  {
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
         
+        if let metalLayer = sceneView.layer as? CAMetalLayer {
+            metalLayer.framebufferOnly = false
+        }
+        
         sceneView.prepare([collectionViewScene], completionHandler: { (success) in
             if success {
                 self.sceneView.scene = self.collectionViewScene
