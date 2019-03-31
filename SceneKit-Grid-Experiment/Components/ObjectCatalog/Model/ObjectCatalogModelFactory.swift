@@ -13,8 +13,8 @@ public struct ObjectCatalogModelFactory {
     
     // MARK: - Properties
     
-    private static let nodeLength: CGFloat = 1.8
-    private static let sphereDiameter: CGFloat = 2.0
+    private static let nodeLength: CGFloat = 1.0
+    private static let sphereDiameter: CGFloat = 1.2
     
     public static func create() -> [SCNNode] {
         
@@ -48,7 +48,7 @@ public struct ObjectCatalogModelFactory {
         pyramidGeometry.firstMaterial?.diffuse.contents = UIColor.blue
         pyramidGeometry.name = type(of: pyramidGeometry.self).description()
         let pyramidNode = SCNNode(geometry: pyramidGeometry)
-        pyramidNode.pivot = SCNMatrix4MakeTranslation(0, 0.9, 0)
+        pyramidNode.pivot = SCNMatrix4MakeTranslation(0, 0.55, 0)
         pyramidNode.changeColor(to: .orange)
         
         var pyramidNodeTransform = SCNMatrix4Identity
@@ -70,7 +70,7 @@ public struct ObjectCatalogModelFactory {
         planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, -0.220, 0, 0, 1)
         planeNode.transform = planeNodeTransform
         
-        return [boxNode, planeNode, sphereNode, pyramidNode]
+        return [boxNode, pyramidNode, sphereNode, planeNode]
     }
     
 }
