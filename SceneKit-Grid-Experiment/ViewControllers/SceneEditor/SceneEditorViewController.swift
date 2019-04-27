@@ -84,9 +84,11 @@ final class SceneEditorViewController: UIViewController {
     public var sceneView: SCNView = {
         let sceneView = SCNView()
         
-        if let metalLayer = sceneView.layer as? CAMetalLayer {
-            metalLayer.framebufferOnly = false
-        }
+        #if !targetEnvironment(simulator) // CAMetalLayer does not compile when using simulator
+            if let metalLayer = sceneView.layer as? CAMetalLayer {
+                metalLayer.framebufferOnly = false
+            }
+        #endif
         
         sceneView.backgroundColor = .white
         sceneView.autoenablesDefaultLighting = true

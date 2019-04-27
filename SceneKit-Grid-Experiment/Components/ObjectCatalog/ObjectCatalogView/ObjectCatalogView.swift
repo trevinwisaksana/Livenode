@@ -20,9 +20,11 @@ public class ObjectCatalogView: UIView  {
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
         
-        if let metalLayer = sceneView.layer as? CAMetalLayer {
-            metalLayer.framebufferOnly = false
-        }
+        #if !targetEnvironment(simulator) // CAMetalLayer does not compile when using simulator
+            if let metalLayer = sceneView.layer as? CAMetalLayer {
+                metalLayer.framebufferOnly = false
+            }
+        #endif
         
         sceneView.prepare([collectionViewScene], completionHandler: { (success) in
             if success {
