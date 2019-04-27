@@ -27,4 +27,7 @@ enum ImageAsset: String {
     case undoButton
     case animationMenuButton
     case onboardingImage
+    case pinchOnboardingArtwork
+    case scanOnboardingArtwork
+    case tapOnboardingArtwork
 }
