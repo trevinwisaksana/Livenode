@@ -10,10 +10,10 @@ import UIKit
 
 final class OnboardingViewController: UIViewController {
     
-    lazy var mainView: OnboardingPresentableView = {
-        let mainView = OnboardingPresentableView(frame: view.frame)
+    lazy var mainView: OnboardingView = {
+        let mainView = OnboardingView(frame: view.frame)
         mainView.delegate = self
-        mainView.scrollView.delegate = self
+        
         return mainView
     }()
     
@@ -34,22 +34,9 @@ final class OnboardingViewController: UIViewController {
     
 }
 
-// MARK: - UIScrollViewDelegate
-
-extension OnboardingViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        mainView.scrollViewDidScroll(scrollView)
-    }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        // TODO: Fix autolayout issue when device is rotated
-//        mainView.setupSlideScrollView()
-    }
-}
-
 // MARK: - OnboardingPresentableViewDelegate
 
-extension OnboardingViewController: OnboardingPresentableViewDelegate {
+extension OnboardingViewController: OnboardingViewDelegate {
     func didTapGetStartedButton(_ sender: UIButton) {
         let documentBrowserViewController = Presenter.inject(.documentBrowser)
         view.window?.rootViewController = documentBrowserViewController

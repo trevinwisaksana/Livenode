@@ -37,7 +37,6 @@
 		DD47202D2161F92200028727 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47202C2161F92200028727 /* NotificationNames.swift */; };
 		DD47202F2161F96A00028727 /* SceneActionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47202E2161F96A00028727 /* SceneActionMenuView.swift */; };
 		DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */; };
-		DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */; };
 		DD51FEFE208818ED00A0D857 /* SceneEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */; };
 		DD5456C2217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456C1217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift */; };
 		DD5456C62176DC9400AE25D8 /* RotateAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5456C52176DC9400AE25D8 /* RotateAnimationAttributesView.swift */; };
@@ -90,12 +89,13 @@
 		DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C32153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift */; };
 		DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */; };
 		DDBA24CC21579255003C9CAF /* SceneEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24CB21579255003C9CAF /* SceneEditorView.swift */; };
+		DDBCF5BB227413DE00D5048E /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBCF5BA227413DE00D5048E /* UIFontExtensions.swift */; };
+		DDBCF5BF227414CF00D5048E /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDBCF5BD227414B300D5048E /* SF-Pro-Display-Bold.otf */; };
 		DDC4A365220FC90200CD97D8 /* LVNCollectionViewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC4A364220FC90200CD97D8 /* LVNCollectionViewScene.swift */; };
 		DDC4A36A220FD3D100CD97D8 /* LVNCollectionViewSectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC4A369220FD3D100CD97D8 /* LVNCollectionViewSectionNode.swift */; };
 		DDC4A36C220FD4FD00CD97D8 /* LVNCollectionViewParentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC4A36B220FD4FD00CD97D8 /* LVNCollectionViewParentNode.swift */; };
 		DDC4A370220FD57B00CD97D8 /* LVNCollectionViewCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC4A36F220FD57B00CD97D8 /* LVNCollectionViewCellNode.swift */; };
 		DDC5092321C1F075007B928F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5092221C1F075007B928F /* OnboardingView.swift */; };
-		DDC5092621C23A43007B928F /* OnboardingPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5092521C23A43007B928F /* OnboardingPresentableView.swift */; };
 		DDCB7F82214B92770003B34A /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F81214B92770003B34A /* UIImageExtensions.swift */; };
 		DDCB7F88214BB5C40003B34A /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */; };
 		DDCCAA93219D00CE0071FE7A /* Plane.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDCCAA92219D00CE0071FE7A /* Plane.scn */; };
@@ -103,6 +103,7 @@
 		DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCCAA96219D41090071FE7A /* PlaneNodeSizeCell.swift */; };
 		DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C52721D7764C0073119E /* SCNActionSpeechBubble.swift */; };
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
+		DDE5B4392274166D00088354 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDBCF5BC227414B300D5048E /* SF-Pro-Display-Regular.otf */; };
 		DDE60E4621731BB30052E506 /* MoveAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */; };
 		DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */; };
 		DDE60E5021738DBA0052E506 /* NodeAnimationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4F21738DBA0052E506 /* NodeAnimationListViewController.swift */; };
@@ -162,7 +163,6 @@
 		DD47202C2161F92200028727 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		DD47202E2161F96A00028727 /* SceneActionMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneActionMenuView.swift; sourceTree = "<group>"; };
 		DD4960BA215B4A6A00B6E016 /* ObjectCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogView.swift; sourceTree = "<group>"; };
-		DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCatalogViewModel.swift; sourceTree = "<group>"; };
 		DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorViewController.swift; sourceTree = "<group>"; };
 		DD5456C1217450D900AE25D8 /* NodeAnimationMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DD5456C52176DC9400AE25D8 /* RotateAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateAnimationAttributesView.swift; sourceTree = "<group>"; };
@@ -215,12 +215,14 @@
 		DDBA24C32153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		DDBA24CB21579255003C9CAF /* SceneEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorView.swift; sourceTree = "<group>"; };
+		DDBCF5BA227413DE00D5048E /* UIFontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
+		DDBCF5BC227414B300D5048E /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		DDBCF5BD227414B300D5048E /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		DDC4A364220FC90200CD97D8 /* LVNCollectionViewScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LVNCollectionViewScene.swift; sourceTree = "<group>"; };
 		DDC4A369220FD3D100CD97D8 /* LVNCollectionViewSectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LVNCollectionViewSectionNode.swift; sourceTree = "<group>"; };
 		DDC4A36B220FD4FD00CD97D8 /* LVNCollectionViewParentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LVNCollectionViewParentNode.swift; sourceTree = "<group>"; };
 		DDC4A36F220FD57B00CD97D8 /* LVNCollectionViewCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LVNCollectionViewCellNode.swift; sourceTree = "<group>"; };
 		DDC5092221C1F075007B928F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		DDC5092521C23A43007B928F /* OnboardingPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresentableView.swift; sourceTree = "<group>"; };
 		DDCB7F81214B92770003B34A /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		DDCB7F87214BB5C40003B34A /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		DDCCAA92219D00CE0071FE7A /* Plane.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Plane.scn; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				DD638DBE20AC2D4800395557 /* Scenes */,
 				DD638DC820AC64E800395557 /* Extensions */,
 				DD2A55EA20DE12B000EA00ED /* Helpers */,
+				DDBCF5BE227414C100D5048E /* Fonts */,
 				DD1058B9218AEA1F00FF7301 /* LaunchScreen.storyboard */,
 				DD20F67020672FBD005E838C /* Assets.xcassets */,
 				DD20F67520672FBD005E838C /* Info.plist */,
@@ -429,7 +432,6 @@
 			isa = PBXGroup;
 			children = (
 				DD725CE32164795D0035ECA9 /* ObjectCatalogModelFactory.swift */,
-				DD4960BD215B4A8000B6E016 /* ObjectCatalogViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -643,6 +645,7 @@
 				DD68C2262115879F0061100F /* UIColorExtensions.swift */,
 				DDCB7F81214B92770003B34A /* UIImageExtensions.swift */,
 				DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */,
+				DDBCF5BA227413DE00D5048E /* UIFontExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -875,6 +878,15 @@
 			path = SceneActionMenuView;
 			sourceTree = "<group>";
 		};
+		DDBCF5BE227414C100D5048E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DDBCF5BD227414B300D5048E /* SF-Pro-Display-Bold.otf */,
+				DDBCF5BC227414B300D5048E /* SF-Pro-Display-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		DDC4A366220FC90A00CD97D8 /* LVNCollectionViewScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -889,7 +901,6 @@
 		DDC5092421C1F079007B928F /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				DDC5092521C23A43007B928F /* OnboardingPresentableView.swift */,
 				DDC5092221C1F075007B928F /* OnboardingView.swift */,
 				DD439F0E21E9E6EB00A03EAA /* OnboardingWalkthroughView.swift */,
 			);
@@ -1142,6 +1153,8 @@
 				DD1058BE218AECAA00FF7301 /* Car.scn in Resources */,
 				DD1058C0218AECB000FF7301 /* House.scn in Resources */,
 				DDAFED5B219BBE6A00D7CC7D /* Seaplane.scn in Resources */,
+				DDE5B4392274166D00088354 /* SF-Pro-Display-Regular.otf in Resources */,
+				DDBCF5BF227414CF00D5048E /* SF-Pro-Display-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1201,6 +1214,7 @@
 			files = (
 				DD1058C2218C0CE100FF7301 /* NodePositionCell.swift in Sources */,
 				DD0EBD2521A694C300BA2F39 /* DocumentBrowserTransitionDelegate.swift in Sources */,
+				DDBCF5BB227413DE00D5048E /* UIFontExtensions.swift in Sources */,
 				DDF38F60216C96CB0000069E /* UtilitiesInspectorViewControllerDelegate.swift in Sources */,
 				DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */,
 				DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */,
@@ -1214,7 +1228,6 @@
 				DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
-				DDC5092621C23A43007B928F /* OnboardingPresentableView.swift in Sources */,
 				DDBA24BD2153CC8C003C9CAF /* DocumentError.swift in Sources */,
 				DD14E159219A6235006ECF67 /* NodeInspectorViewController.swift in Sources */,
 				DD51FEFE208818ED00A0D857 /* SceneEditorViewController.swift in Sources */,
@@ -1298,7 +1311,6 @@
 				DDBA24C22153D0D5003C9CAF /* DefaultSceneViewModel.swift in Sources */,
 				DD9C6AF4210AC920001E4982 /* SceneInspectorPresentableView.swift in Sources */,
 				DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */,
-				DD4960BE215B4A8000B6E016 /* ObjectCatalogViewModel.swift in Sources */,
 				DD911A2B220982A900E69154 /* SCNBoxExtensions.swift in Sources */,
 				DD5456C62176DC9400AE25D8 /* RotateAnimationAttributesView.swift in Sources */,
 				DD5456CA2176E86500AE25D8 /* RotateAnimationAngleCell.swift in Sources */,

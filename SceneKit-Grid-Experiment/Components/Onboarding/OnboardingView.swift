@@ -16,8 +16,8 @@ final class OnboardingView: UIView {
   
     // MARK: - Internal Properties
     
-    lazy var instructionImageView: UIImageView = {
-        let imageView = UIImageView(image: nil)
+    lazy var artworkImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: .onboardingImage))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -25,34 +25,36 @@ final class OnboardingView: UIView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.text = "Create presentations, present using Augmented Reality"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
         label.numberOfLines = 0
-        label.textColor = .lavender
-        label.font = UIFont(name: "Avenir-Black", size: 18)
+        label.textColor = .black
+        label.font = UIFont(name: "SFProDisplay-Bold", size: 28)
         return label
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    lazy var subtitleLabel: UILabel = {
         let label = UILabel()
+        label.text = "Show your ideas in 3D and present it in a fun and immersive way"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = UIFont(name: "Avenir", size: 16)
+        label.textColor = .black
+        label.font = UIFont(name: "SFProDisplay-Regular", size: 24)
         return label
     }()
     
-    lazy var getStartedButton: UIButton = {
+    lazy var continueButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.isHidden = true
-        button.setTitle("Get started", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Avenir", size: 18)
-        button.backgroundColor = .lavender
-        button.layer.cornerRadius = 10
+        button.setTitle("Continue", for: .normal)
+        button.setTitleColor(.lavender, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Bold", size: 25)
         button.addTarget(self, action: #selector(didTapGetStartedButton(_:)), for: .touchUpInside)
         return button
     }()
+    
+    private let titleLabelSideMargin: CGFloat = 90.0
+    private let titleLabelTopMargin: CGFloat = 90.0
     
     weak var delegate: OnboardingViewDelegate?
     
@@ -69,29 +71,30 @@ final class OnboardingView: UIView {
     }
     
     private func setup() {
-        addSubview(instructionImageView)
         addSubview(titleLabel)
-        addSubview(descriptionLabel)
-        addSubview(getStartedButton)
+        addSubview(subtitleLabel)
+        addSubview(artworkImageView)
+        addSubview(continueButton)
         
         NSLayoutConstraint.activate([
-                instructionImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -80),
-                instructionImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                instructionImageView.widthAnchor.constraint(equalToConstant: 400),
-                instructionImageView.heightAnchor.constraint(equalToConstant: 400),
+                titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: titleLabelTopMargin),
+                titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 100),
+                titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -titleLabelSideMargin),
+                
+                subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+                subtitleLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor),
+                subtitleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -titleLabelSideMargin),
             
-                titleLabel.topAnchor.constraint(equalTo: instructionImageView.bottomAnchor, constant: 50),
-                titleLabel.centerXAnchor.constraint(equalTo: instructionImageView.centerXAnchor),
-                titleLabel.widthAnchor.constraint(equalToConstant: 600),
+                artworkImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 30),
+                artworkImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                artworkImageView.widthAnchor.constraint(equalToConstant: 500),
+                artworkImageView.heightAnchor.constraint(equalToConstant: 500),
                 
-                descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-                descriptionLabel.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
-                descriptionLabel.widthAnchor.constraint(equalToConstant: 500),
-                
-                getStartedButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-                getStartedButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-                getStartedButton.widthAnchor.constraint(equalToConstant: 150),
+                continueButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60),
+                continueButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -100),
         ])
+        
+        backgroundColor = .white
     }
     
     // MARK: - Button Action
@@ -99,34 +102,6 @@ final class OnboardingView: UIView {
     @objc
     private func didTapGetStartedButton(_ sender: UIButton) {
         delegate?.didTapGetStartedButton(sender)
-    }
-    
-    // MARK: - Page Creation
-    
-    static func createPages(delegate: OnboardingViewDelegate) -> [OnboardingView] {
-        let firstPage = OnboardingView()
-        firstPage.instructionImageView.image = UIImage(named: .onboardingImageOne)
-        firstPage.titleLabel.text = "Create 3D presentations, present using Augmented Reality"
-        firstPage.descriptionLabel.text = "The goal of Livenode is to help create immersive presentations that conveys information more effectively than bullet-points."
-        
-        let secondPage = OnboardingView()
-        secondPage.instructionImageView.image = UIImage(named: .onboardingImageOne)
-        secondPage.titleLabel.text = "Add a wide range of 3D models to your scenes, create new worlds"
-        secondPage.descriptionLabel.text = "Select the button shown above and choose a 3D model you would like to include into your scene."
-        
-        let thirdPage = OnboardingView()
-        thirdPage.instructionImageView.image = UIImage(named: .onboardingImageOne)
-        thirdPage.titleLabel.text = "Animate your 3D models, express your ideas"
-        thirdPage.descriptionLabel.text = "Select a 3D model you would like to animate. Then select the button show above to choose your preferred animation."
-        
-        let fourthPage = OnboardingView()
-        fourthPage.instructionImageView.image = UIImage(named: .onboardingImageOne)
-        fourthPage.delegate = delegate
-        fourthPage.getStartedButton.isHidden = false
-        fourthPage.titleLabel.text = "Present your scene in the most compelling way"
-        fourthPage.descriptionLabel.text = "Press the play button to present the scene you've created in Augmented Reality."
-        
-        return [firstPage, secondPage, thirdPage, fourthPage]
     }
     
 }

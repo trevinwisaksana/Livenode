@@ -17,30 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        let onboardingViewController = Presenter.inject(.onboarding)
-//
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = onboardingViewController
-//        window?.makeKeyAndVisible()
+        let onboardingViewController = Presenter.inject(.onboarding)
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = onboardingViewController
+        window?.makeKeyAndVisible()
         
         setupTooltip()
         
-        if UserDefaults.standard.bool(forKey: "didDisplayOnboarding") {
-            let documentBrowserViewController = Presenter.inject(.documentBrowser)
-
-            window = UIWindow(frame: UIScreen.main.bounds)
-            window?.rootViewController = documentBrowserViewController
-            window?.makeKeyAndVisible()
-            
-        } else {
-            let onboardingViewController = Presenter.inject(.onboarding)
-
-            window = UIWindow(frame: UIScreen.main.bounds)
-            window?.rootViewController = onboardingViewController
-            window?.makeKeyAndVisible()
-
-            UserDefaults.standard.set(true, forKey: "didDisplayOnboarding")
-        }
+//        if UserDefaults.standard.bool(forKey: "didDisplayOnboarding") {
+//            let documentBrowserViewController = Presenter.inject(.documentBrowser)
+//
+//            window = UIWindow(frame: UIScreen.main.bounds)
+//            window?.rootViewController = documentBrowserViewController
+//            window?.makeKeyAndVisible()
+//
+//        } else {
+//            let onboardingViewController = Presenter.inject(.onboarding)
+//
+//            window = UIWindow(frame: UIScreen.main.bounds)
+//            window?.rootViewController = onboardingViewController
+//            window?.makeKeyAndVisible()
+//
+//            UserDefaults.standard.set(true, forKey: "didDisplayOnboarding")
+//        }
 
         return true
     }
