@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PresentationOnboardingViewDelegate: class {
-    func didTapGetStartedButton(_ sender: UIButton)
+    func didTapContinueButton(_ sender: PresentationOnboardingView)
 }
 
 final class PresentationOnboardingView: UIView {
@@ -71,7 +71,7 @@ final class PresentationOnboardingView: UIView {
         button.setTitle("Continue", for: .normal)
         button.setTitleColor(.lavender, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Bold", size: 22)
-        button.addTarget(self, action: #selector(didTapGetStartedButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapContinueButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -163,8 +163,14 @@ final class PresentationOnboardingView: UIView {
     // MARK: - Button Action
     
     @objc
-    private func didTapGetStartedButton(_ sender: UIButton) {
-        delegate?.didTapGetStartedButton(sender)
+    private func didTapContinueButton(_ sender: PresentationOnboardingView) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.alpha = 0.0
+        }) { (completed) in
+            self.removeFromSuperview()
+        }
+        
+        // delegate?.didTapContinueButton(self)
     }
     
 }

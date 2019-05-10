@@ -37,7 +37,7 @@ final class OnboardingViewController: UIViewController {
 // MARK: - OnboardingPresentableViewDelegate
 
 extension OnboardingViewController: OnboardingViewDelegate {
-    func didTapGetStartedButton(_ sender: UIButton) {
+    func didTapContinueButton(_ sender: OnboardingView) {
         let documentBrowserViewController = Presenter.inject(.documentBrowser)
         view.window?.rootViewController = documentBrowserViewController
     }

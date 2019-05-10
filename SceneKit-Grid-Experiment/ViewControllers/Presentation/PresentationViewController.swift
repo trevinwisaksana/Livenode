@@ -32,11 +32,14 @@ final class PresentationViewController: UIViewController {
         return view
     }()
     
-    private var currentScene: DefaultScene?
+    private lazy var onboardingView: PresentationOnboardingView = {
+        let onboardingView = PresentationOnboardingView(frame: view.frame)
+        onboardingView.delegate = self
+        return onboardingView
+    }()
     
-    // MARK: - Public Properties
+    private lazy var manager = NodePresentationManager()
     
-    public var delegate = PresentationViewControllerDelegate()
     
     // MARK: - VC Lifecycle
     
@@ -49,13 +52,7 @@ final class PresentationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal, .vertical]
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
-        sceneView.session.run(configuration)
-        sceneView.session.delegate = self
-        
-        UIApplication.shared.isIdleTimerDisabled = true
+        setupARTracker()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -69,7 +66,7 @@ final class PresentationViewController: UIViewController {
     init(scene: DefaultScene) {
         super.init(nibName: nil, bundle: nil)
         
-        currentScene = scene
+        NodePresentationManager.currentScene = scene
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -82,7 +79,10 @@ final class PresentationViewController: UIViewController {
         
         view.addSubview(feedbackView)
         
-        guard let scene = currentScene else { fatalError("Failed to initialize scene.") }
+        view.addSubview(onboardingView)
+        onboardingView.fillInSuperview()
+        
+        guard let scene = NodePresentationManager.currentScene else { fatalError("Failed to initialize scene.") }
         sceneView.prepare([scene], completionHandler: nil)
         sceneView.fillInSuperview()
         
@@ -101,6 +101,17 @@ final class PresentationViewController: UIViewController {
             feedbackView.widthAnchor.constraint(lessThanOrEqualToConstant: feedbackViewWidth),
             feedbackView.heightAnchor.constraint(greaterThanOrEqualToConstant: feedbackViewHeight),
         ])
+    }
+    
+    private func setupARTracker() {
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        sceneView.session.run(configuration)
+        sceneView.session.delegate = self
+        
+        UIApplication.shared.isIdleTimerDisabled = true
     }
 
     private func resetTracking() {
@@ -126,14 +137,9 @@ final class PresentationViewController: UIViewController {
             return
         }
         
-        let translation = hitTestResult.worldTransform.columns.3
+        let position = hitTestResult.worldTransform.columns.3
         
-        guard let scene = currentScene else {
-            // TODO: Show error message
-            fatalError("Scene cannot be presented.")
-        }
-        
-        delegate.addPresentingNode(to: sceneView, using: scene, at: translation)
+        manager.addPresentingNode(to: sceneView, at: position)
     }
     
     // MARK: - Device Configuration
@@ -152,29 +158,41 @@ extension PresentationViewController: ARSessionDelegate {
     
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         guard let frame = session.currentFrame else { return }
-        feedbackView.updateFeedbackLabel(for: frame, trackingState: frame.camera.trackingState)
+        
+        DispatchQueue.main.async {
+            self.feedbackView.updateFeedbackLabel(for: frame, trackingState: frame.camera.trackingState)
+        }
     }
     
     func session(_ session: ARSession, didRemove anchors: [ARAnchor]) {
         guard let frame = session.currentFrame else { return }
-        feedbackView.updateFeedbackLabel(for: frame, trackingState: frame.camera.trackingState)
+        
+        DispatchQueue.main.async {
+            self.feedbackView.updateFeedbackLabel(for: frame, trackingState: frame.camera.trackingState)
+        }
     }
     
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
-        feedbackView.updateFeedbackLabel(for: session.currentFrame!, trackingState: camera.trackingState)
+        DispatchQueue.main.async {
+            self.feedbackView.updateFeedbackLabel(for: session.currentFrame!, trackingState: camera.trackingState)
+        }
     }
     
     // MARK: - ARSessionObserver
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay.
-        feedbackView.sessionWasInterruptedLabel()
+        DispatchQueue.main.async {
+            self.feedbackView.sessionWasInterruptedLabel()
+        }
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required.
-        feedbackView.feedbackLabel.text = "Session interruption ended"
-        resetTracking()
+        DispatchQueue.main.async {
+            // Reset tracking and/or remove existing anchors if consistent tracking is required.
+            self.feedbackView.feedbackLabel.text = "Session interruption ended"
+            self.resetTracking()
+        }   
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -209,4 +227,12 @@ extension PresentationViewController: ARSessionDelegate {
         }
     }
     
+}
+
+// MARK: - OnboardingViewDelegate
+
+extension PresentationViewController: PresentationOnboardingViewDelegate {
+    func didTapContinueButton(_ sender: PresentationOnboardingView) {
+        sender.removeFromSuperview()
+    }
 }
