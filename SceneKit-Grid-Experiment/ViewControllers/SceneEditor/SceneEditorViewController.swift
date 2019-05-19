@@ -21,7 +21,7 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private lazy var viewControllerDelegate = SceneEditorViewControllerDelegate()
+    private lazy var manager = SceneEditorManager()
     
     private(set) var state: SceneEditorState = .default
     
@@ -192,7 +192,7 @@ final class SceneEditorViewController: UIViewController {
                 return
             }
             
-            viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: objectCatalogBarButton, message: "Tap this button to insert a 3D model fo your choice.")
+            manager.sceneEditor(self, didDisplayOnboardingTipPopover: objectCatalogBarButton, message: "Tap this button to insert a 3D model fo your choice.")
             
             UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedObjectCatalogTipView)
 
@@ -295,7 +295,7 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, didModifyNodeColorUsing: notification, for: scene)
+        manager.sceneEditor(self, didModifyNodeColorUsing: notification, for: scene)
     }
     
     // MARK: - Touches
@@ -306,7 +306,7 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: scene)
+        manager.sceneEditor(self, touchesBeganWith: touches, at: sceneView, for: scene)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -315,7 +315,7 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, touchesMovedWith: touches, at: sceneView, for: scene)
+        manager.sceneEditor(self, touchesMovedWith: touches, at: sceneView, for: scene)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -324,7 +324,7 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: scene)
+        manager.sceneEditor(self, touchesEndedWith: touches, at: sceneView, for: scene)
     }
     
     @objc
@@ -344,26 +344,26 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapObjectCatalogButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didDisplayObjectCatalogWith: sender)
+        manager.sceneEditor(self, didDisplayObjectCatalogWith: sender)
     }
     
     @objc
     private func didTapNodeInspectorButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didDisplayInspectorViewWith: sender)
+        manager.sceneEditor(self, didDisplayInspectorViewWith: sender)
     }
     
     @objc
     private func didTapUtilitiesInspectorButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didDisplayUtilitiesInspectorWith: sender)
+        manager.sceneEditor(self, didDisplayUtilitiesInspectorWith: sender)
     }
     
     @objc
     private func didTapPlayButton(_ sender: UIBarButtonItem) {
-        guard let scene = document?.scene else {
+        guard let scene = document?.scene else { // TODO: Solve why we can't bring in the child nodes
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, didDisplayPresentationViewWith: scene, using: sender)
+        manager.sceneEditor(self, didDisplayPresentationViewWith: scene, using: sender)
     }
     
     @objc
@@ -373,7 +373,7 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapAnimationCatalogButton(_ sender: UIBarButtonItem) {
-        viewControllerDelegate.sceneEditor(self, didDisplayNodeAnimationListWith: sender)
+        manager.sceneEditor(self, didDisplayNodeAnimationListWith: sender)
     }
 
     @objc
@@ -387,7 +387,7 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, didTapPlayAnimationButtonWith: sender, for: scene)
+        manager.sceneEditor(self, didTapPlayAnimationButtonWith: sender, for: scene)
     }
     
     @objc
@@ -411,7 +411,7 @@ final class SceneEditorViewController: UIViewController {
         
         state = .normal
         
-        viewControllerDelegate.sceneEditor(self, didTapCancelEditingNodePositionButton: scene)
+        manager.sceneEditor(self, didTapCancelEditingNodePositionButton: scene)
     }
     
     @objc
@@ -422,13 +422,13 @@ final class SceneEditorViewController: UIViewController {
         
         state = .normal
         
-        viewControllerDelegate.sceneEditor(self, didFinishEditingNodePositionButton: scene)
+        manager.sceneEditor(self, didFinishEditingNodePositionButton: scene)
         
         if UserDefaults.standard.bool(forKey: NotificationKey.hasDisplayedTap3DModelTipView) {
             return
         }
         
-        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Tap the 3D model to select it.")
+        manager.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Tap the 3D model to select it.")
         
         UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedTap3DModelTipView)
     }
@@ -441,7 +441,7 @@ final class SceneEditorViewController: UIViewController {
         
         state = .editingNodeAnimation
         
-        viewControllerDelegate.sceneEditor(self, didTapDoneEditingMoveAnimationButtonForScene: scene)
+        manager.sceneEditor(self, didTapDoneEditingMoveAnimationButtonForScene: scene)
     }
     
     @objc
@@ -452,7 +452,7 @@ final class SceneEditorViewController: UIViewController {
         
         state = .normal
         
-        viewControllerDelegate.sceneEditor(self, didFinishEditingAnimation: sender, for: scene)
+        manager.sceneEditor(self, didFinishEditingAnimation: sender, for: scene)
     }
     
     @objc
@@ -461,7 +461,7 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: scene)
+        manager.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: scene)
     }
     
     @objc
@@ -470,7 +470,7 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, didSelectNodeModelUsing: notification, for: scene)
+        manager.sceneEditor(self, didSelectNodeModelUsing: notification, for: scene)
     }
     
     @objc
@@ -479,14 +479,14 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, didSelectNodeAnimationUsing: notification, for: scene)
+        manager.sceneEditor(self, didSelectNodeAnimationUsing: notification, for: scene)
     }
 
     @objc
     private func didLongPressSceneEditorView(_ sender: UILongPressGestureRecognizer) {
         switch sender.state {
         case .began:
-            viewControllerDelegate.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
+            manager.sceneEditor(self, didDisplaySceneActionsMenuWith: sender, at: sceneView)
             
         default:
             break
@@ -500,7 +500,7 @@ final class SceneEditorViewController: UIViewController {
             fatalError("No scene found.")
         }
         
-        viewControllerDelegate.sceneEditor(self, didAddSpeechBubbleAnimation: animation, for: scene, in: sceneView)
+        manager.sceneEditor(self, didAddSpeechBubbleAnimation: animation, for: scene, in: sceneView)
     }
     
     func displayObjectAttributesTipView() {
@@ -508,7 +508,7 @@ final class SceneEditorViewController: UIViewController {
             return
         }
         
-        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopover: nodeInspectorBarButton, message: "Tap this button to to modify the 3D model's properties.")
+        manager.sceneEditor(self, didDisplayOnboardingTipPopover: nodeInspectorBarButton, message: "Tap this button to to modify the 3D model's properties.")
         
         UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedObjectAttributesTipView)
     }
@@ -518,7 +518,7 @@ final class SceneEditorViewController: UIViewController {
             return
         }
         
-        viewControllerDelegate.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Long press the 3D model to display a list of actions.")
+        manager.sceneEditor(self, didDisplayOnboardingTipPopoverFrom: view, message: "Long press the 3D model to display a list of actions.")
         
         UserDefaults.standard.set(true, forKey: NotificationKey.hasDisplayedLongPressGestureTipView)
     }

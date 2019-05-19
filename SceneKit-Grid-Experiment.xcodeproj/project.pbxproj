@@ -31,7 +31,7 @@
 		DD2FBAEA21BFB93E00B9B2C9 /* AnimationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2FBAE921BFB93E00B9B2C9 /* AnimationCell.swift */; };
 		DD38321D21598E5400809856 /* DefaultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD38321C21598E5300809856 /* DefaultScene.swift */; };
 		DD43429E215F772A00FF3D91 /* SceneEditorPresentableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD43429D215F772A00FF3D91 /* SceneEditorPresentableView.swift */; };
-		DD4342A2215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4342A1215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift */; };
+		DD4342A2215F7E4B00FF3D91 /* SceneEditorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4342A1215F7E4B00FF3D91 /* SceneEditorManager.swift */; };
 		DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4720292161E72800028727 /* SceneActionMenuViewControllerDelegate.swift */; };
 		DD47202D2161F92200028727 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47202C2161F92200028727 /* NotificationNames.swift */; };
 		DD47202F2161F96A00028727 /* SceneActionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47202E2161F96A00028727 /* SceneActionMenuView.swift */; };
@@ -81,11 +81,13 @@
 		DD9D81252171A3C0006638F8 /* NodeAnimationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */; };
 		DD9D81292171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */; };
 		DDAFED5B219BBE6A00D7CC7D /* Seaplane.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDAFED5A219BBE6A00D7CC7D /* Seaplane.scn */; };
+		DDB6D4AE22879CF10096E36D /* SceneEditorMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6D4AD22879CF10096E36D /* SceneEditorMainView.swift */; };
+		DDB6D4B02287A24F0096E36D /* PresentationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6D4AF2287A24F0096E36D /* PresentationMainView.swift */; };
 		DDBA24B0215349C4003C9CAF /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */; };
 		DDBA24B92153CADA003C9CAF /* SceneDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24B82153CADA003C9CAF /* SceneDocument.swift */; };
 		DDBA24BD2153CC8C003C9CAF /* DocumentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */; };
 		DDBA24C22153D0D5003C9CAF /* DefaultSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C12153D0D5003C9CAF /* DefaultSceneViewModel.swift */; };
-		DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C32153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift */; };
+		DDBA24C42153D309003C9CAF /* DocumentBrowserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C32153D309003C9CAF /* DocumentBrowserManager.swift */; };
 		DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */; };
 		DDBA24CC21579255003C9CAF /* SceneEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBA24CB21579255003C9CAF /* SceneEditorView.swift */; };
 		DDBCF5BB227413DE00D5048E /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBCF5BA227413DE00D5048E /* UIFontExtensions.swift */; };
@@ -157,7 +159,7 @@
 		DD2FBAE921BFB93E00B9B2C9 /* AnimationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCell.swift; sourceTree = "<group>"; };
 		DD38321C21598E5300809856 /* DefaultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScene.swift; sourceTree = "<group>"; };
 		DD43429D215F772A00FF3D91 /* SceneEditorPresentableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorPresentableView.swift; sourceTree = "<group>"; };
-		DD4342A1215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneEditorViewControllerDelegate.swift; sourceTree = "<group>"; };
+		DD4342A1215F7E4B00FF3D91 /* SceneEditorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneEditorManager.swift; sourceTree = "<group>"; };
 		DD4720292161E72800028727 /* SceneActionMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneActionMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DD47202C2161F92200028727 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		DD47202E2161F96A00028727 /* SceneActionMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneActionMenuView.swift; sourceTree = "<group>"; };
@@ -207,11 +209,13 @@
 		DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListCell.swift; sourceTree = "<group>"; };
 		DD9D81282171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DDAFED5A219BBE6A00D7CC7D /* Seaplane.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Seaplane.scn; sourceTree = "<group>"; };
+		DDB6D4AD22879CF10096E36D /* SceneEditorMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorMainView.swift; sourceTree = "<group>"; };
+		DDB6D4AF2287A24F0096E36D /* PresentationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationMainView.swift; sourceTree = "<group>"; };
 		DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
 		DDBA24B82153CADA003C9CAF /* SceneDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocument.swift; sourceTree = "<group>"; };
 		DDBA24BC2153CC8C003C9CAF /* DocumentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentError.swift; sourceTree = "<group>"; };
 		DDBA24C12153D0D5003C9CAF /* DefaultSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSceneViewModel.swift; sourceTree = "<group>"; };
-		DDBA24C32153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewControllerDelegate.swift; sourceTree = "<group>"; };
+		DDBA24C32153D309003C9CAF /* DocumentBrowserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserManager.swift; sourceTree = "<group>"; };
 		DDBA24C62153D3A6003C9CAF /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		DDBA24CB21579255003C9CAF /* SceneEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorView.swift; sourceTree = "<group>"; };
 		DDBCF5BA227413DE00D5048E /* UIFontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
@@ -387,7 +391,8 @@
 			isa = PBXGroup;
 			children = (
 				DD51FEFD208818ED00A0D857 /* SceneEditorViewController.swift */,
-				DD4342A1215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift */,
+				DDB6D4AD22879CF10096E36D /* SceneEditorMainView.swift */,
+				DD4342A1215F7E4B00FF3D91 /* SceneEditorManager.swift */,
 			);
 			path = SceneEditor;
 			sourceTree = "<group>";
@@ -405,7 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				DDBA24AF215349C3003C9CAF /* DocumentBrowserViewController.swift */,
-				DDBA24C32153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift */,
+				DDBA24C32153D309003C9CAF /* DocumentBrowserManager.swift */,
 				DD0EBD2421A694C300BA2F39 /* DocumentBrowserTransitionDelegate.swift */,
 			);
 			path = DocumentBrowser;
@@ -1029,6 +1034,7 @@
 			isa = PBXGroup;
 			children = (
 				DDF38F68216E193A0000069E /* PresentationViewController.swift */,
+				DDB6D4AF2287A24F0096E36D /* PresentationMainView.swift */,
 				DDF38F6A216E2ABA0000069E /* NodePresentationManager.swift */,
 			);
 			path = Presentation;
@@ -1219,9 +1225,10 @@
 				DD47202A2161E72800028727 /* SceneActionMenuViewControllerDelegate.swift in Sources */,
 				DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */,
 				DD0BFFC1217C599C00429F52 /* DelayAnimationAttributesView.swift in Sources */,
+				DDB6D4AE22879CF10096E36D /* SceneEditorMainView.swift in Sources */,
 				DDE60E4B21731E030052E506 /* AnimationDurationCell.swift in Sources */,
 				DD725CE42164795D0035ECA9 /* ObjectCatalogModelFactory.swift in Sources */,
-				DDBA24C42153D309003C9CAF /* DocumentBrowserViewControllerDelegate.swift in Sources */,
+				DDBA24C42153D309003C9CAF /* DocumentBrowserManager.swift in Sources */,
 				DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */,
 				DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */,
 				DD1699882222D51800FB4E72 /* SpeechBubbleTitleCell.swift in Sources */,
@@ -1265,7 +1272,7 @@
 				DD9D81292171A694006638F8 /* NodeAnimationListViewControllerDelegate.swift in Sources */,
 				DD68C21F2110735C0061100F /* Node.swift in Sources */,
 				DD14E15B219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift in Sources */,
-				DD4342A2215F7E4B00FF3D91 /* SceneEditorViewControllerDelegate.swift in Sources */,
+				DD4342A2215F7E4B00FF3D91 /* SceneEditorManager.swift in Sources */,
 				DD6C16F0210B217A002CB031 /* ViewComponent.swift in Sources */,
 				DD4960BB215B4A6A00B6E016 /* ObjectCatalogView.swift in Sources */,
 				DDC4A365220FC90200CD97D8 /* LVNCollectionViewScene.swift in Sources */,
@@ -1290,6 +1297,7 @@
 				DDF38F69216E193A0000069E /* PresentationViewController.swift in Sources */,
 				DDF38F6B216E2ABA0000069E /* NodePresentationManager.swift in Sources */,
 				DDFC63E520F5DD0E00109EC5 /* ColorPickerView.swift in Sources */,
+				DDB6D4B02287A24F0096E36D /* PresentationMainView.swift in Sources */,
 				DDFFE04221799D7D00AFF7DA /* ModelAnimationAttributesViewModel.swift in Sources */,
 				DDBA24C72153D3A6003C9CAF /* UIApplicationExtensions.swift in Sources */,
 				DD47202D2161F92200028727 /* NotificationNames.swift in Sources */,

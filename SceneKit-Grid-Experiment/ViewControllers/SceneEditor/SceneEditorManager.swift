@@ -1,5 +1,5 @@
 //
-//  SceneEditorDelegate.swift
+//  SceneEditorManager.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 29/09/2018.
@@ -10,51 +10,11 @@ import UIKit
 import SceneKit
 import EasyTipView
 
-protocol SceneEditorViewControllerDelegateProtocol: class {
-    
-    //
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplaySceneActionsMenuWith sender: UILongPressGestureRecognizer, at sceneView: SCNView)
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayPresentationViewWith scene: DefaultScene, using sender: UIBarButtonItem)
-    
-    //
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayUtilitiesInspectorWith sender: UIBarButtonItem)
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem)
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayInspectorViewWith sender: UIBarButtonItem)
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationListWith sender: UIBarButtonItem)
-    
-    // Onboarding
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayOnboardingTipPopover sender: UIBarButtonItem, message: String)
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayOnboardingTipPopoverFrom view: UIView, message: String)
-    
-    //
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene)
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didTapDoneEditingMoveAnimationButtonForScene scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didTapPlayAnimationButtonWith sender: UIBarButtonItem, for scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didTapCancelEditingNodePositionButton scene: DefaultScene)
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingAnimation sender: UIBarButtonItem, for scene: DefaultScene)
-    
-    func sceneEditor(_ controller: SceneEditorViewController, didAddSpeechBubbleAnimation animation: SpeechBubbleAnimationAttributes, for scene: DefaultScene, in sceneView: SCNView)
-    
-    func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
-    func sceneEditor(_ controller: SceneEditorViewController, touchesEndedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene)
-}
-
 protocol SceneEditorDocumentDelegate: class {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: DefaultScene)
 }
 
-final class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControllerDelegateProtocol {
+final class SceneEditorManager: NSObject {
     
     // MARK: - Properties
     
@@ -241,7 +201,6 @@ final class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControll
     // MARK: - Object Catalog
     
     func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene) {
-        
         controller.setupEditNodePositionNavigationItems()
         scene.showGrid()
         
@@ -254,7 +213,6 @@ final class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControll
     // MARK: - Node Movement
     
     func sceneEditor(_ controller: SceneEditorViewController, didTapCancelEditingNodePositionButton scene: DefaultScene) {
-        
         controller.setupDefaultNavigationItems()
         controller.cameraNavigationPanGesture.isEnabled = true
         
@@ -265,7 +223,6 @@ final class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControll
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditingNodePositionButton scene: DefaultScene) {
-        
         controller.setupDefaultNavigationItems()
         controller.cameraNavigationPanGesture.isEnabled = true
         
@@ -376,7 +333,7 @@ final class SceneEditorViewControllerDelegate: NSObject, SceneEditorViewControll
 
 // MARK: - UIPopoverPresentationControllerDelegate
 
-extension SceneEditorViewControllerDelegate: UIPopoverPresentationControllerDelegate {
+extension SceneEditorManager: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
@@ -391,7 +348,7 @@ extension SceneEditorViewControllerDelegate: UIPopoverPresentationControllerDele
 
 // MARK: - EasyTipViewDelegate
 
-extension SceneEditorViewControllerDelegate: EasyTipViewDelegate {
+extension SceneEditorManager: EasyTipViewDelegate {
     func easyTipViewDidDismiss(_ tipView: EasyTipView) {
         
     }

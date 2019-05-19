@@ -1,5 +1,5 @@
 //
-//  DocumentBrowserViewControllerDelegate.swift
+//  DocumentBrowserManager.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 20/09/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-final class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserViewControllerDelegate {
+final class DocumentBrowserManager: NSObject, UIDocumentBrowserViewControllerDelegate {
     
     // MARK: - Delegate Methods
     
@@ -47,7 +47,7 @@ final class DocumentBrowserViewControllerDelegate: NSObject, UIDocumentBrowserVi
 
 // MARK: - Opening Document
 
-extension DocumentBrowserViewControllerDelegate {
+extension DocumentBrowserManager {
     private func openDocument(with url: URL, using controller: UIDocumentBrowserViewController) {
         if isDocumentOpen(with: url) {
             return
@@ -95,7 +95,7 @@ extension DocumentBrowserViewControllerDelegate {
 
 // MARK: - Document Creation
 
-extension DocumentBrowserViewControllerDelegate {
+extension DocumentBrowserManager {
     private func createDocumentURL() -> URL {
         let documentPath = UIApplication.cacheDirectory()
         let documentURL = documentPath.appendingPathComponent("Blank").appendingPathExtension(SceneDocument.filenameExtension)
@@ -105,7 +105,7 @@ extension DocumentBrowserViewControllerDelegate {
 
 // MARK: - SceneEditorDelegate
 
-extension DocumentBrowserViewControllerDelegate: SceneEditorDocumentDelegate {
+extension DocumentBrowserManager: SceneEditorDocumentDelegate {
     func sceneEditor(_ controller: SceneEditorViewController, didFinishEditing scene: DefaultScene) {
         State.currentDocument?.scene = scene
         State.currentDocument?.updateChangeCount(.done)
