@@ -9,37 +9,29 @@
 import UIKit
 import ARKit
 
+protocol PresentationARSessionDelegate: class {
+    
+}
+
 final class PresentationViewController: UIViewController {
     
     // MARK: - Internal Properties
     
-    private let popoverWidth: Int = Style.navigationItemPopoverWidth
-    private let popoverHeight: Int = 300
-    
-    private let feedbackViewWidth: CGFloat = 750.0
-    private let feedbackViewHeight: CGFloat = 35.0
-    private let feedbackViewBottomMargin: CGFloat = -30.0
-    
-    private var sceneView: ARSCNView = {
-        let view = ARSCNView(frame: .zero)
-        view.autoenablesDefaultLighting = true
-        return view
-    }()
-    
-    private var feedbackView: SurfaceDetectionFeedbackView = {
-        let view = SurfaceDetectionFeedbackView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private lazy var onboardingView: PresentationOnboardingView = {
-        let onboardingView = PresentationOnboardingView(frame: view.frame)
-        onboardingView.delegate = self
-        return onboardingView
-    }()
-    
     private lazy var manager = NodePresentationManager()
     
+    lazy var mainView: PresentationMainView = {
+        let mainView = PresentationMainView(frame: view.frame)
+        
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(didPinchToDismiss(_:)))
+        mainView.sceneView.addGestureRecognizer(pinchGestureRecognizer)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addNodesToSceneView(_:)))
+        mainView.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+        mainView.sceneView.session.delegate = self
+        
+        return mainView
+    }()
     
     // MARK: - VC Lifecycle
     
@@ -49,16 +41,10 @@ final class PresentationViewController: UIViewController {
         setup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        setupARTracker()
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        sceneView.session.pause()
+        mainView.sceneView.session.pause()
     }
     
     // MARK: - Setup
@@ -74,51 +60,8 @@ final class PresentationViewController: UIViewController {
     }
     
     private func setup() {
-        view.addSubview(sceneView)
-        view.sendSubviewToBack(sceneView)
-        
-        view.addSubview(feedbackView)
-        
-        view.addSubview(onboardingView)
-        onboardingView.fillInSuperview()
-        
-        guard let scene = NodePresentationManager.currentScene else { fatalError("Failed to initialize scene.") }
-        sceneView.prepare([scene], completionHandler: nil)
-        sceneView.fillInSuperview()
-        
-        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(didPinchToDismiss(_:)))
-        sceneView.addGestureRecognizer(pinchGestureRecognizer)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addNodesToSceneView(_:)))
-        sceneView.addGestureRecognizer(tapGestureRecognizer)
-        
-        view.backgroundColor = .black
+        view = mainView
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        NSLayoutConstraint.activate([
-            feedbackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            feedbackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: feedbackViewBottomMargin),
-            feedbackView.widthAnchor.constraint(lessThanOrEqualToConstant: feedbackViewWidth),
-            feedbackView.heightAnchor.constraint(greaterThanOrEqualToConstant: feedbackViewHeight),
-        ])
-    }
-    
-    private func setupARTracker() {
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal, .vertical]
-        
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
-        sceneView.session.run(configuration)
-        sceneView.session.delegate = self
-        
-        UIApplication.shared.isIdleTimerDisabled = true
-    }
-
-    private func resetTracking() {
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal, .vertical]
-        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
     }
     
     // MARK: - User Interaction
@@ -130,8 +73,8 @@ final class PresentationViewController: UIViewController {
     
     @objc
     private func addNodesToSceneView(_ recognizer: UIGestureRecognizer) {
-        let tapLocation = recognizer.location(in: sceneView)
-        let hitTestResults = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+        let tapLocation = recognizer.location(in: mainView.sceneView)
+        let hitTestResults = mainView.sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
         
         guard let hitTestResult = hitTestResults.first else {
             return
@@ -139,7 +82,7 @@ final class PresentationViewController: UIViewController {
         
         let position = hitTestResult.worldTransform.columns.3
         
-        manager.addPresentingNode(to: sceneView, at: position)
+        manager.addPresentingNode(to: mainView.sceneView, at: position)
     }
     
     // MARK: - Device Configuration
@@ -154,13 +97,15 @@ final class PresentationViewController: UIViewController {
 
 extension PresentationViewController: ARSessionDelegate {
     
-    // MARK: - ARSessionDelegate
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        mainView.adjustSpeechBubbleAngle(on: frame.camera.eulerAngles, from: mainView.sceneView)
+    }
     
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         guard let frame = session.currentFrame else { return }
         
         DispatchQueue.main.async {
-            self.feedbackView.updateFeedbackLabel(for: frame, trackingState: frame.camera.trackingState)
+            self.mainView.feedbackView.updateFeedbackLabel(for: frame, trackingState: frame.camera.trackingState)
         }
     }
     
@@ -168,13 +113,13 @@ extension PresentationViewController: ARSessionDelegate {
         guard let frame = session.currentFrame else { return }
         
         DispatchQueue.main.async {
-            self.feedbackView.updateFeedbackLabel(for: frame, trackingState: frame.camera.trackingState)
+            self.mainView.feedbackView.updateFeedbackLabel(for: frame, trackingState: frame.camera.trackingState)
         }
     }
     
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         DispatchQueue.main.async {
-            self.feedbackView.updateFeedbackLabel(for: session.currentFrame!, trackingState: camera.trackingState)
+            self.mainView.feedbackView.updateFeedbackLabel(for: session.currentFrame!, trackingState: camera.trackingState)
         }
     }
     
@@ -183,20 +128,24 @@ extension PresentationViewController: ARSessionDelegate {
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay.
         DispatchQueue.main.async {
-            self.feedbackView.sessionWasInterruptedLabel()
+            self.mainView.feedbackView.sessionWasInterruptedLabel()
         }
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
         DispatchQueue.main.async {
             // Reset tracking and/or remove existing anchors if consistent tracking is required.
-            self.feedbackView.feedbackLabel.text = "Session interruption ended"
-            self.resetTracking()
+            self.mainView.feedbackView.feedbackLabel.text = "Session interruption ended"
+            self.mainView.resetTracking()
         }   
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
-        feedbackView.feedbackLabel.text = "Session failed: \(error.localizedDescription)"
+        
+        DispatchQueue.main.async {
+            self.mainView.feedbackView.feedbackLabel.text = "Session failed: \(error.localizedDescription)"
+        }
+        
         guard error is ARError else { return }
         
         let errorWithInfo = error as NSError
@@ -219,7 +168,7 @@ extension PresentationViewController: ARSessionDelegate {
                 }
                 
                 alertController.dismiss(animated: true, completion: nil)
-                self.resetTracking()
+                self.mainView.resetTracking()
             }
             
             alertController.addAction(restartAction)
@@ -227,12 +176,4 @@ extension PresentationViewController: ARSessionDelegate {
         }
     }
     
-}
-
-// MARK: - OnboardingViewDelegate
-
-extension PresentationViewController: PresentationOnboardingViewDelegate {
-    func didTapContinueButton(_ sender: PresentationOnboardingView) {
-        sender.removeFromSuperview()
-    }
 }

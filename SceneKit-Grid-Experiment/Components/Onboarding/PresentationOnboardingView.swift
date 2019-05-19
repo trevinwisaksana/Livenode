@@ -170,7 +170,7 @@ final class PresentationOnboardingView: UIView {
             self.removeFromSuperview()
         }
         
-        // delegate?.didTapContinueButton(self)
+         delegate?.didTapContinueButton(self)
     }
     
 }
