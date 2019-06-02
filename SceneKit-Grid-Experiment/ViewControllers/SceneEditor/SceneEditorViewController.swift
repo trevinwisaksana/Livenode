@@ -21,8 +21,6 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private lazy var manager = SceneEditorManager()
-    
     private(set) var state: SceneEditorState = .default
     
     private var browserTransition: DocumentBrowserTransitioningDelegate?
@@ -37,6 +35,7 @@ final class SceneEditorViewController: UIViewController {
     
     // MARK: - Normal Navigation Item Properties
     
+    //////// ------- TODO: Move code to Main View ------- ////////
     private lazy var utilitiesInspectorBarButton: UIBarButtonItem = {
         let utilitiesInspectorButtonImage = UIImage(named: .utilitiesInspectorButton)
         let barButton = UIBarButtonItem(image: utilitiesInspectorButtonImage, style: .plain, target: self, action: #selector(didTapUtilitiesInspectorButton(_:)))
@@ -77,9 +76,12 @@ final class SceneEditorViewController: UIViewController {
         let barButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelEditingMoveAnimationButton(_:)))
         return barButton
     }()
-
+    //////// ------- ------------------------ ------- ////////
+    
     
     // MARK: - Public Properties
+    
+    lazy var manager = SceneEditorManager(controller: self)
     
     public var sceneView: SCNView = {
         let sceneView = SCNView()
@@ -181,7 +183,6 @@ final class SceneEditorViewController: UIViewController {
         
         setupDefaultNavigationItems()
         setupLongPressGestureRecognizer()
-        setupNotificationListeners()
         setupSceneViewGestures()
     }
     
@@ -260,14 +261,6 @@ final class SceneEditorViewController: UIViewController {
         navigationItem.setRightBarButtonItems([doneBarButton], animated: true)
     }
     
-    private func setupNotificationListeners() {
-        // TODO: Refactor code to remove notifications and use dependencies instead
-        NotificationCenter.default.addObserver(self, selector: #selector(didModifyNodeColor(_:)), name: Notification.Name.ColorPickerDidModifyNodeColor, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didSelectSceneActionButton(_:)), name: Notification.Name.SceneActionMenuDidSelectButton, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didSelectNodeModel(_:)), name: Notification.Name.ObjectCatalogDidSelectNodeModel, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didSelectNodeAnimation(_:)), name: Notification.Name.NodeAnimationMenuDidSelectAnimation, object: nil)
-    }
-    
     private func setupLongPressGestureRecognizer() {
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressSceneEditorView(_:)))
         view.addGestureRecognizer(longPressGesture)
@@ -285,17 +278,6 @@ final class SceneEditorViewController: UIViewController {
         
         pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didBeginPinching(_:)))
         sceneView.addGestureRecognizer(pinchGesture)
-    }
-    
-    // MARK: - Color Picker
-    
-    @objc
-    private func didModifyNodeColor(_ notification: Notification) {
-        guard let scene = document?.scene else {
-            fatalError("No scene found.")
-        }
-        
-        manager.sceneEditor(self, didModifyNodeColorUsing: notification, for: scene)
     }
     
     // MARK: - Touches
@@ -359,7 +341,7 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapPlayButton(_ sender: UIBarButtonItem) {
-        guard let scene = document?.scene else { // TODO: Solve why we can't bring in the child nodes
+        guard let scene = document?.scene else {
             fatalError("No scene found.")
         }
         
@@ -373,7 +355,7 @@ final class SceneEditorViewController: UIViewController {
     
     @objc
     private func didTapAnimationCatalogButton(_ sender: UIBarButtonItem) {
-        manager.sceneEditor(self, didDisplayNodeAnimationListWith: sender)
+        manager.presentNodeAnimationList(with: sender)
     }
 
     @objc
@@ -455,33 +437,6 @@ final class SceneEditorViewController: UIViewController {
         manager.sceneEditor(self, didFinishEditingAnimation: sender, for: scene)
     }
     
-    @objc
-    private func didSelectSceneActionButton(_ notification: Notification) {
-        guard let scene = document?.scene else {
-            fatalError("No scene found.")
-        }
-        
-        manager.sceneEditor(self, didSelectSceneActionButtonUsing: notification, for: scene)
-    }
-    
-    @objc
-    private func didSelectNodeModel(_ notification: Notification) {
-        guard let scene = document?.scene else {
-            fatalError("No scene found.")
-        }
-        
-        manager.sceneEditor(self, didSelectNodeModelUsing: notification, for: scene)
-    }
-    
-    @objc
-    private func didSelectNodeAnimation(_ notification: Notification) {
-        guard let scene = document?.scene else {
-            fatalError("No scene found.")
-        }
-        
-        manager.sceneEditor(self, didSelectNodeAnimationUsing: notification, for: scene)
-    }
-
     @objc
     private func didLongPressSceneEditorView(_ sender: UILongPressGestureRecognizer) {
         switch sender.state {
