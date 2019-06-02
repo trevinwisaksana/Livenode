@@ -14,14 +14,13 @@ enum Presenter {
         
         switch component {
         case .colorPickerView:
-            controller = ColorPickerViewController<ColorPickerPresentableView>()
+            controller = ColorPickerViewController()
             
         case .onboarding:
             controller = OnboardingViewController()
             
         case .sceneInspectorView:
-            // MARK: - Separate this to a different view controller
-            controller = AttributesInspectorViewController<SceneInspectorPresentableView>()
+            controller = AttributesInspectorViewController()
             
         case .nodeInspectorView:
             controller = NodeInspectorViewController()
