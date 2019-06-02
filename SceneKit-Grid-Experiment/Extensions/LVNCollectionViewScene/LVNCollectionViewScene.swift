@@ -9,15 +9,13 @@
 import UIKit
 import SceneKit
 
-public protocol LVNCollectionViewSceneDelegate: class {
-   
+public protocol LVNCollectionViewSceneProtocol: class {
+   func lvnCollectionView(didSelectModelWith sender: UITapGestureRecognizer)
 }
 
 open class LVNCollectionViewScene: SCNScene {
     
     // MARK: - Properties
-    
-    weak var delegate: LVNCollectionViewSceneDelegate?
     
     /// A container that will be used to move all the child nodes up/down when scrolling.
     private var parentNode = LVNCollectionViewParentNode()
