@@ -16,9 +16,17 @@ protocol SceneEditorDocumentDelegate: class {
 
 final class SceneEditorManager: NSObject {
     
-    // MARK: - Properties
+    // MARK: - Internal Properties
     
     private var tipView: EasyTipView?
+    
+    private var sceneEditorController: SceneEditorViewController?
+    
+    // MARK: - Setup
+    
+    init(controller: SceneEditorViewController) {
+        sceneEditorController = controller
+    }
     
     // MARK: - Presenting
     
@@ -27,18 +35,24 @@ final class SceneEditorManager: NSObject {
         
         let location = sender.location(in: controller.view)
         
-        var sceneActionsMenuController: UIViewController
+        var sceneActionMenuController: UIViewController
         
         if let nodeSelected = sceneView.hitTest(location, options: nil).first?.node,
               nodeSelected.name == "floorNode" {
-            sceneActionsMenuController = Presenter.inject(.sceneActionsMenu(isNodeSelected: false))
+            sceneActionMenuController = Presenter.inject(.sceneActionsMenu(isNodeSelected: false))
         } else {
-            sceneActionsMenuController = Presenter.inject(.sceneActionsMenu(isNodeSelected: true))
+            sceneActionMenuController = Presenter.inject(.sceneActionsMenu(isNodeSelected: true))
+            
+            guard let controller = sceneActionMenuController as? SceneActionMenuViewController else {
+                return
+            }
+            
+            controller.delegate = self
         }
         
-        sceneActionsMenuController.modalPresentationStyle = .popover
-        sceneActionsMenuController.popoverPresentationController?.permittedArrowDirections = .down
-        sceneActionsMenuController.popoverPresentationController?.delegate = self
+        sceneActionMenuController.modalPresentationStyle = .popover
+        sceneActionMenuController.popoverPresentationController?.permittedArrowDirections = .down
+        sceneActionMenuController.popoverPresentationController?.delegate = self
         
         let touchLocation = sender.location(in: controller.view)
         
@@ -55,10 +69,10 @@ final class SceneEditorManager: NSObject {
         touchView.backgroundColor = .clear
         touchView.center = touchLocation
         
-        sceneActionsMenuController.popoverPresentationController?.sourceRect = sourceRect
-        sceneActionsMenuController.popoverPresentationController?.sourceView = touchView
+        sceneActionMenuController.popoverPresentationController?.sourceRect = sourceRect
+        sceneActionMenuController.popoverPresentationController?.sourceView = touchView
         
-        controller.present(sceneActionsMenuController, animated: true) {
+        controller.present(sceneActionMenuController, animated: true) {
             touchView.removeFromSuperview()
         }
     }
@@ -77,7 +91,11 @@ final class SceneEditorManager: NSObject {
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayObjectCatalogWith sender: UIBarButtonItem) {
         tipView?.dismiss()
         
-        let objectCatalogController = Presenter.inject(.objectCatalog)
+        guard let objectCatalogController = Presenter.inject(.objectCatalog) as? ObjectCatalogViewController else {
+            return
+        }
+        
+        objectCatalogController.delegate = self
         
         objectCatalogController.modalPresentationStyle = .popover
         objectCatalogController.popoverPresentationController?.permittedArrowDirections = .up
@@ -95,8 +113,21 @@ final class SceneEditorManager: NSObject {
         
         if State.nodeSelected != nil {
             viewController = Presenter.inject(.nodeInspectorView)
+            
+            guard let nodeInspectorController = (viewController as? NodeInspectorViewController) else {
+                return
+            }
+            
+            nodeInspectorController.delegate = self
+            
         } else {
             viewController = Presenter.inject(.sceneInspectorView)
+            
+            guard let sceneInspectorController = (viewController as? AttributesInspectorViewController) else {
+                return
+            }
+            
+            sceneInspectorController.delegate = self
         }
         
         navigationController.viewControllers = [viewController]
@@ -114,8 +145,12 @@ final class SceneEditorManager: NSObject {
         controller.present(presentationController, animated: true, completion: nil)
     }
     
-    func sceneEditor(_ controller: SceneEditorViewController, didDisplayNodeAnimationListWith sender: UIBarButtonItem) {
-        let nodeAnimationListController = Presenter.inject(.nodeAnimationList)
+    func presentNodeAnimationList(with sender: UIBarButtonItem) {
+        guard let nodeAnimationListController = Presenter.inject(.nodeAnimationList) as? NodeAnimationListViewController else {
+            return
+        }
+        
+        nodeAnimationListController.delegate = self
 
         let navigationController = UINavigationController()
         
@@ -126,7 +161,7 @@ final class SceneEditorManager: NSObject {
         navigationController.popoverPresentationController?.delegate = self
         navigationController.popoverPresentationController?.barButtonItem = sender
         
-        controller.present(navigationController, animated: true, completion: nil)
+        sceneEditorController?.present(navigationController, animated: true, completion: nil)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayOnboardingTipPopover sender: UIBarButtonItem, message: String) {
@@ -150,25 +185,25 @@ final class SceneEditorManager: NSObject {
 
     // MARK: - Scene Action Menu
     
-    func sceneEditor(_ controller: SceneEditorViewController, didSelectSceneActionButtonUsing notification: Notification, for scene: DefaultScene) {
-        guard let action = notification.object as? String else {
+    private func didSelectSceneActionButton(_  button: UIButton, for scene: DefaultScene) {
+        guard let action = button.titleLabel?.text else {
             return
         }
         
         switch action {
         case Action.animate.capitalized:
-            controller.setupAnimationNavigationItems()
+            sceneEditorController?.setupAnimationNavigationItems()
             scene.setNodeAnimationTarget()
             
         case Action.move.capitalized:
-            controller.cameraNavigationPanGesture.isEnabled = false
-            controller.setupEditNodePositionNavigationItems()
+            sceneEditorController?.cameraNavigationPanGesture.isEnabled = false
+            sceneEditorController?.setupEditNodePositionNavigationItems()
             
             scene.showGrid()
             scene.didSelectSceneAction(.move)
             
         case Action.pin.capitalized:
-            controller.cameraNavigationPanGesture.isEnabled = true
+            sceneEditorController?.cameraNavigationPanGesture.isEnabled = true
             scene.didSelectSceneAction(.pin)
             
         case Action.delete.capitalized:
@@ -187,27 +222,28 @@ final class SceneEditorManager: NSObject {
             break
         }
         
-        controller.presentedViewController?.dismiss(animated: true, completion: nil)
+        sceneEditorController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Color Picker
     
-    func sceneEditor(_ controller: SceneEditorViewController, didModifyNodeColorUsing notification: Notification, for scene: DefaultScene) {
-        if let color = notification.object as? UIColor {
-            scene.modifyNodeColor(to: color)
+    func didModifyNodeColor(_ color: UIColor) {
+        guard let scene = sceneEditorController?.document?.scene else {
+            // TODO: Error handle
+            return
         }
+        
+        scene.modifyNodeColor(to: color)
     }
     
     // MARK: - Object Catalog
     
-    func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeModelUsing notification: Notification, for scene: DefaultScene) {
-        controller.setupEditNodePositionNavigationItems()
+    func didSelectNodeModel(_ nodeModel: NodeModel, for scene: DefaultScene) {
+        sceneEditorController?.setupEditNodePositionNavigationItems()
         scene.showGrid()
         
-        if let nodeModel = notification.object as? NodeModel {
-            scene.insertNodeModel(nodeModel)
-            controller.presentedViewController?.dismiss(animated: true, completion: nil)
-        }
+        scene.insertNodeModel(nodeModel)
+        sceneEditorController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Node Movement
@@ -232,37 +268,35 @@ final class SceneEditorManager: NSObject {
     
     // MARK: - Node Animation
     
-    func sceneEditor(_ controller: SceneEditorViewController, didSelectNodeAnimationUsing notification: Notification, for scene: DefaultScene) {
-        if let animation = notification.object as? Animation {
-            switch animation {
-            case .move:
-                controller.setupEditMoveAnimationNavigationItems()
-                scene.showGrid()
-                scene.isSelectingAnimationTargetLocation = true
-                
-                controller.presentedViewController?.dismiss(animated: true, completion: nil)
-                
-            case .rotate:
-                let rotateAnimationAttributesView = Presenter.inject(.rotateAnimationAttributes(attributes: RotateAnimationAttributes()))
-                let navigationController = controller.presentedViewController as! UINavigationController
-                
-                navigationController.pushViewController(rotateAnimationAttributesView, animated: true)
-                
-            case .delay:
-                let delayAnimationAttributesView = Presenter.inject(.delayAnimationAttributes(attributes: DelayAnimationAttributes()))
-                let navigationController = controller.presentedViewController as! UINavigationController
-                
-                navigationController.pushViewController(delayAnimationAttributesView, animated: true)
-                
-            case .speechBubble:
-                let speechAnimationAnimationAttributesView = Presenter.inject(.speechBubbleAnimationAttributes(attributes: SpeechBubbleAnimationAttributes()))
-                let navigationController = controller.presentedViewController as! UINavigationController
-                
-                navigationController.pushViewController(speechAnimationAnimationAttributesView, animated: true)
-                
-            default:
-                break
-            }
+    func didSelectNodeAnimation(animation: Animation, for scene: DefaultScene) {
+        switch animation {
+        case .move:
+            sceneEditorController?.setupEditMoveAnimationNavigationItems()
+            scene.showGrid()
+            scene.isSelectingAnimationTargetLocation = true
+            
+            sceneEditorController?.presentedViewController?.dismiss(animated: true, completion: nil)
+            
+        case .rotate:
+            let rotateAnimationAttributesView = Presenter.inject(.rotateAnimationAttributes(attributes: RotateAnimationAttributes()))
+            let navigationController = sceneEditorController?.presentedViewController as! UINavigationController
+            
+            navigationController.pushViewController(rotateAnimationAttributesView, animated: true)
+            
+        case .delay:
+            let delayAnimationAttributesView = Presenter.inject(.delayAnimationAttributes(attributes: DelayAnimationAttributes()))
+            let navigationController = sceneEditorController?.presentedViewController as! UINavigationController
+            
+            navigationController.pushViewController(delayAnimationAttributesView, animated: true)
+            
+        case .speechBubble:
+            let speechAnimationAnimationAttributesView = Presenter.inject(.speechBubbleAnimationAttributes(attributes: SpeechBubbleAnimationAttributes()))
+            let navigationController = sceneEditorController?.presentedViewController as! UINavigationController
+            
+            navigationController.pushViewController(speechAnimationAnimationAttributesView, animated: true)
+            
+        default:
+            break
         }
     }
     
@@ -343,6 +377,101 @@ extension SceneEditorManager: UIPopoverPresentationControllerDelegate {
         let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
         
         sceneEditorViewController.displayPressLongGestureTipView()
+    }
+}
+
+// MARK: - SceneActionsMenuViewDelegate
+
+extension SceneEditorManager: SceneActionMenuDelegate {
+    func sceneActionMenu(_ sceneActionMenu: SceneActionMenuViewController, didSelectSceneActionButton button: UIButton) {
+        guard let scene = sceneEditorController?.document?.scene else {
+            // TODO: Error handle
+            return
+        }
+        
+        didSelectSceneActionButton(button, for: scene)
+    }
+}
+
+// MARK: - NodeInspectorDelegate
+
+extension SceneEditorManager: NodeInspectorDelegate {
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didSelectItemAtIndexPath indexPath: IndexPath) {
+        
+    }
+    
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didUpdateNodePosition position: SCNVector3) {
+        guard let scene = sceneEditorController?.document?.scene else {
+            // TODO: Error handle
+            return
+        }
+        
+        scene.changeNodePosition(to: position)
+    }
+    
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didAngleNodePosition angle: Float) {
+        guard let scene = sceneEditorController?.document?.scene else {
+            // TODO: Error handle
+            return
+        }
+        
+        scene.changeNodeRotation(toAngle: angle)
+    }
+    
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didUpdatePlaneWidth width: CGFloat) {
+        guard let scene = sceneEditorController?.document?.scene else {
+            // TODO: Error handle
+            return
+        }
+        
+        scene.modifyPlaneNode(width: width)
+    }
+    
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didUpdatePlaneLength length: CGFloat) {
+        guard let scene = sceneEditorController?.document?.scene else {
+            // TODO: Error handle
+            return
+        }
+        
+        scene.modifyPlaneNode(length: length)
+    }
+    
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didUpdateNodeColor color: UIColor) {
+        colorPicker(didSelectColor: color)
+    }
+}
+
+// MARK: - AttributesInspectorDelegate
+
+extension SceneEditorManager: AttributesInspectorDelegate {
+    func colorPicker(didSelectColor color: UIColor) {
+        didModifyNodeColor(color)
+    }
+}
+
+// MARK: - SceneActionsMenuViewDelegate
+
+extension SceneEditorManager: ObjectCatalogDelegate {
+    func objectCatalog(didSelectModel model: NodeModel) {
+        guard let scene = sceneEditorController?.document?.scene else {
+            // TODO: Error handle
+            return
+        }
+        
+        didSelectNodeModel(model, for: scene)
+    }
+}
+
+// MARK: - NodeAnimationListDelegate
+
+extension SceneEditorManager: NodeAnimationListDelegate {
+    func nodeAnimationList(_ nodeAnimationList: NodeAnimationListViewController, didAddNodeAnimation animation: Animation) {
+        guard let scene = sceneEditorController?.document?.scene else {
+            // TODO: Error handle
+            return
+        }
+        
+        didSelectNodeAnimation(animation: animation, for: scene)
     }
 }
 

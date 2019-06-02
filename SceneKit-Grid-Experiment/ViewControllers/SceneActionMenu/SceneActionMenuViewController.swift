@@ -8,14 +8,19 @@
 
 import UIKit
 
+protocol SceneActionMenuDelegate: class {
+    func sceneActionMenu(_ sceneActionMenu: SceneActionMenuViewController, didSelectSceneActionButton button: UIButton)
+}
+
 final class SceneActionMenuViewController: UIViewController {
+    
+    // MARK: - External Properties
+    
     
     // MARK: - Internal Properties
     
-    lazy var delegate = SceneActionMenuViewControllerDelegate()
-    
     lazy var mainView: SceneActionMenuView = {
-        let mainView = SceneActionMenuView(delegate: delegate)
+        let mainView = SceneActionMenuView(delegate: self)
         return mainView
     }()
     
@@ -52,4 +57,12 @@ final class SceneActionMenuViewController: UIViewController {
         popoverPresentationController?.backgroundColor = .black
     }
     
+}
+
+// MARK: - SceneActionMenuViewControllerDelegate
+
+extension SceneActionMenuViewController: SceneActionsMenuViewDelegate {
+    func sceneActionMenuView(_ sceneActionMenuView: SceneActionMenuView, didSelectSceneActionButton button: UIButton) {
+        delegate?.sceneActionMenu(self, didSelectSceneActionButton: button)
+    }
 }
