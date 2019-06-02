@@ -8,17 +8,24 @@
 
 import UIKit
 
+protocol NodeAnimationListDelegate: class {
+    func nodeAnimationList(_ nodeAnimationList: NodeAnimationListViewController, didAddNodeAnimation animation: Animation)
+}
+
 final class NodeAnimationListViewController: UIViewController {
+    
+    // MARK: - External Properties
+    
+    weak var delegate: NodeAnimationListDelegate?
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var delegate = NodeAnimationListViewControllerDelegate()
-    
     lazy var mainView: NodeAnimationListView = {
-        let mainView = NodeAnimationListView(delegate: delegate)
+        let mainView = NodeAnimationListView(frame: view.frame)
+        mainView.delegate = self
         return mainView
     }()
     
@@ -65,7 +72,12 @@ final class NodeAnimationListViewController: UIViewController {
     
     @objc
     private func didTapAddAnimationButton(_ sender: UIBarButtonItem) {
-        let nodeAnimationMenu = Presenter.inject(.nodeAnimationMenu)
+        guard let nodeAnimationMenu = Presenter.inject(.nodeAnimationMenu) as? NodeAnimationMenuViewController else {
+            return
+        }
+        
+        nodeAnimationMenu.delegate = self
+        
         navigationController?.pushViewController(nodeAnimationMenu, animated: true)
     }
     
@@ -80,4 +92,60 @@ final class NodeAnimationListViewController: UIViewController {
         }
     }
     
+}
+
+// MARK: - NodeAnimationListViewDelegate
+
+extension NodeAnimationListViewController: NodeAnimationListViewDelegate {
+    func nodeAnimationListView(_ nodeAnimationListView: NodeAnimationListView, didSelectNodeAnimation animation: Animation, atIndex index: Int) {
+        presentAnimationAttributes(for: animation, atIndex: index)
+    }
+    
+    private func presentAnimationAttributes(for animationType: Animation, atIndex index: Int) {
+        let animation = State.nodeAnimationTarget?.actions[index]
+        
+        switch animationType {
+        case .move:
+            guard let targetLocation = animation?.targetLocation else {
+                return
+            }
+            
+            let animationAttributes = MoveAnimationAttributes(duration: animation?.duration, targetLocation: targetLocation, animationIndex: index)
+            let moveAnimationAttributes = Presenter.inject(.moveAnimationAttributes(attributes: animationAttributes))
+            
+            navigationController?.pushViewController(moveAnimationAttributes, animated: true)
+            
+        case .rotate:
+            let animationAttributes = RotateAnimationAttributes(duration: animation?.duration, angle: animation?.rotationAngle, animationIndex: index)
+            let rotateAnimationAttributesController = Presenter.inject(.rotateAnimationAttributes(attributes: animationAttributes))
+            navigationController?.pushViewController(rotateAnimationAttributesController, animated: true)
+            
+        case .delay:
+            let animationAttributes = DelayAnimationAttributes(duration: animation?.duration, animationIndex: index)
+            let delayAnimationAttributesController = Presenter.inject(.delayAnimationAttributes(attributes: animationAttributes))
+            
+            navigationController?.pushViewController(delayAnimationAttributesController, animated: true)
+            
+        case .speechBubble:
+            guard let animatedNodeLocation = State.nodeAnimationTarget?.position else {
+                return
+            }
+            
+            let animationAttributes = SpeechBubbleAnimationAttributes(duration: animation?.duration, animationIndex: index, nodeLocation: animatedNodeLocation, title: "")
+            let alertAnimationAttributesController = Presenter.inject(.speechBubbleAnimationAttributes(attributes: animationAttributes))
+            
+            navigationController?.pushViewController(alertAnimationAttributesController, animated: true)
+            
+        default:
+            break
+        }
+    }
+}
+
+// MARK: - NodeAnimationMenuDelegate
+
+extension NodeAnimationListViewController: NodeAnimationMenuDelegate {
+    func nodeAnimationMenu(_ nodeAnimationMenu: NodeAnimationMenuViewController, didSelectNodeAnimation animation: Animation) {
+        delegate?.nodeAnimationList(self, didAddNodeAnimation: animation)
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 public protocol NodeAnimationListViewDelegate: class {
-    func nodeAnimationListView(_ nodeAnimationListView: NodeAnimationListView, didSelectNodeAnimation animation: Animation)
+    func nodeAnimationListView(_ nodeAnimationListView: NodeAnimationListView, didSelectNodeAnimation animation: Animation, atIndex index: Int)
 }
 
 public class NodeAnimationListView: UIView {
@@ -35,16 +35,9 @@ public class NodeAnimationListView: UIView {
     
     // MARK: - Setup
     
-    public init(delegate: NodeAnimationListViewDelegate) {
-        super.init(frame: .zero)
-        
-        self.delegate = delegate
-        
-        setup()
-    }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setup()
     }
     
@@ -97,9 +90,9 @@ extension NodeAnimationListView: UITableViewDataSource {
 
 extension NodeAnimationListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectNodeAnimation(at: indexPath)
-        
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        didSelectNodeAnimation(at: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -110,45 +103,22 @@ extension NodeAnimationListView: UITableViewDelegate {
     }
     
     private func didSelectNodeAnimation(at indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! NodeAnimationListCell
-        let animation = State.nodeAnimationTarget?.actions[indexPath.row]
-        
-        guard let navigationController = parentViewController?.parent as? UINavigationController else {
+        guard let animationType = (tableView.cellForRow(at: indexPath) as? NodeAnimationListCell)?.animationType else {
             return
         }
-
-        switch cell.animationType {
+        
+        switch animationType {
         case .move:
-            guard let targetLocation = animation?.targetLocation else { return }
-            
-            let animationAttributes = MoveAnimationAttributes(duration: animation?.duration, targetLocation: targetLocation, animationIndex: indexPath.row)
-            let moveAnimationAttributes = Presenter.inject(.moveAnimationAttributes(attributes: animationAttributes))
-            navigationController.pushViewController(moveAnimationAttributes, animated: true)
-            
-            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .move)
+            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .move, atIndex: indexPath.row)
             
         case .rotate:
-            let animationAttributes = RotateAnimationAttributes(duration: animation?.duration, angle: animation?.rotationAngle, animationIndex: indexPath.row)
-            let rotateAnimationAttributesController = Presenter.inject(.rotateAnimationAttributes(attributes: animationAttributes))
-            navigationController.pushViewController(rotateAnimationAttributesController, animated: true)
-            
-            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .rotate)
+            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .rotate, atIndex: indexPath.row)
             
         case .delay:
-            let animationAttributes = DelayAnimationAttributes(duration: animation?.duration, animationIndex: indexPath.row)
-            let delayAnimationAttributesController = Presenter.inject(.delayAnimationAttributes(attributes: animationAttributes))
-            navigationController.pushViewController(delayAnimationAttributesController, animated: true)
-            
-            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .delay)
+            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .delay, atIndex: indexPath.row)
             
         case .speechBubble:
-            guard let animatedNodeLocation = State.nodeAnimationTarget?.position else { return }
-            
-            let animationAttributes = SpeechBubbleAnimationAttributes(duration: animation?.duration, animationIndex: indexPath.row, nodeLocation: animatedNodeLocation, title: "")
-            let alertAnimationAttributesController = Presenter.inject(.speechBubbleAnimationAttributes(attributes: animationAttributes))
-            navigationController.pushViewController(alertAnimationAttributesController, animated: true)
-            
-            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .speechBubble)
+            delegate?.nodeAnimationListView(self, didSelectNodeAnimation: .speechBubble, atIndex: indexPath.row)
             
         default:
             break
