@@ -16,6 +16,7 @@ final class SceneActionMenuViewController: UIViewController {
     
     // MARK: - External Properties
     
+    weak var delegate: SceneActionMenuDelegate?
     
     // MARK: - Internal Properties
     
