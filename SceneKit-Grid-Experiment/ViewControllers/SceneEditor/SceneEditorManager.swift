@@ -123,7 +123,7 @@ final class SceneEditorManager: NSObject {
         } else {
             viewController = Presenter.inject(.sceneInspectorView)
             
-            guard let sceneInspectorController = (viewController as? AttributesInspectorViewController) else {
+            guard let sceneInspectorController = (viewController as? SceneInspectorViewController) else {
                 return
             }
             
@@ -443,7 +443,7 @@ extension SceneEditorManager: NodeInspectorDelegate {
 
 // MARK: - AttributesInspectorDelegate
 
-extension SceneEditorManager: AttributesInspectorDelegate {
+extension SceneEditorManager: SceneInspectorDelegate {
     func colorPicker(didSelectColor color: UIColor) {
         didModifyNodeColor(color)
     }

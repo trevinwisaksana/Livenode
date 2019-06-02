@@ -71,7 +71,7 @@
 		DD911A2621FE822900E69154 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD911A2521FE822900E69154 /* OnboardingViewController.swift */; };
 		DD911A2B220982A900E69154 /* SCNBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD911A2A220982A900E69154 /* SCNBoxExtensions.swift */; };
 		DD9319D7219FC515004C90A8 /* SurfaceDetectionFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9319D6219FC515004C90A8 /* SurfaceDetectionFeedbackView.swift */; };
-		DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */; };
+		DD9C6AEC210ABC54001E4982 /* SceneInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AEB210ABC54001E4982 /* SceneInspectorViewController.swift */; };
 		DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */; };
 		DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D811E21716AB0006638F8 /* NodeAnimationListView.swift */; };
 		DD9D81252171A3C0006638F8 /* NodeAnimationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */; };
@@ -193,7 +193,7 @@
 		DD911A2521FE822900E69154 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		DD911A2A220982A900E69154 /* SCNBoxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNBoxExtensions.swift; sourceTree = "<group>"; };
 		DD9319D6219FC515004C90A8 /* SurfaceDetectionFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceDetectionFeedbackView.swift; sourceTree = "<group>"; };
-		DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesInspectorViewController.swift; sourceTree = "<group>"; };
+		DD9C6AEB210ABC54001E4982 /* SceneInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneInspectorViewController.swift; sourceTree = "<group>"; };
 		DD9C6AED210AC07F001E4982 /* NodeInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorView.swift; sourceTree = "<group>"; };
 		DD9D811E21716AB0006638F8 /* NodeAnimationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListView.swift; sourceTree = "<group>"; };
 		DD9D81242171A3C0006638F8 /* NodeAnimationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAnimationListCell.swift; sourceTree = "<group>"; };
@@ -479,7 +479,7 @@
 				DD0BFFBD217C590A00429F52 /* Animations */,
 				DD911A2421FE822900E69154 /* Onboarding */,
 				DD6C16FC210C16EF002CB031 /* ColorPickerViewController.swift */,
-				DD9C6AEB210ABC54001E4982 /* AttributesInspectorViewController.swift */,
+				DD9C6AEB210ABC54001E4982 /* SceneInspectorViewController.swift */,
 				DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */,
 			);
 			path = ViewControllers;
@@ -1275,7 +1275,7 @@
 				DDE60E5821738FCE0052E506 /* NodeAnimationMenuCell.swift in Sources */,
 				DD6C16F8210B32D5002CB031 /* NodeInspectorViewModel.swift in Sources */,
 				DDFFE03D2179813000AFF7DA /* AnimationDurationViewModel.swift in Sources */,
-				DD9C6AEC210ABC54001E4982 /* AttributesInspectorViewController.swift in Sources */,
+				DD9C6AEC210ABC54001E4982 /* SceneInspectorViewController.swift in Sources */,
 				DDCCAA95219D1EC50071FE7A /* PlaneNodeInspectorView.swift in Sources */,
 				DDBA24C22153D0D5003C9CAF /* DefaultSceneViewModel.swift in Sources */,
 				DD8E1268213CDC6E00D4F4DE /* UtilitiesInspectorView.swift in Sources */,

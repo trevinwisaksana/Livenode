@@ -20,7 +20,7 @@ enum Presenter {
             controller = OnboardingViewController()
             
         case .sceneInspectorView:
-            controller = AttributesInspectorViewController()
+            controller = SceneInspectorViewController()
             
         case .nodeInspectorView:
             controller = NodeInspectorViewController()
