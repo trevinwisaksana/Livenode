@@ -9,17 +9,24 @@
 import UIKit
 import SceneKit
 
+public protocol ObjectCatalogDelegate: class {
+    func objectCatalog(didSelectModel model: NodeModel)
+}
+
 final class ObjectCatalogViewController: UIViewController {
+    
+    // MARK: - External Properties
+    
+    weak var delegate: ObjectCatalogDelegate?
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
-    
-    private lazy var delegate = ObjectCatalogViewControllerDelegate()
 
     lazy var mainView: ObjectCatalogView = {
-        let mainView = ObjectCatalogView(frame: view.frame, withDelegate: delegate)
+        let mainView = ObjectCatalogView(frame: view.frame)
+        mainView.delegate = self
         return mainView
     }()
     
@@ -67,6 +74,14 @@ extension ObjectCatalogViewController {
     
     @objc
     private func didSelectModel(_ sender: UITapGestureRecognizer) {
-        delegate.didSelectMode(at: mainView, with: sender)
+        mainView.lvnCollectionView(didSelectModelWith: sender)
+    }
+}
+
+// MARK: - Node Selection
+
+extension ObjectCatalogViewController: ObjectCatalogViewDelegate {
+    func objectCatalogView(_ objectCatalogView: ObjectCatalogView, didSelectModel model: NodeModel) {
+        delegate?.objectCatalog(didSelectModel: model)
     }
 }

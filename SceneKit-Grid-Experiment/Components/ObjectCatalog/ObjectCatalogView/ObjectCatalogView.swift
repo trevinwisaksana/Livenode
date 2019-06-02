@@ -40,20 +40,13 @@ public class ObjectCatalogView: UIView  {
         return scene
     }()
     
-    private weak var delegate: ObjectCatalogViewDelegate?
+    weak var delegate: ObjectCatalogViewDelegate?
     
     // MARK: - Setup
     
-    public init(frame: CGRect, withDelegate delegate: ObjectCatalogViewDelegate) {
-        super.init(frame: frame)
-        
-        self.delegate = delegate
-        
-        setup()
-    }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setup()
     }
     
@@ -80,8 +73,18 @@ extension ObjectCatalogView {
 
 // MARK: - LVNCollectionViewSceneDelegate
 
-extension ObjectCatalogView: LVNCollectionViewSceneDelegate {
+extension ObjectCatalogView: LVNCollectionViewSceneProtocol {
     func didSelectModel(_ sender: UITapGestureRecognizer, withType type: NodeModel) {
         delegate?.objectCatalogView(self, didSelectModel: type)
+    }
+    
+    public func lvnCollectionView(didSelectModelWith sender: UITapGestureRecognizer) {
+        let location = sender.location(in: sceneView)
+        
+        guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node else {
+            return
+        }
+        
+        didSelectModel(sender, withType: nodeSelected.type)
     }
 }
