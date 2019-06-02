@@ -32,19 +32,10 @@ public class SceneInspectorView: UIView {
         return tableView
     }()
     
-    private weak var delegate: SceneInspectorViewDelegate?
-    private weak var dataSource: SceneInspectorViewDataSource?
+    weak var delegate: SceneInspectorViewDelegate?
+    weak var dataSource: SceneInspectorViewDataSource?
     
     // MARK: - Setup
-    
-    public init(delegate: SceneInspectorViewDelegate, dataSource: SceneInspectorViewDataSource) {
-        super.init(frame: .zero)
-        
-        self.delegate = delegate
-        self.dataSource = dataSource
-        
-        setup()
-    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
