@@ -9,13 +9,14 @@
 import UIKit
 import SceneKit
 
-public protocol NodeInspectorPresentableViewDelegate: class {
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorParentView, didSelectItemAtIndexPath indexPath: IndexPath)
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorParentView, didUpdateNodePosition position: SCNVector3)
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorParentView, didAngleNodePosition angle: Float)
+public protocol NodeInspectorParentViewDelegate: class {
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didSelectItemAtIndexPath indexPath: IndexPath)
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didUpdateNodePosition position: SCNVector3)
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didAngleNodePosition angle: Float)
     
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorParentView, didUpdatePlaneWidth width: CGFloat)
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorParentView, didUpdatePlaneLength length: CGFloat)
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didUpdatePlaneWidth width: CGFloat)
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didUpdatePlaneLength length: CGFloat)
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didUpdateNodeColor color: UIColor)
 }
 
 public class NodeDataSource: NSObject {
@@ -47,7 +48,7 @@ public class NodeInspectorParentView: UIView {
     
     // MARK: - Public properties
     
-    weak var delegate: NodeInspectorPresentableViewDelegate?
+    weak var delegate: NodeInspectorParentViewDelegate?
     
     // MARK: - Setup
     
@@ -86,9 +87,9 @@ extension NodeInspectorParentView: NodeInspectorViewDelegate {
             
         case 3:
             // TODO: Show the animation navigation item
-            break
 //            let nodeAnimationList = Presenter.inject(.nodeAnimationList)
 //            navigationController.pushViewController(nodeAnimationList, animated: true)
+            break
             
         default:
             break
@@ -96,19 +97,19 @@ extension NodeInspectorParentView: NodeInspectorViewDelegate {
     }
     
     public func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didUpdateNodePosition position: SCNVector3) {
-        delegate?.nodeInspectorPresentableView(self, didUpdateNodePosition: position)
+        delegate?.nodeInspectorParentView(self, didUpdateNodePosition: position)
     }
     
     public func nodeInspectorView(_ nodeInspectorView: NodeInspectorView, didAngleNodePosition angle: Float) {
-        delegate?.nodeInspectorPresentableView(self, didAngleNodePosition: angle)
+        delegate?.nodeInspectorParentView(self, didAngleNodePosition: angle)
     }
     
     public func planeNodeInspectorView(_ planeNodeInspectorView: PlaneNodeInspectorView, didUpdatePlaneLength length: CGFloat) {
-        delegate?.nodeInspectorPresentableView(self, didUpdatePlaneLength: length)
+        delegate?.nodeInspectorParentView(self, didUpdatePlaneLength: length)
     }
     
     public func planeNodeInspectorView(_ planeNodeInspectorView: PlaneNodeInspectorView, didUpdatePlaneWidth width: CGFloat) {
-        delegate?.nodeInspectorPresentableView(self, didUpdatePlaneWidth: width)
+        delegate?.nodeInspectorParentView(self, didUpdatePlaneWidth: width)
     }
 }
 
@@ -128,6 +129,6 @@ extension NodeInspectorParentView: NodeInspectorViewDataSource {
 
 extension NodeInspectorParentView: ColorPickerDelegate {
     func didSelectColor(_ color: UIColor) {
-        delegate?.colorPicker(didSelectColor: color)
+        delegate?.nodeInspectorParentView(self, didUpdateNodeColor: color)
     }
 }
