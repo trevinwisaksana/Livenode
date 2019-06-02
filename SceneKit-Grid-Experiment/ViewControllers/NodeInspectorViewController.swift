@@ -9,15 +9,29 @@
 import UIKit
 import SceneKit
 
+protocol NodeInspectorDelegate: class {
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didSelectItemAtIndexPath indexPath: IndexPath)
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didUpdateNodePosition position: SCNVector3)
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didAngleNodePosition angle: Float)
+    
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didUpdatePlaneWidth width: CGFloat)
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didUpdatePlaneLength length: CGFloat)
+    func nodeInspector(_ nodeInspector: NodeInspectorViewController, didUpdateNodeColor color: UIColor)
+}
+
 final class NodeInspectorViewController: UIViewController {
+    
+    // MARK: - External Properties
+    
+    weak var delegate: NodeInspectorDelegate?
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var mainView: NodeInspectorPresentableView = {
-        let mainView = NodeInspectorPresentableView(frame: .zero)
+    lazy var mainView: NodeInspectorParentView = {
+        let mainView = NodeInspectorParentView(frame: .zero)
         mainView.delegate = self
         return mainView
     }()
@@ -51,32 +65,30 @@ final class NodeInspectorViewController: UIViewController {
 
 // MARK: - NodeInspectorPresentableViewDelegate
 
-extension NodeInspectorViewController: NodeInspectorPresentableViewDelegate {
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didSelectItemAtIndexPath indexPath: IndexPath) {
-        
+extension NodeInspectorViewController: NodeInspectorParentViewDelegate {
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didSelectItemAtIndexPath indexPath: IndexPath) {
+        delegate?.nodeInspector(self, didSelectItemAtIndexPath: indexPath)
     }
     
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdateNodePosition position: SCNVector3) {
-        sceneEditorViewController().document?.scene.changeNodePosition(to: position)
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didUpdateNodeColor color: UIColor) {
+        delegate?.nodeInspector(self, didUpdateNodeColor: color)
     }
     
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didAngleNodePosition angle: Float) {
-        sceneEditorViewController().document?.scene.changeNodeRotation(toAngle: angle)
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didUpdateNodePosition position: SCNVector3) {
+        delegate?.nodeInspector(self, didUpdateNodePosition: position)
+    }
+    
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didAngleNodePosition angle: Float) {
+        delegate?.nodeInspector(self, didAngleNodePosition: angle)
     }
     
     // MARK: - PlaneNodeInspectorDelegate
     
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdatePlaneWidth width: CGFloat) {
-        sceneEditorViewController().document?.scene.modifyPlaneNode(width: width)
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didUpdatePlaneWidth width: CGFloat) {
+        delegate?.nodeInspector(self, didUpdatePlaneWidth: width)
     }
     
-    func nodeInspectorPresentableView(_ nodeInspectorPresentableView: NodeInspectorPresentableView, didUpdatePlaneLength length: CGFloat) {
-        sceneEditorViewController().document?.scene.modifyPlaneNode(length: length)
-    }
-    
-    private func sceneEditorViewController() -> SceneEditorViewController {
-        let rootNavigationController = presentingViewController as! RootNavigationController
-        let sceneEditorViewController = rootNavigationController.viewControllers.first as! SceneEditorViewController
-        return sceneEditorViewController
+    func nodeInspectorParentView(_ nodeInspectorParentView: NodeInspectorParentView, didUpdatePlaneLength length: CGFloat) {
+        delegate?.nodeInspector(self, didUpdatePlaneLength: length)
     }
 }
