@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol ColorPickerViewDelegate: class {
-    func didTap(color: UIColor)
+    func didSelectColor(_ color: UIColor)
 }
 
 public protocol ColorPickerViewDataSource: class {
@@ -29,22 +29,13 @@ public class ColorPickerView: UIView {
         }
     }
     
-    private weak var delegate: ColorPickerViewDelegate?
-    private weak var dataSource: ColorPickerViewDataSource?
+    weak var delegate: ColorPickerViewDelegate?
     
     // MARK: - Setup
     
-    public init(delegate: ColorPickerViewDelegate, dataSource: ColorPickerViewDataSource) {
-        super.init(frame: .zero)
-        
-        self.delegate = delegate
-        self.dataSource = dataSource
-        
-        setup()
-    }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setup()
     }
     
@@ -119,12 +110,12 @@ public class ColorPickerView: UIView {
     // MARK: - Gesture Recognizer
     
     @objc
-    func didSelectColor(_ gestureRecognizer: UILongPressGestureRecognizer) {
+    private func didSelectColor(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             let point = gestureRecognizer.location(in: self)
             let color = getColorAt(point: point)
             
-            delegate?.didTap(color: color)
+            delegate?.didSelectColor(color)
         }
     }
 }

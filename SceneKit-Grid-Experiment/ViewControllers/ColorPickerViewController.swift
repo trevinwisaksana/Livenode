@@ -8,15 +8,24 @@
 
 import UIKit
 
-final class ColorPickerViewController<View: UIView>: UIViewController {
+protocol ColorPickerDelegate: class {
+    func didSelectColor(_ color: UIColor)
+}
+
+final class ColorPickerViewController: UIViewController {
+    
+    // MARK: - External Properties
+    
+    weak var delegate: ColorPickerDelegate?
     
     // MARK: - Internal Properties
     
     private let popoverWidth: Int = Style.navigationItemPopoverWidth
     private let popoverHeight: Int = 300
     
-    lazy var mainView: View = {
-        let mainView = View(frame: view.frame)
+    lazy var mainView: ColorPickerView = {
+        let mainView = ColorPickerView(frame: view.frame)
+        mainView.delegate = self
         return mainView
     }()
     
@@ -40,4 +49,12 @@ final class ColorPickerViewController<View: UIView>: UIViewController {
         preferredContentSize = CGSize(width: popoverWidth, height: popoverHeight)
     }
     
+}
+
+// MARK: - ColorPickerViewDelegate
+
+extension ColorPickerViewController: ColorPickerViewDelegate {
+    func didSelectColor(_ color: UIColor) {
+        delegate?.didSelectColor(color)
+    }
 }
