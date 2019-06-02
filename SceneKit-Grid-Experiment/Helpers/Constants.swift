@@ -27,6 +27,10 @@ struct Constants {
         static let presentationNodeContainer = "presentationNodeContainer"
         static let speechBubble = "speechBubbleNode"
     }
+    
+    struct UserState {
+        static let didDisplayPresentationOnboarding = "didDisplayPresentationOnboarding"
+    }
 }
 
 struct NotificationKey {
