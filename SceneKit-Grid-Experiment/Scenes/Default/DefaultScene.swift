@@ -347,6 +347,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     private func insertPlane() {
         // TODO: Fix issue where plane cannot be moved easily if it's too big
         let plane = SCNPlane(width: 5, height: 5)
+        plane.name = type(of: plane.self).description()
         let planeNode = SCNNode(geometry: plane)
         
         planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
