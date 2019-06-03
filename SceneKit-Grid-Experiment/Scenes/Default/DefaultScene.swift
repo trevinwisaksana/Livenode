@@ -431,7 +431,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
             
             switch nodeSelected?.type ?? .default {
             case .plane:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: -0.05, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.05, z: nodeZPos)
             case .box:
                 nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.5, z: nodeZPos)
             case .pyramid:
@@ -591,14 +591,14 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         
         Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(didStartSpeechBubbleAnimationTimer(_:)), userInfo: nil, repeats: false)
         
-//        let text = SCNText(string: title, extrusionDepth: 0)
+        // let text = SCNText(string: title, extrusionDepth: 0)
         let text = SCNText(string: "Test", extrusionDepth: 0)
         text.firstMaterial?.isDoubleSided = true
         let speechBubbleNode = SCNNode(geometry: text)
         
         speechBubbleNode.name = Constants.Node.speechBubble
         speechBubbleNode.scale = SCNVector3(0.1, 0.1, 0.1)
-        speechBubbleNode.opacity = 0
+        speechBubbleNode.opacity = 0 // TODO: Fix issue with when opacity is zero, it cannot be presented in Presentation mode
         
         let (min, max) = speechBubbleNode.boundingBox
         
@@ -644,15 +644,25 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         let fadeInAnimation = SCNAction.fadeIn(duration: 0.15)
         fadeInAnimation.timingMode = .easeInEaseOut
         nodeAnimationTarget.addAction(fadeInAnimation, forKey: .speechBubble)
+        nodeAnimationTarget.willDisplaySpeechBubble = true
         
         nodeAnimationTarget.addChildNode(speechBubbleNode)
+        
+        guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
+            return
+        }
+        
+        presentationNodeContainer.childNodes.forEach { (node) in
+            if node.name == nodeAnimationTarget.name {
+                node.addChildNode(speechBubbleNode)
+            }
+        }
         
         speechBubbleShouldFollowCamera = true
     }
     
     private func adjustSpeechBubbleAngle() {
         // TODO: Fix issue with speech bubble no longer following when user closes and reopens the document
-        
         if !speechBubbleShouldFollowCamera {
             return
         }
@@ -836,6 +846,8 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func limitCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
+        // TODO: Fix issue with zooming in with camera
+        
         guard let camera = rootNode.childNode(withName: Constants.Node.camera, recursively: true)?.camera else {
             return
         }
