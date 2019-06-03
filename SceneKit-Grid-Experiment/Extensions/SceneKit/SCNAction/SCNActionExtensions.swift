@@ -20,7 +20,7 @@ extension SCNAction {
             return .rotate
         case AnimationType.SCNActionWait.string:
             return .delay
-        case AnimationType.SCNActionFade.string:
+        case AnimationType.SCNActionFade.string: // TODO: Do not use SCNActionFade
             return .speechBubble
         default:
             return .default
