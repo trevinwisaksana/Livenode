@@ -32,7 +32,7 @@ public extension UIView {
     ///   - isActive: A boolean on whether the constraint is active or not.
     /// - Returns: The added constraints.
     @discardableResult
-    public func fillInSuperview(insets: UIEdgeInsets = .zero, isActive: Bool = true) -> [NSLayoutConstraint] {
+    func fillInSuperview(insets: UIEdgeInsets = .zero, isActive: Bool = true) -> [NSLayoutConstraint] {
         guard let superview = self.superview else {
             return [NSLayoutConstraint]()
         }
@@ -56,12 +56,12 @@ public extension UIView {
 // MARK: - Anchors
 
 public extension UIView {
-    public convenience init(withAutoLayout autoLayout: Bool) {
+    convenience init(withAutoLayout autoLayout: Bool) {
         self.init()
         translatesAutoresizingMaskIntoConstraints = !autoLayout
     }
     
-    public var compatibleTopAnchor: NSLayoutYAxisAnchor {
+    var compatibleTopAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide.topAnchor
         } else {
@@ -69,7 +69,7 @@ public extension UIView {
         }
     }
     
-    public var compatibleBottomAnchor: NSLayoutYAxisAnchor {
+    var compatibleBottomAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide.bottomAnchor
         } else {
