@@ -25,7 +25,6 @@ final class NodePresentationManager: NSObject {
     
     static var presentationNodeContainer: SCNNode?
     
-    
     // MARK: - Node Presentation
     
     func addPresentingNode(to sceneView: ARSCNView, at location: simd_float4) {
@@ -46,15 +45,6 @@ final class NodePresentationManager: NSObject {
         sceneView.scene.rootNode.addChildNode(presentationNodes)
 
         presentationNodes.childNodes.forEach { (node) in
-//            if node.willDisplaySpeechBubble {
-//                let customAction = SCNAction.customAction(duration: 2.0) { (node, time) in
-//                    let alertNode = node.childNode(withName: Constants.Node.speechBubble, recursively: true)
-//                    alertNode?.runAction(action)
-//                }
-//
-//                node.actions.append(customAction)
-//            }
-            
             let sequence = SCNAction.sequence(node.actions)
             node.runAction(sequence)
         }
