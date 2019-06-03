@@ -11,7 +11,8 @@ import SceneKit
 extension SCNNode {
     
     /// Appends a list of nodes as a child node.
-    @objc func addChildNodes(_ nodes: [SCNNode]) {
+    @objc
+    func addChildNodes(_ nodes: [SCNNode]) {
         nodes.forEach { (node) in
             addChildNode(node)
         }
@@ -40,6 +41,26 @@ extension SCNNode {
         
         set(value) {
             objc_setAssociatedObject(self, &MovableState.isMovable, value, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    // MARK: - Speech Bubble
+    
+    private struct SpeechBubbleState {
+        static var willDisplaySpeechBubble = false
+    }
+    
+    var willDisplaySpeechBubble: Bool {
+        get {
+            guard let speechBubbleState = objc_getAssociatedObject(self, &SpeechBubbleState.willDisplaySpeechBubble) as? Bool else {
+                return Bool()
+            }
+            
+            return speechBubbleState
+        }
+        
+        set(value) {
+            objc_setAssociatedObject(self, &SpeechBubbleState.willDisplaySpeechBubble, value, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     

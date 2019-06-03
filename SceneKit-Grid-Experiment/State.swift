@@ -10,8 +10,12 @@ import SceneKit
 
 struct State {    
     static var currentDocument: SceneDocument?
+    
     static var isEditingScene: Bool = false
+    
     static var nodeSelected: SCNNode?
+    static var nodeColorSelected: UIColor?
     static var nodeAnimationTarget: SCNNode?
+    
     static var currentTouchLocation: SCNVector3?
 }
