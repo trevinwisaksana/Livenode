@@ -423,23 +423,19 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Node Movement
     
-    public func move(targetNode: SCNNode, in sceneView: SCNView) {
-        let isCorrectNodeSelected = targetNode.name != Constants.Node.highlight && targetNode.name != Constants.Node.floor
-        if didSelectANode && isCorrectNodeSelected && nodeSelected?.isMovable ?? false {
-            let nodeXPos = targetNode.position.x
-            let nodeZPos = targetNode.position.z
-            
+    public func moveNodeTo(_ location: SCNVector3, in sceneView: SCNView) {
+        if didSelectANode && nodeSelected?.isMovable ?? false {
             switch nodeSelected?.type ?? .default {
             case .plane:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.05, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: 0.05, z: location.z)
             case .box:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.5, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: 0.5, z: location.z)
             case .pyramid:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: 0, z: location.z)
             case .sphere:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.9, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: 0.9, z: location.z)
             default:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: DefaultScene.nodeBottomMargin, z: location.z)
             }
         }
     }

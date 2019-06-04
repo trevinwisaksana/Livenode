@@ -331,10 +331,23 @@ final class SceneEditorManager: NSObject {
     // MARK: - Touches
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesMovedWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
+        calculateNodeTransformation(using: touches)
+    }
+    
+    private func calculateNodeTransformation(using touches: Set<UITouch>) {
+        guard let controller = sceneEditorController else {
+            // TODO: Error handle
+            return
+        }
+        
         let touch = touches.first ?? UITouch()
         let location = touch.location(in: controller.view)
         
-        guard let nodeSelected = sceneView.hitTest(location, options: nil).first?.node else {
+        let zProjectedPoint: CGFloat = CGFloat(controller.sceneView.projectPoint(State.nodeSelected?.position ?? SCNVector3Zero).z)
+        let locationVector: SCNVector3 = SCNVector3(location.x, location.y, zProjectedPoint)
+        let unprojectedLocation = controller.sceneView.unprojectPoint(locationVector)
+        
+        guard let nodeSelected = controller.sceneView.hitTest(location, options: nil).first?.node else {
             return
         }
         
@@ -342,7 +355,7 @@ final class SceneEditorManager: NSObject {
             controller.cameraNavigationPanGesture.isEnabled = false
         }
         
-        scene.move(targetNode: nodeSelected, in: sceneView)
+        controller.document?.scene.moveNodeTo(unprojectedLocation, in: controller.sceneView)
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, touchesBeganWith touches: Set<UITouch>, at sceneView: SCNView, for scene: DefaultScene) {
