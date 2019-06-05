@@ -842,21 +842,33 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func limitCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
-        // TODO: Fix issue with zooming in with camera
-        
         guard let camera = rootNode.childNode(withName: Constants.Node.camera, recursively: true)?.camera else {
             return
         }
         
         switch pinchGesture.state {
-        case .began:
-            if camera.fieldOfView < 5.0 {
-                camera.fieldOfView = 5.0
+        case .changed:
+            if camera.fieldOfView >= Constants.Value.maximumZoomFieldOfView && camera.fieldOfView <= Constants.Value.minimumZoomFieldOfView {
+                camera.fieldOfView -= (pinchGesture.velocity / pinchAttenuation)
+                
+                // Note: Cannot put this in a function, it bugs out for some reason
+                if camera.fieldOfView > Constants.Value.minimumZoomFieldOfView {
+                    camera.fieldOfView = Constants.Value.minimumZoomFieldOfView
+                }
+                
+                if camera.fieldOfView < Constants.Value.maximumZoomFieldOfView {
+                    camera.fieldOfView = Constants.Value.maximumZoomFieldOfView
+                }
             }
             
-        case .changed:
-            if camera.fieldOfView >= 5.0 {
-                camera.fieldOfView -= (pinchGesture.velocity / pinchAttenuation)
+        case .ended:
+            // Note: Cannot put this in a function, it bugs out for some reason
+            if camera.fieldOfView > Constants.Value.minimumZoomFieldOfView {
+                camera.fieldOfView = Constants.Value.minimumZoomFieldOfView
+            }
+            
+            if camera.fieldOfView < Constants.Value.maximumZoomFieldOfView {
+                camera.fieldOfView = Constants.Value.maximumZoomFieldOfView
             }
             
         default:
