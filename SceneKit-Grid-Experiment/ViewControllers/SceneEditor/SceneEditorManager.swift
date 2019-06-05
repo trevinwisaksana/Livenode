@@ -336,7 +336,6 @@ final class SceneEditorManager: NSObject {
     
     private func calculateNodeTransformation(using touches: Set<UITouch>) {
         guard let controller = sceneEditorController else {
-            // TODO: Error handle
             return
         }
         
