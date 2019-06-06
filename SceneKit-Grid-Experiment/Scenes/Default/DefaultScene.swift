@@ -423,23 +423,19 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Node Movement
     
-    public func move(targetNode: SCNNode, in sceneView: SCNView) {
-        let isCorrectNodeSelected = targetNode.name != Constants.Node.highlight && targetNode.name != Constants.Node.floor
-        if didSelectANode && isCorrectNodeSelected && nodeSelected?.isMovable ?? false {
-            let nodeXPos = targetNode.position.x
-            let nodeZPos = targetNode.position.z
-            
+    public func moveNodeTo(_ location: SCNVector3, in sceneView: SCNView) {
+        if didSelectANode && nodeSelected?.isMovable ?? false {
             switch nodeSelected?.type ?? .default {
             case .plane:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.05, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: 0.05, z: location.z)
             case .box:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.5, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: 0.5, z: location.z)
             case .pyramid:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: 0, z: location.z)
             case .sphere:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: 0.9, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: 0.9, z: location.z)
             default:
-                nodeSelected?.position = SCNVector3(x: nodeXPos, y: DefaultScene.nodeBottomMargin, z: nodeZPos)
+                nodeSelected?.position = SCNVector3(x: location.x, y: DefaultScene.nodeBottomMargin, z: location.z)
             }
         }
     }
@@ -846,21 +842,33 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func limitCameraZoom(using pinchGesture: UIPinchGestureRecognizer) {
-        // TODO: Fix issue with zooming in with camera
-        
         guard let camera = rootNode.childNode(withName: Constants.Node.camera, recursively: true)?.camera else {
             return
         }
         
         switch pinchGesture.state {
-        case .began:
-            if camera.fieldOfView < 5.0 {
-                camera.fieldOfView = 5.0
+        case .changed:
+            if camera.fieldOfView >= Constants.Value.maximumZoomFieldOfView && camera.fieldOfView <= Constants.Value.minimumZoomFieldOfView {
+                camera.fieldOfView -= (pinchGesture.velocity / pinchAttenuation)
+                
+                // Note: Cannot put this in a function, it bugs out for some reason
+                if camera.fieldOfView > Constants.Value.minimumZoomFieldOfView {
+                    camera.fieldOfView = Constants.Value.minimumZoomFieldOfView
+                }
+                
+                if camera.fieldOfView < Constants.Value.maximumZoomFieldOfView {
+                    camera.fieldOfView = Constants.Value.maximumZoomFieldOfView
+                }
             }
             
-        case .changed:
-            if camera.fieldOfView >= 5.0 {
-                camera.fieldOfView -= (pinchGesture.velocity / pinchAttenuation)
+        case .ended:
+            // Note: Cannot put this in a function, it bugs out for some reason
+            if camera.fieldOfView > Constants.Value.minimumZoomFieldOfView {
+                camera.fieldOfView = Constants.Value.minimumZoomFieldOfView
+            }
+            
+            if camera.fieldOfView < Constants.Value.maximumZoomFieldOfView {
+                camera.fieldOfView = Constants.Value.maximumZoomFieldOfView
             }
             
         default:

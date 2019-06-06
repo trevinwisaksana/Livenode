@@ -6,7 +6,7 @@
 //  Copyright © 2018 Trevin Wisaksana. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Constants {
     struct Controller {
@@ -30,6 +30,13 @@ struct Constants {
     
     struct UserState {
         static let didDisplayPresentationOnboarding = "didDisplayPresentationOnboarding"
+    }
+    
+    struct Value {
+        /// Maximum camera field of view is 5.0
+        static let maximumZoomFieldOfView: CGFloat = 5.0
+        /// Maximum camera field of view is 47.0
+        static let minimumZoomFieldOfView: CGFloat = 47.0
     }
 }
 
