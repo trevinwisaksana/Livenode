@@ -110,12 +110,12 @@ extension SCNNode {
         actions.forEach { (action) in
             switch action.animationType() {
             case .speechBubble:
-                
-                Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(didStartSpeechBubbleAnimationTimer(_:)), userInfo: nil, repeats: false)
+                // 0.6 is the default duration of fade in and fade out animation
+                Timer.scheduledTimer(timeInterval: State.animationDuration - 0.6, target: self, selector: #selector(didStartSpeechBubbleAnimationTimer(_:)), userInfo: nil, repeats: false)
                 
                 let customAction = SCNAction.customAction(duration: action.duration) { (node, time) in
-                    let alertNode = node.childNode(withName: Constants.Node.speechBubble, recursively: true)
-                    alertNode?.runAction(action)
+                    let speechBubbleNode = node.childNode(withName: Constants.Node.speechBubble, recursively: true)
+                    speechBubbleNode?.runAction(action)
                 }
                 
                 actionSequence.append(customAction)
