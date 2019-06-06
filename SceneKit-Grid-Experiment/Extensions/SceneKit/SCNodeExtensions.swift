@@ -10,6 +10,8 @@ import SceneKit
 
 extension SCNNode {
     
+    // MARK: - Child
+    
     /// Appends a list of nodes as a child node.
     @objc
     func addChildNodes(_ nodes: [SCNNode]) {
@@ -18,9 +20,15 @@ extension SCNNode {
         }
     }
     
-}
-
-extension SCNNode {
+    // MARK: - Opacity
+    
+    func hide() {
+        opacity = 0
+    }
+    
+    func unhide() {
+        opacity = 1
+    }
     
     // TODO: Make this savable
     

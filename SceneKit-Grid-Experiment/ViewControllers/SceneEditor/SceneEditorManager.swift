@@ -141,6 +141,9 @@ final class SceneEditorManager: NSObject {
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didDisplayPresentationViewWith scene: DefaultScene, using sender: UIBarButtonItem) {
+        
+        scene.prepareForPresentation()
+        
         let presentationController = Presenter.inject(.presentation(scene: scene))
         controller.present(presentationController, animated: true, completion: nil)
     }

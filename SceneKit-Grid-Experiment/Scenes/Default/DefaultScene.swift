@@ -133,6 +133,20 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         super.init(coder: aDecoder)
     }
     
+    // MARK: - Presentation
+    
+    func prepareForPresentation() {
+        prepareSpeechBubbleNodes()
+    }
+    
+    private func prepareSpeechBubbleNodes() {
+        guard let speechBubbleNode = rootNode.childNode(withName: Constants.Node.speechBubble, recursively: true) else {
+            return
+        }
+        
+        speechBubbleNode.hide()
+    }
+    
     // MARK: - Grid
     
     private func createGrid(with size: CGSize) {
@@ -585,6 +599,8 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
+        State.animationDuration = duration
+        
         // let text = SCNText(string: title, extrusionDepth: 0)
         let text = SCNText(string: "Test", extrusionDepth: 0)
         text.firstMaterial?.isDoubleSided = true
@@ -656,7 +672,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func adjustSpeechBubbleAngle() {
-        // TODO: Fix issue with speech bubble no longer following when user closes and reopens the document
+        // TODO: Fix issue with speech bubble no longer following camera when user closes and reopens the document
         if !speechBubbleShouldFollowCamera {
             return
         }

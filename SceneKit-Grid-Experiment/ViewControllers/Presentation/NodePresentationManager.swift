@@ -35,6 +35,14 @@ final class NodePresentationManager: NSObject {
         let presentationNodes = SCNNode()
         
         NodePresentationManager.presentationNodeContainer?.childNodes.forEach { (node) in
+            switch node.name {
+            case Constants.Node.speechBubble:
+                node.hide()
+                
+            default:
+                break
+            }
+            
             let newNode = node.clone()
             newNode.actions = node.actions
             presentationNodes.addChildNode(newNode)
