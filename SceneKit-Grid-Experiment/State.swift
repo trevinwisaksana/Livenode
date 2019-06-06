@@ -18,4 +18,6 @@ struct State {
     static var nodeAnimationTarget: SCNNode?
     
     static var currentTouchLocation: SCNVector3?
+    
+    static var animationDuration: Double = 0.0
 }
