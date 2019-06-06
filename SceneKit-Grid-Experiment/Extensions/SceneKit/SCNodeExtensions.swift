@@ -73,8 +73,8 @@ extension SCNNode {
     public var actions: [SCNAction] {
         get {
             guard let cachedData = UserDefaults.standard.object(forKey: "\(name ?? "")-actions") as? Data
-            else {
-                return []
+                else {
+                    return []
             }
             
             do {
@@ -106,15 +106,22 @@ extension SCNNode {
     
     func playAllAnimations(completionHandler: (() -> Void)?) {
         var actionSequence = [SCNAction]()
-
+        
         actions.forEach { (action) in
-            if action.animationType() == .speechBubble {
+            switch action.animationType() {
+            case .speechBubble:
+                
+                Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(didStartSpeechBubbleAnimationTimer(_:)), userInfo: nil, repeats: false)
+                
                 let customAction = SCNAction.customAction(duration: action.duration) { (node, time) in
                     let alertNode = node.childNode(withName: Constants.Node.speechBubble, recursively: true)
                     alertNode?.runAction(action)
                 }
-
+                
                 actionSequence.append(customAction)
+                
+            default:
+                break
             }
             
             actionSequence.append(action)
@@ -122,6 +129,19 @@ extension SCNNode {
         
         let sequence = SCNAction.sequence(actionSequence)
         runAction(sequence, completionHandler: completionHandler)
+    }
+    
+    @objc
+    private func didStartSpeechBubbleAnimationTimer(_ sender: Timer) {
+        guard let speechBubbleNode = parent?.childNode(withName: Constants.Node.speechBubble, recursively: true) else {
+            return
+        }
+        
+        let fadeOutAnimation = SCNAction.fadeOut(duration: 0.15)
+        fadeOutAnimation.timingMode = .linear
+        speechBubbleNode.runAction(fadeOutAnimation) {
+            speechBubbleNode.opacity = 0
+        }
     }
     
     // MARK: - Duplicate
@@ -138,7 +158,7 @@ extension SCNNode {
 }
 
 extension SCNNode: NodeInspectorViewModel {
-
+    
     // MARK: - Color
     
     public var color: UIColor {
