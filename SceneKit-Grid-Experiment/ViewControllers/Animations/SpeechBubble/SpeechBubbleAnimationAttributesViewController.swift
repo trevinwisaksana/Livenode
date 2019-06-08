@@ -51,7 +51,7 @@ final class SpeechBubbleAnimationAttributesViewController: UIViewController {
     
 }
 
-// MARK: - AlertAnimationAttributesViewDelegate
+// MARK: - SpeechBubbleAnimationAttributesViewDelegate
 
 extension SpeechBubbleAnimationAttributesViewController: SpeechBubbleAnimationAttributesViewDelegate {
     func speechBubbleAnimationAttributesView(_ alertAnimationAttributesView: SpeechBubbleAnimationAttributesView, didTapAddAnimationButton button: UIButton, animation: SpeechBubbleAnimationAttributes) {

@@ -1,5 +1,5 @@
 //
-//  SpeechBubbleTitleCell.swift
+//  SpeechBubbleTextCell.swift
 //  SceneKit-Grid-Experiment
 //
 //  Created by Trevin Wisaksana on 24/02/19.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol SpeechBubbleTitleCellDelegate: class {
-    func speechBubble(title: String)
+protocol SpeechBubbleTextCellDelegate: class {
+    func speechBubble(text: String)
 }
 
-final class SpeechBubbleTitleCell: UITableViewCell {
+final class SpeechBubbleTextCell: UITableViewCell {
     
     // MARK: - Internal properties
     
@@ -34,6 +34,7 @@ final class SpeechBubbleTitleCell: UITableViewCell {
     
     private lazy var speechBubbleTitleTextField: UITextField = {
         let textField = UITextField()
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .clear
         textField.keyboardType = .numberPad
@@ -44,7 +45,7 @@ final class SpeechBubbleTitleCell: UITableViewCell {
     
     // MARK: - External Properties
     
-    weak var delegate: SpeechBubbleTitleCellDelegate?
+    weak var delegate: SpeechBubbleTextCellDelegate?
     
     // MARK: - Setup
     
@@ -65,13 +66,13 @@ final class SpeechBubbleTitleCell: UITableViewCell {
         backgroundColor = .milk
         
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: SpeechBubbleTitleCell.titleLeftMargin),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: SpeechBubbleTitleCell.titleTopMargin),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: SpeechBubbleTitleCell.titleBottomMargin),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: SpeechBubbleTextCell.titleLeftMargin),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: SpeechBubbleTextCell.titleTopMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: SpeechBubbleTextCell.titleBottomMargin),
             
             speechBubbleTitleTextField.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            speechBubbleTitleTextField.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: SpeechBubbleTitleCell.speechBubbleTitleTextFieldlLeftMargin),
-            speechBubbleTitleTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: SpeechBubbleTitleCell.speechBubbleTitleTextFieldlRightMargin),
+            speechBubbleTitleTextField.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: SpeechBubbleTextCell.speechBubbleTitleTextFieldlLeftMargin),
+            speechBubbleTitleTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: SpeechBubbleTextCell.speechBubbleTitleTextFieldlRightMargin),
         ])
     }
     
@@ -79,8 +80,9 @@ final class SpeechBubbleTitleCell: UITableViewCell {
 
 // MARK: - UITextFieldDelegate
 
-extension SpeechBubbleTitleCell: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.speechBubble(title: textField.text ?? "")
+extension SpeechBubbleTextCell: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        delegate?.speechBubble(text: textField.text ?? "")
+        return true
     }
 }

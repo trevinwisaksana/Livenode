@@ -67,7 +67,7 @@ public class SpeechBubbleAnimationAttributesView: UIView {
     }
     
     private func setup() {
-        tableView.register(cell: SpeechBubbleTitleCell.self)
+        tableView.register(cell: SpeechBubbleTextCell.self)
         tableView.register(cell: AnimationDurationCell.self)
         tableView.register(cell: AddAnimationCell.self)
         
@@ -115,7 +115,8 @@ extension SpeechBubbleAnimationAttributesView: UITableViewDataSource {
     private func setupCell(with indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case SpeechBubbleAnimationAttributesSection.speechBubbleTextField.sectionNumber:
-            let cell: SpeechBubbleTitleCell = tableView.dequeueReusableCell()
+            let cell: SpeechBubbleTextCell = tableView.dequeueReusableCell()
+            cell.delegate = self
             
             return cell
             
@@ -180,8 +181,8 @@ extension SpeechBubbleAnimationAttributesView: AnimationDurationCellDelegate {
 
 // MARK: - SpeechBubbleTitleCellDelegate
 
-extension SpeechBubbleAnimationAttributesView: SpeechBubbleTitleCellDelegate {
-    func speechBubble(title: String) {
-        dataSource?.title = title
+extension SpeechBubbleAnimationAttributesView: SpeechBubbleTextCellDelegate {
+    func speechBubble(text: String) {
+        dataSource?.title = text
     }
 }

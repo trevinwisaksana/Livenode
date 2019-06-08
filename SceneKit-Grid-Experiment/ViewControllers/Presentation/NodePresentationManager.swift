@@ -35,14 +35,6 @@ final class NodePresentationManager: NSObject {
         let presentationNodes = SCNNode()
         
         NodePresentationManager.presentationNodeContainer?.childNodes.forEach { (node) in
-            switch node.name {
-            case Constants.Node.speechBubble:
-                node.hide()
-                
-            default:
-                break
-            }
-            
             let newNode = node.clone()
             newNode.actions = node.actions
             presentationNodes.addChildNode(newNode)
@@ -53,8 +45,7 @@ final class NodePresentationManager: NSObject {
         sceneView.scene.rootNode.addChildNode(presentationNodes)
 
         presentationNodes.childNodes.forEach { (node) in
-            let sequence = SCNAction.sequence(node.actions)
-            node.runAction(sequence)
+            node.playAllAnimations(completionHandler: nil)
         }
     }
     

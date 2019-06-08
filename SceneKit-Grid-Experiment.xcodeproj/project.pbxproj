@@ -21,7 +21,7 @@
 		DD1058CC218C39E600FF7301 /* Building.scn in Resources */ = {isa = PBXBuildFile; fileRef = DD1058CB218C39E600FF7301 /* Building.scn */; };
 		DD14E159219A6235006ECF67 /* NodeInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */; };
 		DD14E15B219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */; };
-		DD1699882222D51800FB4E72 /* SpeechBubbleTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1699872222D51700FB4E72 /* SpeechBubbleTitleCell.swift */; };
+		DD1699882222D51800FB4E72 /* SpeechBubbleTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1699872222D51700FB4E72 /* SpeechBubbleTextCell.swift */; };
 		DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F66720672FBD005E838C /* AppDelegate.swift */; };
 		DD20F67120672FBD005E838C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD20F67020672FBD005E838C /* Assets.xcassets */; };
 		DD2234B621B27D6A0041AD70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD1058B9218AEA1F00FF7301 /* LaunchScreen.storyboard */; };
@@ -99,6 +99,7 @@
 		DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCCAA96219D41090071FE7A /* PlaneNodeSizeCell.swift */; };
 		DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C52721D7764C0073119E /* SCNActionSpeechBubble.swift */; };
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
+		DDDEF13922AB5D4E0032D995 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF13822AB5D4E0032D995 /* Animator.swift */; };
 		DDE5B4392274166D00088354 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDBCF5BC227414B300D5048E /* SF-Pro-Display-Regular.otf */; };
 		DDE5B43D227430B500088354 /* PresentationOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE5B43C227430B500088354 /* PresentationOnboardingView.swift */; };
 		DDE60E4621731BB30052E506 /* MoveAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */; };
@@ -140,7 +141,7 @@
 		DD1058CB218C39E600FF7301 /* Building.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Building.scn; sourceTree = "<group>"; };
 		DD14E158219A6235006ECF67 /* NodeInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInspectorViewController.swift; sourceTree = "<group>"; };
 		DD14E15A219A75C7006ECF67 /* UtilitiesInspectorSceneSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesInspectorSceneSettingsCell.swift; sourceTree = "<group>"; };
-		DD1699872222D51700FB4E72 /* SpeechBubbleTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechBubbleTitleCell.swift; sourceTree = "<group>"; };
+		DD1699872222D51700FB4E72 /* SpeechBubbleTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechBubbleTextCell.swift; sourceTree = "<group>"; };
 		DD20F66420672FBD005E838C /* SceneKit-Grid-Experiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SceneKit-Grid-Experiment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD20F66720672FBD005E838C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD20F67020672FBD005E838C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -222,6 +223,7 @@
 		DDCCAA96219D41090071FE7A /* PlaneNodeSizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneNodeSizeCell.swift; sourceTree = "<group>"; };
 		DDD1C52721D7764C0073119E /* SCNActionSpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNActionSpeechBubble.swift; sourceTree = "<group>"; };
 		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
+		DDDEF13822AB5D4E0032D995 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		DDE5B43C227430B500088354 /* PresentationOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationOnboardingView.swift; sourceTree = "<group>"; };
 		DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDurationCell.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				DD68C2192110688A0061100F /* State.swift */,
 				DD638DBC20AC2D3800395557 /* ViewControllers */,
 				DD638DC020AC2DA200395557 /* Presenter */,
+				DDDEF13A22AB5D560032D995 /* Animator */,
 				DD638DBD20AC2D4200395557 /* Components */,
 				DD638DBE20AC2D4800395557 /* Scenes */,
 				DD638DC820AC64E800395557 /* Extensions */,
@@ -682,7 +685,7 @@
 		DD73441B217D5E2400E4EE91 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				DD1699872222D51700FB4E72 /* SpeechBubbleTitleCell.swift */,
+				DD1699872222D51700FB4E72 /* SpeechBubbleTextCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -905,6 +908,14 @@
 				DDD1C52721D7764C0073119E /* SCNActionSpeechBubble.swift */,
 			);
 			path = SCNAction;
+			sourceTree = "<group>";
+		};
+		DDDEF13A22AB5D560032D995 /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				DDDEF13822AB5D4E0032D995 /* Animator.swift */,
+			);
+			path = Animator;
 			sourceTree = "<group>";
 		};
 		DDE60E4721731BB90052E506 /* AnimationAttributeViews */ = {
@@ -1196,7 +1207,7 @@
 				DDBA24C42153D309003C9CAF /* DocumentBrowserManager.swift in Sources */,
 				DD9D811F21716AB0006638F8 /* NodeAnimationListView.swift in Sources */,
 				DDCCAA97219D41090071FE7A /* PlaneNodeSizeCell.swift in Sources */,
-				DD1699882222D51800FB4E72 /* SpeechBubbleTitleCell.swift in Sources */,
+				DD1699882222D51800FB4E72 /* SpeechBubbleTextCell.swift in Sources */,
 				DD638DB920ABD44200395557 /* SceneActionMenuCell.swift in Sources */,
 				DD8E126E213CE11000D4F4DE /* UtilitiesInspectorShareCell.swift in Sources */,
 				DD638DC720AC5E0300395557 /* SCNodeExtensions.swift in Sources */,
@@ -1214,6 +1225,7 @@
 				DDFC63ED20F9CDCC00109EC5 /* SceneInspectorView.swift in Sources */,
 				DDE60E5C2173955A0052E506 /* MoveAnimationLocationCell.swift in Sources */,
 				DD20F66820672FBD005E838C /* AppDelegate.swift in Sources */,
+				DDDEF13922AB5D4E0032D995 /* Animator.swift in Sources */,
 				DD9C6AEE210AC07F001E4982 /* NodeInspectorView.swift in Sources */,
 				DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */,
 				DD6C16FD210C16EF002CB031 /* ColorPickerViewController.swift in Sources */,

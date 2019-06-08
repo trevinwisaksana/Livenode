@@ -135,6 +135,7 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     // MARK: - Presentation
     
+    /// Hides Speech Bubble Nodes to prevent them from showing before being animated.
     func prepareForPresentation() {
         prepareSpeechBubbleNodes()
     }
@@ -591,24 +592,23 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Speech Bubble Animation
     
     public func addSpeechBubbleAnimation(_ animation: SpeechBubbleAnimationAttributes, on sceneView: SCNView) {
-        createSpeechBubblePopover(duration: animation.duration ?? 0.25, title: animation.title)
+        createSpeechBubblePopover(duration: animation.duration, text: animation.title)
     }
     
-    private func createSpeechBubblePopover(duration: TimeInterval, title: String) {
+    private func createSpeechBubblePopover(duration: TimeInterval? = 0.25, text: String) {
         guard let nodeAnimationTarget = nodeAnimationTarget else {
             return
         }
         
-        State.animationDuration = duration
+        State.animationDuration = duration ?? 0.25
         
-        // let text = SCNText(string: title, extrusionDepth: 0)
-        let text = SCNText(string: "Test", extrusionDepth: 0)
+        let text = SCNText(string: text, extrusionDepth: 0)
         text.firstMaterial?.isDoubleSided = true
         let speechBubbleNode = SCNNode(geometry: text)
         
         speechBubbleNode.name = Constants.Node.speechBubble
         speechBubbleNode.scale = SCNVector3(0.1, 0.1, 0.1)
-        speechBubbleNode.opacity = 0 // TODO: Fix issue with when opacity is zero, it cannot be presented in Presentation mode
+        speechBubbleNode.opacity = 0
         
         let (min, max) = speechBubbleNode.boundingBox
         

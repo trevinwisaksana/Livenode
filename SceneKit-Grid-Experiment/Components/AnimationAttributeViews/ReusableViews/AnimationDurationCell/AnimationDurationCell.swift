@@ -124,8 +124,8 @@ public class AnimationDurationCell: UITableViewCell {
     public var model: AnimationDurationViewModel? {
         didSet {
             if let model = model {
-                durationSlider.value = Float(model.duration?.rounded() ?? 0)
-                durationLabel.text = "\(model.duration?.rounded() ?? 0)"
+                durationSlider.value = Float(model.duration?.rounded() ?? 0.0)
+                durationLabel.text = "\(model.duration?.rounded() ?? 0.0)"
             }
         }
     }
