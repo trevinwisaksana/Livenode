@@ -82,7 +82,11 @@ final class SpeechBubbleTextCell: UITableViewCell {
 
 extension SpeechBubbleTextCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        delegate?.speechBubble(text: textField.text ?? "")
+        if let text = textField.text as NSString? {
+            let speechBubbleText = text.replacingCharacters(in: range, with: string)
+            delegate?.speechBubble(text: speechBubbleText)
+        }
+        
         return true
     }
 }

@@ -295,8 +295,10 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
             insertHouse()
         case .seaplane:
             insertSeaplane()
+        case .tree:
+            insertTree()
         default:
-            break
+            return
         }
         
         didSelectSceneAction(.move)
@@ -360,7 +362,6 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func insertPlane() {
-        // TODO: Fix issue where plane cannot be moved easily if it's too big
         let plane = SCNPlane(width: 5, height: 5)
         plane.name = type(of: plane.self).description()
         let planeNode = SCNNode(geometry: plane)
@@ -381,12 +382,13 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func insertCar() {
-        guard let carNode = daeToSCNNode(filepath: "Car.scn") else {
+        guard let carNode = SCNNode.daeToSCNNode(filepath: "Car.scn") else {
             return
         }
         
         carNode.position = SCNVector3(0, 0, 0)
         carNode.name = "\(Int.random(in: 0...1000))"
+        carNode.geometry?.name = NodeType.LVNCar.string
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -399,13 +401,14 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     }
     
     private func insertHouse() {
-        guard let houseNode = daeToSCNNode(filepath: "House.scn") else {
+        guard let houseNode = SCNNode.daeToSCNNode(filepath: "House.scn") else {
             return
         }
         
         houseNode.position = SCNVector3(0, 0, 0)
         houseNode.scale = SCNVector3(0.2, 0.2, 0.2)
         houseNode.name = "\(Int.random(in: 0...1000))"
+        houseNode.geometry?.name = NodeType.LVNHouse.string
         
         guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
             return
@@ -417,8 +420,28 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         presentationNodeContainer.addChildNode(houseNode)
     }
     
+    private func insertTree() {
+        guard let treeNode = SCNNode.daeToSCNNode(filepath: "Tree.scn") else {
+            return
+        }
+        
+        treeNode.position = SCNVector3(0, -0.1, 0)
+        treeNode.name = "\(Int.random(in: 0...1000))"
+        treeNode.scale = SCNVector3(0.2, 0.2, 0.2)
+        treeNode.geometry?.name = NodeType.LVNTree.string
+        
+        guard let presentationNodeContainer = rootNode.childNode(withName: Constants.Node.presentationNodeContainer, recursively: true) else {
+            return
+        }
+        
+        nodeSelected = treeNode
+        recentNodeAdded = treeNode
+        
+        presentationNodeContainer.addChildNode(treeNode)
+    }
+    
     private func insertSeaplane() {
-        guard let seaplaneNode = daeToSCNNode(filepath: "Seaplane.scn") else {
+        guard let seaplaneNode = SCNNode.daeToSCNNode(filepath: "Seaplane.scn") else {
             return
         }
         
@@ -617,7 +640,10 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         let dz = min.z + 0.5 * (max.z - min.z)
         speechBubbleNode.pivot = SCNMatrix4MakeTranslation(dx, dy, dz)
         
-        let background = SCNPlane(width: 30, height: 15)
+        let width = CGFloat(speechBubbleNode.boundingBox.max.x - speechBubbleNode.boundingBox.min.x) + 10.0
+        let height = CGFloat(speechBubbleNode.boundingBox.max.y - speechBubbleNode.boundingBox.min.y) + 6.0
+        
+        let background = SCNPlane(width: width, height: height)
         background.cornerRadius = 1
         background.firstMaterial?.diffuse.contents = UIColor.white
         background.firstMaterial?.isDoubleSided = true
@@ -636,6 +662,10 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
             speechBubbleNode.eulerAngles = SCNVector3(1.57, 0, 0)
             
         case .car:
+            speechBubbleNode.position = SCNVector3(0, 3, 0)
+            backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)
+            
+        case .house:
             speechBubbleNode.position = SCNVector3(0, 3, 0)
             backgroundNode.position = SCNVector3(dx, dy, dz - 0.1)
             
@@ -890,24 +920,6 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
         if panGesture.state == .changed {
             cameraNode.localTranslate(by: SCNVector3(-xValue, yValue, 0.0))
         }
-    }
-    
-    // MARK: - Utilities
-    
-    private func daeToSCNNode(filepath: String) -> SCNNode? {
-        // TODO: Move this to SCNNodeExtensions
-        let scene = SCNScene(named: filepath)
-        
-        let childNodes = scene?.rootNode.childNodes
-        
-        for childNode in childNodes ?? [] {
-            // TODO: Create a list of names that the child node has to compare to
-            if childNode.name == "car" || childNode.name == "house" || childNode.name == "seaplane" {
-                return childNode
-            }
-        }
-        
-        return nil
     }
     
 }

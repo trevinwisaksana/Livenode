@@ -56,6 +56,28 @@ public struct ObjectCatalogModelFactory {
         pyramidNode.pivot = SCNMatrix4MakeTranslation(0, 0.55, 0)
         pyramidNode.changeColor(to: .orange)
         
+        
+        guard let carNode = SCNNode.daeToSCNNode(filepath: "Car.scn") else {
+            return []
+        }
+        
+        carNode.geometry?.name = NodeType.LVNCar.string
+        carNode.pivot = SCNMatrix4MakeTranslation(0, 0.55, 0)
+        
+        guard let houseNode = SCNNode.daeToSCNNode(filepath: "House.scn") else {
+            return []
+        }
+        
+        houseNode.geometry?.name = NodeType.LVNHouse.string
+        houseNode.pivot = SCNMatrix4MakeTranslation(0, 2.5, 0)
+        
+        guard let treeNode = SCNNode.daeToSCNNode(filepath: "Tree.scn") else {
+            return []
+        }
+        
+        treeNode.geometry?.name = NodeType.LVNTree.string
+        treeNode.pivot = SCNMatrix4MakeTranslation(0, 0.55, 0)
+        
         var pyramidNodeTransform = SCNMatrix4Identity
         pyramidNodeTransform = SCNMatrix4Rotate(pyramidNodeTransform, 0.349, 1, 0, 0)
         pyramidNodeTransform = SCNMatrix4Rotate(pyramidNodeTransform, 0.785, 0, 1, 0)
@@ -75,7 +97,25 @@ public struct ObjectCatalogModelFactory {
         planeNodeTransform = SCNMatrix4Rotate(planeNodeTransform, -0.220, 0, 0, 1)
         planeNode.transform = planeNodeTransform
         
-        return [boxNode, pyramidNode, sphereNode, planeNode]
+        var carNodeTransform = SCNMatrix4Identity
+        carNodeTransform = SCNMatrix4Rotate(carNodeTransform, -0.27, 0, 1, 0)
+        carNodeTransform = SCNMatrix4Rotate(carNodeTransform, 0.1, 1, 0, 0)
+        carNode.transform = carNodeTransform
+        carNode.scale = SCNVector3(0.4, 0.4, 0.4)
+        
+        var houseNodeTransform = SCNMatrix4Identity
+        houseNodeTransform = SCNMatrix4Rotate(houseNodeTransform, -0.27, 0, 1, 0)
+        houseNodeTransform = SCNMatrix4Rotate(houseNodeTransform, 0.1, 1, 0, 0)
+        houseNode.transform = houseNodeTransform
+        houseNode.scale = SCNVector3(0.08, 0.08, 0.08)
+        
+        var treeNodeTransform = SCNMatrix4Identity
+        treeNodeTransform = SCNMatrix4Rotate(treeNodeTransform, -0.27, 0, 1, 0)
+        treeNodeTransform = SCNMatrix4Rotate(treeNodeTransform, 0.1, 1, 0, 0)
+        treeNode.transform = treeNodeTransform
+        treeNode.scale = SCNVector3(0.04, 0.04, 0.04)
+        
+        return [boxNode, pyramidNode, sphereNode, planeNode, carNode, houseNode, treeNode]
     }
     
 }
@@ -90,6 +130,7 @@ public enum NodeModel: String {
     case car
     case seaplane
     case floor
+    case tree
     
     var scnFilename: String {
         return rawValue.capitalized + ".scn"
@@ -104,8 +145,11 @@ public enum NodeType: String {
     case `default`
     case SCNPlane
     case SCNBox
-    case SCNCar
     case SCNSphere
+    
+    case LVNCar
+    case LVNHouse
+    case LVNTree
     
     var string: String {
         return rawValue

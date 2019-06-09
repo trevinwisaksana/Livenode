@@ -163,7 +163,27 @@ extension SCNNode {
         return newNode
     }
     
+    // MARK: - Utilities
+    
+    static func daeToSCNNode(filepath: String) -> SCNNode? {
+        let scene = SCNScene(named: filepath)
+        
+        let childNodes = scene?.rootNode.childNodes
+        
+        for childNode in childNodes ?? [] {
+            // TODO: Create a parameter to insert these names
+            if childNode.name == "car" || childNode.name == "house" || childNode.name == "seaplane" || childNode.name == "Tree" {
+                return childNode
+            }
+        }
+        
+        return nil
+    }
+    
 }
+
+
+// MARK: - NodeInspectorViewModel
 
 extension SCNNode: NodeInspectorViewModel {
     
@@ -217,11 +237,14 @@ extension SCNNode: NodeInspectorViewModel {
             case NodeType.SCNBox.string:
                 return .box
                 
-            case NodeType.SCNCar.string:
+            case NodeType.LVNCar.string:
                 return .car
                 
             case NodeType.SCNSphere.string:
                 return .sphere
+                
+            case NodeType.LVNTree.string:
+                return .tree
                 
             default:
                 return .default

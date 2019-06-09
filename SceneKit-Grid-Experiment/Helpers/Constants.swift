@@ -21,11 +21,16 @@ struct Constants {
         static let floor = "floorNode"
         static let tileBorder = "tileBorderNode"
         static let tileFloor = "tileFloorNode"
+        
         static let camera = "cameraNode"
         static let cameraOrbit = "cameraOrbit"
         static let gridContainer = "gridContainer"
         static let presentationNodeContainer = "presentationNodeContainer"
+        
         static let speechBubble = "speechBubbleNode"
+        static let car = "carNode"
+        static let house = "houseNode"
+        static let tree = "treeNode"
     }
     
     struct UserState {

@@ -100,6 +100,7 @@
 		DDD1C52821D7764C0073119E /* SCNActionSpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C52721D7764C0073119E /* SCNActionSpeechBubble.swift */; };
 		DDDDACC2213CE41900F9DF5D /* SceneBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */; };
 		DDDEF13922AB5D4E0032D995 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF13822AB5D4E0032D995 /* Animator.swift */; };
+		DDDEF13E22ACA90C0032D995 /* Tree.scn in Resources */ = {isa = PBXBuildFile; fileRef = DDDEF13D22ACA7020032D995 /* Tree.scn */; };
 		DDE5B4392274166D00088354 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDBCF5BC227414B300D5048E /* SF-Pro-Display-Regular.otf */; };
 		DDE5B43D227430B500088354 /* PresentationOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE5B43C227430B500088354 /* PresentationOnboardingView.swift */; };
 		DDE60E4621731BB30052E506 /* MoveAnimationAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */; };
@@ -224,6 +225,7 @@
 		DDD1C52721D7764C0073119E /* SCNActionSpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNActionSpeechBubble.swift; sourceTree = "<group>"; };
 		DDDDACC1213CE41900F9DF5D /* SceneBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBackgroundColorCell.swift; sourceTree = "<group>"; };
 		DDDEF13822AB5D4E0032D995 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		DDDEF13D22ACA7020032D995 /* Tree.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Tree.scn; sourceTree = "<group>"; };
 		DDE5B43C227430B500088354 /* PresentationOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationOnboardingView.swift; sourceTree = "<group>"; };
 		DDE60E4521731BB30052E506 /* MoveAnimationAttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationAttributesView.swift; sourceTree = "<group>"; };
 		DDE60E4A21731E030052E506 /* AnimationDurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDurationCell.swift; sourceTree = "<group>"; };
@@ -798,6 +800,7 @@
 		DDBA24B421535056003C9CAF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DDDEF13D22ACA7020032D995 /* Tree.scn */,
 				DD276DB121CF99C4004FD5AA /* Humanoid.scn */,
 				DDEF325D20DF776100FEE793 /* Box.scn */,
 				DDCCAA92219D00CE0071FE7A /* Plane.scn */,
@@ -1137,6 +1140,7 @@
 				DD1058C0218AECB000FF7301 /* House.scn in Resources */,
 				DDAFED5B219BBE6A00D7CC7D /* Seaplane.scn in Resources */,
 				DDE5B4392274166D00088354 /* SF-Pro-Display-Regular.otf in Resources */,
+				DDDEF13E22ACA90C0032D995 /* Tree.scn in Resources */,
 				DDBCF5BF227414CF00D5048E /* SF-Pro-Display-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
