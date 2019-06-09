@@ -463,18 +463,8 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public func moveNodeTo(_ location: SCNVector3, in sceneView: SCNView) {
         if didSelectANode && nodeSelected?.isMovable ?? false {
-            switch nodeSelected?.type ?? .default {
-            case .plane:
-                nodeSelected?.position = SCNVector3(x: location.x, y: 0.05, z: location.z)
-            case .box:
-                nodeSelected?.position = SCNVector3(x: location.x, y: 0.5, z: location.z)
-            case .pyramid:
-                nodeSelected?.position = SCNVector3(x: location.x, y: 0, z: location.z)
-            case .sphere:
-                nodeSelected?.position = SCNVector3(x: location.x, y: 0.9, z: location.z)
-            default:
-                nodeSelected?.position = SCNVector3(x: location.x, y: DefaultScene.nodeBottomMargin, z: location.z)
-            }
+            nodeSelected?.position.x = location.x
+            nodeSelected?.position.z = location.z
         }
     }
     
