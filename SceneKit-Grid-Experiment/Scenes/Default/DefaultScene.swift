@@ -739,16 +739,6 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
             currentNodeHighlighted = nil
         }
         
-        // TODO: Make the dimensions the same with the node selected
-//        let box = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
-//
-//        let nodeHighlight = SCNNode(geometry: box)
-//        nodeHighlight.geometry?.firstMaterial?.diffuse.contents = UIImage(named: .boxWireframe)
-//        nodeHighlight.geometry?.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
-//        nodeHighlight.name = Constants.Node.highlight
-//
-//        node.addChildNode(nodeHighlight)
-        
         node.highlight()
         
         currentNodeHighlighted = node
