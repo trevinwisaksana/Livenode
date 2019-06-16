@@ -184,15 +184,15 @@ extension SCNNode {
     
     func vertices() -> [SCNVector3] {
         let sources = geometry?.sources(for: .vertex)
-        
+
         guard let source = sources?.first else {
             return []
         }
-        
+
         let stride = source.dataStride / source.bytesPerComponent
         let offset = source.dataOffset / source.bytesPerComponent
         let vectorCount = source.vectorCount
-        
+
         return source.data.withUnsafeBytes { (buffer : UnsafePointer<Float>) -> [SCNVector3] in
             var result = [SCNVector3]()
             for i in 0...vectorCount - 1 {
@@ -202,7 +202,7 @@ extension SCNNode {
                 let z = buffer[start + 2]
                 result.append(SCNVector3(x, y, z))
             }
-            
+
             return result
         }
     }
