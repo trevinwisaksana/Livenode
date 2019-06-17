@@ -236,29 +236,25 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     // MARK: - Node Selection
     
     public func didSelectNode(_ node: SCNNode?) {
-        if isSelectingAnimationTargetLocation && node?.name == Constants.Node.tileBorder {
-            
-            nodeSelected = node
-            node?.changeColor(to: .green)
-            
-            if lastNodeSelected != nil {
-                lastNodeSelected?.changeColor(to: .clear)
+        if isSelectingAnimationTargetLocation {
+            if node?.name != State.nodeAnimationTarget?.name {
+                return
             }
             
+            nodeSelected = State.nodeAnimationTarget
+            originalNodePosition = nodeSelected?.position
             lastNodeSelected = nodeSelected
-            didSelectANode = true
             
-            return
+        } else {
+            let isCorrectNodeSelected = node?.name != Constants.Node.floor && node?.name != Constants.Node.tileBorder
+            guard node != nil && node?.name != nil && isCorrectNodeSelected else {
+                didDeselectNode()
+                return
+            }
+            
+            nodeSelected = node
+            State.nodeSelected = nodeSelected
         }
-        
-        let isCorrectNodeSelected = node?.name != Constants.Node.floor && node?.name != Constants.Node.tileBorder
-        guard node != nil && node?.name != nil && isCorrectNodeSelected else {
-            didDeselectNode()
-            return
-        }
-        
-        nodeSelected = node
-        State.nodeSelected = nodeSelected
         
         highlight(nodeSelected)
         
@@ -542,7 +538,11 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     func addMoveAnimation(_ animation: MoveAnimationAttributes) {
         let targetLocation = SCNVector3(x: animation.targetLocation.x, y: 0.5, z: animation.targetLocation.z)
-        guard let duration = animation.duration else { return }
+        
+        guard let duration = animation.duration else {
+            return
+        }
+        
         let moveAction = SCNAction().move(to: targetLocation, duration: duration)
         
         nodeAnimationTarget?.addAction(moveAction, forKey: .move)
@@ -749,16 +749,13 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
             return
         }
         
-//        let nodeHighlight = node.childNode(withName: Constants.Node.highlight, recursively: true)
-//        nodeHighlight?.removeFromParentNode()
-        
         node.changeColor(to: node.originalColor)
         
         currentNodeHighlighted = nil
     }
     
     func resetLastNodeSelected() {
-        lastNodeSelected?.changeColor(to: .clear)
+        nodeSelected?.position = originalNodePosition ?? SCNVector3Zero
         lastNodeSelected = nil
     }
     

@@ -277,6 +277,7 @@ final class SceneEditorManager: NSObject {
             sceneEditorController?.setupEditMoveAnimationNavigationItems()
             scene.showGrid()
             scene.isSelectingAnimationTargetLocation = true
+            scene.nodeSelected?.isMovable = true
             
             sceneEditorController?.presentedViewController?.dismiss(animated: true, completion: nil)
             
@@ -304,8 +305,7 @@ final class SceneEditorManager: NSObject {
     }
     
     func sceneEditor(_ controller: SceneEditorViewController, didTapDoneEditingMoveAnimationButtonForScene scene: DefaultScene) {
-        // TODO: Node selected can only be floor nodes
-        guard let nodeSelected = scene.nodeSelected, nodeSelected.name == Constants.Node.tileBorder else {
+        guard let nodeSelected = scene.nodeSelected, scene.nodeSelected?.name == State.nodeAnimationTarget?.name else {
             return
         }
         
