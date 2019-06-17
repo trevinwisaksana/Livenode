@@ -56,7 +56,6 @@ public struct ObjectCatalogModelFactory {
         pyramidNode.pivot = SCNMatrix4MakeTranslation(0, 0.55, 0)
         pyramidNode.changeColor(to: .orange)
         
-        
         guard let carNode = SCNNode.daeToSCNNode(filepath: "Car.scn") else {
             return []
         }

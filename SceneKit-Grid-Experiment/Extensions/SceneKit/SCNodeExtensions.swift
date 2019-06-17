@@ -180,33 +180,6 @@ extension SCNNode {
         return nil
     }
     
-    // MARK: - Vertices
-    
-    func vertices() -> [SCNVector3] {
-        let sources = geometry?.sources(for: .vertex)
-        
-        guard let source = sources?.first else {
-            return []
-        }
-        
-        let stride = source.dataStride / source.bytesPerComponent
-        let offset = source.dataOffset / source.bytesPerComponent
-        let vectorCount = source.vectorCount
-        
-        return source.data.withUnsafeBytes { (buffer : UnsafePointer<Float>) -> [SCNVector3] in
-            var result = [SCNVector3]()
-            for i in 0...vectorCount - 1 {
-                let start = i * stride + offset
-                let x = buffer[start]
-                let y = buffer[start + 1]
-                let z = buffer[start + 2]
-                result.append(SCNVector3(x, y, z))
-            }
-            
-            return result
-        }
-    }
-    
 }
 
 
@@ -250,55 +223,7 @@ extension SCNNode: NodeInspectorViewModel {
         // Save the original color so it can be returned to normal when deselected
         originalColor = color
         
-        // Solution 2
-//        let width = CGFloat(boundingBox.max.x - boundingBox.min.x)
-//        let height = CGFloat(boundingBox.max.y - boundingBox.min.y)
-//        let length = CGFloat(boundingBox.max.z - boundingBox.min.z)
-//        let testBox = SCNBox(width: width, height: height, length: length, chamferRadius: 0)
-//        testBox.firstMaterial?.diffuse.contents = UIColor.clear
-//        let boxNode = SCNNode(geometry: testBox)
-//        addChildNode(boxNode)
-        
-        // Solution 3
-//        for index in 0..<vertices().count {
-//            let lineNode = createLineNode(fromPos: vertices()[0], toPos: vertices()[index], color: .yellow)
-//            addChildNode(lineNode)
-//        }
-        
-        for parentIndex in 0..<vertices().count - 1 {
-            for index in 0..<vertices().count - 1 {
-                let lineNode = createLineNode(fromPos: vertices()[parentIndex + 1], toPos: vertices()[index + 1], color: .yellow)
-                addChildNode(lineNode)
-            }
-        }
-        
-        for index in 0..<vertices().count - 1 {
-            let lineNode = createLineNode(fromPos: vertices()[0], toPos: vertices()[index], color: .yellow)
-            addChildNode(lineNode)
-        }
-        
-//        let indices: [Int32] = [0, 1, 2, 3]
-//        let source = SCNGeometrySource(vertices: vertices())
-//        let element = SCNGeometryElement(indices: indices, primitiveType: .triangles)
-//        let frameGeometry = SCNBox(sources: [source], elements: [element])
-//        let testNode = SCNNode(geometry: frameGeometry)
-//        addChildNode(testNode)
-        
-        // Solution 1
-//        let heightDifference = CGFloat(boundingBox.max.x - boundingBox.min.x)
-//
-//        let sphereGeometry = SCNSphere(radius: heightDifference * 0.1)
-//        sphereGeometry.firstMaterial?.diffuse.contents = UIColor.yellow
-//        sphereGeometry.firstMaterial?.lightingModel = .constant
-//        let vertexHighlightNode = SCNNode(geometry: sphereGeometry)
-//
-//        vertices().forEach { (vertex) in
-//            let cloneVertextNode = vertexHighlightNode.duplicate()
-//            cloneVertextNode.position = vertex
-//            addChildNode(cloneVertextNode)
-//        }
-        
-//        geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
+        geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
     }
     
     func createLineNode(fromPos origin: SCNVector3, toPos destination: SCNVector3, color: UIColor) -> SCNNode {
@@ -357,6 +282,9 @@ extension SCNNode: NodeInspectorViewModel {
                 
             case NodeType.LVNCar.string:
                 return .car
+                
+            case NodeType.LVNHouse.string:
+                return .house
                 
             case NodeType.SCNSphere.string:
                 return .sphere
