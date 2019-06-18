@@ -237,24 +237,17 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     
     public func didSelectNode(_ node: SCNNode?) {
         if isSelectingAnimationTargetLocation {
-            if node?.name != State.nodeAnimationTarget?.name {
-                return
-            }
-            
-            nodeSelected = State.nodeAnimationTarget
-            originalNodePosition = nodeSelected?.position
-            lastNodeSelected = nodeSelected
-            
-        } else {
-            let isCorrectNodeSelected = node?.name != Constants.Node.floor && node?.name != Constants.Node.tileBorder
-            guard node != nil && node?.name != nil && isCorrectNodeSelected else {
-                didDeselectNode()
-                return
-            }
-            
-            nodeSelected = node
-            State.nodeSelected = nodeSelected
+            lastNodeSelected = State.nodeAnimationTarget
         }
+        
+        let isCorrectNodeSelected = node?.name != Constants.Node.floor && node?.name != Constants.Node.tileBorder
+        guard node != nil && node?.name != nil && isCorrectNodeSelected else {
+            didDeselectNode()
+            return
+        }
+        
+        nodeSelected = node
+        State.nodeSelected = nodeSelected
         
         highlight(nodeSelected)
         
@@ -731,6 +724,12 @@ final class DefaultScene: SCNScene, DefaultSceneViewModel {
     private func highlight(_ nodeSelected: SCNNode?) {
         guard let node = nodeSelected else {
             return
+        }
+        
+        if isSelectingAnimationTargetLocation {
+            if nodeSelected?.name != State.nodeAnimationTarget?.name {
+                return
+            }
         }
     
         if currentNodeHighlighted != nil {

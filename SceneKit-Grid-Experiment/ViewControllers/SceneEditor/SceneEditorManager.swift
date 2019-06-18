@@ -265,6 +265,8 @@ final class SceneEditorManager: NSObject {
         controller.setupDefaultNavigationItems()
         controller.cameraNavigationPanGesture.isEnabled = true
         
+        scene.isSelectingAnimationTargetLocation = false
+        
         scene.hideGrid()
         scene.didSelectSceneAction(.pin)
     }
@@ -275,7 +277,9 @@ final class SceneEditorManager: NSObject {
         switch animation {
         case .move:
             sceneEditorController?.setupEditMoveAnimationNavigationItems()
+            
             scene.showGrid()
+            
             scene.isSelectingAnimationTargetLocation = true
             scene.nodeSelected?.isMovable = true
             
